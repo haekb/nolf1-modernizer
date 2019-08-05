@@ -1,0 +1,1330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{31eb24c4-708b-4f8e-bf08-1b73ae8d625d}</UniqueIdentifier>
+      <Extensions>*.cpp</Extensions>
+    </Filter>
+    <Filter Include="Source\Interface">
+      <UniqueIdentifier>{578a5820-a57c-4c56-9614-5568d032aabd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{1502bfbc-6862-4d44-a9e2-85902d2b2479}</UniqueIdentifier>
+      <Extensions>*.h</Extensions>
+    </Filter>
+    <Filter Include="libs_debug">
+      <UniqueIdentifier>{b031f58d-7f4f-4f43-8979-ebb1b7f9260f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libs_release">
+      <UniqueIdentifier>{7ed16f39-a83f-471a-afcf-9b5da9549954}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BaseFolder.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseSelectionFolder.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="BitmapCtrl.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="CycleCtrl.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderAdvDisplay.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderAudio.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderAwards.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderBriefing.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderControls.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderCrosshair.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderCustomControls.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderCustomLevel.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderDifficulty.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderDisplay.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderEffects.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderEscape.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderFavoriteLevels.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderGadgets.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderGallery.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderGame.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderGear.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderHost.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderHostLevels.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderHostOptions.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderIntel.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderInventory.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderJoin.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderJoinLAN.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderJoystick.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderKeyboard.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderLoad.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderMain.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderMgr.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderMission.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderMods.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderMouse.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderMulti.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderMultiBriefing.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderMultiSummary.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderNew.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderObjectives.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderOptions.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderPerformance.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderPlayer.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderSave.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderSingle.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderStats.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderSummary.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderTexture.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderViewInventory.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderWeaponControls.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="FolderWeapons.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="GameSettings.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="GroupCtrl.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="InterfaceMgr.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="InterfaceResMgr.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="InterfaceSurfMgr.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="JoystickAxis.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="LayoutMgr.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="ListCtrl.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadingScreen.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="LTDecisionWnd.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="LTDialogueWnd.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="LTMaskedWnd.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="LTMenuWnd.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="LTMultiWnd.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="LTTextWnd.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="LtWnd.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\MissionData.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="MouseMgr.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="PopupText.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="SliderCtrl.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticTextCtrl.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\Animator.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\AssertMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\AttachButeMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\BareList.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseLineSystemFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseMenu.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseParticleSystemFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="BasePolyDrawFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseScaleFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="BeamFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="BodyFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletTrailFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraOffsetMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="client_physics.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientButeMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientInfoMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientSoundMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientUtilities.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientWeaponUtils.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CMoveMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\CommonUtilities.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\CRC32.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Credits.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="DamageFXMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\DamageTypes.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="DeathFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="DebrisFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\DebrisMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\DebugNew.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="DynamicLightFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ExplosionFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="FireFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="FlashLight.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\FXButeMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\FXStructs.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\GameButeMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="GameClientShell.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="GibFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalClientMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\GlobalMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="HeadBobMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="IntelItemMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="InterfaceMeter.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="InterfaceTimer.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="IpMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyFixes.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="LaserBeam.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="LaserTriggerFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="LeashFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="LensFlareFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="LightFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="LightningFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="LightScaleMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="LineSystemFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MarkSFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MessageBox.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MessageBoxCtrl.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MessageMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MineFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\MissionMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MissionText.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\ModelButeMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiplayerMenu.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Music.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MuzzleFlashFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="MuzzleFlashParticleFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\NetDefs.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="NodeController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="NodeLinesFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjEditMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjSpriteFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleExplosionFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleShowerFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleTrailFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleTrailSegmentFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="PickupItemFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerCamera.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerSoundFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStats.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\PlayerSummary.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerVehicleFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="PolyDebrisFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="PolyGridFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="PolyLineFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectileFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="PVFXMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomSparksFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenTintMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="SearchLightFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\ServerOptionMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="SFXMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\SharedFXStructs.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\SharedMission.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ShellCasingFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="SmokeFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\SoundFilterMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\SoundMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Sparam.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="SpecialFXList.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="sprinklesfx.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\Stdafx.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="SteamFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Subtitle.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\SurfaceFunctions.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\SurfaceMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\TeamMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\TemplateList.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="TracerFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="VehicleMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\VersionMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="VideoFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="VKDefs.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponChooser.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\WeaponMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponModel.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="WeatherFX.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="WinUtil.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Shared\AssertMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\AttachButeMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\BankedList.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\BankedList_impl.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\BareList.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseFolder.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseLineSystemFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseMenu.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseParticleSystemFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BasePolyDrawFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseScaleFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseSelectionFolder.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BeamFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BitmapCtrl.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BodyFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletTrailFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraOffsetMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\CharacterAlignment.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\CheatDefs.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="client_physics.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientButeMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientInfoMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\ClientServerShared.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientSoundMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientUtilities.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientWeaponUtils.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CMoveMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\CommandIDs.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\CommonUtilities.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\ContainerCodes.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\CRC32.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Credits.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\CSDefs.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CycleCtrl.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DamageFXMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\DamageTypes.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DeathFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DebrisFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\DebrisMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\DebrisTypes.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\DebugNew_impl.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicLightFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ExplosionFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FastList.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FireFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FlashLight.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderAdvDisplay.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderAudio.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderAwards.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderBriefing.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderCommands.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderControls.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderCrosshair.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderCustomControls.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderCustomLevel.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderDifficulty.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderDisplay.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderEffects.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderEscape.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderFavoriteLevels.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderGadgets.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderGallery.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderGame.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderGear.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderHost.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderHostLevels.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderHostOptions.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderIntel.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderInventory.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderJoin.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderJoinLAN.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderJoystick.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderKeyboard.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderLoad.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderMain.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderMission.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderMods.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderMouse.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderMulti.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderMultiBriefing.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderMultiSummary.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderNew.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderObjectives.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderOptions.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderPerformance.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderPlayer.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderSave.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderSingle.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderStats.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderSummary.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderSupplies.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderTexture.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderViewInventory.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderWeaponControls.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderWeapons.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\FXButeMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\FXStructs.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\GameButeMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameButes.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameClientShell.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSettings.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GibFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\GibTypes.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\GlobalMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\Globals.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="GroupCtrl.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="HeadBobMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IntelItemMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="InterfaceMeter.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="InterfaceMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="InterfaceResMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="InterfaceSurfMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="InterfaceTimer.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="IpMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="JoystickAxis.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyFixes.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LaserBeam.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LayoutMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LeashFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LensFlareFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LightFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LightningFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LightScaleMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LineSystemFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ListCtrl.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadingScreen.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LTDecisionWnd.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LTDialogueWnd.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LTMaskedWnd.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LTMenuWnd.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LTMultiWnd.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LTTextWnd.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LtWnd.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="LTWndMessages.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MarkSFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuJoystickAxis.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageBox.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageBoxCtrl.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MineFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\MissionData.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\MissionMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MissionText.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\ModelButeMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\MsgIDs.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiplayerMenu.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Music.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MuzzleFlashFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MuzzleFlashParticleFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\NetDefs.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="NetInfo.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="NetStart.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="NodeController.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="NodeLinesFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\Objectives.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjEditMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Overlays.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleExplosionFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleShowerFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleTrailFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleTrailSegmentFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PickupItemFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerCamera.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerData.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSoundFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStats.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerVehicleFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PolyDebrisFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PolyGridFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PolyLineFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PopupText.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="PVFXMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomSparksFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\SCDefs.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenTintMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SearchLightFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\ServerOptionMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SFXMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\SFXMsgIds.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\SharedBaseFXStructs.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SharedDefs.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\SharedFXStructs.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\SharedMission.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\SharedMovement.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ShellCasingFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SliderCtrl.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SmokeFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\SoundMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\SoundTypes.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Sparam.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SpecialFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SpecialFXList.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="sprinklesfx.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticTextCtrl.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\Stdafx.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="SteamFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Subtitle.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\SurfaceFunctions.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\SurfaceMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\TeamMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\TemplateList.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\Timer.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="TracerFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="VarTrack.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="VehicleMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\VersionMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="VideoFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="VKDefs.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="VolumeBrushFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponChooser.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\WeaponFXTypes.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\WeaponMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponModel.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponStringDefs.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="WeatherFX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="WinUtil.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\LT2\lithshared\libs\Debug\LithFontMgr_LT2.lib">
+      <Filter>libs_debug</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Debug\ltguimgr_LT2.lib">
+      <Filter>libs_debug</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Debug\MFCStub.lib">
+      <Filter>libs_debug</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Debug\CryptMgr.lib">
+      <Filter>libs_debug</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Debug\StdLith.lib">
+      <Filter>libs_debug</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Debug\ButeMgrNoMFC.lib">
+      <Filter>libs_debug</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Debug\GameSpyClientMgr.lib">
+      <Filter>libs_debug</Filter>
+    </Library>
+    <Library Include="..\..\Lt2\lithshared\libs\Debug\RegMgr.lib">
+      <Filter>libs_debug</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Release\StdLith.lib">
+      <Filter>libs_release</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Release\CryptMgr.lib">
+      <Filter>libs_release</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Release\LithFontMgr_LT2.lib">
+      <Filter>libs_release</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Release\ltguimgr_LT2.lib">
+      <Filter>libs_release</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Release\MFCStub.lib">
+      <Filter>libs_release</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Release\ButeMgrNoMFC.lib">
+      <Filter>libs_release</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Release\GameSpyClientMgr.lib">
+      <Filter>libs_release</Filter>
+    </Library>
+    <Library Include="..\..\Lt2\lithshared\libs\Release\RegMgr.lib">
+      <Filter>libs_release</Filter>
+    </Library>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,1344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{d6f7f5ad-cb0c-4848-933f-c4ab3de972bc}</UniqueIdentifier>
+      <Extensions>cpp;c</Extensions>
+    </Filter>
+    <Filter Include="Source Files\AI Source Files">
+      <UniqueIdentifier>{7a88f977-49fc-4ad2-a8aa-8bc1af1ab3b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Animation Source Files">
+      <UniqueIdentifier>{046afd52-1204-4492-8e84-281942785453}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{87bf1aa6-8a76-41aa-87e6-da4c3150d7cb}</UniqueIdentifier>
+      <Extensions>h;hpp</Extensions>
+    </Filter>
+    <Filter Include="Header Files\AI Header Files">
+      <UniqueIdentifier>{5a213811-7f80-46eb-8650-58d18f7d1424}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Animation Header Files">
+      <UniqueIdentifier>{4512c5f3-dd54-4faa-ae09-2d565565a98d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libs_release">
+      <UniqueIdentifier>{43331492-7904-4a47-83b9-7c4e15687a9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libs_debug">
+      <UniqueIdentifier>{d123c215-e4e6-4fac-9e9d-c75fcd3b7a26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDK">
+      <UniqueIdentifier>{d603677c-a04b-4264-916e-09ab45a6d6d7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AI.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIAnimal.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIAnimalState.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIAnimalStrategy.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIButeMgr.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIDog.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIDogReactions.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIGroup.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIHelicopter.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIHuman.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIHumanReactions.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIHumans.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIHumanState.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIHumanStrategy.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIMovement.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AINode.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AINodeMgr.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIPath.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIPathMgr.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIPoodle.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIReactions.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AISense.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIShark.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AISounds.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIState.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AISteering.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AITarget.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIUtils.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIVehicle.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIVehicleState.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIVehicleStrategy.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIVolume.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIVolumeMgr.cpp">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationLex.cpp">
+      <Filter>Source Files\Animation Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationMgr.cpp">
+      <Filter>Source Files\Animation Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationMgrHuman.cpp">
+      <Filter>Source Files\Animation Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationParse.cpp">
+      <Filter>Source Files\Animation Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationParser.cpp">
+      <Filter>Source Files\Animation Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\Animator.cpp">
+      <Filter>Source Files\Animation Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatorAIAnimal.cpp">
+      <Filter>Source Files\Animation Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatorAIVehicle.cpp">
+      <Filter>Source Files\Animation Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimatorPlayer.cpp">
+      <Filter>Source Files\Animation Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIBrain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AINudge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIRegion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIRegionMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Alarm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AmmoBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\AssertMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\AttachButeMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Attachments.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\BareList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Body.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BodyState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Breakable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CachedFiles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterHitBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CinematicTrigger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientLightFX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientSFX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientWeaponSFX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\CommonUtilities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\CRC32.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\DamageTypes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DebrisFuncs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\DebrisMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\DebugNew.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Destructible.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DestructibleModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogueWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DisplayMeter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DisplayTimer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Door.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DoorKnob.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Editable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EventCounter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExitTrigger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Explosion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Fire.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\FXButeMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\FXStructs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\GameButeMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameServerShell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameStartPoint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GearItems.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\GlobalMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalServerMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Group.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HHWeaponModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HingedDoor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Intelligence.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IntelMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Key.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyFramer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="keyframer_light.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyPad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LaserTrigger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lightning.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Lock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lt2\sdk\inc\ltquatbase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\MissionData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\MissionMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\ModelButeMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ModItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MusicMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MyGameSpyMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\NetDefs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NodeLine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="object_list.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectiveSprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectRemover.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PickupItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerObj.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\PlayerSummary.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerVehicle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PolyGrid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjectileTypes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Prop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PropType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PropTypeMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomSpawner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RotatingDoor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RotatingWorldModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScaleSprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenShake.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SearchLight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SecurityCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerButeMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerMark.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\ServerOptionMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerSoundMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ServerUtilities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SFXFuncs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\SharedFXStructs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\SharedMission.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\SharedMovement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\SoundFilterMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundFX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\SoundMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sparam.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Spawner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Speaker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprinkles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\Stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Steam.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\SurfaceFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\SurfaceMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Switch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\TeamMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TeleportPoint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\TemplateList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TranslucentWorldModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Trigger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\VersionMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Video.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VolumeBrush.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VolumeBrushTypes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WeaponItems.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\WeaponMgr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapons.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldModelDebris.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldProperties.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ZipHook.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Alarm.h">
+      <Filter>Source Files\AI Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AI.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIAnimal.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIAnimalState.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIAnimalStrategy.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIButeMgr.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIDog.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIDogReactions.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIGroup.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIHelicopter.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIHuman.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIHumanReactions.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIHumans.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIHumanState.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIHumanStrategy.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIMovement.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AINode.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AINodeMgr.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIPath.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIPathMgr.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIPoodle.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIReactions.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AISense.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIShark.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AISounds.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIState.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AISteering.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AITarget.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIUtils.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIVehicle.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIVehicleState.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIVehicleStrategy.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIVolume.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIVolumeMgr.h">
+      <Filter>Header Files\AI Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationLex.h">
+      <Filter>Header Files\Animation Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationLexSymbols.h">
+      <Filter>Header Files\Animation Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationMgr.h">
+      <Filter>Header Files\Animation Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationMgrHuman.h">
+      <Filter>Header Files\Animation Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationParse.h">
+      <Filter>Header Files\Animation Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationParser.h">
+      <Filter>Header Files\Animation Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationStd.h">
+      <Filter>Header Files\Animation Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\Animator.h">
+      <Filter>Header Files\Animation Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatorAIAnimal.h">
+      <Filter>Header Files\Animation Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatorAIVehicle.h">
+      <Filter>Header Files\Animation Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimatorPlayer.h">
+      <Filter>Header Files\Animation Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIBrain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AINudge.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIRegion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AIRegionMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AmmoBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\AssertMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\AttachButeMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Attachments.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\BareList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Body.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BodyState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bouncer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Breakable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CachedFiles.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CDynArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\CharacterAlignment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterHitBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\CheatDefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CinematicTrigger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientDeathSFX.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientFX.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientLightFX.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\ClientServerShared.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientSFX.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientWeaponSFX.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\CommandIDs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\CommonUtilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\ContainerCodes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\CSDefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CVarTrack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\DamageTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeathScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DebrisFuncs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\DebrisMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\DebrisTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\DebugMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Destructible.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DestructibleModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogueWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DisplayMeter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DisplayTimer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Door.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DoorKnob.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Editable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EventCounter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExitTrigger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Explosion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\Factory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\FastHeap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\FastStack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fire.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fixture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\FXButeMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\FXStructs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\GameButeMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameServerShell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStartPoint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GearItems.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\GibTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\GlobalMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\Globals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Group.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HHWeaponModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HingedDoor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Intelligence.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Joint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Key.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyFramer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="keyframer_light.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyPad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LaserTrigger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Lightning.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Lock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\MissionData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\MissionMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\ModelButeMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ModItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\MsgIDs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MusicMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\NetDefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NodeLine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectiveSprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectMsgs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectRemover.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PickupItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerButes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerObj.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\PlayerSummary.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerVehicle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PolyGrid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ProjectileTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Prop.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PropType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PropTypeMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomSpawner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RotatingDoor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RotatingWorldModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScaleSprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\SCDefs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenShake.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SearchLight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SecurityCamera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerButeMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerMark.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\ServerOptionMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerSoundMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerUtilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SFXFuncs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\SFXMsgIds.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\SharedBaseFXStructs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\SharedFXStructs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\SharedMission.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\SharedMovement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\SoundFilterMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundFX.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\SoundMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\SoundTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sparam.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Spawner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Speaker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprinkles.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\Stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Steam.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\SurfaceFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\SurfaceMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Switch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\TeamMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TeleportPoint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\TemplateList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\Timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TranslucentWorldModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Trigger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TriggerSound.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\VersionMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Video.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VolumeBrush.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VolumeBrushTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\WeaponFXTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WeaponItems.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\WeaponMgr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapons.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldModelDebris.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldProperties.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ZipHook.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\clientheaders.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\iaggregate.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\iclientshell.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\iltclient.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\iltcommon.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\iltcsbase.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\iltcursor.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\iltcustomdraw.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\iltdirectmusic.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\iltlightanim.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\iltmath.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\iltmessage.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\iltmodel.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\iltphysics.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\iltprelight.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\iltserver.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\iltsoundmgr.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\iltspritecontrol.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\iltstream.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\ilttexmod.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\ilttransform.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\iltvideomgr.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\iobjectplugin.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\iservershell.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\lithtech.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\ltanimtracker.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\ltassert.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\ltbasedefs.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\ltbasetypes.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\ltbbox.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\ltbeziercurve.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\ltcodes.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\ltengineobjects.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\ltlink.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\ltmatrix.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\ltplane.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\ltpvalue.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\ltquatbase.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\ltrect.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\ltrotation.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\ltserverobj.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\ltvector.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lt2\sdk\inc\serverheaders.h">
+      <Filter>SDK</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\LT2\lithshared\libs\Release\MFCStub.lib">
+      <Filter>libs_release</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Release\CryptMgr.lib">
+      <Filter>libs_release</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Release\ButeMgrNoMFC.lib">
+      <Filter>libs_release</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Release\StdLith.lib">
+      <Filter>libs_release</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Release\GameSpyMgr.lib">
+      <Filter>libs_release</Filter>
+    </Library>
+    <Library Include="..\..\Lt2\lithshared\libs\Release\RegMgr.lib">
+      <Filter>libs_release</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Debug\CryptMgr.lib">
+      <Filter>libs_debug</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Debug\StdLith.lib">
+      <Filter>libs_debug</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Debug\ButeMgrNoMFC.lib">
+      <Filter>libs_debug</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Debug\MFCStub.lib">
+      <Filter>libs_debug</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Debug\GameSpyMgr.lib">
+      <Filter>libs_debug</Filter>
+    </Library>
+    <Library Include="..\..\Lt2\lithshared\libs\Debug\RegMgr.lib">
+      <Filter>libs_debug</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Attributes\Music.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="AnimationLex.l">
+      <Filter>Source Files\Animation Source Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="AnimationParse.y">
+      <Filter>Source Files\Animation Source Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>
