@@ -45,6 +45,8 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+#include <SDL.h>
+
 #ifdef STRICT
 	WNDPROC g_pfnMainWndProc = NULL;
 #else
@@ -581,6 +583,9 @@ CGameClientShell::CGameClientShell()
 	m_nDisconnectSubCode = 0;
 	m_pDisconnectMsg = LTNULL;
 
+	// Start up SDL!
+	SDL_Init(SDL_INIT_EVENTS);
+
 }
 
 
@@ -618,6 +623,8 @@ CGameClientShell::~CGameClientShell()
 	}
 
     g_pGameClientShell = LTNULL;
+
+	SDL_Quit();
 }
 
 
@@ -2628,9 +2635,15 @@ void CGameClientShell::CalculateCameraRotation()
     LTFLOAT fVal = 1.0f + (LTFLOAT)(3 * m_nZoomView);
 
 	// Get axis offsets...
+	float offsets[3] = {0.0, 0.0, 0.0};
 
-	float offsets[3];
-    g_pLTClient->GetAxisOffsets(offsets);
+	/*
+    //g_pLTClient->GetAxisOffsets(offsets);
+
+	offsets[0] = 1.0 * m_fFrameTime;
+	offsets[1] = 0;//1.0 * m_fFrameTime;
+	offsets[2] = 0;//1.0 * m_fFrameTime;
+	*/
 
 	if (m_bRestoreOrientation)
 	{
