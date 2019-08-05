@@ -881,7 +881,6 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
     char strTimeDiff[64];
 	float fStartTime = CWinUtil::GetTime();
 
-
 	if (!g_hMainWnd)
 	{
 		HookWindow();
@@ -1587,7 +1586,8 @@ void CGameClientShell::PreUpdate()
 
 	m_InterfaceMgr.PreUpdate();
 }
-
+// FIXME: I'm lazy, and this should just be a class level/global var
+static LONGLONG next_update = 1L;
 // ----------------------------------------------------------------------- //
 //
 //	ROUTINE:	CGameClientShell::Update()
@@ -1613,6 +1613,21 @@ void CGameClientShell::Update()
 	{
 		m_fFrameTime = MAX_FRAME_DELTA;
 	}
+
+#if 1
+	// Limit our framerate so cutscenes run correctly.
+	LARGE_INTEGER Frequency, NewTime;
+	QueryPerformanceFrequency(&Frequency); 
+
+	for(int i = 0; i < 1000; i++) {
+		QueryPerformanceCounter(&NewTime);
+		if (NewTime.QuadPart > next_update + (Frequency.QuadPart / 60)) {
+			next_update = NewTime.QuadPart;
+			break;
+		}
+		Sleep(1);
+	}
+#endif
 
 	// Update tint if applicable (always do this to make sure tinting
 	// gets finished)...
@@ -1673,8 +1688,6 @@ void CGameClientShell::Update()
 	{
 		UpdatePlaying();
 	}
-
-
 }
 
 
