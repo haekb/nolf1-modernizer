@@ -615,16 +615,16 @@ CGameClientShell::CGameClientShell()
 	m_pDisconnectMsg = LTNULL;
 
 	// Start up SDL! -- Maybe trim down what we're initing here...
-	// FIXME: Do we need this anymore?
 	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS);
 
+	// Setup the logging functions
 	SDL_LogSetOutputFunction(&SDLLog, NULL);
+	SDL_Log("-- Hello World, We're all set here. Enjoy the show!");
 
-	SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "-- Hello World, We're all set here. Enjoy the show!");
-
-	// Just a default
+	// Just some default
 	m_lNextUpdate = 1L;
-
+	m_iPreviousMouseX = 0;
+	m_iPreviousMouseY = 0;
 }
 
 
@@ -2689,7 +2689,20 @@ void CGameClientShell::CalculateCameraRotation()
 	// Safe to run every frame...I think.
 	DisableCursorCenter(false);
 
+#if 1
+	int x,y;
+
+	SDL_GetMouseState(&x, &y);
+
+	// TODO: Figure out mouse sensitivity...
+	offsets[0] = (float)(x - m_iPreviousMouseX) * 0.008000f;
+	offsets[1] = (float)(y - m_iPreviousMouseY) * 0.008000f;
+
+	m_iPreviousMouseX = x;
+	m_iPreviousMouseY = y;
+#else
     g_pLTClient->GetAxisOffsets(offsets);
+#endif
 
 	if (m_bRestoreOrientation)
 	{
@@ -2704,7 +2717,7 @@ void CGameClientShell::CalculateCameraRotation()
 
    	LTFLOAT fYawDelta    = offsets[0] / fVal;
     LTFLOAT fPitchDelta  = offsets[1] / fVal;
-	
+
 	m_fYaw += fYawDelta;
 
 	// [kml] 12/26/00 Check varying degrees of strage and look.
@@ -8500,6 +8513,11 @@ BOOL HookWindow()
 
 		// Centre the window please.
 		SDL_SetWindowPosition(g_SDLWindow, SDL_WINDOWPOS_CENTERED , SDL_WINDOWPOS_CENTERED);
+
+		// TODO: Not here, breaks menus!
+		// Setup our mouse in relative mode, so we can move it without it leaving the window.
+		// It should be on by default, but let's just play it safe.
+		//SDL_SetRelativeMouseMode(SDL_TRUE);		
 	} else {
 		SDL_Log("Error hooking window: %s", SDL_GetError());
 	}

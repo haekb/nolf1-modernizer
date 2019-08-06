@@ -514,6 +514,8 @@ class CGameClientShell : public IClientShell
 		// Jake's additionals
 		LTBOOL 		m_bLockFramerate; // Locks framerate for cinematics
 		LONGLONG    m_lNextUpdate;
+		int 		m_iPreviousMouseX;
+		int 		m_iPreviousMouseY;
 
 		// Private helper functions...
 
