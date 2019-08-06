@@ -40,6 +40,9 @@
 #include "PlayerShared.h"
 #include "CharacterFX.h"
 
+#include <iostream.h>
+#include <fstream.h>
+
 #include "CRC32.h"
 
 #include <stdarg.h>
@@ -154,6 +157,9 @@ LTFLOAT             s_fDeathDelay   = 0.0f;
 
 LTVector            g_vPlayerCameraOffset = g_kvPlayerCameraOffset;
 
+// SDL Logging
+fstream 			g_SDLLogFile;
+
 int					g_nCinSaveModelShadows = 0;
 
 static uint8		s_nLastCamType = CT_FULLSCREEN;
@@ -171,6 +177,17 @@ BOOL OnSetCursor(HWND hwnd, HWND hwndCursor, UINT codeHitTest, UINT msg);
 LRESULT CALLBACK HookedWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 extern void CalcNonClipPos(LTVector & vPos, LTRotation & rRot);
+
+void SDLLog(void* userdata, int category, SDL_LogPriority priority, const char* message)
+{
+	// Open up SDL Log File
+	g_SDLLogFile.open("Debug.log", ios::out | ios::app);
+
+	g_SDLLogFile << message << "\n";
+
+	g_SDLLogFile.close();
+} 
+
 
 // Setup..
 SETUP_CLIENTSHELL();
@@ -586,6 +603,9 @@ CGameClientShell::CGameClientShell()
 	// Start up SDL!
 	SDL_Init(SDL_INIT_EVENTS);
 
+	SDL_LogSetOutputFunction(&SDLLog, NULL);
+
+	SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "-- Hello World!");
 }
 
 
