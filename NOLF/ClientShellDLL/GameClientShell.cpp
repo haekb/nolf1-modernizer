@@ -160,6 +160,7 @@ LTVector            g_vPlayerCameraOffset = g_kvPlayerCameraOffset;
 // SDL Logging
 fstream 			g_SDLLogFile;
 SDL_Window* 		g_SDLWindow = NULL;
+bool 				g_CursorCenterHack = false;
 
 int					g_nCinSaveModelShadows = 0;
 
@@ -430,6 +431,18 @@ void MusicFn(int argc, char **argv)
 	g_pGameClientShell->GetMusic()->ProcessMusicMessage(buf);
 }
 
+void DisableCursorCenter(bool force)
+{
+	// Datamined this var, seems like there's a SetCursorPos that's overiding events.
+	// Not sure how this engine is threaded, but I guess GameClientShell runs parallel to whatever
+	// is centring cursor...
+	if (!g_CursorCenterHack || force) {
+		g_pLTClient->RunConsoleString("CursorCenter 0");
+		if(!force) {
+			g_CursorCenterHack = false;
+		}
+	}
+}
 
 // ----------------------------------------------------------------------- //
 //
@@ -602,11 +615,12 @@ CGameClientShell::CGameClientShell()
 	m_pDisconnectMsg = LTNULL;
 
 	// Start up SDL! -- Maybe trim down what we're initing here...
-	SDL_Init(SDL_INIT_EVERYTHING);
+	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS);
 
 	SDL_LogSetOutputFunction(&SDLLog, NULL);
 
 	SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "-- Hello World, We're all set here. Enjoy the show!");
+
 }
 
 
@@ -1642,7 +1656,7 @@ void CGameClientShell::Update()
 		m_fFrameTime = MAX_FRAME_DELTA;
 	}
 
-#if 1
+#if 0
 	// Limit our framerate so cutscenes run correctly.
 	LARGE_INTEGER Frequency, NewTime;
 	QueryPerformanceFrequency(&Frequency); 
@@ -2657,20 +2671,17 @@ void CGameClientShell::CalculateCameraRotation()
 
 	// Get axis offsets...
 	float offsets[3] = {0.0, 0.0, 0.0};
-	int x, y;
 
-	SDL_GetRelativeMouseState(&x,&y);
-	offsets[0] = x;
-	offsets[1] = y;
+	// Test conditions
+	char test[32] = {""};
+	GetConsoleString("CursorCenter", test, "NULL");
+	SDL_Log("Cursor Centre was set to %s",test);
 
-	SDL_Log("Mouse : %d / %d", x,y);
-	/*
-    //g_pLTClient->GetAxisOffsets(offsets);
+	// Make sure our input isn't affected by SetCursorPos, or similar nonsense.
+	// Safe to run every frame...I think.
+	DisableCursorCenter(false);
 
-	offsets[0] = 1.0 * m_fFrameTime;
-	offsets[1] = 0;//1.0 * m_fFrameTime;
-	offsets[2] = 0;//1.0 * m_fFrameTime;
-	*/
+    g_pLTClient->GetAxisOffsets(offsets);
 
 	if (m_bRestoreOrientation)
 	{
@@ -2683,9 +2694,9 @@ void CGameClientShell::CalculateCameraRotation()
 		m_MoveMgr.UpdateMouseStrafeFlags(offsets);
 	}
 
-    LTFLOAT fYawDelta    = offsets[0] / fVal;
+   	LTFLOAT fYawDelta    = offsets[0] / fVal;
     LTFLOAT fPitchDelta  = offsets[1] / fVal;
-
+	m_fPitch += fPitchDelta;
 	m_fYaw += fYawDelta;
 
 	// [kml] 12/26/00 Check varying degrees of strage and look.
@@ -4644,6 +4655,8 @@ void CGameClientShell::OnMessage(uint8 messageID, HMESSAGEREAD hMessage)
             LTVector vVec;
             g_pLTClient->ReadFromMessageVector(hMessage, &vVec);
 
+			SDL_Log("Message GET! %f / %f / %f", vVec.x, vVec.y, vVec.z);
+
 			m_fPitch		= vVec.x;
 			m_fYaw			= vVec.y;
 			m_fRoll			= vVec.z;
@@ -4983,6 +4996,8 @@ void CGameClientShell::PauseGame(LTBOOL bPause, LTBOOL bPauseSound)
 
 	SetInputState(!bPause && m_bAllowPlayerMovement);
 	SetMouseInput(!bPause);
+
+	DisableCursorCenter(true);
 }
 
 // ----------------------------------------------------------------------- //
