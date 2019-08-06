@@ -159,6 +159,7 @@ LTVector            g_vPlayerCameraOffset = g_kvPlayerCameraOffset;
 
 // SDL Logging
 fstream 			g_SDLLogFile;
+SDL_Window* 		g_SDLWindow = NULL;
 
 int					g_nCinSaveModelShadows = 0;
 
@@ -600,12 +601,12 @@ CGameClientShell::CGameClientShell()
 	m_nDisconnectSubCode = 0;
 	m_pDisconnectMsg = LTNULL;
 
-	// Start up SDL!
-	SDL_Init(SDL_INIT_EVENTS);
+	// Start up SDL! -- Maybe trim down what we're initing here...
+	SDL_Init(SDL_INIT_EVERYTHING);
 
 	SDL_LogSetOutputFunction(&SDLLog, NULL);
 
-	SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "-- Hello World!");
+	SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "-- Hello World, We're all set here. Enjoy the show!");
 }
 
 
@@ -2656,7 +2657,13 @@ void CGameClientShell::CalculateCameraRotation()
 
 	// Get axis offsets...
 	float offsets[3] = {0.0, 0.0, 0.0};
+	int x, y;
 
+	SDL_GetRelativeMouseState(&x,&y);
+	offsets[0] = x;
+	offsets[1] = y;
+
+	SDL_Log("Mouse : %d / %d", x,y);
 	/*
     //g_pLTClient->GetAxisOffsets(offsets);
 
@@ -8463,6 +8470,17 @@ BOOL HookWindow()
 		ClipCursor(&wndRect);
 	}
 
+	g_SDLWindow = SDL_CreateWindowFrom(g_hMainWnd);
+
+	if(g_SDLWindow) {
+		SDL_Log("Hooked window!");
+
+		// Centre the window please.
+		SDL_SetWindowPosition(g_SDLWindow, SDL_WINDOWPOS_CENTERED , SDL_WINDOWPOS_CENTERED);
+	} else {
+		SDL_Log("Error hooking window: %s", SDL_GetError());
+	}
+
 	return TRUE;
 }
 
@@ -8481,6 +8499,12 @@ void UnhookWindow()
 		SetWindowLong(g_hMainWnd, GWL_WNDPROC, (LONG)g_pfnMainWndProc);
 		g_hMainWnd = 0;
 		g_pfnMainWndProc = NULL;
+	}
+
+	// Kill the window!
+	if(g_SDLWindow) {
+		SDL_DestroyWindow(g_SDLWindow);
+		g_SDLWindow = NULL;
 	}
 }
 
