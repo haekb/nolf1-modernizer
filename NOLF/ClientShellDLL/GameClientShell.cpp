@@ -2704,7 +2704,7 @@ void CGameClientShell::CalculateCameraRotation()
 
    	LTFLOAT fYawDelta    = offsets[0] / fVal;
     LTFLOAT fPitchDelta  = offsets[1] / fVal;
-	m_fPitch += fPitchDelta;
+	
 	m_fYaw += fYawDelta;
 
 	// [kml] 12/26/00 Check varying degrees of strage and look.
