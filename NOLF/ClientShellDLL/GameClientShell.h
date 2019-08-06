@@ -511,6 +511,10 @@ class CGameClientShell : public IClientShell
 		uint32		m_nDisconnectSubCode;
 		char *		m_pDisconnectMsg;
 
+		// Jake's additionals
+		LTBOOL 		m_bLockFramerate; // Locks framerate for cinematics
+		LONGLONG    m_lNextUpdate;
+
 		// Private helper functions...
 
 		void	FirstUpdate();

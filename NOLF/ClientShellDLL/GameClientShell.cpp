@@ -615,11 +615,15 @@ CGameClientShell::CGameClientShell()
 	m_pDisconnectMsg = LTNULL;
 
 	// Start up SDL! -- Maybe trim down what we're initing here...
+	// FIXME: Do we need this anymore?
 	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS);
 
 	SDL_LogSetOutputFunction(&SDLLog, NULL);
 
 	SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "-- Hello World, We're all set here. Enjoy the show!");
+
+	// Just a default
+	m_lNextUpdate = 1L;
 
 }
 
@@ -1628,8 +1632,7 @@ void CGameClientShell::PreUpdate()
 
 	m_InterfaceMgr.PreUpdate();
 }
-// FIXME: I'm lazy, and this should just be a class level/global var
-static LONGLONG next_update = 1L;
+
 // ----------------------------------------------------------------------- //
 //
 //	ROUTINE:	CGameClientShell::Update()
@@ -1656,18 +1659,20 @@ void CGameClientShell::Update()
 		m_fFrameTime = MAX_FRAME_DELTA;
 	}
 
-#if 0
-	// Limit our framerate so cutscenes run correctly.
-	LARGE_INTEGER Frequency, NewTime;
-	QueryPerformanceFrequency(&Frequency); 
+#if 1
+	if(m_bLockFramerate) {
+		// Limit our framerate so cutscenes run correctly.
+		LARGE_INTEGER Frequency, NewTime;
+		QueryPerformanceFrequency(&Frequency); 
 
-	for(int i = 0; i < 1000; i++) {
-		QueryPerformanceCounter(&NewTime);
-		if (NewTime.QuadPart > next_update + (Frequency.QuadPart / 60)) {
-			next_update = NewTime.QuadPart;
-			break;
+		for(int i = 0; i < 1000; i++) {
+			QueryPerformanceCounter(&NewTime);
+			if (NewTime.QuadPart > m_lNextUpdate + (Frequency.QuadPart / 60)) {
+				m_lNextUpdate = NewTime.QuadPart;
+				break;
+			}
+			Sleep(1);
 		}
-		Sleep(1);
 	}
 #endif
 
@@ -2557,7 +2562,10 @@ LTBOOL CGameClientShell::UpdateAlternativeCamera()
 
 void CGameClientShell::TurnOnAlternativeCamera(uint8 nCamType)
 {
-	m_InterfaceMgr.SetLetterBox((nCamType == CT_CINEMATIC));
+	if(nCamType == CT_CINEMATIC) {
+		m_InterfaceMgr.SetLetterBox(LTTRUE);
+		m_bLockFramerate = LTTRUE;
+	}
 
 	if (!m_bUsingExternalCamera)
 	{
@@ -2607,7 +2615,7 @@ void CGameClientShell::TurnOffAlternativeCamera(uint8 nCamType)
 	m_weaponModel.Disable(LTFALSE);
 
 	m_InterfaceMgr.SetLetterBox(LTFALSE);
-
+	m_bLockFramerate = LTFALSE;
 	// Set shadows back to whatever they were set to before...
 
 	WriteConsoleInt("MaxModelShadows", g_nCinSaveModelShadows);
