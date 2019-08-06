@@ -27,7 +27,7 @@ CFG=ClientShellDLL - Win32 Final Debug
 # PROP AllowPerConfigDependencies 0
 # PROP Scc_ProjName ""$/Source/ClientShellDLL", FFAAAAAA"
 # PROP Scc_LocalPath "."
-CPP=cl.exe
+CPP=xicl6.exe
 MTL=midl.exe
 RSC=rc.exe
 
@@ -53,7 +53,7 @@ RSC=rc.exe
 BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
-LINK32=link.exe
+LINK32=xilink6.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /machine:I386
 # ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /machine:I386 /nodefaultlib:"LIBCMTD" /out:"release\CShell.dll"
 # SUBTRACT LINK32 /pdb:none /map
@@ -84,7 +84,7 @@ PostBuild_Cmds=copy release\cshell.dll $(NOLF_BUILD_DIR)
 BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
-LINK32=link.exe
+LINK32=xilink6.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /debug /machine:I386 /pdbtype:sept
 # ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /debug /machine:I386 /out:"debug\CShell.dll" /pdbtype:sept
 # SUBTRACT LINK32 /pdb:none /map
@@ -116,7 +116,7 @@ PostBuild_Cmds=copy debug\cshell.dll $(NOLF_BUILD_DIR)
 BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
-LINK32=link.exe
+LINK32=xilink6.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /machine:I386 /nodefaultlib:"LIBCMTD" /out:"release\CShell.dll"
 # SUBTRACT BASE LINK32 /pdb:none /map
 # ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /machine:I386 /nodefaultlib:"LIBCMTD" /out:"Final_Release\CShell.dll"
@@ -149,7 +149,7 @@ PostBuild_Cmds=copy Final_Release\cshell.dll $(NOLF_BUILD_DIR)
 BSC32=bscmake.exe
 # ADD BASE BSC32 /nologo
 # ADD BSC32 /nologo
-LINK32=link.exe
+LINK32=xilink6.exe
 # ADD BASE LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /debug /machine:I386 /out:"debug\CShell.dll" /pdbtype:sept
 # SUBTRACT BASE LINK32 /pdb:none /map
 # ADD LINK32 kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /debug /machine:I386 /out:"Final_Debug\CShell.dll" /pdbtype:sept
@@ -968,342 +968,6 @@ SOURCE=.\WinUtil.cpp
 # Begin Group "Headers"
 
 # PROP Default_Filter "*.h"
-# Begin Group "SDL2"
-
-# PROP Default_Filter ""
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\begin_code.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\close_code.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_assert.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_atomic.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_audio.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_bits.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_blendmode.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_clipboard.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_config.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_config_android.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_config_iphoneos.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_config_macosx.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_config_minimal.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_config_pandora.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_config_psp.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_config_windows.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_config_winrt.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_config_wiz.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_copying.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_cpuinfo.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_egl.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_endian.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_error.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_events.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_filesystem.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_gamecontroller.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_gesture.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_haptic.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_hints.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_joystick.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_keyboard.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_keycode.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_loadso.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_log.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_main.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_messagebox.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_mouse.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_mutex.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_name.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_opengl.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_opengl_glext.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_opengles.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_opengles2.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_opengles2_gl2.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_opengles2_gl2ext.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_opengles2_gl2platform.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_opengles2_khrplatform.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_pixels.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_platform.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_power.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_quit.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_rect.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_render.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_revision.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_rwops.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_scancode.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_sensor.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_shape.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_stdinc.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_surface.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_system.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_syswm.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_test.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_test_assert.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_test_common.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_test_compare.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_test_crc32.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_test_font.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_test_fuzzer.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_test_harness.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_test_images.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_test_log.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_test_md5.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_test_memory.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_test_random.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_thread.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_timer.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_touch.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_types.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_version.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_video.h"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\include\SDL_vulkan.h"
-# End Source File
-# End Group
 # Begin Source File
 
 SOURCE=..\Shared\AssertMgr.h
@@ -2355,14 +2019,6 @@ SOURCE=..\..\LT2\lithshared\libs\Debug\GameSpyClientMgr.lib
 # Begin Source File
 
 SOURCE=..\..\Lt2\lithshared\libs\Debug\RegMgr.lib
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\lib\x86\SDL2.lib"
-# End Source File
-# Begin Source File
-
-SOURCE="..\..\LIBS\SDL2-2.0.10\lib\x86\SDL2main.lib"
 # End Source File
 # End Group
 # Begin Group "libs_release"
