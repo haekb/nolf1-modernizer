@@ -1515,12 +1515,17 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 	{
 		int nHealthX = (int) ((float)m_HealthBasePos.x * xRatio);
 		int nHealthY = (int) ((float)m_HealthBasePos.y * yRatio);
+
+        unsigned long width, height = 0;
+
 		if (m_bUseHealthBar)
 		{
 			int nBarX = nHealthX + m_HealthBarOffset.x;
 			int nBarY = nHealthY + m_HealthBarOffset.y;
+			
+			g_pLTClient->GetSurfaceDims(m_hHUDHealth, &width, &height);
 
-			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hHUDHealth, NULL, nBarX, nBarY, 0, 2.0f, 2.0f, hTransColor );
+			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hHUDHealth, NULL, nBarX + width /2, nBarY + height /2, 0, 2.0f, 2.0f, hTransColor );
             //g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hHUDHealth, NULL, nBarX, nBarY, hTransColor);
 			// draw flashing health as required
 			if (m_bHealthFlash ||  (m_nHealth <= (m_nMaxHealth/10)))
@@ -4053,7 +4058,6 @@ void CPlayerStats::UpdateWeaponBindings()
 void CPlayerStats::DrawBoundWeapons(HSURFACE hScreen)
 {
 	if (m_fWeaponAlpha < 0.1f) return;
-
 	int w = (int)g_pInterfaceResMgr->GetScreenWidth();
 	int y = (int)g_pInterfaceResMgr->GetScreenHeight()/2 - 5*m_nIconSize;
 
@@ -4078,7 +4082,8 @@ void CPlayerStats::DrawBoundWeapons(HSURFACE hScreen)
 			if (m_fIconOffset[i] > (LTFLOAT)m_nIconSize) 
 				m_fIconOffset[i] = (LTFLOAT)m_nIconSize;
 			int x = w-(int)m_fIconOffset[i];
-			g_pLTClient->DrawSurfaceToSurface(hScreen,m_hWeaponSurf[i],LTNULL,x,y);
+			//g_pLTClient->DrawSurfaceToSurface(hScreen,m_hWeaponSurf[i],LTNULL,x,y);
+			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hWeaponSurf[i],LTNULL, x - m_nIconSize/2, y - m_nIconSize/2, 0, 2, 2, NULL);
 			if (GetConsoleInt("BindingNumbers",1) > 0)
 			{
 				

@@ -226,8 +226,11 @@ void CSliderCtrl::Destroy ( )
 }
 
 // Render the control
+// TODO: Optimize this, something in here (GetSharedSurface maybe?) causes major lag.
+// Case study: Mouse Options
 void CSliderCtrl::Render ( HSURFACE hDestSurf )
 {
+
 	HLTCOLOR color = GetCurrentColor();
 	int xPos = m_pos.x;
 	int yPos = m_pos.y + 2;
