@@ -1665,7 +1665,10 @@ void CGameClientShell::Update()
 	}
 
 #if 1
-	if (m_bLockFramerate) {
+	// FIXME: Currently this is always needed,
+	// in-game voice overs also cut out :(
+	//if (m_bLockFramerate)
+	{
 		// Limit our framerate so cutscenes run correctly.
 		LARGE_INTEGER Frequency, NewTime;
 		QueryPerformanceFrequency(&Frequency); 
