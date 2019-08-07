@@ -1520,7 +1520,8 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 			int nBarX = nHealthX + m_HealthBarOffset.x;
 			int nBarY = nHealthY + m_HealthBarOffset.y;
 
-            g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hHUDHealth, NULL, nBarX, nBarY, hTransColor);
+			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hHUDHealth, NULL, nBarX, nBarY, 0, 2.0f, 2.0f, hTransColor );
+            //g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hHUDHealth, NULL, nBarX, nBarY, hTransColor);
 			// draw flashing health as required
 			if (m_bHealthFlash ||  (m_nHealth <= (m_nMaxHealth/10)))
 			{
