@@ -2241,7 +2241,7 @@ void CBaseFolder::CreateScaleFX(char *szFXName)
 		{
 			LTVector vNewPos;
 			g_pLTClient->GetObjectPos(hSFX, &vNewPos);
-			vNewPos.z *= g_pInterfaceResMgr->GetXRatio();
+			vNewPos.z *= g_pInterfaceResMgr->GetYRatio();
 			g_pLTClient->SetObjectPos(hSFX, &vNewPos);
 		}
 
