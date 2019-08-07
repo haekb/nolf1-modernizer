@@ -516,6 +516,9 @@ class CGameClientShell : public IClientShell
 		LONGLONG    m_lNextUpdate;
 		int 		m_iPreviousMouseX;
 		int 		m_iPreviousMouseY;
+		int			m_iCurrentMouseX;
+		int			m_iCurrentMouseY;
+		LTBOOL		m_bGetBaseMouse;
 
 		// Private helper functions...
 

@@ -625,6 +625,11 @@ CGameClientShell::CGameClientShell()
 	m_lNextUpdate = 1L;
 	m_iPreviousMouseX = 0;
 	m_iPreviousMouseY = 0;
+	m_iCurrentMouseX = 0;
+	m_iCurrentMouseY = 0;
+
+	// Get a reference for currentMouseX/Y!
+	m_bGetBaseMouse = LTTRUE;
 }
 
 
@@ -1660,7 +1665,7 @@ void CGameClientShell::Update()
 	}
 
 #if 1
-	if(m_bLockFramerate) {
+	if (m_bLockFramerate) {
 		// Limit our framerate so cutscenes run correctly.
 		LARGE_INTEGER Frequency, NewTime;
 		QueryPerformanceFrequency(&Frequency); 
@@ -1730,7 +1735,6 @@ void CGameClientShell::Update()
 	}
 
 	// At this point we only want to proceed if the player is in the world...
-
 	if (IsPlayerInWorld() && m_InterfaceMgr.GetGameState() != GS_UNDEFINED)
 	{
 		UpdatePlaying();
@@ -2680,26 +2684,34 @@ void CGameClientShell::CalculateCameraRotation()
 	// Get axis offsets...
 	float offsets[3] = {0.0, 0.0, 0.0};
 
-	// Test conditions
-	char test[32] = {""};
-	GetConsoleString("CursorCenter", test, "NULL");
-	SDL_Log("Cursor Centre was set to %s",test);
-
 	// Make sure our input isn't affected by SetCursorPos, or similar nonsense.
 	// Safe to run every frame...I think.
 	DisableCursorCenter(false);
 
 #if 1
-	int x,y;
+	int deltaX,deltaY;
 
-	SDL_GetMouseState(&x, &y);
+	SDL_PumpEvents();
+
+	// Firstly, we need a point of reference.
+	// This conditional is here, in case we need to reset the mouse.
+	if(m_bGetBaseMouse) 
+	{
+		SDL_GetMouseState(&m_iCurrentMouseX, &m_iCurrentMouseY);
+		m_bGetBaseMouse = LTFALSE;
+	}
+
+	SDL_GetRelativeMouseState(&deltaX, &deltaY);
+
+	m_iCurrentMouseX += deltaX;
+	m_iCurrentMouseY += deltaY;
 
 	// TODO: Figure out mouse sensitivity...
-	offsets[0] = (float)(x - m_iPreviousMouseX) * 0.008000f;
-	offsets[1] = (float)(y - m_iPreviousMouseY) * 0.008000f;
+	offsets[0] = (float)(m_iCurrentMouseX - m_iPreviousMouseX) * 0.008000f;
+	offsets[1] = (float)(m_iCurrentMouseY - m_iPreviousMouseY) * 0.008000f;
 
-	m_iPreviousMouseX = x;
-	m_iPreviousMouseY = y;
+	m_iPreviousMouseX = m_iCurrentMouseX;
+	m_iPreviousMouseY = m_iCurrentMouseY;
 #else
     g_pLTClient->GetAxisOffsets(offsets);
 #endif
@@ -5019,6 +5031,14 @@ void CGameClientShell::PauseGame(LTBOOL bPause, LTBOOL bPauseSound)
 	SetMouseInput(!bPause);
 
 	DisableCursorCenter(true);
+
+	// Setup our mouse in relative mode, so we can move it without it leaving the window.
+	if(bPause) {
+		SDL_SetRelativeMouseMode(SDL_FALSE);	
+	} else {
+		SDL_SetRelativeMouseMode(SDL_TRUE);
+	}
+
 }
 
 // ----------------------------------------------------------------------- //
@@ -8512,12 +8532,7 @@ BOOL HookWindow()
 		SDL_Log("Hooked window!");
 
 		// Centre the window please.
-		SDL_SetWindowPosition(g_SDLWindow, SDL_WINDOWPOS_CENTERED , SDL_WINDOWPOS_CENTERED);
-
-		// TODO: Not here, breaks menus!
-		// Setup our mouse in relative mode, so we can move it without it leaving the window.
-		// It should be on by default, but let's just play it safe.
-		//SDL_SetRelativeMouseMode(SDL_TRUE);		
+		SDL_SetWindowPosition(g_SDLWindow, SDL_WINDOWPOS_CENTERED , SDL_WINDOWPOS_CENTERED);	
 	} else {
 		SDL_Log("Error hooking window: %s", SDL_GetError());
 	}
