@@ -431,19 +431,6 @@ void MusicFn(int argc, char **argv)
 	g_pGameClientShell->GetMusic()->ProcessMusicMessage(buf);
 }
 
-void DisableCursorCenter(bool force)
-{
-	// Datamined this var, seems like there's a SetCursorPos that's overiding events.
-	// Not sure how this engine is threaded, but I guess GameClientShell runs parallel to whatever
-	// is centring cursor...
-	if (!g_CursorCenterHack || force) {
-		g_pLTClient->RunConsoleString("CursorCenter 0");
-		if(!force) {
-			g_CursorCenterHack = false;
-		}
-	}
-}
-
 // ----------------------------------------------------------------------- //
 //
 //	ROUTINE:	CGameClientShell::CGameClientShell()
@@ -2686,10 +2673,6 @@ void CGameClientShell::CalculateCameraRotation()
 
 	// Get axis offsets...
 	float offsets[3] = {0.0, 0.0, 0.0};
-
-	// Make sure our input isn't affected by SetCursorPos, or similar nonsense.
-	// Safe to run every frame...I think.
-	DisableCursorCenter(false);
 
 #if 1
 	int deltaX,deltaY;
@@ -5032,16 +5015,6 @@ void CGameClientShell::PauseGame(LTBOOL bPause, LTBOOL bPauseSound)
 
 	SetInputState(!bPause && m_bAllowPlayerMovement);
 	SetMouseInput(!bPause);
-
-	DisableCursorCenter(true);
-
-	// Setup our mouse in relative mode, so we can move it without it leaving the window.
-	if(bPause) {
-		SDL_SetRelativeMouseMode(SDL_FALSE);	
-	} else {
-		SDL_SetRelativeMouseMode(SDL_TRUE);
-	}
-
 }
 
 // ----------------------------------------------------------------------- //

@@ -25,6 +25,7 @@
 #include "CharacterFX.h"
 #include "GameButes.h"
 #include "FolderPerformance.h"
+#include "SDL.h"
 
 // TESTING DYNAMIC LIGHT IN INTERFACE
 /*
@@ -4201,7 +4202,8 @@ void CInterfaceMgr::UseCursor(LTBOOL bUseCursor)
 	m_bUseCursor = bUseCursor;
 	if (m_bUseCursor)
 	{
-        g_pLTClient->RunConsoleString("CursorCenter 0");
+		// Gives us back control of the cursor
+		SDL_SetRelativeMouseMode(SDL_FALSE);
 
 		if (m_bUseHardwareCursor)
 		{
@@ -4210,7 +4212,8 @@ void CInterfaceMgr::UseCursor(LTBOOL bUseCursor)
 	}
 	else
 	{
-        g_pLTClient->RunConsoleString ("CursorCenter 1");
+		// Similar to CursorCenter mode, but not as fudged up
+		SDL_SetRelativeMouseMode(SDL_TRUE);
         g_pLTClient->Cursor()->SetCursorMode(CM_None);
 
 	}
