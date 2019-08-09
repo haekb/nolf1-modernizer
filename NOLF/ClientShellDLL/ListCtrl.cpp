@@ -98,8 +98,8 @@ void CListCtrl::Render ( HSURFACE hDestSurf )
 	if ((m_pUp && m_pUp->IsSelected()) || (m_pDown && m_pDown->IsSelected()))
 	{
         LTIntPt cpos = g_pInterfaceMgr->GetCursorPos();
-		cpos.x += g_pInterfaceResMgr->GetXOffset();
-		cpos.y += g_pInterfaceResMgr->GetYOffset();
+		//cpos.x += g_pInterfaceResMgr->GetXOffset();
+		//cpos.y += g_pInterfaceResMgr->GetYOffset();
 		int nLeft=m_pos.x;
 		int nTop=m_pos.y;
 		int nRight=nLeft+GetWidth();
@@ -374,8 +374,8 @@ LTBOOL  CListCtrl::OnEnter ( )
 // Handles the left button down message
 LTBOOL CListCtrl::OnLButtonDown(int x, int y)
 {
-	x += g_pInterfaceResMgr->GetXOffset();
-	y += g_pInterfaceResMgr->GetYOffset();
+	//x += g_pInterfaceResMgr->GetXOffset();
+	//y += g_pInterfaceResMgr->GetYOffset();
 
 	// Get the control that the click was on
 	int nControlIndex=0;
@@ -413,8 +413,8 @@ LTBOOL CListCtrl::OnLButtonDown(int x, int y)
 // Handles the left button up message
 LTBOOL CListCtrl::OnLButtonUp(int x, int y)
 {
-	x += g_pInterfaceResMgr->GetXOffset();
-	y += g_pInterfaceResMgr->GetYOffset();
+	//x += g_pInterfaceResMgr->GetXOffset();
+	//y += g_pInterfaceResMgr->GetYOffset();
 	m_fNextScrollTime = -1.0f;
 	// Get the control that the click was on
 	int nControlIndex=0;
@@ -454,8 +454,8 @@ LTBOOL CListCtrl::OnLButtonUp(int x, int y)
 // Handles the mouse move message
 LTBOOL CListCtrl::OnMouseMove(int x, int y)
 {
-	x += g_pInterfaceResMgr->GetXOffset();
-	y += g_pInterfaceResMgr->GetYOffset();
+	//x += g_pInterfaceResMgr->GetXOffset();
+	//y += g_pInterfaceResMgr->GetYOffset();
 	int nControlUnderPoint=0;
 	CLTGUICtrl *pCtrl = GetControlUnderPoint(x, y, &nControlUnderPoint);
 	if (m_pUp && CanScrollUp()) 
@@ -733,8 +733,8 @@ void CListCtrl::OnSelChange()
 /******************************************************************/
 LTBOOL CListCtrl::OnLButtonDblClick(int x, int y)
 {
-	x += g_pInterfaceResMgr->GetXOffset();
-	y += g_pInterfaceResMgr->GetYOffset();
+	//x += g_pInterfaceResMgr->GetXOffset();
+	//y += g_pInterfaceResMgr->GetYOffset();
 	m_fNextScrollTime = -1.0f;
 	// Get the control that the click was on
 	int nControlIndex=0;

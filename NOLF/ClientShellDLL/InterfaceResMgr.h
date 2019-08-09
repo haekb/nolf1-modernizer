@@ -30,7 +30,7 @@ public:
 	void				FreeSharedSurface(HSURFACE hSurf)	{ m_InterfaceSurfMgr.FreeSurface(hSurf); }
 
 	CLTGUIFont			*GetTitleFont()						{return m_pTitleFont;}
-	CLTGUIFont			*GetLargeFont()						{return m_pLargeFont;}
+	CLTGUIFont			*GetLargeFont();
 	CLTGUIFont			*GetSmallFont()						{return m_pSmallFont;}
 	CLTGUIFont			*GetMediumFont()					{return m_pMediumFont;}
 	CLTGUIFont			*GetHelpFont()						{return m_pHelpFont;}
@@ -76,10 +76,12 @@ public:
 	void				DrawFolder();
 	void				DrawLoadScreen();
 
-	int					GetXOffset()						{return m_Offset.x;}
-	int					GetYOffset()						{return m_Offset.y;}
+	int					GetXOffset()						{return Get4x3Offset();}
+	int					GetYOffset()						{return 0;}
     LTFLOAT              GetXRatio()                         {return m_fXRatio;}
     LTFLOAT              GetYRatio()                         {return m_fYRatio;}
+	LTFLOAT				 Get4x3Ratio()						 {return (float)640/480;}
+	int 				 Get4x3Offset();
 
     uint32              GetScreenWidth();
     uint32              GetScreenHeight();
@@ -103,6 +105,18 @@ protected:
 protected:
     LTBOOL               m_bEnglish;             // True if the resource file has English as the specified language
 
+	// HD Fonts - Upscaled for higher resolutions
+	CLTGUIFont			*m_pTitleHDFont;		// Title font
+	CLTGUIFont			*m_pLargeHDFont;		// Large fading font
+	CLTGUIFont			*m_pMediumHDFont;		// Medium fading font
+	CLTGUIFont			*m_pSmallHDFont;		// Small fading font
+	CLTGUIFont			*m_pHelpHDFont;			// Help font
+	CLTGUIFont			*m_pMsgForeHDFont;		// Foreground Font used in HUD text display
+	CLTGUIFont			*m_pHUDForeHDFont;		// Foreground Font used in HUD numeric display
+	CLTGUIFont			*m_pAirHDFont;			// Font used in HUD for air meter
+	CLTGUIFont			*m_pChooserHDFont;		// Font used in HUD for choosing weapons/ammo
+
+	// Original Fonts
 	CLTGUIFont			*m_pTitleFont;			// Title font
 	CLTGUIFont			*m_pLargeFont;			// Large fading font
 	CLTGUIFont			*m_pMediumFont;			// Medium fading font

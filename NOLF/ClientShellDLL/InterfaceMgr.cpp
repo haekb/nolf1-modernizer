@@ -3990,8 +3990,8 @@ void CInterfaceMgr::OnLButtonUp(int x, int y)
 	{
 	case GS_FOLDER:
 		{
-			int relX = x - g_pInterfaceResMgr->GetXOffset();
-			int relY = y - g_pInterfaceResMgr->GetYOffset();
+			int relX = x;// - g_pInterfaceResMgr->GetXOffset();
+			int relY = y;// - g_pInterfaceResMgr->GetYOffset();
 			m_FolderMgr.OnLButtonUp(relX,relY);
 		} break;
 	case GS_DIALOGUE:
@@ -4014,8 +4014,8 @@ void CInterfaceMgr::OnLButtonDown(int x, int y)
 	{
 	case GS_FOLDER:
 		{
-			int relX = x - g_pInterfaceResMgr->GetXOffset();
-			int relY = y - g_pInterfaceResMgr->GetYOffset();
+			int relX = x;// - g_pInterfaceResMgr->GetXOffset();
+			int relY = y;// - g_pInterfaceResMgr->GetYOffset();
 			m_FolderMgr.OnLButtonDown(relX,relY);
 		}	break;
 	case GS_SPLASHSCREEN:
@@ -4064,8 +4064,8 @@ void CInterfaceMgr::OnLButtonDblClick(int x, int y)
 	{
 	case GS_FOLDER:
 		{
-			int relX = x - g_pInterfaceResMgr->GetXOffset();
-			int relY = y - g_pInterfaceResMgr->GetYOffset();
+			int relX = x;// - g_pInterfaceResMgr->GetXOffset();
+			int relY = y;// - g_pInterfaceResMgr->GetYOffset();
 			m_FolderMgr.OnLButtonDblClick(relX,relY);
 		} break;
 	case GS_DIALOGUE:
@@ -4087,8 +4087,8 @@ void CInterfaceMgr::OnRButtonUp(int x, int y)
 	{
 	case GS_FOLDER:
 		{
-			int relX = x - g_pInterfaceResMgr->GetXOffset();
-			int relY = y - g_pInterfaceResMgr->GetYOffset();
+			int relX = x;// - g_pInterfaceResMgr->GetXOffset();
+			int relY = y;// - g_pInterfaceResMgr->GetYOffset();
 			m_FolderMgr.OnRButtonUp(relX,relY);
 		} break;
 	case GS_DIALOGUE:
@@ -4111,8 +4111,8 @@ void CInterfaceMgr::OnRButtonDown(int x, int y)
 	{
 	case GS_FOLDER:
 		{
-			int relX = x - g_pInterfaceResMgr->GetXOffset();
-			int relY = y - g_pInterfaceResMgr->GetYOffset();
+			int relX = x;// - g_pInterfaceResMgr->GetXOffset();
+			int relY = y;// - g_pInterfaceResMgr->GetYOffset();
 			m_FolderMgr.OnRButtonDown(relX,relY);
 		}	break;
 	case GS_SPLASHSCREEN:
@@ -4160,8 +4160,8 @@ void CInterfaceMgr::OnRButtonDblClick(int x, int y)
 	{
 	case GS_FOLDER:
 		{
-			int relX = x - g_pInterfaceResMgr->GetXOffset();
-			int relY = y - g_pInterfaceResMgr->GetYOffset();
+			int relX = x;// - g_pInterfaceResMgr->GetXOffset();
+			int relY = y;// - g_pInterfaceResMgr->GetYOffset();
 			m_FolderMgr.OnRButtonDblClick(relX,relY);
 		} break;
 	}
@@ -4170,8 +4170,8 @@ void CInterfaceMgr::OnRButtonDblClick(int x, int y)
 
 void CInterfaceMgr::OnMouseMove(int x, int y)
 {
-	int relX = x - g_pInterfaceResMgr->GetXOffset();
-	int relY = y - g_pInterfaceResMgr->GetYOffset();
+	int relX = x;//x - g_pInterfaceResMgr->GetXOffset();
+	int relY = y;//y - g_pInterfaceResMgr->GetYOffset();
 	m_CursorPos.x = relX;
 	m_CursorPos.y = relY;
 
@@ -5240,8 +5240,8 @@ void CInterfaceMgr::UpdateCursor()
 	{
 		g_pLTClient->Start3D();
 		g_pLTClient->StartOptimized2D();
-		int curX = m_CursorPos.x + g_pInterfaceResMgr->GetXOffset();
-		int curY = m_CursorPos.y + g_pInterfaceResMgr->GetYOffset();
+		int curX = m_CursorPos.x;
+		int curY = m_CursorPos.y;
 
 		g_pLTClient->DrawSurfaceToSurfaceTransparent(g_pLTClient->GetScreenSurface(), m_InterfaceResMgr.GetSurfaceCursor(), LTNULL,
 												   curX, curY, hDefaultTransColor);

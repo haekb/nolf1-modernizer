@@ -11,6 +11,7 @@
 #include "WinUtil.h"
 #include "GameClientShell.h"
 #include "ModelButeMgr.h"
+#include "SDL.h"
 
 extern CGameClientShell* g_pGameClientShell;
 namespace
@@ -189,8 +190,7 @@ LTBOOL   CFolderMain::Render(HSURFACE hDestSurf)
 	{
 		CLTGUIFont* pFont = g_pInterfaceResMgr->GetHelpFont();
 
-		pFont->Draw(m_BuildVersion, hDestSurf, m_BuildPos.x+g_pInterfaceResMgr->GetXOffset(), 
-			m_BuildPos.y+g_pInterfaceResMgr->GetYOffset(), LTF_JUSTIFY_RIGHT, kBlack);
+		pFont->Draw(m_BuildVersion, hDestSurf, (m_BuildPos.x * g_pInterfaceResMgr->GetXRatio()) + g_pInterfaceResMgr->GetXOffset(), m_BuildPos.y*g_pInterfaceResMgr->GetYRatio(), LTF_JUSTIFY_RIGHT, kBlack);
 
 /* font test 
 		pFont = g_pInterfaceResMgr->GetTitleFont();

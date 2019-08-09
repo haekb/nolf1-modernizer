@@ -7,7 +7,7 @@
 #include "gameclientshell.h"
 #include "InterfaceResMgr.h"
 #include "ClientButeMgr.h"
-
+#include "SDL.h"
 
 CInterfaceResMgr*   g_pInterfaceResMgr = LTNULL;
 
@@ -30,6 +30,7 @@ CInterfaceResMgr::CInterfaceResMgr()
 
     m_pTitleFont = LTNULL;
     m_pLargeFont = LTNULL;
+	m_pLargeHDFont = LTNULL;
     m_pMediumFont = LTNULL;
     m_pSmallFont = LTNULL;
     m_pHelpFont = LTNULL;
@@ -161,6 +162,12 @@ void CInterfaceResMgr::Term()
 		debug_delete(m_pLargeFont);
         m_pLargeFont=LTNULL;
 	}
+	if ( m_pLargeHDFont )
+	{
+		m_pLargeHDFont->Term();
+		debug_delete(m_pLargeHDFont);
+        m_pLargeHDFont=LTNULL;
+	}
 	if ( m_pTitleFont )
 	{
 		m_pTitleFont->Term();
@@ -281,6 +288,18 @@ void CInterfaceResMgr::DrawLoadScreen()
 	return;
 }
 
+int CInterfaceResMgr::Get4x3Offset()
+{
+	/* 
+		Simple formula to calculate the edges of a 4x3 resolution.
+		We calculate the equivalent 4x3 resolution from our whatever resolution,
+		and then subtract it from our current width. 
+		That leaves us over with both sides of the edges, 
+		so we then divide by 2 to get only one side. 
+	*/
+	return (GetScreenWidth() - (GetScreenHeight() * Get4x3Ratio())) / 2;
+}
+
 void CInterfaceResMgr::DrawMessage(CLTGUIFont* pFont, int nMessageId)
 {
     _ASSERT(g_pLTClient && pFont);
@@ -341,6 +360,10 @@ LTBOOL CInterfaceResMgr::InitFonts()
 	m_pAirFont = debug_new(CLTGUIFont);
 	m_pChooserFont = debug_new(CLTGUIFont);
 
+	// HD Fonts
+	m_pLargeHDFont = debug_new(CLTGUIFont);
+
+
 	// Initialize the bitmap fonts if we are in english
 	if (IsEnglish())
 	{
@@ -379,6 +402,14 @@ LTBOOL CInterfaceResMgr::InitFonts()
             return LTFALSE;
 		}
 
+		//g_pLayoutMgr->GetLargeFontBase(g_szFontName,sizeof(g_szFontName));
+		LTStrCpy(g_szFontName, "interface\\fonts\\font_large_0_hd.pcx", sizeof(g_szFontName));
+        if (!SetupFont(m_pLargeHDFont))
+		{
+			debug_delete(m_pLargeHDFont);
+            m_pLargeHDFont=LTNULL;
+            return LTFALSE;
+		}
 
         // ************* Title font
 		g_pLayoutMgr->GetTitleFont(g_szFontName,sizeof(g_szFontName));
@@ -502,13 +533,18 @@ LTBOOL CInterfaceResMgr::InitEngineFont(CLTGUIFont *pFont, int nNameID, int nWid
     LTBOOL bResult;
 
     bResult=pFont->Init(g_pLTClient, &lfCS);
+	
 
 	if (!bResult)
 	{
 		char szString[1024];
         sprintf(szString, "Cannot initialize font: %s", g_pLTClient->GetStringData(hName));
         g_pLTClient->CPrint(szString);
+		SDL_Log(szString);
+	} else {
+		SDL_Log("Initialized Font %s",lfCS.szFontName);
 	}
+
 
 	// Free the strings
     g_pLTClient->FreeString(hName);
@@ -770,14 +806,27 @@ LTBOOL CInterfaceResMgr::SetupFont(CLTGUIFont *pFont, LTBOOL bBlend, uint32 dwFl
 		lithFont.bChromaKey = LTTRUE;
 		lithFont.hTransColor = SETRGB(255,0,255);
 	}
+
     if ( !pFont->Init(g_pLTClient, &lithFont) )
 	{
 		char szString[512];
-		sprintf(szString, "Cannot load font: %s", g_szFontName);
+		sprintf(szString, "Cannot load font: %s", lithFont.szFontBitmap);
         g_pLTClient->CPrint(szString);
-
+		SDL_Log(szString);
         return LTFALSE;
 	}
 
+	
+	SDL_Log("Initialized %s",lithFont.szFontBitmap);
+
     return LTTRUE;
+}
+
+CLTGUIFont* CInterfaceResMgr::GetLargeFont()
+{
+	if(m_pLargeHDFont != LTNULL && GetScreenHeight() > 720) {
+		return m_pLargeHDFont;
+	}
+
+	return m_pLargeFont;
 }

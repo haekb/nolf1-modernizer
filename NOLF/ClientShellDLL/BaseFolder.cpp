@@ -10,6 +10,8 @@
 #include "VKDefs.h"
 #include "GameClientShell.h"
 #include "ClientRes.h"
+#include "SDL.h"
+
 extern CGameClientShell* g_pGameClientShell;
 
 LTBOOL      CBaseFolder::m_bReadLayout = LTFALSE;
@@ -261,15 +263,18 @@ LTBOOL CBaseFolder::Render(HSURFACE hDestSurf)
         return LTFALSE;
 	}
 
-
 	int xo = g_pInterfaceResMgr->GetXOffset();
 	int yo = g_pInterfaceResMgr->GetYOffset();
 
+	float xr = g_pInterfaceResMgr->GetXRatio();
+	float yr = g_pInterfaceResMgr->GetYRatio();
+	//SDL_Log("Xo / Yo %d / %d | Xr / Yr %f / %f",xo,yo,xr,yr);
 //	HSURFACE hBack = g_pInterfaceResMgr->GetSharedSurface(m_sBackground);
 //  g_pLTClient->DrawSurfaceToSurface(hDestSurf, hBack, LTNULL, xo, yo);
 
 
     LTRect rect(0,0,g_pInterfaceResMgr->GetScreenWidth(),yo+m_nTopShadeHt);
+	#if 0
     g_pLTClient->FillRect(hDestSurf,&rect,m_hShadeColor);
 
 	rect.top = yo+m_nTopShadeHt;
@@ -292,7 +297,7 @@ LTBOOL CBaseFolder::Render(HSURFACE hDestSurf)
 	{
 		rect.left = 0;
 		rect.right = xo;
-		rect.top = yo+m_nTopShadeHt;
+		rect.top = 0+m_nTopShadeHt;
 		rect.bottom = (g_pInterfaceResMgr->GetScreenHeight() - yo) - m_nBottomShadeHt;
 	    g_pLTClient->FillRect(hDestSurf,&rect,m_hShadeColor);
 
@@ -303,16 +308,15 @@ LTBOOL CBaseFolder::Render(HSURFACE hDestSurf)
 	    g_pLTClient->FillRect(hDestSurf,&rect,m_hShadeColor);
 	
 	}
-
+#endif
 
 	// Render the title
 	CLTGUIFont *pTitleFont=GetTitleFont();
 
 	if (pTitleFont && m_hTitleString)
 	{
-		int xPos=m_titlePos.x + xo;
-		int yPos=m_titlePos.y + yo;
-
+		int xPos= (m_titlePos.x * xr) + xo;
+		int yPos= m_titlePos.y * yr;
 		// Align the text as needed
 		switch (m_nTitleAlign)
 		{
@@ -334,21 +338,18 @@ LTBOOL CBaseFolder::Render(HSURFACE hDestSurf)
 
 	if (m_pBack && m_pBack->IsSelected())
 	{
-		g_pLTClient->DrawSurfaceToSurfaceTransparent(hDestSurf,g_pInterfaceResMgr->GetSharedSurface(m_sArrowBack), LTNULL, m_ArrowBackPos.x + xo, m_ArrowBackPos.y + yo, m_hTransparentColor);
+		g_pLTClient->TransformSurfaceToSurfaceTransparent(hDestSurf,g_pInterfaceResMgr->GetSharedSurface(m_sArrowBack), LTNULL, (m_ArrowBackPos.x * xr) + xo, m_ArrowBackPos.y * yr, 0, xr, xr, m_hTransparentColor);
 	}
 	if (m_pContinue && m_pContinue->IsSelected())
 	{
-		g_pLTClient->DrawSurfaceToSurfaceTransparent(hDestSurf,g_pInterfaceResMgr->GetSharedSurface(m_sArrowNext), LTNULL, m_ArrowNextPos.x + xo, m_ArrowNextPos.y + yo, m_hTransparentColor);
+		g_pLTClient->TransformSurfaceToSurfaceTransparent(hDestSurf,g_pInterfaceResMgr->GetSharedSurface(m_sArrowNext), LTNULL, (m_ArrowNextPos.x * xr) + xo, m_ArrowNextPos.y * yr, 0, xr, xr, m_hTransparentColor);
 	}
 
-//render list of ctrls
+	//render list of ctrls
 	unsigned int i;
 	for ( i = 0; i < m_fixedControlArray.GetSize(); i++ )
 	{
-        LTIntPt oldPos = m_fixedControlArray[i]->GetPos();
-		m_fixedControlArray[i]->SetPos(oldPos.x + xo, oldPos.y + yo);
 		m_fixedControlArray[i]->Render ( hDestSurf );
-		m_fixedControlArray[i]->SetPos(oldPos);
 	}
 
 	int x= GetPageLeft();
@@ -368,9 +369,8 @@ LTBOOL CBaseFolder::Render(HSURFACE hDestSurf)
 		{
 
 			// Set the position for the control
-			m_controlArray[i]->SetPos(x+ xo, y+ yo);
+			m_controlArray[i]->SetPos((x*xr) + xo, y * yr);
 			m_controlArray[i]->Render ( hDestSurf );
-			m_controlArray[i]->SetPos(x, y);
 			y+=size.y+m_nItemSpacing;
 		}
 		else
@@ -385,7 +385,7 @@ LTBOOL CBaseFolder::Render(HSURFACE hDestSurf)
 	if (m_hHelpSurf && m_dwCurrHelpID)
 	{
 		g_pLTClient->SetOptimized2DBlend(LTSURFACEBLEND_MASK);
-        g_pLTClient->DrawSurfaceToSurface(hDestSurf, m_hHelpSurf, LTNULL, m_HelpRect.left+xo,m_HelpRect.top+yo);
+        g_pLTClient->DrawSurfaceToSurface(hDestSurf, m_hHelpSurf, LTNULL, (m_HelpRect.left*xr)+xo,(m_HelpRect.top*yr));
 		g_pLTClient->SetOptimized2DBlend(LTSURFACEBLEND_ALPHA);
 	}
 
@@ -462,6 +462,12 @@ LTBOOL CBaseFolder::Build()
 {
 	m_UpArrowPos		= g_pLayoutMgr->GetUpArrowPos((eFolderID)m_nFolderID);
 	m_DownArrowPos		= g_pLayoutMgr->GetDownArrowPos((eFolderID)m_nFolderID);
+
+	m_UpArrowPos.x *= g_pInterfaceResMgr->GetXRatio();
+	m_UpArrowPos.y *= g_pInterfaceResMgr->GetYRatio();
+
+	m_DownArrowPos.x *= g_pInterfaceResMgr->GetXRatio();
+	m_DownArrowPos.y *= g_pInterfaceResMgr->GetYRatio();
 
     m_bBuilt=LTTRUE;
 
@@ -973,6 +979,7 @@ HSTRING CBaseFolder::GetHelpString(uint32 dwHelpId, int nControlIndex)
 LTBOOL CBaseFolder::OnMouseMove(int x, int y)
 {
 	int nControlUnderPoint=kNoSelection;
+	//SDL_Log("Mouse at %d/%d", x, y);
     LTBOOL onCtrl = GetControlUnderPoint(x,y,&nControlUnderPoint);
 	if (onCtrl)
 	{
@@ -1159,6 +1166,7 @@ LTBOOL CBaseFolder::GetControlUnderPoint(int xPos, int yPos, int *pnIndex)
 {
 	_ASSERT(pnIndex);
 
+	
 
 	// See if the user clicked on any of the controls.
 	int i;
@@ -1338,6 +1346,10 @@ int CBaseFolder::AddFixedControl(CLTGUICtrl* pCtrl, LTIntPt pos, LTBOOL bSelecta
 		}
 	}
 
+	// Need to do this here, it messes up on render()
+	pos.x = (int)((float)pos.x * g_pInterfaceResMgr->GetXRatio()) + g_pInterfaceResMgr->Get4x3Offset();
+	pos.y = (int)((float)pos.y * g_pInterfaceResMgr->GetYRatio());
+
 	pCtrl->SetPos(pos);
 	m_fixedControlArray.Add(pCtrl);
 	if (!bSelectable)
@@ -1379,6 +1391,7 @@ CLTGUITextItemCtrl* CBaseFolder::CreateTextItem(HSTRING hString, uint32 commandI
 
     if (pFont == LTNULL)
 		pFont = GetDefaultFont();
+
 
     if (!pCtrl->Create(g_pLTClient, commandID, hString, pFont, this, pnValue))
 	{
@@ -2241,7 +2254,7 @@ void CBaseFolder::CreateScaleFX(char *szFXName)
 		{
 			LTVector vNewPos;
 			g_pLTClient->GetObjectPos(hSFX, &vNewPos);
-			vNewPos.z *= g_pInterfaceResMgr->GetYRatio();
+			//vNewPos.z *= g_pInterfaceResMgr->GetYRatio();
 			g_pLTClient->SetObjectPos(hSFX, &vNewPos);
 		}
 
@@ -2280,7 +2293,7 @@ void CBaseFolder::CreateCharFX(INT_CHAR *pChar)
 	    g_pLTClient->RotateAroundAxis(&rRot, &g_vU, fRot);
 
 		VEC_MULSCALAR(vTemp, g_vF, vModPos.z);
-		VEC_MULSCALAR(vTemp, vTemp, g_pInterfaceResMgr->GetXRatio());
+		VEC_MULSCALAR(vTemp, vTemp, 1);//g_pInterfaceResMgr->GetXRatio());
 		VEC_ADD(vPos, vPos, vTemp);
 
 		VEC_MULSCALAR(vTemp, g_vR, vModPos.x);
