@@ -335,14 +335,16 @@ LTBOOL CBaseFolder::Render(HSURFACE hDestSurf)
 		pTitleFont->Draw(m_hTitleString, hDestSurf, xPos, yPos, LTF_JUSTIFY_LEFT,kWhite);
 	}
 
-
 	if (m_pBack && m_pBack->IsSelected())
 	{
-		g_pLTClient->TransformSurfaceToSurfaceTransparent(hDestSurf,g_pInterfaceResMgr->GetSharedSurface(m_sArrowBack), LTNULL, (m_ArrowBackPos.x * xr) + xo, m_ArrowBackPos.y * yr, 0, xr, xr, m_hTransparentColor);
+		int posX = (int) (m_ArrowBackPos.x * xr) + xo;
+		int posY = (int) m_ArrowBackPos.y * yr;
+		// FIXME: posY crashes at 1080p unless I subtract at least 10? Maybe rendering out of bounds, I know d3d haaates that.
+		g_pLTClient->TransformSurfaceToSurfaceTransparent(hDestSurf,g_pInterfaceResMgr->GetSharedSurface(m_sArrowBack), LTNULL, posX, posY - 10, 0, yr, yr, m_hTransparentColor);
 	}
 	if (m_pContinue && m_pContinue->IsSelected())
 	{
-		g_pLTClient->TransformSurfaceToSurfaceTransparent(hDestSurf,g_pInterfaceResMgr->GetSharedSurface(m_sArrowNext), LTNULL, (m_ArrowNextPos.x * xr) + xo, m_ArrowNextPos.y * yr, 0, xr, xr, m_hTransparentColor);
+		g_pLTClient->TransformSurfaceToSurfaceTransparent(hDestSurf,g_pInterfaceResMgr->GetSharedSurface(m_sArrowNext), LTNULL, (m_ArrowNextPos.x * xr) + xo, m_ArrowNextPos.y * yr, 0, yr, yr, m_hTransparentColor);
 	}
 
 	//render list of ctrls
