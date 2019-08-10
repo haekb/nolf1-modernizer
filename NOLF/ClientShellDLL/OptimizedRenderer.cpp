@@ -46,7 +46,7 @@ void COptimizedRenderer::FillRect(HSURFACE hDestSurf, LTRect *rect, HLTCOLOR col
 		SDL_Log("Cache Miss for <%d>", colour);
 
 		hSurf = g_pLTClient->CreateSurface(32,32);
-		g_pLTClient->ScaleSurfaceToSurfaceSolidColor(hSurf, m_hQuantumWhite, LTNULL, LTNULL, LTNULL, colour);
+		g_pLTClient->FillRect(hSurf, LTNULL, colour);
 
 		m_CachedSurfaceKey.Add(colour);
 		m_CachedSurfaceArray.Add(hSurf);
