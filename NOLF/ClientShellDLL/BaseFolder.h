@@ -342,6 +342,8 @@ protected:
 	int				m_nNumAttachments;
 	AttachmentData	m_aAttachment[MAX_INT_ATTACHMENTS];
 
+	HSURFACE m_hGroovyGreenSurf;
+
 
 
 };

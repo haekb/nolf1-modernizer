@@ -96,6 +96,8 @@ CBaseFolder::CBaseFolder()
 
 	m_nNumAttachments = 0;
 
+	m_hGroovyGreenSurf = LTNULL;
+
 }
 
 CBaseFolder::~CBaseFolder()
@@ -170,6 +172,15 @@ LTBOOL CBaseFolder::Init(int nFolderID)
 	if (!m_hHelpSurf)
 		m_hHelpSurf = g_pLTClient->CreateSurface((uint32)nWidth,(uint32)nHeight);
 
+	if (!m_hGroovyGreenSurf) {
+		m_hGroovyGreenSurf = g_pInterfaceResMgr->GetSharedSurface("interface\\GroovyGreen.pcx");
+
+		if(m_hGroovyGreenSurf == LTNULL) 
+		{
+			SDL_Log("Could not load interface\\GroovyGreen.pcx");
+		}
+	}
+
 	m_bInit=TRUE;
     return LTTRUE;
 }
@@ -220,6 +231,12 @@ void CBaseFolder::Term()
         m_hHelpSurf = LTNULL;
 	}
 
+	if (m_hGroovyGreenSurf)
+	{
+		g_pLTClient->DeleteSurface (m_hGroovyGreenSurf);
+		m_hGroovyGreenSurf = LTNULL;
+	}
+
 	m_bInit=FALSE;
 }
 
@@ -268,47 +285,26 @@ LTBOOL CBaseFolder::Render(HSURFACE hDestSurf)
 
 	float xr = g_pInterfaceResMgr->GetXRatio();
 	float yr = g_pInterfaceResMgr->GetYRatio();
-	//SDL_Log("Xo / Yo %d / %d | Xr / Yr %f / %f",xo,yo,xr,yr);
-//	HSURFACE hBack = g_pInterfaceResMgr->GetSharedSurface(m_sBackground);
-//  g_pLTClient->DrawSurfaceToSurface(hDestSurf, hBack, LTNULL, xo, yo);
-
 
     LTRect rect(0,0,g_pInterfaceResMgr->GetScreenWidth(),yo+m_nTopShadeHt);
-	#if 0
-    g_pLTClient->FillRect(hDestSurf,&rect,m_hShadeColor);
 
-	rect.top = yo+m_nTopShadeHt;
-	rect.bottom = rect.top + m_nBarHt;
-    g_pLTClient->FillRect(hDestSurf,&rect,m_hBarColor);
-
-	rect.bottom = g_pInterfaceResMgr->GetScreenWidth();
-	rect.top = rect.bottom - m_nBottomShadeHt;
-    g_pLTClient->FillRect(hDestSurf,&rect,m_hShadeColor);
-
-	rect.bottom = g_pInterfaceResMgr->GetScreenHeight();
-	rect.top = (rect.bottom - yo) - m_nBottomShadeHt;
-    g_pLTClient->FillRect(hDestSurf,&rect,m_hShadeColor);
-
-	rect.bottom = rect.top;
-	rect.top = rect.bottom - m_nBarHt;
-    g_pLTClient->FillRect(hDestSurf,&rect,m_hBarColor);
-
-	if (xo > 0)
+	// These use to be FillRect. Scaling a texture is way faster than whatever that was doing.
+	if (xo > 0) 
 	{
 		rect.left = 0;
 		rect.right = xo;
-		rect.top = 0+m_nTopShadeHt;
-		rect.bottom = (g_pInterfaceResMgr->GetScreenHeight() - yo) - m_nBottomShadeHt;
-	    g_pLTClient->FillRect(hDestSurf,&rect,m_hShadeColor);
+		rect.top = 0;
+		rect.bottom = g_pInterfaceResMgr->GetScreenHeight();
+
+		g_pLTClient->ScaleSurfaceToSurface(hDestSurf, m_hGroovyGreenSurf, &rect, LTNULL);
 
 		rect.right = g_pInterfaceResMgr->GetScreenWidth();
 		rect.left = g_pInterfaceResMgr->GetScreenWidth() - xo;
-		rect.top = yo+m_nTopShadeHt;
-		rect.bottom = (g_pInterfaceResMgr->GetScreenHeight() - yo) - m_nBottomShadeHt;
-	    g_pLTClient->FillRect(hDestSurf,&rect,m_hShadeColor);
-	
+		rect.top = 0;
+		rect.bottom = g_pInterfaceResMgr->GetScreenHeight();
+
+		g_pLTClient->ScaleSurfaceToSurface(hDestSurf, m_hGroovyGreenSurf, &rect, LTNULL);
 	}
-#endif
 
 	// Render the title
 	CLTGUIFont *pTitleFont=GetTitleFont();
