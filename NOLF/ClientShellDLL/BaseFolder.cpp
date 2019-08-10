@@ -344,7 +344,9 @@ LTBOOL CBaseFolder::Render(HSURFACE hDestSurf)
 	}
 	if (m_pContinue && m_pContinue->IsSelected())
 	{
-		g_pLTClient->TransformSurfaceToSurfaceTransparent(hDestSurf,g_pInterfaceResMgr->GetSharedSurface(m_sArrowNext), LTNULL, (m_ArrowNextPos.x * xr) + xo, m_ArrowNextPos.y * yr, 0, yr, yr, m_hTransparentColor);
+		int posX = (int) (m_ArrowNextPos.x * xr) + xo;
+		int posY = (int) m_ArrowNextPos.y * yr;
+		g_pLTClient->TransformSurfaceToSurfaceTransparent(hDestSurf,g_pInterfaceResMgr->GetSharedSurface(m_sArrowNext), LTNULL, posX, posY - 10, 0, yr, yr, m_hTransparentColor);
 	}
 
 	//render list of ctrls
