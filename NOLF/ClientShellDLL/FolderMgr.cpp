@@ -359,6 +359,14 @@ void CFolderMgr::AddFolder(eFolderID folderID)
 		pFolder = debug_new(CFolderMain);
 		break;
 
+	case FOLDER_ID_MAIN_CASUAL:
+		pFolder = debug_new(CFolderMain);
+		break;
+
+	case FOLDER_ID_MAIN_WINTER:
+		pFolder = debug_new(CFolderMain);
+		break;
+
 	case FOLDER_ID_SINGLE:
 		pFolder = debug_new(CFolderSingle);
 		break;
