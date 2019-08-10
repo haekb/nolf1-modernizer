@@ -512,13 +512,14 @@ class CGameClientShell : public IClientShell
 		char *		m_pDisconnectMsg;
 
 		// Jake's additionals
-		LTBOOL 		m_bLockFramerate; // Locks framerate for cinematics
+		LTBOOL 		m_bLockFramerate; // Locks framerate for ...everything...
 		LONGLONG    m_lNextUpdate;
 		int 		m_iPreviousMouseX;
 		int 		m_iPreviousMouseY;
 		int			m_iCurrentMouseX;
 		int			m_iCurrentMouseY;
 		LTBOOL		m_bGetBaseMouse;
+		LARGE_INTEGER m_lTimerFrequency;
 
 		// Private helper functions...
 

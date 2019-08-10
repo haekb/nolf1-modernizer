@@ -617,6 +617,15 @@ CGameClientShell::CGameClientShell()
 
 	// Get a reference for currentMouseX/Y!
 	m_bGetBaseMouse = LTTRUE;
+
+	m_bLockFramerate = LTTRUE;
+
+	// If we can't get timer frequency, we can't limit the framerate!
+	if(!QueryPerformanceFrequency(&m_lTimerFrequency)) {
+		SDL_Log("Device doesn't support high resolution timer! Can't lock framerate.");
+		m_bLockFramerate = LTFALSE;
+	}
+
 }
 
 
@@ -1651,25 +1660,20 @@ void CGameClientShell::Update()
 		m_fFrameTime = MAX_FRAME_DELTA;
 	}
 
-#if 1
-	// FIXME: Currently this is always needed,
-	// in-game voice overs also cut out :(
-	//if (m_bLockFramerate)
-	{
-		// Limit our framerate so cutscenes run correctly.
-		LARGE_INTEGER Frequency, NewTime;
-		QueryPerformanceFrequency(&Frequency); 
 
-		for(int i = 0; i < 1000; i++) {
+	if (m_bLockFramerate)
+	{
+		// Limit our framerate so the game actually runs properly.
+		LARGE_INTEGER NewTime;
+		
+		while(1) {
 			QueryPerformanceCounter(&NewTime);
-			if (NewTime.QuadPart > m_lNextUpdate + (Frequency.QuadPart / 60)) {
+			if (NewTime.QuadPart > m_lNextUpdate + (m_lTimerFrequency.QuadPart / 60)) {
 				m_lNextUpdate = NewTime.QuadPart;
 				break;
 			}
-			Sleep(1);
 		}
 	}
-#endif
 
 	// Update tint if applicable (always do this to make sure tinting
 	// gets finished)...
@@ -2558,7 +2562,7 @@ void CGameClientShell::TurnOnAlternativeCamera(uint8 nCamType)
 {
 	if(nCamType == CT_CINEMATIC) {
 		m_InterfaceMgr.SetLetterBox(LTTRUE);
-		m_bLockFramerate = LTTRUE;
+		//m_bLockFramerate = LTTRUE;
 	}
 
 	if (!m_bUsingExternalCamera)
@@ -2609,7 +2613,7 @@ void CGameClientShell::TurnOffAlternativeCamera(uint8 nCamType)
 	m_weaponModel.Disable(LTFALSE);
 
 	m_InterfaceMgr.SetLetterBox(LTFALSE);
-	m_bLockFramerate = LTFALSE;
+	//m_bLockFramerate = LTFALSE;
 	// Set shadows back to whatever they were set to before...
 
 	WriteConsoleInt("MaxModelShadows", g_nCinSaveModelShadows);
