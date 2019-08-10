@@ -57,7 +57,7 @@ void CFolderStats::Escape()
 	}
 	else
 	{
-		m_pFolderMgr->SetCurrentFolder(FOLDER_ID_MAIN);
+		m_pFolderMgr->SetCurrentFolder(g_pInterfaceMgr->GetMainFolder());
 	}
 }
 

@@ -1952,7 +1952,7 @@ uint32 CBaseFolder::OnCommand(uint32 dwCommand, uint32 dwParam1, uint32 dwParam2
 		}
 	case FOLDER_CMD_MAIN:
 		{
-			m_pFolderMgr->SetCurrentFolder(FOLDER_ID_MAIN);
+			m_pFolderMgr->SetCurrentFolder(g_pInterfaceMgr->GetMainFolder());
 			break;
 		}
 	case FOLDER_CMD_CONTINUE:

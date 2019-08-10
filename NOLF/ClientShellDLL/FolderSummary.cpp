@@ -12,6 +12,7 @@
 #include "ClientRes.h"
 #include "GameClientShell.h"
 #include "MsgIds.h"
+#include "SDL.h"
 
 extern CGameClientShell* g_pGameClientShell;
 
@@ -70,7 +71,7 @@ uint32 CFolderSummary::OnCommand(uint32 dwCommand, uint32 dwParam1, uint32 dwPar
 			g_pLTClient->PauseSounds();
 			g_pInterfaceMgr->ShowDemoScreens(LTFALSE);
 #else
-			g_pInterfaceMgr->SwitchToFolder(FOLDER_ID_MAIN);
+			g_pInterfaceMgr->SwitchToFolder(g_pInterfaceMgr->GetMainFolder());
 #endif
 			return 1;
 		}

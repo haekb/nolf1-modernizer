@@ -64,7 +64,7 @@ void CFolderBriefing::Escape()
 {
 	if (m_bPostMission)
 	{
-		m_pFolderMgr->SetCurrentFolder(FOLDER_ID_MAIN);
+		m_pFolderMgr->SetCurrentFolder(g_pInterfaceMgr->GetMainFolder());
 	}
 	CBaseFolder::Escape();
 }

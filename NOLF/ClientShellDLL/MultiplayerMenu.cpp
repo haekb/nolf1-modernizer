@@ -58,7 +58,7 @@ void CMultiplayerMenu::Select(uint8 byItem)
 	switch (byItem)
 	{
 	case CMD_MAIN:
-		g_pInterfaceMgr->SwitchToFolder(FOLDER_ID_MAIN);
+		g_pInterfaceMgr->SwitchToFolder(g_pInterfaceMgr->GetMainFolder());
 		break;
 	case CMD_PLAYER:
 		g_pInterfaceMgr->SwitchToFolder(FOLDER_ID_PLAYER);
@@ -79,12 +79,12 @@ void CMultiplayerMenu::Select(uint8 byItem)
 	case CMD_DISCONNECT:
 		if (g_pGameClientShell->IsHosting())
 		{
-			g_pInterfaceMgr->SwitchToFolder(FOLDER_ID_MAIN);
+			g_pInterfaceMgr->SwitchToFolder(g_pInterfaceMgr->GetMainFolder());
 			g_pLTClient->Disconnect();
 		}
 		else
 		{
-			g_pInterfaceMgr->SwitchToFolder(FOLDER_ID_MAIN);
+			g_pInterfaceMgr->SwitchToFolder(g_pInterfaceMgr->GetMainFolder());
 			g_pLTClient->Disconnect();
 		}
 		

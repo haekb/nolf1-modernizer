@@ -26,6 +26,7 @@
 #include "GameButes.h"
 #include "FolderPerformance.h"
 #include "SDL.h"
+#include <time.h>
 
 // TESTING DYNAMIC LIGHT IN INTERFACE
 /*
@@ -207,6 +208,8 @@ CInterfaceMgr::CInterfaceMgr()
 
 	m_nLoadWorldCount = 0;
 	m_nOldLoadWorldCount = 0;
+
+	m_eMainFolderID = FOLDER_ID_NONE;
 }
 
 
@@ -862,7 +865,7 @@ LTBOOL CInterfaceMgr::DrawSFX()
 void CInterfaceMgr::UpdateFolderState()
 {
 	if (m_FolderMgr.GetCurrentFolderID() == FOLDER_ID_NONE)
-		SwitchToFolder(FOLDER_ID_MAIN);
+		SwitchToFolder(GetMainFolder());
 	m_FolderMgr.UpdateInterfaceSFX();
     g_pLTClient->Start3D();
 
@@ -1203,7 +1206,7 @@ void CInterfaceMgr::UpdateMovieState()
 	ILTVideoMgr* pVideoMgr = g_pLTClient->VideoMgr();
 	if (!pVideoMgr || !m_hMovie)
 	{
-		SwitchToFolder(FOLDER_ID_MAIN);
+		SwitchToFolder(GetMainFolder());
 		return;
 	}
 
@@ -1232,7 +1235,7 @@ void CInterfaceMgr::UpdateDemoScreenState()
 		if (m_bQuitAfterDemoScreens)
 			g_pLTClient->Shutdown();
 		else
-			SwitchToFolder(FOLDER_ID_MAIN);
+			SwitchToFolder(GetMainFolder());
 		return;
 	}
 
@@ -1313,10 +1316,11 @@ void CInterfaceMgr::UpdateFailureState()
 
 	if (g_fFailScreenDuration >= g_pLayoutMgr->GetFailScreenDelay())
 	{
-		if (g_pGameClientShell->IsCustomLevel())
-			SwitchToFolder(FOLDER_ID_MAIN);
-		else
-			SwitchToFolder(FOLDER_ID_FAILURE);
+		if (g_pGameClientShell->IsCustomLevel()) {
+			SwitchToFolder(GetMainFolder());
+		} else { 
+			SwitchToFolder(FOLDER_ID_FAILURE); 
+		}
 	}
 }
 
@@ -1998,7 +2002,7 @@ LTBOOL CInterfaceMgr::OnEvent(uint32 dwEventID, uint32 dwParam)
 		default :
 		{
             uint32 nStringID = IDS_UNSPECIFIEDERROR;
-			SwitchToFolder(FOLDER_ID_MAIN);
+			SwitchToFolder(GetMainFolder());
 			//DoMessageBox(nStringID, TH_ALIGN_CENTER);
 		}
 		break;
@@ -2553,7 +2557,7 @@ LTBOOL CInterfaceMgr::OnKeyDown(int key, int rep)
 			{
 				// They pressed a key - end fail screen if been here for a second
 				if (g_pGameClientShell->IsCustomLevel())
-					SwitchToFolder(FOLDER_ID_MAIN);
+					SwitchToFolder(GetMainFolder());
 				else
 					SwitchToFolder(FOLDER_ID_FAILURE);
 			}
@@ -3823,6 +3827,63 @@ void CInterfaceMgr::Load(HMESSAGEREAD hRead)
 
 // --------------------------------------------------------------------------- //
 //
+//	ROUTINE:	CInterfaceMgr::GetMainFolder()
+//
+//	PURPOSE:	Returns the main folder
+//
+// --------------------------------------------------------------------------- //
+
+eFolderID CInterfaceMgr::GetMainFolder()
+{
+	// If we have one cached, let's use that.
+	if(m_eMainFolderID != FOLDER_ID_NONE) {
+		return m_eMainFolderID;
+	}
+
+	time_t rawtime;
+	struct tm * timeinfo;
+	char monthBuffer[8];
+	char dayBuffer[8];
+	int  monthNumber = -1;
+	int  dayNumber = -1;
+
+	// Grab current time
+	time (&rawtime);
+	timeinfo = localtime (&rawtime);
+
+	// My strata bylaws say we can have lights up from
+	// November 15 through January 31, so that's winter time!
+	strftime(dayBuffer, sizeof(dayBuffer), "%d", timeinfo);
+	strftime(monthBuffer, sizeof(monthBuffer), "%m", timeinfo);
+
+	monthNumber = atoi(monthBuffer);
+	dayNumber = atoi(dayBuffer);
+
+	if( ( monthNumber >= 11 && dayNumber >= 15 ) || ( monthNumber <= 1 && dayNumber <= 31 ) )
+	{
+		SDL_Log("Happy Holidays! :)");
+		m_eMainFolderID = FOLDER_ID_MAIN_WINTER;
+		return m_eMainFolderID;
+	}
+
+	// Now let's check for Fridays
+	memset(&dayBuffer[0], 0, sizeof(dayBuffer));
+	strftime(dayBuffer, sizeof(dayBuffer), "%w", timeinfo);
+
+	// Casual Fridays
+	if ( strcmp(dayBuffer, "5") == 0 ) 
+	{
+		SDL_Log("Casual Fridays");
+		m_eMainFolderID = FOLDER_ID_MAIN_CASUAL;
+		return m_eMainFolderID;
+	}
+
+	m_eMainFolderID = FOLDER_ID_MAIN_CASUAL;
+	return m_eMainFolderID;
+}
+
+// --------------------------------------------------------------------------- //
+//
 //	ROUTINE:	CInterfaceMgr::GetCurrentFolder()
 //
 //	PURPOSE:	Finds out what the current folder is
@@ -3852,7 +3913,7 @@ LTBOOL CInterfaceMgr::SwitchToFolder(eFolderID folderID)
 {
 	if (m_eGameState != GS_FOLDER)
 	{
-		if (m_eGameState == GS_SPLASHSCREEN && folderID == FOLDER_ID_MAIN)
+		if (m_eGameState == GS_SPLASHSCREEN && folderID == GetMainFolder())
 		{
 			StartScreenFadeIn(3.0);
 		}
@@ -4040,7 +4101,7 @@ void CInterfaceMgr::OnLButtonDown(int x, int y)
 			if (g_fFailScreenDuration > 1.0f)
 			{
 				if (g_pGameClientShell->IsCustomLevel())
-					SwitchToFolder(FOLDER_ID_MAIN);
+					SwitchToFolder(GetMainFolder());
 				else
 					SwitchToFolder(FOLDER_ID_FAILURE);
 			}
@@ -4137,7 +4198,7 @@ void CInterfaceMgr::OnRButtonDown(int x, int y)
 			if (g_fFailScreenDuration > 1.0f)
 			{
 				if (g_pGameClientShell->IsCustomLevel())
-					SwitchToFolder(FOLDER_ID_MAIN);
+					SwitchToFolder(GetMainFolder());
 				else
 					SwitchToFolder(FOLDER_ID_FAILURE);
 			}
@@ -5140,7 +5201,7 @@ void CInterfaceMgr::NextMovie()
 
 	if (!(GetAdvancedOptions() & AO_MOVIES) || g_vtDisableMovies.GetFloat())
 	{
-		SwitchToFolder(FOLDER_ID_MAIN);
+		SwitchToFolder(GetMainFolder());
 		return;
 	}
 
@@ -5156,7 +5217,7 @@ void CInterfaceMgr::NextMovie()
 	{
 		m_nCurMovie = 0;
 		m_hMovie = LTNULL;
-		SwitchToFolder(FOLDER_ID_MAIN);
+		SwitchToFolder(GetMainFolder());
 		return;
 	}
 
@@ -5275,7 +5336,7 @@ void CInterfaceMgr::Disconnected(uint32 nDisconnectFlag)
 		else
 		{
 			ClearAllScreenBuffers();
-			SwitchToFolder(FOLDER_ID_MAIN);
+			SwitchToFolder(GetMainFolder());
 		}
 
 		uint32 nDisconnectCode = g_pGameClientShell->GetDisconnectCode();
@@ -5350,7 +5411,7 @@ void CInterfaceMgr::ConnectionFailed(uint32 nConnectionError)
 	else
 	{
 		ClearAllScreenBuffers();
-		SwitchToFolder(FOLDER_ID_MAIN);
+		SwitchToFolder(GetMainFolder());
 	}
 
 	HSTRING hString = g_pLTClient->FormatString(IDS_NETERR_JOINSESSION);

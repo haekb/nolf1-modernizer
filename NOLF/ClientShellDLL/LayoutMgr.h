@@ -15,7 +15,7 @@
 #include "Overlays.h"
 
 
-#define LO_DEFAULT_FILE "Attributes\\Layout.txt"
+#define LO_DEFAULT_FILE "Attributes\\LayoutNew.txt"
 
 class CLayoutMgr;
 extern CLayoutMgr* g_pLayoutMgr;

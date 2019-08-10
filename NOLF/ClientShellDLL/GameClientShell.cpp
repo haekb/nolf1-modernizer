@@ -1281,7 +1281,7 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 		}
 		else if (GetConsoleInt("SkipTitle",0))
 		{
-			m_InterfaceMgr.SwitchToFolder(FOLDER_ID_MAIN);
+			m_InterfaceMgr.SwitchToFolder(g_pInterfaceMgr->GetMainFolder());
 		}
 		else
 		{
@@ -1295,7 +1295,7 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 			if (!DoJoinGame(sConnect))
 			{
 				m_InterfaceMgr.LoadFailed();
-				m_InterfaceMgr.SwitchToFolder(FOLDER_ID_MAIN);
+				m_InterfaceMgr.SwitchToFolder(g_pInterfaceMgr->GetMainFolder());
 				HSTRING hString = g_pLTClient->FormatString(IDS_CANT_CONNECT_TO_SERVER);
 				if (hString)
 				{
@@ -1306,7 +1306,7 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 		}
 		else if (bMultiLaunch)
 		{
-			m_InterfaceMgr.SwitchToFolder(FOLDER_ID_MAIN);
+			m_InterfaceMgr.SwitchToFolder(g_pInterfaceMgr->GetMainFolder());
 		}
 		else
 		{
@@ -7811,7 +7811,7 @@ LTBOOL CGameClientShell::StartMission(int nMissionId)
 	{
         g_pLTClient->CPrint("ERROR in CGameClientShell::StartMission():");
         g_pLTClient->CPrint("      Couldn't start mission %d!", m_nCurrentMission);
-        m_InterfaceMgr.SwitchToFolder(FOLDER_ID_MAIN);
+        m_InterfaceMgr.SwitchToFolder(g_pInterfaceMgr->GetMainFolder());
 
         return LTFALSE;
 	}

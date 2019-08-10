@@ -398,7 +398,7 @@ void CFolderWeapons::SetContinue()
 	}
 	else
 	{
-		UseContinue(FOLDER_ID_MAIN,IDS_HELP_START,IDS_START_MISSION);
+		UseContinue(g_pInterfaceMgr->GetMainFolder(),IDS_HELP_START,IDS_START_MISSION);
 	}
 
 }

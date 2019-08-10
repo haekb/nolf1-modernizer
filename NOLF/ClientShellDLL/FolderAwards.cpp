@@ -58,7 +58,7 @@ uint32 CFolderAwards::OnCommand(uint32 dwCommand, uint32 dwParam1, uint32 dwPara
 			g_pLTClient->PauseSounds();
 			g_pInterfaceMgr->ShowDemoScreens(LTFALSE);
 #else
-			g_pInterfaceMgr->SwitchToFolder(FOLDER_ID_MAIN);
+			g_pInterfaceMgr->SwitchToFolder(g_pInterfaceMgr->GetMainFolder());
 #endif
 			return 1;
 		}

@@ -209,6 +209,7 @@ class CInterfaceMgr
 
 		LTBOOL		UseInterfaceCamera() {return m_bUseInterfaceCamera;}
 
+		eFolderID   GetMainFolder();
 		eFolderID	GetCurrentFolder();
         LTBOOL       SwitchToFolder(eFolderID folderID);
         LTBOOL       ForceFolderUpdate(eFolderID folderID);
@@ -519,6 +520,8 @@ class CInterfaceMgr
 		// Used for tracking when a new level is loaded..
 		uint32	m_nLoadWorldCount;
 		uint32	m_nOldLoadWorldCount;
+
+		eFolderID m_eMainFolderID;
 };
 
 
