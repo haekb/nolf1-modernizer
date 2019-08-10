@@ -1345,6 +1345,8 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
         DoLoadWorld("", NULL, NULL, LOAD_NEW_GAME, NULL, g_pLTClient->GetVarValueString(hVar));
 	}
 
+	m_OptimizedRenderer.Init();
+
 	return LT_OK;
 }
 

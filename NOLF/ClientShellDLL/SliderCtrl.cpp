@@ -4,7 +4,8 @@
 
 #include "stdafx.h"
 #include "SliderCtrl.h"
-#include "InterfaceResMgr.h"
+#include "InterfaceMgr.h"
+#include "OptimizedRenderer.h"
 
 
 char CSliderCtrl::m_sLeftArrow[64] = "interface\\slider_left.pcx";
@@ -272,7 +273,8 @@ void CSliderCtrl::Render ( HSURFACE hDestSurf )
 	rcTemp.top += (m_pos.y - 1); 
 	rcTemp.bottom += (m_pos.y + 1); 
 	rcTemp.right += (m_pos.x + 1); 
-	g_pLTClient->FillRect(hDestSurf, &rcTemp, LTNULL);
+
+	g_pOptimizedRenderer->FillRect(hDestSurf, &rcTemp, LTNULL);
 
 	rcTemp = m_rcBar;
 	rcTemp.left += m_pos.x; 
@@ -301,7 +303,7 @@ void CSliderCtrl::Render ( HSURFACE hDestSurf )
 		g_pLTClient->ScaleSurfaceToSurface(hDestSurf, hSurf, &rcTemp, &m_rcSrcEmpty);
 
 		rcTemp.right = rcTemp.left + 1;
-		g_pLTClient->FillRect(hDestSurf, &rcTemp, LTNULL);
+		g_pOptimizedRenderer->FillRect(hDestSurf, &rcTemp, LTNULL);
 	}
 
 

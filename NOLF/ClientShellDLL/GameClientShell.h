@@ -35,6 +35,7 @@
 #include "CameraOffsetMgr.h"
 #include "HeadBobMgr.h"
 #include "NetDefs.h"
+#include "OptimizedRenderer.h"
 
 #define DEG2RAD(x)		(((x)*MATH_PI)/180.0f)
 #define RAD2DEG(x)		(((x)*180.0f)/MATH_PI)
@@ -300,6 +301,9 @@ class CGameClientShell : public IClientShell
 		CMoveMgr				m_MoveMgr;			// Always around...
 		CDamageFXMgr			m_DamageFXMgr;		// handle player damage
 		CScreenTintMgr			m_ScreenTintMgr;	// handle screen tinting
+
+		// Helper class
+		COptimizedRenderer		m_OptimizedRenderer;
 
         LTBOOL           m_bUseWorldFog;     // Tells if we should use global fog settings or
 											// let the container handling do it.
