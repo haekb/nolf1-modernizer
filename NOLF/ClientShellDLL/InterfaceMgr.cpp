@@ -3878,7 +3878,7 @@ eFolderID CInterfaceMgr::GetMainFolder()
 		return m_eMainFolderID;
 	}
 
-	m_eMainFolderID = FOLDER_ID_MAIN_ACTION;
+	m_eMainFolderID = FOLDER_ID_MAIN;
 	return m_eMainFolderID;
 }
 
