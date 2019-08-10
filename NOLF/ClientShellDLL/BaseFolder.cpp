@@ -95,9 +95,6 @@ CBaseFolder::CBaseFolder()
     m_pMain = LTNULL;
 
 	m_nNumAttachments = 0;
-
-	m_hGroovyGreenSurf = LTNULL;
-
 }
 
 CBaseFolder::~CBaseFolder()
@@ -172,15 +169,6 @@ LTBOOL CBaseFolder::Init(int nFolderID)
 	if (!m_hHelpSurf)
 		m_hHelpSurf = g_pLTClient->CreateSurface((uint32)nWidth,(uint32)nHeight);
 
-	if (!m_hGroovyGreenSurf) {
-		m_hGroovyGreenSurf = g_pInterfaceResMgr->GetSharedSurface("interface\\GroovyGreen.pcx");
-
-		if(m_hGroovyGreenSurf == LTNULL) 
-		{
-			SDL_Log("Could not load interface\\GroovyGreen.pcx");
-		}
-	}
-
 	m_bInit=TRUE;
     return LTTRUE;
 }
@@ -229,12 +217,6 @@ void CBaseFolder::Term()
 	{
         g_pLTClient->DeleteSurface (m_hHelpSurf);
         m_hHelpSurf = LTNULL;
-	}
-
-	if (m_hGroovyGreenSurf)
-	{
-		g_pLTClient->DeleteSurface (m_hGroovyGreenSurf);
-		m_hGroovyGreenSurf = LTNULL;
 	}
 
 	m_bInit=FALSE;
@@ -296,14 +278,14 @@ LTBOOL CBaseFolder::Render(HSURFACE hDestSurf)
 		rect.top = 0;
 		rect.bottom = g_pInterfaceResMgr->GetScreenHeight();
 
-		g_pLTClient->ScaleSurfaceToSurface(hDestSurf, m_hGroovyGreenSurf, &rect, LTNULL);
+		g_pOptimizedRenderer->FillRect(hDestSurf, &rect, m_hShadeColor);
 
 		rect.right = g_pInterfaceResMgr->GetScreenWidth();
 		rect.left = g_pInterfaceResMgr->GetScreenWidth() - xo;
 		rect.top = 0;
 		rect.bottom = g_pInterfaceResMgr->GetScreenHeight();
-
-		g_pLTClient->ScaleSurfaceToSurface(hDestSurf, m_hGroovyGreenSurf, &rect, LTNULL);
+		
+		g_pOptimizedRenderer->FillRect(hDestSurf, &rect, m_hShadeColor);
 	}
 
 	// Render the title

@@ -341,11 +341,6 @@ protected:
 	CBaseScaleFX	m_CharSFX;
 	int				m_nNumAttachments;
 	AttachmentData	m_aAttachment[MAX_INT_ATTACHMENTS];
-
-	HSURFACE m_hGroovyGreenSurf;
-
-
-
 };
 
 inline  CLTGUITextItemCtrl* CBaseFolder::AddTextItem(HSTRING hString, uint32 commandID, int helpID, LTBOOL bFixed, CLTGUIFont *pFont, int *pnValue)
