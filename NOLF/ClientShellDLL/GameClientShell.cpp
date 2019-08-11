@@ -626,6 +626,7 @@ CGameClientShell::CGameClientShell()
 		m_bLockFramerate = LTFALSE;
 	}
 
+	m_lFrametime = (m_lTimerFrequency.QuadPart / 60);
 }
 
 
@@ -1661,20 +1662,9 @@ void CGameClientShell::Update()
 		m_fFrameTime = MAX_FRAME_DELTA;
 	}
 
-
-	if (m_bLockFramerate)
-	{
-		// Limit our framerate so the game actually runs properly.
-		LARGE_INTEGER NewTime;
-		
-		while (1) {
-			QueryPerformanceCounter(&NewTime);
-			if (NewTime.QuadPart > m_lNextUpdate + (m_lTimerFrequency.QuadPart / 60)) {
-				m_lNextUpdate = NewTime.QuadPart;
-				break;
-			}
-		}
-	}
+	LARGE_INTEGER NewTime;
+	QueryPerformanceCounter(&NewTime);
+	m_lNextUpdate = NewTime.QuadPart;
 
 	// Update tint if applicable (always do this to make sure tinting
 	// gets finished)...
@@ -1868,6 +1858,22 @@ void CGameClientShell::PostUpdate()
 
 
 	m_InterfaceMgr.PostUpdate();
+
+	
+	if (m_bLockFramerate)
+	{
+		// Limit our framerate so the game actually runs properly.
+		LARGE_INTEGER NewTime;
+		
+		while (1) {
+			//Sleep(0);
+			QueryPerformanceCounter(&NewTime);
+			if (NewTime.QuadPart > m_lNextUpdate + m_lFrametime) {
+				//m_lNextUpdate = NewTime.QuadPart;
+				break;
+			}
+		}
+	}
 }
 
 // ----------------------------------------------------------------------- //

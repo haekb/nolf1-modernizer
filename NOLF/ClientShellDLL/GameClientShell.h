@@ -520,6 +520,7 @@ class CGameClientShell : public IClientShell
 		// Jake's additionals
 		LTBOOL 		m_bLockFramerate; // Locks framerate for ...everything...
 		LONGLONG    m_lNextUpdate;
+		LONGLONG    m_lFrametime;
 		int 		m_iPreviousMouseX;
 		int 		m_iPreviousMouseY;
 		int			m_iCurrentMouseX;
