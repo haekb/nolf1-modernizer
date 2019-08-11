@@ -488,18 +488,18 @@ void CFolderHostLevels::DrawFrame(HSURFACE hDestSurf, LTRect *rect, LTBOOL bSel)
 
 
     LTRect tmpRect(xo+rect->left, yo+rect->top+nBarHeight, xo+rect->right, yo+rect->top+nBarHeight+2);
-    g_pLTClient->FillRect(hDestSurf,&tmpRect,hColor);
+    g_pOptimizedRenderer->FillRect(hDestSurf,&tmpRect,hColor);
 
 	tmpRect.bottom = yo+rect->bottom;
 	tmpRect.top = tmpRect.bottom - 2;
-    g_pLTClient->FillRect(hDestSurf,&tmpRect,hColor);
+    g_pOptimizedRenderer->FillRect(hDestSurf,&tmpRect,hColor);
 
     tmpRect = LTRect(xo+rect->left, yo+rect->top+nBarHeight+2, xo+rect->left+2, yo+rect->bottom-2);
-    g_pLTClient->FillRect(hDestSurf,&tmpRect,hColor);
+    g_pOptimizedRenderer->FillRect(hDestSurf,&tmpRect,hColor);
 
 	tmpRect.right = xo+rect->right;
 	tmpRect.left = tmpRect.right - 2;
-    g_pLTClient->FillRect(hDestSurf,&tmpRect,hColor);
+    g_pOptimizedRenderer->FillRect(hDestSurf,&tmpRect,hColor);
 
 }
 

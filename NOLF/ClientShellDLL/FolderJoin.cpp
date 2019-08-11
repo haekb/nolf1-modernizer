@@ -429,7 +429,7 @@ LTBOOL CFolderJoin::Render(HSURFACE hDestSurf)
 		pos.x += xo;
 		pos.y += yo;
         LTRect rect(pos.x, (pos.y + pSortCtrl->GetHeight()) - 5, pos.x + pSortCtrl->GetWidth(), (pos.y + pSortCtrl->GetHeight()) - 3);
-        g_pLTClient->FillRect(hDestSurf,&rect,m_hSelectedColor);
+        g_pOptimizedRenderer->FillRect(hDestSurf,&rect,m_hSelectedColor);
 
 	}
 
@@ -455,7 +455,7 @@ LTBOOL CFolderJoin::Render(HSURFACE hDestSurf)
 		pos.x += xo;
 		pos.y += yo;
         LTRect rect(pos.x, (pos.y + pSortCtrl->GetHeight()) - 5, pos.x + pSortCtrl->GetWidth(), (pos.y + pSortCtrl->GetHeight()) - 3);
-        g_pLTClient->FillRect(hDestSurf,&rect,m_hSelectedColor);
+        g_pOptimizedRenderer->FillRect(hDestSurf,&rect,m_hSelectedColor);
 
 	}
 
@@ -1401,13 +1401,13 @@ void CFolderJoin::DrawBar(HSURFACE hDestSurf,LTRect *rect)
 
 	//Draw server bar
     LTRect barRect(xo+rect->left, yo+rect->top, xo+rect->right, yo+rect->top+nBarHeight);
-    g_pLTClient->FillRect(hDestSurf,&barRect,m_hBarColor);
+    g_pOptimizedRenderer->FillRect(hDestSurf,&barRect,m_hBarColor);
 
 	barRect.left += 2;
 	barRect.right -= 2;
 	barRect.top += 2;
 	barRect.bottom -= 2;
-    g_pLTClient->FillRect(hDestSurf,&barRect,m_hShadeColor);
+    g_pOptimizedRenderer->FillRect(hDestSurf,&barRect,m_hShadeColor);
 
 }
 void CFolderJoin::DrawFrame(HSURFACE hDestSurf,LTRect *rect)

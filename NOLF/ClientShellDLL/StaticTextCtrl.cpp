@@ -272,7 +272,7 @@ void CStaticTextCtrl::CreateSurface()
 			rcSrc.left = rcSrc.top = 0;
 			rcSrc.right = dwWidth;
 			rcSrc.bottom = dwHeight;
-			m_pClientDE->FillRect(m_hSurface, &rcSrc, backcolor);
+			g_pOptimizedRenderer->FillRect(m_hSurface, &rcSrc, backcolor);
 
 			// and draw the text on it
 			if (m_bFixedWidth)

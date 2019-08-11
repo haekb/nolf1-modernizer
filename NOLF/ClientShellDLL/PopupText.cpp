@@ -115,7 +115,7 @@ void CPopupText::ClearSurfaces()
 	uint32 dwHeight  = 0;
 	g_pLTClient->GetSurfaceDims(m_hForeSurf,&dwWidth,&dwHeight);
     LTRect rcFore(0,0, dwWidth, dwHeight);
-    g_pLTClient->FillRect(m_hForeSurf, &rcFore, LTNULL);
+    g_pOptimizedRenderer->FillRect(m_hForeSurf, &rcFore, LTNULL);
 	g_pLTClient->OptimizeSurface(m_hForeSurf, LTNULL);
 }
 

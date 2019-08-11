@@ -244,7 +244,7 @@ void CWeaponChooser::Draw()
         LTVector vColor = g_pLayoutMgr->GetChooserHighlightColor();
 
         LTRect rect(x-3,y-3,x+kIconWidth+3,y+kIconWidth+3);
-        g_pLTClient->FillRect(hScreen,&rect,SETRGB_T(vColor.x,vColor.y,vColor.z));
+        g_pOptimizedRenderer->FillRect(hScreen,&rect,SETRGB_T(vColor.x,vColor.y,vColor.z));
         g_pLTClient->DrawSurfaceToSurface(hScreen, m_hWeaponSurf[1], LTNULL, x, y);
 	}
 
@@ -431,7 +431,7 @@ void CAmmoChooser::Draw()
 	if (m_hAmmoSurf[kCurrAmmo])
 	{
         LTRect rect(x-3,y-3,x+kIconWidth+3,y+kIconWidth+3);
-        g_pLTClient->FillRect(hScreen,&rect,SETRGB_T(220,192,255));
+        g_pOptimizedRenderer->FillRect(hScreen,&rect,SETRGB_T(220,192,255));
         g_pLTClient->DrawSurfaceToSurface(hScreen, m_hAmmoSurf[kCurrAmmo], LTNULL, x, y);
 		int count = pStats->GetAmmoCount(m_nAmmo[kCurrAmmo]);
 		if (count > 0 && count < 1000)

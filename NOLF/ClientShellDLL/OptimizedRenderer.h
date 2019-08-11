@@ -13,7 +13,6 @@
 #include "iltclient.h"
 #include "ltbasedefs.h"
 
-
 class COptimizedRenderer;
 extern COptimizedRenderer* g_pOptimizedRenderer;
 
@@ -27,11 +26,7 @@ public:
 	
 	// Faster FillRects
 	void 	FillRect(HSURFACE hDestSurf, LTRect *rect, HLTCOLOR colour);
-	//void 	FillRectTrans(HSURFACE hDestSurf, LTRect *rect, HLTCOLOR colour);
 private:
-	// It could be anything!
-	HSURFACE m_hQuantumWhite;
-
 	// FIXME: VS6 won't let me use a map, so if you have a better way to handle an assoc array, PR it!
 	CMoArray<HLTCOLOR>    m_CachedSurfaceKey;
 	CMoArray<HSURFACE>	m_CachedSurfaceArray;

@@ -388,6 +388,8 @@ int CLoadingScreen::RunThread()
 	// Tell the main thread we're now in our main loop
 	SetEvent(m_hEventThreadRunning);
 
+	g_pGameClientShell->SetFramerateLock(false);
+
 	// The main rendering loop...  (i.e. keep drawing until someone tells us to stop)
 	while (WaitForSingleObject(m_hEventEnd, 0) == WAIT_TIMEOUT)
 	{
@@ -397,6 +399,9 @@ int CLoadingScreen::RunThread()
 		// Make sure we're not running faster than 10fps so stuff can still happen in the background
 		Sleep(100);
 	}
+
+	g_pGameClientShell->SetFramerateLock(true);
+
 	return 0;
 }
 
@@ -448,7 +453,7 @@ LTBOOL CLoadingScreen::Update()
 
 
     LTRect rect(0,0,g_pInterfaceResMgr->GetScreenWidth(),yo);
-    g_pLTClient->FillRect(hDestSurf,&rect,hShadeColor);
+    g_pOptimizedRenderer->FillRect(hDestSurf,&rect,hShadeColor);
 
 	rect.top = yo;
 	rect.bottom = rect.top;
@@ -456,11 +461,11 @@ LTBOOL CLoadingScreen::Update()
 
 	rect.bottom = g_pInterfaceResMgr->GetScreenWidth();
 	rect.top = rect.bottom;
-    g_pLTClient->FillRect(hDestSurf,&rect,hShadeColor);
+    g_pOptimizedRenderer->FillRect(hDestSurf,&rect,hShadeColor);
 
 	rect.bottom = g_pInterfaceResMgr->GetScreenHeight();
 	rect.top = (rect.bottom - yo);
-    g_pLTClient->FillRect(hDestSurf,&rect,hShadeColor);
+    g_pOptimizedRenderer->FillRect(hDestSurf,&rect,hShadeColor);
 
 	rect.bottom = rect.top;
 	rect.top = rect.bottom;
@@ -472,13 +477,13 @@ LTBOOL CLoadingScreen::Update()
 		rect.right = xo;
 		rect.top = yo;
 		rect.bottom = (g_pInterfaceResMgr->GetScreenHeight() - yo);
-	    g_pLTClient->FillRect(hDestSurf,&rect,hShadeColor);
+	    g_pOptimizedRenderer->FillRect(hDestSurf,&rect,hShadeColor);
 
 		rect.right = g_pInterfaceResMgr->GetScreenWidth();
 		rect.left = g_pInterfaceResMgr->GetScreenWidth() - xo;
 		rect.top = yo;
 		rect.bottom = (g_pInterfaceResMgr->GetScreenHeight() - yo);
-	    g_pLTClient->FillRect(hDestSurf,&rect,hShadeColor);
+	    g_pOptimizedRenderer->FillRect(hDestSurf,&rect,hShadeColor);
 	}
 
     g_pLTClient->FlipScreen(FLIPSCREEN_CANDRAWCONSOLE);

@@ -225,7 +225,7 @@ void CClientInfoMgr::Init()
 	for (int i = 0; i < 2; i++)
 	{
 		m_Teams[i].hBanner = g_pLTClient->CreateSurface(2,2);
-		g_pLTClient->FillRect(m_Teams[i].hBanner,&rect,m_Teams[i].hColor);
+		g_pOptimizedRenderer->FillRect(m_Teams[i].hBanner,&rect,m_Teams[i].hColor);
 		g_pLTClient->OptimizeSurface (m_Teams[i].hBanner, LTNULL);
 		g_pLTClient->SetSurfaceAlpha(m_Teams[i].hBanner,0.3f);
 

@@ -152,10 +152,10 @@ void CBitmapCtrl::Render ( HSURFACE hDestSurf )
 			//bottom
             LTRect rectB(m_pos.x,m_pos.y+m_nNormalHeight-kHighlightWidth,m_pos.x+m_nNormalWidth,m_pos.y+m_nNormalHeight);
 
-            g_pLTClient->FillRect(hDestSurf,&rectL,kWhite);
-            g_pLTClient->FillRect(hDestSurf,&rectT,kWhite);
-            g_pLTClient->FillRect(hDestSurf,&rectR,kWhite);
-            g_pLTClient->FillRect(hDestSurf,&rectB,kWhite);
+            g_pOptimizedRenderer->FillRect(hDestSurf,&rectL,kWhite);
+            g_pOptimizedRenderer->FillRect(hDestSurf,&rectT,kWhite);
+            g_pOptimizedRenderer->FillRect(hDestSurf,&rectR,kWhite);
+            g_pOptimizedRenderer->FillRect(hDestSurf,&rectB,kWhite);
 		}
 	}
 

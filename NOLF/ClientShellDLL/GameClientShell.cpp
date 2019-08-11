@@ -1345,7 +1345,6 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
         DoLoadWorld("", NULL, NULL, LOAD_NEW_GAME, NULL, g_pLTClient->GetVarValueString(hVar));
 	}
 
-	m_OptimizedRenderer.Init();
 
 	return LT_OK;
 }
@@ -1668,7 +1667,7 @@ void CGameClientShell::Update()
 		// Limit our framerate so the game actually runs properly.
 		LARGE_INTEGER NewTime;
 		
-		while(1) {
+		while (1) {
 			QueryPerformanceCounter(&NewTime);
 			if (NewTime.QuadPart > m_lNextUpdate + (m_lTimerFrequency.QuadPart / 60)) {
 				m_lNextUpdate = NewTime.QuadPart;

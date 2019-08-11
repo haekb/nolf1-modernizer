@@ -232,7 +232,7 @@ void	CMissionText::ClearSurface()
 //	rcSrc.right--;
 //	rcSrc.bottom--;
 
-    g_pLTClient->FillRect(m_hForeSurf, &rcSrc, LTNULL);
+    g_pOptimizedRenderer->FillRect(m_hForeSurf, &rcSrc, LTNULL);
 }
 
 

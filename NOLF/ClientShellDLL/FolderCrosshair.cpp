@@ -226,7 +226,7 @@ LTBOOL CFolderCrosshair::Render ( HSURFACE hDestSurf )
 		int nSize = (int)(g_vtCrosshairGapMax.GetFloat() + g_vtCrosshairBarMax.GetFloat());
         LTRect rect(pos.x,pos.y,pos.x+nSize,pos.y+nSize);
 
-        g_pLTClient->FillRect(hDestSurf,&rect,LTNULL);
+        g_pOptimizedRenderer->FillRect(hDestSurf,&rect,LTNULL);
 
         g_pInterfaceMgr->GetPlayerStats()->DrawCrosshair(hDestSurf,pos.x+nSize/2,pos.y+nSize/2,LTTRUE);
 	}

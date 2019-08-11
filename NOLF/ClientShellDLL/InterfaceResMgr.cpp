@@ -762,7 +762,7 @@ HSURFACE CInterfaceResMgr::CreateSurfaceFromString(CLTGUIFont *pFont, HSTRING hS
 	rect.bottom = sz.y+extraPixelsY;
 
     HSURFACE hSurf  = g_pLTClient->CreateSurface(sz.x+extraPixelsX,sz.y+extraPixelsY);
-    g_pLTClient->FillRect(hSurf,&rect,hBackColor);
+    g_pOptimizedRenderer->FillRect(hSurf,&rect,hBackColor);
 	if (nWidth > 0)
 		pFont->DrawFormat(hString, hSurf,extraPixelsX/2,extraPixelsY/2,nWidth,kWhite);
 	else

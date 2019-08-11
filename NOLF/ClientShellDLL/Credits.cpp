@@ -244,7 +244,7 @@ void CCredit::CreateSurface()
 //		backColor = g_hTransColor;
 
     m_hSurface  = g_pLTClient->CreateSurface(sz.x,sz.y);
-	g_pLTClient->FillRect(m_hSurface,&rect,backColor);
+	g_pOptimizedRenderer->FillRect(m_hSurface,&rect,backColor);
 
 	m_SurfaceSz = sz;
 	int x = 0;

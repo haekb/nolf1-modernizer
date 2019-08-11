@@ -1629,8 +1629,8 @@ void CPlayerStats::UpdatePlayerHealth()
     m_rcHealth.right = (int)((LTFLOAT)m_nHealth * m_fBarScale) + m_rcHealth.left;
     m_rcArmor.right = (int)((LTFLOAT)m_nArmor * m_fBarScale) + m_rcArmor.left;
 
-    g_pLTClient->FillRect(m_hHUDHealth, &m_rcArmorShadow, SETRGB(25,25,50));
-    g_pLTClient->FillRect(m_hHUDHealth, &m_rcHealthShadow, SETRGB(50,25,25));
+    g_pOptimizedRenderer->FillRect(m_hHUDHealth, &m_rcArmorShadow, SETRGB(25,25,50));
+    g_pOptimizedRenderer->FillRect(m_hHUDHealth, &m_rcHealthShadow, SETRGB(50,25,25));
     g_pLTClient->ScaleSurfaceToSurfaceTransparent(m_hHUDHealth, m_hHealthBar, &m_rcHealth, &m_rcHealthBar, kTransBlack);
     g_pLTClient->ScaleSurfaceToSurfaceTransparent(m_hHUDHealth, m_hArmorBar, &m_rcArmor, &m_rcArmorBar, kTransBlack);
     g_pLTClient->OptimizeSurface(m_hHUDHealth, hTransColor);
@@ -1677,7 +1677,7 @@ void CPlayerStats::UpdatePlayerAmmo()
 
 	m_rcAmmo.left = m_rcAmmo.right - (int)(fPercent * m_fBarScale);
 
-    g_pLTClient->FillRect(m_hHUDAmmo, &m_rcAmmoShadow, SETRGB(50,50,25));
+    g_pOptimizedRenderer->FillRect(m_hHUDAmmo, &m_rcAmmoShadow, SETRGB(50,50,25));
     g_pLTClient->ScaleSurfaceToSurfaceTransparent(m_hHUDAmmo, m_hAmmoBar, &m_rcAmmo, &m_rcAmmoBar, kTransBlack);
 
 	int nEmpty = pWeapon->nShotsPerClip - nAmmoInClip;
@@ -2799,14 +2799,14 @@ void CPlayerStats::DrawScope(HSURFACE hScreen, int nLeft, int nTop, int nRight, 
 			rect.left = cx - nRadius;
 			rect.bottom = rect.top + 1;
 			rect.right = cx + nRadius;
-            g_pLTClient->FillRect(hScreen,&rect,kBlack);
+            g_pOptimizedRenderer->FillRect(hScreen,&rect,kBlack);
 
 			//vertical hair
 			rect.top = cy - nRadius;
 			rect.left = cx;
 			rect.bottom = cy + nRadius;
 			rect.right = rect.left + 1;
-            g_pLTClient->FillRect(hScreen,&rect,kBlack);
+            g_pOptimizedRenderer->FillRect(hScreen,&rect,kBlack);
 		}	break;
 	case 1:
 		{
@@ -2817,28 +2817,28 @@ void CPlayerStats::DrawScope(HSURFACE hScreen, int nLeft, int nTop, int nRight, 
 			rect.left = cx - nRadius;
 			rect.bottom = cy + 2;
 			rect.right = cx - nGap;
-            g_pLTClient->FillRect(hScreen,&rect,kBlack);
+            g_pOptimizedRenderer->FillRect(hScreen,&rect,kBlack);
 
 			//left post
 			rect.top = cy - 1;
 			rect.left = cx - nRadius;
 			rect.bottom = cy + 1;
 			rect.right = (cx - nGap) - 1;
-            g_pLTClient->FillRect(hScreen,&rect,hGold);
+            g_pOptimizedRenderer->FillRect(hScreen,&rect,hGold);
 
 			//right outline
 			rect.top = cy - 2;
 			rect.left = cx + nGap;
 			rect.bottom = cy + 2;
 			rect.right = cx + nRadius;
-            g_pLTClient->FillRect(hScreen,&rect,kBlack);
+            g_pOptimizedRenderer->FillRect(hScreen,&rect,kBlack);
 
 			//right post
 			rect.top = cy - 1;
 			rect.left = cx + nGap + 1;
 			rect.bottom = cy + 1;
 			rect.right = cx + nRadius;
-            g_pLTClient->FillRect(hScreen,&rect,hGold);
+            g_pOptimizedRenderer->FillRect(hScreen,&rect,hGold);
 
 			nGap = nScreenHeight / (int)g_vtScopeUDGap.GetFloat();
 			nRadius = (int)( g_vtScopeUDRadius.GetFloat() * (float)nScreenHeight );
@@ -2848,28 +2848,28 @@ void CPlayerStats::DrawScope(HSURFACE hScreen, int nLeft, int nTop, int nRight, 
 			rect.left = cx - 2;
 			rect.bottom = cy - nGap;
 			rect.right = cx + 2;
-            g_pLTClient->FillRect(hScreen,&rect,kBlack);
+            g_pOptimizedRenderer->FillRect(hScreen,&rect,kBlack);
 
 			//top post
 			rect.top = cy - nRadius;
 			rect.left = cx - 1;
 			rect.bottom = (cy - nGap) - 1;
 			rect.right = cx + 1;
-            g_pLTClient->FillRect(hScreen,&rect,hGold);
+            g_pOptimizedRenderer->FillRect(hScreen,&rect,hGold);
 
 			//bottom outline
 			rect.top = cy + nGap;
 			rect.left = cx - 2;
 			rect.bottom = cy + nRadius;
 			rect.right = cx + 2;
-            g_pLTClient->FillRect(hScreen,&rect,kBlack);
+            g_pOptimizedRenderer->FillRect(hScreen,&rect,kBlack);
 
 			//bottom post
 			rect.top = cy + nGap + 1;
 			rect.left = cx - 1;
 			rect.bottom = cy+ nRadius;
 			rect.right = cx + 1;
-            g_pLTClient->FillRect(hScreen,&rect,hGold);
+            g_pOptimizedRenderer->FillRect(hScreen,&rect,hGold);
 
 			nGap = nScreenHeight / (int)g_vtScopeLRGap.GetFloat();
 
@@ -2878,7 +2878,7 @@ void CPlayerStats::DrawScope(HSURFACE hScreen, int nLeft, int nTop, int nRight, 
 			rect.left = cx - nGap;
 			rect.bottom = rect.top + 1;
 			rect.right = cx + nGap;
-            g_pLTClient->FillRect(hScreen,&rect,kBlack);
+            g_pOptimizedRenderer->FillRect(hScreen,&rect,kBlack);
 
 			nGap = nScreenHeight / (int)g_vtScopeUDGap.GetFloat();
 
@@ -2887,7 +2887,7 @@ void CPlayerStats::DrawScope(HSURFACE hScreen, int nLeft, int nTop, int nRight, 
 			rect.left = cx;
 			rect.bottom = cy + nGap;
 			rect.right = rect.left + 1;
-            g_pLTClient->FillRect(hScreen,&rect,kBlack);
+            g_pOptimizedRenderer->FillRect(hScreen,&rect,kBlack);
 
 			nGap = nScreenHeight / (int)g_vtScopeLRGap.GetFloat();
 
@@ -2896,7 +2896,7 @@ void CPlayerStats::DrawScope(HSURFACE hScreen, int nLeft, int nTop, int nRight, 
 			rect.left = cx - nGap;
 			rect.bottom = rect.top + 1;
 			rect.right = cx + nGap;
-            g_pLTClient->FillRect(hScreen,&rect,hGold);
+            g_pOptimizedRenderer->FillRect(hScreen,&rect,hGold);
 
 			nGap = nScreenHeight / (int)g_vtScopeUDGap.GetFloat();
 
@@ -2905,7 +2905,7 @@ void CPlayerStats::DrawScope(HSURFACE hScreen, int nLeft, int nTop, int nRight, 
 			rect.left = cx-1;
 			rect.bottom = cy + nGap;
 			rect.right = rect.left + 1;
-            g_pLTClient->FillRect(hScreen,&rect,hGold);
+            g_pOptimizedRenderer->FillRect(hScreen,&rect,hGold);
 
 		}	break;
 	}
@@ -3097,7 +3097,7 @@ void CPlayerStats::ClearSurface(HSURFACE hSurf, HLTCOLOR hColor)
 	rcSrc.left = rcSrc.top = 0;
 	rcSrc.right = dwWidth;
 	rcSrc.bottom = dwHeight;
-    g_pLTClient->FillRect(hSurf, &rcSrc, hColor);
+    g_pOptimizedRenderer->FillRect(hSurf, &rcSrc, hColor);
 }
 
 void CPlayerStats::UpdateFlash()
@@ -3188,7 +3188,7 @@ void CPlayerStats::UpdateCrosshairColors()
         m_hArmedCrosshair = g_pLTClient->CreateSurface(2,2);
 	}
 
-    g_pLTClient->FillRect(m_hArmedCrosshair,&rect,hCursorColor);
+    g_pOptimizedRenderer->FillRect(m_hArmedCrosshair,&rect,hCursorColor);
     g_pLTClient->OptimizeSurface (m_hArmedCrosshair, kTransBlack);
     g_pLTClient->SetSurfaceAlpha(m_hArmedCrosshair,fLastAlpha);
 
@@ -3830,7 +3830,7 @@ void CPlayerStats::DrawObjectives(HSURFACE hScreen)
 	if (nTeam)
 	{
 		LTRect rcBanner(x,y,x+nWidth,y+g_pObjForeFont->GetHeight());
-		g_pLTClient->FillRect(hScreen,&rcBanner,hTeamColor);
+		g_pOptimizedRenderer->FillRect(hScreen,&rcBanner,hTeamColor);
 
 		HSTRING hTeam = g_pLTClient->FormatString(nTeam);
 		g_pObjForeFont->Draw(hTeam,hScreen,x+nWidth/2,y,LTF_JUSTIFY_CENTER,kWhite);
@@ -3885,13 +3885,13 @@ void CPlayerStats::DrawObjectives(HSURFACE hScreen)
 		y += 16;
 		int iy = m_ObjectivePos.y;
 		LTRect rcBanner(x,iy,x+2,y);
-		g_pLTClient->FillRect(hScreen,&rcBanner,hTeamColor);
+		g_pOptimizedRenderer->FillRect(hScreen,&rcBanner,hTeamColor);
 
 		rcBanner = LTRect(x+nWidth-2,iy,x+nWidth,y);
-		g_pLTClient->FillRect(hScreen,&rcBanner,hTeamColor);
+		g_pOptimizedRenderer->FillRect(hScreen,&rcBanner,hTeamColor);
 
 		rcBanner = LTRect(x,y-2,x+nWidth,y);
-		g_pLTClient->FillRect(hScreen,&rcBanner,hTeamColor);
+		g_pOptimizedRenderer->FillRect(hScreen,&rcBanner,hTeamColor);
 
 	}
 
@@ -3960,7 +3960,7 @@ void CPlayerStats::CreateCrosshairs()
 
     hCrossHighlight     = g_pLTClient->CreateSurface(2,2);
     LTRect rect(0,0,2,2);
-    g_pLTClient->FillRect(hCrossHighlight,&rect,SETRGB(128,128,128));
+    g_pOptimizedRenderer->FillRect(hCrossHighlight,&rect,SETRGB(128,128,128));
     g_pLTClient->OptimizeSurface (hCrossHighlight, hTransColor);
     g_pLTClient->SetSurfaceAlpha(hCrossHighlight,0.5f);
 
@@ -4303,7 +4303,7 @@ void CPlayerStats::DrawTargetName()
 					}
 
 					int nTest = (int)(g_pLTClient->GetTime()*10.0f)%255;
-					g_pLTClient->FillRect(m_hTargetNameSurface, &LTRect(0,0,m_nTargetNameWidth,m_nTargetNameHeight), kBlack);
+					g_pOptimizedRenderer->FillRect(m_hTargetNameSurface, &LTRect(0,0,m_nTargetNameWidth,m_nTargetNameHeight), kBlack);
 					pFont->Draw(hstrName, m_hTargetNameSurface, 0, 0, LTF_JUSTIFY_LEFT, kWhite);
 					g_pLTClient->OptimizeSurface(m_hTargetNameSurface, kBlack);
 					g_pLTClient->FreeString(hstrName);

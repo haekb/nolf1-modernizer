@@ -117,27 +117,27 @@ void CInterfaceMeter::Draw(HSURFACE hScreen)
 		rcTemp.right = (int)(g_pInterfaceResMgr->GetXRatio() * (LTFLOAT)(m_rcRect.right));
 		rcTemp.top = (int)(g_pInterfaceResMgr->GetYRatio() * (LTFLOAT)m_rcRect.top);
 		rcTemp.bottom = rcTemp.top + 1;
-		g_pLTClient->FillRect(hScreen,&rcTemp,LTNULL);
+		g_pOptimizedRenderer->FillRect(hScreen,&rcTemp,LTNULL);
 
 		rcTemp.bottom = (int)(g_pInterfaceResMgr->GetYRatio() * (LTFLOAT)m_rcRect.bottom);
 		rcTemp.top = rcTemp.bottom - 1;
-		g_pLTClient->FillRect(hScreen,&rcTemp,LTNULL);
+		g_pOptimizedRenderer->FillRect(hScreen,&rcTemp,LTNULL);
 
 		rcTemp.left = (int)(g_pInterfaceResMgr->GetXRatio() * (LTFLOAT)m_rcRect.left);
 		rcTemp.right = rcTemp.left + 1;
 		rcTemp.top = (int)(g_pInterfaceResMgr->GetYRatio() * (LTFLOAT)m_rcRect.top);
 		rcTemp.bottom = (int)(g_pInterfaceResMgr->GetYRatio() * (LTFLOAT)m_rcRect.bottom);
-		g_pLTClient->FillRect(hScreen,&rcTemp,LTNULL);
+		g_pOptimizedRenderer->FillRect(hScreen,&rcTemp,LTNULL);
 
 		rcTemp.right = (int)(g_pInterfaceResMgr->GetXRatio() * (LTFLOAT)(m_rcRect.right));
 		rcTemp.left = rcTemp.right - 1;
-		g_pLTClient->FillRect(hScreen,&rcTemp,LTNULL);
+		g_pOptimizedRenderer->FillRect(hScreen,&rcTemp,LTNULL);
 
 		if (m_nValue < 100)
 		{
 			rcTemp.left = (int)(g_pInterfaceResMgr->GetXRatio() * (LTFLOAT)(m_rcRect.left + nTemp));
 			rcTemp.right = rcTemp.left + 1;
-			g_pLTClient->FillRect(hScreen,&rcTemp,LTNULL);
+			g_pOptimizedRenderer->FillRect(hScreen,&rcTemp,LTNULL);
 		}
 
 	}

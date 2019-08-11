@@ -446,7 +446,7 @@ LTBOOL CInterfaceMgr::Init()
 	m_hLetterBoxSurface = g_pLTClient->CreateSurface(2, 2);
 
 	g_pLTClient->SetSurfaceAlpha(m_hLetterBoxSurface, 0.0f);
-    g_pLTClient->FillRect(m_hLetterBoxSurface, &rcSrc, kBlack);
+    g_pOptimizedRenderer->FillRect(m_hLetterBoxSurface, &rcSrc, kBlack);
     g_pLTClient->OptimizeSurface(m_hLetterBoxSurface, hTransColor);
 
 	int nLevel = GetConsoleInt("PerformanceLevel",1);
@@ -1116,7 +1116,7 @@ void CInterfaceMgr::UpdatePausedState()
     g_pLTClient->StartOptimized2D();
 
 	LTRect rcFull(0,0,g_pInterfaceResMgr->GetScreenWidth()-1,g_pInterfaceResMgr->GetScreenHeight()-1);
-	g_pLTClient->FillRect(g_pLTClient->GetScreenSurface(),&rcFull,hShadeColor);
+	g_pOptimizedRenderer->FillRect(g_pLTClient->GetScreenSurface(),&rcFull,hShadeColor);
 
 
 	if (m_hGamePausedSurface)
@@ -1291,7 +1291,7 @@ void CInterfaceMgr::UpdateFailureState()
 	rcDst.left = rcDst.top = 0;
 	rcDst.right = nScrnWidth;
 	rcDst.bottom = nScrnHeight;
-    g_pLTClient->FillRect(hScreen, &rcDst, hShadeColor);
+    g_pOptimizedRenderer->FillRect(hScreen, &rcDst, hShadeColor);
 
     g_pLTClient->Start3D();
     g_pLTClient->StartOptimized2D();
@@ -4641,7 +4641,7 @@ void CInterfaceMgr::UpdateScreenFade()
 		if (!m_hFadeSurface) return;
 
         g_pLTClient->SetSurfaceAlpha(m_hFadeSurface, 1.0f);
-        g_pLTClient->FillRect(m_hFadeSurface, &rcSrc, kBlack);
+        g_pOptimizedRenderer->FillRect(m_hFadeSurface, &rcSrc, kBlack);
         g_pLTClient->OptimizeSurface(m_hFadeSurface, hTransColor);
 
 		m_fCurFadeTime = m_fTotalFadeTime;
