@@ -40,8 +40,13 @@
 #include "PlayerShared.h"
 #include "CharacterFX.h"
 
+#if _MSC_VER >= 1300
+#include <iostream>
+#include <fstream>
+#else
 #include <iostream.h>
 #include <fstream.h>
+#endif
 
 #include "CRC32.h"
 
@@ -158,7 +163,7 @@ LTFLOAT             s_fDeathDelay   = 0.0f;
 LTVector            g_vPlayerCameraOffset = g_kvPlayerCameraOffset;
 
 // SDL Logging
-fstream 			g_SDLLogFile;
+STD fstream 			g_SDLLogFile;
 SDL_Window* 		g_SDLWindow = NULL;
 bool 				g_CursorCenterHack = false;
 
@@ -183,7 +188,7 @@ extern void CalcNonClipPos(LTVector & vPos, LTRotation & rRot);
 void SDLLog(void* userdata, int category, SDL_LogPriority priority, const char* message)
 {
 	// Open up SDL Log File
-	g_SDLLogFile.open("Debug.log", ios::out | ios::app);
+	g_SDLLogFile.open("Debug.log", STD ios::out | STD ios::app);
 
 	g_SDLLogFile << message << "\n";
 

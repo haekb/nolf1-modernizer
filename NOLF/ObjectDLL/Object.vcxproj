@@ -196,20 +196,21 @@
     <ClCompile>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
-      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
       <Optimization>Disabled</Optimization>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>..\..\lt2\sdk\inc;..\..\lt2\lithshared\incs;..\shared;..\objectdll;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;NO_PRAGMA_LIBS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\..\lt2\sdk\inc;..\..\lt2\lithshared\incs;..\shared;..\objectdll;..\..\LIBS\SDL2-2.0.10\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;NO_PRAGMA_LIBS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
       <PrecompiledHeaderOutputFile>.\Debug\Object.pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <ObjectFileName>.\Debug\</ObjectFileName>
       <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
     </ClCompile>
     <PostBuildEvent>
       <Command>copy debug\object.lto $(NOLF_BUILD_DIR)</Command>
@@ -238,6 +239,9 @@
       <OutputFile>debug\Object.lto</OutputFile>
       <ImportLibrary>.\Debug\Object.lib</ImportLibrary>
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <ForceFileOutput>UndefinedSymbolOnly</ForceFileOutput>
+      <IgnoreAllDefaultLibraries>libcimtd.lib</IgnoreAllDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">
@@ -784,6 +788,8 @@ del AnimationParse.cpp.output </Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <Library Include="..\..\LIBS\SDL2-2.0.10\lib\x86\SDL2.lib" />
+    <Library Include="..\..\LIBS\SDL2-2.0.10\lib\x86\SDL2main.lib" />
     <Library Include="..\..\LT2\lithshared\libs\Debug\ButeMgrNoMFC.lib">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>

@@ -3155,7 +3155,7 @@ LTRESULT CGameServerShell::ServerAppMessageFn(char* sMsg, int nLen)
 
 	if (!sMsg) return(LT_OK);
 
-	istrstream memStream( sMsg, nLen );
+	STD istrstream memStream( sMsg, nLen );
 
 	char nVal;
 	memStream >> nVal;
@@ -3905,11 +3905,11 @@ LTBOOL CGameServerShell::IsPositionOccupied(LTVector & vPos, CPlayerObj* pPlayer
 void CGameServerShell::ServerAppAddClient( HCLIENT hClient )
 {
 	char szBuf[1024];
-	ostrstream memStream( szBuf, sizeof( szBuf ));
+	STD ostrstream memStream( szBuf, sizeof( szBuf ));
 
 	// Write out the player information.
-	memStream << (( BYTE )SERVERAPP_ADDCLIENT ) << endl;
-	memStream << (( int )g_pLTServer->GetClientID( hClient )) << endl;
+	memStream << (( BYTE )SERVERAPP_ADDCLIENT ) << STD endl;
+	memStream << (( int )g_pLTServer->GetClientID( hClient )) << STD endl;
 
 	// Send to the server app.
 	g_pLTServer->SendToServerApp( szBuf, sizeof( szBuf ));
@@ -3918,11 +3918,11 @@ void CGameServerShell::ServerAppAddClient( HCLIENT hClient )
 void CGameServerShell::ServerAppRemoveClient( HCLIENT hClient )
 {
 	char szBuf[32];
-	ostrstream memStream( szBuf, sizeof( szBuf ));
+	STD ostrstream memStream( szBuf, sizeof( szBuf ));
 
 	// Write out the player information.
-	memStream << (( BYTE )SERVERAPP_REMOVECLIENT ) << endl;
-	memStream << (( int )g_pLTServer->GetClientID( hClient )) << endl;
+	memStream << (( BYTE )SERVERAPP_REMOVECLIENT ) << STD endl;
+	memStream << (( int )g_pLTServer->GetClientID( hClient )) << STD endl;
 
 	// Send to the server app.
 	g_pLTServer->SendToServerApp( szBuf, sizeof( szBuf ));
@@ -3932,10 +3932,10 @@ void CGameServerShell::ServerAppShellUpdate( )
 {
 	int i;
 	char szBuf[1024];
-	ostrstream memStream( szBuf, sizeof( szBuf ));
+	STD ostrstream memStream( szBuf, sizeof( szBuf ));
 
 	// Write the message id.
-	memStream << (( BYTE )SERVERAPP_SHELLUPDATE ) << endl;
+	memStream << (( BYTE )SERVERAPP_SHELLUPDATE ) << STD endl;
 
 	// Add info for each player.
 	for (i = 0; i < MAX_CLIENTS; i++)
@@ -3948,13 +3948,13 @@ void CGameServerShell::ServerAppShellUpdate( )
 		if( !hClient )
 			continue;
 
-		memStream << (( int )g_pLTServer->GetClientID( hClient )) << endl;
-		memStream << pPlayer->GetNetName( ) << endl;
-		memStream << (( int )pPlayer->GetFragCount( )) << endl;
+		memStream << (( int )g_pLTServer->GetClientID( hClient )) << STD endl;
+		memStream << pPlayer->GetNetName( ) << STD endl;
+		memStream << (( int )pPlayer->GetFragCount( )) << STD endl;
 	}
 
 	// Signal end of player list.
-	memStream << (( int )-1 ) << endl;
+	memStream << (( int )-1 ) << STD endl;
 
 	// Send to the server app.
 	g_pLTServer->SendToServerApp( szBuf, sizeof( szBuf ));
@@ -3963,9 +3963,9 @@ void CGameServerShell::ServerAppShellUpdate( )
 void CGameServerShell::ServerAppPreStartWorld( )
 {
 	char szBuf[32];
-	ostrstream memStream( szBuf, sizeof( szBuf ));
+	STD ostrstream memStream( szBuf, sizeof( szBuf ));
 
-	memStream << (( BYTE )SERVERAPP_PRELOADWORLD ) << endl;
+	memStream << (( BYTE )SERVERAPP_PRELOADWORLD ) << STD endl;
 
 	// Send to the server app.
 	g_pLTServer->SendToServerApp( szBuf, sizeof( szBuf ));
@@ -3975,10 +3975,10 @@ void CGameServerShell::ServerAppPreStartWorld( )
 void CGameServerShell::ServerAppPostStartWorld( )
 {
 	char szBuf[32];
-	ostrstream memStream( szBuf, sizeof( szBuf ));
+	STD ostrstream memStream( szBuf, sizeof( szBuf ));
 
-	memStream << (( BYTE )SERVERAPP_POSTLOADWORLD ) << endl;
-	memStream << (( int )m_nCurLevel ) << endl;
+	memStream << (( BYTE )SERVERAPP_POSTLOADWORLD ) << STD endl;
+	memStream << (( int )m_nCurLevel ) << STD endl;
 
 	// Send to the server app.
 	g_pLTServer->SendToServerApp( szBuf, sizeof( szBuf ));

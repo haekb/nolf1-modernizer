@@ -1329,6 +1329,12 @@
     <Library Include="..\..\Lt2\lithshared\libs\Debug\RegMgr.lib">
       <Filter>libs_debug</Filter>
     </Library>
+    <Library Include="..\..\LIBS\SDL2-2.0.10\lib\x86\SDL2.lib">
+      <Filter>libs_debug</Filter>
+    </Library>
+    <Library Include="..\..\LIBS\SDL2-2.0.10\lib\x86\SDL2main.lib">
+      <Filter>libs_debug</Filter>
+    </Library>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\Attributes\Music.txt" />
