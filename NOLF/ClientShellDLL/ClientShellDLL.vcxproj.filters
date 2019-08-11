@@ -1335,5 +1335,8 @@
     <Library Include="..\..\LT2\lithshared\built\Debug\CryptMgr\cryptmgr.lib">
       <Filter>libs_debug</Filter>
     </Library>
+    <Library Include="..\..\LT2\lithshared\built\Debug\ButeMgr\ButeMgr.lib">
+      <Filter>libs_debug</Filter>
+    </Library>
   </ItemGroup>
 </Project>

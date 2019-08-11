@@ -31,8 +31,10 @@
 #include <map>
 #include <set>
 #include <functional>
-#include <hash_set>
-#include <hash_map>
+//#include <hash_set>
+//#include <hash_map>
+#include <unordered_set>
+#include <unordered_map>
 #include <istream>
 #include <fstream>
 
@@ -283,13 +285,13 @@ private:
 
 	// Used to define dictionary of strings.
 	// This must be case sensitive!
-	typedef std::hash_set< CString, std::hash< char const* >, equal_str > StringHolder;
+	typedef std::unordered_set< CString, std::hash< char const* >, equal_str > StringHolder;
 
 	// Used to define map of strings to CSymTabItems.
-	typedef std::hash_map< char const*, CSymTabItem*, hash_str_nocase, equal_str_nocase > TableOfItems;
+	typedef std::unordered_map< char const*, CSymTabItem*, hash_str_nocase, equal_str_nocase > TableOfItems;
 
 	// Used to define map of strings to TableOfItems.
-	typedef std::hash_map< char const*, TableOfItems*, hash_str_nocase, equal_str_nocase > TableOfTags;
+	typedef std::unordered_map< char const*, TableOfItems*, hash_str_nocase, equal_str_nocase > TableOfTags;
 
 	// Holds all strings for keys and string values.
 	StringHolder m_stringHolder;

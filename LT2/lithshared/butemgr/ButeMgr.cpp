@@ -111,7 +111,7 @@ public:
     };
 
 	// Used to define map of strings to CSymTabItems.
-	typedef std::hash_map< char const*, CReservedWord, hash_str_nocase, equal_str_nocase > ReservedWordMap;
+	typedef std::unordered_map< char const*, CReservedWord, hash_str_nocase, equal_str_nocase > ReservedWordMap;
 
     CReservedWords()
     {

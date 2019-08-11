@@ -238,7 +238,6 @@
       <ImportLibrary>.\Debug\CShell.lib</ImportLibrary>
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <ForceFileOutput>UndefinedSymbolOnly</ForceFileOutput>
       <IgnoreSpecificDefaultLibraries>libcimtd.lib</IgnoreSpecificDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
@@ -728,6 +727,7 @@
   <ItemGroup>
     <Library Include="..\..\LIBS\SDL2-2.0.10\lib\x86\SDL2.lib" />
     <Library Include="..\..\LIBS\SDL2-2.0.10\lib\x86\SDL2main.lib" />
+    <Library Include="..\..\LT2\lithshared\built\Debug\ButeMgr\ButeMgr.lib" />
     <Library Include="..\..\LT2\lithshared\built\Debug\CryptMgr\cryptmgr.lib" />
     <Library Include="..\..\LT2\lithshared\libs\Debug\GameSpyClientMgr.lib">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
