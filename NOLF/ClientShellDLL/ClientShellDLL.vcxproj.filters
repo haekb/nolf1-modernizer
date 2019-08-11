@@ -1293,13 +1293,7 @@
     <Library Include="..\..\LT2\lithshared\libs\Debug\MFCStub.lib">
       <Filter>libs_debug</Filter>
     </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Debug\CryptMgr.lib">
-      <Filter>libs_debug</Filter>
-    </Library>
     <Library Include="..\..\LT2\lithshared\libs\Debug\StdLith.lib">
-      <Filter>libs_debug</Filter>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Debug\ButeMgrNoMFC.lib">
       <Filter>libs_debug</Filter>
     </Library>
     <Library Include="..\..\LT2\lithshared\libs\Debug\GameSpyClientMgr.lib">
@@ -1336,6 +1330,9 @@
       <Filter>libs_debug</Filter>
     </Library>
     <Library Include="..\..\LIBS\SDL2-2.0.10\lib\x86\SDL2main.lib">
+      <Filter>libs_debug</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\built\Debug\CryptMgr\cryptmgr.lib">
       <Filter>libs_debug</Filter>
     </Library>
   </ItemGroup>

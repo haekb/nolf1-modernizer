@@ -728,14 +728,7 @@
   <ItemGroup>
     <Library Include="..\..\LIBS\SDL2-2.0.10\lib\x86\SDL2.lib" />
     <Library Include="..\..\LIBS\SDL2-2.0.10\lib\x86\SDL2main.lib" />
-    <Library Include="..\..\LT2\lithshared\libs\Debug\ButeMgrNoMFC.lib">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Debug\CryptMgr.lib">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </Library>
+    <Library Include="..\..\LT2\lithshared\built\Debug\CryptMgr\cryptmgr.lib" />
     <Library Include="..\..\LT2\lithshared\libs\Debug\GameSpyClientMgr.lib">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

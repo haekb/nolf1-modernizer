@@ -3,7 +3,8 @@
 #ifndef __MFCS_TYPES_H__
 #define __MFCS_TYPES_H__
 
-#include "..\stdlith\stdlith.h"
+#include "stdlith.h"
+#include "ltbasetypes.h"
 
 // string types
 typedef const char *LPCTSTR;
@@ -16,7 +17,7 @@ template <class T>
 class CSignedMoArray : public CMoArray<T>
 {
 public:
-	SDWORD GetSize() const { return (SDWORD)CMoArray<T>::GetSize(); }
+	int32 GetSize() const { return (int32)CMoArray<T>::GetSize(); }
 };
 
 // CArray replacement (the second parameter is ignored)
@@ -30,6 +31,6 @@ class CArray : public CSignedMoArray<T>
 
 // Lists and typedef'ed arrays
 typedef CLinkedList<void *> CPtrList;
-typedef CSignedMoArray<DWORD> CDWordArray;
+typedef CSignedMoArray<uint32> CDWordArray;
 
 #endif // __MFCS_TYPES_H__

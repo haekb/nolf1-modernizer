@@ -21,8 +21,8 @@
 class CStringData
 {
 public:
-	DWORD m_Length; // Length of the string (not including terminator)
-	DWORD m_BufferSize; // Length of the buffer
+	uint32 m_Length; // Length of the string (not including terminator)
+	uint32 m_BufferSize; // Length of the buffer
 	LPSTR data() { return (LPSTR)(this + 1); }
 };
 
@@ -35,24 +35,26 @@ public:
 	CString(const CString &cString);
 
 	// Member functions
-	DWORD GetLength() const { if (!GetData()) return 0; else return GetData()->m_Length; }
-	BOOL IsEmpty() const { return GetLength() == 0; };
+	uint32 GetLength() const { if (!GetData()) return 0; else return GetData()->m_Length; }
+	LTBOOL IsEmpty() const { return GetLength() == 0; };
 	void Empty() { ShrinkBuffer(0); };
 
 	LPSTR GetBuffer() { return m_pBuffer; }
 	LPCTSTR GetBuffer() const { return m_pBuffer; }
-	LPSTR GetBuffer(DWORD minLength);
-	DWORD GetBufferSize() const { if (!GetData()) return 0; else return GetData()->m_BufferSize; }
-	void ReleaseBuffer(SDWORD length = -1);
+	LPSTR GetBuffer(uint32 minLength);
+	uint32 GetBufferSize() const { if (!GetData()) return 0; else return GetData()->m_BufferSize; }
+	void ReleaseBuffer(int32 length = -1);
 
 	void FormatV(LPCTSTR pFormat, va_list args);
 	void Format(LPCTSTR pFormat, ...);
 
-	int Find(char ch, DWORD start) const;
+	int Find(char ch, uint32 start) const;
 	int Find(char ch) const { return Find(ch, 0); }
-	int Find(LPCTSTR pSub, DWORD start) const;
+	int Find(LPCTSTR pSub, uint32 start) const;
 	int Find(LPCTSTR pSub) const { return Find(pSub, 0); }
 	int Replace(LPCTSTR pOld, LPCTSTR pNew);
+	// replace occurrences of chOld with chNew
+	int Replace( char chOld, char chNew);
 
 	int Compare(LPCTSTR lpsz) const;
 	int CompareNoCase(LPCTSTR lpsz) const;
@@ -61,14 +63,21 @@ public:
 	void Concat(LPCTSTR pString);
 	void Concat(char ch);
 
-	CString Mid(DWORD nFirst, DWORD nCount) const;
-	CString Mid(DWORD nFirst) const;
-	CString Left(DWORD nCount) const;
-	CString Right(DWORD nCount) const;
+	CString Mid(uint32 nFirst, uint32 nCount) const;
+	CString Mid(uint32 nFirst) const;
+	CString Left(uint32 nCount) const;
+	CString Right(uint32 nCount) const;
 
 	// Note : access past the end of the string is undefined, since this is a thin wrapper..
 	char GetAt(int nIndex) const { if (!GetBuffer()) return 0; else return GetBuffer()[nIndex];}
 	void SetAt(int nIndex, char ch) { if (!GetBuffer()) return; else GetBuffer()[nIndex] = ch; }
+
+	// NLS aware conversion to uppercase
+	void MakeUpper();
+	// NLS aware conversion to lowercase
+	void MakeLower();
+	// reverse string right-to-left
+	void MakeReverse();
 
 	// Operators
 	operator LPCTSTR () const { return m_pBuffer; }
@@ -86,12 +95,12 @@ protected:
 	// Copy a string (expands the buffer if needed)
 	void CopyString(LPCTSTR pString);
 	// Make sure the buffer is at least minLength characters in size (including null)
-	BOOL ExpandBuffer(DWORD minLength);
+	LTBOOL ExpandBuffer(uint32 minLength);
 	// Make sure the buffer is no larger than maxLength characters in size (including null)
-	BOOL ShrinkBuffer(DWORD maxLength);
+	LTBOOL ShrinkBuffer(uint32 maxLength);
 
 	// Internal member access
-	void SetLength(DWORD length) { if (GetData()) GetData()->m_Length = length; }
+	void SetLength(uint32 length) { if (GetData()) GetData()->m_Length = length; }
 
 	CStringData *GetData() { if (!m_pBuffer) return NULL; else return ((CStringData *)m_pBuffer) - 1; }
 	const CStringData *GetData() const { if (!m_pBuffer) return NULL; else return ((CStringData *)m_pBuffer) - 1; }

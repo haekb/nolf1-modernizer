@@ -43,7 +43,6 @@
 	#include "../stdlith/helpers.h"
 	#include "../stdlith/copy_lists.h"
 
-
 	#ifndef NO_PRAGMA_LIBS
 		#ifdef STDLITH_ALLOC_OVERRIDE
 			// Use the 'allocator override' versions.

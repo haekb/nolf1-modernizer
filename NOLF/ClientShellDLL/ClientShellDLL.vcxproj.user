@@ -4,6 +4,6 @@
     <LocalDebuggerCommand>D:\Games\NOLF - dev\lithtech.exe</LocalDebuggerCommand>
     <LocalDebuggerCommandArguments>-windowtitle "No One Lives Forever" -rez NOLF.rez -rez NOLF2.rez -rez NOLFdll.rez -rez NOLFl.rez -rez custom -rez Nolfu003.rez -rez Nolfcres003.rez -rez NolfGoty.rez -rez WidescreenGOTY.rez +multiplayer 0  +DisableMusic 1 +DisableSound 0 +DisableMovies 1 +DisableTripBuf 0 +DisableHardwareCursor 0  +windowed 1  -rez debugdll.rez</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerWorkingDirectory>D:\Games\NOLF - dev</LocalDebuggerWorkingDirectory>
+    <LocalDebuggerWorkingDirectory>D:\Games\NOLF - dev\</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
 </Project>

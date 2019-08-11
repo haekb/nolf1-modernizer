@@ -10,7 +10,7 @@
 	// Make sure RECT is defined...
 	typedef struct tagRECT {
 		tagRECT() {}
-		SDWORD left, top, right, bottom;
+		int32 left, top, right, bottom;
 	} RECT;
 #endif
 
@@ -20,15 +20,15 @@ public:
 	CRect();
 	CRect(const RECT &cRect);
 	CRect(const RECT *pRect);
-	CRect(SDWORD l, SDWORD t, SDWORD r, SDWORD b);
+	CRect(int32 l, int32 t, int32 r, int32 b);
 	CRect(POINT topLeft, POINT bottomRight);
 	operator RECT*() { return this; }
 	operator const RECT*() const { return this; }
 
-	void SetRect(SDWORD l, SDWORD t, SDWORD r, SDWORD b);
-	SDWORD Width() const { return right - left; }
-	SDWORD Height() const { return bottom - top; }
-	BOOL IntersectRect(const RECT *lpRect1, const RECT *lpRect2);
+	void SetRect(int32 l, int32 t, int32 r, int32 b);
+	int32 Width() const { return right - left; }
+	int32 Height() const { return bottom - top; }
+	LTBOOL IntersectRect(const RECT *lpRect1, const RECT *lpRect2);
 	void InflateRect(int l, int t, int r, int b) { left -= l; top -= t; right += r; bottom += b; }
 	void DeflateRect(int l, int t, int r, int b) { left += l; top += t; right -= r; bottom -= b; }
 	CPoint& TopLeft();
