@@ -3,8 +3,19 @@
 
 #include "limits.h"
 #include "float.h"
+#if _MSC_VER >= 1300
+#include <fstream>
+#include <strstream>
+
+#define STD std::
+
+#else
 #include "fstream.h"
 #include "strstrea.h"
+
+#define STD 
+#endif
+
 #include "ztools.h"
 #include "..\cryptmgr\cryptmgr.h"
 #include "..\butemgr\avector.h"
@@ -350,8 +361,8 @@ private:
 	};
 	static void KeyTraverseFunc(const char* szKey, CSymTabItem* pData, void* ExtraData);
 
-	istream* m_pData;
-	iostream *m_pSaveData;
+	STD istream* m_pData;
+	STD iostream *m_pSaveData;
 
 	unsigned char  m_currentChar;
 	short m_token;
@@ -446,7 +457,7 @@ inline bool CButeMgr::Parse(void* pData, unsigned long size, int decryptCode)
 {
 	if (!pData)
 		return false;
-	m_pData = new istrstream((char*)pData, size);
+	m_pData = new STD istrstream((char*)pData, size);
 	Reset();
 	m_decryptCode = decryptCode;
 
@@ -476,14 +487,14 @@ inline bool CButeMgr::Parse(void* pData, unsigned long size, const char* cryptKe
 	m_bCrypt = true;
 	char* buf1 = (char*)pData;
 	int len = size;
-	istrstream* pIss = new istrstream(buf1, len);
+	STD istrstream* pIss = new STD istrstream(buf1, len);
 
 	m_cryptMgr.SetKey(cryptKey);
 	char* buf2 = new char[len];
-	ostrstream* pOss = new ostrstream(buf2, len);
+	STD ostrstream* pOss = new STD ostrstream(buf2, len);
 	m_cryptMgr.Decrypt(*pIss, *pOss);
 
-	m_pData = new istrstream(buf2, pOss->pcount());
+	m_pData = new STD istrstream(const_cast<const char *>(buf2), pOss->pcount());
 
 	delete pIss;
 	delete pOss;
@@ -510,7 +521,12 @@ inline bool CButeMgr::Parse(void* pData, unsigned long size, const char* cryptKe
 
 inline bool CButeMgr::Parse(CString sAttributeFilename, int decryptCode)
 {
+#if _MSC_VER >= 1300
+	m_pData = new std::ifstream(sAttributeFilename, std::ios_base::in);
+#else
 	m_pData = new ifstream(sAttributeFilename, ios::in | ios::nocreate);
+#endif
+	
 	if (!m_pData)
 		return false;
 	if (m_pData->fail())
@@ -542,7 +558,12 @@ inline bool CButeMgr::Parse(CString sAttributeFilename, int decryptCode)
 inline bool CButeMgr::Parse(CString sAttributeFilename, const char* cryptKey)
 {
 	m_bCrypt = true;
-	ifstream* pIs = new ifstream(sAttributeFilename, ios::nocreate | ios::binary);
+#if _MSC_VER >= 1300
+	std::ifstream* pIs = new STD ifstream(sAttributeFilename, std::ios::binary);
+#else
+	ifstream* pIs = new STD ifstream(sAttributeFilename, ios::nocreate | ios::binary);
+#endif
+	
 	if (!pIs)
 		return false;
 	if (pIs->fail())
@@ -551,7 +572,7 @@ inline bool CButeMgr::Parse(CString sAttributeFilename, const char* cryptKey)
 		return false;
 	}
 
-	pIs->seekg(0, ios::end);
+	pIs->seekg(0, STD ios::end);
 	long len = pIs->tellg();
 
 	pIs->seekg(0);
@@ -559,10 +580,10 @@ inline bool CButeMgr::Parse(CString sAttributeFilename, const char* cryptKey)
 	m_cryptMgr.SetKey(cryptKey);
 
 	char* buf = new char[len];
-	ostrstream* pOss = new ostrstream(buf, len, ios::in | ios::out);
+	STD ostrstream* pOss = new STD ostrstream(buf, len, STD ios::in | STD ios::out);
 	m_cryptMgr.Decrypt(*pIs, *pOss);
 
-	m_pData = new istrstream(buf, pOss->pcount());
+	m_pData = new STD istrstream(const_cast<const char *>(buf), pOss->pcount());
 
 	delete pIs;
 	delete pOss;

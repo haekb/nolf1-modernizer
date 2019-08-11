@@ -420,7 +420,7 @@
 
 		// Kick a client off the server.
 		// OnRemoveClient will be called.
-		void	(*KickClient)(HCLIENT hClient, uint32 nReasonCode = 0);
+		void	(*KickClient)(HCLIENT hClient, uint32 nReasonCode/* = 0*/);
 
 		// Set where the client is seeing/hearing from.  This controls what the 
 		// server sends the client.  You should set this every frame.
