@@ -314,22 +314,22 @@ int CString::Replace(char chOld, char chNew)
 	return nCount;
 }
 
-int CString::Find(char ch, uint32 start) const
+int CString::Find(char ch, DWORD start) const
 {
 	if (start >= GetLength())
 		return -1;
 
-	char *pResult = strchr(&(GetBuffer()[start]), ch);
+	char *pResult = (char*)strchr(&(GetBuffer()[start]), ch);
 
 	return (pResult) ? pResult - GetBuffer() : -1;
 }
 
-int CString::Find(LPCTSTR pSub, uint32 start) const
+int CString::Find(LPCTSTR pSub, DWORD start) const
 {
 	if (start >= GetLength())
 		return -1;
 
-	char *pResult = strstr(&(GetBuffer()[start]), pSub);
+	char *pResult = (char*)strstr(&(GetBuffer()[start]), pSub);
 
 	return (pResult) ? pResult - GetBuffer() : -1;
 }
@@ -338,12 +338,12 @@ void CString::ReleaseBuffer(int32 length)
 {
 	// Calculate the length if they don't give us one
 	if (length < 0)
-		SetLength((uint32)strlen(GetBuffer()));
-	else if ((uint32)length < GetBufferSize()) 
+		SetLength((DWORD)strlen(GetBuffer()));
+	else if ((DWORD)length < GetBufferSize()) 
 	{
 		// Just force it..
-		SetLength((uint32)length);
-		GetBuffer()[(uint32)length] = 0;
+		SetLength((DWORD)length);
+		GetBuffer()[(DWORD)length] = 0;
 	}
 	else if (GetBufferSize())
 	{
@@ -352,19 +352,21 @@ void CString::ReleaseBuffer(int32 length)
 	}
 }
 
+#if 1
 void CString::CopyString(LPCTSTR pString)
 {
 	if (pString)
 	{
-		uint32 newLength = (uint32)strlen(pString);
+		DWORD newLength = (DWORD)strlen(pString);
 		memcpy(GetBuffer(newLength + 1), pString, newLength + 1);
 		SetLength(newLength);
 	}
 	else
 		Empty();
 }
+#endif
 
-LTBOOL CString::ExpandBuffer(uint32 minLength)
+BOOL CString::ExpandBuffer(DWORD minLength)
 {
 	// Make sure it's not already big enough
 	if (GetBufferSize() >= minLength)
@@ -377,7 +379,7 @@ LTBOOL CString::ExpandBuffer(uint32 minLength)
 
 	// Save the old information
 	char *pOldBuffer = GetBuffer();
-	uint32 oldLength = GetLength();
+	DWORD oldLength = GetLength();
 
 	// Set up the new data structure
 	pNewBuffer->m_BufferSize = minLength;
@@ -400,14 +402,14 @@ LTBOOL CString::ExpandBuffer(uint32 minLength)
 	return TRUE;
 }
 
-BOOL CString::ShrinkBuffer(uint32 maxLength)
+BOOL CString::ShrinkBuffer(DWORD maxLength)
 {
 	if (maxLength >= GetBufferSize())
 		return TRUE;
 
 	// Get the old values
 	char *pOldBuffer = GetBuffer();
-	uint32 oldLength = min(GetLength(), maxLength - 1);
+	DWORD oldLength = min(GetLength(), maxLength - 1);
 
 	// Allocate the new buffer
 	if (maxLength)
@@ -441,7 +443,7 @@ BOOL CString::ShrinkBuffer(uint32 maxLength)
 	return TRUE;
 }
 
-char *CString::GetBuffer(uint32 minLength)
+char *CString::GetBuffer(DWORD minLength)
 {
 	if (!ExpandBuffer(minLength + 1)) 
 		return NULL; 
@@ -451,7 +453,7 @@ char *CString::GetBuffer(uint32 minLength)
 
 void CString::Concat(LPCTSTR pString)
 {
-	uint32 otherLength = (uint32)strlen(pString);
+	DWORD otherLength = (DWORD)strlen(pString);
 	if (!ExpandBuffer(GetLength() + otherLength + 1))
 		return;
 	memcpy(&(GetBuffer()[GetLength()]), pString, otherLength + 1);
@@ -470,7 +472,7 @@ void CString::Concat(char ch)
 	SetLength(GetLength() + 1);
 }
 
-CString CString::Mid(uint32 nFirst, uint32 nCount) const
+CString CString::Mid(DWORD nFirst, DWORD nCount) const
 {
 	if (nFirst + nCount > GetLength())
 		nCount = GetLength() - nFirst;
@@ -486,12 +488,12 @@ CString CString::Mid(uint32 nFirst, uint32 nCount) const
 	return dest;
 }
 
-CString CString::Mid(uint32 nFirst) const
+CString CString::Mid(DWORD nFirst) const
 {
 	return Mid(nFirst, GetLength() - nFirst);
 }
 
-CString CString::Left(uint32 nCount) const
+CString CString::Left(DWORD nCount) const
 {
 	if (nCount < 0)
 		nCount = 0;
@@ -503,7 +505,7 @@ CString CString::Left(uint32 nCount) const
 	return dest;
 }
 
-CString CString::Right(uint32 nCount) const
+CString CString::Right(DWORD nCount) const
 {
 	if (nCount < 0)
 		nCount = 0;
@@ -524,6 +526,7 @@ int CString::CompareNoCase(LPCTSTR lpsz) const
 	return stricmp(GetBuffer(), lpsz); 
 }
 
+#if 0
 void CString::MakeUpper()
 {
 	_strupr( GetBuffer( ));
@@ -538,4 +541,4 @@ void CString::MakeReverse()
 {
 	_strrev( GetBuffer( ));
 }
-
+#endif

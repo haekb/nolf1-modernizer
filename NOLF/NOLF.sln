@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ButeMgr", "..\LT2\lithshare
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CryptMgr", "..\LT2\lithshared\CryptMgr\cryptmgr.vcxproj", "{821E97A2-7B0E-4412-B54D-A1777557B6C1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MFCStub", "..\LT2\lithshared\MFCStub\MFCStub60.vcxproj", "{151C0830-9A79-4727-9B17-87313C9C2435}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug MFC DLL|x86 = Debug MFC DLL|x86
@@ -116,6 +118,24 @@ Global
 		{821E97A2-7B0E-4412-B54D-A1777557B6C1}.Release|x86.Build.0 = Release|Win32
 		{821E97A2-7B0E-4412-B54D-A1777557B6C1}.Template|x86.ActiveCfg = Template|Win32
 		{821E97A2-7B0E-4412-B54D-A1777557B6C1}.Template|x86.Build.0 = Template|Win32
+		{151C0830-9A79-4727-9B17-87313C9C2435}.Debug MFC DLL|x86.ActiveCfg = Debug|Win32
+		{151C0830-9A79-4727-9B17-87313C9C2435}.Debug MFC DLL|x86.Build.0 = Debug|Win32
+		{151C0830-9A79-4727-9B17-87313C9C2435}.Debug|x86.ActiveCfg = Debug|Win32
+		{151C0830-9A79-4727-9B17-87313C9C2435}.Debug|x86.Build.0 = Debug|Win32
+		{151C0830-9A79-4727-9B17-87313C9C2435}.Final Debug|x86.ActiveCfg = Final|Win32
+		{151C0830-9A79-4727-9B17-87313C9C2435}.Final Debug|x86.Build.0 = Final|Win32
+		{151C0830-9A79-4727-9B17-87313C9C2435}.Final MFC DLL|x86.ActiveCfg = Final|Win32
+		{151C0830-9A79-4727-9B17-87313C9C2435}.Final MFC DLL|x86.Build.0 = Final|Win32
+		{151C0830-9A79-4727-9B17-87313C9C2435}.Final Release|x86.ActiveCfg = Release|Win32
+		{151C0830-9A79-4727-9B17-87313C9C2435}.Final Release|x86.Build.0 = Release|Win32
+		{151C0830-9A79-4727-9B17-87313C9C2435}.Final|x86.ActiveCfg = Final|Win32
+		{151C0830-9A79-4727-9B17-87313C9C2435}.Final|x86.Build.0 = Final|Win32
+		{151C0830-9A79-4727-9B17-87313C9C2435}.Release MFC DLL|x86.ActiveCfg = Release|Win32
+		{151C0830-9A79-4727-9B17-87313C9C2435}.Release MFC DLL|x86.Build.0 = Release|Win32
+		{151C0830-9A79-4727-9B17-87313C9C2435}.Release|x86.ActiveCfg = Release|Win32
+		{151C0830-9A79-4727-9B17-87313C9C2435}.Release|x86.Build.0 = Release|Win32
+		{151C0830-9A79-4727-9B17-87313C9C2435}.Template|x86.ActiveCfg = Template|Win32
+		{151C0830-9A79-4727-9B17-87313C9C2435}.Template|x86.Build.0 = Template|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

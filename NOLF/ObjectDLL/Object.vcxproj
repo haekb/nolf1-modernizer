@@ -794,11 +794,8 @@ del AnimationParse.cpp.output </Command>
     <Library Include="..\..\LIBS\SDL2-2.0.10\lib\x86\SDL2main.lib" />
     <Library Include="..\..\LT2\lithshared\built\Debug\ButeMgr\ButeMgr.lib" />
     <Library Include="..\..\LT2\lithshared\built\Debug\CryptMgr\cryptmgr.lib" />
+    <Library Include="..\..\LT2\lithshared\built\Debug\MFCStub\MFCStub.lib" />
     <Library Include="..\..\LT2\lithshared\libs\Debug\GameSpyMgr.lib">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Debug\MFCStub.lib">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
     </Library>

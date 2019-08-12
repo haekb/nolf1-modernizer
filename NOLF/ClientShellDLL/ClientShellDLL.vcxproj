@@ -199,7 +199,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
-      <AdditionalIncludeDirectories>..\shared;..\..\lt2\sdk\inc;..\..\lt2\lithshared\incs;..\ClientShellDLL;..\..\LIBS\SDL2-2.0.10\include;..\..\lt2\lithshared\lith;..\..\lt2\lithshared\ButeMgr\;..\..\lt2\lithshared\CryptMgr;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\shared;..\..\lt2\sdk\inc;..\..\lt2\lithshared\incs;..\ClientShellDLL;..\..\LIBS\SDL2-2.0.10\include;..\..\lt2\lithshared\lith;..\..\lt2\lithshared\ButeMgr\;..\..\lt2\lithshared\CryptMgr;..\..\lt2\lithshared\mfcstub;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;_CLIENTBUILD;WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;NO_PRAGMA_LIBS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
       <BrowseInformation>true</BrowseInformation>
@@ -209,6 +209,7 @@
       <ObjectFileName>.\Debug\</ObjectFileName>
       <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
       <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
     </ClCompile>
     <PostBuildEvent>
       <Command>copy debug\cshell.dll $(NOLF_BUILD_DIR)</Command>
@@ -238,7 +239,7 @@
       <ImportLibrary>.\Debug\CShell.lib</ImportLibrary>
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <IgnoreSpecificDefaultLibraries>libcimtd.lib</IgnoreSpecificDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>libcimtd.lib;MSVCRTD.lib</IgnoreSpecificDefaultLibraries>
       <AdditionalLibraryDirectories>
       </AdditionalLibraryDirectories>
       <ForceFileOutput>UndefinedSymbolOnly</ForceFileOutput>
@@ -732,6 +733,7 @@
     <Library Include="..\..\LIBS\SDL2-2.0.10\lib\x86\SDL2main.lib" />
     <Library Include="..\..\LT2\lithshared\built\Debug\ButeMgr\ButeMgr.lib" />
     <Library Include="..\..\LT2\lithshared\built\Debug\CryptMgr\cryptmgr.lib" />
+    <Library Include="..\..\LT2\lithshared\built\Debug\MFCStub\MFCStub.lib" />
     <Library Include="..\..\LT2\lithshared\libs\Debug\GameSpyClientMgr.lib">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -741,10 +743,6 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </Library>
     <Library Include="..\..\LT2\lithshared\libs\Debug\ltguimgr_LT2.lib">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Debug\MFCStub.lib">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </Library>
