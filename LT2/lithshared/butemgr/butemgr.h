@@ -50,7 +50,7 @@ struct equal_str_nocase
 {
 	bool operator()(const char* s1, const char* s2) const
 	{
-		return _stricmp(s1, s2) == 0;
+		return stricmp(s1, s2) == 0;
 	}
 };
 

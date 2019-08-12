@@ -366,6 +366,17 @@ void CString::CopyString(LPCTSTR pString)
 }
 #endif
 
+#if 1
+DWORD CString::GetBufferSize() const { 
+	if (!GetData()) {
+		return 0;
+	}
+		
+	unsigned long bufferSize = GetData()->m_BufferSize; 
+	return bufferSize;
+}
+#endif
+
 BOOL CString::ExpandBuffer(DWORD minLength)
 {
 	// Make sure it's not already big enough

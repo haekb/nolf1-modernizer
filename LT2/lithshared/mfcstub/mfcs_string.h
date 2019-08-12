@@ -35,15 +35,33 @@ public:
 	CString(const CString &cString);
 
 	// Member functions
-	DWORD GetLength() const { 
+#if 1
+	DWORD GetLength() const {
 		if (!GetData()) {
 			return 0;
 		}
 
-		return GetData()->m_Length; 
+		return GetData()->m_Length;
 	};
-	BOOL IsEmpty() const { 
-		return GetLength() == 0; 
+	BOOL IsEmpty() const {
+		return GetLength() == 0;
+	};
+	void Empty() { ShrinkBuffer(0); };
+
+	LPSTR GetBuffer() { return m_pBuffer; }
+	LPCTSTR GetBuffer() const { return m_pBuffer; }
+	LPSTR GetBuffer(DWORD minLength);
+	DWORD GetBufferSize() const;
+#else
+	DWORD GetLength() const {
+		if (!GetData()) {
+			return 0;
+		}
+
+		return GetData()->m_Length;
+	};
+	BOOL IsEmpty() const {
+		return GetLength() == 0;
 	};
 	void Empty() { ShrinkBuffer(0); };
 
@@ -51,6 +69,7 @@ public:
 	LPCTSTR GetBuffer() const { return m_pBuffer; }
 	LPSTR GetBuffer(DWORD minLength);
 	DWORD GetBufferSize() const { if (!GetData()) return 0; else return GetData()->m_BufferSize; }
+#endif
 	void ReleaseBuffer(int32 length = -1);
 
 	void FormatV(LPCTSTR pFormat, va_list args);
