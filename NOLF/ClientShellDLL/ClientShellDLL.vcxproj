@@ -199,8 +199,8 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
-      <AdditionalIncludeDirectories>..\shared;..\..\lt2\sdk\inc;..\..\lt2\lithshared\incs;..\ClientShellDLL;..\..\LIBS\SDL2-2.0.10\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_DEBUG;_CLIENTBUILD;WIN32;_WINDOWS;NO_PRAGMA_LIBS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\shared;..\..\lt2\sdk\inc;..\..\lt2\lithshared\incs;..\ClientShellDLL;..\..\LIBS\SDL2-2.0.10\include;..\..\lt2\lithshared\lith;..\..\lt2\lithshared\ButeMgr\;..\..\lt2\lithshared\CryptMgr;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;_CLIENTBUILD;WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;NO_PRAGMA_LIBS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
       <BrowseInformation>true</BrowseInformation>
       <PrecompiledHeaderOutputFile>.\Debug\ClientShellDLL.pch</PrecompiledHeaderOutputFile>
@@ -239,6 +239,9 @@
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
       <IgnoreSpecificDefaultLibraries>libcimtd.lib</IgnoreSpecificDefaultLibraries>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <ForceFileOutput>UndefinedSymbolOnly</ForceFileOutput>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Final Debug|Win32'">
@@ -746,10 +749,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </Library>
     <Library Include="..\..\Lt2\lithshared\libs\Debug\RegMgr.lib" />
-    <Library Include="..\..\LT2\lithshared\libs\Debug\StdLith.lib">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Debug\StdLith.lib" />
     <Library Include="..\..\LT2\lithshared\libs\Release\ButeMgrNoMFC.lib">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Debug|Win32'">true</ExcludedFromBuild>

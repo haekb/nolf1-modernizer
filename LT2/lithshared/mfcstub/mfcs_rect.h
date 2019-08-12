@@ -28,7 +28,8 @@ public:
 	void SetRect(int32 l, int32 t, int32 r, int32 b);
 	int32 Width() const { return right - left; }
 	int32 Height() const { return bottom - top; }
-	LTBOOL IntersectRect(const RECT *lpRect1, const RECT *lpRect2);
+	BOOL IntersectRect(const RECT *lpRect1, const RECT *lpRect2);
+	//LTBOOL IntersectRect(const RECT *lpRect1, const RECT *lpRect2);
 	void InflateRect(int l, int t, int r, int b) { left -= l; top -= t; right += r; bottom += b; }
 	void DeflateRect(int l, int t, int r, int b) { left += l; top += t; right -= r; bottom -= b; }
 	CPoint& TopLeft();

@@ -222,7 +222,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>OldStyle</DebugInformationFormat>
-      <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;NO_PRAGMA_LIBS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\..\built\Debug\CryptMgr\</AssemblerListingLocation>
       <BrowseInformation>true</BrowseInformation>
       <PrecompiledHeaderOutputFile>.\..\built\Debug\CryptMgr\cryptmgr.pch</PrecompiledHeaderOutputFile>
@@ -239,6 +239,7 @@
     <Lib>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <OutputFile>.\..\built\Debug\CryptMgr\cryptmgr.lib</OutputFile>
+      <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release MFC DLL|Win32'">

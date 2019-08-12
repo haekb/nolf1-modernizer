@@ -217,7 +217,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <AdditionalIncludeDirectories>..\STLPORT-4.0\STLPORT;..\stdlith;..\mfcstub;..\cryptmgr;..\lith;..\..\sdk\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_DEBUG;_NOMFC;WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_NOMFC;WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;NO_PRAGMA_LIBS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\..\built\Debug\ButeMgr\</AssemblerListingLocation>
       <PrecompiledHeaderOutputFile>.\..\built\Debug\ButeMgr\ButeMgr.pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -235,6 +235,8 @@
     <Lib>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <OutputFile>.\..\built\Debug\ButeMgr\ButeMgr.lib</OutputFile>
+      <ForceSymbolReferences>
+      </ForceSymbolReferences>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release MFC DLL|Win32'">

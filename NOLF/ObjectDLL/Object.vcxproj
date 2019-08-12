@@ -202,7 +202,7 @@
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>..\..\lt2\sdk\inc;..\..\lt2\lithshared\incs;..\shared;..\objectdll;..\..\LIBS\SDL2-2.0.10\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\lt2\sdk\inc;..\..\lt2\lithshared\incs;..\shared;..\objectdll;..\..\LIBS\SDL2-2.0.10\include;..\..\lt2\lithshared\ButeMgr;..\..\lt2\lithshared\CryptMgr;..\..\lt2\lithshared\lith;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;NO_PRAGMA_LIBS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
       <PrecompiledHeaderOutputFile>.\Debug\Object.pch</PrecompiledHeaderOutputFile>
@@ -243,6 +243,7 @@
       <IgnoreAllDefaultLibraries>
       </IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>libcimtd.lib</IgnoreSpecificDefaultLibraries>
+      <ForceFileOutput>UndefinedSymbolOnly</ForceFileOutput>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">
@@ -791,14 +792,8 @@ del AnimationParse.cpp.output </Command>
   <ItemGroup>
     <Library Include="..\..\LIBS\SDL2-2.0.10\lib\x86\SDL2.lib" />
     <Library Include="..\..\LIBS\SDL2-2.0.10\lib\x86\SDL2main.lib" />
-    <Library Include="..\..\LT2\lithshared\libs\Debug\ButeMgrNoMFC.lib">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Debug\CryptMgr.lib">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
-    </Library>
+    <Library Include="..\..\LT2\lithshared\built\Debug\ButeMgr\ButeMgr.lib" />
+    <Library Include="..\..\LT2\lithshared\built\Debug\CryptMgr\cryptmgr.lib" />
     <Library Include="..\..\LT2\lithshared\libs\Debug\GameSpyMgr.lib">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>

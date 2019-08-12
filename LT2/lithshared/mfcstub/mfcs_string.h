@@ -97,7 +97,7 @@ protected:
 	// Make sure the buffer is at least minLength characters in size (including null)
 	LTBOOL ExpandBuffer(uint32 minLength);
 	// Make sure the buffer is no larger than maxLength characters in size (including null)
-	LTBOOL ShrinkBuffer(uint32 maxLength);
+	BOOL ShrinkBuffer(uint32 maxLength);
 
 	// Internal member access
 	void SetLength(uint32 length) { if (GetData()) GetData()->m_Length = length; }

@@ -39,6 +39,7 @@
 #include "BodyFX.h"
 #include "PlayerShared.h"
 #include "CharacterFX.h"
+#include <time.h>
 
 #if _MSC_VER >= 1300
 #include <iostream>

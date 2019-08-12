@@ -52,9 +52,9 @@ void CRect::SetRect(int32 l, int32 t, int32 r, int32 b)
 	right = r; 
 	bottom = b; 
 }
- 
+
 // Note : this only works correctly if both rectangles are normalized..
-LTBOOL CRect::IntersectRect(const RECT *lpRect1, const RECT *lpRect2)
+BOOL CRect::IntersectRect(const RECT *lpRect1, const RECT *lpRect2)
 {
 	// Make sure they intersect
 	if ((lpRect1->top > lpRect2->bottom) ||

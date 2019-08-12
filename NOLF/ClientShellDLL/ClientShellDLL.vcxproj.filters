@@ -1293,9 +1293,6 @@
     <Library Include="..\..\LT2\lithshared\libs\Debug\MFCStub.lib">
       <Filter>libs_debug</Filter>
     </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Debug\StdLith.lib">
-      <Filter>libs_debug</Filter>
-    </Library>
     <Library Include="..\..\LT2\lithshared\libs\Debug\GameSpyClientMgr.lib">
       <Filter>libs_debug</Filter>
     </Library>
@@ -1336,6 +1333,9 @@
       <Filter>libs_debug</Filter>
     </Library>
     <Library Include="..\..\LT2\lithshared\built\Debug\ButeMgr\ButeMgr.lib">
+      <Filter>libs_debug</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Debug\StdLith.lib">
       <Filter>libs_debug</Filter>
     </Library>
   </ItemGroup>

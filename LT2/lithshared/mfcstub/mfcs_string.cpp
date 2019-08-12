@@ -400,7 +400,7 @@ LTBOOL CString::ExpandBuffer(uint32 minLength)
 	return TRUE;
 }
 
-LTBOOL CString::ShrinkBuffer(uint32 maxLength)
+BOOL CString::ShrinkBuffer(uint32 maxLength)
 {
 	if (maxLength >= GetBufferSize())
 		return TRUE;

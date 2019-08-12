@@ -1,3 +1,4 @@
+#if 0
 #if !defined(_BUTEMGR_H_)
 #define _BUTEMGR_H_
 
@@ -610,4 +611,5 @@ inline bool CButeMgr::Parse(CString sAttributeFilename, const char* cryptKey)
 
 
 
+#endif
 #endif
