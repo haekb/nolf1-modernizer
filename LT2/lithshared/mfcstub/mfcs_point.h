@@ -9,7 +9,7 @@
 	// Make sure POINT is defined...
 	typedef struct tagPOINT {
 		tagPOINT() {}
-		SDWORD x,y;
+		int32 x,y;
 	} POINT;
 #endif
 
@@ -19,7 +19,7 @@ public:
 	CPoint();
 	CPoint(const CPoint &cPt);
 	CPoint(const POINT *pPt);
-	CPoint(SDWORD newx, SDWORD newy);
+	CPoint(int32 newx, int32 newy);
 };
 
 #endif // __MFCS_POINT_H__

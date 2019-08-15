@@ -40,7 +40,7 @@ bool Sparam_Get(char* sDest, const char* sSource, const char* sId)
 	char sRealId[256];
 	wsprintf(sRealId, "[%s:", sId);
 
-	char* sStart = strstr(sSource, sRealId);
+	char* sStart = (char*)strstr(sSource, sRealId);
 	if (!sStart) return(false);
 
 

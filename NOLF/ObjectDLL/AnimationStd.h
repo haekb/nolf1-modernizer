@@ -61,24 +61,24 @@ namespace Animation
 
 			// Case sensitive compare
 
-			operator==(const CStr& sStr) const
+			int operator==(const CStr& sStr) const
 			{
 				return !strcmp(m_szString, sStr.m_szString);
 			}
 
-			operator==(const char* szStr) const
+			int operator==(const char* szStr) const
 			{
 				return !strcmp(m_szString, szStr);
 			}
 
 			// Case insensitive compare
 
-			operator^=(const CStr& sStr) const
+			int operator^=(const CStr& sStr) const
 			{
 				return !stricmp(m_szString, sStr.m_szString);
 			}
 
-			operator^=(const char* szStr) const
+			int operator^=(const char* szStr) const
 			{
 				return !stricmp(m_szString, szStr);
 			}

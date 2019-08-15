@@ -411,7 +411,7 @@
 		//		LT_OK if successful,  fTimer is set only if this is returned.
 		//		LT_FINISHED if sound is not playing (may be delayed due to collisions, or done).
 		//		LT_INVALIDPARAMS if hSound not available.
-		LTRESULT	(*GetSoundOffset)( HLTSOUND hSound, uint32 * dwOffset, uint32 * dwSize = NULL );
+		LTRESULT	(*GetSoundOffset)( HLTSOUND hSound, uint32 * dwOffset, uint32 * dwSize/* = NULL */);
 
 		// Check if sound finished playing or if object it was attached to was removed.
 		// Arguments:
