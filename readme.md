@@ -5,13 +5,14 @@ The goal of NOLF Modernizer is to help fix some long standing bugs, and update s
 This project is heavily WIP.
 
 ## Features
- - Cap framerate during cinematics to ensure they play out correctly
+ - Cap framerate during menus and gameplay to 60fps
  - Fixed the mouse stutter
+ - Optimized some fill rendering
 
 ## Building
-Sadly you'll have to dig up your old copy of Visual C++ 6.0. I did try to make it compile under Visual Studio 2017, but there's some tricky linker errors that I couldn't solve.
+You can now compile it using Visual Studio 2017, thanks to the NOLF2's sdk including some key files. They're all included and ready to compile.
 
-You may need to modify your global include directory list, to include `./LIBS/SDL2-2.0.10/include`, but other than that it should be good to go! Either unrez the entire game, or just make a new rez file and make sure the game loads that file last!
+If you experience any issues, feel free to open an issue.
 
 ## License
 This code is still bound to the original EULA found in the NO ONE LIVES FOREVER Source Code v1.003. This can be viewed in the readme.txt file.
