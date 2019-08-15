@@ -5,3 +5,6 @@ Debug
 *.dll
 *.plg
 .vs
+*.db
+*.db*
+*.sdf
