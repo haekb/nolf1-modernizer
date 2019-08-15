@@ -5,6 +5,10 @@ Debug
 *.dll
 *.plg
 .vs
+.vscode
 *.db
 *.db*
 *.sdf
+UpgradeLog*.htm
+ART
+*.pdb
