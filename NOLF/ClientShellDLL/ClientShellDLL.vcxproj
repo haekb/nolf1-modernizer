@@ -210,9 +210,12 @@
       <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
       <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <PostBuildEvent>
-      <Command>copy debug\cshell.dll $(NOLF_BUILD_DIR)</Command>
+      <Command>copy debug\cshell.dll $(NOLF_BUILD_DIR)
+call "D:\GameDev\no-one-lives-forever-master\NOLF\ClientShellDLL\_after_build.bat"</Command>
+      <Message>Running Post Build Script</Message>
     </PostBuildEvent>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>

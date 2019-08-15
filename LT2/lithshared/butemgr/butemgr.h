@@ -1,6 +1,8 @@
 #if !defined(_BUTEMGR_H_)
 #define _BUTEMGR_H_
 
+#define _SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS
+
 // disable warning C4786: symbol greater than 255 character,
 // okay to ignore
 #pragma warning(disable: 4786)
@@ -31,12 +33,84 @@
 #include <map>
 #include <set>
 #include <functional>
-//#include <hash_set>
-//#include <hash_map>
+#include <hash_set>
+#include <hash_map>
 #include <unordered_set>
 #include <unordered_map>
 #include <istream>
 #include <fstream>
+#include <vector>
+
+#if 1
+// Thanks: https://stackoverflow.com/questions/871838/how-to-use-stdexthash-map
+class ButeMgr_Hasher {
+public:
+	enum { bucket_size = 10 };
+
+	ButeMgr_Hasher() {}
+
+	size_t operator()(const char* key) const {
+		return hash(key);
+	}
+
+	bool operator()(const char* left, const char* right) const {
+		return compare(left, right);
+	}
+private:
+	// Was `equal_str_nocase`, need to left side.
+	bool compare(const char* s1, const char* s2) const
+	{
+		return stricmp(s1, s2) < 0;
+	}
+	// Was hash_str_nocase, still kinda is!
+	// Copied for stl-port's std::hash<const char*>.
+	// Added tolower function on the string.
+	unsigned long hash(const char* str) const
+	{
+		unsigned long hash = 0;
+		for (; *str; ++str)
+			hash = 5 * hash + tolower(*str);
+
+		return hash;
+	}
+};
+
+// StringHolder says it needs to be case sensitive,
+// if you've got a better way to handle this, PR it!
+class ButeMgr_Hasher_CS {
+public:
+	enum { bucket_size = 10 };
+
+	ButeMgr_Hasher_CS() {}
+
+	size_t operator()(const char* key) const {
+		return hash(key);
+	}
+
+	bool operator()(const char* left, const char* right) const {
+		return compare(left, right);
+	}
+private:
+	// Was `equal_str_nocase`, need to left side.
+	bool compare(const char* s1, const char* s2) const
+	{
+		return strcmp(s1, s2) < 0;
+	}
+	// Was hash_str_nocase, still kinda is!
+	// Copied for stl-port's std::hash<const char*>.
+	// Added tolower function on the string.
+	unsigned long hash(const char* str) const
+	{
+		unsigned long hash = 0;
+		for (; *str; ++str)
+			hash = 5 * hash + tolower(*str);
+
+		return hash;
+	}
+};
+
+
+#else
 
 struct equal_str
 {
@@ -58,15 +132,17 @@ struct hash_str_nocase
 {
 	// Copied for stl-port's std::hash<const char*>.
 	// Added tolower function on the string.
-	unsigned long operator()(const char* str) const 
+	unsigned long operator()(const char* str) const
 	{
-	  unsigned long hash = 0; 
-	  for ( ; *str; ++str)
-		  hash = 5*hash + tolower(*str);
-  
-	  return hash;
+		unsigned long hash = 0;
+		for (; *str; ++str)
+			hash = 5 * hash + tolower(*str);
+
+		return hash;
 	}
 };
+
+#endif
 
 
 class CButeMgr
@@ -284,6 +360,16 @@ private:
 	void (*m_pDisplayFunc)(const char* szMsg);
 
 	// Used to define dictionary of strings.
+#if 1
+	// This must be case sensitive!
+	typedef stdext::hash_set< CString, ButeMgr_Hasher_CS > StringHolder;
+
+	// Used to define map of strings to CSymTabItems.
+	typedef stdext::hash_map< char const*, CSymTabItem*, ButeMgr_Hasher > TableOfItems;
+
+	// Used to define map of strings to TableOfItems.
+	typedef stdext::hash_map< char const*, TableOfItems*, ButeMgr_Hasher > TableOfTags;
+#else
 	// This must be case sensitive!
 	typedef std::unordered_set< CString, std::hash< char const* >, equal_str > StringHolder;
 
@@ -292,7 +378,7 @@ private:
 
 	// Used to define map of strings to TableOfItems.
 	typedef std::unordered_map< char const*, TableOfItems*, hash_str_nocase, equal_str_nocase > TableOfTags;
-
+#endif
 	// Holds all strings for keys and string values.
 	StringHolder m_stringHolder;
 
