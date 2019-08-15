@@ -296,6 +296,9 @@ CPlayerStats::CPlayerStats()
 	m_nTargetNameWidth = 0;
 	m_nTargetNameHeight = 0;
 	m_hTargetNameSurface = LTNULL;
+
+	m_bShowFramerate = LTTRUE;//LTFALSE;
+	m_fFramerate = 0.0f;
 }
 
 // ----------------------------------------------------------------------- //
@@ -1264,6 +1267,11 @@ void CPlayerStats::UpdateObjectives(uint8 nType, uint8 nTeam, uint32 dwId)
 	}
 }
 
+void CPlayerStats::UpdateFramerate(LTFLOAT framerate)
+{
+	m_fFramerate = framerate;
+}
+
 // ----------------------------------------------------------------------- //
 //
 //	ROUTINE:	CPlayerStats::SetMultiplayerObjectives()
@@ -1398,6 +1406,15 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 
 	eOverlayMask eCurrMask = g_pInterfaceMgr->GetCurrentOverlay();
 
+#if 1
+	// Draw the framerate
+	if (m_bShowFramerate)
+	{
+		char szStr[32] = "";
+		sprintf(szStr, "Framerate: %.2f", m_fFramerate);
+		g_pInterfaceResMgr->GetMediumFont()->Draw(szStr, hScreen, 32, 10, LTF_JUSTIFY_LEFT, SETRGB(255, 255, 255));
+	}
+#endif
 
 	switch (eCurrMask)
 	{

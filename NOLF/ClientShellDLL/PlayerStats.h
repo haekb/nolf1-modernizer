@@ -54,6 +54,7 @@ public:
     void        UpdateMod(uint8 nModId);
     void        UpdateAir(LTFLOAT nPercent);
     void        UpdateObjectives(uint8 nType, uint8 nTeam, uint32 dwId);
+	void		UpdateFramerate(LTFLOAT framerate);
 	
 	void		ResetInventory();						 //clears all inventory data
 	void		DropInventory(LTBOOL bResetGear=LTTRUE); //drops are currently carried weapons and ammo
@@ -329,6 +330,9 @@ protected:
 	HSURFACE	m_hTargetNameSurface;
 	int			m_nTargetNameWidth;
 	int			m_nTargetNameHeight;
+
+	LTBOOL		m_bShowFramerate;
+	LTFLOAT		m_fFramerate;
 };
 
 #endif

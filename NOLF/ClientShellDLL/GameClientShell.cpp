@@ -1668,6 +1668,8 @@ void CGameClientShell::Update()
 		m_fFrameTime = MAX_FRAME_DELTA;
 	}
 
+	g_pInterfaceMgr->GetPlayerStats()->UpdateFramerate(1 / m_fFrameTime);
+
 	LARGE_INTEGER NewTime;
 	QueryPerformanceCounter(&NewTime);
 	m_lNextUpdate = NewTime.QuadPart;
