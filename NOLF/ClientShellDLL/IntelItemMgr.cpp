@@ -92,8 +92,8 @@ LTBOOL CIntelItemMgr::Init(const char* szAttributeFile)
 	//hack to create a intel.sav
 	if (!CWinUtil::FileExist(s_aAttributeFile))
 	{
-		fstream f;
-		f.open(s_aAttributeFile, ios::out);
+		STD fstream f;
+		f.open(s_aAttributeFile, STD ios::out);
 		f.write(" ",5);
 		f.close();
 	}

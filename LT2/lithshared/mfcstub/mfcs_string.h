@@ -35,15 +35,42 @@ public:
 	CString(const CString &cString);
 
 	// Member functions
-	DWORD GetLength() const { if (!GetData()) return 0; else return GetData()->m_Length; }
-	BOOL IsEmpty() const { return GetLength() == 0; };
+#if 1
+	DWORD GetLength() const {
+		if (!GetData()) {
+			return 0;
+		}
+
+		return GetData()->m_Length;
+	};
+	BOOL IsEmpty() const {
+		return GetLength() == 0;
+	};
+	void Empty() { ShrinkBuffer(0); };
+
+	LPSTR GetBuffer() { return m_pBuffer; }
+	LPCTSTR GetBuffer() const { return m_pBuffer; }
+	LPSTR GetBuffer(DWORD minLength);
+	DWORD GetBufferSize() const;
+#else
+	DWORD GetLength() const {
+		if (!GetData()) {
+			return 0;
+		}
+
+		return GetData()->m_Length;
+	};
+	BOOL IsEmpty() const {
+		return GetLength() == 0;
+	};
 	void Empty() { ShrinkBuffer(0); };
 
 	LPSTR GetBuffer() { return m_pBuffer; }
 	LPCTSTR GetBuffer() const { return m_pBuffer; }
 	LPSTR GetBuffer(DWORD minLength);
 	DWORD GetBufferSize() const { if (!GetData()) return 0; else return GetData()->m_BufferSize; }
-	void ReleaseBuffer(SDWORD length = -1);
+#endif
+	void ReleaseBuffer(int32 length = -1);
 
 	void FormatV(LPCTSTR pFormat, va_list args);
 	void Format(LPCTSTR pFormat, ...);
@@ -53,6 +80,8 @@ public:
 	int Find(LPCTSTR pSub, DWORD start) const;
 	int Find(LPCTSTR pSub) const { return Find(pSub, 0); }
 	int Replace(LPCTSTR pOld, LPCTSTR pNew);
+	// replace occurrences of chOld with chNew
+	int Replace( char chOld, char chNew);
 
 	int Compare(LPCTSTR lpsz) const;
 	int CompareNoCase(LPCTSTR lpsz) const;
@@ -70,6 +99,15 @@ public:
 	char GetAt(int nIndex) const { if (!GetBuffer()) return 0; else return GetBuffer()[nIndex];}
 	void SetAt(int nIndex, char ch) { if (!GetBuffer()) return; else GetBuffer()[nIndex] = ch; }
 
+#if 0
+	// NLS aware conversion to uppercase
+	void MakeUpper();
+	// NLS aware conversion to lowercase
+	void MakeLower();
+	// reverse string right-to-left
+	void MakeReverse();
+#endif
+
 	// Operators
 	operator LPCTSTR () const { return m_pBuffer; }
 	char &operator[](int nIndex) { return GetBuffer()[nIndex]; }
@@ -84,7 +122,21 @@ protected:
 	// Internal utility functions
 
 	// Copy a string (expands the buffer if needed)
+#if 1
 	void CopyString(LPCTSTR pString);
+#else
+	void CopyString(LPCTSTR pString)
+	{
+		if (pString)
+		{
+			DWORD newLength = (DWORD)strlen(pString);
+			memcpy(GetBuffer(newLength + 1), pString, newLength + 1);
+			SetLength(newLength);
+		}
+		else
+			Empty();
+	}
+#endif
 	// Make sure the buffer is at least minLength characters in size (including null)
 	BOOL ExpandBuffer(DWORD minLength);
 	// Make sure the buffer is no larger than maxLength characters in size (including null)

@@ -9,10 +9,10 @@
 #include "time.h"
 #include "stddef.h"
 
-
+#if _MSC_VER < 1300
 class ostream;
 class istream;
-
+#endif
 
 #ifndef NO_PRAGMA_LIBS
 	#ifdef _DEBUG
@@ -296,8 +296,8 @@ const int UB = 8*sizeof(unsigned);
 const int UPB = 8*sizeof(unsigned *);
 
 class zBitSet : public zErrHandling {
-friend ostream &operator<<(ostream&, const zBitSet&);
-friend istream &operator>>(istream&, zBitSet&);
+friend STD ostream &operator<<(STD ostream&, const zBitSet&);
+friend STD istream &operator>>(STD istream&, zBitSet&);
 
 friend int operator==(const zBitSet&, const zBitSet&);
 friend int operator==(const zBitSet&, unsigned);
@@ -1006,8 +1006,9 @@ friend class zNFA;
 friend class zDFA;
     int edge, val, next1, next2;
 };
-
+#if _MSC_VER < 1300
 class istream;
+#endif
 
 class zNFA : public zErrHandling {
 friend class zDFA;
@@ -1096,7 +1097,7 @@ public:
 
     int operator()(const char *) const;
     int process(const char *, chandlerf_t, void * = 0) const;
-    istream &extract(istream&, chandlerf_t, void * = 0) const;
+	STD istream &extract(STD istream&, chandlerf_t, void * = 0) const;
 
     int states() const { return nstates; }
     int characters() const { return alphabet; }
@@ -1110,8 +1111,8 @@ public:
     int store_as_is(int *) const;
     int pack(int *) const;
 
-    void format(int = 0) const;
-	void export() const;
+    void format(int/* = 0*/) const;
+	void export_() const;
     void dump() const;
 private:
     void subset_construction(const zNFA&);
@@ -1203,7 +1204,7 @@ template<class T> void zPriorityQueue<T>::dtf(T *p)
 // length string keys.
 
 // Symbol table visit function type
-typedef (*stvf_t)(const char *, void *, void *);
+typedef int (*stvf_t)(const char *, void *, void *);
 // the visit function will be called with a pointer to the key,
 // a pointer to the associated object and a supplementary
 // pointer provided by the user of traverse.
@@ -1380,7 +1381,7 @@ class zFileName : public zErrHandling {
 public:
     enum zFileName_errors { baddrive = -1, colon = -2, noname = -3,
 			badname = -4, badext = -5, badpath = -6, pathlength = -7,
-			nullptr = -8, memory = -9, invalid = -9 };
+			nullptr_ = -8, memory = -9, invalid = -9 };
 
 // There are three constructors, a default constructor,
 // one which takes a filename string as an argument,  and optionally
@@ -1823,7 +1824,7 @@ private:
 
 	int sizeup();
 	int sizedown();
-	static chunk;
+	static int chunk;
 
 	void **body;
 	int size, _current;
@@ -1975,8 +1976,8 @@ public:
     zTimeInfo &decyear();
     zTimeInfo &adjustby(int months, int years = 0);
 
-    friend ostream &operator<<(ostream &, const zTimeInfo&);
-    friend istream &operator>>(istream &, zTimeInfo&);
+    friend STD ostream &operator<<(STD ostream &, const zTimeInfo&);
+    friend STD istream &operator>>(STD istream &, zTimeInfo&);
 
     static void UK() { _flags |= not_us; }
     static void US() { _flags &= ~not_us; }

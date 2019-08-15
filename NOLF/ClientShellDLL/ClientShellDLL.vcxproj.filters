@@ -602,6 +602,9 @@
     <ClCompile Include="WinUtil.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="OptimizedRenderer.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Shared\AssertMgr.h">
@@ -1276,24 +1279,15 @@
     <ClInclude Include="WinUtil.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="OptimizedRenderer.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="..\..\LT2\lithshared\libs\Debug\LithFontMgr_LT2.lib">
       <Filter>libs_debug</Filter>
     </Library>
     <Library Include="..\..\LT2\lithshared\libs\Debug\ltguimgr_LT2.lib">
-      <Filter>libs_debug</Filter>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Debug\MFCStub.lib">
-      <Filter>libs_debug</Filter>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Debug\CryptMgr.lib">
-      <Filter>libs_debug</Filter>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Debug\StdLith.lib">
-      <Filter>libs_debug</Filter>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Debug\ButeMgrNoMFC.lib">
       <Filter>libs_debug</Filter>
     </Library>
     <Library Include="..\..\LT2\lithshared\libs\Debug\GameSpyClientMgr.lib">
@@ -1325,6 +1319,24 @@
     </Library>
     <Library Include="..\..\Lt2\lithshared\libs\Release\RegMgr.lib">
       <Filter>libs_release</Filter>
+    </Library>
+    <Library Include="..\..\LIBS\SDL2-2.0.10\lib\x86\SDL2.lib">
+      <Filter>libs_debug</Filter>
+    </Library>
+    <Library Include="..\..\LIBS\SDL2-2.0.10\lib\x86\SDL2main.lib">
+      <Filter>libs_debug</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\built\Debug\CryptMgr\cryptmgr.lib">
+      <Filter>libs_debug</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\built\Debug\ButeMgr\ButeMgr.lib">
+      <Filter>libs_debug</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Debug\StdLith.lib">
+      <Filter>libs_debug</Filter>
+    </Library>
+    <Library Include="..\..\LT2\lithshared\built\Debug\MFCStub\MFCStub.lib">
+      <Filter>libs_debug</Filter>
     </Library>
   </ItemGroup>
 </Project>

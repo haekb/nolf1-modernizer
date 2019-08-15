@@ -194,13 +194,13 @@
     <ClCompile>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <InlineFunctionExpansion>Default</InlineFunctionExpansion>
-      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
       <Optimization>Disabled</Optimization>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
-      <AdditionalIncludeDirectories>..\shared;..\..\lt2\sdk\inc;..\..\lt2\lithshared\incs;..\ClientShellDLL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_DEBUG;_CLIENTBUILD;WIN32;_WINDOWS;NO_PRAGMA_LIBS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\shared;..\..\lt2\sdk\inc;..\..\lt2\lithshared\incs;..\ClientShellDLL;..\..\LIBS\SDL2-2.0.10\include;..\..\lt2\lithshared\lith;..\..\lt2\lithshared\ButeMgr\;..\..\lt2\lithshared\CryptMgr;..\..\lt2\lithshared\mfcstub;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;_CLIENTBUILD;WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;NO_PRAGMA_LIBS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
       <BrowseInformation>true</BrowseInformation>
       <PrecompiledHeaderOutputFile>.\Debug\ClientShellDLL.pch</PrecompiledHeaderOutputFile>
@@ -208,9 +208,14 @@
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <ObjectFileName>.\Debug\</ObjectFileName>
       <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <PostBuildEvent>
-      <Command>copy debug\cshell.dll $(NOLF_BUILD_DIR)</Command>
+      <Command>copy debug\cshell.dll $(NOLF_BUILD_DIR)
+call "D:\GameDev\no-one-lives-forever-master\NOLF\ClientShellDLL\_after_build.bat"</Command>
+      <Message>Running Post Build Script</Message>
     </PostBuildEvent>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -236,6 +241,11 @@
       <OutputFile>debug\CShell.dll</OutputFile>
       <ImportLibrary>.\Debug\CShell.lib</ImportLibrary>
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <IgnoreSpecificDefaultLibraries>libcimtd.lib;MSVCRTD.lib</IgnoreSpecificDefaultLibraries>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <ForceFileOutput>UndefinedSymbolOnly</ForceFileOutput>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Final Debug|Win32'">
@@ -453,6 +463,7 @@
     <ClCompile Include="NodeLinesFX.cpp" />
     <ClCompile Include="ObjEditMgr.cpp" />
     <ClCompile Include="ObjSpriteFX.cpp" />
+    <ClCompile Include="OptimizedRenderer.cpp" />
     <ClCompile Include="ParticleExplosionFX.cpp" />
     <ClCompile Include="ParticleShowerFX.cpp" />
     <ClCompile Include="ParticleSystemFX.cpp" />
@@ -672,6 +683,7 @@
     <ClInclude Include="NodeController.h" />
     <ClInclude Include="NodeLinesFX.h" />
     <ClInclude Include="ObjEditMgr.h" />
+    <ClInclude Include="OptimizedRenderer.h" />
     <ClInclude Include="Overlays.h" />
     <ClInclude Include="ParticleExplosionFX.h" />
     <ClInclude Include="ParticleShowerFX.h" />
@@ -720,14 +732,11 @@
     <ClInclude Include="WinUtil.h" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="..\..\LT2\lithshared\libs\Debug\ButeMgrNoMFC.lib">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Debug\CryptMgr.lib">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </Library>
+    <Library Include="..\..\LIBS\SDL2-2.0.10\lib\x86\SDL2.lib" />
+    <Library Include="..\..\LIBS\SDL2-2.0.10\lib\x86\SDL2main.lib" />
+    <Library Include="..\..\LT2\lithshared\built\Debug\ButeMgr\ButeMgr.lib" />
+    <Library Include="..\..\LT2\lithshared\built\Debug\CryptMgr\cryptmgr.lib" />
+    <Library Include="..\..\LT2\lithshared\built\Debug\MFCStub\MFCStub.lib" />
     <Library Include="..\..\LT2\lithshared\libs\Debug\GameSpyClientMgr.lib">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -740,15 +749,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Debug\MFCStub.lib">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </Library>
     <Library Include="..\..\Lt2\lithshared\libs\Debug\RegMgr.lib" />
-    <Library Include="..\..\LT2\lithshared\libs\Debug\StdLith.lib">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </Library>
+    <Library Include="..\..\LT2\lithshared\libs\Debug\StdLith.lib" />
     <Library Include="..\..\LT2\lithshared\libs\Release\ButeMgrNoMFC.lib">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Debug|Win32'">true</ExcludedFromBuild>

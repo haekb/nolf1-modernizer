@@ -1,3 +1,4 @@
+#if 0
 #if !defined(_CRYPTMGR_H_)
 #define _CRYPTMGR_H_
 
@@ -41,4 +42,5 @@ public:
 
 
 
+#endif
 #endif
