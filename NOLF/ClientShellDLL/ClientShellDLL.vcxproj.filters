@@ -605,6 +605,9 @@
     <ClCompile Include="OptimizedRenderer.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="ScalableBitmapCtrl.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Shared\AssertMgr.h">
@@ -1281,6 +1284,9 @@
     </ClInclude>
     <ClInclude Include="OptimizedRenderer.h">
       <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="ScalableBitmapCtrl.h">
+      <Filter>Headers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

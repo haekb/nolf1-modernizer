@@ -11,6 +11,7 @@
 
 #include "LTGUIMgr.h"
 #include "BitmapCtrl.h"
+#include "ScalableBitmapCtrl.h"
 #include "GroupCtrl.h"
 #include "ListCtrl.h"
 #include "SliderCtrl.h"
@@ -314,6 +315,8 @@ protected:
 
 	CBitmapCtrl			*m_pUpArrow;
 	CBitmapCtrl			*m_pDownArrow;
+	CScalableBitmapCtrl			*m_pBackArrow;
+	CScalableBitmapCtrl			*m_pContinueArrow;
 	CLTGUITextItemCtrl	*m_pBack;
 	CLTGUITextItemCtrl	*m_pMain;
 	CLTGUITextItemCtrl	*m_pContinue;

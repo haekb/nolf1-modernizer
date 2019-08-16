@@ -90,6 +90,8 @@ CBaseFolder::CBaseFolder()
 
     m_pUpArrow = LTNULL;
     m_pDownArrow = LTNULL;
+	m_pBackArrow = LTNULL;
+	m_pContinueArrow = LTNULL;
     m_pBack = LTNULL;
     m_pContinue = LTNULL;
     m_pMain = LTNULL;
@@ -204,6 +206,16 @@ void CBaseFolder::Term()
 			debug_delete(m_pBack);
             m_pBack = LTNULL;
 		}
+		if (m_pBackArrow)
+		{
+			debug_delete(m_pBackArrow);
+			m_pBackArrow = LTNULL;
+		}
+		if (m_pContinueArrow)
+		{
+			debug_delete(m_pContinueArrow);
+			m_pContinueArrow = LTNULL;
+		}
 	}
 
 	// Free the title string
@@ -265,7 +277,6 @@ LTBOOL CBaseFolder::Render(HSURFACE hDestSurf)
 	int xo = g_pInterfaceResMgr->GetXOffset();
 	int yo = g_pInterfaceResMgr->GetYOffset();
 
-	float xr = g_pInterfaceResMgr->GetXRatio();
 	float yr = g_pInterfaceResMgr->GetYRatio();
 
     LTRect rect(0,0,g_pInterfaceResMgr->GetScreenWidth(),yo+m_nTopShadeHt);
@@ -293,7 +304,7 @@ LTBOOL CBaseFolder::Render(HSURFACE hDestSurf)
 
 	if (pTitleFont && m_hTitleString)
 	{
-		int xPos= (m_titlePos.x * xr) + xo;
+		int xPos= (m_titlePos.x * yr) + xo;
 		int yPos= m_titlePos.y * yr;
 		// Align the text as needed
 		switch (m_nTitleAlign)
@@ -313,19 +324,6 @@ LTBOOL CBaseFolder::Render(HSURFACE hDestSurf)
 		pTitleFont->Draw(m_hTitleString, hDestSurf, xPos, yPos, LTF_JUSTIFY_LEFT,kWhite);
 	}
 
-	if (m_pBack && m_pBack->IsSelected())
-	{
-		int posX = (int) (m_ArrowBackPos.x * xr) + xo;
-		int posY = (int) m_ArrowBackPos.y * yr;
-		// FIXME: posY crashes at 1080p unless I subtract at least 10? Maybe rendering out of bounds, I know d3d haaates that.
-		g_pLTClient->TransformSurfaceToSurfaceTransparent(hDestSurf,g_pInterfaceResMgr->GetSharedSurface(m_sArrowBack), LTNULL, posX, posY - 10, 0, yr, yr, m_hTransparentColor);
-	}
-	if (m_pContinue && m_pContinue->IsSelected())
-	{
-		int posX = (int) (m_ArrowNextPos.x * xr) + xo;
-		int posY = (int) m_ArrowNextPos.y * yr;
-		g_pLTClient->TransformSurfaceToSurfaceTransparent(hDestSurf,g_pInterfaceResMgr->GetSharedSurface(m_sArrowNext), LTNULL, posX, posY - 10, 0, yr, yr, m_hTransparentColor);
-	}
 
 	//render list of ctrls
 	unsigned int i;
@@ -351,7 +349,7 @@ LTBOOL CBaseFolder::Render(HSURFACE hDestSurf)
 		{
 
 			// Set the position for the control
-			m_controlArray[i]->SetPos((x*xr) + xo, y * yr);
+			m_controlArray[i]->SetPos((x*yr) + xo, y * yr);
 			m_controlArray[i]->Render ( hDestSurf );
 			y+=size.y+m_nItemSpacing;
 		}
@@ -367,7 +365,7 @@ LTBOOL CBaseFolder::Render(HSURFACE hDestSurf)
 	if (m_hHelpSurf && m_dwCurrHelpID)
 	{
 		g_pLTClient->SetOptimized2DBlend(LTSURFACEBLEND_MASK);
-        g_pLTClient->DrawSurfaceToSurface(hDestSurf, m_hHelpSurf, LTNULL, (m_HelpRect.left*xr)+xo,(m_HelpRect.top*yr));
+        g_pLTClient->DrawSurfaceToSurface(hDestSurf, m_hHelpSurf, LTNULL, (m_HelpRect.left*yr)+xo,(m_HelpRect.top*yr));
 		g_pLTClient->SetOptimized2DBlend(LTSURFACEBLEND_ALPHA);
 	}
 
@@ -1329,7 +1327,7 @@ int CBaseFolder::AddFixedControl(CLTGUICtrl* pCtrl, LTIntPt pos, LTBOOL bSelecta
 	}
 
 	// Need to do this here, it messes up on render()
-	pos.x = (int)((float)pos.x * g_pInterfaceResMgr->GetXRatio()) + g_pInterfaceResMgr->Get4x3Offset();
+	pos.x = (int)((float)pos.x * g_pInterfaceResMgr->GetYRatio()) + g_pInterfaceResMgr->Get4x3Offset();
 	pos.y = (int)((float)pos.y * g_pInterfaceResMgr->GetYRatio());
 
 	pCtrl->SetPos(pos);
@@ -1735,7 +1733,7 @@ void CBaseFolder::UseBack(LTBOOL bBack,LTBOOL bOK,LTBOOL bReturn)
 
 		if (IsBuilt())
 		{
-            AddFixedControl(m_pBack,m_BackPos,LTTRUE);
+			AddFixedControl(m_pBack, { -100, -100 }, LTFALSE);
 		}
 	}
 	else
@@ -1780,7 +1778,7 @@ void CBaseFolder::UseContinue(int nContinueID, int nHelpID, int nStringID)
 		{
 			LTBOOL bBack = (m_pBack != LTNULL);
 			if (bBack) UseBack(LTFALSE);
-            AddFixedControl(m_pContinue,m_ContinuePos,LTTRUE);
+			AddFixedControl(m_pContinue, { -100, -100 }, LTTRUE);
 			if (bBack) UseBack(LTTRUE);
 		}
 	}
@@ -2089,21 +2087,46 @@ void CBaseFolder::CreateInterfaceSFX()
 
 	}
 
+	// Arrow SFXs
 	if (m_pBack)
 	{
+#if 1
+		if (!m_pBackArrow) {
+			m_pBackArrow = debug_new(CScalableBitmapCtrl);
+			m_pBackArrow->Create(g_pLTClient, "interface\\ArrowBack.pcx", "interface\\ArrowBackH.pcx", "interface\\ArrowBack.pcx", this, FOLDER_CMD_BACK);
+			m_pBackArrow->SetHelpID(IDS_HELP_BACK);
+			m_pBackArrow->SetTransparentColor(m_hTransparentColor);
+			m_pBackArrow->SetScale(g_pInterfaceResMgr->GetYRatio(), g_pInterfaceResMgr->GetYRatio());
+
+			AddFixedControl(m_pBackArrow, m_ArrowBackPos, LTTRUE);
+		}
+#else
 		g_pLayoutMgr->GetArrowBackSFX(szFXName,128);
 		if (strlen(szFXName))
 		{
 			CreateScaleFX(szFXName);
 		}
+#endif
 	}
 	if (m_pContinue)
 	{
+#if 1
+		if (!m_pContinueArrow) {
+			m_pContinueArrow = debug_new(CScalableBitmapCtrl);
+			m_pContinueArrow->Create(g_pLTClient, "interface\\ArrowContinue.pcx", "interface\\ArrowContinueH.pcx", "interface\\ArrowContinue.pcx", this, FOLDER_CMD_CONTINUE);
+			m_pContinueArrow->SetHelpID(IDS_HELP_CONTINUE);
+			m_pContinueArrow->SetTransparentColor(m_hTransparentColor);
+			m_pContinueArrow->SetScale(g_pInterfaceResMgr->GetYRatio(), g_pInterfaceResMgr->GetYRatio());
+
+			AddFixedControl(m_pContinueArrow, m_ArrowNextPos, LTTRUE);
+		}
+#else
 		g_pLayoutMgr->GetArrowNextSFX(szFXName,128);
 		if (strlen(szFXName))
 		{
 			CreateScaleFX(szFXName);
 		}
+#endif
 	}
 
 	INT_CHAR *pChar = g_pLayoutMgr->GetFolderCharacter((eFolderID)m_nFolderID);

@@ -245,7 +245,6 @@ call "D:\GameDev\no-one-lives-forever-master\NOLF\ClientShellDLL\_after_build.ba
       <IgnoreSpecificDefaultLibraries>libcimtd.lib;MSVCRTD.lib</IgnoreSpecificDefaultLibraries>
       <AdditionalLibraryDirectories>
       </AdditionalLibraryDirectories>
-      <ForceFileOutput>UndefinedSymbolOnly</ForceFileOutput>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Final Debug|Win32'">
@@ -481,6 +480,7 @@ call "D:\GameDev\no-one-lives-forever-master\NOLF\ClientShellDLL\_after_build.ba
     <ClCompile Include="ProjectileFX.cpp" />
     <ClCompile Include="PVFXMgr.cpp" />
     <ClCompile Include="RandomSparksFX.cpp" />
+    <ClCompile Include="ScalableBitmapCtrl.cpp" />
     <ClCompile Include="ScreenTintMgr.cpp" />
     <ClCompile Include="SearchLightFX.cpp" />
     <ClCompile Include="SFXMgr.cpp" />
@@ -703,6 +703,7 @@ call "D:\GameDev\no-one-lives-forever-master\NOLF\ClientShellDLL\_after_build.ba
     <ClInclude Include="ProjectileFX.h" />
     <ClInclude Include="PVFXMgr.h" />
     <ClInclude Include="RandomSparksFX.h" />
+    <ClInclude Include="ScalableBitmapCtrl.h" />
     <ClInclude Include="ScreenTintMgr.h" />
     <ClInclude Include="SearchLightFX.h" />
     <ClInclude Include="SFXMgr.h" />
