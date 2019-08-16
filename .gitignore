@@ -3,6 +3,7 @@ Debug
 *.opendb
 *.log
 *.dll
+*.lto
 *.plg
 .vs
 .vscode
