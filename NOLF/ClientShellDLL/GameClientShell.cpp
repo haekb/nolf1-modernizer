@@ -634,7 +634,12 @@ CGameClientShell::CGameClientShell()
 
 	m_lFrametime = (m_lTimerFrequency.QuadPart / 60);
 
-	m_bUserWantsFramerateLock = GetConsoleInt("FramerateLock", 1);
+	// Load up our config file
+	GetConfigFile("autoexec.cfg");
+
+	m_bUserWantsFramerateLock = GetConfigInt("FramerateLock", 1);
+
+	SDL_Log("Framerate Lock is <%d>", m_bUserWantsFramerateLock);
 }
 
 

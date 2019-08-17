@@ -21,6 +21,8 @@
 
 extern const int g_kNumCommands;
 
+extern std::unordered_map<std::string, std::string> g_mConfigFile;
+
 enum CommandType
 {
 	COM_MOVE,
@@ -56,6 +58,10 @@ void	WriteConsoleInt(char* sKey, int nValue);
 LTFLOAT GetConsoleFloat(char* sKey, LTFLOAT fDefault);
 void	WriteConsoleFloat(char* sKey, LTFLOAT fValue);
 
+void GetConfigFile(std::string file);
+int GetConfigInt(std::string key, int defaultValue);
+std::string GetConfigString(std::string key, std::string defaultValue);
+LTFLOAT GetConfigFloat(std::string key, LTFLOAT defaultValue);
 
 // The following two functions should be used to determine how long a block
 // of code takes to execute.  For example:

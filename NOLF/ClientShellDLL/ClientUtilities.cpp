@@ -17,8 +17,12 @@
 #include "ClientRes.h"
 #include "VarTrack.h"
 #include "VKdefs.h"
+#include <sstream>
+#include <regex>
 
 extern CGameClientShell* g_pGameClientShell;
+
+std::unordered_map<std::string, std::string> g_mConfigFile;
 
 CommandID g_CommandArray[] =
 {
@@ -272,6 +276,105 @@ void WriteConsoleFloat(char* sKey, LTFLOAT fValue)
 		sprintf(sTemp, "+%s %f", sKey, fValue);
         g_pLTClient->RunConsoleString(sTemp);
 	}
+}
+
+
+void GetConfigFile(std::string file)
+{
+	// REGEX WARNING,
+	// https://www.xkcd.com/208/
+
+	// For reading commands - /gmi
+	// You want Group 2 and 4, 1 and 3 will include quotes -- bleh.
+	// 
+	// ^\"([\w\d]*)\"[\s]*\"([\w\d\.\,\s\\\/\-\#]*)?\"[\s]*$
+	std::string pattern = "^\\\"([\\\w\\\d]*)\\\"[\\\s]*\\\"([\\\w\\\d\\\.\\\,\\\s\\\\\\\\\/\\\-\\\#]*)?\\\"[\\\s]*$";
+	std::regex commandRegex(pattern);
+	std::smatch match;
+
+	std::ifstream in(file, std::ios::in | std::ios::binary);
+	if (in)
+	{
+		std::ostringstream buffer;
+		buffer << in.rdbuf();
+		in.close();
+		std::string fileContents = buffer.str();
+
+		while (std::regex_search(fileContents, match, commandRegex)) {
+			
+			g_mConfigFile.insert({ match[1], match[2] });
+			fileContents = match.suffix().str();
+		}
+		bool test = true;
+	}
+}
+
+int GetConfigInt(std::string key, int defaultValue)
+{
+	// Config is empty
+	if (g_mConfigFile.size() == 0) {
+		return defaultValue;
+	}
+
+	auto item = g_mConfigFile.find(key);
+
+	// Not found
+	if (item == g_mConfigFile.end()) 
+	{
+		return defaultValue;
+	}
+
+	int value = defaultValue;
+
+	try {
+		value = stoi(item->second);
+	}
+	catch (std::exception exception) {}
+
+	return value;
+}
+
+std::string GetConfigString(std::string key, std::string defaultValue)
+{
+	// Config is empty
+	if (g_mConfigFile.size() == 0) {
+		return defaultValue;
+	}
+
+	auto item = g_mConfigFile.find(key);
+
+	// Not found
+	if (item == g_mConfigFile.end())
+	{
+		return defaultValue;
+	}
+
+	return item->first;
+}
+
+LTFLOAT GetConfigFloat(std::string key, LTFLOAT defaultValue)
+{
+	// Config is empty
+	if (g_mConfigFile.size() == 0) {
+		return defaultValue;
+	}
+
+	auto item = g_mConfigFile.find(key);
+
+	// Not found
+	if (item == g_mConfigFile.end())
+	{
+		return defaultValue;
+	}
+
+	LTFLOAT value = defaultValue;
+
+	try {
+		value = stof(item->second);
+	}
+	catch (std::exception exception) {}
+
+	return value;
 }
 
 
