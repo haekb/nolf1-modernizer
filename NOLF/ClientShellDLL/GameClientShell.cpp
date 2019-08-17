@@ -8378,6 +8378,12 @@ void DefaultModelHook (ModelHookData *pData, void *pUser)
 
 LRESULT CALLBACK HookedWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
+	if (!g_pfnMainWndProc)
+	{
+		SDL_Log("Invalid window proc call <%d>, ignoring", uMsg);
+		return 0;
+	}
+
 	switch(uMsg)
 	{
 		HANDLE_MSG(hWnd, WM_LBUTTONUP, CGameClientShell::OnLButtonUp);
