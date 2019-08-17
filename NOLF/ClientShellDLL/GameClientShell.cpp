@@ -1670,10 +1670,6 @@ void CGameClientShell::Update()
 
 	g_pInterfaceMgr->GetPlayerStats()->UpdateFramerate(1 / m_fFrameTime);
 
-	LARGE_INTEGER NewTime;
-	QueryPerformanceCounter(&NewTime);
-	m_lNextUpdate = NewTime.QuadPart;
-
 	// Update tint if applicable (always do this to make sure tinting
 	// gets finished)...
 
@@ -1875,9 +1871,11 @@ void CGameClientShell::PostUpdate()
 		
 		while (1) {
 			//Sleep(0);
+
 			QueryPerformanceCounter(&NewTime);
-			if (NewTime.QuadPart > m_lNextUpdate + m_lFrametime) {
-				//m_lNextUpdate = NewTime.QuadPart;
+			unsigned long lTime = NewTime.QuadPart - m_lNextUpdate;
+			if (lTime > m_lFrametime) {
+				m_lNextUpdate = NewTime.QuadPart;
 				break;
 			}
 		}
