@@ -366,10 +366,6 @@ LTBOOL CModelButeMgr::Init(ILTCSBase *pInterface, const char* szAttributeFile)
         m_aModels[iModel].m_fModelMaxArmor = (LTFLOAT)m_buteMgr.GetDouble(s_aTagName, MODELBMGR_MODEL_MAX_ARMOR);
 	}
 
-	// Free up butemgr's memory and what-not.
-
-	m_buteMgr.Term();
-
     return LTTRUE;
 }
 
@@ -416,6 +412,8 @@ void CModelButeMgr::Term()
 		debug_deletea(m_aNScripts);
         m_aNScripts = LTNULL;
 	}
+
+	m_buteMgr.Term();
 
     g_pModelButeMgr = LTNULL;
 }
