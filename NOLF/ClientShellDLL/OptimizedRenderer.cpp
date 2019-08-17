@@ -13,6 +13,8 @@ COptimizedRenderer* g_pOptimizedRenderer = LTNULL;
 COptimizedRenderer::COptimizedRenderer()
 {
 	g_pOptimizedRenderer = this;
+
+	Init();
 }
 
 COptimizedRenderer::~COptimizedRenderer()
@@ -21,14 +23,37 @@ COptimizedRenderer::~COptimizedRenderer()
 	// Not the best solution, but there's not too many FillRects, 
 	// and this class dies with the game.
 	g_pOptimizedRenderer = LTNULL;
+
+	Term();
 }
 
+void COptimizedRenderer::Init()
+{
+	m_bInit = true;
+}
+
+void COptimizedRenderer::Term()
+{
+	m_bInit = false;
+
+	m_CachedSurfaceKey.RemoveAll();
+
+	while (m_CachedSurfaceArray.GetSize() > 0)
+	{
+		g_pLTClient->DeleteSurface(m_CachedSurfaceArray[0]);
+		m_CachedSurfaceArray.Remove(0);
+	}
+}
 
 static bool g_bInit = false;
 
 // Faster FillRect, we do basically a FillRect once, and then cache that result.
 void COptimizedRenderer::FillRect(HSURFACE hDestSurf, LTRect *rect, HLTCOLOR colour)
 {
+	if (!m_bInit) {
+		return;
+	}
+
 	HSURFACE hSurf = LTNULL;
 	int index = m_CachedSurfaceKey.FindElement(colour);
 

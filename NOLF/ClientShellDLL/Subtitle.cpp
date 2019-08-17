@@ -77,12 +77,14 @@ void CSubtitle::ClearSurfaces()
 {
 	uint32 dwWidth  = 0;
 	uint32 dwHeight  = 0;
-	g_pLTClient->GetSurfaceDims(m_hForeSurf,&dwWidth,&dwHeight);
-    LTRect rcFore(0,0, dwWidth, dwHeight);
-    g_pOptimizedRenderer->FillRect(m_hForeSurf, &rcFore, LTNULL);
-	g_pLTClient->OptimizeSurface(m_hForeSurf, LTNULL);
 
-
+	// During shutdown, OptimizedRenderer gets cleared, thus causing crashing.
+	if (g_pOptimizedRenderer) {
+		g_pLTClient->GetSurfaceDims(m_hForeSurf, &dwWidth, &dwHeight);
+		LTRect rcFore(0, 0, dwWidth, dwHeight);
+		g_pOptimizedRenderer->FillRect(m_hForeSurf, &rcFore, LTNULL);
+		g_pLTClient->OptimizeSurface(m_hForeSurf, LTNULL);
+	}
 }
 
 
