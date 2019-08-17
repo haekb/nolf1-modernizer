@@ -284,8 +284,8 @@ void GetConfigFile(std::string file)
 	// REGEX WARNING,
 	// https://www.xkcd.com/208/
 
-	// For reading commands - /gmi
-	// You want Group 2 and 4, 1 and 3 will include quotes -- bleh.
+	// For reading commands => "Key" "Value"
+	// You want index 1 and 2.
 	// 
 	// ^\"([\w\d]*)\"[\s]*\"([\w\d\.\,\s\\\/\-\#]*)?\"[\s]*$
 	std::string pattern = "^\\\"([\\\w\\\d]*)\\\"[\\\s]*\\\"([\\\w\\\d\\\.\\\,\\\s\\\\\\\\\/\\\-\\\#]*)?\\\"[\\\s]*$";
@@ -305,7 +305,6 @@ void GetConfigFile(std::string file)
 			g_mConfigFile.insert({ match[1], match[2] });
 			fileContents = match.suffix().str();
 		}
-		bool test = true;
 	}
 }
 
