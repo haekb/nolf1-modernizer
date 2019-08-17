@@ -120,6 +120,8 @@ private:
 	
 	HSURFACE m_hWorldPhoto;
 	LTIntPt m_PhotoPos;
+	uint32 m_iPhotoWidth;
+	uint32 m_iPhotoHeight;
 };
 
 #endif //__LOADINGSCREEN_H__

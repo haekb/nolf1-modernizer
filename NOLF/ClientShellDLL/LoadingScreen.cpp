@@ -55,16 +55,6 @@ void CLoadingScreen::CreateScaleFX(char *szFXName)
 		g_pFXButeMgr->CreateScaleFX(pScaleFX,m_vPos, m_vF, LTNULL, &m_rRot, pSFX);
 		m_SFXArray.Add(pSFX);
 		g_pInterfaceMgr->AddInterfaceSFX(pSFX, IFX_NORMAL);				
-
-		//adjust the object's position based on screen res
-		HOBJECT hSFX = pSFX->GetObject();
-		if (hSFX)
-		{
-			LTVector vNewPos;
-			g_pLTClient->GetObjectPos(hSFX, &vNewPos);
-			vNewPos.z *= g_pInterfaceResMgr->GetXRatio();
-			g_pLTClient->SetObjectPos(hSFX, &vNewPos);
-		}
 	}
 }
 
@@ -99,7 +89,7 @@ void CLoadingScreen::CreateCharFX(INT_CHAR *pChar)
 	    g_pLTClient->RotateAroundAxis(&rRot, &m_vU, fRot);
 
 		VEC_MULSCALAR(vTemp, m_vF, vModPos.z);
-		VEC_MULSCALAR(vTemp, vTemp, g_pInterfaceResMgr->GetXRatio());
+		VEC_MULSCALAR(vTemp, vTemp, 1); //g_pInterfaceResMgr->GetXRatio()
 		VEC_ADD(vPos, vPos, vTemp);
 
 		VEC_MULSCALAR(vTemp, m_vR, vModPos.x);
@@ -333,9 +323,15 @@ LTBOOL CLoadingScreen::Init()
 	m_TextPos = g_pLayoutMgr->GetLoadStringPos();
 	m_PhotoPos = g_pLayoutMgr->GetLoadPhotoPos();
 
+	// Need to apply the ratio first, then add any offsets.
+	m_TextPos.x *= g_pInterfaceResMgr->GetYRatio();
 	m_TextPos.x += g_pInterfaceResMgr->GetXOffset();
+	m_TextPos.y *= g_pInterfaceResMgr->GetYRatio();
 	m_TextPos.y +=  g_pInterfaceResMgr->GetYOffset();
+
+	m_PhotoPos.x *= g_pInterfaceResMgr->GetYRatio();
 	m_PhotoPos.x += g_pInterfaceResMgr->GetXOffset();
+	m_PhotoPos.y *= g_pInterfaceResMgr->GetYRatio();
 	m_PhotoPos.y +=  g_pInterfaceResMgr->GetYOffset();
 
 	// Remember whether or not we're in multiplayer
@@ -396,8 +392,8 @@ int CLoadingScreen::RunThread()
 		// Draw the frame..
 		Update();
 		
-		// Make sure we're not running faster than 10fps so stuff can still happen in the background
-		Sleep(100);
+		// Sleep(0) will give other threads a chance to interject.
+		Sleep(0);
 	}
 
 	g_pGameClientShell->SetFramerateLock(true);
@@ -430,9 +426,21 @@ LTBOOL CLoadingScreen::Update()
 
 //		g_pInterfaceMgr->GetClientInfoMgr()->Draw(LTTRUE, LTTRUE);
 
-	if (m_hWorldPhoto)
-		g_pLTClient->DrawSurfaceToSurface(hDestSurf,m_hWorldPhoto,LTNULL,m_PhotoPos.x,m_PhotoPos.y);
+	// Fill in the out-of-resolution areas
+	int xo = g_pInterfaceResMgr->GetXOffset();
+	int yo = g_pInterfaceResMgr->GetYOffset();
 
+	float yr = g_pInterfaceResMgr->GetYRatio();
+
+	if (m_hWorldPhoto) {
+		LTRect destRect = { 
+			m_PhotoPos.x,
+			m_PhotoPos.y,
+			m_PhotoPos.x + (int)(m_iPhotoWidth * yr),
+			m_PhotoPos.y + (int)(m_iPhotoHeight * yr)
+		};
+		g_pLTClient->ScaleSurfaceToSurface(hDestSurf, m_hWorldPhoto, &destRect, LTNULL);
+	}
 	CLTGUIFont *pFont = g_pInterfaceResMgr->GetTitleFont();
 	
 	pFont->Draw(m_hWorldName, hDestSurf, m_TextPos.x+1, m_TextPos.y+1, LTF_JUSTIFY_CENTER,kBlack);
@@ -444,9 +452,7 @@ LTBOOL CLoadingScreen::Update()
 
 
 
-	// Fill in the out-of-resolution areas
-	int xo = g_pInterfaceResMgr->GetXOffset();
-	int yo = g_pInterfaceResMgr->GetYOffset();
+
 
 //	HSURFACE hBack = g_pInterfaceResMgr->GetSharedSurface(m_sBackground);
 //  g_pLTClient->DrawSurfaceToSurface(hDestSurf, hBack, LTNULL, xo, yo);
@@ -637,7 +643,12 @@ void CLoadingScreen::SetWorldPhoto(char *pszPhoto)
 	}
 
 	m_hWorldPhoto = g_pLTClient->CreateSurfaceFromBitmap(pszPhoto);
-	if (!m_hWorldPhoto)
+	if (!m_hWorldPhoto) {
 		m_hWorldPhoto = g_pLTClient->CreateSurfaceFromBitmap("interface\\photos\\missions\\default.pcx");
+	}
+
+	if (m_hWorldPhoto) {
+		g_pLTClient->GetSurfaceDims(m_hWorldPhoto, &m_iPhotoWidth, &m_iPhotoHeight);
+	}
 
 }
