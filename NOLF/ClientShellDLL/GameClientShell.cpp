@@ -633,6 +633,8 @@ CGameClientShell::CGameClientShell()
 	}
 
 	m_lFrametime = (m_lTimerFrequency.QuadPart / 60);
+
+	m_bUserWantsFramerateLock = GetConsoleInt("FramerateLock", 1);
 }
 
 
@@ -1863,8 +1865,10 @@ void CGameClientShell::PostUpdate()
 
 	m_InterfaceMgr.PostUpdate();
 
-	
-	if (m_bLockFramerate)
+	// Occasionally we'll need to unlock the framerate (like during loading!)
+	// But we also want the user to have the option to unlock it,
+	// so that's why there's two almost identical lock vars here.
+	if (m_bLockFramerate && m_bUserWantsFramerateLock)
 	{
 		// Limit our framerate so the game actually runs properly.
 		LARGE_INTEGER NewTime;
