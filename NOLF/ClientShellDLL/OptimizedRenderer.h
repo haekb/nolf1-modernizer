@@ -16,6 +16,11 @@
 class COptimizedRenderer;
 extern COptimizedRenderer* g_pOptimizedRenderer;
 
+typedef struct {
+	LTRect dims;
+	HLTCOLOR colour;
+} CacheOption;
+
 class COptimizedRenderer  
 {
 public:
@@ -28,9 +33,15 @@ public:
 	// Faster FillRects
 	void 	FillRect(HSURFACE hDestSurf, LTRect *rect, HLTCOLOR colour);
 private:
-	// FIXME: VS6 won't let me use a map, so if you have a better way to handle an assoc array, PR it!
-	CMoArray<HLTCOLOR>    m_CachedSurfaceKey;
-	CMoArray<HSURFACE>	m_CachedSurfaceArray;
+	std::unordered_map<size_t, HSURFACE> m_CachedSurface;
+
+	unsigned int GetHashValue(CacheOption);
+
+	// Thanks SO: https://stackoverflow.com/a/27952689
+	inline size_t HashCombine(size_t lhs, size_t rhs) {
+		lhs ^= rhs + 0x9e3779b9 + (lhs << 6) + (lhs >> 2);
+		return lhs;
+	}
 
 	bool m_bInit;
 };
