@@ -446,7 +446,7 @@ LTBOOL CInterfaceResMgr::InitFonts()
 
         // ************* Air font
 		g_pLayoutMgr->GetAirFont(g_szFontName,sizeof(g_szFontName));
-        if (!SetupFont(m_pAirFont,LTFALSE,dwFlags))
+        if (!SetupFont(m_pAirFont,LTTRUE,dwFlags))
 		{
 			debug_delete(m_pAirFont);
             m_pAirFont=LTNULL;
@@ -455,7 +455,7 @@ LTBOOL CInterfaceResMgr::InitFonts()
 
         // ************* Weapon Chooser font
 		g_pLayoutMgr->GetChooserFont(g_szFontName,sizeof(g_szFontName));
-		if (!SetupFont(m_pChooserFont,LTFALSE))
+		if (!SetupFont(m_pChooserFont))
 		{
 			debug_delete(m_pChooserFont);
             m_pChooserFont=LTNULL;
