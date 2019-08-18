@@ -4090,8 +4090,12 @@ void CPlayerStats::UpdateWeaponBindings()
 void CPlayerStats::DrawBoundWeapons(HSURFACE hScreen)
 {
 	if (m_fWeaponAlpha < 0.1f) return;
+	float yr = g_pInterfaceResMgr->GetYRatio();
+
 	int w = (int)g_pInterfaceResMgr->GetScreenWidth();
-	int y = (int)g_pInterfaceResMgr->GetScreenHeight()/2 - 5*m_nIconSize;
+	int y = (int)g_pInterfaceResMgr->GetScreenHeight() / yr - 5 * m_nIconSize;
+
+
 
 	HLTCOLOR hTextColor = kWhite;
 	if (m_fWeaponAlpha < 1.0f)
@@ -4100,22 +4104,24 @@ void CPlayerStats::DrawBoundWeapons(HSURFACE hScreen)
 		hTextColor = SETRGB(fade,fade,fade);
 	}
 
-	int nTextOffset = m_nIconSize - 8;
+	int nTextOffset = (m_nIconSize) - 8;
 	if (m_bLargeNumbers)
 		nTextOffset -= 8;
 	for (int i = 0; i < 10; i++)
 	{
 		if (m_pbHaveWeapon && m_pbHaveWeapon[m_nBoundWeapons[i]] && m_hWeaponSurf[i])
 		{
-			if (m_fIconOffset[i] < (LTFLOAT)m_nIconSize)
+			LTFLOAT scaledIconSize = (m_nIconSize * yr);
+			scaledIconSize -= scaledIconSize/4;
+			if (m_fIconOffset[i] < scaledIconSize)
 			{
 				m_fIconOffset[i] += (72.0f*g_pLTClient->GetFrameTime());
 			}
-			if (m_fIconOffset[i] > (LTFLOAT)m_nIconSize) 
-				m_fIconOffset[i] = (LTFLOAT)m_nIconSize;
+			if (m_fIconOffset[i] > scaledIconSize)
+				m_fIconOffset[i] = scaledIconSize;
 			int x = w-(int)m_fIconOffset[i];
 			//g_pLTClient->DrawSurfaceToSurface(hScreen,m_hWeaponSurf[i],LTNULL,x,y);
-			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hWeaponSurf[i],LTNULL, x - m_nIconSize/2, y - m_nIconSize/2, 0, 2, 2, NULL);
+			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hWeaponSurf[i],LTNULL, x, y, 0, yr, yr, NULL);
 			if (GetConsoleInt("BindingNumbers",1) > 0)
 			{
 				
@@ -4130,7 +4136,7 @@ void CPlayerStats::DrawBoundWeapons(HSURFACE hScreen)
 		}
 		else if (m_fIconOffset[i] > 0.0f) 
 			m_fIconOffset[i] = 0.0f;
-		y += m_nIconSize;
+		y += m_nIconSize * yr;
 	}
 }
 
