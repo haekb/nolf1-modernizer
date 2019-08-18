@@ -10,6 +10,12 @@ This project is a work in progress.
  - Optimized some fill rendering
  - Fixed slow text rendering
 
+## Additional Config Commands
+The following are new config commands:
+  - `FramerateLock` - INT - Locks the framerate if the value is 1.
+  - `ShowFramerate` - INT - Displays the framerate if the value is 1.
+  - `OldMouseLook`  - INT - Uses the old mouse look code if the value is 1.
+
 ## Building
 You can now compile it using Visual Studio 2017, thanks to the NOLF2's sdk including some key files. They're all included and ready to compile.
 

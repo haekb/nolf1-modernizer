@@ -299,7 +299,7 @@ CPlayerStats::CPlayerStats()
 	m_nTargetNameHeight = 0;
 	m_hTargetNameSurface = LTNULL;
 
-	m_bShowFramerate = LTTRUE;//LTFALSE;
+	m_bShowFramerate = GetConfigInt("ShowFramerate", 0);
 	m_fFramerate = 0.0f;
 	m_fFramerateSamples = 0.0f;
 	m_iFramerateSampleIndex = 0;

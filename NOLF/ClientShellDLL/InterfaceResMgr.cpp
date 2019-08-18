@@ -446,7 +446,7 @@ LTBOOL CInterfaceResMgr::InitFonts()
 
         // ************* Air font
 		g_pLayoutMgr->GetAirFont(g_szFontName,sizeof(g_szFontName));
-        if (!SetupFont(m_pAirFont,LTTRUE,dwFlags))
+        if (!SetupFont(m_pAirFont,LTTRUE,dwFlags)) // This is actually not used?
 		{
 			debug_delete(m_pAirFont);
             m_pAirFont=LTNULL;
