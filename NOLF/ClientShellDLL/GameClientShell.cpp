@@ -2722,9 +2722,12 @@ void CGameClientShell::CalculateCameraRotation()
 		m_iCurrentMouseX += deltaX;
 		m_iCurrentMouseY += deltaY;
 
-		// TODO: Figure out mouse sensitivity...
-		offsets[0] = (float)(m_iCurrentMouseX - m_iPreviousMouseX) * 0.008000f;
-		offsets[1] = (float)(m_iCurrentMouseY - m_iPreviousMouseY) * 0.008000f;
+		// TODO: Clean up, Code is from GameSettings.
+		float nMouseSensitivity = GetConsoleFloat("MouseSensitivity", 1.0f);
+		float nScale = 0.00125f + ((float)nMouseSensitivity * 0.001125f);
+
+		offsets[0] = (float)(m_iCurrentMouseX - m_iPreviousMouseX) * nScale;
+		offsets[1] = (float)(m_iCurrentMouseY - m_iPreviousMouseY) * nScale;
 
 		m_iPreviousMouseX = m_iCurrentMouseX;
 		m_iPreviousMouseY = m_iCurrentMouseY;
