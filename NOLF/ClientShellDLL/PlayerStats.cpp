@@ -2806,6 +2806,27 @@ void CPlayerStats::DrawScope(HSURFACE hScreen, int nLeft, int nTop, int nRight, 
 	srect.bottom = 2;
 	srect.right = 2;
 
+	// Draw some filler for widescreen users
+	int xo = g_pInterfaceResMgr->GetXOffset();
+
+	// These use to be FillRect. Scaling a texture is way faster than whatever that was doing.
+	if (xo > 0)
+	{
+		rect.left = 0;
+		rect.right = xo;
+		rect.top = 0;
+		rect.bottom = g_pInterfaceResMgr->GetScreenHeight();
+
+		g_pOptimizedRenderer->FillRect(hScreen, &rect, LTNULL);
+
+		rect.right = g_pInterfaceResMgr->GetScreenWidth();
+		rect.left = g_pInterfaceResMgr->GetScreenWidth() - xo;
+		rect.top = 0;
+		rect.bottom = g_pInterfaceResMgr->GetScreenHeight();
+
+		g_pOptimizedRenderer->FillRect(hScreen, &rect, LTNULL);
+	}
+
 	switch (nType)
 	{
 	case 0:
