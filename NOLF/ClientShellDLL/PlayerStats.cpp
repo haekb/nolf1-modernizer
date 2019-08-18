@@ -40,6 +40,8 @@ extern CGameClientShell* g_pGameClientShell;
 #define CH_FULLRIGHT	(1 << 9)
 #define CH_FULLBOTTOM	(1 << 10)
 
+#define TOTAL_FRAMERATE_SAMPLES 10
+
 VarTrack g_vtHUDLayout;
 
 namespace
@@ -299,6 +301,9 @@ CPlayerStats::CPlayerStats()
 
 	m_bShowFramerate = LTTRUE;//LTFALSE;
 	m_fFramerate = 0.0f;
+	m_fFramerateSamples = 0.0f;
+	m_iFramerateSampleIndex = 0;
+
 }
 
 // ----------------------------------------------------------------------- //
@@ -1269,7 +1274,17 @@ void CPlayerStats::UpdateObjectives(uint8 nType, uint8 nTeam, uint32 dwId)
 
 void CPlayerStats::UpdateFramerate(LTFLOAT framerate)
 {
-	m_fFramerate = framerate;
+	// Sample up to 10 frames
+	if (m_iFramerateSampleIndex >= TOTAL_FRAMERATE_SAMPLES) {
+		m_fFramerate = m_fFramerateSamples / TOTAL_FRAMERATE_SAMPLES;
+
+		m_iFramerateSampleIndex = 0;
+		m_fFramerateSamples = 0;
+	}
+
+	m_fFramerateSamples += framerate;
+	m_iFramerateSampleIndex++;
+
 }
 
 // ----------------------------------------------------------------------- //
@@ -1412,7 +1427,7 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 	{
 		char szStr[32] = "";
 		sprintf(szStr, "Framerate: %.2f", m_fFramerate);
-		g_pInterfaceResMgr->GetMediumFont()->Draw(szStr, hScreen, 32, 10, LTF_JUSTIFY_LEFT, SETRGB(255, 255, 255));
+		g_pInterfaceResMgr->GetMediumFont()->Draw(szStr, hScreen, 32, nScreenHeight - 20, LTF_JUSTIFY_LEFT, SETRGB(255, 255, 255));
 	}
 #endif
 

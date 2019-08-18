@@ -333,6 +333,8 @@ protected:
 
 	LTBOOL		m_bShowFramerate;
 	LTFLOAT		m_fFramerate;
+	LTFLOAT		m_fFramerateSamples;
+	int			m_iFramerateSampleIndex;
 };
 
 #endif
