@@ -299,7 +299,7 @@ CPlayerStats::CPlayerStats()
 	m_nTargetNameHeight = 0;
 	m_hTargetNameSurface = LTNULL;
 
-	m_bShowFramerate = GetConfigInt("ShowFramerate", 0);
+	m_bShowFramerate = LTFALSE;
 	m_fFramerate = 0.0f;
 	m_fFramerateSamples = 0.0f;
 	m_iFramerateSampleIndex = 0;
@@ -487,6 +487,8 @@ LTBOOL CPlayerStats::Init()
 	hHealthTint = g_pLayoutMgr->GetHealthTint();
 	hArmorTint = g_pLayoutMgr->GetArmorTint();
 	hAmmoTint = g_pLayoutMgr->GetAmmoTint();
+
+	m_bShowFramerate = GetConfigInt("ShowFramerate", 0);
 
     return LTTRUE;
 }
