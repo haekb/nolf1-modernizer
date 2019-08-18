@@ -638,6 +638,7 @@ CGameClientShell::CGameClientShell()
 	GetConfigFile("autoexec.cfg");
 
 	m_bUserWantsFramerateLock = GetConfigInt("FramerateLock", 1);
+	m_bOldMouseLook = GetConfigInt("OldMouseLook", 0);
 
 	SDL_Log("Framerate Lock is <%d>", m_bUserWantsFramerateLock);
 }
@@ -2700,33 +2701,36 @@ void CGameClientShell::CalculateCameraRotation()
 	// Get axis offsets...
 	float offsets[3] = {0.0, 0.0, 0.0};
 
-#if 1
-	int deltaX,deltaY;
-
-	SDL_PumpEvents();
-
-	// Firstly, we need a point of reference.
-	// This conditional is here, in case we need to reset the mouse.
-	if(m_bGetBaseMouse) 
+	if (!m_bOldMouseLook)
 	{
-		SDL_GetMouseState(&m_iCurrentMouseX, &m_iCurrentMouseY);
-		m_bGetBaseMouse = LTFALSE;
+		int deltaX, deltaY;
+
+		SDL_PumpEvents();
+
+		// Firstly, we need a point of reference.
+		// This conditional is here, in case we need to reset the mouse.
+		if (m_bGetBaseMouse)
+		{
+			SDL_GetMouseState(&m_iCurrentMouseX, &m_iCurrentMouseY);
+			m_bGetBaseMouse = LTFALSE;
+		}
+
+		SDL_GetRelativeMouseState(&deltaX, &deltaY);
+
+		m_iCurrentMouseX += deltaX;
+		m_iCurrentMouseY += deltaY;
+
+		// TODO: Figure out mouse sensitivity...
+		offsets[0] = (float)(m_iCurrentMouseX - m_iPreviousMouseX) * 0.008000f;
+		offsets[1] = (float)(m_iCurrentMouseY - m_iPreviousMouseY) * 0.008000f;
+
+		m_iPreviousMouseX = m_iCurrentMouseX;
+		m_iPreviousMouseY = m_iCurrentMouseY;
 	}
-
-	SDL_GetRelativeMouseState(&deltaX, &deltaY);
-
-	m_iCurrentMouseX += deltaX;
-	m_iCurrentMouseY += deltaY;
-
-	// TODO: Figure out mouse sensitivity...
-	offsets[0] = (float)(m_iCurrentMouseX - m_iPreviousMouseX) * 0.008000f;
-	offsets[1] = (float)(m_iCurrentMouseY - m_iPreviousMouseY) * 0.008000f;
-
-	m_iPreviousMouseX = m_iCurrentMouseX;
-	m_iPreviousMouseY = m_iCurrentMouseY;
-#else
-    g_pLTClient->GetAxisOffsets(offsets);
-#endif
+	else
+	{
+		g_pLTClient->GetAxisOffsets(offsets);
+	}
 
 	if (m_bRestoreOrientation)
 	{
