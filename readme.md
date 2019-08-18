@@ -2,12 +2,13 @@
 
 The goal of NOLF Modernizer is to help fix some long standing bugs, and update some more outdated features of the game.
 
-This project is heavily WIP.
+This project is a work in progress.
 
 ## Features
  - Cap framerate during menus and gameplay to 60fps
  - Fixed the mouse stutter
  - Optimized some fill rendering
+ - Fixed slow text rendering
 
 ## Building
 You can now compile it using Visual Studio 2017, thanks to the NOLF2's sdk including some key files. They're all included and ready to compile.

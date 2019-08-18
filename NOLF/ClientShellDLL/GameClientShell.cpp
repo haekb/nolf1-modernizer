@@ -641,6 +641,8 @@ CGameClientShell::CGameClientShell()
 	m_bOldMouseLook = GetConfigInt("OldMouseLook", 0);
 
 	SDL_Log("Framerate Lock is <%d>", m_bUserWantsFramerateLock);
+	SDL_Log("Old Mouse Look is <%d>", m_bOldMouseLook);
+
 }
 
 
