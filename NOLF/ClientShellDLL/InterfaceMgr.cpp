@@ -3986,6 +3986,9 @@ void CInterfaceMgr::ScreenDimsChanged()
 	UpdateInterfaceBackground();
 
 	m_Subtitle.ScreenDimsChanged();
+
+	g_pOptimizedRenderer->Term();
+	g_pOptimizedRenderer->Init();
 }
 
 
@@ -4969,7 +4972,7 @@ void CInterfaceMgr::UpdateInterfaceBackground()
     g_pLTClient->GetRotationVectors(&rRot, &vU, &vR, &vF);
 
 	VEC_MULSCALAR(vTemp, vF, g_fBackDist);
-	VEC_MULSCALAR(vTemp, vTemp, g_pInterfaceResMgr->GetXRatio());
+	VEC_MULSCALAR(vTemp, vTemp, 1);
 	VEC_ADD(vPos, vPos, vTemp);
 
     g_pLTClient->SetObjectPos(m_BackSprite.GetObject(), &vPos);

@@ -431,7 +431,7 @@ void CFolderWeapons::CreateModelSFX()
 	VEC_ADD(vModPos,vModPos,m_vOffset);
     
 	VEC_MULSCALAR(vTemp, vF, vModPos.z);
-	VEC_MULSCALAR(vTemp, vTemp, g_pInterfaceResMgr->GetXRatio());
+	VEC_MULSCALAR(vTemp, vTemp, 1);//g_pInterfaceResMgr->GetXRatio());
 	VEC_ADD(vPos, vPos, vTemp);
 
 	VEC_MULSCALAR(vTemp, vR, vModPos.x);

@@ -19,7 +19,7 @@
 #include "stdlith.h"
 #include "BaseScaleFX.h"
 #include "StaticTextCtrl.h"
-
+#include <vector>
 
 #define MAX_INT_ATTACHMENTS 5
 struct INT_ATTACH
@@ -281,6 +281,9 @@ protected:
 
 	// Array of fixed controls that this folder owns
 	CMoArray<CLTGUICtrl *>	m_fixedControlArray;
+
+	// For reference, we need to store the original fixed control positions
+	std::vector<LTIntPt> m_fixedControlPositions;
 
 	// Array of fixed controls that should be skipped by next/previous selection
 	CMoArray<CLTGUICtrl *>	m_skipControlArray;

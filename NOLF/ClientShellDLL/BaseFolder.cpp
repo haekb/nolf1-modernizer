@@ -329,6 +329,14 @@ LTBOOL CBaseFolder::Render(HSURFACE hDestSurf)
 	unsigned int i;
 	for ( i = 0; i < m_fixedControlArray.GetSize(); i++ )
 	{
+		// By the law that governs this bit of code, I demand that these be the same.
+		LTIntPt pos = m_fixedControlPositions[i];
+
+		pos.x = (int)((float)pos.x * g_pInterfaceResMgr->GetYRatio()) + g_pInterfaceResMgr->Get4x3Offset();
+		pos.y = (int)((float)pos.y * g_pInterfaceResMgr->GetYRatio());
+
+		m_fixedControlArray[i]->SetPos(pos);
+
 		m_fixedControlArray[i]->Render ( hDestSurf );
 	}
 
@@ -1238,6 +1246,9 @@ void CBaseFolder::RemoveFixed()
 	m_fixedControlArray.SetSize(0);
 	if (m_nSelection < 0)
 		m_nSelection = kNoSelection;
+
+	// Remove the saved positions
+	m_fixedControlPositions.clear();
 }
 
 LTBOOL CBaseFolder::NextPage(LTBOOL bChangeSelection)
@@ -1317,6 +1328,7 @@ int CBaseFolder::AddFixedControl(CLTGUICtrl* pCtrl, LTIntPt pos, LTBOOL bSelecta
 	if (!pCtrl) return 0;
 
 	// Make sure the control wasn't already added...
+	
 
 	for (int i = (int)m_fixedControlArray.GetSize()-1; i >=0; i--)
 	{
@@ -1326,15 +1338,19 @@ int CBaseFolder::AddFixedControl(CLTGUICtrl* pCtrl, LTIntPt pos, LTBOOL bSelecta
 		}
 	}
 
-	// Need to do this here, it messes up on render()
-	pos.x = (int)((float)pos.x * g_pInterfaceResMgr->GetYRatio()) + g_pInterfaceResMgr->Get4x3Offset();
-	pos.y = (int)((float)pos.y * g_pInterfaceResMgr->GetYRatio());
-
 	pCtrl->SetPos(pos);
+	
 	m_fixedControlArray.Add(pCtrl);
-	if (!bSelectable)
+
+	// Keep track of the original position
+	m_fixedControlPositions.push_back(pos);
+	
+	if (!bSelectable) {
 		m_skipControlArray.Add(pCtrl);
+	}
+	
 	int num = m_fixedControlArray.GetSize();
+	
 	return FixedIndex(num-1);
 
 }
@@ -1907,6 +1923,7 @@ void CBaseFolder::RemoveFixedControl(CLTGUICtrl* pControl)
 	if (findIndex < m_fixedControlArray.GetSize())
 	{
 		m_fixedControlArray.Remove(findIndex);
+		m_fixedControlPositions.erase(m_fixedControlPositions.begin() + findIndex);
 	}
 	findIndex = m_skipControlArray.FindElement(pControl);
 	if (findIndex < m_skipControlArray.GetSize())

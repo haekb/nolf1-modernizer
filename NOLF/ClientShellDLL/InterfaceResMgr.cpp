@@ -824,7 +824,7 @@ LTBOOL CInterfaceResMgr::SetupFont(CLTGUIFont *pFont, LTBOOL bBlend, uint32 dwFl
 
 CLTGUIFont* CInterfaceResMgr::GetLargeFont()
 {
-	if(m_pLargeHDFont != LTNULL && GetScreenHeight() > 720) {
+	if(m_pLargeHDFont != LTNULL && GetScreenHeight() > 900) {
 		return m_pLargeHDFont;
 	}
 

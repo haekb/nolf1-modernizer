@@ -10,6 +10,7 @@
 #include "GameClientShell.h"
 #include "GameSettings.h"
 extern CGameClientShell* g_pGameClientShell;
+extern SDL_Window* g_SDLWindow;
 
 namespace
 {
@@ -247,16 +248,6 @@ void CFolderDisplay::BuildRendererArray()
 	{
 		if (pCurrentMode->m_Width >= 640 && pCurrentMode->m_Height >= 480)
 		{
-			// disallow non-standard aspect ratios
-			uint32 testWidth = (pCurrentMode->m_Height * 4 / 3);
-			if (pCurrentMode->m_Width != testWidth)
-			{
-			
-				// Go to the next render mode
-				pCurrentMode=pCurrentMode->m_pNext;
-				continue;
-			}
-
 			// Get the index for this renderer
 			int nRenderIndex=GetRendererIndex(pCurrentMode);
 
@@ -378,8 +369,6 @@ LTBOOL CFolderDisplay::SetRenderer(int nRendererIndex, int nResolutionIndex)
     g_pLTClient->SetRenderMode(&newMode);
     g_pInterfaceMgr->SetSwitchingRenderModes(LTFALSE);
 
-
-
 	// Write the renderer information to the autoexec.cfg file
 	char szTemp[256];
 	sprintf(szTemp, "+RenderDll %s\0", newMode.m_RenderDLL);
@@ -397,10 +386,13 @@ LTBOOL CFolderDisplay::SetRenderer(int nRendererIndex, int nResolutionIndex)
 	sprintf(szTemp, "+bitdepth %d\0", newMode.m_BitDepth);
     g_pLTClient->RunConsoleString(szTemp);
 
+	// Swap window size and re-centre.
+	// I'm not sure I broke this, or if windowed mode was always iffy.
+	SDL_SetWindowSize(g_SDLWindow, newMode.m_Width, newMode.m_Height);
+	SDL_SetWindowPosition(g_SDLWindow, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
 
 	g_pInterfaceMgr->ScreenDimsChanged();
 	g_pInterfaceMgr->InitCursor();
-
 
     return LTTRUE;
 }
