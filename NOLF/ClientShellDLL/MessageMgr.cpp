@@ -399,7 +399,8 @@ void CMessageMgr::Draw( void )
 
 		if (pMsg->hSurface)
 		{
-            g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen,pMsg->hSurface,LTNULL,x,y,hTransColor);
+			// No transparency, no slow down! Couldn't find any difference.
+			g_pLTClient->DrawSurfaceToSurface(hScreen, pMsg->hSurface, LTNULL, x, y);
 		}
 		y += pMsg->nHeight;
 
