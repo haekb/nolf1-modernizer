@@ -2239,7 +2239,7 @@ void Door::Load(HMESSAGEREAD hRead, uint32 dwLoadFlags)
 	// Bad fix for bombs in mission 2
 	if (invalidLoad) 
 	{
-		m_dwDoorState = DOORSTATE_CLOSED;
+		//m_dwDoorState = DOORSTATE_CLOSED;
 	}
 
 	// If opening or closing sounds were being played, make sure we play them...
