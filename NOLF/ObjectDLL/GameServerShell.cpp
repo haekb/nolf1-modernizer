@@ -2342,48 +2342,22 @@ void CGameServerShell::Update(LTFLOAT timeElapsed)
 	UpdateTimeOfDay(timeElapsed);
 
 	// The rest is multiplayer only....
-	if (GetGameType() != SINGLE) {
+	if (GetGameType() == SINGLE)  return;
 
-		// Update client ping times
-		UpdateClientPingTimes();
+	// Update client ping times
+	UpdateClientPingTimes();
 
-		// Update GameSpy.
-		UpdateGameSpyMgr();
+	// Update GameSpy.
+	UpdateGameSpyMgr();
 
-		// Update game server info...
-		UpdateGameServer();
+	// Update game server info...
+	UpdateGameServer();
 
-		// Update multiplayer stuff...
-		UpdateMultiplayer();
+	// Update multiplayer stuff...
+	UpdateMultiplayer();
 
-		// See if we should change worlds.
-		CheckMultiSwitchWorlds();
-	}
-
-	// Limit our framerate so the game actually runs properly.
-	LARGE_INTEGER NewTime;
-	LARGE_INTEGER m_lTimerFrequency;
-	static unsigned long m_lFrametime;
-	static unsigned long m_lNextUpdate;
-	while (1) {
-		//Sleep(0);
-
-		QueryPerformanceCounter(&NewTime);
-		// If we can't get timer frequency, we can't limit the framerate!
-		if (!QueryPerformanceFrequency(&m_lTimerFrequency)) {
-
-		}
-
-		m_lFrametime = (m_lTimerFrequency.QuadPart / 60);
-
-		
-		unsigned long lTime = NewTime.QuadPart - m_lNextUpdate;
-		if (lTime > m_lFrametime) {
-			m_lNextUpdate = NewTime.QuadPart;
-			break;
-		}
-	}
-
+	// See if we should change worlds.
+	CheckMultiSwitchWorlds();
 }
 
 
