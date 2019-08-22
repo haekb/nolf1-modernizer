@@ -19,7 +19,8 @@
 #include "keyframer_light.h"
 #include "hingeddoor.h"
 #include "CommandMgr.h"
-
+#include <cmath>
+#include "SDL.h"
 // Defines....
 
 #define UPDATE_DELTA					0.01f
@@ -341,8 +342,8 @@ Door::Door() : GameBase(OT_WORLDMODEL)
     m_hDoorLink             = LTNULL;
     m_hstrDoorLink          = LTNULL;
 
-	m_vMoveDir.Init();
-	m_vSoundPos.Init();
+	m_vMoveDir.Init(0, 0, 0);
+	m_vSoundPos.Init(0, 0, 0);
 
 	m_dwWaveform			= DOORWAVE_LINEAR;
 
@@ -2142,6 +2143,8 @@ void Door::Load(HMESSAGEREAD hRead, uint32 dwLoadFlags)
 {
 	if (!hRead) return;
 
+	LTBOOL invalidLoad = LTFALSE;
+
     g_pLTServer->ReadFromLoadSaveMessageObject(hRead, &m_hActivateObj);
     g_pLTServer->ReadFromLoadSaveMessageObject(hRead, &m_hAttachmentObj);
     g_pLTServer->ReadFromLoadSaveMessageObject(hRead, &m_hDoorLink);
@@ -2151,6 +2154,34 @@ void Door::Load(HMESSAGEREAD hRead, uint32 dwLoadFlags)
     g_pLTServer->ReadFromMessageVector(hRead, &m_vOpenPos);
     g_pLTServer->ReadFromMessageVector(hRead, &m_vClosedPos);
     g_pLTServer->ReadFromMessageVector(hRead, &m_vAttachDir);
+
+	// NAN check -- For some reason the bombs in mission 2 return NAN for MoveDir.
+	if (isnan(m_vMoveDir.x)) {
+		SDL_Log("m_vMoveDir is NAN for some reason! Resetting.");
+		m_vMoveDir.Init();
+		invalidLoad = LTTRUE;
+	}
+	if (isnan(m_vSoundPos.x)) {
+		SDL_Log("m_vSoundPos is NAN for some reason! Resetting.");
+		m_vSoundPos.Init();
+		invalidLoad = LTTRUE;
+	}
+	if (isnan(m_vOpenPos.x)) {
+		SDL_Log("m_vOpenPos is NAN for some reason! Resetting.");
+		m_vOpenPos.Init();
+		invalidLoad = LTTRUE;
+	}
+	if (isnan(m_vClosedPos.x)) {
+		SDL_Log("m_vClosedPos is NAN for some reason! Resetting.");
+		m_vClosedPos.Init();
+		invalidLoad = LTTRUE;
+	}
+	if (isnan(m_vAttachDir.x)) {
+		SDL_Log("m_vAttachDir is NAN for some reason! Resetting.");
+		m_vAttachDir.Init();
+		invalidLoad = LTTRUE;
+	}
+
     m_fSpeed                = g_pLTServer->ReadFromMessageFloat(hRead);
     m_fMoveDist             = g_pLTServer->ReadFromMessageFloat(hRead);
     m_fOpenWaitTime         = g_pLTServer->ReadFromMessageFloat(hRead);
@@ -2205,6 +2236,11 @@ void Door::Load(HMESSAGEREAD hRead, uint32 dwLoadFlags)
 		}
 	}
 
+	// Bad fix for bombs in mission 2
+	if (invalidLoad) 
+	{
+		m_dwDoorState = DOORSTATE_CLOSED;
+	}
 
 	// If opening or closing sounds were being played, make sure we play them...
 
