@@ -210,7 +210,7 @@
       <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
       <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <PostBuildEvent>
       <Command>copy debug\cshell.dll $(NOLF_BUILD_DIR)

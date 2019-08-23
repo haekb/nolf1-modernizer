@@ -211,6 +211,7 @@
       <ObjectFileName>.\Debug\</ObjectFileName>
       <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
       <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <PostBuildEvent>
       <Command>copy debug\object.lto $(NOLF_BUILD_DIR)</Command>
