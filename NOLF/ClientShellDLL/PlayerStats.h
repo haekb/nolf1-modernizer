@@ -123,6 +123,8 @@ public:
 
     void        DrawBoundWeapons(HSURFACE hScreen);
 
+	void		UpdateConfigSettings();
+
 protected:
 
 	void		CreateCrosshairs();

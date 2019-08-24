@@ -90,6 +90,9 @@ private:
     LTBOOL                          m_bTexture32;
 	LTBOOL							m_bEscape;
 	LTBOOL							m_bHardwareCursor;
+	LTBOOL							m_bLockFramerate;
+	LTBOOL							m_bShowFramerate;
+	LTBOOL							m_bRestrictAspectRatio;
 
 	CLTGUITextItemCtrl				*m_pRendererLabel;		// The renderer label control
 	CLTGUITextItemCtrl				*m_pResolutionLabel;	// The resolution label control

@@ -642,8 +642,7 @@ CGameClientShell::CGameClientShell()
 	// Load up our config file
 	GetConfigFile("autoexec.cfg");
 
-	m_bUserWantsFramerateLock = GetConfigInt("FramerateLock", 1);
-	m_bOldMouseLook = GetConfigInt("OldMouseLook", 0);
+	UpdateConfigSettings();
 
 	SDL_Log("Framerate Lock is <%d>", m_bUserWantsFramerateLock);
 	SDL_Log("Old Mouse Look is <%d>", m_bOldMouseLook);
@@ -929,6 +928,18 @@ void CGameClientShell::CSPrint(char* msg, ...)
 
 	// now display the message
 	m_InterfaceMgr.GetMessageMgr()->AddLine(pMsg);
+}
+
+void CGameClientShell::UpdateConfigSettings()
+{
+	m_bUserWantsFramerateLock = GetConfigInt("FramerateLock", 1);
+	m_bOldMouseLook = GetConfigInt("OldMouseLook", 0);
+
+	// Update other config settings if available!
+	if (g_pInterfaceMgr)
+	{
+		g_pInterfaceMgr->UpdateConfigSettings();
+	}
 }
 
 
@@ -1366,6 +1377,9 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 	{
         DoLoadWorld("", NULL, NULL, LOAD_NEW_GAME, NULL, g_pLTClient->GetVarValueString(hVar));
 	}
+
+	// Quickfix in case this gets stuck on.
+	g_pLTClient->RunConsoleString("CursorCenter 0");
 
 
 	return LT_OK;

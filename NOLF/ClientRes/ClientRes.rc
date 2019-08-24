@@ -7652,7 +7652,7 @@ BEGIN
     IDS_HELP_BANDWIDTH_EDIT "Specifies a custom bandwidth"
     IDS_BANDWIDTH_EDIT      "Bandwidth (custom)"
     IDS_SHOW_FRAMERATE      "Display Framerate"
-    IDS_LOCK_FRAMERATE      "Lock Framerate to 60fps"
+    IDS_LOCK_FRAMERATE      "Lock Framerate"
     IDS_OLD_MOUSELOOK       "Legacy Mouselook"
     IDS_4X3_CINEMATICS      "Cinematic Aspect Ratio"
     IDS_QUICK_SWITCH        "Quick Switch"
@@ -7665,6 +7665,10 @@ STRINGTABLE
 BEGIN
     IDS_HELP_4X3_CINEMATICS "Hide visual imperfections during cinematics with more black bars!"
     IDS_HELP_QUICKSWITCH    "Instantly switch between weapons."
+    IDS_60_FPS              "60 FPS"
+    IDS_UNLOCKED_FPS        "Unlocked Framerate"
+    IDS_UNLOCKED_ASPECT     "Wide"
+    IDS_LOCKED_ASPECT       "4:3"
 END
 
 #endif    // English (United States) resources

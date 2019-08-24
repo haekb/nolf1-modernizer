@@ -488,7 +488,7 @@ LTBOOL CPlayerStats::Init()
 	hArmorTint = g_pLayoutMgr->GetArmorTint();
 	hAmmoTint = g_pLayoutMgr->GetAmmoTint();
 
-	m_bShowFramerate = GetConfigInt("ShowFramerate", 0);
+	UpdateConfigSettings();
 
     return LTTRUE;
 }
@@ -4159,6 +4159,11 @@ void CPlayerStats::DrawBoundWeapons(HSURFACE hScreen)
 			m_fIconOffset[i] = 0.0f;
 		y += m_nIconSize * yr;
 	}
+}
+
+void CPlayerStats::UpdateConfigSettings()
+{
+	m_bShowFramerate = GetConfigInt("ShowFramerate", 0);
 }
 
 

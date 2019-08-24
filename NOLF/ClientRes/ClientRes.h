@@ -6394,6 +6394,11 @@
 #define IDS_HELP_OLD_MOUSELOOK          20575
 #define IDS_HELP_4X3_CINEMATICS         20576
 #define IDS_HELP_QUICKSWITCH            20577
+#define IDS_60_FPS                      20578
+#define IDS_UNLOCKED_FPS                20579
+#define IDS_UNLOCKED_ASPECT             20580
+#define IDS_STRING20581                 20581
+#define IDS_LOCKED_ASPECT               20581
 
 // Next default values for new objects
 // 

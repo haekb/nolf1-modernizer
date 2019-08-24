@@ -144,6 +144,8 @@ void CFolderMouse::OnFocus(LTBOOL bFocus)
 
         g_pLTClient->WriteConfigFile("autoexec.cfg");
 		GetConfigFile("autoexec.cfg");
+
+		g_pGameClientShell->UpdateConfigSettings();
 	}
 	CBaseFolder::OnFocus(bFocus);
 }

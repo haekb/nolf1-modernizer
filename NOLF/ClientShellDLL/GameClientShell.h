@@ -256,6 +256,7 @@ class CGameClientShell : public IClientShell
 		const LTFLOAT *GetServerOptions() const {return m_fServerOptions;}
 
 		void SetFramerateLock(LTBOOL bLock) { m_bLockFramerate = bLock; }
+		void UpdateConfigSettings();
 
 	protected :
 

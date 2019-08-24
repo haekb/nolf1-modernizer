@@ -456,6 +456,8 @@ LTBOOL CInterfaceMgr::Init()
 		pFolder->SetOverall(nLevel);
 	}
 
+	UpdateConfigSettings();
+
     return LTTRUE;
 }
 
@@ -613,6 +615,29 @@ void CInterfaceMgr::OnExitWorld()
 
     m_bFadeInitialized = LTFALSE;
 	m_bExitAfterFade = LTFALSE;
+}
+
+void CInterfaceMgr::UpdateConfigSettings()
+{
+	LTBOOL previousOldMouseLookSetting = m_bOldMouseLook;
+	LTBOOL previousNoFunMenusSetting = m_bNoFunMenus;
+
+	m_bOldMouseLook = GetConfigInt("OldMouseLook", 0);
+	m_bNoFunMenus = GetConfigInt("NoFunMenus", 0);
+	m_bQuickSwitch = GetConfigInt("QuickSwitch", 0);
+	m_bRestrictAspectRatio = GetConfigInt("RestrictCinematicsTo4x3", 0);
+
+	// Just in case, turn off CursorCenter!
+	//g_pLTClient->RunConsoleString("CursorCenter 0");
+
+	// Break the folder cache
+	if (previousNoFunMenusSetting != m_bNoFunMenus)
+	{
+		m_eMainFolderID = FOLDER_ID_NONE;
+	}
+
+	// Update any other config settings
+	m_stats.UpdateConfigSettings();
 }
 
 
@@ -2313,7 +2338,7 @@ LTBOOL CInterfaceMgr::OnCommandOn(int command)
 			{
 				m_WeaponChooser.PrevWeapon();
 
-				if (GetConfigInt("QuickSwitch", 0) == 1)
+				if (m_bQuickSwitch == 1)
 				{
 					uint8 nCurrWeapon = m_WeaponChooser.GetCurrentSelection();
 					g_pGameClientShell->GetWeaponModel()->ChangeWeapon(g_pWeaponMgr->GetCommandId(nCurrWeapon), LTTRUE, LTTRUE);
@@ -2338,7 +2363,7 @@ LTBOOL CInterfaceMgr::OnCommandOn(int command)
 			{
 				m_WeaponChooser.NextWeapon();
 
-				if (GetConfigInt("QuickSwitch", 0) == 1)
+				if (m_bQuickSwitch == 1)
 				{
 					uint8 nCurrWeapon = m_WeaponChooser.GetCurrentSelection();
 					g_pGameClientShell->GetWeaponModel()->ChangeWeapon(g_pWeaponMgr->GetCommandId(nCurrWeapon), LTTRUE, LTTRUE);
@@ -3854,7 +3879,7 @@ eFolderID CInterfaceMgr::GetMainFolder()
 	}
 
 	// Restrict to just the base menu
-	if (GetConfigInt("NoFunMenus", 0) == 1)
+	if (m_bNoFunMenus == 1)
 	{
 		m_eMainFolderID = FOLDER_ID_MAIN;
 		return m_eMainFolderID;
@@ -4286,8 +4311,14 @@ void CInterfaceMgr::UseCursor(LTBOOL bUseCursor)
 	m_bUseCursor = bUseCursor;
 	if (m_bUseCursor)
 	{
-		// Gives us back control of the cursor
-		SDL_SetRelativeMouseMode(SDL_FALSE);
+		if (m_bOldMouseLook)
+		{
+			g_pLTClient->RunConsoleString("CursorCenter 0");
+		}
+		else {
+			// Gives us back control of the cursor
+			SDL_SetRelativeMouseMode(SDL_FALSE);
+		}
 
 		if (m_bUseHardwareCursor)
 		{
@@ -4296,8 +4327,14 @@ void CInterfaceMgr::UseCursor(LTBOOL bUseCursor)
 	}
 	else
 	{
-		// Similar to CursorCenter mode, but not as fudged up
-		SDL_SetRelativeMouseMode(SDL_TRUE);
+		if (m_bOldMouseLook)
+		{
+			g_pLTClient->RunConsoleString("CursorCenter 1");
+		}
+		else {
+			// Similar to CursorCenter mode, but not as fudged up
+			SDL_SetRelativeMouseMode(SDL_TRUE);
+		}
         g_pLTClient->Cursor()->SetCursorMode(CM_None);
 
 	}
@@ -4847,7 +4884,7 @@ void CInterfaceMgr::UpdateLetterBox()
  	g_pLTClient->ScaleSurfaceToSurfaceTransparent(hScreen, m_hLetterBoxSurface,
 	   &rcDest, &rcSrc, hTransColor);
 
-	if (GetConfigInt("RestrictCinematicsTo4x3", 0) == 1)
+	if (m_bRestrictAspectRatio == 1)
 	{
 		int offsetX = g_pInterfaceResMgr->GetXOffset();
 

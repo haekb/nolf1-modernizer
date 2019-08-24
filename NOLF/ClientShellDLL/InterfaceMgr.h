@@ -121,6 +121,8 @@ class CInterfaceMgr
         void    OnEnterWorld(LTBOOL bRestoringGame=LTFALSE);
 		void	OnExitWorld();
 
+		void UpdateConfigSettings();
+
         LTBOOL	OnCommandOn(int command);
         LTBOOL	OnCommandOff(int command);
         LTBOOL	OnKeyDown(int key, int rep);
@@ -522,6 +524,11 @@ class CInterfaceMgr
 		uint32	m_nOldLoadWorldCount;
 
 		eFolderID m_eMainFolderID;
+
+		LTBOOL		m_bOldMouseLook; // If the user wants to use the old mouselook.
+		LTBOOL		m_bNoFunMenus;
+		LTBOOL		m_bQuickSwitch;
+		LTBOOL		m_bRestrictAspectRatio; // For cinematics
 };
 
 
