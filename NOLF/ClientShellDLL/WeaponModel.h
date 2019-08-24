@@ -40,7 +40,7 @@ class CWeaponModel
 
         LTBOOL	Init();
         LTBOOL	Create(ILTClient* pClientDE, uint8 nWeaponId, uint8 nAmmoId, uint32 dwAmmo);
-        void	ChangeWeapon(uint8 nCommandId, LTBOOL bCanDeselect=LTTRUE);
+        void	ChangeWeapon(uint8 nCommandId, LTBOOL bCanDeselect=LTTRUE, LTBOOL bDontCloseChoose = LTFALSE);
 
 		void	SetupModel();
 

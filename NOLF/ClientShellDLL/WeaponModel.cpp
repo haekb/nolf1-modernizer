@@ -3379,7 +3379,7 @@ LTBOOL CWeaponModel::GetBestAvailableAmmoType(uint8 nWeaponId, int & nAmmoType)
 //
 // ----------------------------------------------------------------------- //
 
-void CWeaponModel::ChangeWeapon(uint8 nCommandId, LTBOOL bCanDeselect)
+void CWeaponModel::ChangeWeapon(uint8 nCommandId, LTBOOL bCanDeselect, LTBOOL bDontCloseChooser)
 {
 	if (!CanChangeToWeapon(nCommandId)) return;
 
@@ -3393,8 +3393,10 @@ void CWeaponModel::ChangeWeapon(uint8 nCommandId, LTBOOL bCanDeselect)
 		return;
 	}
 
-	if (g_pInterfaceMgr->IsChoosingWeapon() || g_pInterfaceMgr->IsChoosingAmmo())
+	if (!bDontCloseChooser && (g_pInterfaceMgr->IsChoosingWeapon() || g_pInterfaceMgr->IsChoosingAmmo()))
+	{
 		g_pInterfaceMgr->CloseChoosers();
+	}
 
 	// Handle deselection of current weapon...
 

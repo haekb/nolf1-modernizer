@@ -2312,6 +2312,12 @@ LTBOOL CInterfaceMgr::OnCommandOn(int command)
 			if (m_WeaponChooser.Open())
 			{
 				m_WeaponChooser.PrevWeapon();
+
+				if (GetConfigInt("QuickSwitch", 0) == 1)
+				{
+					uint8 nCurrWeapon = m_WeaponChooser.GetCurrentSelection();
+					g_pGameClientShell->GetWeaponModel()->ChangeWeapon(g_pWeaponMgr->GetCommandId(nCurrWeapon), LTTRUE, LTTRUE);
+				}
 			}
             return LTTRUE;
 
@@ -2331,6 +2337,13 @@ LTBOOL CInterfaceMgr::OnCommandOn(int command)
 			if (m_WeaponChooser.Open())
 			{
 				m_WeaponChooser.NextWeapon();
+
+				if (GetConfigInt("QuickSwitch", 0) == 1)
+				{
+					uint8 nCurrWeapon = m_WeaponChooser.GetCurrentSelection();
+					g_pGameClientShell->GetWeaponModel()->ChangeWeapon(g_pWeaponMgr->GetCommandId(nCurrWeapon), LTTRUE, LTTRUE);
+				}
+
 			}
             return LTTRUE;
 		}
