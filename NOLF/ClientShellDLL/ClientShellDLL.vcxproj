@@ -105,7 +105,7 @@
       <Optimization>MaxSpeed</Optimization>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\shared;..\..\lt2\sdk\inc;..\..\lt2\lithshared\incs;..\ClientShellDLL;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\shared;..\..\lt2\sdk\inc;..\..\lt2\lithshared\incs;..\ClientShellDLL;..\..\LIBS\SDL2-2.0.10\include;..\..\lt2\lithshared\lith;..\..\lt2\lithshared\ButeMgr\;..\..\lt2\lithshared\CryptMgr;..\..\lt2\lithshared\mfcstub;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_REZFILE;_FINAL;NDEBUG;_CLIENTBUILD;WIN32;_WINDOWS;_NOLFBUILD;NO_PRAGMA_LIBS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\Final_Release\</AssemblerListingLocation>
       <PrecompiledHeaderOutputFile>.\Final_Release\ClientShellDLL.pch</PrecompiledHeaderOutputFile>
@@ -113,6 +113,8 @@
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
       <ObjectFileName>.\Final_Release\</ObjectFileName>
       <ProgramDataBaseFileName>.\Final_Release\</ProgramDataBaseFileName>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
     </ClCompile>
     <PostBuildEvent>
       <Command>copy Final_Release\cshell.dll $(NOLF_BUILD_DIR)</Command>
@@ -137,10 +139,12 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <LinkDLL>true</LinkDLL>
       <SubSystem>Windows</SubSystem>
-      <IgnoreSpecificDefaultLibraries>LIBCMTD;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <IgnoreSpecificDefaultLibraries>LIBCMTD;\proj\libs\release\StdLith.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <OutputFile>Final_Release\CShell.dll</OutputFile>
       <ImportLibrary>.\Final_Release\CShell.lib</ImportLibrary>
-      <AdditionalDependencies>odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>odbc32.lib;odbccp32.lib;ButeMgr.lib;cryptmgr.lib;GameSpyClientMgr.lib;MFCStub.lib;StdLith.lib;RegMgr.lib;ltguimgr_LT2.lib;LithFontMgr_LT2.lib;SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalLibraryDirectories>..\..\lt2\lithshared\built\Release\ButeMgr;..\..\lt2\lithshared\built\Release\CryptMgr;..\..\lt2\lithshared\built\Release\MFCStub;..\..\lt2\lithshared\libs\Release;..\..\LIBS\SDL2-2.0.10\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -214,7 +218,9 @@
     </ClCompile>
     <PostBuildEvent>
       <Command>copy debug\cshell.dll $(NOLF_BUILD_DIR)
-call "D:\GameDev\no-one-lives-forever-master\NOLF\ClientShellDLL\_after_build.bat"</Command>
+cd ..\
+
+call "D:\GameDev\no-one-lives-forever-master\NOLF\_after_build_debug.bat"</Command>
       <Message>Running Post Build Script</Message>
     </PostBuildEvent>
     <Midl>
@@ -240,11 +246,10 @@ call "D:\GameDev\no-one-lives-forever-master\NOLF\ClientShellDLL\_after_build.ba
       <SubSystem>Windows</SubSystem>
       <OutputFile>debug\CShell.dll</OutputFile>
       <ImportLibrary>.\Debug\CShell.lib</ImportLibrary>
-      <AdditionalDependencies>odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>odbc32.lib;odbccp32.lib;ButeMgr.lib;cryptmgr.lib;GameSpyClientMgr.lib;MFCStub.lib;StdLith.lib;RegMgr.lib;ltguimgr_LT2.lib;LithFontMgr_LT2.lib;SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
       <IgnoreSpecificDefaultLibraries>libcimtd.lib;MSVCRTD.lib</IgnoreSpecificDefaultLibraries>
-      <AdditionalLibraryDirectories>
-      </AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\lt2\lithshared\built\Debug\ButeMgr;..\..\lt2\lithshared\built\Debug\CryptMgr;..\..\lt2\lithshared\built\Debug\MFCStub;..\..\lt2\lithshared\libs\Debug;..\..\LIBS\SDL2-2.0.10\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Final Debug|Win32'">
@@ -731,56 +736,6 @@ call "D:\GameDev\no-one-lives-forever-master\NOLF\ClientShellDLL\_after_build.ba
     <ClInclude Include="WeaponStringDefs.h" />
     <ClInclude Include="WeatherFX.h" />
     <ClInclude Include="WinUtil.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="..\..\LIBS\SDL2-2.0.10\lib\x86\SDL2.lib" />
-    <Library Include="..\..\LIBS\SDL2-2.0.10\lib\x86\SDL2main.lib" />
-    <Library Include="..\..\LT2\lithshared\built\Debug\ButeMgr\ButeMgr.lib" />
-    <Library Include="..\..\LT2\lithshared\built\Debug\CryptMgr\cryptmgr.lib" />
-    <Library Include="..\..\LT2\lithshared\built\Debug\MFCStub\MFCStub.lib" />
-    <Library Include="..\..\LT2\lithshared\libs\Debug\GameSpyClientMgr.lib">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Debug\LithFontMgr_LT2.lib">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Debug\ltguimgr_LT2.lib">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </Library>
-    <Library Include="..\..\Lt2\lithshared\libs\Debug\RegMgr.lib" />
-    <Library Include="..\..\LT2\lithshared\libs\Debug\StdLith.lib" />
-    <Library Include="..\..\LT2\lithshared\libs\Release\ButeMgrNoMFC.lib">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Debug|Win32'">true</ExcludedFromBuild>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Release\CryptMgr.lib">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Debug|Win32'">true</ExcludedFromBuild>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Release\GameSpyClientMgr.lib">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Debug|Win32'">true</ExcludedFromBuild>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Release\LithFontMgr_LT2.lib">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Debug|Win32'">true</ExcludedFromBuild>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Release\ltguimgr_LT2.lib">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Debug|Win32'">true</ExcludedFromBuild>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Release\MFCStub.lib">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Debug|Win32'">true</ExcludedFromBuild>
-    </Library>
-    <Library Include="..\..\Lt2\lithshared\libs\Release\RegMgr.lib" />
-    <Library Include="..\..\LT2\lithshared\libs\Release\StdLith.lib">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Final Debug|Win32'">true</ExcludedFromBuild>
-    </Library>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

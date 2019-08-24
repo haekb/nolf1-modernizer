@@ -109,6 +109,7 @@
       <PrecompiledHeaderOutputFile>.\Release\ClientRes.pch</PrecompiledHeaderOutputFile>
       <ObjectFileName>.\Release\</ObjectFileName>
       <ProgramDataBaseFileName>.\Release\</ProgramDataBaseFileName>
+      <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
     </ClCompile>
     <PostBuildEvent>
       <Command>copy release\cres.dll $(NOLF_BUILD_DIR)</Command>

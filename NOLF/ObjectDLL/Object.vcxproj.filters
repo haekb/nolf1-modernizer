@@ -21,12 +21,6 @@
     <Filter Include="Header Files\Animation Header Files">
       <UniqueIdentifier>{4512c5f3-dd54-4faa-ae09-2d565565a98d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="libs_release">
-      <UniqueIdentifier>{43331492-7904-4a47-83b9-7c4e15687a9d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="libs_debug">
-      <UniqueIdentifier>{d123c215-e4e6-4fac-9e9d-c75fcd3b7a26}</UniqueIdentifier>
-    </Filter>
     <Filter Include="SDK">
       <UniqueIdentifier>{d603677c-a04b-4264-916e-09ab45a6d6d7}</UniqueIdentifier>
     </Filter>
@@ -1291,50 +1285,6 @@
     <ClInclude Include="..\..\lt2\sdk\inc\serverheaders.h">
       <Filter>SDK</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="..\..\LT2\lithshared\libs\Release\MFCStub.lib">
-      <Filter>libs_release</Filter>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Release\CryptMgr.lib">
-      <Filter>libs_release</Filter>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Release\ButeMgrNoMFC.lib">
-      <Filter>libs_release</Filter>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Release\StdLith.lib">
-      <Filter>libs_release</Filter>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Release\GameSpyMgr.lib">
-      <Filter>libs_release</Filter>
-    </Library>
-    <Library Include="..\..\Lt2\lithshared\libs\Release\RegMgr.lib">
-      <Filter>libs_release</Filter>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Debug\StdLith.lib">
-      <Filter>libs_debug</Filter>
-    </Library>
-    <Library Include="..\..\Lt2\lithshared\libs\Debug\RegMgr.lib">
-      <Filter>libs_debug</Filter>
-    </Library>
-    <Library Include="..\..\LIBS\SDL2-2.0.10\lib\x86\SDL2.lib">
-      <Filter>libs_debug</Filter>
-    </Library>
-    <Library Include="..\..\LIBS\SDL2-2.0.10\lib\x86\SDL2main.lib">
-      <Filter>libs_debug</Filter>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\built\Debug\ButeMgr\ButeMgr.lib">
-      <Filter>libs_debug</Filter>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\built\Debug\CryptMgr\cryptmgr.lib">
-      <Filter>libs_debug</Filter>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\built\Debug\MFCStub\MFCStub.lib">
-      <Filter>libs_debug</Filter>
-    </Library>
-    <Library Include="..\..\LT2\lithshared\libs\Debug\GameSpyMgr.lib">
-      <Filter>libs_debug</Filter>
-    </Library>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\Attributes\Music.txt" />
