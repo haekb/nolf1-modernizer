@@ -70,6 +70,9 @@ LTBOOL CFolderWeaponControls::Build()
 	if (g_pLayoutMgr->HasCustomValue(FOLDER_ID_WPN_CONTROLS,"SliderWidth"))
 		kSlider = g_pLayoutMgr->GetFolderCustomInt(FOLDER_ID_WPN_CONTROLS,"SliderWidth");
 
+	LTFLOAT yr = g_pInterfaceResMgr->GetYRatio();
+	kWidth *= yr;
+
 	kFirstCommand = g_pWeaponMgr->GetFirstWeaponCommandId();
 	kLastCommand = g_pWeaponMgr->GetLastWeaponCommandId();
 

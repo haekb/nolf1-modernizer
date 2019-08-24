@@ -57,6 +57,8 @@ LTBOOL CFolderMultiSummary::Build()
 	if (g_pLayoutMgr->HasCustomValue(FOLDER_ID_MP_SUMMARY,"GapWidth"))
 		kGap = g_pLayoutMgr->GetFolderCustomInt(FOLDER_ID_MP_SUMMARY,"GapWidth");
 
+	LTFLOAT yr = g_pInterfaceResMgr->GetYRatio();
+	kGap *= yr;
 
 	UseBack(LTFALSE);
 	UseMain(LTFALSE);

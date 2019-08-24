@@ -106,6 +106,9 @@ LTBOOL CFolderPerformance::Build()
 	if (g_pLayoutMgr->HasCustomValue(FOLDER_ID_PERFORMANCE,"SliderWidth"))
 		kWidth = g_pLayoutMgr->GetFolderCustomInt(FOLDER_ID_PERFORMANCE,"SliderWidth");
 
+	LTFLOAT yr = g_pInterfaceResMgr->GetYRatio();
+	kGap *= yr;
+
 	CreateTitle(IDS_TITLE_PERFORMANCE);
 
 	m_pPerformance = AddCycleItem(IDS_OVERALL_PERFORM,IDS_HELP_OVERALL_PERFORM,kGap-25,25,&m_nOverall);

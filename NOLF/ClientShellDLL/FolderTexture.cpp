@@ -60,6 +60,8 @@ LTBOOL CFolderTexture::Build()
 	if (g_pLayoutMgr->HasCustomValue(FOLDER_ID_TEXTURE,"ColumnWidth"))
 	{
 		kTotalWidth = g_pLayoutMgr->GetFolderCustomInt(FOLDER_ID_TEXTURE,"ColumnWidth");
+		LTFLOAT yr = g_pInterfaceResMgr->GetYRatio();
+		kTotalWidth *= yr;
 		kHeaderWidth = kTotalWidth - kSpacerWidth;
 	}
 	if (g_pLayoutMgr->HasCustomValue(FOLDER_ID_TEXTURE,"SliderWidth"))

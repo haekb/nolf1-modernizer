@@ -52,6 +52,8 @@ LTBOOL CFolderJoinLAN::Build()
 	if (g_pLayoutMgr->HasCustomValue(FOLDER_ID_JOIN_LAN,"ColumnWidth"))
 	{
 		kColumnWidth = g_pLayoutMgr->GetFolderCustomInt(FOLDER_ID_JOIN_LAN,"ColumnWidth");
+		LTFLOAT yr = g_pInterfaceResMgr->GetYRatio();
+		kColumnWidth *= yr;
 	}
 
 	LTIntPt pos = g_pLayoutMgr->GetFolderCustomPoint(FOLDER_ID_JOIN_LAN,"SearchPos");
