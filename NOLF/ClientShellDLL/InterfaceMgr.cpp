@@ -4833,6 +4833,21 @@ void CInterfaceMgr::UpdateLetterBox()
 	rcDest.Init(0, dwHeight - nBorderSize, dwWidth, dwHeight);
  	g_pLTClient->ScaleSurfaceToSurfaceTransparent(hScreen, m_hLetterBoxSurface,
 	   &rcDest, &rcSrc, hTransColor);
+
+	if (GetConfigInt("RestrictCinematicsTo4x3", 0) == 1)
+	{
+		int offsetX = g_pInterfaceResMgr->GetXOffset();
+
+		rcDest.Init(0, 0, offsetX, dwHeight);
+		g_pLTClient->ScaleSurfaceToSurfaceTransparent(hScreen, m_hLetterBoxSurface,
+			&rcDest, &rcSrc, hTransColor);
+
+		rcDest.Init(dwWidth - offsetX , 0, dwWidth+offsetX, dwHeight);
+		g_pLTClient->ScaleSurfaceToSurfaceTransparent(hScreen, m_hLetterBoxSurface,
+			&rcDest, &rcSrc, hTransColor);
+
+	}
+
 }
 
 // --------------------------------------------------------------------------- //
