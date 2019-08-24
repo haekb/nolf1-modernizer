@@ -1483,6 +1483,10 @@ void CGameClientShell::OnEvent(uint32 dwEventID, uint32 dwParam)
 			}
 
 			g_pInterfaceMgr->InitCursor();
+
+			// Slight hack: In windowed mode, the window gets repositioned incorrectly on re-focus.
+			// Just centre it again.
+			SDL_SetWindowPosition(g_SDLWindow, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
 		}
 		break;
 	}

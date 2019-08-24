@@ -251,6 +251,12 @@ void CFolderDisplay::BuildRendererArray()
 			// Get the index for this renderer
 			int nRenderIndex=GetRendererIndex(pCurrentMode);
 
+			// Ignore 16-bit resolutions
+			if (pCurrentMode->m_BitDepth == 16)
+			{
+				continue;
+			}
+
 			// Check to see if we need to add this renderer
 			if (nRenderIndex == -1)
 			{
