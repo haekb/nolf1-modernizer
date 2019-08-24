@@ -612,6 +612,11 @@ CGameClientShell::CGameClientShell()
 
 	// Setup the logging functions
 	SDL_LogSetOutputFunction(&SDLLog, NULL);
+
+	// Clear file
+	g_SDLLogFile.open("Debug.log", STD ios::out | STD ios::trunc);
+	g_SDLLogFile.close();
+
 	SDL_Log("-- Hello World, We're all set here. Enjoy the show!");
 
 	// Just some default
