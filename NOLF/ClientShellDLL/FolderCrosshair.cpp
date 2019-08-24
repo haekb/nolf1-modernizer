@@ -58,6 +58,9 @@ LTBOOL CFolderCrosshair::Build()
 	if (g_pLayoutMgr->HasCustomValue(FOLDER_ID_CROSSHAIR,"SliderWidth"))
 		kWidth = g_pLayoutMgr->GetFolderCustomInt(FOLDER_ID_CROSSHAIR,"SliderWidth");
 
+	LTFLOAT yr = g_pInterfaceResMgr->GetYRatio();
+	kGap *= yr;
+
 	//use crosshair
 	CToggleCtrl* pToggle = AddToggle(IDS_USE_CROSSHAIR, IDS_HELP_CROSSHAIR, kGap, &m_bCrosshair );
 	pToggle->SetOnString(IDS_YES);

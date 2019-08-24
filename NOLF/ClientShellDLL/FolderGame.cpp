@@ -56,6 +56,9 @@ LTBOOL CFolderGame::Build()
 	if (g_pLayoutMgr->HasCustomValue(FOLDER_ID_GAME,"SliderWidth"))
 		kWidth = g_pLayoutMgr->GetFolderCustomInt(FOLDER_ID_GAME,"SliderWidth");
 
+	LTFLOAT yr = g_pInterfaceResMgr->GetYRatio();
+	kGap *= yr;
+
 	//crosshair menu
 	AddTextItem(IDS_CONTROLS_CROSSHAIR, FOLDER_CMD_CROSSHAIR, IDS_HELP_CROSSHAIRMENU);
 

@@ -60,6 +60,9 @@ LTBOOL CFolderControls::Build()
 	if (g_pLayoutMgr->HasCustomValue(FOLDER_ID_CONTROLS,"SliderWidth"))
 		kWidth = g_pLayoutMgr->GetFolderCustomInt(FOLDER_ID_CONTROLS,"SliderWidth");
 
+	LTFLOAT yr = g_pInterfaceResMgr->GetYRatio();
+	kGap *= yr;
+
 	//customize
 	AddTextItem(IDS_CUSTOM_CONTROLS, FOLDER_CMD_CUSTOM_CONTROLS, IDS_HELP_CUSTOMCONTROLS);
 

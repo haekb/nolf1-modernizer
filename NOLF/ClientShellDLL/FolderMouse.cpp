@@ -53,6 +53,9 @@ LTBOOL CFolderMouse::Build()
 	if (g_pLayoutMgr->HasCustomValue(FOLDER_ID_MOUSE,"SliderWidth"))
 		kWidth = g_pLayoutMgr->GetFolderCustomInt(FOLDER_ID_MOUSE,"SliderWidth");
 
+	LTFLOAT yr = g_pInterfaceResMgr->GetYRatio();
+	kGap *= yr;
+
 	//Always mouse look
 	CToggleCtrl* pToggle = AddToggle(IDS_MOUSE_MOUSELOOK, IDS_HELP_MOUSELOOK, kGap, &m_bMouseLook );
 	pToggle->SetOnString(IDS_YES);

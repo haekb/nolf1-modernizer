@@ -69,6 +69,8 @@ LTBOOL CFolderAdvDisplay::Build()
 	if (g_pLayoutMgr->HasCustomValue(FOLDER_ID_ADVDISPLAY,"ColumnWidth"))
 	{
 		kTotalWidth = g_pLayoutMgr->GetFolderCustomInt(FOLDER_ID_ADVDISPLAY,"ColumnWidth");
+		LTFLOAT yr = g_pInterfaceResMgr->GetYRatio();
+		kTotalWidth *= yr;
 		kHeaderWidth = kTotalWidth - kSpacerWidth;
 	}
 	if (g_pLayoutMgr->HasCustomValue(FOLDER_ID_ADVDISPLAY,"SliderWidth"))

@@ -122,6 +122,9 @@ void CJoystickAxisBase::Build(ILTClient *pClientDE, CBaseFolder *pDestFolder)
 	if (g_pLayoutMgr->HasCustomValue(FOLDER_ID_JOYSTICK,"SliderWidth"))
 		kWidth = g_pLayoutMgr->GetFolderCustomInt(FOLDER_ID_JOYSTICK,"SliderWidth");
 
+	LTFLOAT yr = g_pInterfaceResMgr->GetYRatio();
+	kGap *= yr;
+
 	// figure out the name of the joystick device
 	SetDeviceName(pClientDE);
 

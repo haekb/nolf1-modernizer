@@ -53,13 +53,16 @@ CFolderAudio::~CFolderAudio()
 // Build the folder
 LTBOOL CFolderAudio::Build()
 {
-
+	
 	CreateTitle(IDS_TITLE_SOUND);
 
 	if (g_pLayoutMgr->HasCustomValue(FOLDER_ID_AUDIO,"ColumnWidth"))
 		kGap = g_pLayoutMgr->GetFolderCustomInt(FOLDER_ID_AUDIO,"ColumnWidth");
 	if (g_pLayoutMgr->HasCustomValue(FOLDER_ID_AUDIO,"SliderWidth"))
 		kWidth = g_pLayoutMgr->GetFolderCustomInt(FOLDER_ID_AUDIO,"SliderWidth");
+
+	LTFLOAT yr = g_pInterfaceResMgr->GetYRatio();
+	kGap *= yr;
 
 	uint32 dwAdvancedOptions = g_pInterfaceMgr->GetAdvancedOptions();
 

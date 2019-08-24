@@ -53,6 +53,8 @@ LTBOOL CFolderHostOptions::Build()
 	if (g_pLayoutMgr->HasCustomValue(FOLDER_ID_HOST_OPTIONS,"ColumnWidth"))
 	{
 		kTotalWidth = g_pLayoutMgr->GetFolderCustomInt(FOLDER_ID_HOST_OPTIONS,"ColumnWidth");
+		LTFLOAT yr = g_pInterfaceResMgr->GetYRatio();
+		kTotalWidth *= yr;
 		kHeaderWidth = kTotalWidth - kSpacerWidth;
 	}
 	if (g_pLayoutMgr->HasCustomValue(FOLDER_ID_HOST_OPTIONS,"SliderWidth"))

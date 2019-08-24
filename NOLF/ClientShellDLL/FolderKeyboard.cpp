@@ -51,6 +51,9 @@ LTBOOL CFolderKeyboard::Build()
 	if (g_pLayoutMgr->HasCustomValue(FOLDER_ID_KEYBOARD,"SliderWidth"))
 		kWidth = g_pLayoutMgr->GetFolderCustomInt(FOLDER_ID_KEYBOARD,"SliderWidth");
 
+	LTFLOAT yr = g_pInterfaceResMgr->GetYRatio();
+	kGap *= yr;
+
 	//turn speed
 	CSliderCtrl *pSlider = AddSlider(IDS_NORMALTURN, IDS_HELP_NORMALTURN, kGap, kWidth, &m_nNormalTurn);
 	pSlider->SetSliderRange(5, 55);

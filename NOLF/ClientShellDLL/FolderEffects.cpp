@@ -46,10 +46,14 @@ LTBOOL CFolderEffects::Build()
 	if (g_pLayoutMgr->HasCustomValue(FOLDER_ID_EFFECTS,"ColumnWidth"))
 	{
 		kTotalWidth = g_pLayoutMgr->GetFolderCustomInt(FOLDER_ID_EFFECTS,"ColumnWidth");
+		LTFLOAT yr = g_pInterfaceResMgr->GetYRatio();
+		kTotalWidth *= yr;
 		kHeaderWidth = kTotalWidth - kSpacerWidth;
 	}
 	if (g_pLayoutMgr->HasCustomValue(FOLDER_ID_EFFECTS,"SliderWidth"))
 		kSliderWidth = g_pLayoutMgr->GetFolderCustomInt(FOLDER_ID_EFFECTS,"SliderWidth");
+
+
 
 	CreateTitle(IDS_TITLE_EFFECTS);
 
