@@ -1282,5 +1282,8 @@
     <ClInclude Include="ScalableBitmapCtrl.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="..\ClientRes\ClientRes.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

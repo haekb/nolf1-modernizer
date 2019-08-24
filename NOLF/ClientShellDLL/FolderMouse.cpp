@@ -80,6 +80,10 @@ LTBOOL CFolderMouse::Build()
 	pSlider->SetSliderRange(50, 150);
 	pSlider->SetSliderIncrement(5);
 
+	//Always mouse look
+	pToggle = AddToggle(IDS_OLD_MOUSELOOK, IDS_HELP_OLD_MOUSELOOK, kGap, &m_bOldMouseLook);
+	pToggle->SetOnString(IDS_YES);
+	pToggle->SetOffString(IDS_NO);
 
 	// Make sure to call the base class
 	if (! CBaseFolder::Build()) return LTFALSE;
@@ -116,6 +120,8 @@ void CFolderMouse::OnFocus(LTBOOL bFocus)
 		float fTemp = GetConsoleFloat("VehicleTurnRateScale",1.0f);
 		m_nVehicleTurn = (int)(100.0f * fTemp);
 
+		m_bOldMouseLook = GetConfigInt("OldMouseLook", 0);
+
         UpdateData(LTFALSE);
 	}
 	else
@@ -132,9 +138,12 @@ void CFolderMouse::OnFocus(LTBOOL bFocus)
 		float fTemp = (float)m_nVehicleTurn / 100.0f;
 		WriteConsoleFloat("VehicleTurnRateScale",fTemp);
 
+		WriteConsoleInt("OldMouseLook", m_bOldMouseLook);
+
 		// Just to be safe save the config incase anything changed...
 
         g_pLTClient->WriteConfigFile("autoexec.cfg");
+		GetConfigFile("autoexec.cfg");
 	}
 	CBaseFolder::OnFocus(bFocus);
 }

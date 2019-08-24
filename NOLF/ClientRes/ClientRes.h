@@ -1,5 +1,5 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Developer Studio generated include file.
+// Microsoft Visual C++ generated include file.
 // Used by ClientRes.rc
 //
 #define IDS_VERSION                     0
@@ -6383,6 +6383,17 @@
 #define IDS_HELP_BANDWIDTH_CYCLE        20565
 #define IDS_HELP_BANDWIDTH_EDIT         20566
 #define IDS_BANDWIDTH_EDIT              20567
+#define IDS_SHOW_FRAMERATE              20568
+#define IDS_LOCK_FRAMERATE              20569
+#define IDS_OLD_MOUSELOOK               20570
+#define IDS_4X3_CINEMATICS              20571
+#define IDS_STRING20572                 20572
+#define IDS_QUICK_SWITCH                20572
+#define IDS_HELP_SHOW_FRAMERATE         20573
+#define IDS_HELP_LOCK_FRAMERATE         20574
+#define IDS_HELP_OLD_MOUSELOOK          20575
+#define IDS_HELP_4X3_CINEMATICS         20576
+#define IDS_HELP_QUICKSWITCH            20577
 
 // Next default values for new objects
 // 

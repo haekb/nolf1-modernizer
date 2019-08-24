@@ -1423,7 +1423,6 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 
 	eOverlayMask eCurrMask = g_pInterfaceMgr->GetCurrentOverlay();
 
-#if 1
 	// Draw the framerate
 	if (m_bShowFramerate)
 	{
@@ -1431,7 +1430,6 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 		sprintf(szStr, "Framerate: %.2f", m_fFramerate);
 		g_pInterfaceResMgr->GetMediumFont()->Draw(szStr, hScreen, 32, nScreenHeight - 20, LTF_JUSTIFY_LEFT, SETRGB(255, 255, 255));
 	}
-#endif
 
 	switch (eCurrMask)
 	{
@@ -4114,9 +4112,9 @@ void CPlayerStats::DrawBoundWeapons(HSURFACE hScreen)
 {
 	if (m_fWeaponAlpha < 0.1f) return;
 	float yr = g_pInterfaceResMgr->GetYRatio();
-
+	float xr = g_pInterfaceResMgr->GetXRatio();
 	int w = (int)g_pInterfaceResMgr->GetScreenWidth();
-	int y = (int)g_pInterfaceResMgr->GetScreenHeight() / yr - 5 * m_nIconSize;
+	int y = (m_nIconSize * yr) / 4;//(int)g_pInterfaceResMgr->GetScreenHeight() / xr - 5 * m_nIconSize;
 
 
 

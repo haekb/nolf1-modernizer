@@ -1,4 +1,4 @@
-//Microsoft Developer Studio generated resource script.
+// Microsoft Visual C++ generated resource script.
 //
 #include "ClientRes.h"
 
@@ -13,13 +13,11 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// English (U.S.) resources
+// English (United States) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
-#ifdef _WIN32
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
-#endif //_WIN32
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -27,35 +25,35 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 // TEXTINCLUDE
 //
 
-1 TEXTINCLUDE DISCARDABLE 
+1 TEXTINCLUDE 
 BEGIN
     "ClientRes.h\0"
 END
 
-2 TEXTINCLUDE DISCARDABLE 
+2 TEXTINCLUDE 
 BEGIN
     "#include ""afxres.h""\r\n"
     "\0"
 END
 
-3 TEXTINCLUDE DISCARDABLE 
+3 TEXTINCLUDE 
 BEGIN
     "\r\n"
     "\0"
 END
 
-1 TEXTINCLUDE DISCARDABLE 
+1 TEXTINCLUDE 
 BEGIN
     "resource.h\0"
 END
 
-2 TEXTINCLUDE DISCARDABLE 
+2 TEXTINCLUDE 
 BEGIN
     "#include ""afxres.h""\r\n"
     "\0"
 END
 
-3 TEXTINCLUDE DISCARDABLE 
+3 TEXTINCLUDE 
 BEGIN
     "\r\n"
     "\0"
@@ -69,22 +67,25 @@ END
 // TEXT
 //
 
-CREDITS                 TEXT    DISCARDABLE     "credits.txt"
-INTRO                   TEXT    DISCARDABLE     "intro.txt"
+CREDITS                 TEXT                    "credits.txt"
+
+INTRO                   TEXT                    "intro.txt"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Cursor
 //
 
-IDC_POINTER             CURSOR  DISCARDABLE     "arrow.cur"
+IDC_POINTER             CURSOR                  "arrow.cur"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // String Table
 //
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_TITLE_MAINMENU      "NO ONE LIVES FOREVER"
     IDS_TITLE_GAME          "SINGLE PLAYER"
@@ -103,7 +104,7 @@ BEGIN
     IDS_TITLE_JOYSTICK      "JOYSTICK"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_SINGLEPLAYER        "Single player"
     IDS_MULTIPLAYER         "Multiplayer"
@@ -123,7 +124,7 @@ BEGIN
     IDS_ERROR               "Error"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_CUSTOM              "Custom"
     IDS_ON                  "On"
@@ -143,7 +144,7 @@ BEGIN
     IDS_FARTHER             "Medium"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_FURTHEST            "Far"
     IDS_RESTOREDEFAULTS     "Restore defaults"
@@ -163,7 +164,7 @@ BEGIN
     IDS_NETERR_CONNECTIONREJECTED "Connection rejected."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_TITLE_CROSSHAIR     "CROSSHAIR"
     IDS_CH_ALPHA            "Opacity"
@@ -183,7 +184,7 @@ BEGIN
     IDS_TITLE_AMMO          "AMMO SELECTION"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MAIN                "Main menu"
     IDS_AWARDS              "Awards Earned:"
@@ -203,7 +204,7 @@ BEGIN
     IDS_HELP_CONTROLS       "Set controller configurations."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_CONTROL_FORWARD     "Forward"
     IDS_CONTROL_BACKWARD    "Backward"
@@ -223,7 +224,7 @@ BEGIN
     IDS_CONTROL_PREVIOUSWEAPON "Previous weapon"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_CONTROL_LOOKUP      "Look up"
     IDS_CONTROL_LOOKDOWN    "Look down"
@@ -243,7 +244,7 @@ BEGIN
     IDS_CONTROL_WEAPON3     "Weapon 3"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_CONTROL_WEAPON4     "Weapon 4"
     IDS_CONTROL_WEAPON5     "Weapon 5"
@@ -263,7 +264,7 @@ BEGIN
     IDS_ACTIONSTRING_TURNRIGHT "Right"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_ACTIONSTRING_STRAFE "Strafe"
     IDS_ACTIONSTRING_STRAFELEFT "StrafeLeft"
@@ -283,7 +284,7 @@ BEGIN
     IDS_ACTIONSTRING_INVENTORY "Inventory"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_ACTIONSTRING_MISSION "Mission"
     IDS_ACTIONSTRING_HOLSTERWEAPON "HolsterWeapon"
@@ -303,7 +304,7 @@ BEGIN
     IDS_FADEBODIES          "Fade bodies"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_HELP_FADEBODIES     "Toggles rapid fading of bodies."
     IDS_HELP_VERSION_FILTER "Toggles filtering of servers based on version number."
@@ -323,7 +324,7 @@ BEGIN
     IDS_TEXTURE_RES         "Texture resolution"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_HELP_TEXTURE_RES    "Sets the resolution of textures used in the game."
     IDS_LIGHTMAP            "Lightmaps"
@@ -343,7 +344,7 @@ BEGIN
     IDS_STAT_DETECTED       "\tDetected: %1!d!, Disturbances Caused: %2!d!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DISPLAY_16BIT       "16-bit"
     IDS_DISPLAY_TITLE       "Configure display"
@@ -363,7 +364,7 @@ BEGIN
     IDS_LOW                 "Low"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_TEXTURE_CHARS       "Characters"
     IDS_TEXTURE_PROPS       "Props"
@@ -383,7 +384,7 @@ BEGIN
     IDS_DISPLAY_32BIT       "32-bit"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MEDIUM              "Medium"
     IDS_HIGH                "High"
@@ -403,7 +404,7 @@ BEGIN
     IDS_JOYSTICK_STRAFELEFTRIGHTAXIS "Strafe left/right"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_JOYSTICK_BUTTONNUM  "Joystick button  %1!d!"
     IDS_JOYSTICK_AXIS       "    Axis"
@@ -423,7 +424,7 @@ BEGIN
     IDS_NEW_INSANE          "Superspy"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_HOST_LAUNCH         "Launch"
     IDS_TITLE_HOST_LEVELS   "LEVELS"
@@ -443,7 +444,7 @@ BEGIN
     IDS_HELP_SERVER_PLAYERS "Sort servers by number of players."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_HELP_SERVER_PING    "Sort servers by ping."
     IDS_HELP_SORT_PLYR_NAME "Sort players by name."
@@ -463,7 +464,7 @@ BEGIN
     IDS_HELP_GAME_TYPE      "Sets the type of game to host."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_HELP_WPN_ICON_SZ    "Set the size of the icons used to display hotkey weapons."
     IDS_WPN_ICON_A          "Icon alpha"
@@ -483,7 +484,7 @@ BEGIN
     IDS_SERVER_ADDRESS      "Address"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_FILM          "Film %1!d!"
     IDS_INTEL_BLUEPRINT     "Blueprint %1!d!"
@@ -503,7 +504,7 @@ BEGIN
     IDS_CONNECT_MEDIUM      "DSL"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_CONNECT_FAST        "T1 or faster"
     IDS_HELP_CONNECT_SPEED  "Sets connection speed."
@@ -523,7 +524,7 @@ BEGIN
     IDS_DISCON_SERVERBOOT   "The server booted you."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_NOCUSTOMWORLDS      "No custom worlds found"
     IDS_DEMONOCUSTOMWORLDS  "Custom worlds are not available in the demo"
@@ -531,7 +532,7 @@ BEGIN
     IDS_DEMOINFO            "info"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_NOJOYSTICKDETECTED  "No joystick or gamepad detected.  Please check your controller configuration and connection."
     IDS_NOQUICKSAVEGAME     "No quick-save game exists."
@@ -547,7 +548,7 @@ BEGIN
     IDS_REINITIALIZING_RENDERER "Reinitializing renderer"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_PLAYER              "Player"
     IDS_SAY                 "SAY:"
@@ -555,7 +556,7 @@ BEGIN
     IDS_SERVER_WRONGVERSION "Unable to join because the game server is a different version. Visit www.the-operative.com for the latest product update."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_TEAMSAY             "TEAM SAY:"
     IDS_YOUWEREKILLED       "You were killed!"
@@ -566,20 +567,20 @@ BEGIN
     IDS_CANTQUICKSAVE       "You cannot Quick save now..."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_ACCESSGRANTED       "Access granted"
     IDS_ACCESSDENIED        "Access denied"
     IDS_LOCKED              "Locked"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DISCONNECTED_FROM_SERVER "Disconnected from server"
     IDS_CANT_CONNECT_TO_SERVER "Can't connect to the server"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20544         "<Insert Intelligence Item Text Here>"
     IDS_INTEL_20545         "<Insert Intelligence Item Text Here>"
@@ -600,7 +601,7 @@ BEGIN
     IDS_56K                 "56k"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_NET_GAME_END        "Level ending conditions"
     IDS_NET_GAME_END_HELP   "Sets the conditions that end the map."
@@ -608,7 +609,7 @@ BEGIN
     IDS_NGE_TIME            "Time limit reached"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_NGE_FRAGS_AND_TIME  "Frag or time limit reached"
     IDS_NGE_NEVER           "None"
@@ -628,7 +629,7 @@ BEGIN
     IDS_DEFAULT_WEAPON_HELP "Specifies the weapon that players are given when spawning in."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_HELP_FRAG_SCORE     "Toggles use of frags in the team score."
     IDS_ISCORED             "You scored %1!d! points for your team!"
@@ -638,7 +639,7 @@ BEGIN
     IDS_NO_VK_CODE          "78"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_NETERR_GENERIC      "ERROR - Unable to set up the network game."
     IDS_NETERR_SELECTSERVICE 
@@ -651,7 +652,7 @@ BEGIN
     IDS_NETERR_NOTSAMEGUID  "ERROR - Unable to join because the game server is a different version or a different game."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_ALLOW_NO_GORE       "FALSE"
     IDS_WIN_TEAM1           "UNITY won!"
@@ -666,7 +667,7 @@ BEGIN
     IDS_HELP_ENTER_PASSWORD "Specifies the password that players must enter to join a session."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_TITLE_MODS          "MODIFICATION SELECTION"
     IDS_TITLE_GEAR          "GEAR SELECTION"
@@ -686,7 +687,7 @@ BEGIN
     IDS_HELP_PICKUP_MSG_DUR "Sets the length of time that inventory pickup messages will remain on the screen."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_PICKUP_MSG_DUR      "Pickup message duration"
     IDS_IGNORE_TAUNTS       "Ignore taunts"
@@ -705,14 +706,14 @@ BEGIN
     IDS_CONTROLS_CROSSHAIR  "Crosshair"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_GAME_LANGUAGE       "English"
     IDS_MENU_VKEY_YES       "89"
     IDS_MENU_VKEY_NO        "78"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_WEAPON_1            "Shepherd Arms P38 9mm"
     IDS_WEAPON_2            "Petri .38 Airweight Revolver"
@@ -732,7 +733,7 @@ BEGIN
     IDS_WEAPON_16           "Briefcase"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_WEAPON_DESC_1       "This 9mm semi-automatic pistol was used extensively by Allied covert operatives during the War. It is easily concealable and very reliable. It has a 10 round magazine and can be fitted with a silencer."
     IDS_WEAPON_DESC_2       "Agent Archer's signature weapon is a small, lightweight .38 caliber five-shot revolver. While admittedly a bit slow on the reload, it can readily accommodate a variety of ammunition types. It's also easy to conceal."
@@ -750,7 +751,7 @@ BEGIN
     IDS_WEAPON_DESC_14      "A nifty device that, when mounted on a security camera, creates looping footage of the scene from the camera's perspective."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_WEAPON_DESC_15      "Attaches to a 10 button keypad and runs through number combinations in order to decipher security codes."
     IDS_WEAPON_DESC_16      "A handsome alloy briefcase that transforms into a handheld missile launcher."
@@ -770,7 +771,7 @@ BEGIN
     IDS_WEAPON_DESC_30      "Sprinkle some of this powder on a dead body and watch it dissolve into ether."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_AMMO_1              "9mm FMJ"
     IDS_AMMO_2              "9mm dum dum"
@@ -786,7 +787,7 @@ BEGIN
     IDS_AMMO_12             "7.62x39 FMJ"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_AMMO_13             "7.62x39 phosphorous"
     IDS_AMMO_14             "Poison capsule"
@@ -806,7 +807,7 @@ BEGIN
     IDS_AMMO_28             "Miniaturized welder"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INVALID3DSOUNDPROVIDER "Invalid 3D sound provider."
     IDS_CONFIRMSAVE         "Do you want to overwrite this saved game?"
@@ -814,7 +815,7 @@ BEGIN
     IDS_REBINDING_TEXTURES  "Rebinding textures."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_ADVCONTROLS_CROSSHAIR "Crosshair"
     IDS_DISPLAY_RENDERER    "Renderer"
@@ -834,7 +835,7 @@ BEGIN
     IDS_OPTION_VALUE        "Value"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_HELP_RENDERER       "Choose renderer."
     IDS_HELP_RESOLUTION     "Set screen resolution and bit depth."
@@ -854,7 +855,7 @@ BEGIN
     IDS_HELP_ENVIRONMENT_MAP "Toggles the use of environment maps."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_CHROME              "Model chrome"
     IDS_HELP_CHROME         "Toggles the use of chrome effects on models."
@@ -874,7 +875,7 @@ BEGIN
     IDS_HELP_MUSIC          "Toggle playing of music."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_HELP_MUSICVOL       "Set volume of music."
     IDS_HELP_CUSTOMLEVEL    "Load the highlighted custom level."
@@ -894,7 +895,7 @@ BEGIN
     IDS_HELP_LOOKUP         "Set the up/down look speed for keyboard controls."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_WEAPON_17           "Robot Poodle"
     IDS_WEAPON_18           "Laser Gun"
@@ -914,7 +915,7 @@ BEGIN
     IDS_WEAPON_32           "Body remover"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_00_NAME     "The Assignment"
     IDS_MISSION_01_NAME     "Misfortune in Morocco"
@@ -930,7 +931,7 @@ BEGIN
     IDS_MISSION_11_NAME     "If Our Demands Are Not Met"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_12_NAME     "A Man of Influence"
     IDS_MISSION_13_NAME     "Further Investigation Required"
@@ -949,7 +950,7 @@ BEGIN
     IDS_MISSION_26_NAME     "Sample Missions"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_00_DESC     "An unknown assassin is killing off UNITY's elite operatives. In spite of the danger, Cate Archer and Bruno Lawrie still have a job to do. Could this be Cate's first shot at a mission fraught with peril and intrigue, or is it just another routine assignment?"
     IDS_MISSION_01_DESC     "An American diplomat has been marked for death in Morocco. Can Cate and Bruno stop the assassins before it's too late?"
@@ -961,7 +962,7 @@ BEGIN
     IDS_MISSION_07_DESC     "Before heading to the docks, Cate stops by the UNITY safe house in Hamburg to equip herself."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_08_DESC     "The trail leads to a Finnish cargo freighter. Getting aboard won't be easy, but it may be the only way to uncover H.A.R.M.'s scheme and get the doctor back."
     IDS_MISSION_09_DESC     "Cate stops by the safe house for some dry clothes and a few moments on the firing range to work out her frustrations."
@@ -981,7 +982,7 @@ BEGIN
     IDS_MISSION_23_DESC     "Cate has the list, but she still has to deliver it. Can she get off the mountain before disaster strikes?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_00_BRIEF    "A crisis has arisen. UNITY's undercover operatives are being killed off by an unknown assailant. It seems likely that there's a traitor within the agency.\n\nReport to the War Room for a full briefing on the situation and a tactical overview of your upcoming mission.\n\nDo not be late.\n\nFollowing the briefing, stop by the training facility to hone your skills."
     IDS_MISSION_01_BRIEF    "Intelligence has discovered that the American Ambassador to West Germany, Morris Munroe, is marked for execution by an organization calling itself H...A...R...M or H.A.R.M. The assassination attempt is expected to come on the last day of Munroe's upcoming holiday in Morocco as he is leaving his hotel. There will likely be multiple assailants.\n\nIt is imperative that Munroe survive the attack. Be warned, though, that the ambassador is extremely nearsighted and almost deaf, so you won't be able to rely on him to realize that he's in danger.\n\nYou will be positioned in a residential building across the street from the hotel. Your job is to pick off the assassins before they liquidate Munroe."
@@ -989,7 +990,7 @@ BEGIN
     IDS_MISSION_03_BRIEF    "We've been contacted by Doctor Otto Schenker, an East German biophysicist who we believe is working on a top secret biological weapons program for the Soviet Union. Dr. Schenker has expressed a desire to defect. He has asked us to assist him in exchange for information on his research.\n\nThis opportunity couldn't have arisen at a worse time. After that embarrassment in Morocco, you're hardly our first choice to handle this affair, but all our other surviving operatives are tied up on equally critical assignments. If we want a chance at Schenker, it has to be now and it has to be you, on your own."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_04_BRIEF    "During the flight to London, attempt to learn as much as possible from Doctor Schenker about his research. Schenker is a notoriously cautious man, so direct questions are not advised. He is also reported to have little tolerance for skeptics. Try to keep an open mind."
     IDS_MISSION_05_BRIEF    "Congratulations. You have failed again.\n\nAlthough the circumstances were certainly extraordinary in this case, don't expect much sympathy from Command. UNITY cannot afford failures, however justifiable."
@@ -1009,7 +1010,7 @@ BEGIN
     IDS_MISSION_19_BRIEF    "Although the rescue of Doctor Schenker was absolutely imperative if UNITY were to have even the merest hope of victory, it comes at a grievous cost.\n\nThere is much still to accomplish, but very little time in which to do so."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_NORMALTURN          "Normal turn speed"
     IDS_FASTTURN            "Fast turn speed"
@@ -1029,7 +1030,7 @@ BEGIN
     IDS_TITLE_PLAYER        "PLAYER STATUS"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_HELP_WEAPONS        "Select weapons."
     IDS_HELP_START          "Start the mission."
@@ -1049,7 +1050,7 @@ BEGIN
     IDS_HELP_RESUME         "Return to game in progress."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MARKRANKING         "Victim"
     IDS_AMATEURRANKING      "Amateur"
@@ -1063,7 +1064,7 @@ BEGIN
     IDS_AWARD_HIGH_AMMO_3   "Exceptional Role Model Certificate\n  Issued by the Gun Society of Great Britain"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_AWARD_LOW_AMMO_1    "Ammunition Conservation Award\n  Issued by the UNITY Finance Committee"
     IDS_AWARD_LOW_AMMO_2    "Non-Violence Commendation\n  Issued by Concerned Parents for Peace"
@@ -1074,7 +1075,7 @@ BEGIN
                             "Prudent Targeting Commendation\n  Issued by Overworked Surgeons United"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_AWARD_MARKSMANSHIP_3 
                             "Swift Justice Award\n  Issued by Lobbyists for Capital Punishment"
@@ -1083,7 +1084,7 @@ BEGIN
     IDS_AWARD_ACCURACY_3    "Gold Medal for Inflicted Casualties\n  Issued by the Medical Association of Wales"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_AWARD_NONINJURY_1   "Operational Safety Medal\n  Issued by the UNITY Field Agent Insurance Division"
     IDS_AWARD_NONINJURY_2   "Non-Injury Award\n  Issued by the UNITY Medical Division"
@@ -1093,14 +1094,14 @@ BEGIN
     IDS_AWARD_NOTSHOT_3     "Thanks For Not Getting Hurt Award\n  Issued by Mr. Jones, Chief of UNITY"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_AWARD_STEALTH_1     "Stealth Award\n  Issued by the International Spy Union"
     IDS_AWARD_STEALTH_2     "Certificate for Subtlety\n  Issued by Santa's Workshop"
     IDS_AWARD_STEALTH_3     "Gold Coin for Sneakiness\n  Issued by the Thieves Guild of London"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_BONUS_AMMO          "Ammunition Bonus"
     IDS_BONUS_ARMOR         "Armor Bonus"
@@ -1111,7 +1112,7 @@ BEGIN
     IDS_BONUS_STEALTH       "Stealth Bonus"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_AMMO_DESC_1         "9mm Full Metal Jacket ammunition. Good penetration, but only modest stopping power."
     IDS_AMMO_DESC_2         "9mm rounds modified to bloom upon impact, which increases stopping power but reduces penetration. Effective against unarmored targets."
@@ -1119,7 +1120,7 @@ BEGIN
     IDS_AMMO_DESC_4         ".38 caliber Full Metal Jacket ammunition. Good penetration, but only modest stopping power."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_AMMO_DESC_5         ".38 caliber rounds modified to bloom upon impact, increasing stopping power but reducing penetration. Effective against unarmored targets."
     IDS_AMMO_DESC_6         ".38 caliber rounds with tiny poison capsules inserted at the tip of each cartridge. Effective against living targets."
@@ -1139,7 +1140,7 @@ BEGIN
     IDS_AMMO_DESC_20        "Standard speargun ammunition."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_AMMO_DESC_21        "Power cell for experimental laser gun."
     IDS_AMMO_DESC_22        "Melee"
@@ -1159,7 +1160,7 @@ BEGIN
     IDS_AMMO_DESC_36        "Acid gas."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_OBJ_5000    "<MISSION 1 OBJECTIVES>"
     IDS_MISSION_OBJ_5001    "Protect Ambassador Munroe from H.A.R.M. assassins"
@@ -1171,7 +1172,7 @@ BEGIN
     IDS_MISSION_OBJ_5007    "<insert mission objective here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_OBJ_5008    "<insert mission objective here>"
     IDS_MISSION_OBJ_5009    "<insert mission objective here>"
@@ -1191,7 +1192,7 @@ BEGIN
     IDS_MISSION_OBJ_5023    "Photograph classified documents"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_OBJ_5024    "Rendezvous with Werner von Haupt and offer him a light"
     IDS_MISSION_OBJ_5025    "Locate Doctor Schenker"
@@ -1211,7 +1212,7 @@ BEGIN
     IDS_MISSION_OBJ_5039    "Bribe the gate guard to get inside the compound"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_AMMO_45             "Corrector HE"
     IDS_AMMO_46             "9mm cyanide-tipped"
@@ -1227,7 +1228,7 @@ BEGIN
     IDS_MOD_10              "Silencer for Geldmacher SVD"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MOD_11              "Nightvision scope for Geldmacher SVD"
     IDS_MOD_12              "Silencer for Hampton Carbine"
@@ -1240,7 +1241,7 @@ BEGIN
     IDS_MOD_19              "Scope for Geldmacher SVD"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_GEAR_NAME_1         "Antitoxin"
     IDS_GEAR_NAME_2         "Fire extinguisher"
@@ -1252,7 +1253,7 @@ BEGIN
     IDS_GEAR_NAME_8         "Body Armor"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_GEAR_DESC_1         "Nullifies poison damage caused by cyanide-tipped rounds and poisoned crossbow bolts."
     IDS_GEAR_DESC_2         "Reduces burn damage caused by phosphorous rounds, scalding steam, and other heat sources."
@@ -1262,13 +1263,13 @@ BEGIN
     IDS_GEAR_DESC_6         "Reduces movement noise by half."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_GEAR_DESC_7         "Prevents excessive blood loss caused by dum dum rounds."
     IDS_GEAR_DESC_8         "Protects wearer from most types of damage."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_24_DESC     "Triumphant but exhausted, Cate reports in and prepares to make her way back home. There are many questions left unanswered, but life is rarely as neat and orderly as we want it to be."
     IDS_MISSION_25_DESC     "Cate stumbles into a deadly trap in Morocco."
@@ -1280,7 +1281,7 @@ BEGIN
     IDS_MISSION_31_DESC     "Cate is ambushed in mid-flight over Germany."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_20_BRIEF    "If your theories are correct, the baroness will lead you right to the list of H.A.R.M.'s intended victims. You must retrieve that list and put an end to H.A.R.M. before more innocent people die.\n\nTime is short, Archer. You must succeed."
     IDS_MISSION_21_BRIEF    "You have the antidote, but you still don't know to whom you should administer it. The next step will be the most uncertain so far. It will also be the most critical. The price of failure will be measured in innocent blood."
@@ -1293,7 +1294,7 @@ BEGIN
     IDS_MISSION_28_BRIEF    "Your flight to London ran into some... unexpected turbulence. Enemies boarded the plane mid-flight, abducted certain precious cargo, and left you to die aboard the doomed airliner. Now you have less than a minute to find a parachute and bail out before your career comes to a rather abrupt end."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_HELP_CONTINUE_GAME  "Continue most recently saved game."
     IDS_HELP_CH_ALPHA       "Opacity of the crosshair."
@@ -1313,7 +1314,7 @@ BEGIN
     IDS_HOST                "Host"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_TEXT        "4:00pm, September 16\nIn view of Le Chameau Heureux Hotel\nMarrakech, Morocco"
     IDS_MISSION_TEXT2       "One hour later...\nGrand Caravan Hotel"
@@ -1333,7 +1334,7 @@ BEGIN
     IDS_MISSION_TEXT16      "42 minutes later\nMaximillian's"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_SUMMARY_FOUND       "\tFound %1!d! of %2!d! items."
     IDS_STAT_CASUALTIES     "Casualties:"
@@ -1353,7 +1354,7 @@ BEGIN
     IDS_USE_CROSSHAIR       "Use crosshair"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_OBJ_5040    "<MISSION 3 OBJECTIVES>"
     IDS_MISSION_OBJ_5041    "Learn what you can from Doctor Schenker"
@@ -1373,7 +1374,7 @@ BEGIN
     IDS_MISSION_OBJ_5055    "Rendezvous with contact behind the club"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_OBJ_5056    "Find an alternate escape route"
     IDS_MISSION_OBJ_5057    "Goodman's not here yet. Find the manager's office and poke around for useful information."
@@ -1393,7 +1394,7 @@ BEGIN
     IDS_MISSION_OBJ_5071    "Photograph the captain's log"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_OBJ_5072    "Recover your possessions"
     IDS_MISSION_OBJ_5073    "Photograph the four chemical containers"
@@ -1413,7 +1414,7 @@ BEGIN
     IDS_MISSION_OBJ_5087    "Retrieve the captain's log"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_OBJ_5088    "Find your way out of the freighter"
     IDS_MISSION_OBJ_5089    "<insert mission objective here>"
@@ -1433,7 +1434,7 @@ BEGIN
     IDS_MISSION_OBJ_5103    "Get to the roof of the corporate headquarters building"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_OBJ_5104    "Find a way inside the building"
     IDS_MISSION_OBJ_5105    "Locate an elevator and ride it to the executive lobby"
@@ -1453,7 +1454,7 @@ BEGIN
     IDS_MISSION_OBJ_5119    "<insert mission objective here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_OBJ_5120    "<MISSION 9 OBJECTIVES>"
     IDS_MISSION_OBJ_5121    "Get inside the train"
@@ -1473,7 +1474,7 @@ BEGIN
     IDS_MISSION_OBJ_5135    "<insert mission objective here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_OBJ_5136    "<insert mission objective here>"
     IDS_MISSION_OBJ_5137    "<insert mission objective here>"
@@ -1493,7 +1494,7 @@ BEGIN
     IDS_MISSION_OBJ_5151    "Locate a radio and contact headquarters"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_OBJ_5152    "Dispatch the astronaut"
     IDS_MISSION_OBJ_5153    "Board rocket"
@@ -1513,7 +1514,7 @@ BEGIN
     IDS_MISSION_OBJ_5167    "<insert mission objective here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_OBJ_5168    "<insert mission objective here>"
     IDS_MISSION_OBJ_5169    "<insert mission objective here>"
@@ -1533,7 +1534,7 @@ BEGIN
     IDS_MISSION_OBJ_5183    "Override the security lockdown"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_OBJ_5184    "Rendezvous with UNITY operative"
     IDS_MISSION_OBJ_5185    "Locate the maintenance gondola station"
@@ -1553,7 +1554,7 @@ BEGIN
     IDS_MISSION_OBJ_5199    "<insert mission objective here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_OBJ_5200    "<MISSION 13 OBJECTIVES>"
     IDS_MISSION_OBJ_5201    "Infiltrate the chateau"
@@ -1573,7 +1574,7 @@ BEGIN
     IDS_MISSION_OBJ_5215    "<insert mission objective here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_OBJ_5216    "<insert mission objective here>"
     IDS_MISSION_OBJ_5217    "<insert mission objective here>"
@@ -1593,7 +1594,7 @@ BEGIN
     IDS_MISSION_OBJ_5231    "Defeat Volkov"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_OBJ_5232    "<insert mission objective here>"
     IDS_MISSION_OBJ_5233    "<insert mission objective here>"
@@ -1613,7 +1614,7 @@ BEGIN
     IDS_MISSION_OBJ_5247    "<insert mission objective here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_OBJ_5248    "<insert mission objective here>"
     IDS_MISSION_OBJ_5249    "<insert mission objective here>"
@@ -1633,7 +1634,7 @@ BEGIN
     IDS_MISSION_OBJ_5263    "Report to Santa's Workshop for gadget training"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_OBJ_5264    "Report to the basic training area"
     IDS_MISSION_OBJ_5265    "Proceed to the exit."
@@ -1653,7 +1654,7 @@ BEGIN
     IDS_MISSION_OBJ_5279    "<insert mission objective here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_OBJ_5280    "<TRAINING 5 OBJECTIVES>"
     IDS_MISSION_OBJ_5281    "Report to firing range for speargun training"
@@ -1673,7 +1674,7 @@ BEGIN
     IDS_MISSION_OBJ_5295    "<TRAINING 8 OBJECTIVES>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_OBJ_5296    "Report to Santa's Workshop for training"
     IDS_MISSION_OBJ_5297    "Successfully pickpocket three handbags or briefcases."
@@ -1693,7 +1694,7 @@ BEGIN
     IDS_MISSION_OBJ_5311    "Turn the alarm system back on"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSIONFAILURE      "Unacceptable civilian casualties!"
     IDS_MISSIONFAILURE2     "You failed to protect Ambassador Munroe!"
@@ -1709,7 +1710,7 @@ BEGIN
     IDS_MISSIONFAILURE12    "You murdered your contact!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_OBJ_5312    "Leave everything as you found it"
     IDS_MISSION_OBJ_5313    "Shut down the alarm"
@@ -1727,7 +1728,7 @@ BEGIN
     IDS_MISSION_OBJ_5325    "Continue deeper into the compound and search for additional evidence"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_HELP_PLAYER         "Set up your player options."
     IDS_HELP_JOIN           "Join an Internet multiplayer game."
@@ -1747,7 +1748,7 @@ BEGIN
     IDS_MOVE_CONTROLS       "Movement Controls"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_AMMO_29             "Retractable lockpick"
     IDS_AMMO_30             "Spy camera"
@@ -1767,7 +1768,7 @@ BEGIN
     IDS_AMMO_44             "Explosive bolt"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_SERVER_REFRESH      "Refresh servers (F5)"
     IDS_SERVER_REPING       "Re-Ping servers"
@@ -1787,7 +1788,7 @@ BEGIN
     IDS_HOST_LEVELS         "Levels"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_HELP_HOST_OPTIONS   "Sets game options."
     IDS_HELP_HOST_LEVELS    "Sets the list of levels for this session."
@@ -1807,7 +1808,7 @@ BEGIN
     IDS_CYAN                "Cyan"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_YELLOW              "Yellow"
     IDS_PURPLE              "Purple"
@@ -1827,7 +1828,7 @@ BEGIN
     IDS_HELP_SHELLCASINGS   "Toggles the rendering of weapon shell casings."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_TEXT17      "One hour later...\nUNITY headquarters, location classified"
     IDS_MISSION_TEXT18      "UNITY Strike Force Epsilon\nOn final approach to Chateau Dumas"
@@ -1847,7 +1848,7 @@ BEGIN
     IDS_MISSION_TEXT32      "You've disabled the security cameras."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MULTI_OBJ_7000      "<MULTIPLAYER OBJECTIVES>"
     IDS_MULTI_OBJ_7001      "Find the crane schematics to discover how to disable the two crane safety switches."
@@ -1859,7 +1860,7 @@ BEGIN
     IDS_MULTI_OBJ_7007      "Set the crane generator to overload to prevent UNITY from crossing to the adjacent skyscraper."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MULTI_OBJ_7008      "Raise the window blinds around the rooftop conference room."
     IDS_MULTI_OBJ_7009      "Prevent UNITY agents from spying on the meeting."
@@ -1879,7 +1880,7 @@ BEGIN
     IDS_MULTI_OBJ_7023      "Fire the laser at the munitions storehouse."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MULTI_OBJ_7024      "Prevent UNITY from sabotaging the laser facility."
     IDS_MULTI_OBJ_7025      "Prevent UNITY agents from destroying the laser."
@@ -1899,7 +1900,7 @@ BEGIN
     IDS_MULTI_OBJ_7039      "<none>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MULTI_OBJ_7040      "UNITY has discovered that H.A.R.M. is constructing a new international crime headquarters. UNITY agents have infiltrated the parking garage while H.A.R.M. thugs are on a coffee break on the upper floor. Use the camera sunglasses gadget to photograph enemy intelligence items while protecting those in your possession."
     IDS_MULTI_OBJ_7041      "The streets of Marrakech have become a battleground.  The local H.A.R.M. branch has discovered UNITY's safehouse but their own hideout may have been compromised. Photograph enemy intelligence while protecting the documents in your possession."
@@ -1914,7 +1915,7 @@ BEGIN
     IDS_MULTI_OBJ_7050      "<insert mission objective 7050 here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MULTI_WIN_7100      "UNITY made it to the Skyscraper!"
     IDS_MULTI_WIN_7101      "HARM destroyed the crane!"
@@ -1922,7 +1923,7 @@ BEGIN
     IDS_MULTI_WIN_7103      "UNITY operatives were detected by the security cameras!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MULTI_WIN_7104      "UNITY obtained photos of the meetings!"
     IDS_MULTI_WIN_7105      "<Enter victory string 7105 here>"
@@ -1942,7 +1943,7 @@ BEGIN
     IDS_MULTI_WIN_7119      "<Enter victory string 7119 here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MULTI_WIN_7120      "<Enter victory string 7120 here>"
     IDS_MULTI_WIN_7121      "<Enter victory string 7121 here>"
@@ -1957,7 +1958,7 @@ BEGIN
     IDS_MULTI_WIN_7130      "<Enter victory string 7130 here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_AMMO_DESC_37        "Body remover powder."
     IDS_AMMO_DESC_38        "Body remover powder."
@@ -1971,14 +1972,14 @@ BEGIN
     IDS_AMMO_DESC_46        "9mm rounds with tiny poison capsules inserted at the tip of each cartridge. Effective against living targets."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_WEAPON_DESC_31      "Sprinkle some of this powder on a dead body and watch it dissolve into ether."
     IDS_WEAPON_DESC_32      "Sprinkle some of this powder on a dead body and watch it dissolve into ether."
     IDS_WEAPON_DESC_33      "A H.A.R.M. prototype laser weapon that boasts increased power and improved aesthetic appeal over the standard issue laser gun."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSIONFAILURE13    "You froze to death!"
     IDS_MISSIONFAILURE14    "You failed to provoke Armstrong!"
@@ -1998,7 +1999,7 @@ BEGIN
     IDS_MISSIONFAILURE28    "You traveled across Europe by train!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INV_CONTROLS        "Inventory and Weapon Controls"
     IDS_VIEW_CONTROLS       "View Controls"
@@ -2018,7 +2019,7 @@ BEGIN
     IDS_HELP_SUBTITLES      "Toggle use of subtitles."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_TEXT_DIALOGUE_9000  ". . ."
     IDS_TEXT_DIALOGUE_9001  ". . ."
@@ -2030,7 +2031,7 @@ BEGIN
     IDS_TEXT_DIALOGUE_9007  "(Question six.)"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_TEXT_DIALOGUE_9008  "(Question seven.)"
     IDS_TEXT_DIALOGUE_9009  "(Question eight.)"
@@ -2044,7 +2045,7 @@ BEGIN
     IDS_TEXT_DIALOGUE_9017  "(Which weapon would you like to practice with?)"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_WEAPONS_STAY        "Weapons stay"
     IDS_WEAPONS_STAY_HELP   "Toggles whether weapons immediately respawn."
@@ -2065,7 +2066,7 @@ BEGIN
     IDS_FRAG_SCORE          "Frag scoring"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10000      "Damn!"
     IDS_DIALOGUE_10001      "Hello? Bruno! How was France? Did you collect any new bullet holes? I know how you love to be shot at. I'm teasing. I'm glad you're not damaged. Did you at least encounter an exotic temptress or two? Really? What was her name? What do you mean you don't remember? That's horrible! Of course I'm famished! Are you buying? Then it's a date. Let's say Maximillian's in half an hour. Ciao!"
@@ -2085,7 +2086,7 @@ BEGIN
     IDS_DIALOGUE_10015      "They've done an outstanding job so far, haven't they?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10016      "You see? What did I tell you?"
     IDS_DIALOGUE_10017      "Probably just one of the committee members needing a babysitter on short notice."
@@ -2105,7 +2106,7 @@ BEGIN
     IDS_DIALOGUE_10031      "Sorry I'm late, Smithy. You're looking dapper today."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10032      "Spare me the disingenuous flattery, old boy. It doesn't suit you."
     IDS_DIALOGUE_10033      "I was being sincere. It was the one polite thing I could think to say."
@@ -2125,7 +2126,7 @@ BEGIN
     IDS_DIALOGUE_10047      "Seven operatives? That's over half the section!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10048      "Seven operatives? That's over half the active list!"
     IDS_DIALOGUE_10049      "Why weren't we informed sooner?"
@@ -2145,7 +2146,7 @@ BEGIN
     IDS_DIALOGUE_10063      "Apparently I wasn't close enough."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10064      "He escaped by throwing himself off a 70 foot cliff into an icy river. It was presumed that he survived, as no body was ever recovered. In fact, rumor has it he's currently working for an organization calling itself H.A.R.M. as Director of Executive Action. I don't have to tell you what that means."
     IDS_DIALOGUE_10065      "What do we know about H.A.R.M.?"
@@ -2165,7 +2166,7 @@ BEGIN
     IDS_DIALOGUE_10079      "I'll try to surpass your expectations."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10080      "Considering that I expect you to fail miserably, you shouldn't have to try very hard."
     IDS_DIALOGUE_10081      "Enough of this! Time is of the essence. Stop by the toy shop before you go. They've some new gizmos you might find useful. Don't dally too long, though -- your flight leaves at 6:00pm."
@@ -2185,7 +2186,7 @@ BEGIN
     IDS_DIALOGUE_10095      "I'm not letting you in here."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10096      "Access granted."
     IDS_DIALOGUE_10097      "Access granted."
@@ -2205,7 +2206,7 @@ BEGIN
     IDS_DIALOGUE_10111      "Walking into a public area with a weapon drawn is likely to cause a commotion. Unless you want to draw attention to yourself, make sure to put away firearms and other obvious weapons before approaching civilians. Once they're distressed, they probably won't talk to you, so you might miss out on useful information or advice."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10112      "Let's talk about your barrette. In its default mode, it can be used as a weapon. When you slash an adversary, the pressure on the blade releases a small amount of toxin into his bloodstream. Quite deadly. The barrette also has a lockpick function, which is useful for bypassing certain keyed locks. The more complicated the mechanism, the longer it will take to pick. These examples should prepare you for most of the mechanisms you will encounter."
     IDS_DIALOGUE_10113      "While on a mission, always keep an eye out for miscellaneous intelligence items that might be of benefit to us. Here are some of the items you should look for. The more you recover, the better your mission rating will be."
@@ -2225,7 +2226,7 @@ BEGIN
     IDS_DIALOGUE_10127      "I've waited nearly four years for this chance. I think I can endure another half hour."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10128      "Good girl. You're growing up."
     IDS_DIALOGUE_10129      "What do you make of all that talk of a traitor?"
@@ -2245,7 +2246,7 @@ BEGIN
     IDS_DIALOGUE_10143      "All right. Munroe's headed for the cafe. Watch for him on the second floor patio, coming from the left."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10144      "What about the targets?"
     IDS_DIALOGUE_10145      "Not sure yet."
@@ -2265,7 +2266,7 @@ BEGIN
     IDS_DIALOGUE_10159      "Where's the challenge in that? I just hope there are enough to keep me busy."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10160      "You may regret that sentiment."
     IDS_DIALOGUE_10161      "On the roof to your right!"
@@ -2285,7 +2286,7 @@ BEGIN
     IDS_DIALOGUE_10175      "If I leave now, Ambassador Munroe will die."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10176      "I locked myself out again. How irritating."
     IDS_DIALOGUE_10177      "Thank you for your help!"
@@ -2305,7 +2306,7 @@ BEGIN
     IDS_DIALOGUE_10191      "This guy is too much."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10192      "I'm in position."
     IDS_DIALOGUE_10193      "Good. He's almost there."
@@ -2325,7 +2326,7 @@ BEGIN
     IDS_DIALOGUE_10207      "How many?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10208      "Looks like six of them. Can you handle it?"
     IDS_DIALOGUE_10209      "Of course I can! I'll meet you at the hotel in an hour."
@@ -2345,7 +2346,7 @@ BEGIN
     IDS_DIALOGUE_10223      "Why not?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10224      "Because I don't like monkeys. Now get that filthy beast away from me."
     IDS_DIALOGUE_10225      "Are you insulting my monkey?"
@@ -2365,7 +2366,7 @@ BEGIN
     IDS_DIALOGUE_10239      "But we've only been here for two days!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10240      "I don't like it here. "
     IDS_DIALOGUE_10241      "What? Why not?"
@@ -2385,7 +2386,7 @@ BEGIN
     IDS_DIALOGUE_10255      "Mon dieu! What pigs these people are!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10256      "I haven't seen you around. I would definitely remember."
     IDS_DIALOGUE_10257      "What did I tell you about flirting?"
@@ -2405,7 +2406,7 @@ BEGIN
     IDS_DIALOGUE_10271      "We were too late for the seminar. They already locked the doors."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10272      "I'd rather sit by the pool, anyway. I'm going up to my room to change."
     IDS_DIALOGUE_10273      "This vacation is exactly what I needed."
@@ -2425,7 +2426,7 @@ BEGIN
     IDS_DIALOGUE_10287      "Really? Why not?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10288      "Look at you! You're crass and immature."
     IDS_DIALOGUE_10289      "That's not true. I'm just honest. Any man who could look upon you without being moved to lust is only half a man. Or maybe only a third, it's hard to say."
@@ -2445,7 +2446,7 @@ BEGIN
     IDS_DIALOGUE_10303      "Something quiet and romantic. It's for our anniversary."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10304      "Well, in that case, perhaps Azrou might be just the ticket. It's quiet and less touristy than Fez."
     IDS_DIALOGUE_10305      "That sounds marvelous! Do you have any brochures?"
@@ -2465,7 +2466,7 @@ BEGIN
     IDS_DIALOGUE_10319      "What photograph?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10320      "Mon dieu!"
     IDS_DIALOGUE_10321      "I'm sorry! Nobody told me."
@@ -2485,7 +2486,7 @@ BEGIN
     IDS_DIALOGUE_10335      "(Cry of despair.)"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10336      "Late, as usual. I was beginning to worry."
     IDS_DIALOGUE_10337      "You always worry."
@@ -2505,7 +2506,7 @@ BEGIN
     IDS_DIALOGUE_10351      "Or you could stay here... permanently."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10352      "Volkov!"
     IDS_DIALOGUE_10353      "Get down, you foolish girl!"
@@ -2525,7 +2526,7 @@ BEGIN
     IDS_DIALOGUE_10367      "The girl's in the lobby! Kill her!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10368      "But why didn't you kill her, Mr. Volkov?"
     IDS_DIALOGUE_10369      "I meant to, but my hunger for revenge distracted me. Let that be a lesson not to be ruled by your emotions."
@@ -2545,7 +2546,7 @@ BEGIN
     IDS_DIALOGUE_10383      "Are you insulting my monkey?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10384      "I spit upon your monkey."
     IDS_DIALOGUE_10385      "You are a horrible person."
@@ -2565,7 +2566,7 @@ BEGIN
     IDS_DIALOGUE_10399      "Not really."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10400      "I'll ask again. Where can I find Volkov?"
     IDS_DIALOGUE_10401      "And I'll say again: nice try, but I'll tell you nothing."
@@ -2585,7 +2586,7 @@ BEGIN
     IDS_DIALOGUE_10415      "Yes I do!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10416      "What was I thinking? Why would Dmitrij Volkov tell a lackey like you where he was going?"
     IDS_DIALOGUE_10417      "Dmitrij and I are very close. Very close."
@@ -2605,7 +2606,7 @@ BEGIN
     IDS_DIALOGUE_10431      "Dear lord, what a day."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10432      "No sign of her. Are you sure she's coming?"
     IDS_DIALOGUE_10433      "She'll be here.  If she gets away, I will kill any man she leaves alive. Am I understood?"
@@ -2625,7 +2626,7 @@ BEGIN
     IDS_DIALOGUE_10447      "That's Hassan's fault, not mine."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10448      "Idiot. I think Mr. Volkov would disagree with you. Would you like me to tell him?"
     IDS_DIALOGUE_10449      "Tell it to the worms instead."
@@ -2645,7 +2646,7 @@ BEGIN
     IDS_DIALOGUE_10463      "Miss Archer."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10464      "Well, I think we can classify Morocco as a complete disaster. I knew we were asking for trouble sending a has been and a woman on an assignment like this. "
     IDS_DIALOGUE_10465      "Well, I think we can classify Morocco as a complete disaster. I knew we were asking for trouble sending a woman and a fossil like Lawrie on an assignment like this. "
@@ -2665,7 +2666,7 @@ BEGIN
     IDS_DIALOGUE_10479      "In any case, it seems reasonable to assume that you weren't meant to escape, Miss Archer."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10480      "Bruno was not a traitor."
     IDS_DIALOGUE_10481      "Can you be sure? Every man has his price. Every woman too, I expect. When a man reaches the end of his career, it's only natural that he begins to worry about the future. I suppose some men of adaptable moral constitution even find it in themselves to resort to treason."
@@ -2685,7 +2686,7 @@ BEGIN
     IDS_DIALOGUE_10495      "Well, you can hardly botch this job as badly as Morocco."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10496      "You might want to stop by the training facility and test out the new gadgets the Toymakers have prepared for you."
     IDS_DIALOGUE_10497      "There are several important things to know about security cameras. First, as tempting as it may be, don't destroy them if you can help it. Whoever is monitoring the security system is likely to send someone to investigate or even sound an alarm if any of the cameras goes out. Instead, try to avoid them altogether. If the light on a camera starts flashing red, it means you've been detected and the camera is attempting to focus on you. Duck out of sight before you're identified as a threat. If you're close enough to the camera, you'll actually hear it focusing. Listen for it to resume scanning before stepping back into view. Finally, make sure not to leave any bodies lying in view of a camera. That's just as bad as being spotted."
@@ -2705,7 +2706,7 @@ BEGIN
     IDS_DIALOGUE_10511      "Thank you."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10512      "Good luck."
     IDS_DIALOGUE_10513      "Hello?"
@@ -2725,7 +2726,7 @@ BEGIN
     IDS_DIALOGUE_10527      "These code phrases have a somewhat confessional tone to them, don't you think?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10528      "Yeah, now that you mention it."
     IDS_DIALOGUE_10529      "Hmmm. It says...Of The Library."
@@ -2745,7 +2746,7 @@ BEGIN
     IDS_DIALOGUE_10543      "Yes. Can you believe it?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10544      "So what did you do?"
     IDS_DIALOGUE_10545      "What do you think I did?"
@@ -2765,7 +2766,7 @@ BEGIN
     IDS_DIALOGUE_10559      "Klaus, go check the inner gate. Jurgen isn't answering the telephone."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10560      "Did you hear what happened to Dieter?"
     IDS_DIALOGUE_10561      "No, what?"
@@ -2785,7 +2786,7 @@ BEGIN
     IDS_DIALOGUE_10575      "Oh no."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10576      "Heheh, exactly. His wife is in the bedroom with her lover."
     IDS_DIALOGUE_10577      "So what happened?"
@@ -2805,7 +2806,7 @@ BEGIN
     IDS_DIALOGUE_10591      "I understand."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10592      "I almost forgot, I thought you might like this."
     IDS_DIALOGUE_10593      "I'm not interested in complaints. What do you have for me?"
@@ -2825,7 +2826,7 @@ BEGIN
     IDS_DIALOGUE_10607      "I suppose we shall never know."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10608      "I already know. The Penguin and his reconstituted thugs are no match for Batman and Robin."
     IDS_DIALOGUE_10609      "Test. 1, 2, 3. Test."
@@ -2845,7 +2846,7 @@ BEGIN
     IDS_DIALOGUE_10623      "I don't trust you. I think you're planning to hurt me. Over."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10624      "I'm not going to hurt you. I just want to tell you a secret."
     IDS_DIALOGUE_10625      "What kind of secret? Over."
@@ -2865,7 +2866,7 @@ BEGIN
     IDS_DIALOGUE_10639      "You don't mind?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10640      "No. But I have to report for duty in 15 minutes."
     IDS_DIALOGUE_10641      "It won't take me that long."
@@ -2885,7 +2886,7 @@ BEGIN
     IDS_DIALOGUE_10655      "We'll have time for introductions later. Our first priority is to get out of here."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10656      "They sent a woman to liberate me? Mein Gott in Himmel."
     IDS_DIALOGUE_10657      "Quit your crying."
@@ -2905,7 +2906,7 @@ BEGIN
     IDS_DIALOGUE_10671      "Research. Not the sort of thing a layman would be likely to understand. And especially not a laywoman."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10672      "Perhaps you could distill the basic concepts for me."
     IDS_DIALOGUE_10673      "Perhaps; however, I'm rather tired, so I would prefer to discuss these matters at a later time."
@@ -2925,7 +2926,7 @@ BEGIN
     IDS_DIALOGUE_10687      "How is such a thing possible?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10688      "Ah, I spent many years trying to answer that very question. Perhaps you'd care to read an article I've been preparing on the subject. It's rather fundamental, but it will give you a foundation for understanding the larger issues."
     IDS_DIALOGUE_10689      "I'm deeply honored!"
@@ -2945,7 +2946,7 @@ BEGIN
     IDS_DIALOGUE_10703      "Look out!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10704      "She's got a gun!"
     IDS_DIALOGUE_10705      "This food is terrible!"
@@ -2965,7 +2966,7 @@ BEGIN
     IDS_DIALOGUE_10719      "Yes, sir."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10720      "Those bastards left us here!"
     IDS_DIALOGUE_10721      "There aren't any more parachutes!"
@@ -2985,7 +2986,7 @@ BEGIN
     IDS_DIALOGUE_10735      "Well, now that we've seen you at your best, I'm not sure we can afford to see you on an off day."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10736      "Now, now, Mr. Smith, we've had a few setbacks --"
     IDS_DIALOGUE_10737      "A few setbacks?"
@@ -3005,7 +3006,7 @@ BEGIN
     IDS_DIALOGUE_10751      "During the war, he served as a sapper in France and Germany. Everything from mine removal to demolitions and sabotage. Earned himself quite a reputation for his reckless antics. The most popular legend had to do with a bridge he allegedly crippled with nothing but a shovel and a hand grenade. A German supply train did the rest. When it reached the weakened section of the bridge, the whole structure came crashing down."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10752      "It's a shame this chap ended up on the wrong side of the law."
     IDS_DIALOGUE_10753      "To the best of our knowledge, he's never been involved in anything this big before. Most of his arrests since returning from the war have been related to public brawling."
@@ -3025,7 +3026,7 @@ BEGIN
     IDS_DIALOGUE_10767      "Very good, sir. Thank you."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10768      "Agent Archer?"
     IDS_DIALOGUE_10769      "Yes, sir?"
@@ -3045,7 +3046,7 @@ BEGIN
     IDS_DIALOGUE_10783      "Probably so, but I have the strangest feeling a woman's touch is exactly what we need on this one."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10784      "I can't argue with you when you're like this."
     IDS_DIALOGUE_10785      "No, you can't."
@@ -3065,7 +3066,7 @@ BEGIN
     IDS_DIALOGUE_10799      "Leave me alone."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10800      "I'm always too late to get in."
     IDS_DIALOGUE_10801      "Can you spare a light?"
@@ -3085,7 +3086,7 @@ BEGIN
     IDS_DIALOGUE_10815      "I understand that, but I can't let you in."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10816      "Can I at least go find her?"
     IDS_DIALOGUE_10817      "Sadly, no."
@@ -3105,7 +3106,7 @@ BEGIN
     IDS_DIALOGUE_10831      "I said no and I meant it. Now go away or I will call the police."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10832      "Schweinhund."
     IDS_DIALOGUE_10833      "Scheisskopf."
@@ -3125,7 +3126,7 @@ BEGIN
     IDS_DIALOGUE_10847      "It will be done as you have asked."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10848      "If you succeed, perhaps I will be convinced to sing for you. Would you like that?"
     IDS_DIALOGUE_10849      "Very much so, Fraulein Wagner. It would be a great honor."
@@ -3145,7 +3146,7 @@ BEGIN
     IDS_DIALOGUE_10863      "How passe. Anyone can sing a melody, but it takes a true artist to defy a melody, especially with such passion and... courage."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10864      "Where are you going?"
     IDS_DIALOGUE_10865      "Somewhere else."
@@ -3165,7 +3166,7 @@ BEGIN
     IDS_DIALOGUE_10879      "I thought it was a little... unusual, but I figured, hey, it's Europe. Things are different over here."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10880      "I thought it was a little strange, but you Europeans do things a little differently."
     IDS_DIALOGUE_10881      "Scotch and soda.  Will you have a drink?"
@@ -3185,7 +3186,7 @@ BEGIN
     IDS_DIALOGUE_10895      "Just because I can take care of myself doesn't mean I'm not a woman. They're not mutually exclusive, you know."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10896      "But isn't the point of women's liberation to allow young ladies -- like yourself -- to become men?"
     IDS_DIALOGUE_10897      "The point is to allow young ladies to become whatever they please."
@@ -3205,7 +3206,7 @@ BEGIN
     IDS_DIALOGUE_10911      "If he does, you'll certainly be justified in interrogating him, won't you."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10912      "Heck, yeah. Look at him. He's concentrating so hard on not being noticed, he'd probably follow you into heavy traffic without a second thought. Anyway, you'll certainly be justified in interrogating him, won't you."
     IDS_DIALOGUE_10913      "I'll be justified in doing worse than that."
@@ -3225,7 +3226,7 @@ BEGIN
     IDS_DIALOGUE_10927      "(Scream.)"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10928      "(Scream.)"
     IDS_DIALOGUE_10929      "No, please! Don't shoot!"
@@ -3245,7 +3246,7 @@ BEGIN
     IDS_DIALOGUE_10943      "Come quickly! The soup is burning!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10944      "Mach schnell!"
     IDS_DIALOGUE_10945      "Alarm, alarm!"
@@ -3265,7 +3266,7 @@ BEGIN
     IDS_DIALOGUE_10959      "Fine."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10960      "A bit hungry, perhaps, but that's normal."
     IDS_DIALOGUE_10961      "Meet me at this address in one hour."
@@ -3285,7 +3286,7 @@ BEGIN
     IDS_DIALOGUE_10975      "Good God."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10976      "What's so funny?"
     IDS_DIALOGUE_10977      "Nothing. See you later, Bold Eagle."
@@ -3305,7 +3306,7 @@ BEGIN
     IDS_DIALOGUE_10991      "But what if you're born into a hedonistic culture?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_10992      "Look across history. The reason hedonism is discouraged by most religions and governments is that it weakens a civilization. It breeds sloth, petulance, degeneracy, and selfishness. A divided nation is a fragile nation, waiting to be conquered. Unity is strength. Humans instinctively fashion order out of chaos. It is a natural, probably genetic impulse. Therefore, even an individual born into troubled times has the capacity, and even the duty, to behave in a manner that promotes unity, however difficult it may be."
     IDS_DIALOGUE_10993      "Then what about us?"
@@ -3325,7 +3326,7 @@ BEGIN
     IDS_DIALOGUE_11007      "I'll be fine."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11008      "We've developed a new lipstick explosive for you. This one has a three second timer, which will allow you to bank it around corners or seek cover before it detonates."
     IDS_DIALOGUE_11009      "We've modified your cigarette lighter. It now features a built in miniature welder. The flame should be just hot enough to cut through locks that can't be picked or shot off. "
@@ -3345,7 +3346,7 @@ BEGIN
     IDS_DIALOGUE_11023      "Tell me about it. It's amazing the whole secret base didn't blow up."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11024      "It pays to hire professionals. Anyway, welcome aboard, Keith. Good to have you on the team."
     IDS_DIALOGUE_11025      "I appreciate it. I got a good feeling about this organization."
@@ -3365,7 +3366,7 @@ BEGIN
     IDS_DIALOGUE_11039      "I don't know."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11040      "Great. When I find him, he's fired."
     IDS_DIALOGUE_11041      "He didn't mean any harm."
@@ -3385,7 +3386,7 @@ BEGIN
     IDS_DIALOGUE_11055      "Well, there's just one problem. When you didn't show up after an hour, I got nervous and deactivated the timers. We'll have to reset them. There are four in that warehouse over there. If you can take care of those, I'll tend to the others."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11056      "How will I find them?"
     IDS_DIALOGUE_11057      "I stuck them to fuel barrels. You'll just have to keep your eyes open. Once you find them, set them to go off at 11:15. That'll give us half an hour. Meet me back here when you're done. And don't be late this time."
@@ -3405,7 +3406,7 @@ BEGIN
     IDS_DIALOGUE_11071      "Then explain that shirt."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11072      "What's wrong with it?"
     IDS_DIALOGUE_11073      "Look, I've spent most of my life getting into places I'm not supposed to be. Anyway, if I do get into trouble, I'll be needing a knight in... shining armor to come to my rescue, won't I?"
@@ -3425,7 +3426,7 @@ BEGIN
     IDS_DIALOGUE_11087      "Why, you starting something up?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11088      "Well, me and a couple of guys from security have been playing once a week at this little club downtown. Real informal. Improvisation, mostly."
     IDS_DIALOGUE_11089      "Sounds fun."
@@ -3445,7 +3446,7 @@ BEGIN
     IDS_DIALOGUE_11103      "Hans!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11104      "What do you want?"
     IDS_DIALOGUE_11105      "Your dog went doo doo over here."
@@ -3465,7 +3466,7 @@ BEGIN
     IDS_DIALOGUE_11119      "Popular, eh?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11120      "I guess so. Although I don't know why. The music... it was the most horrible thing I've ever heard."
     IDS_DIALOGUE_11121      "Heh, I've been to places like that."
@@ -3485,7 +3486,7 @@ BEGIN
     IDS_DIALOGUE_11135      "She came aboard about an hour ago."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11136      "What?"
     IDS_DIALOGUE_11137      "It's true! Didn't you read the memo in the galley?"
@@ -3505,7 +3506,7 @@ BEGIN
     IDS_DIALOGUE_11151      "Why not just kill her?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11152      "Don't tell me my business, laddie."
     IDS_DIALOGUE_11153      "Yes, sir."
@@ -3525,7 +3526,7 @@ BEGIN
     IDS_DIALOGUE_11167      "Coward."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11168      "Fattie."
     IDS_DIALOGUE_11169      "Drunk."
@@ -3545,7 +3546,7 @@ BEGIN
     IDS_DIALOGUE_11183      "Then stay here and show your devotion. I'll nail up a commemorative plaque for you in the ladies room of that wretched nightclub of yours. "
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11184      "I can't help it if my beautiful cabaret is infested with Beatniks. I've tried to get rid of them, but they're like roaches."
     IDS_DIALOGUE_11185      "Probably ‘cause they think you sing like that on purpose. Experimental jazz or some such shite."
@@ -3565,7 +3566,7 @@ BEGIN
     IDS_DIALOGUE_11199      "Don't mind if I do!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11200      "After you smoke that one, you really ought to try one of these. Not Cuban, but I challenge you to tell the difference."
     IDS_DIALOGUE_11201      "Shall we turn it into a wager?"
@@ -3585,7 +3586,7 @@ BEGIN
     IDS_DIALOGUE_11215      "What's the matter, Commissioner? You look a mite wan!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11216      "Pale as cheese."
     IDS_DIALOGUE_11217      "Are you quite all right?"
@@ -3605,7 +3606,7 @@ BEGIN
     IDS_DIALOGUE_11231      "But then you would have felt guilty."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11232      "Don't be so sure."
     IDS_DIALOGUE_11233      "Ah, come on, be nice."
@@ -3625,7 +3626,7 @@ BEGIN
     IDS_DIALOGUE_11247      "All right. I'm sorry I didn't warn you. Are you happy now?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11248      "Not much of an apology, but I guess it'll have to do."
     IDS_DIALOGUE_11249      "Did you at least manage to place a beacon in the radio room?"
@@ -3645,7 +3646,7 @@ BEGIN
     IDS_DIALOGUE_11263      "I'm not cleaning up this mess!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11264      "This is supposed to be a respectable hotel!"
     IDS_DIALOGUE_11265      "Who's making all that noise? I'm trying to sleep!  Waaaahhh!"
@@ -3665,7 +3666,7 @@ BEGIN
     IDS_DIALOGUE_11279      "She, uh... well, I, uh..."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11280      "Say it!"
     IDS_DIALOGUE_11281      "She got away."
@@ -3685,7 +3686,7 @@ BEGIN
     IDS_DIALOGUE_11295      "On second thought, perhaps that punishment is too inhumane. Let's go with electrocution instead. Hmm?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11296      "Yes, Fraulein Wagner."
     IDS_DIALOGUE_11297      "We should be directly over the wreckage. You'd better get going."
@@ -3705,7 +3706,7 @@ BEGIN
     IDS_DIALOGUE_11311      "I swear on all that is holy and true, woman, you can say what you please about my hobbies and my hygiene, but if you ever cast aspersions on my manhood again, I'll pound you. I'm not a coward."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11312      "Your threats don't frighten me."
     IDS_DIALOGUE_11313      "Only a coward would threaten to beat a defenseless woman."
@@ -3725,7 +3726,7 @@ BEGIN
     IDS_DIALOGUE_11327      "Well, I got what we came for. Let's head for shore."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11328      "Aye, mostly bad, but I got what we came for. Let's head for shore."
     IDS_DIALOGUE_11329      "I can't believe this. She's late again!"
@@ -3745,7 +3746,7 @@ BEGIN
     IDS_DIALOGUE_11343      "They certainly expect us to swallow a lot of maybes. Maybe they're telling the truth about Monte Carlo. Maybe the consequences would be as dire as they predict. Maybe there's an antidote. Maybe they'll fulfill their end of the bargain."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11344      "I tend to agree with you, Agent Archer, but for the time being, I suggest we take them at their word."
     IDS_DIALOGUE_11345      "The word of a puppet?"
@@ -3765,7 +3766,7 @@ BEGIN
     IDS_DIALOGUE_11359      "And Volkov?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11360      "He's only a threat if he knows what we're up to. If our theories are correct about Agent Lawrie, Volkov shouldn't be much of a concern."
     IDS_DIALOGUE_11361      "What if your theories aren't correct?"
@@ -3785,7 +3786,7 @@ BEGIN
     IDS_DIALOGUE_11375      "Only what I've read in the papers. Apparently, he's a reclusive chap who spends much of his time hunting big game in Africa and Southeast Asia. No one knows much about him, except that he inherited the company from his father about ten years ago."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11376      "We're counting on you to discover whether or not he's connected to H.A.R.M."
     IDS_DIALOGUE_11377      "And if he is?"
@@ -3805,7 +3806,7 @@ BEGIN
     IDS_DIALOGUE_11391      "Could you take another look at the appointment book?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11392      "I suppose, but I can't see that it will do any good. The baron's routine is quite established."
     IDS_DIALOGUE_11393      "Would you excuse me for a moment?"
@@ -3825,7 +3826,7 @@ BEGIN
     IDS_DIALOGUE_11407      "Did you see what she did with her hair? It's horrid!  I know! Short is fine -- look at Audrey Hepburn in Roman Holiday -- but it's just so... mannish. Well, at least you didn't have to listen to her mother lament about it for three quarters of an hour. Yes! Can you believe it? The poor dear was distraught. And who can blame her?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11408      "Are you talking about Flora?"
     IDS_DIALOGUE_11409      "Yes! I know you did. We all did. But she doesn't listen."
@@ -3845,7 +3846,7 @@ BEGIN
     IDS_DIALOGUE_11423      "Certainly, Mr. Hilltop."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11424      "Here it is."
     IDS_DIALOGUE_11425      "Ah, good, good. You look very nice today."
@@ -3865,7 +3866,7 @@ BEGIN
     IDS_DIALOGUE_11439      "Mr. Manning is on the line, sir."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11440      "Thank you, Evelyn. Manning, this is Hilltop. Listen, I'm just looking over the latest accident report and... hello? Manning?  Good God, he hung up on me!"
     IDS_DIALOGUE_11441      "Shall I ring him again, sir?"
@@ -3885,7 +3886,7 @@ BEGIN
     IDS_DIALOGUE_11455      "Plenty. Do you trust me now?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11456      "Nope."
     IDS_DIALOGUE_11457      "Now, then, let's see if we can't sort this confusion out, shall we?"
@@ -3905,7 +3906,7 @@ BEGIN
     IDS_DIALOGUE_11471      "Well, now that we've decided who's going in, what are your orders? Sir?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11472      "All right. I'll help you get inside, but you'd better be careful. If anyone sees you, liquidate him before he can set off an alarm. And stay clear of security cameras."
     IDS_DIALOGUE_11473      "Don't worry."
@@ -3925,7 +3926,7 @@ BEGIN
     IDS_DIALOGUE_11487      "My mother-in-law's coming into town this weekend."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11488      "You don't get along with her?"
     IDS_DIALOGUE_11489      "She hates me. Actually, it's mutual."
@@ -3945,7 +3946,7 @@ BEGIN
     IDS_DIALOGUE_11503      "No, I did not."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11504      "I put it on your desk yesterday."
     IDS_DIALOGUE_11505      "Did you? And what exactly did your report say?"
@@ -3965,7 +3966,7 @@ BEGIN
     IDS_DIALOGUE_11519      "Hey, Dallas. Looks like we've got a gas leak."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11520      "Not again! Which pipe?"
     IDS_DIALOGUE_11521      "The red one."
@@ -3985,7 +3986,7 @@ BEGIN
     IDS_DIALOGUE_11535      "I'll bet it was another gas leak!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11536      "Just wait till I get my hands on Collins and Dallas!  Assuming they're still alive, that is."
     IDS_DIALOGUE_11537      "Hello. What have we here?"
@@ -4005,7 +4006,7 @@ BEGIN
     IDS_DIALOGUE_11551      "How are you planning on getting in there, anyway?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11552      "I'll charm my way in."
     IDS_DIALOGUE_11553      "Well, I hope you brought some secret charm powder or something. Otherwise, you're in big trouble."
@@ -4025,7 +4026,7 @@ BEGIN
     IDS_DIALOGUE_11567      "Baron Dumas certainly seems to qualify as a man of influence, wouldn't you say?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11568      "I suppose it would depend on how you choose to define influence."
     IDS_DIALOGUE_11569      "He is the president of Dumas Industrial Enterprises."
@@ -4045,7 +4046,7 @@ BEGIN
     IDS_DIALOGUE_11583      "This is the residence of Baron Archibald Dumas, is it not?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11584      "Yes..."
     IDS_DIALOGUE_11585      "Baron Dumas certainly seems to qualify as a man of influence, wouldn't you say?"
@@ -4065,7 +4066,7 @@ BEGIN
     IDS_DIALOGUE_11599      "Yes. The idea is to penetrate the myth and get to know the man. His past times, his ambitions, his accomplishments. The things that make him tick."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11600      "I see."
     IDS_DIALOGUE_11601      "He's a model aristocrat."
@@ -4085,7 +4086,7 @@ BEGIN
     IDS_DIALOGUE_11615      "I really do have an appointment."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11616      "I see. Very well. Can you wait here a moment?"
     IDS_DIALOGUE_11617      "I'm from Men of Influence magazine."
@@ -4105,7 +4106,7 @@ BEGIN
     IDS_DIALOGUE_11631      "Nothing. Follow me, please."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11632      "Miss Haig, sir."
     IDS_DIALOGUE_11633      "Splendid! Show her in!"
@@ -4125,7 +4126,7 @@ BEGIN
     IDS_DIALOGUE_11647      "Jolly good! You've come to the right place. That will be all, Giles."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11648      "Actually, sir, I thought it might be worthwhile for me to stay in case the young lady should desire... anything at all."
     IDS_DIALOGUE_11649      "Splendid idea. Pip pip."
@@ -4145,7 +4146,7 @@ BEGIN
     IDS_DIALOGUE_11663      "Ah, splendid question!  Well, I once... wrestled a lion to the ground... and strangled it to death with my bare hands. Yes, I remember now, my porter had injured his leg and was about to be mauled."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11664      "Dear lord....Dear lord, how courageous!"
     IDS_DIALOGUE_11665      "Yes, indeed."
@@ -4165,7 +4166,7 @@ BEGIN
     IDS_DIALOGUE_11679      "How intrepid! You must be quite a marksman to take down a tiger with a single round from a .22."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11680      "Well, sometimes it takes a few more than that."
     IDS_DIALOGUE_11681      "Still, even three rounds is impressive."
@@ -4185,7 +4186,7 @@ BEGIN
     IDS_DIALOGUE_11695      "That's because few live to tell of them, you see."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11696      "Well, it's fortunate that you did."
     IDS_DIALOGUE_11697      "Agreed! Silverbacks are by far the most dangerous animals to hunt."
@@ -4205,7 +4206,7 @@ BEGIN
     IDS_DIALOGUE_11711      "Really? Do you have any of his work about?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11712      "Normally yes, but it's... out being cleaned."
     IDS_DIALOGUE_11713      "Cleaned?"
@@ -4225,7 +4226,7 @@ BEGIN
     IDS_DIALOGUE_11727      "Not that I can think of."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11728      "Not even centipedes?"
     IDS_DIALOGUE_11729      "Ugh, dreadful things. Yes, I suppose perhaps centipedes."
@@ -4245,7 +4246,7 @@ BEGIN
     IDS_DIALOGUE_11743      "Goodness, no. I don't speak a word of Chinese."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11744      "But Kenya's in Africa."
     IDS_DIALOGUE_11745      "I thought you were referring to the one in China."
@@ -4265,7 +4266,7 @@ BEGIN
     IDS_DIALOGUE_11759      "Well, they're imported."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11760      "I see."
     IDS_DIALOGUE_11761      "Was that a gazelle trophy in the foyer?"
@@ -4285,7 +4286,7 @@ BEGIN
     IDS_DIALOGUE_11775      "Why not just buy trophies then?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11776      "Some men might be satisfied with that sort of compromise, but I only display animals I've collected myself. There's no honor in buying a trophy, now, is there?"
     IDS_DIALOGUE_11777      "How efficient."
@@ -4305,7 +4306,7 @@ BEGIN
     IDS_DIALOGUE_11791      "Yes, I know that. But there was also a historical one."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11792      "The Beowulf who fought the dragon?"
     IDS_DIALOGUE_11793      "Precisely."
@@ -4325,7 +4326,7 @@ BEGIN
     IDS_DIALOGUE_11807      "Well, one learns to delegate. For example, although you wouldn't guess it, I'm only peripherally involved with Dumas Enterprises these days. Strictly in an advisory capacity, you see. To keep the company on track. "
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11808      "How ingenious!"
     IDS_DIALOGUE_11809      "I have my moments."
@@ -4345,7 +4346,7 @@ BEGIN
     IDS_DIALOGUE_11823      "I'd like to meet the burglar who could get in there."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11824      "It would take a lunatic even to attempt it."
     IDS_DIALOGUE_11825      "Or a fool."
@@ -4365,7 +4366,7 @@ BEGIN
     IDS_DIALOGUE_11839      "What?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11840      "His initials. Damascus Valentine. Dmitrij Volkov. Coincidence?"
     IDS_DIALOGUE_11841      "Seems rather tenuous."
@@ -4385,7 +4386,7 @@ BEGIN
     IDS_DIALOGUE_11855      "Yeah, yeah, I know. Subtlety isn't my specialty. I still think it's too dangerous for her to go in alone."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11856      "Which is why you'll be providing a distraction for her downstairs."
     IDS_DIALOGUE_11857      "I like the sound of that."
@@ -4405,7 +4406,7 @@ BEGIN
     IDS_DIALOGUE_11871      "Dunno."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11872      "There ain't much in the way of valuables lying about."
     IDS_DIALOGUE_11873      "I don't give the orders. I'm just doing my job."
@@ -4425,7 +4426,7 @@ BEGIN
     IDS_DIALOGUE_11887      "I don't know. Something that'll get my attention."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11888      "Right. Take care of yourself."
     IDS_DIALOGUE_11889      "Don't worry about me. Just get to that safe as fast as you can. If they figure out what you're up to, you're as good as dead."
@@ -4445,7 +4446,7 @@ BEGIN
     IDS_DIALOGUE_11903      "Yeah, but this one has a skin problem. "
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11904      "Ugh."
     IDS_DIALOGUE_11905      "It's disgusting."
@@ -4465,7 +4466,7 @@ BEGIN
     IDS_DIALOGUE_11919      "Oh, I heard about them."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11920      "Nothing good, I wager."
     IDS_DIALOGUE_11921      "Lucky you got out of there before that deal in Taiwan."
@@ -4485,7 +4486,7 @@ BEGIN
     IDS_DIALOGUE_11935      "Do you want me to report you? Is that it?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11936      "I'm going."
     IDS_DIALOGUE_11937      "You don't have fingernail clippers, do you?"
@@ -4505,7 +4506,7 @@ BEGIN
     IDS_DIALOGUE_11951      "Not me. The less I know, the better."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11952      "I used to feel that way. When I was sixteen."
     IDS_DIALOGUE_11953      "Yeah, well, that's your problem."
@@ -4525,7 +4526,7 @@ BEGIN
     IDS_DIALOGUE_11967      "I haven't heard too much about that one."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11968      "It sounds kind of strange. More of a science fiction thing, but I'm willing to give it a shot."
     IDS_DIALOGUE_11969      "What did you think of You Only Live Twice?"
@@ -4545,7 +4546,7 @@ BEGIN
     IDS_DIALOGUE_11983      "Are you sure she's in the building?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_11984      "Positive. We have confirmation from site 2."
     IDS_DIALOGUE_11985      "Damn! We'd better double up on security."
@@ -4565,7 +4566,7 @@ BEGIN
     IDS_DIALOGUE_11999      "It's like that Dr. Suess book. The one where the cat leaves the ring in the bathtub and he ends up getting it all over everything."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12000      "That's a great story."
     IDS_DIALOGUE_12001      "Stinks. That's just so perfect."
@@ -4585,7 +4586,7 @@ BEGIN
     IDS_DIALOGUE_12015      "Serves him right."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12016      "I'll say."
     IDS_DIALOGUE_12017      "Let's get out of here."
@@ -4605,7 +4606,7 @@ BEGIN
     IDS_DIALOGUE_12031      "Don't do it!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12032      "Get out of here! Now!"
     IDS_DIALOGUE_12033      "Tom!"
@@ -4625,7 +4626,7 @@ BEGIN
     IDS_DIALOGUE_12047      "Perhaps Mr. Smith is right. Perhaps I'm not up to the task."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12048      "Rubbish. You've performed remarkably well under extraordinarily difficult circumstances. I confess I was somewhat skeptical at first, but that was before I grasped the magnitude of the situation. In my entire tenure as a field operative, I never once faced a crisis this formidable and certainly can't say I would have done so with the aplomb and competence you've demonstrated thus far."
     IDS_DIALOGUE_12049      "I didn't realize you were a field operative."
@@ -4645,7 +4646,7 @@ BEGIN
     IDS_DIALOGUE_12063      "What news do we have?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12064      "Well, our analysis of Agent Archer's photographs is complete."
     IDS_DIALOGUE_12065      "And?"
@@ -4665,7 +4666,7 @@ BEGIN
     IDS_DIALOGUE_12079      "Well, after falling out of an airplane, I suppose jumping off a moving train can't be that bad."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12080      "That won't be necessary. Once your objectives are complete, you must head for the caboose and detach it when you're near the lumberyard. We'll have an agent in place to switch the track and reroute you to an unused depot behind the lumberyard. This area is not likely to be heavily guarded, so you shouldn't have much difficulty getting through. If all goes according to plan, you will rendezvous with another undercover agent who will, we hope, have information that should help you locate the underground base."
     IDS_DIALOGUE_12081      "Then I grab Doctor Schenker and get the hell out."
@@ -4685,7 +4686,7 @@ BEGIN
     IDS_DIALOGUE_12095      "Positive. Do you know of her?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12096      "Aye, that I do. When she was eight years old, her father, a wealthy banker, was involved in a nasty public scandal involving unmentionable acts with a twelve year old boy."
     IDS_DIALOGUE_12097      "How dreadful."
@@ -4705,7 +4706,7 @@ BEGIN
     IDS_DIALOGUE_12111      "Well, we both came from wealthy families. We were both orphaned at a relatively early age. Our fathers both killed themselves, although for very different reasons. We were both plunged into undesirable circumstances and resorted to rather desperate measures to survive. I found it quite uncanny at the time, although in retrospect, I think we had less in common than I once believed."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12112      "Adversity is the truest test of character. The strong are strengthened by it, the weak made weaker. It sounds like this baroness didn't have the wherewithal to cope with her misfortunes. It's a common trend among terrorists and bullies that they imagine themselves persecuted by fate and therefore feel justified in harming others."
     IDS_DIALOGUE_12113      "You're frothing."
@@ -4725,7 +4726,7 @@ BEGIN
     IDS_DIALOGUE_12127      "We've a new perfume for you. This one's a real scorcher. It's a concentrated acid gas with a jellied base to make it sticky. You definitely don't want to get it on you."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12128      "Here's a spiffy new device that should make dealing with security cameras less of an ordeal. When fastened to a camera, it generates a still image from the camera's viewpoint that should convince a casual watcher that he's seeing an empty room."
     IDS_DIALOGUE_12129      "Have you seen anything suspicious?"
@@ -4745,7 +4746,7 @@ BEGIN
     IDS_DIALOGUE_12143      "See that you do."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12144      "Moron."
     IDS_DIALOGUE_12145      "Did you say something?"
@@ -4765,7 +4766,7 @@ BEGIN
     IDS_DIALOGUE_12159      "Count on it."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12160      "I love riding the train!"
     IDS_DIALOGUE_12161      "What time do you have to be back in Heaven, angel?"
@@ -4785,7 +4786,7 @@ BEGIN
     IDS_DIALOGUE_12175      "You don't like traveling with me?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12176      "Sure, but I want you to be happy."
     IDS_DIALOGUE_12177      "You're just trying to get rid of me, aren't you?"
@@ -4805,7 +4806,7 @@ BEGIN
     IDS_DIALOGUE_12191      "I'll tell Roscoe."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12192      "Go ahead."
     IDS_DIALOGUE_12193      "Tickets, please."
@@ -4825,7 +4826,7 @@ BEGIN
     IDS_DIALOGUE_12207      "That should keep you out of trouble for a spell."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12208      "Is that a caboose?"
     IDS_DIALOGUE_12209      "Yup."
@@ -4845,7 +4846,7 @@ BEGIN
     IDS_DIALOGUE_12223      "I guess you gotta admire his courage."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12224      "Stupidity's more like it. Anyway, he's just going on and on and the lieutenant tells me to get the idiot off his feet ‘cause he's marking our position for the mortars. So I start crawling over there, yelling at him to give it up, and he starts calling me chicken and saying how scared I am."
     IDS_DIALOGUE_12225      "I hope you knocked him on his butt."
@@ -4865,7 +4866,7 @@ BEGIN
     IDS_DIALOGUE_12239      "Yeah, for about a week."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12240      "That bad, eh?"
     IDS_DIALOGUE_12241      "You ever heard that saying about the banality of evil?"
@@ -4885,7 +4886,7 @@ BEGIN
     IDS_DIALOGUE_12255      "I guess so. Well, I'd better get back. See ya."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12256      "Hey, Delaney, you got a phone call."
     IDS_DIALOGUE_12257      "Who is it?"
@@ -4905,7 +4906,7 @@ BEGIN
     IDS_DIALOGUE_12271      "I'd like to see a spy try to get in here."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12272      "Well, make sure you're ready just in case one does."
     IDS_DIALOGUE_12273      "What are you doing here?"
@@ -4925,7 +4926,7 @@ BEGIN
     IDS_DIALOGUE_12287      "Me neither. Truce?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12288      "Truce."
     IDS_DIALOGUE_12289      "You can't expect the solution to react without a catalyst."
@@ -4945,7 +4946,7 @@ BEGIN
     IDS_DIALOGUE_12303      "I'm sick of being a bad guy. What would my mother think? You know, she saved up for sixteen years to put me through college. My dad used to give her a weekly allowance and she'd always stash a little away."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12304      "Wow, that's impressive. But I thought you didn't go to college."
     IDS_DIALOGUE_12305      "I didn't. I talked her into giving me the money instead. "
@@ -4965,7 +4966,7 @@ BEGIN
     IDS_DIALOGUE_12319      "I dunno."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12320      "Supplies?"
     IDS_DIALOGUE_12321      "Could be."
@@ -4985,7 +4986,7 @@ BEGIN
     IDS_DIALOGUE_12335      "Forget it."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12336      "Please?"
     IDS_DIALOGUE_12337      "Ah, what the heck."
@@ -5005,7 +5006,7 @@ BEGIN
     IDS_DIALOGUE_12351      "Mein Gott in Himmel! You're alive?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12352      "More or less."
     IDS_DIALOGUE_12353      "But I saw you fall out of the plane without a parachute."
@@ -5025,7 +5026,7 @@ BEGIN
     IDS_DIALOGUE_12367      "I love it. Ever since I first heard Elvis Presley, I've been addicted to rock and roll.  ""Ain't nothing but a hound dog, cryin' all the time!"""
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12368      "I think you missed your calling, doctor."
     IDS_DIALOGUE_12369      "You should hear me sing Eleanor Rigby.  Here, it's fixed."
@@ -5045,7 +5046,7 @@ BEGIN
     IDS_DIALOGUE_12383      "That's where the Baroness grew up."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12384      "Well, case closed. Arrest her immediately."
     IDS_DIALOGUE_12385      "Scoff all you please."
@@ -5065,7 +5066,7 @@ BEGIN
     IDS_DIALOGUE_12399      "Send in Doctor Schenker, if you please."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12400      "Ah, here you are. Thank you for joining us, Doctor. I hope your accommodations are adequate."
     IDS_DIALOGUE_12401      "Exceptional, thank you. Hello again, Miss Archer."
@@ -5085,7 +5086,7 @@ BEGIN
     IDS_DIALOGUE_12415      "So they stole it?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12416      "They developed it."
     IDS_DIALOGUE_12417      "But how's that possible?"
@@ -5105,7 +5106,7 @@ BEGIN
     IDS_DIALOGUE_12431      "Did Bruno tell you that story?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12432      "Yes, he did."
     IDS_DIALOGUE_12433      "What story?"
@@ -5125,7 +5126,7 @@ BEGIN
     IDS_DIALOGUE_12447      "Good. We still haven't finished clearing out the last shipment. What's the ETA?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12448      "Probably around 9:00pm. Maybe later."
     IDS_DIALOGUE_12449      "I could use some overtime pay."
@@ -5145,7 +5146,7 @@ BEGIN
     IDS_DIALOGUE_12463      "You're on."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12464      "When do you go back on shift?"
     IDS_DIALOGUE_12465      "Five minutes ago."
@@ -5165,7 +5166,7 @@ BEGIN
     IDS_DIALOGUE_12479      "Uh uh. "
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12480      "Then don't talk to me about a massive moonlight airlift. Who's idea was it to paint these damn crates orange anyway? What genius thought that up?"
     IDS_DIALOGUE_12481      "Ah, don't turn this into a union meeting."
@@ -5185,7 +5186,7 @@ BEGIN
     IDS_DIALOGUE_12495      "Station 1, go ahead."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12496      "Station 1, this is comm. shed 4. You got anybody patrolling over this way? Over."
     IDS_DIALOGUE_12497      "Negative, Ross. Nobody in your area. Over."
@@ -5205,7 +5206,7 @@ BEGIN
     IDS_DIALOGUE_12511      "Anything?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12512      "Not a dang thing."
     IDS_DIALOGUE_12513      "Good, then let's head back. This heat is killing me."
@@ -5225,7 +5226,7 @@ BEGIN
     IDS_DIALOGUE_12527      "I'm not gonna ask for three weeks off. What if they fire me?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12528      "No one's gonna fire you for asking for three weeks off. The worst that'll happen is they'll say no."
     IDS_DIALOGUE_12529      "Nobody takes three weeks off. Two weeks is enough."
@@ -5245,7 +5246,7 @@ BEGIN
     IDS_DIALOGUE_12543      "You can't just change the schedule at the drop of a hat."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12544      "We need results. If that means modifying the schedule, then that's what we're gonna do."
     IDS_DIALOGUE_12545      "This schedule is based on your estimates. Our budget is based on the schedule. If you deviate from the schedule, you'll put us over budget."
@@ -5265,7 +5266,7 @@ BEGIN
     IDS_DIALOGUE_12559      "Good to meet you, I'm Chuck Barnes, head of systems analysis. Have you had a chance to look over my status reports yet?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12560      "Only a glance."
     IDS_DIALOGUE_12561      "As I said in the report, I think we could optimize our propellant chemistry."
@@ -5285,7 +5286,7 @@ BEGIN
     IDS_DIALOGUE_12575      "Oh, I must have misunderstood the question. I thought that's what you were asking for."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12576      "Hmmm."
     IDS_DIALOGUE_12577      "How about an arc jet?"
@@ -5305,7 +5306,7 @@ BEGIN
     IDS_DIALOGUE_12591      "Guards!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12592      "Well, nice meeting you."
     IDS_DIALOGUE_12593      "Likewise."
@@ -5325,7 +5326,7 @@ BEGIN
     IDS_DIALOGUE_12607      "You've gotta be kidding me!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12608      "It's true. I'm still kinda in shock."
     IDS_DIALOGUE_12609      "Forrest is dead?"
@@ -5345,7 +5346,7 @@ BEGIN
     IDS_DIALOGUE_12623      "Nope. I told you. That stuff has a very limited shelf life."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12624      "What am I supposed to tell my boss?"
     IDS_DIALOGUE_12625      "Tell him to wait in line like everybody else."
@@ -5365,7 +5366,7 @@ BEGIN
     IDS_DIALOGUE_12639      "Just relax."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12640      "I wish I could. I'm all wound up."
     IDS_DIALOGUE_12641      "How about a... nice massage?"
@@ -5385,7 +5386,7 @@ BEGIN
     IDS_DIALOGUE_12655      "Go ahead, Foxhunt."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12656      "There are no antidote samples on the island. Repeat, no antidote samples."
     IDS_DIALOGUE_12657      "Damn!"
@@ -5405,7 +5406,7 @@ BEGIN
     IDS_DIALOGUE_12671      "Great, probably another short circuit."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12672      "That's what I'm thinking."
     IDS_DIALOGUE_12673      "I'd like to get my hands on the contractor that built this hunk of junk."
@@ -5425,7 +5426,7 @@ BEGIN
     IDS_DIALOGUE_12687      "Deathtrap? We've only had six fatalities this month!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12688      "See what I mean? You've been up here way too long. It's not normal for healthy adults to die off at that rate."
     IDS_DIALOGUE_12689      "Sure it is."
@@ -5445,7 +5446,7 @@ BEGIN
     IDS_DIALOGUE_12703      "Because you obviously need to learn some manners."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12704      "Why don't you spank me instead?"
     IDS_DIALOGUE_12705      "Meteor shower?"
@@ -5465,7 +5466,7 @@ BEGIN
     IDS_DIALOGUE_12719      "Are you thinking what I'm thinking?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12720      "Right, let's proceed to the escape pods in a calm, collected manner so as not to arouse suspicion."
     IDS_DIALOGUE_12721      "Good thinking."
@@ -5485,7 +5486,7 @@ BEGIN
     IDS_DIALOGUE_12735      "The escape pods are down here!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12736      "By Jove, you're right!"
     IDS_DIALOGUE_12737      "Brilliant!"
@@ -5505,7 +5506,7 @@ BEGIN
     IDS_DIALOGUE_12751      "We need that list of names. And we need it before H.A.R.M. sets another example."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12752      "Where's the baroness now?"
     IDS_DIALOGUE_12753      "She and the baron are on holiday at their chateau in the German Alps."
@@ -5525,7 +5526,7 @@ BEGIN
     IDS_DIALOGUE_12767      "I hope you have a plan."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12768      "Sure I do. I'm going to get inside that chateau, find the list, and get out."
     IDS_DIALOGUE_12769      "I see. And how exactly do you intend to do that?"
@@ -5545,7 +5546,7 @@ BEGIN
     IDS_DIALOGUE_12783      "There are always plenty of dangerous-looking men with her."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12784      "What do you know about the chateau?"
     IDS_DIALOGUE_12785      "Only that you have to ride the gondola to get there. I've heard that there's a middle landing and you have to take another gondola up to the chateau itself."
@@ -5565,7 +5566,7 @@ BEGIN
     IDS_DIALOGUE_12799      "Of course!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12800      "You're fired."
     IDS_DIALOGUE_12801      "Huh? Why?"
@@ -5585,7 +5586,7 @@ BEGIN
     IDS_DIALOGUE_12815      "Wonderful! Thank you! And yourself?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12816      "Never better."
     IDS_DIALOGUE_12817      "That's good to hear."
@@ -5605,7 +5606,7 @@ BEGIN
     IDS_DIALOGUE_12831      "What'd you get him?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12832      "A GI Joe. He's been begging me for one since last Christmas."
     IDS_DIALOGUE_12833      "Children certainly do latch onto things, don't they?"
@@ -5625,7 +5626,7 @@ BEGIN
     IDS_DIALOGUE_12847      "Spies deal in information. Usually, they're just ordinary people who sell or give away classified materials."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12848      "Isn't that basically what she does?"
     IDS_DIALOGUE_12849      "No, you see, an operative is more like a commando. Spies are generally long term conspirators. They sometimes continue to provide top secret data for years. Operatives work more on a mission to mission basis. Stuff like infiltration, reconnaissance, sabotage, hostage rescue, and even assassination. "
@@ -5645,7 +5646,7 @@ BEGIN
     IDS_DIALOGUE_12863      "Sure, just not yours."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12864      "Hugo never complains."
     IDS_DIALOGUE_12865      "Hugo is an idiot."
@@ -5665,7 +5666,7 @@ BEGIN
     IDS_DIALOGUE_12879      "Well, now I'm thinking about a Jaguar."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12880      "I thought you hated Jaguars."
     IDS_DIALOGUE_12881      "I never said that."
@@ -5685,7 +5686,7 @@ BEGIN
     IDS_DIALOGUE_12895      "I'm not fickle."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12896      "So I hear Johnny Rommel's coming in tonight."
     IDS_DIALOGUE_12897      "Really? I thought he was too good for us grunts."
@@ -5705,7 +5706,7 @@ BEGIN
     IDS_DIALOGUE_12911      "And he's got the nerve to blame the Greek."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12912      "You don't understand. Johnny thinks he's this great mastermind. If something goes wrong, he blames somebody else. If something goes right, even if he had nothing to do with it, he takes all the credit."
     IDS_DIALOGUE_12913      "Wait till the Greek finds out what he's been saying."
@@ -5725,7 +5726,7 @@ BEGIN
     IDS_DIALOGUE_12927      "Nothing. Just reminds me of an old friend.  Thank you, Tom."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12928      "Good luck."
     IDS_DIALOGUE_12929      "Foxhunt calling Foxhound. Over."
@@ -5745,7 +5746,7 @@ BEGIN
     IDS_DIALOGUE_12943      "Did you hear they folded?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12944      "Yup."
     IDS_DIALOGUE_12945      "It's too bad. They pulled off some good capers."
@@ -5765,7 +5766,7 @@ BEGIN
     IDS_DIALOGUE_12959      "Any word from base 2?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12960      "No, sir."
     IDS_DIALOGUE_12961      "Well, keep trying."
@@ -5785,7 +5786,7 @@ BEGIN
     IDS_DIALOGUE_12975      "Excuse me?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12976      "I said look at her. You want to murder her?"
     IDS_DIALOGUE_12977      "I don't want to, it just seems prudent."
@@ -5805,7 +5806,7 @@ BEGIN
     IDS_DIALOGUE_12991      "What would that be?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_12992      "Don't get yourself killed."
     IDS_DIALOGUE_12993      "The thought had occurred to me."
@@ -5825,7 +5826,7 @@ BEGIN
     IDS_DIALOGUE_13007      "A little of both, actually.  I wouldn't have expected such... insight from someone like you."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13008      "Well, perhaps you don't know as much about me as you think."
     IDS_DIALOGUE_13009      "I know enough. A girl spy in a man's world? That takes gall, surely. That you've been such a damnable nuisance speaks highly of your talents. But the fact that you're my prisoner suggests that you overestimate yourself...just...a...bit. Little girl who thinks she can take on the world."
@@ -5845,7 +5846,7 @@ BEGIN
     IDS_DIALOGUE_13023      "I haven't given it much thought."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13024      "Thanks to the incompetence of the insufferable Inge Wagner, you still have some time for reflection. My instructions were to give you a ten hour fuse, but that bloated moron gave you ten days, which leaves you roughly forty five minutes to live."
     IDS_DIALOGUE_13025      "I've been infected? At the club! That dart that hit my neck."
@@ -5865,7 +5866,7 @@ BEGIN
     IDS_DIALOGUE_13039      "That's not a very nice thing to say."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13040      "Is that so? Well, after you fetch him, how would you like to take yourself outside and have yourself shot? That'll give you something to complain about."
     IDS_DIALOGUE_13041      "Looks like you got yourself in a heap of trouble this time, eh, lass?"
@@ -5885,7 +5886,7 @@ BEGIN
     IDS_DIALOGUE_13055      "I dare you to say that again."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13056      "Maybe you should trade your kilt for a skirt."
     IDS_DIALOGUE_13057      "Maybe you should shut your damn cake hole before I put my fist in it."
@@ -5905,7 +5906,7 @@ BEGIN
     IDS_DIALOGUE_13071      "Empty"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13072      "You're an ugly bastard."
     IDS_DIALOGUE_13073      "Right on both counts, girlie."
@@ -5925,7 +5926,7 @@ BEGIN
     IDS_DIALOGUE_13087      "Empty"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13088      "Empty"
     IDS_DIALOGUE_13089      "Empty"
@@ -5945,7 +5946,7 @@ BEGIN
     IDS_DIALOGUE_13103      "You can ask."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13104      "The list of names. Where does the baroness keep it?"
     IDS_DIALOGUE_13105      "Sorry, I can't help you."
@@ -5965,7 +5966,7 @@ BEGIN
     IDS_DIALOGUE_13119      "Good."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13120      "The girl is gone."
     IDS_DIALOGUE_13121      "I should have had her shot."
@@ -5985,7 +5986,7 @@ BEGIN
     IDS_DIALOGUE_13135      "Battle stations! We are under attack."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13136      "All coffee breaks are hereby postponed until the threat has been neutralized."
     IDS_DIALOGUE_13137      "Ah, man."
@@ -6005,7 +6006,7 @@ BEGIN
     IDS_DIALOGUE_13151      "Good point."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13152      "Good God!"
     IDS_DIALOGUE_13153      "Do you think Agent Archer is okay?"
@@ -6025,7 +6026,7 @@ BEGIN
     IDS_DIALOGUE_13167      "Goodbye, Dmitrij."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13168      "Mr. Jones, please."
     IDS_DIALOGUE_13169      "Who may I say is calling?"
@@ -6045,7 +6046,7 @@ BEGIN
     IDS_DIALOGUE_13183      "Unbelievable."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13184      "Ms. Cavanaugh, please alert Cryptography that Agent Archer will be sending an encoded message within the hour. This is top priority."
     IDS_DIALOGUE_13185      "Don't congratulate yourself yet, Ms. Archer."
@@ -6065,7 +6066,7 @@ BEGIN
     IDS_DIALOGUE_13199      "Ah, Ms. Archer. I trust you're recuperating suitably."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13200      "Quite so, Mr. Jones. Thank you for the champagne."
     IDS_DIALOGUE_13201      "It's a tradition I began back in the war to reward my boys for a mission well done. It pays to have friends in the supply department."
@@ -6085,7 +6086,7 @@ BEGIN
     IDS_DIALOGUE_13215      "Yes, that is what we did."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13216      "Is it always like this? Weary farewells and shuffling off home for a hot bath and a good night's sleep?"
     IDS_DIALOGUE_13217      "A good night's sleep if you're lucky."
@@ -6105,7 +6106,7 @@ BEGIN
     IDS_DIALOGUE_13231      "Ah, spare me the self-righteousness. Everybody has a price. Even you."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13232      "You don't know anything about me."
     IDS_DIALOGUE_13233      "Maybe not, but I've been in this business long enough to see what people are capable of. Anybody can talk about honor and patriotism, but those are just pretty words. When the money's on the table -- the right amount of money -- you'd be surprised how quickly you can change your tune."
@@ -6125,7 +6126,7 @@ BEGIN
     IDS_DIALOGUE_13247      "Mr. Smith? What are you doing here?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13248      "Tending to some unfinished business."
     IDS_DIALOGUE_13249      "Mr. Jones?"
@@ -6145,7 +6146,7 @@ BEGIN
     IDS_DIALOGUE_13263      "Good shooting, Archer."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13264      "Dreadful shame."
     IDS_DIALOGUE_13265      "I was just starting to get used to him, too.  So, is it really you?"
@@ -6165,7 +6166,7 @@ BEGIN
     IDS_DIALOGUE_13279      "No one. It's an empty casket."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13280      "An empty casket???"
     IDS_DIALOGUE_13281      "Calm down!"
@@ -6185,7 +6186,7 @@ BEGIN
     IDS_DIALOGUE_13295      "Neither do I."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13296      "I'm so bloody bored."
     IDS_DIALOGUE_13297      "I'm bored out of my skull."
@@ -6205,7 +6206,7 @@ BEGIN
     IDS_DIALOGUE_13311      "No time for that."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13312      "There's work to do."
     IDS_DIALOGUE_13313      "No."
@@ -6225,7 +6226,7 @@ BEGIN
     IDS_DIALOGUE_13327      "Something tells me I'm not supposed to go that way."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13328      "Hmmm."
     IDS_DIALOGUE_13329      "I'd better not."
@@ -6245,7 +6246,7 @@ BEGIN
     IDS_DIALOGUE_13343      "What's the password, buddy?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13344      "Sure thing."
     IDS_DIALOGUE_13345      "Wrong answer!"
@@ -6265,7 +6266,7 @@ BEGIN
     IDS_DIALOGUE_13359      "Forget it."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13360      "Hey, Floyd!"
     IDS_DIALOGUE_13361      "What???"
@@ -6285,7 +6286,7 @@ BEGIN
     IDS_DIALOGUE_13375      "What if I have to shoot somebody?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13376      "Then you shoot them."
     IDS_DIALOGUE_13377      "You got that?"
@@ -6305,7 +6306,7 @@ BEGIN
     IDS_DIALOGUE_13391      "Hooligans!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20000         "<INTELLIGENCE ITEMS M01S01>"
     IDS_INTEL_20001         "UNITY MEMO\n\nItinerary for Ambassador Munroe's Moroccan visit:\n\n     Sept. 16: Sightseeing\n     Sept. 17: Golf\n     Sept. 18: Appointment at Madam Sasha's"
@@ -6325,7 +6326,7 @@ BEGIN
     IDS_INTEL_20015         "<Insert Intelligence Item Text Here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_NO_RESPAWN          "Respawn limit reached."
     IDS_HUD_LAYOUT0         "Health bar, Ammo text"
@@ -6345,7 +6346,7 @@ BEGIN
     IDS_TEXTURE_WEAPONS     "Weapons"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_TEXT_8000     "You found a letter containing classified information."
     IDS_INTEL_TEXT_8001     "You found a roll of 35mm film."
@@ -6365,12 +6366,12 @@ BEGIN
     IDS_INTEL_TEXT_8015     "You found the captain's log."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_WEAPON_33           "Super Atomic Laser Weapon"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13392      "Rabble."
     IDS_DIALOGUE_13393      "Riff-raff."
@@ -6390,7 +6391,7 @@ BEGIN
     IDS_DIALOGUE_13407      "You must meet a lot of pretty girls."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13408      "Yes, but rarely do I meet ENCHANTING ones."
     IDS_DIALOGUE_13409      "You're teasing!"
@@ -6410,7 +6411,7 @@ BEGIN
     IDS_DIALOGUE_13423      "On the center roof, coming from the right."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13424      "On the center roof, coming from the left."
     IDS_DIALOGUE_13425      "Straight ahead, coming from the right."
@@ -6430,7 +6431,7 @@ BEGIN
     IDS_DIALOGUE_13439      "You won't have the opportunity to heal while on a mission, so you'll need to rely on body armor to protect yourself from damage.  Be warned that certain types of damage will ignore armor completely, though, such as that sustained from falling or running out of oxygen."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13440      "Keep an eye out for ammunition boxes. Each can contain various ammunition types. Once the box is empty, it will disappear."
     IDS_DIALOGUE_13441      "This vial of antidote will protect you from poison damage caused by cyanide-tipped rounds or poisoned crossbow bolts. Note that it will not help against poison gas, however."
@@ -6450,7 +6451,7 @@ BEGIN
     IDS_DIALOGUE_13455      "If you want to skip a cut scene, simply press the space bar."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13456      "You can't flush toilets, so don't waste your time trying. For the development cost of implementing flushable toilets, we were able to include several additional gadgets, which seemed a far more sensible use of our resources. If you feel the need to flush a toilet, might I suggest doing so in the comfort of your home."
     IDS_DIALOGUE_13457      "We've developed a new lipstick proximity mine for you. This device is activated by a sensitive motion detector. Note that it is magnetized, allowing you to stick it to metallic surfaces."
@@ -6470,7 +6471,7 @@ BEGIN
     IDS_DIALOGUE_13471      "Good. Now let's move on."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13472      "Always point your gun down range."
     IDS_DIALOGUE_13473      "Stop screwing around."
@@ -6490,7 +6491,7 @@ BEGIN
     IDS_DIALOGUE_13487      "Apparently, they met in a bar in Florida on one of Smithy's last assignments. Anyhow, with Goodman out of the way and no one any the wiser, Smithy launched the next phase of his scheme, which was to nurture a relationship with an up-and-coming terrorist organization. He chose H.A.R.M. His plan was to create an international incident of staggering proportions and simultaneously cripple UNITY so that we would have no choice but to capitulate. Such an unmitigated failure would force Mr. Jones to step down, giving Smithy control of UNITY, and also a handsome payoff in a secret bank account in Zurich."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13488      "But what about Morocco?"
     IDS_DIALOGUE_13489      "It was a trap meant to snare us both. Mr. Jones and I agreed that it would serve as a perfect opportunity for me to disappear for a while."
@@ -6510,7 +6511,7 @@ BEGIN
     IDS_DIALOGUE_13503      "Indeed."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13504      "Unbelievable."
     IDS_DIALOGUE_13505      "I'm sorry I had to deceive you, Cate."
@@ -6530,7 +6531,7 @@ BEGIN
     IDS_DIALOGUE_13519      "I'll show you overreacting, you bastard."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13520      "First, find the crane schematics to discover how to disable the safety switches."
     IDS_DIALOGUE_13521      "Excellent. Now disable the safety switches!"
@@ -6550,7 +6551,7 @@ BEGIN
     IDS_DIALOGUE_13535      "Fire the laser at the munitions storehouse."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13536      "Zipcord up to the ledge outside the conference room."
     IDS_DIALOGUE_13537      "Be careful of security cameras."
@@ -6570,7 +6571,7 @@ BEGIN
     IDS_DIALOGUE_13551      "The conference room is directly above you. Look for a zip hook!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13552      "They've closed the curtain!"
     IDS_DIALOGUE_13553      "They've infiltrated the generator room! Hurry before they cause an overload!"
@@ -6590,7 +6591,7 @@ BEGIN
     IDS_DIALOGUE_13567      "Stop them!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13568      "Find out what that UNITY agent knows about us!"
     IDS_DIALOGUE_13569      "Torture him until he breaks!"
@@ -6610,7 +6611,7 @@ BEGIN
     IDS_DIALOGUE_13583      "You're fired!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13584      "Idiots!"
     IDS_DIALOGUE_13585      "Watch out for mines!"
@@ -6630,7 +6631,7 @@ BEGIN
     IDS_DIALOGUE_13599      "I've also counted six."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13600      "Well, let's keep counting."
     IDS_DIALOGUE_13601      "Let's see how long you can hold your breath!"
@@ -6650,7 +6651,7 @@ BEGIN
     IDS_DIALOGUE_13615      "Thank you!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13616      "How can I ever repay you?"
     IDS_DIALOGUE_13617      "I'm saved!"
@@ -6670,7 +6671,7 @@ BEGIN
     IDS_DIALOGUE_13631      "Hmmrmph."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13632      "Hmm...yeah....hmmm."
     IDS_DIALOGUE_13633      "Uh oh."
@@ -6690,7 +6691,7 @@ BEGIN
     IDS_DIALOGUE_13647      "In the umbilical. I guess antidote production is behind schedule. He's over there reading them the riot act."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13648      "Serves them right."
     IDS_DIALOGUE_13649      "Get off the streets!"
@@ -6710,7 +6711,7 @@ BEGIN
     IDS_DIALOGUE_13663      "During the flight to London, attempt to learn as much as possible from Doctor Schenker about his research. Schenker is a notoriously cautious man, so direct questions are not advised. He is also reported to have little tolerance for skeptics. Try to keep an open mind."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13664      "Congratulations. You have failed again. Although the circumstances were certainly extraordinary in this case, don't expect much sympathy from Command. UNITY cannot afford failures, however justifiable."
     IDS_DIALOGUE_13665      "Proceed to Hamburg, West Germany, and rendezvous with Thomas Goodman, an operative from UNITY's American branch. Goodman may have information concerning Doctor Schenker's whereabouts. The rendezvous will take place at Das Einsame Valkyrie, a popular Beatnik night club in Hamburg. You will recognize Agent Goodman by his rugged good looks and the unlit cigarette he is holding in his left hand. Offer him a light. He will answer with,'Sorry, but I don't smoke.' Once you have made contact, you will be under Agent Goodman's command. Follow his orders implicitly."
@@ -6730,7 +6731,7 @@ BEGIN
     IDS_DIALOGUE_13679      "If your theories are correct, the baroness will lead you right to the list of H.A.R.M.'s intended victims. You must retrieve that list and put an end to H.A.R.M. before more innocent people die. Time is short, Archer. You must succeed."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13680      "You have the antidote, but you still don't know to whom you should administer it. The next step will be the most uncertain so far. It will also be the most critical. The price of failure will be measured in innocent blood."
     IDS_DIALOGUE_13681      "Once you reach the chateau, you will have to act quickly. The first challenge is to locate the list. The greater challenge will be to deliver it to Command. Needless to say, subtlety is advisable. The odds against you are already overwhelming enough without you drawing undue attention to yourself."
@@ -6750,7 +6751,7 @@ BEGIN
     IDS_DIALOGUE_13695      "Now step up to the active station, designated by the flashing light."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13696      "This course comprises several areas, each with its own lesson. You must complete each lesson in order to proceed."
     IDS_DIALOGUE_13697      "Congratulations."
@@ -6770,7 +6771,7 @@ BEGIN
     IDS_DIALOGUE_13711      "Take a picture of this intelligence item with your sunglasses."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13712      "Pick up these intelligence items to proceed."
     IDS_DIALOGUE_13713      "Try activating Leon."
@@ -6790,7 +6791,7 @@ BEGIN
     IDS_DIALOGUE_13727      "It must be those high heeled boots of yours!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13728      "Try again!"
     IDS_DIALOGUE_13729      "Can't do any better than that?"
@@ -6810,7 +6811,7 @@ BEGIN
     IDS_DIALOGUE_13743      "Would you like a drink?"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_SHUTDOWN            "End game"
     IDS_CONFIRM_SHADOWS     "Projected shadows creates very detailed shadows, but can severely reduce the game's performance. Only high-end machines should use this setting. Are you sure you want to use Projected shadows?"
@@ -6833,7 +6834,7 @@ BEGIN
     IDS_MUZZLELIGHT         "Muzzle flash lighting"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20016         "<Insert Intelligence Item Text Here>"
     IDS_INTEL_20017         "<Insert Intelligence Item Text Here>"
@@ -6853,7 +6854,7 @@ BEGIN
     IDS_INTEL_20031         "H.A.R.M. MEMO:\n\nFrom: Assistant to Executive Director Volkov\n\nIncompetence will not be tolerated. H.A.R.M. may not pay as well as high profile operations like Vengeance Factory or Sons of Agony, but the only way we can attain such prestige is through diligence. Remember what H.A.R.M. stands for."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20032         "Cate, remember that you can shoot keyed padlocks if you don't happen to have your lock pick handy. Of course, doing so tends to make noise, so be careful. - Bruno"
     IDS_INTEL_20033         "Cate, you may sometimes come across intelligence items that you cannot recover because you lack a necessary gadget. If you want to collect these items, you'll need to come back later with different equipment. - Bruno"
@@ -6873,7 +6874,7 @@ BEGIN
     IDS_INTEL_20047         "Dear Selma,\n\nI miss you terribly! Tell your mother I have a job now for a fine company, and the pay is very good. The only drawback is that I have to kill people from time to time, but the insurance policy is first-rate!\n\nLove, Pierre"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20048         "An invoice for 972 boxes of Smooth brand cigarettes to be delivered to facility #4529."
     IDS_INTEL_20049         "Contains piece 4g of the CT 180, a half-eaten chicken salad sandwich, and a creased copy of The Fearless Hyena comic, issue #7."
@@ -6893,7 +6894,7 @@ BEGIN
     IDS_INTEL_20063         "H.A.R.M. MEMO:\n\nTo: Assistant Director Cottswald\n\nThis memo is to alert you that Building Services has repeatedly ignored my letters regarding rodent migration into facility #4529 via the abandoned well. Consider this a formal request for corporal punishment (preferably public) for all responsible parties, as well as paycheck deductions -- the amount to be determined by you, of course -- until the situation is corrected. Thank you."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20064         "Dear Victoria,\n\nI miss you! Tell your mother I have a job now for a fine company, and the pay is very good. Sadly, I've had to assassinate your brother, Leopold, but I assure you he did not suffer greatly.\n\nLove, Pierre"
     IDS_INTEL_20065         "Dear Franz,\n\nI miss Berlin terribly. The weather here is too hot. The operation is going better than expected so far. We've managed to recruit a new double agent. See you next Tuesday.\n\nDieter"
@@ -6913,7 +6914,7 @@ BEGIN
     IDS_INTEL_20079         "<Insert Intelligence Item Text Here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20080         "<INTELLIGENCE ITEMS FOR M02S01>"
     IDS_INTEL_20081         "Herr von der Stuehl,\n\nI have obtained the photographs you requested, as well as transcripts of several telephone conversations you may find interesting. You may recover these items in the usual manner.\n\nK."
@@ -6933,7 +6934,7 @@ BEGIN
     IDS_INTEL_20095         "Contains encrypted files: wirmp nliv lezogrmv"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_HELP_MUZZLELIGHT    "Toggles use of dynamic lights in muzzle flashes."
     IDS_CONFIRM_LIGHTMAP    "Disabling lightmaps can improve performance, but will dramatically decrease the visual quality of the game. Are you sure you want to disable Lightmaps?"
@@ -6954,7 +6955,7 @@ BEGIN
     IDS_WPN_ICON_SZ         "Icon size"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20096         "Labeled ""Director Gerhardt with specimen 227g."""
     IDS_INTEL_20097         "An invoice from Das Einsame Valkyrie for 97 cases of beer."
@@ -6974,7 +6975,7 @@ BEGIN
     IDS_INTEL_20111         "UNITY FILE:\n\nDr. Otto Schenker\nAge: 67\nAffiliation: STASI\nLocation: East Berlin"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20112         "UNITY Itinerary:\n\nFlight U-7, Berlin to London, departs 700 hours. London to Headquarters depart 900 hours. Arrive 1100 hours GMT."
     IDS_INTEL_20113         "Dear Millie,\n\nMy love, our days are numbered! HQ is transferring me to Section 12, based in Cairo. It was sweet while it lasted!\n\nLove, Harold"
@@ -6994,7 +6995,7 @@ BEGIN
     IDS_INTEL_20127         "An invoice for 13 type C helmets."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20128         "UNITY MEMO:\n\nTo: All Personnel\n\nIt is of utmost importance that we ascertain the meaning of H.A.R.M. Thus far, our cryptographers have been unable to penetrate this mystifying acronym."
     IDS_INTEL_20129         "Diagram for escaping a downed jetliner."
@@ -7014,7 +7015,7 @@ BEGIN
     IDS_INTEL_20143         "Encrypted message: kzfo rh wvzw"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20144         "Contains a book on Criminal Sociology by Dr. Melvin Fitzroy, Ph.D."
     IDS_INTEL_20145         "Fraulein Wagner,\n\nPer our conversation, I have initiated an internal investigation regarding the supposed expendability directive from the Executive Director.\n\nFranz"
@@ -7034,7 +7035,7 @@ BEGIN
     IDS_INTEL_20159         "<Insert Intelligence Item Text Here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20160         "<INTELLIGENCE ITEMS FOR M05S02>"
     IDS_INTEL_20161         "A photograph of the H.A.R.M. company picnic. Everyone seems to be having a good time."
@@ -7054,7 +7055,7 @@ BEGIN
     IDS_INTEL_20175         "Training film entitled, ""Mr. Handy Says Steam Burns!"" by Francis Vanderburg"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20176         "CONTRACT:\n\nI, the undersigned, acknowledge that my employment is terminable at will and subject to change at the sole discretion of H.A.R.M. at any time, for any reason."
     IDS_INTEL_20177         "<Insert Intelligence Item Text Here>"
@@ -7074,7 +7075,7 @@ BEGIN
     IDS_INTEL_20191         "H.A.R.M.-o-gram\n\nTo: Executive Director Volkov STOP From: Lieutenant Aachen STOP Suspected UNITY safehouse under surveillance END TRANSMISSION"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20192         "H.A.R.M. Recall Notice:\n\nBe advised the newly installed H-2000 waterproof wall safe in H.A.R.M. vessels has been recalled due to faulty K rings."
     IDS_INTEL_20193         "Contains piece 99825-978 of the CT 180, a toothbrush, and 50 DM."
@@ -7094,7 +7095,7 @@ BEGIN
     IDS_INTEL_20207         "<Insert Intelligence Item Text Here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20208         "<Insert Intelligence Item Text Here>"
     IDS_INTEL_20209         "<Insert Intelligence Item Text Here>"
@@ -7114,7 +7115,7 @@ BEGIN
     IDS_INTEL_20223         "A blueprint for warehouse 894 in Bremen."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20224         "H.A.R.M. Safety Film of the Month!\n\nStudies have shown trapped sailors can survive for 4 days underwater if an air supply is available. If your ship flounders, simply close all valve hatches! The life you save could be your own! "
     IDS_INTEL_20225         "Contains four cans of ground pork snouts, medium grade."
@@ -7134,7 +7135,7 @@ BEGIN
     IDS_INTEL_20239         "<Insert Intelligence Item Text Here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20240         "<INTELLIGENCE ITEMS FOR M07S02>"
     IDS_INTEL_20241         "To: Foreman Longo\nFrom: Dumas Headquarters\n\nBaron Dumas will be unavailable for the surprise inspection next week due to the advent of Fiddler Crab season."
@@ -7154,7 +7155,7 @@ BEGIN
     IDS_INTEL_20255         "<Insert Intelligence Item Text Here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20256         "<Insert Intelligence Item Text Here>"
     IDS_INTEL_20257         "<Insert Intelligence Item Text Here>"
@@ -7174,7 +7175,7 @@ BEGIN
     IDS_INTEL_20271         "H.A.R.M. MEMO:\n\nA penny saved is a penny earned. Please shut down all electrical power during non-peak hours. Remember what H.A.R.M. stands for."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20272         "To: Hoyt Bob's Sheep Farm\n\nPlease inform me of the cost for one animal. Thank you.\n\nLyle Boyd"
     IDS_INTEL_20273         "Publicity photos of Inge Wagner."
@@ -7194,7 +7195,7 @@ BEGIN
     IDS_INTEL_20287         "<Insert Intelligence Item Text Here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20288         "<Insert Intelligence Item Text Here>"
     IDS_INTEL_20289         "<Insert Intelligence Item Text Here>"
@@ -7214,7 +7215,7 @@ BEGIN
     IDS_INTEL_20303         "MEMO\n\nTo: Assistant to Baron Dumas\nFrom: Building Services\n\nAll heating and cooling ducts have been hand cleansed and polished per directive 33985 stroke 4."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20304         "Contains a stuffed marmoset. It appears to have been run over by a truck."
     IDS_INTEL_20305         "Nora,\n\nWhat a day. I scrubbed every duct in this building by hand. My back is killing me. I think I may be too ill to visit your mother this weekend.\n\nLove, Fred"
@@ -7234,7 +7235,7 @@ BEGIN
     IDS_INTEL_20319         "Becky,\n\nWhat are you thinking! It's a pit! The Foreman is super groovy, though! We dated for a couple months last year. Let's do lunch, and I'll tell you all about it.\n\nFran"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20320         "<INTELLIGENCE ITEMS FOR M08S06>"
     IDS_INTEL_20321         "To: All Employees\nFrom: Director Witt\n\nTo be the best requires dedication and hard work! I expect all personnel to give 110 percent to the Dumas Corporation. Together we can make Dumas the number one corporate dynasty in the world! Thank you for your support.\n\nHugh"
@@ -7254,7 +7255,7 @@ BEGIN
     IDS_INTEL_20335         "A film entitled ""Train Riding Hussies on the Orient Express."""
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20336         "<Insert Intelligence Item Text Here>"
     IDS_INTEL_20337         "<Insert Intelligence Item Text Here>"
@@ -7274,7 +7275,7 @@ BEGIN
     IDS_INTEL_20351         "Photograph of a red '59 Edsel."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20352         "H.A.R.M. MEMO:\n\nFrom: Assistant to Executive Director Volkov\n\nMISERY is having trouble setting up the PU-38 explosives they purchased from us last week. Please transfer employee 90087, Wes Saulsberry, to the project immediately. "
     IDS_INTEL_20353         "Private Log: Dr. Norris\n\nAdded Sodium Nitrate to the reagent solution with unsatisfactory results. Check with Supply Department about Nitrate possibly contaminated by rodent droppings."
@@ -7294,7 +7295,7 @@ BEGIN
     IDS_INTEL_20367         "<Insert Intelligence Item Text Here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20368         "<Insert Intelligence Item Text Here>"
     IDS_INTEL_20369         "<Insert Intelligence Item Text Here>"
@@ -7314,7 +7315,7 @@ BEGIN
     IDS_INTEL_20383         "<Insert Intelligence Item Text Here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20384         "<Insert Intelligence Item Text Here>"
     IDS_INTEL_20385         "<Insert Intelligence Item Text Here>"
@@ -7334,7 +7335,7 @@ BEGIN
     IDS_INTEL_20399         "<Insert Intelligence Item Text Here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20400         "<INTELLIGENCE ITEMS FOR M11S01>"
     IDS_INTEL_20401         "H.A.R.M. MEMO:\n\nTo: Private Mitchell\n\nPlease investigate a possible graphical corruption near coordinates: 128, 1024, 640.\n\nE.Siskel, Maintenance Chief"
@@ -7354,7 +7355,7 @@ BEGIN
     IDS_INTEL_20415         "<Insert Intelligence Item Text Here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20416         "<Insert Intelligence Item Text Here>"
     IDS_INTEL_20417         "<Insert Intelligence Item Text Here>"
@@ -7374,7 +7375,7 @@ BEGIN
     IDS_INTEL_20431         "Advertisement: All new! The sizzling Z-480 snowmobile is hot enough to melt snow! Now at an all-time low introductory price! Visit Crazy Sid's Snowmobile Hut in Kleinstadt today!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20432         "Contains a bootleg recording of Edith Piaf performing live."
     IDS_INTEL_20433         "Photographs of Baron Dumas on winter safari hunting Caribou."
@@ -7394,7 +7395,7 @@ BEGIN
     IDS_INTEL_20447         "<Insert Intelligence Item Text Here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20448         "<Insert Intelligence Item Text Here>"
     IDS_INTEL_20449         "<Insert Intelligence Item Text Here>"
@@ -7414,7 +7415,7 @@ BEGIN
     IDS_INTEL_20463         "Aerial photographs of the proposed ski trail from the Dumas Chateau to Kleinstadt."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20464         "Franz,\n\nMother can't believe you ran away and joined this... H.A.R.M. company. What does H.A.R.M. stand for, anyway? Better you should have joined the circus! You know how mother loves monkeys. Write soon!\n\nLove, your sister Becky"
     IDS_INTEL_20465         "Employment Opportunity:\n\nTravel the world! Top-notch security organization seeks motivated individuals for managerial positions. Stock options and 401K available. Call today."
@@ -7434,7 +7435,7 @@ BEGIN
     IDS_INTEL_20479         "<Insert Intelligence Item Text Here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20480         "<INTELLIGENCE ITEMS FOR M13S03>"
     IDS_INTEL_20481         "<Insert Intelligence Item Text Here>"
@@ -7454,7 +7455,7 @@ BEGIN
     IDS_INTEL_20495         "Contains a can of Shark-Be-Gone."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20496         "<Insert Intelligence Item Text Here>"
     IDS_INTEL_20497         "<Insert Intelligence Item Text Here>"
@@ -7474,7 +7475,7 @@ BEGIN
     IDS_INTEL_20511         "<Insert Intelligence Item Text Here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20512         "<Insert Intelligence Item Text Here>"
     IDS_INTEL_20513         "<Insert Intelligence Item Text Here>"
@@ -7494,7 +7495,7 @@ BEGIN
     IDS_INTEL_20527         "Executive Director,\n\nAgent 4809 has located a complete UNITY CT 180 device. Unfortunately we lost contact with Agent 4809 last Tuesday. Please advise."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_20528         "<Insert Intelligence Item Text Here>"
     IDS_INTEL_20529         "<Insert Intelligence Item Text Here>"
@@ -7514,18 +7515,18 @@ BEGIN
     IDS_INTEL_20543         "<Insert Intelligence Item Text Here>"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_INTEL_TEXT_8016     "You found the passenger roster."
     IDS_INTEL_TEXT_8017     "You found the list of infected people."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_14000      "Dood-a-lood!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSIONFAILURE29    "You didn't get off the station in time!"
     IDS_MISSIONFAILURE30    "You destroyed the antidote sample!"
@@ -7536,7 +7537,7 @@ BEGIN
     IDS_MISSIONFAILURE35    "You missed your ride up the mountain!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_NO_SERVERS          "- no servers detected -"
     IDS_LOOKING_FOR_SERVERS "Detecting servers..."
@@ -7557,7 +7558,7 @@ BEGIN
     IDS_SERVERS_SHOWN       "(servers %1!d!-%2!d!)"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_MISSION_TEXT33      "You've re-enabled the security cameras."
     IDS_MISSION_TEXT34      "Secret H.A.R.M. space station"
@@ -7565,7 +7566,7 @@ BEGIN
     IDS_MISSION_TEXT36      "Secret H.A.R.M. space station"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DIALOGUE_13744      "May I help you?"
     IDS_DIALOGUE_13745      "I'm bored out of my skull."
@@ -7583,7 +7584,7 @@ BEGIN
     IDS_DIALOGUE_13757      "Finally some excitement."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_STATUS_QUERYDONE    "Status: Querying Servers... Done!"
     IDS_STATUS_GETLIST      "Status: Getting Server list..."
@@ -7603,7 +7604,7 @@ BEGIN
     IDS_INTEL_LETTER        "Letter %1!d!"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_SMALL_FONT_NAME     "Arial"
     IDS_MEDIUM_FONT_NAME    "Arial"
@@ -7619,7 +7620,7 @@ BEGIN
     IDS_TITLE_FONT_WIDTH    "11"
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_DISCON_TIMEOUT      "Connection to server timed out."
     IDS_WEAPON              "Weapon"
@@ -7640,7 +7641,7 @@ BEGIN
     IDS_DISCON_BADCSHELL    "Invalid cshell.dll file.  Please make sure you are running the same version and modifications as the server."
 END
 
-STRINGTABLE DISCARDABLE 
+STRINGTABLE
 BEGIN
     IDS_CABLE               "Cable"
     IDS_DSL                 "DSL"
@@ -7650,9 +7651,23 @@ BEGIN
     IDS_HELP_BANDWIDTH_CYCLE "Cycles the host bandwidth setting"
     IDS_HELP_BANDWIDTH_EDIT "Specifies a custom bandwidth"
     IDS_BANDWIDTH_EDIT      "Bandwidth (custom)"
+    IDS_SHOW_FRAMERATE      "Display Framerate"
+    IDS_LOCK_FRAMERATE      "Lock Framerate to 60fps"
+    IDS_OLD_MOUSELOOK       "Legacy Mouselook"
+    IDS_4X3_CINEMATICS      "Cinematic Aspect Ratio"
+    IDS_QUICK_SWITCH        "Quick Switch"
+    IDS_HELP_SHOW_FRAMERATE "Shows your current framerate in the bottom left corner of your screen during gameplay."
+    IDS_HELP_LOCK_FRAMERATE "Locks your framerate to 60 fps to prevent timing bugs."
+    IDS_HELP_OLD_MOUSELOOK  "Re-enables the old mouselook code that may be buggy on some systems."
 END
 
-#endif    // English (U.S.) resources
+STRINGTABLE
+BEGIN
+    IDS_HELP_4X3_CINEMATICS "Hide visual imperfections during cinematics with more black bars!"
+    IDS_HELP_QUICKSWITCH    "Instantly switch between weapons."
+END
+
+#endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

@@ -281,6 +281,12 @@ void WriteConsoleFloat(char* sKey, LTFLOAT fValue)
 
 void GetConfigFile(std::string file)
 {
+	// Clear the config, if we've already loaded it before
+	if (g_mConfigFile.size() > 0)
+	{
+		g_mConfigFile.clear();
+	}
+
 	// REGEX WARNING,
 	// https://www.xkcd.com/208/
 

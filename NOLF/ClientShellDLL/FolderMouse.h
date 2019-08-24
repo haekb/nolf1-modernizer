@@ -28,6 +28,7 @@ protected:
 
     LTBOOL	m_bInvertY;
     LTBOOL	m_bMouseLook;
+	LTBOOL  m_bOldMouseLook;
 	int		m_nInputRate;
 	int		m_nSensitivity;
 	int	  	m_nVehicleTurn;
