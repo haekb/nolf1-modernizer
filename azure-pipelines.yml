@@ -29,7 +29,7 @@ steps:
 
 - task: VSBuild@1
   inputs:
-    solution: '**\*.sln'
+    solution: 'NOLF\\NOLF.sln'
     vsVersion: '16.0'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
