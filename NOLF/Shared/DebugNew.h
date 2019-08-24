@@ -6,6 +6,14 @@
 
 #ifdef _DEBUG
 
+
+// Enable floating point exceptions
+#include <float.h>
+
+// Using this define will clear any fp exceptions, and then look for the next one. Lithtech.exe seems ripe with 'em, so use this carefully.
+#define _START_STRICT_FP _clearfp(); _controlfp(_EM_INEXACT | _EM_UNDERFLOW | _EM_OVERFLOW, _MCW_EM);
+#define _END_STRICT_FP _clearfp(); _controlfp(_EM_INEXACT | _EM_UNDERFLOW | _EM_OVERFLOW | _EM_INVALID | _EM_ZERODIVIDE, _MCW_EM);
+
 // Use this macro in the place of "new"  
 #define debug_new(type) debug_new_fn<type >(); dump_debug_info_new(__FILE__,__LINE__, sizeof(type))
 // Use this macro in the place of "new[]"  (Or "new[]")
@@ -24,6 +32,9 @@
 #define debug_deletea(ptr) debug_delete_fna(ptr); dump_debug_info_delete(__FILE__,__LINE__)
 
 #else // _DEBUG
+
+#define _START_STRICT_FP
+#define _END_STRICT_FP
 
 #define debug_new(type) debug_new_fn<type >()
 #define debug_newa(type, count) debug_new_fna<type >(count)
