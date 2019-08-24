@@ -66,7 +66,10 @@
       <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
     </ClCompile>
     <PostBuildEvent>
-      <Command>copy debug\cres.dll $(NOLF_BUILD_DIR)</Command>
+      <Command>copy debug\cres.dll $(NOLF_BUILD_DIR)
+cd ..\
+
+call "D:\GameDev\no-one-lives-forever-master\NOLF\_after_build_debug.bat"</Command>
     </PostBuildEvent>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -156,6 +159,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ClientRes.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
