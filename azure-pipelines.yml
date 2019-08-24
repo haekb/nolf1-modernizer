@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: "vs2017-win2016"
+  vmImage: "windows-2019"
 
 variables:
   solution: '**/*.sln'
@@ -21,8 +21,15 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
-- task: MSBuild@1
+#- task: MSBuild@1
+#  inputs:
+#    solution: '**/*.sln'
+#    platform: '$(buildPlatform)'
+#    configuration: '$(buildConfiguration)'
+
+- task: VSBuild@1
   inputs:
-    solution: '**/*.sln'
+    solution: '**\*.sln'
+    vsVersion: '16.0'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
