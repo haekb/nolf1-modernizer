@@ -1,5 +1,6 @@
 Release
 Debug
+Final_Release
 *.opendb
 *.log
 *.dll
