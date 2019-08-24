@@ -3840,6 +3840,13 @@ eFolderID CInterfaceMgr::GetMainFolder()
 		return m_eMainFolderID;
 	}
 
+	// Restrict to just the base menu
+	if (GetConfigInt("NoFunMenus", 0) == 1)
+	{
+		m_eMainFolderID = FOLDER_ID_MAIN;
+		return m_eMainFolderID;
+	}
+
 	time_t rawtime;
 	struct tm * timeinfo;
 	char monthBuffer[8];
