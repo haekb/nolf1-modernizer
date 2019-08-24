@@ -38,6 +38,7 @@ protected:
 	int					m_nWeaponSway;
 	int					m_nPickupMsgDur;
 	LTBOOL				m_bObjMessages;
+	LTBOOL				m_bQuickSwitch;
 
 	CLTGUICycleCtrl		*m_pDifficultyCtrl;			// The difficulty control
 

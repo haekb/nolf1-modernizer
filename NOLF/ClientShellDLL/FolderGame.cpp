@@ -112,6 +112,10 @@ LTBOOL CFolderGame::Build()
 	pToggle->SetOnString(IDS_YES);
 	pToggle->SetOffString(IDS_NO);
 
+	pToggle = AddToggle(IDS_QUICK_SWITCH, IDS_HELP_QUICKSWITCH, kGap, &m_bQuickSwitch);
+	pToggle->SetOnString(IDS_YES);
+	pToggle->SetOffString(IDS_NO);
+
 	// Make sure to call the base class
 	if (! CBaseFolder::Build()) return LTFALSE;
 
@@ -153,6 +157,8 @@ void CFolderGame::OnFocus(LTBOOL bFocus)
 		m_nPickupMsgDur = (int)(2.0f * GetConsoleFloat("PickupMessageDuration",5.0f));
 		m_bObjMessages = ( GetConsoleInt("ObjectiveMessages",1) > 0 );
 
+		m_bQuickSwitch = GetConfigInt("QuickSwitch", 0);
+
         UpdateData(LTFALSE);
 	}
 	else
@@ -173,9 +179,12 @@ void CFolderGame::OnFocus(LTBOOL bFocus)
 		WriteConsoleFloat("PickupMessageDuration",((LTFLOAT)m_nPickupMsgDur / 2.0f));
 		WriteConsoleInt("ObjectiveMessages",m_bObjMessages);
 
+		WriteConsoleInt("QuickSwitch", m_bQuickSwitch);
+
 		g_pLTClient->WriteConfigFile("autoexec.cfg");
 
-
+		GetConfigFile("autoexec.cfg");
+		g_pGameClientShell->UpdateConfigSettings();
 	}
 	CBaseFolder::OnFocus(bFocus);
 }

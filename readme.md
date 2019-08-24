@@ -19,6 +19,8 @@ The following are new config commands:
   - `RestrictCinematicsTo4x3` - INT - Adds black bars onto the sides of cinematics on a non 4x3 resolution, if the value is 1. (Default is 0)
   - `QuickSwitch`             - INT - Instantly switch between weapons, if the value is 1. (Default is 0)
 
+Most of these commands are also available in their respective options menu.
+
 ## Building
 You can now compile it using Visual Studio 2017, thanks to the NOLF2's sdk including some key files. They're all included and ready to compile.
 

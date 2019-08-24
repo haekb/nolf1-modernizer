@@ -619,16 +619,12 @@ void CInterfaceMgr::OnExitWorld()
 
 void CInterfaceMgr::UpdateConfigSettings()
 {
-	LTBOOL previousOldMouseLookSetting = m_bOldMouseLook;
 	LTBOOL previousNoFunMenusSetting = m_bNoFunMenus;
 
 	m_bOldMouseLook = GetConfigInt("OldMouseLook", 0);
 	m_bNoFunMenus = GetConfigInt("NoFunMenus", 0);
 	m_bQuickSwitch = GetConfigInt("QuickSwitch", 0);
 	m_bRestrictAspectRatio = GetConfigInt("RestrictCinematicsTo4x3", 0);
-
-	// Just in case, turn off CursorCenter!
-	//g_pLTClient->RunConsoleString("CursorCenter 0");
 
 	// Break the folder cache
 	if (previousNoFunMenusSetting != m_bNoFunMenus)
