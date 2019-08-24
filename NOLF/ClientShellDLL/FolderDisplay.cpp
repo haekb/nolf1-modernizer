@@ -394,6 +394,8 @@ LTBOOL CFolderDisplay::SetRenderer(int nRendererIndex, int nResolutionIndex)
 	g_pInterfaceMgr->ScreenDimsChanged();
 	g_pInterfaceMgr->InitCursor();
 
+	g_pInterfaceResMgr->HandleBorderlessWindowed();
+
     return LTTRUE;
 }
 

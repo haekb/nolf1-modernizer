@@ -10,6 +10,7 @@
 #include "SDL.h"
 
 CInterfaceResMgr*   g_pInterfaceResMgr = LTNULL;
+extern SDL_Window* g_SDLWindow;
 
 namespace
 {
@@ -115,6 +116,9 @@ LTBOOL CInterfaceResMgr::Init(ILTClient* pClientDE, CGameClientShell* pClientShe
 	{
         return LTFALSE;
 	}
+
+
+	HandleBorderlessWindowed();
 
     return LTTRUE;
 }
@@ -344,6 +348,37 @@ void CInterfaceResMgr::DrawMessage(CLTGUIFont* pFont, int nMessageId)
     g_pLTClient->FreeString(hStr);
 
 	return;
+}
+
+//
+// If we're in windowed mode, and the resolution is the same as our desktop,
+// then borderless windowed mode it up!
+//
+void CInterfaceResMgr::HandleBorderlessWindowed()
+{
+	// Only do this in windowed mode!
+	if (GetConsoleInt("windowed", 0) == 0) {
+		return;
+	}
+
+	uint32 dwScreenWidth = 0;
+	uint32 dwScreenHeight = 0;
+	SDL_DisplayMode dm;
+	if (SDL_GetDesktopDisplayMode(0, &dm) != 0) {
+		SDL_Log("SDL_GetDesktopDisplayMode failed: %s", SDL_GetError());
+	}
+
+	g_pLTClient->GetSurfaceDims(g_pLTClient->GetScreenSurface(), &dwScreenWidth, &dwScreenHeight);
+
+	// If res matches our desktop, borderless it!
+	if (dm.w == dwScreenWidth && dm.h == dwScreenHeight)
+	{
+		SDL_SetWindowFullscreen(g_SDLWindow, SDL_WINDOW_FULLSCREEN_DESKTOP);
+		return;
+	}
+
+	// Otherwise reset to windowed.
+	SDL_SetWindowFullscreen(g_SDLWindow, 0);
 }
 
 LTBOOL CInterfaceResMgr::InitFonts()

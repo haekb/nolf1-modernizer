@@ -88,6 +88,8 @@ public:
 
 	void				DrawMessage(CLTGUIFont* pFont, int nMessageId);
 
+	void				HandleBorderlessWindowed();
+
 
 	//call Setup() before entering a 2-d state (folder)
 	//call Clean() before returning to the game
