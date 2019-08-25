@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.421
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ClientRes", "ClientRes\ClientRes.vcxproj", "{A1C75B9B-AF76-4E1D-A042-E04EA51642F0}"
 EndProject
@@ -14,6 +14,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ClientShellDLL", "ClientShe
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Object", "ObjectDLL\Object.vcxproj", "{AF9DC958-595E-4AD2-AA45-208340343492}"
+	ProjectSection(ProjectDependencies) = postProject
+		{151C0830-9A79-4727-9B17-87313C9C2435} = {151C0830-9A79-4727-9B17-87313C9C2435}
+		{93D29053-46D5-4819-8169-58BC96CBE554} = {93D29053-46D5-4819-8169-58BC96CBE554}
+		{821E97A2-7B0E-4412-B54D-A1777557B6C1} = {821E97A2-7B0E-4412-B54D-A1777557B6C1}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ButeMgr", "..\LT2\lithshared\ButeMgr\ButeMgr.vcxproj", "{93D29053-46D5-4819-8169-58BC96CBE554}"
 EndProject

@@ -105,8 +105,8 @@
       <Optimization>MaxSpeed</Optimization>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>..\shared;..\..\lt2\sdk\inc;..\..\lt2\lithshared\incs;..\ClientShellDLL;..\..\LIBS\SDL2-2.0.10\include;..\..\lt2\lithshared\lith;..\..\lt2\lithshared\ButeMgr\;..\..\lt2\lithshared\CryptMgr;..\..\lt2\lithshared\mfcstub;..\ClientRes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_REZFILE;_FINAL;NDEBUG;_CLIENTBUILD;WIN32;_WINDOWS;_NOLFBUILD;NO_PRAGMA_LIBS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)shared;$(SolutionDir)..\lt2\sdk\inc;$(SolutionDir)..\lt2\lithshared\incs;$(SolutionDir)ClientShellDLL;$(SolutionDir)..\LIBS\SDL2-2.0.10\include;$(SolutionDir)..\lt2\lithshared\lith;$(SolutionDir)..\lt2\lithshared\ButeMgr\;$(SolutionDir)..\lt2\lithshared\CryptMgr;$(SolutionDir)..\lt2\lithshared\mfcstub;$(SolutionDir)ClientRes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_REZFILE;_FINAL;NDEBUG;_CLIENTBUILD;WIN32;_WINDOWS;_NOLFBUILD;NO_PRAGMA_LIBS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\Final_Release\</AssemblerListingLocation>
       <PrecompiledHeaderOutputFile>.\Final_Release\ClientShellDLL.pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -144,7 +144,7 @@
       <ImportLibrary>.\Final_Release\CShell.lib</ImportLibrary>
       <AdditionalDependencies>odbc32.lib;odbccp32.lib;ButeMgr.lib;cryptmgr.lib;GameSpyClientMgr.lib;MFCStub.lib;StdLith.lib;RegMgr.lib;ltguimgr_LT2.lib;LithFontMgr_LT2.lib;SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <AdditionalLibraryDirectories>..\..\lt2\lithshared\built\Release\ButeMgr;..\..\lt2\lithshared\built\Release\CryptMgr;..\..\lt2\lithshared\built\Release\MFCStub;..\..\lt2\lithshared\libs\Release;..\..\LIBS\SDL2-2.0.10\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\lt2\lithshared\built\Release\ButeMgr;$(SolutionDir)..\lt2\lithshared\built\Release\CryptMgr;$(SolutionDir)..\lt2\lithshared\built\Release\MFCStub;$(SolutionDir)..\lt2\lithshared\libs\Release;$(SolutionDir)..\LIBS\SDL2-2.0.10\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
