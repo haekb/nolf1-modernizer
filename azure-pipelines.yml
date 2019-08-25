@@ -33,3 +33,17 @@ steps:
     vsVersion: '16.0'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '.\\'
+    Contents: |
+      NOLF\\ClientRes\\CRes.dll
+      NOLF\\ClientShellDLL\\CShell.dll
+      NOLF\\ObjectDLL\\Object.lto
+    TargetFolder: '$(Pipeline.Workspace)'
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    artifact: '$(buildConfiguration) Files'
