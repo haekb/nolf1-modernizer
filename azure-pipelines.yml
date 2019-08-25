@@ -25,11 +25,18 @@ steps:
 - task: CopyFiles@2
   inputs:
     SourceFolder: '.\\'
+    FlattenFolders: true
     Contents: |
       NOLF\\ClientRes\\CRes.dll
       NOLF\\ClientShellDLL\\CShell.dll
       NOLF\\ObjectDLL\\Object.lto
-      ASSETS\\*
+    TargetFolder: '$(Pipeline.Workspace)\\Artifacts'
+
+- task: CopyFiles@3
+  inputs:
+    SourceFolder: '.\\'
+    Contents: |
+      ASSETS\\**
     TargetFolder: '$(Pipeline.Workspace)\\Artifacts'
 
 - task: PublishPipelineArtifact@1
