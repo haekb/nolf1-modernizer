@@ -1523,19 +1523,33 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 		{
 			int nBarX = nAirX + m_AirBarOffset.x;
 			int nBarY = nAirY + m_AirBarOffset.y;
-            g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hHUDAir, LTNULL, nBarX, nBarY, hTransColor);
+
+			fOrigin = { (float)nBarX, (float)nBarY };
+
+			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hHUDAir, &fOrigin, nBarX, nBarY, 0, yRatio, yRatio, hTransColor);
+            //g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hHUDAir, LTNULL, nBarX, nBarY, hTransColor);
 			if (m_fAirPercent < 0.25f)
 			{
                 LTRect rcPower = m_rcAir;
 				rcPower.left += nBarX;
 				rcPower.top += nBarY;
-				rcPower.right = rcPower.left + (int)(100.0f * m_fAirPercent);
+
+				// We need to multiply the ratio on the ends before we add the additional bar length!
+				rcPower.bottom *= yRatio;
+
+				rcPower.right = rcPower.left + (int)(100.0f * (m_fAirPercent* yRatio));
 				rcPower.bottom += nBarY;
+
                 g_pLTClient->ScaleSurfaceToSurfaceTransparent(hScreen, m_hAirBar, &rcPower, &m_rcAirBar, kTransBlack);
 			}
 		}
 		if (m_bUseAirIcon)
 		{
+			// FIXME: The icon is hidious scaled up...
+			/*
+			fOrigin = { (float)nAirX, (float)nAirY };
+			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hAirIcon, &fOrigin, nAirX + m_AirIconOffset.x, nAirY + m_AirIconOffset.y, 0, yRatio, yRatio, hTransColor);
+			*/
             g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hAirIcon, LTNULL, nAirX+m_AirIconOffset.x, nAirY+m_AirIconOffset.y, hTransColor);
 		}
 		if (m_bUseAirText)
@@ -1575,8 +1589,6 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 				// We need to multiply the ratio on the ends before we add the additional bar length!
 				rcTemp.right *= yRatio;
 				rcTemp.bottom *= yRatio;
-
-
 
 				rcTemp.right += nBarX;
 				rcTemp.bottom += nBarY;
@@ -1657,7 +1669,15 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 
 			if (m_hAmmoIcon)
 			{
-				g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hAmmoIcon, LTNULL, nAmmoX+m_AmmoIconOffset.x, nAmmoY+m_AmmoIconOffset.y, hTransColor);
+				// I'm not sure of all the cases for AmmoIcon, but we haven't scaled the text yet, so only scale if we're using ammobar.
+				if (m_bUseAmmoBar)
+				{
+					fOrigin = { (float)nAmmoX, (float)nAmmoY };
+					g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hAmmoIcon, &fOrigin, nAmmoX + m_AmmoIconOffset.x, nAmmoY + m_AmmoIconOffset.y, 0, yRatio, yRatio, hTransColor);
+				}
+				else {
+					g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hAmmoIcon, LTNULL, nAmmoX + m_AmmoIconOffset.x, nAmmoY + m_AmmoIconOffset.y, hTransColor);
+				}
 			}
 
 			if (m_bUseAmmoText && !pW->bInfiniteAmmo)
