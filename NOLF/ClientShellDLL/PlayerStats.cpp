@@ -1627,7 +1627,10 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 			int nAmmoY = (int) ((float)m_AmmoBasePos.y * yRatio);
 			if (m_bUseAmmoBar && !pW->bInfiniteAmmo)
 			{
-                g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hHUDAmmo, NULL, (nAmmoX + m_AmmoBarOffset.x) - m_rcAmmoHUD.right, nAmmoY + m_AmmoBarOffset.y, hTransColor);
+				fOrigin = { (float)nAmmoX, (float)nAmmoY };
+
+				g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hHUDAmmo, &fOrigin, (nAmmoX + m_AmmoBarOffset.x) - m_rcAmmoHUD.right, nAmmoY + m_AmmoBarOffset.y, 0, yRatio, yRatio, hTransColor);
+                //g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hHUDAmmo, NULL, (nAmmoX + m_AmmoBarOffset.x) - m_rcAmmoHUD.right, nAmmoY + m_AmmoBarOffset.y, hTransColor);
 			}
 
 			if (m_hAmmoIcon)
