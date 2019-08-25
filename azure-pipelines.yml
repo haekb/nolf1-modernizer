@@ -29,6 +29,7 @@ steps:
       NOLF\\ClientRes\\CRes.dll
       NOLF\\ClientShellDLL\\CShell.dll
       NOLF\\ObjectDLL\\Object.lto
+      ASSETS\\*
     TargetFolder: '$(Pipeline.Workspace)\\Artifacts'
 
 - task: PublishPipelineArtifact@1
