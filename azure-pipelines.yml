@@ -34,8 +34,8 @@ steps:
     
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '.\\'
-    Contents: 'ASSETS\\**'
+    SourceFolder: 'ASSETS'
+    Contents: '**'
     TargetFolder: '$(Pipeline.Workspace)\\Artifacts'
     
 
