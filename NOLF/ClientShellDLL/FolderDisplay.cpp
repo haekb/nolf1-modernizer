@@ -264,6 +264,8 @@ void CFolderDisplay::BuildRendererArray()
 			// Ignore 16-bit resolutions
 			if (pCurrentMode->m_BitDepth == 16)
 			{
+				// Go to the next render mode
+				pCurrentMode = pCurrentMode->m_pNext;
 				continue;
 			}
 
