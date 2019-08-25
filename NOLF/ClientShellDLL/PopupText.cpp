@@ -247,6 +247,7 @@ void CPopupText::CreateScaleFX(char *szFXName)
 {
 	CBaseScaleFX *pSFX = LTNULL;
 	CScaleFX* pScaleFX = g_pFXButeMgr->GetScaleFX(szFXName);
+	HOBJECT hObj = LTNULL;
 	if (pScaleFX)
 	{
 		pSFX = debug_new(CBaseScaleFX);
@@ -256,9 +257,24 @@ void CPopupText::CreateScaleFX(char *szFXName)
 			LTNULL, LTNULL, pSFX);
 		m_SFXArray.Add(pSFX);
 
+		// Small hack to get fullscreen intel background
+		if (stricmp(szFXName,"PopupBackground") == 0)
+		{
+			hObj = pSFX->GetObject();
+	
+			if (hObj)
+			{
+				LTVector vNewPos;
+				g_pLTClient->GetObjectPos(hObj, &vNewPos);
+				vNewPos.z = 1.0f;
+				g_pLTClient->SetObjectPos(hObj, &vNewPos);
+			}
+			
+		}
+
 		if (pScaleFX->eType == SCALEFX_MODEL)
 		{
-			HOBJECT hObj = pSFX->GetObject();
+			hObj = pSFX->GetObject();
 			if (hObj)
 			{
 				uint32 dwAni = g_pLTClient->GetAnimIndex(hObj, "Interface");
