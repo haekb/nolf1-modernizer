@@ -1,5 +1,9 @@
-Release
-Debug
+# Only ignore specific Release/Debugs
+NOLF/*/Release
+NOLF/*/Debug
+LT2/lithshared/built/Release
+LT2/lithshared/built/Debug
+# There's no pre-built libs in Final Release, so just ignore it all
 Final_Release
 *.opendb
 *.log

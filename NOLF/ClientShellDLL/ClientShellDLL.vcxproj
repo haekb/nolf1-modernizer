@@ -106,7 +106,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level3</WarningLevel>
       <AdditionalIncludeDirectories>$(SolutionDir)shared;$(SolutionDir)..\lt2\sdk\inc;$(SolutionDir)..\lt2\lithshared\incs;$(SolutionDir)ClientShellDLL;$(SolutionDir)..\LIBS\SDL2-2.0.10\include;$(SolutionDir)..\lt2\lithshared\lith;$(SolutionDir)..\lt2\lithshared\ButeMgr\;$(SolutionDir)..\lt2\lithshared\CryptMgr;$(SolutionDir)..\lt2\lithshared\mfcstub;$(SolutionDir)ClientRes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_REZFILE;_FINAL;NDEBUG;_CLIENTBUILD;WIN32;_WINDOWS;_NOLFBUILD;NO_PRAGMA_LIBS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_REZFILE;_FINAL;NDEBUG;_CLIENTBUILD;WIN32;_WINDOWS;_NOLFBUILD;NO_PRAGMA_LIBS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\Final_Release\</AssemblerListingLocation>
       <PrecompiledHeaderOutputFile>.\Final_Release\ClientShellDLL.pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeader>Use</PrecompiledHeader>
