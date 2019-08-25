@@ -15,18 +15,6 @@ variables:
   buildConfiguration: 'Final Release'
 
 steps:
-- task: NuGetToolInstaller@1
-
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
-
-#- task: MSBuild@1
-#  inputs:
-#    solution: '**/*.sln'
-#    platform: '$(buildPlatform)'
-#    configuration: '$(buildConfiguration)'
-
 - task: VSBuild@1
   inputs:
     solution: 'NOLF\\NOLF.sln'
@@ -41,9 +29,9 @@ steps:
       NOLF\\ClientRes\\CRes.dll
       NOLF\\ClientShellDLL\\CShell.dll
       NOLF\\ObjectDLL\\Object.lto
-    TargetFolder: '$(Pipeline.Workspace)'
+    TargetFolder: '$(Pipeline.Workspace)\\Artifacts'
 
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(Pipeline.Workspace)'
+    targetPath: '$(Pipeline.Workspace)\\Artifacts'
     artifact: '$(buildConfiguration) Files'
