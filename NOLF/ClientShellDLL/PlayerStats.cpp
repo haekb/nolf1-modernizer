@@ -1564,31 +1564,53 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 			{
                 LTRect rcTemp = m_rcHealth;
 
-				// We need to multiply the ratio on the ends before we add the additional bar length!
+				// Not my finest code, but it works. I assume I'm causing a floating point rounding error somewhere.
+				// This keeps everything in sync with the HUDHealth surface.
+				rcTemp.left += 1 * yRatio;
+				rcTemp.top += 1 * yRatio;
+
 				rcTemp.left += nBarX;
 				rcTemp.top += nBarY;
 
+				// We need to multiply the ratio on the ends before we add the additional bar length!
 				rcTemp.right *= yRatio;
 				rcTemp.bottom *= yRatio;
 
+
+
 				rcTemp.right += nBarX;
 				rcTemp.bottom += nBarY;
+
+				rcTemp.right += 1 * yRatio;
+				rcTemp.bottom += 1 * yRatio;
 
                 g_pLTClient->ScaleSurfaceToSurfaceTransparent(hScreen, m_hHealthBar, &rcTemp, &m_rcHealthBar, kTransBlack);
 			}
 
 			// draw flashing Armor as required
 			if (m_bArmorFlash)
-			{
+			{	
                 LTRect rcTemp = m_rcArmor;
+				// Not my finest code, but it works. I assume I'm causing a floating point rounding error somewhere.
+				// This keeps everything in sync with the HUDHealth surface.
+				rcTemp.left += 2 * yRatio;
+				rcTemp.top += 2 * yRatio;
+
 				rcTemp.left += nBarX;
 				rcTemp.top += nBarY;
 
+				// We need to multiply the ratio on the ends before we add the additional bar length!
 				rcTemp.right *= yRatio;
 				rcTemp.bottom *= yRatio;
 
+
+
 				rcTemp.right += nBarX;
 				rcTemp.bottom += nBarY;
+
+				rcTemp.right += 2 * yRatio;
+				rcTemp.bottom += 2 * yRatio;
+
 
                 g_pLTClient->ScaleSurfaceToSurfaceTransparent(hScreen, m_hArmorBar, &rcTemp, &m_rcArmorBar, kTransBlack);
 			}
