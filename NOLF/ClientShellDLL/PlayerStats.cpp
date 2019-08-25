@@ -4111,7 +4111,7 @@ void CPlayerStats::UpdateWeaponBindings()
 void CPlayerStats::DrawBoundWeapons(HSURFACE hScreen)
 {
 	if (m_fWeaponAlpha < 0.1f) return;
-	float yr = g_pInterfaceResMgr->GetYRatio();
+	float yr = g_pInterfaceResMgr->GetYRatio() * 0.75f;
 	float xr = g_pInterfaceResMgr->GetXRatio();
 	int w = (int)g_pInterfaceResMgr->GetScreenWidth();
 	int y = (m_nIconSize * yr) / 4;//(int)g_pInterfaceResMgr->GetScreenHeight() / xr - 5 * m_nIconSize;
