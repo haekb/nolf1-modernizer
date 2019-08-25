@@ -3190,13 +3190,15 @@ LTBOOL CInterfaceMgr::PrePopupState(GameState eCurState)
 {
     if (eCurState == GS_POPUP) return LTFALSE;
 
+	// Jake: Uncommented this, we'll see if it causes any issues?
+	// I just like reading stuff uninterupted!
 	// Pause the game...
-//    g_pGameClientShell->PauseGame(LTTRUE);
+    g_pGameClientShell->PauseGame(LTTRUE);
 	g_pGameClientShell->AllowPlayerMovement(LTFALSE);
 
 	g_bLockPopup = LTTRUE;
-
-    UseCursor(LTFALSE);
+	// Enable cursor, so I can read with it...
+    UseCursor(LTTRUE);
 	m_bUseInterfaceCamera = LTFALSE;
 
     return LTTRUE;
@@ -3213,8 +3215,11 @@ LTBOOL CInterfaceMgr::PrePopupState(GameState eCurState)
 LTBOOL CInterfaceMgr::PostPopupState(GameState eNewState)
 {
     if (eNewState == GS_POPUP) return LTFALSE;
-
+	g_pGameClientShell->PauseGame(LTFALSE);
 	g_pGameClientShell->AllowPlayerMovement(LTTRUE);
+
+	UseCursor(LTFALSE);
+
 	g_pLTClient->ClearInput();
 
     return LTTRUE;
