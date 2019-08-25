@@ -1317,8 +1317,11 @@ void CInterfaceMgr::UpdateFailureState()
     g_pLTClient->Start3D();
     g_pLTClient->StartOptimized2D();
 
-	if (m_hFailBack)
-        g_pLTClient->DrawSurfaceToSurface(hScreen, m_hFailBack, LTNULL, xo, yo);
+	if (m_hFailBack) {
+		rcDst.left = xo;
+		rcDst.right = nScrnWidth - xo;
+		g_pLTClient->ScaleSurfaceToSurface(hScreen, m_hFailBack, &rcDst, NULL);
+	}
 
 	int nStringWidth = (int)(0.8f * (LTFLOAT)nScrnWidth);
     LTIntPt failPos = g_pLayoutMgr->GetFailStringPos();
