@@ -1405,6 +1405,8 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 	float xRatio = g_pInterfaceResMgr->GetXRatio();
 	float yRatio = g_pInterfaceResMgr->GetYRatio();
 
+	LTFloatPt fOrigin = { 0.0f, 0.0f };
+
 	if (g_pGameClientShell->GetGameType() == COOPERATIVE_ASSAULT)
 	{
 		CLIENT_INFO* pInfo = g_pInterfaceMgr->GetClientInfoMgr()->GetLocalClient();
@@ -1548,23 +1550,27 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 		int nHealthX = (int) ((float)m_HealthBasePos.x * xRatio);
 		int nHealthY = (int) ((float)m_HealthBasePos.y * yRatio);
 
-        unsigned long width, height = 0;
-
 		if (m_bUseHealthBar)
 		{
 			int nBarX = nHealthX + m_HealthBarOffset.x;
 			int nBarY = nHealthY + m_HealthBarOffset.y;
 			
-			g_pLTClient->GetSurfaceDims(m_hHUDHealth, &width, &height);
+			fOrigin = { (float)nBarX, (float)nBarY };
 
-			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hHUDHealth, NULL, nBarX + width /2, nBarY + height /2, 0, 2.0f, 2.0f, hTransColor );
-            //g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hHUDHealth, NULL, nBarX, nBarY, hTransColor);
+			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hHUDHealth, &fOrigin, nBarX, nBarY, 0, yRatio, yRatio, hTransColor );
+			//g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hHUDHealth, NULL, nBarX, nBarY, hTransColor);
 			// draw flashing health as required
 			if (m_bHealthFlash ||  (m_nHealth <= (m_nMaxHealth/10)))
 			{
                 LTRect rcTemp = m_rcHealth;
+
+				// We need to multiply the ratio on the ends before we add the additional bar length!
 				rcTemp.left += nBarX;
 				rcTemp.top += nBarY;
+
+				rcTemp.right *= yRatio;
+				rcTemp.bottom *= yRatio;
+
 				rcTemp.right += nBarX;
 				rcTemp.bottom += nBarY;
 
@@ -1572,11 +1578,15 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 			}
 
 			// draw flashing Armor as required
-			if (m_bArmorFlash )
+			if (m_bArmorFlash)
 			{
                 LTRect rcTemp = m_rcArmor;
 				rcTemp.left += nBarX;
 				rcTemp.top += nBarY;
+
+				rcTemp.right *= yRatio;
+				rcTemp.bottom *= yRatio;
+
 				rcTemp.right += nBarX;
 				rcTemp.bottom += nBarY;
 
