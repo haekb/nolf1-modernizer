@@ -1,0 +1,2093 @@
+/************************************************************************
+**
+** Basic Folder Layout
+**
+** The BasicLayout definition specifies positions and sizes for common
+** folder components.
+**
+**	HelpRect (Rect)
+**
+**		The space allocated to display the rollover help
+**
+**	BackPos (Point)
+**
+**		The upper-left corner of the "back" item.
+**
+**	ContinuePos (Point)
+**
+**		The upper-left corner of the "continue" item.
+**
+**	MainPos (Point)
+**
+**		The upper-left corner of the "main menu" item.
+**
+**	ShadeColor	(Vector)
+**
+**		The color to use to fill above and below the main folder area.
+**		<r, g, b>
+**
+**	BarColor	(Vector)
+**
+**		The color of the bars separating the shaded area from the folder area.
+**		<r, g, b>
+**
+**	BarHeight	(Int)
+**
+**		The height of the bars separating the shaded area from the folder area.
+**
+**	TopShadeHeight	(Int)
+**
+**		The height of the top shaded area (relative a 640x480 screen)
+**
+**	BottomShadeHeight	(Int)
+**
+**		The height of the bottom shaded area (relative a 640x480 screen)
+**
+**	LoadStringPos (Point)
+**
+**		The top-center position of the name of the world displayed on
+**		the loading screen.
+**
+**	LoadPhotoPos (Point)
+**
+**		The top-left corner of the photo of the world displayed on
+**		the loading screen.
+**
+**	BossRect (Rect)
+**
+**		The space allocated to display the boss meter
+**
+**
+*/
+
+[BasicLayout]
+FontSize		      = 1
+HelpRect			= (94, 432, 378, 460)
+//BackPos				= (32,370)
+//ContinuePos			= (360,370)
+BackPos				= (32,436)
+ContinuePos			= (569,436)
+MainPos				= (128,390)
+ShadeColor			= <185.0, 205.0, 95.0>
+BarColor			= <157.0, 177.0, 64.0>
+BarHeight			= 0
+TopShadeHeight		= 0
+BottomShadeHeight	= 0
+BackSprite			= "menu\spr\folderback.spr"
+BackSpriteScale		= 32.0
+ArrowBackSFX		= "ArrowBackSpr1"
+ArrowNextSFX		= "ArrowContinueSpr1"
+ArrowBackBitmap		= "interface\BackArrow.pcx"
+ArrowNextBitmap		= "interface\NextArrow.pcx"
+ArrowBackPos		= (20,420)
+ArrowNextPos		= (560,420)
+LoadStringPos		= (320,420)
+LoadPhotoPos		= (350,180)
+BossRect			= (160,24,480,40)
+
+/************************************************************************
+**
+** Selection Folder Layout
+**
+** The SelectionLayout definition specifies positions and sizes for
+** components common to selection folders
+**
+**	SlotOffset (Point)
+**
+**		How far the slots are offset from the main list.
+**
+**	ListRect (Rect)
+**
+**		The space allocated to display the list of selectable items.
+**
+**	ListFontSize (Int)
+**
+**		Specifices which font to use for the list of selectable items.
+**		0 = small font, 1 = large font
+**
+**	NameRect (Rect)
+**
+**		The space allocated to display the name of the current item.
+**
+**	NameFontSize (Int)
+**
+**		Specifices which font to use for the name of the current item.
+**		0 = small font, 1 = large font
+**
+**	PhotoPos (String)
+**
+**		The upper-left corner of the picture of the current item.
+**
+**	DescriptionRect
+**
+**		The space allocated to display the description of the current item.
+**
+**	DescFontSize
+**
+**		Specifices which font to use for the description of the current item.
+**		0 = small font, 1 = large font
+**
+**	UpArrowOffset (Point)
+**
+**		Offset of the upper-left corner of the up arrow from the the upper-left
+**		corner of the list items.
+**
+**	DownArrowOffset (Point)
+**
+**		Offset of the upper-left corner of the down arrow from the the lower-left
+**		corner of the list items.
+**
+*/
+
+[SelectionLayout]
+SlotOffset			= (16,8)
+ListRect			= (64,140,320,300)
+ListFontSize		= 1
+NameRect			= (355,70,585,100)
+NameFontSize		= 1
+PhotoPos			= (355,140)
+DescriptionRect		= (355,270,585,385)
+DescFontSize		= 1
+UpArrowOffset		= (80,-30)
+DownArrowOffset		= (80,0)
+
+
+
+
+/************************************************************************
+**
+** Folder Layout
+**
+** The Folder Layout definitions specifies positions and sizes for folder
+** components. The GenericFolder section defines default values which will
+** be used if the specific folder doesn't override them.
+**
+** Individual folders may also have custom values specified in their section
+** that are used in addition to these common definitions:
+**
+**	TitlePos (Point)
+**
+**		The upper-left corner of the title string.
+**
+**	TitleAlign (Integer)
+**
+**		The alignment of the title string:
+**			0 = Left, 1 = Center, 2 = Right
+**
+**	PageRect (Rect)
+**
+**		The rectangle used by the folder items.
+**		(left,top,right,bottom)
+**
+**	ItemSpace (Integer)
+**
+**		The vertical space between menu items.
+**
+**	ItemAlign (Integer)
+**
+**		The alignment of the title string:
+**			0 = Left, 1 = Center, 2 = Right
+**
+**	FontSize
+**
+**		Specifices which font to use by default for items.
+**		0 = small font, 1 = large font
+**
+**	MusicIntensity
+**
+**		Specifies what the menu intensity should be for this
+**		folder (1-7, with 1=silence, 7=high action)
+**
+**	UpArrowPos (Point)
+**
+**		The upper-left corner of the up arrow.
+**
+**	DownArrowPos (Point)
+**
+**		The upper-left corner of the down arrow.
+**
+**
+*/
+
+[GenericFolder]
+TitlePos			= (52,18)
+TitleAlign			= 0
+PageRect			= (96,56,585,385)
+ItemSpace			= 0
+ItemAlign			= 0
+MusicIntensity		= 5
+UpArrowPos		= (320,70)
+DownArrowPos	= (320,344)
+
+
+/************************************************************************
+**
+** FolderMain
+**
+** This folder has 6 custom attributes:
+**
+**	SinglePlayerPos (Point)
+**
+**		Position of the "single player..." item.
+**
+**	MultiPlayerPos (Point)
+**
+**		Position of the "multi player..." item.
+**
+**	ResumePos (Point)
+**
+**		Position of the "options..." item.
+**
+**	OptionsPos (Point)
+**
+**		Position of the "Resume game" item.
+**
+**	QuitPos (Point)
+**
+**		Position of the "quit" item.
+**
+**	VersionPos (Point)
+**
+**		Position of the build version text. (right justified)
+**
+*/
+
+[FolderMain]
+TitlePos			= (-100,-100)
+SinglePlayerPos		= (54,148)
+ResumePos			= (54,180)
+MultiPlayerPos		= (54,212)
+OptionsPos			= (54,244)
+QuitPos				= (54,276)
+VersionPos			= (620,468)
+Character			= "CateAction"
+Attachment0			= "SunGlasses;Eyes"
+Attachment1			= "P38;RightHand"
+ScaleName0			= "InterfaceSpr1"
+ScaleName1			= "InterfacePinwheelMod1"
+ScaleName2			= "GreenTextBoxMod1"
+ScaleName3			= "GreenTextBoxMod2"
+ScaleName4			= "HelpTextBoxSpr1"
+ScaleName5			= "HelpTextBoxSpr2"
+ScaleName6			= "VertBarLMod1"
+ScaleName7			= "VertBarRMod1"
+ScaleName8			= "mainoperativetext"
+ScaleName9			= "mainnolftext"
+ScaleName10			= "InterfaceFlowerMod1"
+
+[FolderMainCasual]
+TitlePos			= (-100,-100)
+SinglePlayerPos		= (54,148)
+ResumePos			= (54,180)
+MultiPlayerPos		= (54,212)
+OptionsPos			= (54,244)
+QuitPos				= (54,276)
+VersionPos			= (620,468)
+Character			= "CateCasual"
+/**Attachment0			= "SunGlasses;Eyes"*/
+Attachment0			= "P38;RightHand"
+ScaleName0			= "InterfaceSpr1"
+ScaleName1			= "InterfacePinwheelMod1"
+ScaleName2			= "GreenTextBoxMod1"
+ScaleName3			= "GreenTextBoxMod2"
+ScaleName4			= "HelpTextBoxSpr1"
+ScaleName5			= "HelpTextBoxSpr2"
+ScaleName6			= "VertBarLMod1"
+ScaleName7			= "VertBarRMod1"
+ScaleName8			= "mainoperativetext"
+ScaleName9			= "mainnolftext"
+ScaleName10			= "InterfaceFlowerMod1"
+
+[FolderMainWinter]
+TitlePos			= (-100,-100)
+SinglePlayerPos		= (54,148)
+ResumePos			= (54,180)
+MultiPlayerPos		= (54,212)
+OptionsPos			= (54,244)
+QuitPos				= (54,276)
+VersionPos			= (620,468)
+Character			= "CateWinter"
+/**Attachment0			= "SunGlasses;Eyes"*/
+Attachment0			= "P38;RightHand"
+ScaleName0			= "InterfaceSpr1"
+ScaleName1			= "InterfacePinwheelMod1"
+ScaleName2			= "GreenTextBoxMod1"
+ScaleName3			= "GreenTextBoxMod2"
+ScaleName4			= "HelpTextBoxSpr1"
+ScaleName5			= "HelpTextBoxSpr2"
+ScaleName6			= "VertBarLMod1"
+ScaleName7			= "VertBarRMod1"
+ScaleName8			= "mainoperativetext"
+ScaleName9			= "mainnolftext"
+ScaleName10			= "InterfaceFlowerMod1"
+
+[FolderSingle]
+PageRect			= (54,148,585,385)
+ScaleName0			= "InterfaceSpr1"
+ScaleName1			= "InterfacePinwheelMod1"
+ScaleName2			= "GreenTextBoxMod1"
+ScaleName3			= "GreenTextBoxMod2"
+ScaleName4			= "InterfaceFlowerMod1"
+ScaleName5			= "VertBarRMod1"
+ScaleName6			= "VertBarLMod1"
+ScaleName7			= "HelpTextBoxSpr1"
+ScaleName8			= "HelpTextBoxSpr2"
+ScaleName9			= "mainoperativetext"
+ScaleName10			= "mainnolftext"
+
+[FolderGallery]
+PageRect			= (110,115,585,335)
+UpArrowPos			= (180,90)
+DownArrowPos		= (180,340)
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenSelectTextBoxMod9"
+ScaleName2			= "GreenSelectTextBoxMod10"
+ScaleName3			= "VertBarRMod1"
+ScaleName4			= "VertBarLMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "RoundyMovingMod3"
+ScaleName8			= "RoundyMovingMod4"
+
+[FolderDifficulty]
+PageRect			= (54,148,585,385)
+//TextPos			= (360,280)
+//TextWidth			= 220
+TextPos			= (350,180)
+TextWidth			= 220
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenTextBoxMod1"
+ScaleName2			= "GreenTextBoxMod2"
+//ScaleName3			= "InterfaceFlowerMod1"
+ScaleName3			= "VertBarRMod1"
+ScaleName4			= "VertBarLMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+//ScaleName8			= "RoundSelectionSpr3"
+ScaleName7 			= "RoundSelectionSpr6"
+ScaleName8			= "RoundyMovingMod3"
+ScaleName9			= "RoundyMovingMod4"
+
+[FolderEscape]
+PageRect			= (54,148,585,385)
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenTextBoxMod1"
+ScaleName2			= "GreenTextBoxMod2"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+
+[FolderOptions]
+PageRect			= (74,148,585,385)
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenTextBoxMod1"
+ScaleName2			= "GreenTextBoxMod2"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "InterfaceFlowerMod1"
+
+
+[FolderDisplay]
+FontSize			= 1
+PageRect			= (94,120,585,385)
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenSelectTextBoxMod5"
+ScaleName2			= "GreenSelectTextBoxMod6"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "InterfaceFlowerMod2"
+
+
+[FolderAdvDisplay]
+PageRect			= (70,148,585,385)
+FontSize			= 0
+ColumnWidth			= 330
+SliderWidth			= 150
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenTextBoxMod1"
+ScaleName2			= "GreenTextBoxMod2"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "RoundSelectionSpr6"
+ScaleName8			= "RoundyMovingMod3"
+ScaleName9			= "RoundyMovingMod4"
+
+[FolderAudio]
+PageRect			= (78,115,585,385)
+ColumnWidth			= 230
+SliderWidth			= 175
+FontSize			= 0
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenSelectTextBoxMod3"
+ScaleName2			= "GreenSelectTextBoxMod4"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "RoundSelectionSpr5"
+ScaleName8			= "RoundyMovingMod3"
+ScaleName9			= "RoundyMovingMod4"
+
+
+[FolderControls]
+ItemSpace			= 0
+ColumnWidth			= 250
+SliderWidth			= 160
+UpArrowPos			= (120,110)
+DownArrowPos		= (120,320)
+PageRect			= (70,135,220,320)
+FontSize			= 0
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenSelectTextBoxMod7"
+ScaleName2			= "GreenSelectTextBoxMod8"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "RoundSelectionSpr9"
+ScaleName8			= "RoundyMovingMod3"
+ScaleName9			= "RoundyMovingMod4"
+
+
+[FolderGame]
+PageRect			= (70,138,585,385)
+FontSize			= 0
+ColumnWidth			= 300
+SliderWidth			= 150
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenTextBoxMod1"
+ScaleName2			= "GreenTextBoxMod2"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "RoundSelectionSpr6"
+ScaleName8			= "RoundyMovingMod3"
+ScaleName9			= "RoundyMovingMod4"
+
+[FolderPerformance]
+ColumnWidth			= 200
+PageRect			= (75,115,585,385)
+FontSize                = 0
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenSelectTextBoxMod5"
+ScaleName2			= "GreenSelectTextBoxMod6"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "InterfaceFlowerMod1"
+
+[FolderTexture]
+PageRect			= (70,148,585,385)
+FontSize			= 0
+ColumnWidth			= 300
+SliderWidth			= 150
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenTextBoxMod1"
+ScaleName2			= "GreenTextBoxMod2"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "RoundSelectionSpr6"
+ScaleName8			= "RoundyMovingMod3"
+ScaleName9			= "RoundyMovingMod4"
+
+[FolderEffects]
+ColumnWidth			= 200
+PageRect			= (90,115,585,385)
+FontSize                = 0
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenSelectTextBoxMod5"
+ScaleName2			= "GreenSelectTextBoxMod6"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "InterfaceFlowerMod1"
+
+[FolderCustomControls]
+ItemSpace			= 0
+ColumnWidth			= 200
+UpArrowPos			= (160,100)
+DownArrowPos		= (160,325)
+PageRect			= (130,130,220,320)
+FontSize	            = 0
+NameFontSize		= 1
+FilterPos			= (275,200)
+ActionWidth			= 100
+BufferWidth			= 10
+EqualsWidth			= 30
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenSelectTextBoxMod9"
+ScaleName2			= "GreenSelectTextBoxMod10"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "RoundyMovingMod3"
+ScaleName8			= "RoundyMovingMod4"
+
+[FolderWeaponControls]
+PageRect			= (50,120,585,370)
+FontSize			= 0
+ColumnWidth			= 240
+SliderWidth			= 160
+ModelRotSpeed		= 1.0
+ModelPos			= <30.0,10.0,90.0>
+ModelScale			= 1.0
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenSelectTextBoxMod11"
+ScaleName2			= "GreenSelectTextBoxMod12"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "RoundSelectionSpr1"
+ScaleName8			= "RoundSelectionSpr13"
+ScaleName9			= "RoundyMovingMod3"
+ScaleName10			= "RoundyMovingMod4"
+
+[FolderMouse]
+ItemSpace			= 0
+ColumnWidth			= 250
+SliderWidth			= 160
+UpArrowPos			= (120,110)
+DownArrowPos		= (120,320)
+PageRect			= (70,135,220,320)
+FontSize			= 0
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenSelectTextBoxMod7"
+ScaleName2			= "GreenSelectTextBoxMod8"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "RoundSelectionSpr9"
+ScaleName8			= "RoundyMovingMod3"
+ScaleName9			= "RoundyMovingMod4"
+
+[FolderKeyboard]
+ItemSpace			= 0
+ColumnWidth			= 250
+SliderWidth			= 160
+UpArrowPos			= (120,110)
+DownArrowPos		= (120,320)
+PageRect			= (70,135,220,320)
+FontSize			= 0
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenSelectTextBoxMod7"
+ScaleName2			= "GreenSelectTextBoxMod8"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "RoundSelectionSpr9"
+ScaleName8			= "RoundyMovingMod3"
+ScaleName9			= "RoundyMovingMod4"
+
+[FolderJoystick]
+ItemSpace			= 0
+ColumnWidth			= 225
+SliderWidth			= 200
+UpArrowPos			= (110,110)
+DownArrowPos		= (110,290)
+PageRect			= (45,145,220,330)
+FontSize			= 0
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenTextBoxMod1"
+ScaleName2			= "GreenTextBoxMod2"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "RoundSelectionSpr7"
+ScaleName8			= "RoundyMovingMod3"
+ScaleName9			= "RoundyMovingMod4"
+
+[FolderAdvControls]
+ItemSpace			= 0
+ColumnWidth			= 250
+SliderWidth			= 200
+UpArrowPos			= (120,110)
+DownArrowPos		= (120,340)
+PageRect			= (70,135,220,330)
+FontSize			= 0
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenTextBoxMod1"
+ScaleName2			= "GreenTextBoxMod2"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "RoundSelectionSpr7"
+ScaleName8			= "RoundyMovingMod3"
+ScaleName9			= "RoundyMovingMod4"
+
+[FolderCrosshair]
+ItemSpace			= 0
+ColumnWidth			= 250
+SliderWidth			= 150
+UpArrowPos			= (120,110)
+DownArrowPos		= (120,340)
+PageRect			= (70,145,220,330)
+FontSize			= 0
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenTextBoxMod1"
+ScaleName2			= "GreenTextBoxMod2"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "RoundSelectionSpr7"
+ScaleName8			= "RoundyMovingMod3"
+ScaleName9			= "RoundyMovingMod4"
+
+
+[FolderCustomLevel]
+ItemSpace			= 4
+UpArrowPos			= (120,110)
+DownArrowPos		= (120,308)
+PageRect			= (50,140,200,310)
+ListRect			= (37,150,280,300)
+FontSize			= 0
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenTextBoxMod1"
+ScaleName2			= "GreenTextBoxMod2"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "InterfaceFlowerMod1"
+
+
+[FolderFavoriteLevels]
+ItemSpace			= 4
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenTextBoxMod1"
+ScaleName2			= "GreenTextBoxMod2"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+
+[FolderNew]
+ContinuePos			= (0,0)
+SlotOffset			= (0,0)
+UpArrowOffset		= (73,-50)
+DownArrowOffset		= (73,10)
+//ListRect			= (47,150,280,300)
+ListRect			= (47,150,200,300)
+ListFontSize		= 0
+NameRect			= (280,95,630,120)
+NameFontSize		= 1
+PhotoPos			= (325,125)
+DescriptionRect		= (370,275,585,395)
+DescFontSize		= 0
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenTextBoxMod1"
+ScaleName2			= "GreenTextBoxMod2"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "RoundSelectionSpr2"
+ScaleName8			= "RoundSelectionSpr3"
+ScaleName9			= "RoundyMovingMod1"
+ScaleName10			= "RoundyMovingMod2"
+
+[FolderLoad]
+ItemSpace			= 3
+PageRect			= (140,115,585,335)
+UpArrowPos			= (180,90)
+DownArrowPos		= (180,340)
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenSelectTextBoxMod9"
+ScaleName2			= "GreenSelectTextBoxMod10"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "InterfaceFlowerMod1"
+
+[FolderSave]
+ItemSpace			= 4
+PageRect			= (140,115,585,360)
+UpArrowPos			= (180,90)
+DownArrowPos		= (180,365)
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenSelectTextBoxMod9"
+ScaleName2			= "GreenSelectTextBoxMod10"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "InterfaceFlowerMod2"
+
+[FolderBriefing]
+ItemSpace			= 0
+PageRect			= (64,105,610,425)
+ScaleName0			= "BriefingBackgroundSpr1"
+ScaleName1			= "HorzBarTMod1"
+ScaleName2			= "HorzBarBMod1"
+ScaleName3			= "HelpTextBoxSpr1"
+ScaleName4			= "HelpTextBoxSpr2"
+ScaleName5			= "InterfaceFlowerMod1"
+
+[FolderWeapons]
+SlotOffset			= (16,70)
+NameRect			= (280,95,630,120)
+NameFontSize		= 1
+DescriptionRect		= (370,275,585,395)
+DescFontSize		= 0
+ListFontSize		= 0
+ListRect			= (60,175,280,350)
+ModelRotSpeed		= 1.0
+ModelPos			= <30.0,10.0,90.0>
+ModelScale			= 1.0
+DescFontSize		= 0
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenSelectTextBoxMod11"
+ScaleName2			= "GreenSelectTextBoxMod12"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "RoundyMovingMod1"
+ScaleName8			= "RoundyMovingMod2"
+ScaleName9			= "RoundSelectionSpr1"
+ScaleName10			= "RoundSelectionSpr2"
+ScaleName11			= "RoundSelectionSpr3"
+
+[FolderGadgets]
+SlotOffset			= (16,70)
+NameRect			= (280,95,630,120)
+NameFontSize		= 1
+DescriptionRect		= (370,275,585,395)
+DescFontSize		= 0
+ListFontSize		= 0
+ListRect			= (60,175,280,350)
+ModelRotSpeed		= 1.0
+ModelPos			= <30.0,10.0,90.0>
+ModelScale			= 1.0
+DescFontSize		= 0
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenSelectTextBoxMod11"
+ScaleName2			= "GreenSelectTextBoxMod12"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "RoundyMovingMod1"
+ScaleName8			= "RoundyMovingMod2"
+ScaleName9			= "RoundSelectionSpr1"
+ScaleName10			= "RoundSelectionSpr2"
+ScaleName11			= "RoundSelectionSpr3"
+
+[FolderMods]
+SlotOffset			= (16,70)
+NameRect			= (280,95,630,120)
+NameFontSize		= 1
+DescriptionRect		= (370,275,585,395)
+DescFontSize		= 0
+ListFontSize		= 0
+ListRect			= (60,175,280,350)
+ModelRotSpeed		= 1.0
+ModelPos			= <30.0,10.0,90.0>
+ModelScale			= 1.0
+DescFontSize		= 0
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenSelectTextBoxMod11"
+ScaleName2			= "GreenSelectTextBoxMod12"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "RoundyMovingMod1"
+ScaleName8			= "RoundyMovingMod2"
+ScaleName9			= "RoundSelectionSpr1"
+ScaleName10			= "RoundSelectionSpr2"
+ScaleName11			= "RoundSelectionSpr3"
+
+[FolderGear]
+SlotOffset			= (16,70)
+NameRect			= (280,95,630,120)
+NameFontSize		= 1
+DescriptionRect		= (370,275,585,395)
+DescFontSize		= 0
+ListFontSize		= 0
+ListRect			= (60,175,280,350)
+ModelRotSpeed		= 1.0
+ModelPos			= <30.0,10.0,90.0>
+ModelScale			= 1.0
+DescFontSize		= 0
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenSelectTextBoxMod11"
+ScaleName2			= "GreenSelectTextBoxMod12"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "RoundyMovingMod1"
+ScaleName8			= "RoundyMovingMod2"
+ScaleName9			= "RoundSelectionSpr1"
+ScaleName10			= "RoundSelectionSpr2"
+ScaleName11			= "RoundSelectionSpr3"
+
+
+[FolderInventory]
+NameRect			= (280,95,630,120)
+NameFontSize		= 1
+ListFontSize		= 0
+ListRect			= (40,145,280,320)
+DescriptionRect		= (370,275,585,395)
+DescFontSize		= 0
+UpArrowOffset		= (80,-45)
+DownArrowOffset		= (80,5)
+Indent				= 15
+ModelRotSpeed		= 1.0
+ModelPos			= <30.0,10.0,90.0>
+ModelScale			= 1.0
+//PhotoPos			= (180,105)
+PhotoPos			= (180,80)
+StartPos			= (452,427)
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenTextBoxMod1"
+ScaleName2			= "GreenTextBoxMod2"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "RoundyMovingMod1"
+ScaleName8			= "RoundyMovingMod2"
+ScaleName9			= "RoundSelectionSpr1"
+ScaleName10			= "RoundSelectionSpr2"
+ScaleName11			= "RoundSelectionSpr3"
+ScaleName12			= "GreenSelectTextBoxMod1"
+ScaleName13			= "GreenSelectTextBoxMod2"
+
+/*** in-game inventorty folder */
+[FolderViewInventory]
+NameRect			= (280,95,630,120)
+NameFontSize		= 1
+ListFontSize		= 0
+ListRect			= (40,145,280,320)
+DescriptionRect		= (370,275,585,395)
+DescFontSize		= 0
+UpArrowOffset		= (80,-45)
+DownArrowOffset		= (80,5)
+Indent				= 15
+ModelRotSpeed		= 1.0
+ModelPos			= <30.0,10.0,90.0>
+ModelScale			= 1.0
+PhotoPos			= (180,105)
+StartPos			= (460,427)
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenTextBoxMod1"
+ScaleName2			= "GreenTextBoxMod2"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "RoundyMovingMod1"
+ScaleName8			= "RoundyMovingMod2"
+ScaleName9			= "RoundSelectionSpr1"
+ScaleName10			= "RoundSelectionSpr2"
+ScaleName11			= "RoundSelectionSpr3"
+ScaleName12			= "GreenSelectTextBoxMod1"
+ScaleName13			= "GreenSelectTextBoxMod2"
+
+[FolderMission]
+PageRect			= (74,105,610,385)
+DownArrowPos		= (320,390)
+ListFontSize		= 0
+DescFontSize		= 0
+ScaleName0			= "BriefingBackgroundSpr1"
+ScaleName1			= "HorzBarTMod1"
+ScaleName2			= "HorzBarBMod1"
+ScaleName3			= "HelpTextBoxSpr1"
+ScaleName4			= "HelpTextBoxSpr2"
+ScaleName5			= "InterfaceFlowerMod1"
+
+[FolderMultiMission]
+PageRect			= (74,105,610,400)
+ListFontSize		= 0
+DescFontSize		= 0
+ScaleName0			= "BriefingBackgroundSpr1"
+ScaleName1			= "HorzBarTMod1"
+ScaleName2			= "HorzBarBMod1"
+ScaleName3			= "InterfaceFlowerMod1"
+
+[FolderMultiBriefing]
+ItemSpace			= 0
+PageRect			= (64,105,610,400)
+ScaleName0			= "BriefingBackgroundSpr1"
+ScaleName1			= "HorzBarTMod1"
+ScaleName2			= "HorzBarBMod1"
+ScaleName3			= "InterfaceFlowerMod1"
+
+[FolderMultiSummary]
+ItemSpace			= 0
+PageRect			= (64,100,610,385)
+ColumnWidth			= 176
+ScoreWidth			= 64
+GapWidth			= 32
+DownArrowPos		= (320,390)
+ScaleName0			= "BriefingBackgroundSpr1"
+ScaleName1			= "HorzBarTMod1"
+ScaleName2			= "HorzBarBMod1"
+ScaleName3			= "InterfaceFlowerMod1"
+
+[FolderStats]
+PageRect			= (74,105,610,360)
+DownArrowPos		= (320,365)
+ScaleName0			= "BriefingBackgroundSpr1"
+ScaleName1			= "HorzBarTMod1"
+ScaleName2			= "HorzBarBMod1"
+ScaleName3			= "HelpTextBoxSpr1"
+ScaleName4			= "HelpTextBoxSpr2"
+ScaleName5			= "InterfaceFlowerMod1"
+
+[FolderIntel]
+ContinuePos			= (0,0)
+SlotOffset			= (0,0)
+HeaderPos			= (35,105)
+UpArrowOffset		= (200,0)
+DownArrowOffset		= (200,-35)
+ListRect			= (35,125,200,240)
+ListFontSize		= 0
+DescriptionRect		= (35,250,610,350)
+DescFontSize		= 0
+ModelRotSpeed		= 1.0
+ModelPos			= <27.0,12.0,90.0>
+ScaleName0			= "BriefingBackgroundSpr1"
+ScaleName1			= "HorzBarTMod1"
+ScaleName2			= "HorzBarBMod1"
+ScaleName3			= "HelpTextBoxSpr1"
+ScaleName4			= "HelpTextBoxSpr2"
+ScaleName5			= "InterfaceFlowerMod1"
+
+
+[FolderSummary]
+PageRect			= (74,105,610,360)
+DownArrowPos		= (320,365)
+ScaleName0			= "BriefingBackgroundSpr1"
+ScaleName1			= "HorzBarTMod1"
+ScaleName2			= "HorzBarBMod1"
+ScaleName3			= "HelpTextBoxSpr1"
+ScaleName4			= "HelpTextBoxSpr2"
+ScaleName5			= "InterfaceFlowerMod1"
+
+
+[FolderAwards]
+PageRect			= (74,105,610,400)
+ScaleName0			= "BriefingBackgroundSpr1"
+ScaleName1			= "HorzBarTMod1"
+ScaleName2			= "HorzBarBMod1"
+ScaleName3			= "HelpTextBoxSpr1"
+ScaleName4			= "HelpTextBoxSpr2"
+ScaleName5			= "InterfaceFlowerMod1"
+
+[FolderFailure]
+ScaleName0			= "BriefingBackgroundSpr1"
+ScaleName1			= "HorzBarTMod1"
+ScaleName2			= "HorzBarBMod1"
+ScaleName3			= "HelpTextBoxSpr1"
+ScaleName4			= "HelpTextBoxSpr2"
+ScaleName5			= "InterfaceFlowerMod1"
+
+[FolderMulti]
+PageRect			= (65,100,610,400)
+FontSize			= 1
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenSelectTextBoxMod3"
+ScaleName2			= "GreenSelectTextBoxMod4"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "InterfaceFlowerMod2"
+ScaleName8			= "RoundyMovingMod3"
+ScaleName9			= "RoundyMovingMod4"
+
+[FolderPlayer]
+FontSize                = 0
+PageRect			= (75,95,585,385)
+CharAnim			= "UUW"
+CharRotation		= -30.0
+//CharPos				= <35.0,-15.0,100.0>
+//CharScale			= 0.5
+CharPos				= <26.0,-19,80.0>
+CharScale			= 0.4
+Attachment0			= "P38;RightHand"
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenSelectTextBoxMod15"
+ScaleName2			= "GreenSelectTextBoxMod16"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "RoundSelectionSpr14"
+ScaleName8			= "RoundSelectionSpr4"
+ScaleName9			= "RoundyMovingMod3"
+ScaleName10			= "RoundyMovingMod4"
+
+/***********************************************************
+**
+**	StartPos (Point)
+**
+**		The upper-left corner of the "start mission" item.
+**
+**	SkipPos (Point)
+**
+**		The upper-left corner of the "use default..." item.
+**
+**	SelectPos (Point)
+**
+**		The upper-left corner of the "select..." item.
+**
+************************************************************/
+
+[FolderObjectives]
+StartPos			= (452,427)
+SkipPos				= (452,420)
+SelectPos			= (452,437)
+PageRect			= (64,105,610,435)
+UpArrowPos			= (320,80)
+DownArrowPos		= (320,405)
+ScaleName0			= "BriefingBackgroundSpr1"
+ScaleName1			= "HorzBarTMod1"
+ScaleName2			= "HorzBarBMod1"
+ScaleName3			= "HelpTextBoxSpr1"
+ScaleName4			= "HelpTextBoxSpr2"
+ScaleName5			= "InterfaceFlowerMod1"
+ScaleName6			= "GreenSelectTextBoxMod1"
+ScaleName7			= "GreenSelectTextBoxMod2"
+
+
+
+/************************************************************************
+**
+**	FolderJoin Layout
+**
+** ServerRect	(Rect)
+**		- Area used for servers list
+** PlayerRect	(Rect)
+**			- Area used for players list
+** OptionRect	(Rect)
+**			- Area used for game options list
+** StatusRect	(Rect)
+**			- Area used for status text - note that the value for the top is
+**				calculated from the font height and the bottom value.
+** CommandRect	(Rect)
+**			- Area used for command menu items
+** ColumnGap	(Int)
+**			- Space between columns
+** TextIndent	(Int)
+**			- How much text is indented from left side of column
+** GameWidth	(Int)
+**			- Width of column used to display server names
+** PlayerWidth	(Int)
+**			- Width of column used to display player counts
+** PingWidth	(Int)
+**			- Width of column used to display ping times (both server and player lists)
+** TypeWidth	(Int)
+**			- Width of column used to display game types
+** MapWidth		(Int)
+**			- Width of column used to display map names
+** NameWidth	(Int)
+**			- Width of column used to display player names
+** ScoreWidth	(Int)
+**			- Width of column used to display player scores (frags)
+** OptionWidth	(Int)
+**			- Width of column used to display game option names
+** ArrowWidth	(Int)
+**			- Space reserved for the list arrows
+**
+**/
+[FolderJoin]
+ServerRect			= (0, 60, 640, 140)
+PlayerRect			= (0,162, 350, 251)
+OptionRect			= (0,273, 350, 366)
+StatusRect			= (0,410, 640, 420)
+CommandRect			= (403,222,640,366)
+ColumnGap			= 8
+TextIndent			= 4
+GameWidth			= 184
+PlayerWidth			= 88
+PingWidth			= 45
+TypeWidth			= 112
+MapWidth			= 128
+NameWidth			= 184
+ScoreWidth			= 80
+OptionWidth			= 184
+ArrowWidth			= 24
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "HorzBarTMod1"
+ScaleName2			= "HorzBarBMod1"
+ScaleName3			= "HelpTextBoxSpr1"
+ScaleName4			= "HelpTextBoxSpr2"
+ScaleName5			= "RoundSelectionSpr11"
+ScaleName6			= "gamespyspr1"
+
+
+[FolderJoinLAN]
+SearchPos			= (60,120)
+PortPos				= (60,140)
+PageRect			= (60,170,585,370)
+FontSize			= 0
+ColumnWidth			= 310
+SliderWidth			= 160
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenTextBoxMod1"
+ScaleName2			= "GreenTextBoxMod2"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "RoundSelectionSpr12"
+ScaleName8			= "RoundyMovingMod3"
+ScaleName9			= "RoundyMovingMod4"
+
+
+[FolderHost]
+PageRect			= (100,133,585,385)
+LaunchPos			= (468,427)
+FontSize			= 0
+ColumnWidth			= 270
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "HorzBarTMod1"
+ScaleName2			= "HorzBarBMod1"
+ScaleName3			= "HelpTextBoxSpr1"
+ScaleName4			= "HelpTextBoxSpr2"
+ScaleName5			= "HostRoundSelectionSpr"
+ScaleName6			= "HostGreenSelectTextBoxMod"
+ScaleName7			= "HostGreenSelectTextBoxMod2"
+ScaleName8			= "RoundyMovingMod3"
+ScaleName9			= "RoundyMovingMod4"
+ScaleName10			= "GreenSelectTextBoxMod1"
+ScaleName11			= "GreenSelectTextBoxMod2"
+
+
+[FolderHostOptions]
+PageRect			= (60,130,585,330)
+FontSize			= 0
+ColumnWidth			= 310
+SliderWidth			= 160
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenTextBoxMod1"
+ScaleName2			= "GreenTextBoxMod2"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "RoundSelectionSpr12"
+ScaleName8			= "RoundyMovingMod3"
+ScaleName9			= "RoundyMovingMod4"
+UpArrowPos			= (110,100)
+DownArrowPos		= (110,333)
+
+
+[FolderHostLevels]
+AvailLevelsRect		= (  4, 60, 200, 366)
+CommandRect			= (235,160, 420, 366)
+SelLevelsRect		= (440, 60, 636, 366)
+TextIndent			= 4
+ArrowWidth			= 24
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "HorzBarTMod1"
+ScaleName2			= "HorzBarBMod1"
+ScaleName3			= "HelpTextBoxSpr1"
+ScaleName4			= "HelpTextBoxSpr2"
+ScaleName5			= "InterfaceFlowerMod2"
+ScaleName6			= "RoundSelectionSpr8"
+
+
+[LoadScreenSingle]
+ScaleName0			= "LoadingSpr1"
+ScaleName1			= "InterfacePinwheelMod2"
+ScaleName2			= "loadinghenchmen"
+ScaleName3			= "loadingtext"
+ScaleName4			= "loadingpicbox"
+ScaleName5			= "loadingpicboxshadow"
+//ScaleName6			= "loadingspiral"
+
+
+[LoadScreenMulti]
+ScaleName0			= "LoadingSpr1"
+ScaleName1			= "InterfacePinwheelMod2"
+ScaleName2			= "loadinghenchmen"
+ScaleName3			= "loadingtext"
+ScaleName4			= "loadingpicbox"
+ScaleName5			= "loadingpicboxshadow"
+
+
+/************************************************************************
+**
+**	HUD Layout
+**
+** The HUDLayout definitions specify positions and sizes for in-game
+** interface components. If an attribute isn't listed for a particular
+** layout, the base value defined in the default layout [HUDLayout0] will
+** be used.
+** 
+** Note:
+**		Positions (AmmoBasePos, etc.) are relative to a 640x480 resolution
+**			and will be scaled for other resolutions. 
+**		Offsets are absolute distances and are not scaled for different
+**			resolutions.
+**
+**
+**	LayoutName (Integer)
+**
+**		The string id used to identify the layout configuration.
+**
+**	BarHeight (Integer)
+**
+**		The height used for the HUD bars.
+**
+**	BarScale (Float)
+**
+**		The number of pixels per point in the various HUD bars. 
+**
+**
+**	AmmoBasePos (Point)
+**
+**		Relative position of the Ammo display.
+**
+**	UseAmmoBar (Integer)
+**
+**		0 - hides ammo bar, 1 - shows ammo bar 
+**
+**	AmmoClipOffset (Point)
+**
+**		Offset to the upper-RIGHT corner of the ammo-in-clip bar. 
+**
+**	AmmoBarOffset (Point)
+**
+**		Offset to the upper-RIGHT corner of the total ammo bar.
+**
+**	UseAmmoText (Integer)
+**
+**		0 - hides ammo text, 1 - shows ammo text 
+**
+**	AmmoTextOffset (Point)
+**
+**		Offset to the upper-left corner of the ammo text. 
+**
+**	AmmoIconOffset (Point)
+**
+**		Offset to the upper-left corner of the ammo type icon. 
+**
+**
+**	HealthBasePos (Point)
+**
+**		Relative position of the Health and Armor display.
+**
+**	UseHealthBar (Integer)
+**
+**		0 - hides health bar, 1 - shows health bar 
+**
+**	HealthBarOffset (Point)
+**
+**		Offset to the upper-left corner of the health bar.
+**
+**	ArmorBarOffset (Point)
+**
+**		Offset to the  upper-left corner of the armor bar.
+**
+**	UseHealthText (Integer)
+**
+**		0 - hides health/armor text, 1 - shows health/armor text 
+**
+**	HealthTextOffset (Point)
+**
+**		Offset to the upper-left corner of the health text. 
+**
+**
+**	ArmorTextOffset (Point)
+**
+**		Offset to the upper-left corner of the armor text. 
+**
+**	UseHealthIcon (Integer)
+**
+**		0 - hides health/armor icons, 1 - shows health/armor icons 
+**
+**	HealthIconOffset (Point)
+**
+**		Offset to the upper-left corner of the health icon. 
+**
+**	ArmorIconOffset (Point)
+**
+**		Offset to the upper-left corner of the armor icon. 
+**
+**
+**
+**	AirBasePos (Point)
+**
+**		Relative position of the Air display.
+**
+**	UseAirIcon (Integer)
+**
+**		0 - hides air icon, 1 - shows air icon
+**
+**	AirIconOffset (Point)
+**
+**		Offset to the upper-left corner of the air icon. 
+**
+**	UseAirText (Integer)
+**
+**		0 - hides air text, 1 - shows air text 
+**
+**	AirTextOffset (Point)
+**
+**		Offset to the upper-left corner of the air text. 
+**
+**	UseAirBar (Integer)
+**
+**		0 - hides air bar, 1 - shows air bar 
+**
+**	AirBarOffset (Point)
+**
+**		Offset to the upper-left corner of the air bar.
+**
+**	ModeTextPos (Point)
+**
+**		Relative position of the sunglass mode text display.
+**
+**
+**
+**	DamageBasePos (Point)
+**
+**		Relative position (upper-left corner) of the damage display.
+**
+*/
+
+/*
+** 	Hud#0 (Default) is Health=baronly; Armor=baronly; Ammo=icon,text,nobar;
+*/
+
+[HUDLayout0]
+LayoutName			= 385
+BarHeight			= 12
+BarScale			= 1
+
+UseAmmoBar			= 0
+AmmoBasePos			= (624,450)
+AmmoClipOffset		= (-8,8)
+AmmoBarOffset		= (0,0)
+UseAmmoText			= 1
+AmmoTextOffset		= (-72,-16)
+//AmmoIconOffset		= (-100,-28)
+AmmoIconOffset		= (-96,-16)
+
+UseHealthBar		= 1
+HealthBasePos		= (16,430)
+HealthBarOffset		= (0,16)
+ArmorBarOffset		= (6,6)
+UseHealthText		= 0
+HealthTextOffset		= (24,-20)
+ArmorTextOffset		= (88,-20)
+UseHealthIcon		= 0
+HealthIconOffset		= (0,-20)
+ArmorIconOffset		= (64,-20)
+
+UseAirIcon			= 1
+AirBasePos			= (24,400)
+UseAirText			= 0
+AirTextOffset		= (24,-26)
+//UseAirBar			= 1
+//AirBarOffset		= (0,0)
+//AirIconOffset		= (0,-26)
+UseAirBar			= 1
+AirBarOffset		= (12,0)
+AirIconOffset		= (-20,-8)
+
+ModeTextPos			= (80,40)
+
+DamageBasePos		= (0,240)
+
+
+[HUDLayout1]
+LayoutName			= 386
+
+UseAmmoBar			= 0
+AmmoBasePos			= (624,450)
+AmmoClipOffset		= (-8,8)
+AmmoBarOffset		= (0,0)
+UseAmmoText			= 1
+AmmoTextOffset		= (-72,-16)
+//AmmoIconOffset		= (-100,-28)
+AmmoIconOffset		= (-96,-16)
+
+UseHealthBar		= 0
+HealthBasePos		= (16,450)
+UseHealthText		= 1
+HealthTextOffset		= (24,-16)
+ArmorTextOffset		= (124,-16)
+UseHealthIcon		= 1
+HealthIconOffset		= (0,-16)
+ArmorIconOffset		= (104,-16)
+
+UseAirIcon			= 1
+AirBasePos			= (24,400)
+UseAirText			= 0
+AirTextOffset		= (24,-26)
+//UseAirBar			= 1
+//AirBarOffset		= (0,0)
+//AirIconOffset		= (0,-26)
+UseAirBar			= 1
+AirBarOffset		= (12,0)
+AirIconOffset		= (-20,-8)
+
+[HUDLayout2]
+LayoutName			= 387
+
+BarHeight			= 12
+BarScale			= 1
+
+UseAmmoBar			= 1
+AmmoBasePos			= (624,450)
+AmmoClipOffset		= (-8,8)
+AmmoBarOffset		= (-64,-8)
+AmmoIconOffset		= (-32,-16)
+UseAmmoText			= 0
+
+UseHealthBar		= 1
+HealthBasePos		= (16,430)
+HealthBarOffset		= (0,16)
+ArmorBarOffset		= (6,6)
+UseHealthText		= 0
+HealthTextOffset		= (24,-20)
+ArmorTextOffset		= (88,-20)
+UseHealthIcon		= 0
+HealthIconOffset		= (0,-20)
+ArmorIconOffset		= (64,-20)
+
+UseAirIcon			= 1
+AirBasePos			= (24,400)
+UseAirText			= 0
+AirTextOffset		= (24,-26)
+//UseAirBar			= 1
+//AirBarOffset		= (0,0)
+//AirIconOffset		= (0,-26)
+UseAirBar			= 1
+AirBarOffset		= (12,0)
+AirIconOffset		= (-20,-8)
+
+
+
+
+/************************************************************************
+**
+**	Miscellaneous Layout
+**
+** The Miscellaneous definition specifies data for interface components
+** not covered under other definitions.
+**
+**	MessageBoxBackground (String)
+**
+**		The name of the pcx to use for background art on the Message Box.
+**
+**	MessageBoxAlpha (Float)
+**
+**		The opacity (0.0-1.0) for the Message Box.
+**
+**	FailScreenBackground (String)
+**
+**		The name of the pcx to use for background art on the Mission
+**		Failure screen.
+**
+**	FailStringPos (Point)
+**
+**		The position of the text string on the Mission Failure screen.
+**		This point is relative to a 640x480 resolution and will be scaled
+**		for other resolutions.
+**
+**	FailScreenDelay (Float)
+**
+**		How long (in seconds) to wait on the Mission Failure screen.
+**
+**	DeathDelay (Float)
+**
+**		How long (in seconds) to wait after player dies before showing the Mission Failure screen.
+**
+**	FlashSpeed (Float)
+**
+**		How long (in seconds) one HUD element flash lasts.
+**
+**	FlashDuration (Float)
+**
+**		How long (in seconds) to flash a HUD element.
+**
+**	NightVisionModelColor (Vector)
+**
+**		Color to add to models while using night vision <r, g, b>
+**
+**	NightVisionScreenTint (Vector)
+**
+**		Color to tint the screen while using night vision <r, g, b>
+**
+**	WeaponPickupColor (Vector)
+**
+**		Color to tint the screen when a weapon is picked up <r, g, b>
+**
+**	AmmoPickupColor (Vector)
+**
+**		Color to tint the screen when a weapon is picked up <r, g, b>
+**
+**	TintTime (Float)
+**
+**		Duration in seconds of screen tint when weapons or ammo are picked up
+**
+**	HelpFont (String)
+**
+**		Name of the bitmap font to use rollover help.
+**
+**	SmallFontBase (String)
+**
+**		Base name of the bitmap font set used for small text.
+**
+**	MediumFontBase (String)
+**
+**		Base name of the bitmap font set used for medium text.
+**
+**	LargeFontBase (String)
+**
+**		Base name of the bitmap font set used for large text.
+**
+**	TitleFont (String)
+**
+**		Name of the bitmap font to use for folder titles.
+**
+**	MessageTime (Float)
+**
+**		How long in seconds that messages are displayed.
+**		(includes fade out time)
+**
+**	MessageFade (Float)
+**
+**		How long in seconds that messages are it takes for a message to fade.
+**		(included in total message time)
+**
+**	MaxMessages (int)
+**
+**		How many messages may appear on screen at one time.
+**
+*/
+
+[Miscellaneous]
+MessageBoxBackground	= "interface\mb_back.pcx"
+MessageBoxAlpha			= 0.8
+FailScreenBackground	= "interface\missionfailure.pcx"
+FailStringPos			= (320,200)
+FailScreenDelay			= 5.0
+DeathDelay				= 5.0
+FlashSpeed				= 0.25		
+FlashDuration			= 3.0
+NightVisionModelColor	= <32.0, 128.0, 32.0>
+//NightVisionModelColor	= <32.0, 64.0, 32.0>
+//NightVisionScreenTint	= <32.0, 128.0, 32.0>
+NightVisionScreenTint	= <0.0, 255.0, 0.0>
+InfraredModelColor		= <96.0, 32.0, 0.0>
+//InfraredLightScale		= <224.0, 32.0, 32.0>
+InfraredLightScale		= <255.0, 0.0, 0.0>
+MineDetectScreenTint	= <224.0, 224.0, 0.0>
+//MineDetectScreenTint	= <32.0, 0.0, 96.0>
+WeaponPickupColor		= <80.0, 40.0, 128.0>
+AmmoPickupColor			= <80.0, 40.0, 128.0>
+TintTime				= 2.000000
+ExpoFont                = "interface\fonts\BETHHAND.TTF"
+HelpFont				= "interface\fonts\font_help.pcx"
+SmallFontBase			= "interface\fonts\font_small_0.pcx"
+MediumFontBase			= "interface\fonts\font_med_0.pcx"
+LargeFontBase			= "interface\fonts\font_large_0.pcx"
+TitleFont				= "interface\fonts\font_title.pcx"
+MsgForeFont				= "interface\fonts\MsgFontFore.pcx"
+MsgBackFont				= "interface\fonts\MsgFontBack.pcx"
+HUDForeFont				= "interface\fonts\NumberFontFore.pcx"
+HUDBackFont				= "interface\fonts\NumberFontBack.pcx"
+HUDHealthFont			= "interface\fonts\HUD_Nmrs.pcx"
+HUDArmorFont			= "interface\fonts\HUD_Nmrs.pcx"
+HUDAmmoFont				= "interface\fonts\HUD_Nmrs.pcx"
+HUDAirFont				= "interface\fonts\font_air.pcx"
+HUDChooserFont			= "interface\fonts\HUD_chooser.pcx"
+HUDChoserHColor			= <255.0, 255.0, 255.0>
+CrosshairGapMin			= 5
+CrosshairGapMax			= 25
+CrosshairBarMin			= 8
+CrosshairBarMax			= 32
+PerturbRotationEffect	= 2
+PerturbIncreaseSpeed	= 3
+PerturbDecreaseSpeed	= 1
+PerturbWalkPercent		= 0.33
+MessageTime				= 9.0
+MessageFade				= 0.75
+MaxMessages				= 5
+PopupTextRect			= (20,80,620,340)
+ObjectiveRect			= (80,80,560,340)
+SubtitleTint			= <255.0, 255.0, 128.0>
+HealthTint				= <255.0, 128.0, 128.0>
+ArmorTint				= <128.0, 128.0, 255.0>
+AmmoTint				= <240.0, 240.0, 128.0>
+PopupTint				= <255.0, 255.0, 255.0>
+Team1Color				= <64.0, 64.0, 255.0>
+Team2Color				= <255.0, 64.0, 64.0>
+
+
+/***********************************************************
+**
+**	MissionText Layout
+**
+** The MissionText definition specifies data for "typing"
+** mission related text (e.g. "Somewhere in Berlin, 9:43 AM")
+** to the screen.
+**
+**	Width (Int)
+**
+**		Specifies how wide the area used for the text should be
+**
+**	NumLines (Int)
+**
+**		Specifies how many of lines of text may be displayed at once
+**
+**	LetterDelay	(Float)
+**
+**		How long (in seconds) to wait after adding each letter
+**
+**	LineDelay	(Float)
+**
+**		How long (in seconds) to wait after finishing each line
+**
+**	LineScrollTime	(Float)
+**
+**		How long (in seconds) to scroll up one line
+**
+**	FadeDelay	(Float)
+**
+**		How long (in seconds) to wait after adding the last line
+**			before starting the fade.
+**
+**	FadeTime	(Float)
+**
+**		How long (in seconds) to fade out the text
+**
+**	Pos		(Point)
+**
+**		Position (relative to a 640x480 screen) of the text
+**
+**	TypeSound	(String)
+**
+**		Sound file to play (looping) while typing text
+**
+**	ScrollSound	(String)
+**
+**		Sound file to play (once) when a line starts scrolling
+**
+**/
+[MissionText]
+Width					= 600
+NumLines				= 2
+LetterDelay				= 0.05
+LineDelay				= 0.25
+//LineDelay				= 1.5
+LineScrollTime			= 0.5
+FadeDelay				= 1.0
+FadeTime				= 2.0
+Pos						= (16,340)
+TypeSound				= "interface\snd\type.wav"
+ScrollSound				= "interface\snd\enter.wav"
+
+
+/***********************************************************
+**
+**	Subtitle Layout
+**
+**
+**	NumLines (Int)
+**
+**		Specifies how many of lines of text may be displayed at once
+**
+**	LineScrollTime	(Float)
+**
+**		How long (in seconds) to scroll up one line
+**
+**	Width (Int)
+**
+**		Specifies how wide the area used for the text should be
+**		when playing cinematics.
+**		(scaled for resolutions greater than 640x480)
+**
+**	Pos		(Point)
+**
+**		Position (relative to a 640x480 screen) of the text
+**		when playing cinematics.
+**
+**	FullScreenWidth (Int)
+**
+**		Specifies how wide the area used for the text should be
+**		when not in cinematics.
+**		(scaled for resolutions greater than 640x480)
+**
+**	FullScreenPos		(Point)
+**
+**		Position (relative to a 640x480 screen) of the text
+**		when not in cinematics.
+**
+**/
+[Subtitle]
+NumLines				= 3
+LineScrollTime			= 0.5
+Width					= 560
+Pos						= (40,400)
+FullScreenWidth			= 560
+FullScreenPos			= (40,340)
+
+
+/************************************************************************
+**
+**	Overlay Layout
+**
+**	ScopeSprite (String)
+**
+**		Path to the sprite resource used as a "tunnel-vision" mask for the scope
+**
+**	ScopeScale (Float)
+**
+**		Amount to scale the scope mask sprite
+**
+**	ScubaSprite (String)
+**
+**		Path to the sprite resource used as a mask for the scuba gear
+**
+**	SpaceSprite (String)
+**
+**		Path to the sprite resource used as a mask for the spacesuit
+**
+**	ScubaScale (Float)
+**
+**		Amount to scale the scuba mask sprite
+**
+*/
+[Overlay]
+ScopeSprite			= "StatBar\Spr\Scope1fd.spr"
+ScopeScale			= 1.0
+ScubaModel			= "Statbar\Models\Mask_pv.abc"
+ScubaSkin			= "Statbar\Skins\Mask_pv.dtx"
+ScubaScale			= 1.0
+SpaceSprite			= "StatBar\Spr\Scuba1.spr"
+SpaceScale			= 1.0
+StaticSprite		= "StatBar\Spr\static1.spr"
+StaticScale			= 1.5
+CameraSprite		= "StatBar\Spr\Camera1.spr"
+CameraASprite		= "StatBar\Spr\Camera2.spr"
+CameraScale			= 0.75
+ZoomInSprite		= "StatBar\Spr\zoomin.spr"
+ZoomInScale			= 8.0
+ZoomOutSprite		= "StatBar\Spr\zoomout.spr"
+ZoomOutScale		= 8.0
+SunglassSprite		= "" // "StatBar\spr\sunglass1.spr"
+SunglassScale		= 1.1
+
+
+/************************************************************************
+**
+**  DialogueWindow Layout
+**
+**	These sections specify data related to the Dialogue window
+**
+**	Position (int)
+**		
+**		Distance from the top of the screen to the top of the window
+**
+**	Size (point)
+**		
+**		Size of the dialogue window
+**
+**	TextOffset (point)
+**
+**		Offset from the upper left corner of the window to the upper
+**	left corner of the text.
+**
+**	Background	(string)
+**
+**		Name of the bitmap to use for the background of the window.
+**	(Note that this bitmap is scaled to fit the size of the window.)
+**
+**	Alpha (float)
+**
+**		The opacity of the window (0.0 = transparent, 1.0 = opaque)
+**
+**	Frame (string)
+**
+**		Base name of the bitmaps to use for the frame of the window.
+**	Note that there are 8 bitmaps that make up the frame:
+**			<name>topleft.pcx
+**			<name>top.pcx
+**			<name>topright.pcx
+**			<name>left.pcx
+**			<name>right.pcx
+**			<name>bottomleft.pcx
+**			<name>bottom.pcx
+**			<name>bottomright.pcx
+**
+**	Font (int)
+**		
+**		Specifies one of the following fonts to use for text in the
+**	window.
+**		
+**			0	- Help
+**			1	- Small
+**			2	- Large
+**			3	- Title
+**			4	- Message
+**			5	- Chooser
+**
+**	OpenTime (float)
+**
+**		Time (in seconds) for the window to open.
+**
+**	CloseTime
+**
+**		Time (in seconds) for the window to close.
+**
+**	OpenSound (string)
+**
+**		Sound file to play when the window opens.
+**
+**	CloseSound (string)
+**
+**		Sound file to play when the window closes.
+**
+*/
+
+[DialogueWindow]
+Position			=	50
+Size				=	(500,100)
+TextOffset			=	(20,20)
+Background			=	"interface\mb_back.pcx"
+Alpha				=	0.75
+Frame				=   "Interface\DlgWnd\dialogueframe"
+Font				=	1
+OpenTime			=	0.1250
+CloseTime			=	0.1250
+OpenSound			=	"interface\snd\dialogueopen.wav"
+CloseSound			=	"interface\snd\dialogueclose.wav"
+
+
+/************************************************************************
+**
+**  DecisionWindow Layout
+**
+**	These sections specify data related to the Decision window
+**
+**	Position (int)
+**		
+**		Distance from the bottom of the Dialogue window to the top of the
+**	decision window.
+**
+**	TextOffset (point)
+**
+**		Offset from the upper left corner of the window to the upper
+**	left corner of the text.
+**
+**	Spacing (int)
+**		
+**		Distance between text items.
+**
+**	Background	(string)
+**
+**		Name of the bitmap to use for the background of the window.
+**	(Note that this bitmap is scaled to fit the size of the window, which
+**	is determined by the size of the text.)
+**
+**	Alpha (float)
+**
+**		The opacity of the window (0.0 = transparent, 1.0 = opaque)
+**
+**	Font (int)
+**		
+**		Specifies one of the following fonts to use for text in the
+**	window.
+**		
+**			0	- Help
+**			1	- Small
+**			2	- Large
+**			3	- Title
+**			4	- Message
+**			5	- Chooser
+**
+**	OpenTime (float)
+**
+**		Time (in seconds) for the window to open.
+**
+**	CloseTime
+**
+**		Time (in seconds) for the window to close.
+**
+*/
+
+[DecisionWindow]
+Position			=	10
+TextOffset			=	(20,20)
+Spacing				=	10
+Background			=	"interface\mb_back.pcx"
+Alpha				=	0.75
+Font				=	1
+OpenTime			=	1.0
+CloseTime			=	1.0
+
+
+/************************************************************************
+**
+**  MenuWindow Layout
+**
+**	These sections specify data related to the Menu window
+**
+**	Position (int)
+**		
+**		Distance from the top of the screen to the top of the window
+**
+**	TextOffset (point)
+**
+**		Offset from the upper left corner of the window to the upper
+**	left corner of the text.
+**
+**	Background	(string)
+**
+**		Name of the bitmap to use for the background of the window.
+**	(Note that this bitmap is scaled to fit the size of the window, which
+**	is determined by the size of the text.)
+**
+**	Alpha (float)
+**
+**		The opacity of the window (0.0 = transparent, 1.0 = opaque)
+**
+**	Frame (string)
+**
+**		Base name of the bitmaps to use for the frame of the window.
+**	Note that there are 8 bitmaps that make up the frame:
+**			<name>topleft.pcx
+**			<name>top.pcx
+**			<name>topright.pcx
+**			<name>left.pcx
+**			<name>right.pcx
+**			<name>bottomleft.pcx
+**			<name>bottom.pcx
+**			<name>bottomright.pcx
+**
+**	OpenTime (float)
+**
+**		Time (in seconds) for the window to open.
+**
+**	CloseTime
+**
+**		Time (in seconds) for the window to close.
+**
+**	OpenSound (string)
+**
+**		Sound file to play when the window opens.
+**
+**	CloseSound (string)
+**
+**		Sound file to play when the window closes.
+**
+*/
+
+[MenuWindow]
+Position			=	0
+TextOffset			=	(20,20)
+Background			=	"interface\mb_back.pcx"
+Alpha				=	0.75
+Frame				=   "Interface\DlgWnd\dialogueframe"
+OpenTime			=	0.3
+CloseTime			=	0.3
+OpenSound			=	"interface\snd\dialogueopen.wav"
+CloseSound			=	"interface\snd\dialogueclose.wav"
+
+
+[Character0]
+Name				= "CateAction"
+Model				= "IntHero"
+Style				= "Action"
+Pos					= <35.0,-30.0,80.0>
+Scale				= 1.3
+Rotation			= 0.0
+
+[Character1]
+Name				= "CateCasual"
+Model				= "IntHero"
+Style				= "Casual"
+Pos					= <35.0,-30.0,80.0>
+Scale				= 1.3
+Rotation			= 0.0
+
+[Character2]
+Name				= "CateWinter"
+Model				= "IntHero"
+Style				= "Winter"
+Pos					= <35.0,-30.0,80.0>
+Scale				= 1.3
+Rotation			= 0.0
+
+/************************************************************************
+**
+**  Credits Layout
+**
+**	These sections specify data related to the Credits display
+**
+**	FadeInTime (float)
+**
+**		Number of seconds for text to fade in
+**
+**	HoldTime (float)
+**
+**		Number of seconds for text to stay visible
+**
+**	FadeOutTime (float)
+**
+**		Number of seconds for text to fade out
+**
+**	DelayTime (float)
+**
+**		Number of seconds for text to pause before next credit
+**
+**	PositionUL (point)
+**
+**		The position to use for credits displayed in the upper left.
+**		(This specifies the upper left corner and is relative to a 640x480 screen.)
+**
+**	PositionUR (point)
+**
+**		The position to use for credits displayed in the upper right.
+**		(This specifies the upper right corner and is relative to a 640x480 screen.)
+**
+**	PositionLR (point)
+**
+**		The position to use for credits displayed in the lower right.
+**		(This specifies the lower right corner and is relative to a 640x480 screen.)
+**
+**	PositionLL (point)
+**
+**		The position to use for credits displayed in the lower left.
+**		(This specifies the lower left corner and is relative to a 640x480 screen.)
+**
+*/
+
+[Credits]
+FadeInTime	= 0.5
+HoldTime	= 1.5 
+FadeOutTime = 0.5
+DelayTime	= 0.5
+PositionUL	= (80,90)
+PositionUR	= (560,90)
+PositionLR	= (560,390)
+PositionLL	= (80,390)
