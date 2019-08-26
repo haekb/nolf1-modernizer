@@ -1473,41 +1473,46 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 	if (pDFX)
 	{
 		int nDamageX = (int) ((float)m_DamageBasePos.x * xRatio);
-		int nDamageY = (int) ((float)m_DamageBasePos.y * yRatio);
+		int nDamageY = (int) ((float)(m_DamageBasePos.y * yRatio) / 1.5f);
+
+		float fScale = yRatio * 0.75f;
+		float fOffset = fScale + (yRatio * 0.25);
+		fOrigin = { (float)nDamageX, (float)nDamageY };
+
 		if (pDFX->IsBleeding())
 		{
-			g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hBleeding, LTNULL, nDamageX, nDamageY, hTransColor);
-			nDamageY += m_nDamageIconSize;
+			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hBleeding, &fOrigin, nDamageX, nDamageY, 0, fScale, fScale, hTransColor);
+			nDamageY += m_nDamageIconSize + fOffset;
 		}
 		if (pDFX->IsPoisoned())
 		{
-			g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hPoisoned, LTNULL, nDamageX, nDamageY, hTransColor);
-			nDamageY += m_nDamageIconSize;
+			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hPoisoned, &fOrigin, nDamageX, nDamageY, 0, fScale, fScale, hTransColor);
+			nDamageY += m_nDamageIconSize + fOffset;
 		}
 		if (pDFX->IsStunned())
 		{
-			g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hStunned, LTNULL, nDamageX, nDamageY, hTransColor);
-			nDamageY += m_nDamageIconSize;
+			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hStunned, &fOrigin, nDamageX, nDamageY, 0, fScale, fScale, hTransColor);
+			nDamageY += m_nDamageIconSize + fOffset;
 		}
 		if (pDFX->IsSleeping())
 		{
-			g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hSleeping, LTNULL, nDamageX, nDamageY, hTransColor);
-			nDamageY += m_nDamageIconSize;
+			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hSleeping, &fOrigin, nDamageX, nDamageY, 0, fScale, fScale, hTransColor);
+			nDamageY += m_nDamageIconSize + fOffset;
 		}
 		if (pDFX->IsBurning())
 		{
-			g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hBurning, LTNULL, nDamageX, nDamageY, hTransColor);
-			nDamageY += m_nDamageIconSize;
+			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hBurning, &fOrigin, nDamageX, nDamageY, 0, fScale, fScale, hTransColor);
+			nDamageY += m_nDamageIconSize + fOffset;
 		}
 		if (pDFX->IsChoking())
 		{
-			g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hChoking, LTNULL, nDamageX, nDamageY, hTransColor);
-			nDamageY += m_nDamageIconSize;
+			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hChoking, &fOrigin, nDamageX, nDamageY, 0, fScale, fScale, hTransColor);
+			nDamageY += m_nDamageIconSize + fOffset;
 		}
 		if (pDFX->IsElectrocuted())
 		{
-			g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hElectrocute, LTNULL, nDamageX, nDamageY, hTransColor);
-			nDamageY += m_nDamageIconSize;
+			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hElectrocute, &fOrigin, nDamageX, nDamageY, 0, fScale, fScale, hTransColor);
+			nDamageY += m_nDamageIconSize + fOffset;
 		}
 
 	}
