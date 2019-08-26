@@ -4173,10 +4173,10 @@ void CPlayerStats::DrawBoundWeapons(HSURFACE hScreen)
 	if (m_fWeaponAlpha < 0.1f) return;
 	float yr = g_pInterfaceResMgr->GetYRatio() * 0.75f;
 	float xr = g_pInterfaceResMgr->GetXRatio();
-	int w = (int)g_pInterfaceResMgr->GetScreenWidth();
-	int y = (m_nIconSize * yr) / 4;//(int)g_pInterfaceResMgr->GetScreenHeight() / xr - 5 * m_nIconSize;
+	int w = (int) g_pInterfaceResMgr->GetScreenWidth();
+	int y = (int) ((float)(m_nIconSize * yr) / 1.5f);
 
-
+	LTFloatPt fOrigin = { 0.0f , 0.0f };
 
 	HLTCOLOR hTextColor = kWhite;
 	if (m_fWeaponAlpha < 1.0f)
@@ -4185,24 +4185,29 @@ void CPlayerStats::DrawBoundWeapons(HSURFACE hScreen)
 		hTextColor = SETRGB(fade,fade,fade);
 	}
 
-	int nTextOffset = (m_nIconSize) - 8;
+	int nTextOffset = (m_nIconSize * yr) - 8;
 	if (m_bLargeNumbers)
 		nTextOffset -= 8;
 	for (int i = 0; i < 10; i++)
 	{
 		if (m_pbHaveWeapon && m_pbHaveWeapon[m_nBoundWeapons[i]] && m_hWeaponSurf[i])
 		{
-			LTFLOAT scaledIconSize = (m_nIconSize * yr);
-			scaledIconSize -= scaledIconSize/4;
+			LTFLOAT scaledIconSize = m_nIconSize * yr;
+
 			if (m_fIconOffset[i] < scaledIconSize)
 			{
 				m_fIconOffset[i] += (72.0f*g_pLTClient->GetFrameTime());
 			}
 			if (m_fIconOffset[i] > scaledIconSize)
 				m_fIconOffset[i] = scaledIconSize;
+
+			// Note: Obvious, but all weapon bounds are located on the immediate right of your screen. 
 			int x = w-(int)m_fIconOffset[i];
-			//g_pLTClient->DrawSurfaceToSurface(hScreen,m_hWeaponSurf[i],LTNULL,x,y);
-			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hWeaponSurf[i],LTNULL, x, y, 0, yr, yr, NULL);
+
+			fOrigin = { (float)x , (float)y };
+
+			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hWeaponSurf[i],&fOrigin, x, y, 0, yr, yr, NULL);
+
 			if (GetConsoleInt("BindingNumbers",1) > 0)
 			{
 				
