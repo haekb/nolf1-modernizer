@@ -3,11 +3,13 @@ NOLF/*/Release
 NOLF/*/Debug
 LT2/lithshared/built/Release
 LT2/lithshared/built/Debug
+CRes.dll
+CShell.dll
 # There's no pre-built libs in Final Release, so just ignore it all
 Final_Release
 *.opendb
 *.log
-*.dll
+# *.dll
 *.lto
 *.plg
 .vs
