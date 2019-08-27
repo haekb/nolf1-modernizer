@@ -19,6 +19,17 @@ CScalableBitmapCtrl::~CScalableBitmapCtrl()
 	Destroy();
 }
 
+LTBOOL CScalableBitmapCtrl::Create(ILTClient* pClientDE, char* lpszNormalBmp, char* lpszSelectedBmp, char* lpszDisabledBmp, CLTGUICommandHandler* pCommandHandler, uint32 dwCommandID, uint32 dwParam1, uint32 dwParam2)
+{
+	// Add a unique ID for scalable bitmap ids, because I guess type was too extra. 
+	if (!dwParam1)
+	{
+		dwParam1 = SCALABLE_BITMAP_ID;
+	}
+
+	return CBitmapCtrl::Create(pClientDE, lpszNormalBmp, lpszSelectedBmp, lpszDisabledBmp, pCommandHandler, dwCommandID, dwParam1, dwParam2);
+}
+
 /*
 LTBOOL CScalableBitmapCtrl::OnMouseMove(int x, int y)
 {

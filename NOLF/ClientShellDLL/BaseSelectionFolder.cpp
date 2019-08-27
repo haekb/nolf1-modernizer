@@ -828,7 +828,7 @@ void CBaseSelectionFolder::RemoveFromSlot(int nItemId)
 	{
 		CLTGUICtrl *pNextCtrl = m_fixedControlArray[nNextIndex];
 		//while there is a next slot and it's not empty
-		while (nNextIndex < (int)m_fixedControlArray.GetSize() && pNextCtrl && pNextCtrl->GetParam1() != kEmptySlot)
+		while (nNextIndex < (int)m_fixedControlArray.GetSize() && pNextCtrl && pNextCtrl->GetParam1() != kEmptySlot && pNextCtrl->GetParam1() != SCALABLE_BITMAP_ID)
 		{
 			//remember where it was
 			nextPos	= pNextCtrl->GetPos();
