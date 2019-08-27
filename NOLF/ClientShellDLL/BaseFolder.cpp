@@ -451,12 +451,6 @@ LTBOOL CBaseFolder::Build()
 	m_UpArrowPos		= g_pLayoutMgr->GetUpArrowPos((eFolderID)m_nFolderID);
 	m_DownArrowPos		= g_pLayoutMgr->GetDownArrowPos((eFolderID)m_nFolderID);
 
-	m_UpArrowPos.x *= g_pInterfaceResMgr->GetXRatio();
-	m_UpArrowPos.y *= g_pInterfaceResMgr->GetYRatio();
-
-	m_DownArrowPos.x *= g_pInterfaceResMgr->GetXRatio();
-	m_DownArrowPos.y *= g_pInterfaceResMgr->GetYRatio();
-
     m_bBuilt=LTTRUE;
 
     UseArrows(LTTRUE);
