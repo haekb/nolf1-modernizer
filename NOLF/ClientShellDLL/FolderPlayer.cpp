@@ -75,6 +75,8 @@ LTBOOL CFolderPlayer::Build()
     g_vtTargetNameTransparency.Init(g_pLTClient, "TargetNameTransparency", LTNULL, 1.0f);
     g_vtTargetNameSize.Init(g_pLTClient, "TargetNameSize", LTNULL, 0.0f);
 
+	LTFLOAT yr = g_pInterfaceResMgr->GetYRatio();
+
 	m_pLabel = CreateTextItem(IDS_PLAYER_NAME, CMD_EDIT_NAME, IDS_HELP_PLAYER_NAME);
 
     m_pEdit = CreateEditCtrl(" ", CMD_EDIT_NAME, LTNULL, m_szPlayerName, sizeof(m_szPlayerName), 25, LTTRUE, GetMediumFont());
@@ -86,50 +88,50 @@ LTBOOL CFolderPlayer::Build()
 
     LTIntPt offset(0,0);
     m_pNameGroup->AddControl(m_pLabel,offset,LTTRUE);
-	offset.x = 200;
+	offset.x = 200 * yr;
     m_pNameGroup->AddControl(m_pEdit,offset,LTFALSE);
 
 	AddBlankLine();
 
-	CToggleCtrl* pToggle = AddToggle(IDS_AUTOSWITCH_WEAPONS, IDS_HELP_AUTOSWITCH_WEAPONS, 225, &m_bAutoSwitchWeapons );
+	CToggleCtrl* pToggle = AddToggle(IDS_AUTOSWITCH_WEAPONS, IDS_HELP_AUTOSWITCH_WEAPONS, 225 * yr, &m_bAutoSwitchWeapons );
 	pToggle->SetOnString(IDS_ON);
 	pToggle->SetOffString(IDS_OFF);
 
-	pToggle = AddToggle(IDS_AUTOSWITCH_AMMO, IDS_HELP_AUTOSWITCH_AMMO, 225, &m_bAutoSwitchAmmo );
+	pToggle = AddToggle(IDS_AUTOSWITCH_AMMO, IDS_HELP_AUTOSWITCH_AMMO, 225 * yr, &m_bAutoSwitchAmmo );
 	pToggle->SetOnString(IDS_ON);
 	pToggle->SetOffString(IDS_OFF);
 
-	pToggle = AddToggle(IDS_IGNORE_TAUNTS, IDS_HELP_IGNORE_TAUNTS, 225, &m_bIgnoreTaunts );
+	pToggle = AddToggle(IDS_IGNORE_TAUNTS, IDS_HELP_IGNORE_TAUNTS, 225 * yr, &m_bIgnoreTaunts );
 	pToggle->SetOnString(IDS_YES);
 	pToggle->SetOffString(IDS_NO);
 
-	CCycleCtrl *pCycle = AddCycleItem(IDS_CONNECT_SPEED,IDS_CONNECT_SPEED,200,25,&m_nConnect);
+	CCycleCtrl *pCycle = AddCycleItem(IDS_CONNECT_SPEED,IDS_CONNECT_SPEED,200 * yr,25,&m_nConnect);
 	pCycle->AddString(IDS_CONNECT_VSLOW);
 	pCycle->AddString(IDS_CONNECT_SLOW);
 	pCycle->AddString(IDS_CONNECT_MEDIUM);
 	pCycle->AddString(IDS_CONNECT_FAST);
 
-	pCycle = AddCycleItem(IDS_PLAYER_TEAM,IDS_HELP_PLAYER_TEAM,200,25,&m_nTeam);
+	pCycle = AddCycleItem(IDS_PLAYER_TEAM,IDS_HELP_PLAYER_TEAM,200 * yr,25,&m_nTeam);
 	pCycle->AddString(IDS_PLAYER_EITHER);
 	pCycle->AddString(IDS_PLAYER_UNITY);
 	pCycle->AddString(IDS_PLAYER_HARM);
 
-	CSliderCtrl* pSlider = AddSlider(IDS_TARGETNAMETRANSPARENCY, IDS_TARGETNAMETRANSPARENCY_HELP, 225, 200, &m_nTargetNameTransparency);
+	CSliderCtrl* pSlider = AddSlider(IDS_TARGETNAMETRANSPARENCY, IDS_TARGETNAMETRANSPARENCY_HELP, 225 * yr, 200, &m_nTargetNameTransparency);
 	pSlider->SetSliderRange(0, 100);
 	pSlider->SetSliderIncrement(5);
 
-	pCycle = AddCycleItem(IDS_TARGETNAMESIZE,IDS_TARGETNAMESIZE_HELP,200,25,&m_nTargetNameSize);
+	pCycle = AddCycleItem(IDS_TARGETNAMESIZE,IDS_TARGETNAMESIZE_HELP,200 * yr,25,&m_nTargetNameSize);
 	pCycle->AddString(IDS_SMALL);
 	pCycle->AddString(IDS_MEDIUM);
 	pCycle->AddString(IDS_LARGE);
 
-	m_pModelCtrl = AddCycleItem(IDS_PLAYER_MODEL,IDS_HELP_PLAYER_MODEL,200,25,&m_nModNum);
+	m_pModelCtrl = AddCycleItem(IDS_PLAYER_MODEL,IDS_HELP_PLAYER_MODEL,200 * yr,25,&m_nModNum);
 	m_pModelCtrl->NotifyOnChange(CMD_MODEL_CHANGE,this);
 
-	m_pSkinCtrl = AddCycleItem(IDS_PLAYER_SKIN,IDS_HELP_PLAYER_SKIN,200,25,&m_nSkinNum);
+	m_pSkinCtrl = AddCycleItem(IDS_PLAYER_SKIN,IDS_HELP_PLAYER_SKIN,200 * yr,25,&m_nSkinNum);
 	m_pSkinCtrl->NotifyOnChange(CMD_SKIN_CHANGE,this);
 
-	m_pHeadCtrl = AddCycleItem(IDS_PLAYER_HEAD,IDS_HELP_PLAYER_HEAD,200,25,&m_nHeadNum);
+	m_pHeadCtrl = AddCycleItem(IDS_PLAYER_HEAD,IDS_HELP_PLAYER_HEAD,200 * yr,25,&m_nHeadNum);
 	m_pHeadCtrl->NotifyOnChange(CMD_HEAD_CHANGE,this);
 
 	// Make sure to call the base class
@@ -523,7 +525,7 @@ LTBOOL   CFolderPlayer::CreatePlayerModel(LTBOOL bNewSkin /* = LTTRUE */)
     g_pLTClient->RotateAroundAxis(&rRot, &vU, fRot);
 
 	VEC_MULSCALAR(vTemp, vF, vModPos.z);
-	VEC_MULSCALAR(vTemp, vTemp, g_pInterfaceResMgr->GetXRatio());
+	VEC_MULSCALAR(vTemp, vTemp, 1); // g_pInterfaceResMgr->GetXRatio()
 	VEC_ADD(vPos, vPos, vTemp);
 
 	VEC_MULSCALAR(vTemp, vR, vModPos.x);

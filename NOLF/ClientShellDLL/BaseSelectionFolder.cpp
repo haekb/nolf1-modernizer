@@ -171,6 +171,7 @@ LTBOOL CBaseSelectionFolder::Render(HSURFACE hDestSurf)
 {
 	int xo = g_pInterfaceResMgr->GetXOffset();
 	int yo = g_pInterfaceResMgr->GetYOffset();
+	float yr = g_pInterfaceResMgr->GetYRatio();
 	if (m_nLastListItem != kNoSelection)
 	{
 /*
@@ -195,9 +196,9 @@ LTBOOL CBaseSelectionFolder::Render(HSURFACE hDestSurf)
 
 
 
-	if (m_hPhotoSurf)
-        g_pLTClient->DrawSurfaceToSurface(hDestSurf,m_hPhotoSurf,LTNULL,m_PhotoPos.x+xo,m_PhotoPos.y+yo);
-
+	if (m_hPhotoSurf) {
+		g_pLTClient->DrawSurfaceToSurface(hDestSurf, m_hPhotoSurf, LTNULL, m_PhotoPos.x * yr + xo, m_PhotoPos.y * yr + yo);
+	}
 /*	for (int slot = 0; slot < m_nNumSlots; slot++)
 	{
 		CLTGUICtrl *pCtrl = GetControl(m_nFirstSlot - slot);
