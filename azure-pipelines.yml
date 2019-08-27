@@ -46,7 +46,11 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'TOOLS\\lithrez.exe c $(Pipeline.Workspace)\\Artifacts\\Modernizer.rez $(Pipeline.Workspace)\\Artifacts\\Modernizer'
+    script: 'mkdir $(Pipeline.Workspace)\\Artifacts\\Custom'
+
+- task: CmdLine@2
+  inputs:
+    script: 'TOOLS\\lithrez.exe c $(Pipeline.Workspace)\\Artifacts\\Custom\\Modernizer.rez $(Pipeline.Workspace)\\Artifacts\\Modernizer'
 
 - task: PublishPipelineArtifact@1
   inputs:
