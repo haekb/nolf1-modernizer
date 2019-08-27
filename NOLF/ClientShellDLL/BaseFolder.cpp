@@ -2113,7 +2113,6 @@ void CBaseFolder::CreateInterfaceSFX()
 			m_pBackArrow->Create(g_pLTClient, "interface\\ArrowBack.pcx", "interface\\ArrowBackH.pcx", "interface\\ArrowBack.pcx", this, FOLDER_CMD_BACK);
 			m_pBackArrow->SetHelpID(IDS_HELP_BACK);
 			m_pBackArrow->SetTransparentColor(m_hTransparentColor);
-			m_pBackArrow->SetScale(g_pInterfaceResMgr->GetYRatio(), g_pInterfaceResMgr->GetYRatio());
 
 			AddFixedControl(m_pBackArrow, m_ArrowBackPos, LTTRUE);
 		}

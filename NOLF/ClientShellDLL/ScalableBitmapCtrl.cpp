@@ -35,6 +35,10 @@ LTBOOL CScalableBitmapCtrl::OnMouseMove(int x, int y)
 // Render the control
 void CScalableBitmapCtrl::Render(HSURFACE hDestSurf)
 {
+	// Hack Alert: 
+	// Right now we only use scalable bitmaps for arrow/resolution purposes, so this is okaaay.
+	SetScale(g_pInterfaceResMgr->GetYRatio(), g_pInterfaceResMgr->GetYRatio());
+
 	m_hTrans = SETRGB(255, 0, 255);
 	int state = GetState();
 	LTIntPt scaled = { m_pos.x + GetWidth(), m_pos.y + GetHeight() };
