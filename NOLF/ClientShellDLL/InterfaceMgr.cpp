@@ -4987,7 +4987,7 @@ void CInterfaceMgr::CreateInterfaceBackground()
 
 
 	VEC_MULSCALAR(vTemp, vF, g_fBackDist);
-	VEC_MULSCALAR(vTemp, vTemp, g_pInterfaceResMgr->GetXRatio());
+	VEC_MULSCALAR(vTemp, vTemp, 1);
 	VEC_ADD(vPos, vPos, vTemp);
 
 	VEC_COPY(bcs.vPos, vPos);
