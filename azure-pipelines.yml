@@ -30,14 +30,27 @@ steps:
       NOLF\\ClientRes\\CRes.dll
       NOLF\\ClientShellDLL\\CShell.dll
       NOLF\\ObjectDLL\\Object.lto
-    TargetFolder: '$(Pipeline.Workspace)\\Artifacts'
+    TargetFolder: '$(Pipeline.Workspace)\\Artifacts\\Modernizer'
     
 - task: CopyFiles@2
   inputs:
     SourceFolder: 'ASSETS'
     Contents: '**'
+    TargetFolder: '$(Pipeline.Workspace)\\Artifacts\\Modernizer'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'LIBS\\SDL2-2.0.10\\lib\\x86\\'
+    Contents: 'SDL2.dll'
     TargetFolder: '$(Pipeline.Workspace)\\Artifacts'
-    
+
+- task: CmdLine@2
+  inputs:
+    script: 'mkdir $(Pipeline.Workspace)\\Artifacts\\Custom'
+
+- task: CmdLine@2
+  inputs:
+    script: 'TOOLS\\lithrez.exe c $(Pipeline.Workspace)\\Artifacts\\Custom\\Modernizer.rez $(Pipeline.Workspace)\\Artifacts\\Modernizer'
 
 - task: PublishPipelineArtifact@1
   inputs:
