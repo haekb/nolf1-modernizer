@@ -275,29 +275,9 @@ LTBOOL CBaseFolder::Render(HSURFACE hDestSurf)
 	}
 
 	int xo = g_pInterfaceResMgr->GetXOffset();
-	int yo = g_pInterfaceResMgr->GetYOffset();
-
 	float yr = g_pInterfaceResMgr->GetYRatio();
 
-    LTRect rect(0,0,g_pInterfaceResMgr->GetScreenWidth(),yo+m_nTopShadeHt);
-
-	// These use to be FillRect. Scaling a texture is way faster than whatever that was doing.
-	if (xo > 0) 
-	{
-		rect.left = 0;
-		rect.right = xo;
-		rect.top = 0;
-		rect.bottom = g_pInterfaceResMgr->GetScreenHeight();
-
-		g_pOptimizedRenderer->FillRect(hDestSurf, &rect, m_hShadeColor);
-
-		rect.right = g_pInterfaceResMgr->GetScreenWidth();
-		rect.left = g_pInterfaceResMgr->GetScreenWidth() - xo;
-		rect.top = 0;
-		rect.bottom = g_pInterfaceResMgr->GetScreenHeight();
-		
-		g_pOptimizedRenderer->FillRect(hDestSurf, &rect, m_hShadeColor);
-	}
+	g_pInterfaceResMgr->DrawFolderBars();
 
 	// Render the title
 	CLTGUIFont *pTitleFont=GetTitleFont();

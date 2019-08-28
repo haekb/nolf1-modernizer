@@ -292,6 +292,33 @@ void CInterfaceResMgr::DrawLoadScreen()
 	return;
 }
 
+void CInterfaceResMgr::DrawFolderBars()
+{
+	HLTCOLOR hShadeColor = g_pLayoutMgr->GetShadeColor();
+	HSURFACE hScreen = g_pLTClient->GetScreenSurface();
+
+	int nXOffset = g_pInterfaceResMgr->GetXOffset();
+
+	LTRect rect(0, 0, 0, 0);
+
+	if (nXOffset > 0)
+	{
+		rect.left = 0;
+		rect.right = nXOffset;
+		rect.top = 0;
+		rect.bottom = g_pInterfaceResMgr->GetScreenHeight();
+
+		g_pOptimizedRenderer->FillRect(hScreen, &rect, hShadeColor);
+
+		rect.left = g_pInterfaceResMgr->GetScreenWidth() - nXOffset;
+		rect.right = g_pInterfaceResMgr->GetScreenWidth();
+		rect.top = 0;
+		rect.bottom = g_pInterfaceResMgr->GetScreenHeight();
+
+		g_pOptimizedRenderer->FillRect(hScreen, &rect, hShadeColor);
+	}
+}
+
 int CInterfaceResMgr::Get4x3Offset()
 {
 	/* 

@@ -75,6 +75,7 @@ public:
 
 	void				DrawFolder();
 	void				DrawLoadScreen();
+	void				DrawFolderBars();
 
 	int					GetXOffset()						{return Get4x3Offset();}
 	int					GetYOffset()						{return 0;}
