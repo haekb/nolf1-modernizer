@@ -50,6 +50,8 @@ CInterfaceResMgr::CInterfaceResMgr()
 	m_fXRatio = 1.0f;
 	m_fYRatio = 1.0f;
 
+	m_fUserScale = 0.50;
+
 }
 
 CInterfaceResMgr::~CInterfaceResMgr()

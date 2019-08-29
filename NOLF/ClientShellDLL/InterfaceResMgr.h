@@ -79,10 +79,14 @@ public:
 
 	int					GetXOffset()						{return Get4x3Offset();}
 	int					GetYOffset()						{return 0;}
-    LTFLOAT              GetXRatio()                         {return m_fXRatio;}
-    LTFLOAT              GetYRatio()                         {return m_fYRatio;}
-	LTFLOAT				 Get4x3Ratio()						 {return (float)640/480;}
-	int 				 Get4x3Offset();
+    LTFLOAT             GetXRatio()                         {return m_fXRatio;}
+    LTFLOAT             GetYRatio()                         {return m_fYRatio;}
+	LTFLOAT				Get4x3Ratio()						{return (float)640/480;}
+	int 				Get4x3Offset();
+	LTFLOAT				GetUIScale()						{ return m_fYRatio * m_fUserScale; }
+	void				SetUserScale(LTFLOAT fUserScale)	{ m_fUserScale = fUserScale; }
+	void				IncrementUserScale()				{ m_fUserScale += 0.10f; }
+	void				DecrementUserScale()				{ m_fUserScale -= 0.10f; }
 
     uint32              GetScreenWidth();
     uint32              GetScreenHeight();
@@ -148,8 +152,10 @@ protected:
     LTIntPt              m_Offset;
     LTFLOAT              m_fXRatio;
     LTFLOAT              m_fYRatio;
+	LTFLOAT				m_fUserScale;
     uint32              m_dwScreenWidth;
     uint32              m_dwScreenHeight;
+	
 
 	CString				m_csSoundSelect;
 	CString				m_csSoundChange;

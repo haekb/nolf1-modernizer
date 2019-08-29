@@ -4564,6 +4564,17 @@ void CGameClientShell::OnKeyDown(int key, int rep)
 			DoTaunt(nLocalID,nTauntNum);
 		}
 	}
+
+	// TODO: Make this bindable?
+	if (IsPlayerInWorld())
+	{
+		if (key == VK_NUMPAD8) {
+			g_pInterfaceResMgr->IncrementUserScale();
+		}
+		if (key == VK_NUMPAD2) {
+			g_pInterfaceResMgr->DecrementUserScale();
+		}
+	}
 }
 
 

@@ -1404,6 +1404,7 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 
 	float xRatio = g_pInterfaceResMgr->GetXRatio();
 	float yRatio = g_pInterfaceResMgr->GetYRatio();
+	float fUIScale = g_pInterfaceResMgr->GetUIScale();
 
 	LTFloatPt fOrigin = { 0.0f, 0.0f };
 
@@ -1475,8 +1476,9 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 		int nDamageX = (int) ((float)m_DamageBasePos.x * xRatio);
 		int nDamageY = (int) ((float)(m_DamageBasePos.y * yRatio) / 1.5f);
 
-		float fScale = yRatio * 0.75f;
-		float fOffset = fScale + (yRatio * 0.25);
+		// Damage icons can get ugly at high resolutions, scale them down slightly.
+		float fScale = fUIScale * 0.75f;
+		float fOffset = fScale + (fUIScale * 0.25);
 		fOrigin = { (float)nDamageX, (float)nDamageY };
 
 		if (pDFX->IsBleeding())
@@ -1519,7 +1521,7 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 
 
 	// draw air meter if we have less than 100% air
-
+	
 	if (m_fAirPercent < 1.0f)
 	{
 		int nAirX = (int) ((float)m_AirBasePos.x * xRatio);
@@ -1531,18 +1533,19 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 
 			fOrigin = { (float)nBarX, (float)nBarY };
 
-			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hHUDAir, &fOrigin, nBarX, nBarY, 0, yRatio, yRatio, hTransColor);
+			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hHUDAir, &fOrigin, nBarX, nBarY, 0, fUIScale, fUIScale, hTransColor);
             //g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hHUDAir, LTNULL, nBarX, nBarY, hTransColor);
 			if (m_fAirPercent < 0.25f)
 			{
+				// FIXME: This is slightly off.
                 LTRect rcPower = m_rcAir;
 				rcPower.left += nBarX;
 				rcPower.top += nBarY;
 
 				// We need to multiply the ratio on the ends before we add the additional bar length!
-				rcPower.bottom *= yRatio;
+				rcPower.bottom *= fUIScale;
 
-				rcPower.right = rcPower.left + (int)(100.0f * (m_fAirPercent* yRatio));
+				rcPower.right = rcPower.left + (int)(100.0f * (m_fAirPercent* fUIScale));
 				rcPower.bottom += nBarY;
 
                 g_pLTClient->ScaleSurfaceToSurfaceTransparent(hScreen, m_hAirBar, &rcPower, &m_rcAirBar, kTransBlack);
@@ -1576,7 +1579,7 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 			
 			fOrigin = { (float)nBarX, (float)nBarY };
 
-			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hHUDHealth, &fOrigin, nBarX, nBarY, 0, yRatio, yRatio, hTransColor );
+			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hHUDHealth, &fOrigin, nBarX, nBarY, 0, fUIScale, fUIScale, hTransColor );
 			//g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hHUDHealth, NULL, nBarX, nBarY, hTransColor);
 			// draw flashing health as required
 			if (m_bHealthFlash ||  (m_nHealth <= (m_nMaxHealth/10)))
@@ -1585,21 +1588,21 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 
 				// Not my finest code, but it works. I assume I'm causing a floating point rounding error somewhere.
 				// This keeps everything in sync with the HUDHealth surface.
-				rcTemp.left += 1 * yRatio;
-				rcTemp.top += 1 * yRatio;
+				rcTemp.left += 1 * fUIScale;
+				rcTemp.top += 1 * fUIScale;
 
 				rcTemp.left += nBarX;
 				rcTemp.top += nBarY;
 
 				// We need to multiply the ratio on the ends before we add the additional bar length!
-				rcTemp.right *= yRatio;
-				rcTemp.bottom *= yRatio;
+				rcTemp.right *= fUIScale;
+				rcTemp.bottom *= fUIScale;
 
 				rcTemp.right += nBarX;
 				rcTemp.bottom += nBarY;
 
-				rcTemp.right += 1 * yRatio;
-				rcTemp.bottom += 1 * yRatio;
+				rcTemp.right += 1 * fUIScale;
+				rcTemp.bottom += 1 * fUIScale;
 
                 g_pLTClient->ScaleSurfaceToSurfaceTransparent(hScreen, m_hHealthBar, &rcTemp, &m_rcHealthBar, kTransBlack);
 			}
@@ -1610,23 +1613,23 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
                 LTRect rcTemp = m_rcArmor;
 				// Not my finest code, but it works. I assume I'm causing a floating point rounding error somewhere.
 				// This keeps everything in sync with the HUDHealth surface.
-				rcTemp.left += 2 * yRatio;
-				rcTemp.top += 2 * yRatio;
+				rcTemp.left += 2 * fUIScale;
+				rcTemp.top += 2 * fUIScale;
 
 				rcTemp.left += nBarX;
 				rcTemp.top += nBarY;
 
 				// We need to multiply the ratio on the ends before we add the additional bar length!
-				rcTemp.right *= yRatio;
-				rcTemp.bottom *= yRatio;
+				rcTemp.right *= fUIScale;
+				rcTemp.bottom *= fUIScale;
 
 
 
 				rcTemp.right += nBarX;
 				rcTemp.bottom += nBarY;
 
-				rcTemp.right += 2 * yRatio;
-				rcTemp.bottom += 2 * yRatio;
+				rcTemp.right += 2 * fUIScale;
+				rcTemp.bottom += 2 * fUIScale;
 
 
                 g_pLTClient->ScaleSurfaceToSurfaceTransparent(hScreen, m_hArmorBar, &rcTemp, &m_rcArmorBar, kTransBlack);
@@ -1668,7 +1671,7 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 			{
 				fOrigin = { (float)nAmmoX, (float)nAmmoY };
 
-				g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hHUDAmmo, &fOrigin, (nAmmoX + m_AmmoBarOffset.x) - m_rcAmmoHUD.right, nAmmoY + m_AmmoBarOffset.y, 0, yRatio, yRatio, hTransColor);
+				g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hHUDAmmo, &fOrigin, (nAmmoX + m_AmmoBarOffset.x) - m_rcAmmoHUD.right, nAmmoY + m_AmmoBarOffset.y, 0, fUIScale, fUIScale, hTransColor);
                 //g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hHUDAmmo, NULL, (nAmmoX + m_AmmoBarOffset.x) - m_rcAmmoHUD.right, nAmmoY + m_AmmoBarOffset.y, hTransColor);
 			}
 
@@ -1678,7 +1681,7 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 				if (m_bUseAmmoBar)
 				{
 					fOrigin = { (float)nAmmoX, (float)nAmmoY };
-					g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hAmmoIcon, &fOrigin, nAmmoX + m_AmmoIconOffset.x, nAmmoY + m_AmmoIconOffset.y, 0, yRatio, yRatio, hTransColor);
+					g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hAmmoIcon, &fOrigin, nAmmoX + m_AmmoIconOffset.x, nAmmoY + m_AmmoIconOffset.y, 0, fUIScale, fUIScale, hTransColor);
 				}
 				else {
 					g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hAmmoIcon, LTNULL, nAmmoX + m_AmmoIconOffset.x, nAmmoY + m_AmmoIconOffset.y, hTransColor);
@@ -4171,10 +4174,12 @@ void CPlayerStats::UpdateWeaponBindings()
 void CPlayerStats::DrawBoundWeapons(HSURFACE hScreen)
 {
 	if (m_fWeaponAlpha < 0.1f) return;
-	float yr = g_pInterfaceResMgr->GetYRatio() * 0.75f;
+	float yr = g_pInterfaceResMgr->GetYRatio();
 	float xr = g_pInterfaceResMgr->GetXRatio();
+	float fUIScale = g_pInterfaceResMgr->GetUIScale();
+
 	int w = (int) g_pInterfaceResMgr->GetScreenWidth();
-	int y = (int) ((float)(m_nIconSize * yr) / 1.5f);
+	int y = (int) ((float)(m_nIconSize * fUIScale) / 1.5f);
 
 	LTFloatPt fOrigin = { 0.0f , 0.0f };
 
@@ -4185,14 +4190,14 @@ void CPlayerStats::DrawBoundWeapons(HSURFACE hScreen)
 		hTextColor = SETRGB(fade,fade,fade);
 	}
 
-	int nTextOffset = (m_nIconSize * yr) - 8;
+	int nTextOffset = (m_nIconSize * fUIScale) - 8;
 	if (m_bLargeNumbers)
 		nTextOffset -= 8;
 	for (int i = 0; i < 10; i++)
 	{
 		if (m_pbHaveWeapon && m_pbHaveWeapon[m_nBoundWeapons[i]] && m_hWeaponSurf[i])
 		{
-			LTFLOAT scaledIconSize = m_nIconSize * yr;
+			LTFLOAT scaledIconSize = m_nIconSize * fUIScale;
 
 			if (m_fIconOffset[i] < scaledIconSize)
 			{
@@ -4206,7 +4211,7 @@ void CPlayerStats::DrawBoundWeapons(HSURFACE hScreen)
 
 			fOrigin = { (float)x , (float)y };
 
-			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hWeaponSurf[i],&fOrigin, x, y, 0, yr, yr, NULL);
+			g_pLTClient->TransformSurfaceToSurfaceTransparent(hScreen, m_hWeaponSurf[i],&fOrigin, x, y, 0, fUIScale, fUIScale, NULL);
 
 			if (GetConsoleInt("BindingNumbers",1) > 0)
 			{
@@ -4222,7 +4227,7 @@ void CPlayerStats::DrawBoundWeapons(HSURFACE hScreen)
 		}
 		else if (m_fIconOffset[i] > 0.0f) 
 			m_fIconOffset[i] = 0.0f;
-		y += m_nIconSize * yr;
+		y += m_nIconSize * fUIScale;
 	}
 }
 
