@@ -391,6 +391,7 @@ call "D:\GameDev\no-one-lives-forever-master\NOLF\_after_build_debug.bat"</Comma
     <ClCompile Include="FolderHost.cpp" />
     <ClCompile Include="FolderHostLevels.cpp" />
     <ClCompile Include="FolderHostOptions.cpp" />
+    <ClCompile Include="FolderHUD.cpp" />
     <ClCompile Include="FolderIntel.cpp" />
     <ClCompile Include="FolderInventory.cpp" />
     <ClCompile Include="FolderJoin.cpp" />
@@ -610,6 +611,7 @@ call "D:\GameDev\no-one-lives-forever-master\NOLF\_after_build_debug.bat"</Comma
     <ClInclude Include="FolderHost.h" />
     <ClInclude Include="FolderHostLevels.h" />
     <ClInclude Include="FolderHostOptions.h" />
+    <ClInclude Include="FolderHUD.h" />
     <ClInclude Include="FolderIntel.h" />
     <ClInclude Include="FolderInventory.h" />
     <ClInclude Include="FolderJoin.h" />

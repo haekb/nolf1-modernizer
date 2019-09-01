@@ -58,7 +58,7 @@
 #include "FolderHost.h"
 #include "FolderHostOptions.h"
 #include "FolderHostLevels.h"
-
+#include "FolderHUD.h"
 
 
 
@@ -554,8 +554,11 @@ void CFolderMgr::AddFolder(eFolderID folderID)
 	case FOLDER_ID_FAILURE:
 		pFolder = debug_new(CFolderSummary);
 		break;
-
+	case FOLDER_ID_HUD:
+		pFolder = debug_new(CFolderHUD);
+		break;
 	}
+
 
 	if (pFolder)
 	{

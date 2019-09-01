@@ -35,6 +35,7 @@ LTBOOL CFolderOptions::Build()
 	AddTextItem(IDS_CONTROLS,		FOLDER_CMD_CONTROLS,	IDS_HELP_CONTROLS);
 	AddTextItem(IDS_GAME_OPTIONS,	FOLDER_CMD_GAME,		IDS_HELP_GAME_OPTIONS);
 	AddTextItem(IDS_PERFORMANCE,	FOLDER_CMD_PERFORMANCE,	IDS_HELP_PERFORMANCE);
+	AddTextItem(IDS_HUD,			FOLDER_CMD_HUD,			IDS_HELP_HUD);
 
 	// Make sure to call the base class
 	if (! CBaseFolder::Build()) return LTFALSE;
@@ -70,6 +71,11 @@ uint32 CFolderOptions::OnCommand(uint32 dwCommand, uint32 dwParam1, uint32 dwPar
 	case FOLDER_CMD_CONTROLS:
 		{
 			m_pFolderMgr->SetCurrentFolder(FOLDER_ID_CONTROLS);
+			break;
+		}
+	case FOLDER_CMD_HUD:
+		{
+			m_pFolderMgr->SetCurrentFolder(FOLDER_ID_HUD);
 			break;
 		}
 	default:

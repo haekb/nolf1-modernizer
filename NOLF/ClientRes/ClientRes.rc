@@ -7669,6 +7669,11 @@ BEGIN
     IDS_UNLOCKED_FPS        "Unlocked Framerate"
     IDS_UNLOCKED_ASPECT     "Wide"
     IDS_LOCKED_ASPECT       "4:3"
+    IDS_TITLE_HUD_OPTIONS   "HUD"
+    IDS_HUD                 "HUD"
+    IDS_HELP_HUD            "Change various HUD related options"
+    IDS_UI_SCALE            "HUD Scale"
+    IDS_HELP_UI_SCALE       "Changes the size of most HUD elements"
 END
 
 #endif    // English (United States) resources

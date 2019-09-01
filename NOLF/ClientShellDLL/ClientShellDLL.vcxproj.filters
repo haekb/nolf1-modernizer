@@ -602,6 +602,9 @@
     <ClCompile Include="ScalableBitmapCtrl.cpp">
       <Filter>Source\Interface</Filter>
     </ClCompile>
+    <ClCompile Include="FolderHUD.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Shared\AssertMgr.h">
@@ -1284,6 +1287,9 @@
     </ClInclude>
     <ClInclude Include="..\ClientRes\ClientRes.h">
       <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="FolderHUD.h">
+      <Filter>Source\Interface</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

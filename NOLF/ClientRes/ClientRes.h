@@ -6399,6 +6399,11 @@
 #define IDS_UNLOCKED_ASPECT             20580
 #define IDS_STRING20581                 20581
 #define IDS_LOCKED_ASPECT               20581
+#define IDS_TITLE_HUD_OPTIONS           20582
+#define IDS_HUD                         20583
+#define IDS_HELP_HUD                    20584
+#define IDS_UI_SCALE                    20585
+#define IDS_HELP_UI_SCALE               20586
 
 // Next default values for new objects
 // 
