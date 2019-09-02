@@ -53,12 +53,12 @@ void CFolderHUD::OnFocus(LTBOOL bFocus)
 {
 	// Enter
 	if (bFocus) {
-		UpdateData(LTFALSE);
-		m_fUIScale = GetConfigFloat("UIScale", g_pInterfaceResMgr->GetUIScale());
+		
+		m_fUIScale = GetConfigFloat("UIScale", 0.5f);
 		m_nUIScale = m_fUIScale * 100;
 
 		SDL_Log("UI Scale (F)<%f> (I)<%d>", m_fUIScale, m_nUIScale);
-
+		UpdateData(LTFALSE);
 		CBaseFolder::OnFocus(bFocus);
 		return;
 	}

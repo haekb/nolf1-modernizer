@@ -122,6 +122,8 @@ LTBOOL CInterfaceResMgr::Init(ILTClient* pClientDE, CGameClientShell* pClientShe
 
 	HandleBorderlessWindowed();
 
+	m_fUserScale = GetConfigFloat("UIScale", 0.5f);
+
     return LTTRUE;
 }
 
