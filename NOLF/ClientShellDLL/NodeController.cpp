@@ -419,7 +419,15 @@ void CNodeController::UpdateLipSyncControl(NCSTRUCT *pNodeControl)
 							pNodeControl->pEightBitBuffer,
 							&pNodeControl->dwSamplesPerSecond,
 							&dwChannels);
-		ASSERT( dwChannels == 1);
+		
+		// FIXME: Bug only affected by debug mode? Or maybe it just fails silently on release.
+		if (dwChannels == 0)
+		{
+			SDL_Log("dwChannels is 0! Returning early.");
+			return;
+		}
+
+		ASSERT( dwChannels == 1 );
 		// If you want to use multi-channel sounds (why would you?), you'll need to
 		//  to account for the interleaving of channels in the following code.
 	}
