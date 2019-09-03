@@ -1403,6 +1403,14 @@ void Door::CalculateNewPos(LTVector & vNewPos, LTVector vFinalPos, LTFLOAT fSpee
 
 	VEC_SUB(vDir, vFinalPos, vNewPos)
     LTFLOAT distTo = (LTFLOAT)VEC_MAG(vDir);
+
+	// Fix for FP error while normalizing 0.0!
+	if (distTo == 0.0f)
+	{
+		vNewPos = vFinalPos;
+		return;
+	}
+
 	VEC_NORM(vDir)
 
     LTFLOAT fPercent    = 1 - distTo / m_fMoveDist;
