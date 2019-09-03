@@ -20,6 +20,7 @@ The following are new config commands:
   - `NoFunMenus`              - INT - Only displays the default main menu if the value is 1. (Default is 0)
   - `RestrictCinematicsTo4x3` - INT - Adds black bars onto the sides of cinematics on a non 4x3 resolution, if the value is 1. (Default is 0)
   - `QuickSwitch`             - INT - Instantly switch between weapons, if the value is 1. (Default is 0)
+  - `UIScale`                 - FLOAT - Scales the in-game HUD. (Default is 0.5)
 
 Most of these commands are also available in their respective options menu.
 
@@ -31,6 +32,19 @@ The following build configurations are setup to build:
  - Final Release
 
 If you experience any issues, feel free to open an issue.
+
+## D3D and 2048 pixel limit
+
+I recommend using the following mod's dll, ren, and exe for developing and playing NOLF! (Just don't enable the .rez file!)
+https://nolfgirl.net/Unityhq/forums/files/file/147-nolf-widescreen-fix-for-goty-edition/
+
+This allows for resolutions higher like 2560x1440 to be used. 
+
+Also this mod was developed using these files. :)
+
+## DGVoodoo2
+
+I don't recommend using this application. I've fixed the majority of the slowdowns caused by old d3d techniques. And (at least on my machine) DGVoodoo2 would cause dynamic lights to absolutely destroy my framerate!
 
 ## License
 This code is still bound to the original EULA found in the NO ONE LIVES FOREVER Source Code v1.003. This can be viewed in the readme.txt file.
