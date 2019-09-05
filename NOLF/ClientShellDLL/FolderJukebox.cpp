@@ -23,11 +23,25 @@ namespace
 
 }
 
+// Individual Songs
+// With made up titles! 
+std::string m_sAmbushSongs[8] = {
+	"Ambience",				// 2
+	"Tension",				// 3
+	"Sneaking Around",		// 4
+	"Action",				// 5
+	"Drive",				// 7
+	"Low Earth Orbit",		// 8
+	"Moracco",				// 9
+	"Trains"				// 10
+};
+
+// Individual Intensities
 std::string m_sAmbushIntensity[12] = {
 	"Silence", // 1
 	"Sub Ambience",
 	"Ambient Tension",
-	"Sneaky",
+	"Sneak",
 	"Action", // Plays 1 time, then moves to Combat (6)
 	"Combat",
 	"Drive",
@@ -36,6 +50,26 @@ std::string m_sAmbushIntensity[12] = {
 	"Trains",
 	"Bumper 1", // Plays 1 time, then moves to Sub Ambience (1)
 	"Bumper 2" // 12 // Plays 1 time, then moves to Sub Ambience (1)
+};
+
+std::string m_sBaDeDumIntensity[16] = {
+	"Ambience", // 2
+	"Slow Vibes 1", // 3
+	"Slow Vibes 2", // 21
+	"Slow Drums 1", // 4
+	"Slow Drums 2", // 22
+	"Exploring Vibes 1", // 5
+	"Exploring Vibes 2", // 17
+	"Exploring Vibes 3", // 23
+	"Exploring Drums 1", // 6
+	"Exploring Drums 2", // 24
+	"Sneaking Around" // 20
+	"Action 1", // 7
+	"Action 2", // 25
+	"Orchestral Exploring", // 10
+	"Orchestral Ambience", // 11
+	"Orchestral Action", // 18
+	"Oompaa" // 26
 };
 
 std::string m_sBaDeDumIntensity[26] = {
@@ -58,13 +92,21 @@ std::string m_sBaDeDumIntensity[26] = {
 	"Medium Vibes",
 	"Combat Intro (Orchestral)", // Plays 2 times, then moves to Break (19)
 	"Combat Break (Orchestral)", // Plays 4 times then moves to Combat (9)
-	"Sneaky", // 20
+	"Sneak", // 20
 	"Slow Ambience (Mix)",
 	"Slow Ambience (Mix 2)",
 	"Medium Vibes (Mix)",
 	"Medium Ambience (Mix)",
 	"Combat (Mix)"
 	"Oompaa!"
+};
+
+std::string m_sBadGuysSongs[20] = {
+	"Sub Ambience", // 2
+	"Ambience", // 4
+	"Swing", // 6
+	"Rock & Bepop", // 9
+	"Action Cinema" // 14
 };
 
 std::string m_sBadGuysIntensity[20] = {
@@ -89,6 +131,13 @@ std::string m_sBadGuysIntensity[20] = {
 	"Action 7", // Plays 1 time, then moves to Action 1 (14)
 };
 
+std::string m_sOrchestralSongs[4] = {
+	"Ambience", // 5
+	"Tension", // 4
+	"Exploring", // 6
+	"Action", // 2
+};
+
 std::string m_sOrchestralIntensity[8] = {
 	"Silence", // 1
 	"High Action 1", // Loops 1 time, then moves to High Action 2 (3)
@@ -97,6 +146,15 @@ std::string m_sOrchestralIntensity[8] = {
 	"Ambience",
 	"Adventure" // Plays 1 time, then moves to Adventure Break (7)
 	"Adventure Break" // Loops 4 times then, moves to Adventure (6)
+};
+
+std::string m_sMainThemeSongs[6] = {
+	"Sub Ambience", // 2
+	"Slow Going"	// 4
+	"Main Theme" // 5
+	"Action" // 6
+	"Exploring Vibes" // 12
+	"Sneaking Around" // 14
 };
 
 std::string m_sMainThemeIntensity[14] = {
@@ -113,7 +171,15 @@ std::string m_sMainThemeIntensity[14] = {
 	"Bumper 5", // Plays 1 time
 	"Ambience Vibes",
 	"High Break", // Plays 1 time, then moves to High Ambience (6)
-	"Sneaky"
+	"Sneak"
+};
+
+std::string m_sGOTYSongs[6] = {
+	"Normal", // 1
+	"Ambience", // 2
+	"Searching", // 3
+	"Investigate" // 5
+	"Combat" // 7
 };
 
 std::string m_sGOTYIntensity[8] = {
