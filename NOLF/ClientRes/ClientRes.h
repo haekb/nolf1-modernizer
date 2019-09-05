@@ -6404,6 +6404,9 @@
 #define IDS_HELP_HUD                    20584
 #define IDS_UI_SCALE                    20585
 #define IDS_HELP_UI_SCALE               20586
+#define IDS_JUKEBOX                     20587
+#define IDS_STRING20588                 20588
+#define IDS_HELP_JUKEBOX                20588
 
 // Next default values for new objects
 // 

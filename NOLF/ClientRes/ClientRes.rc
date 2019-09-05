@@ -7674,6 +7674,8 @@ BEGIN
     IDS_HELP_HUD            "Change various HUD related options"
     IDS_UI_SCALE            "HUD Scale"
     IDS_HELP_UI_SCALE       "Changes the size of most HUD elements"
+    IDS_JUKEBOX             "Jukebox"
+    IDS_HELP_JUKEBOX        "Play a tune or two"
 END
 
 #endif    // English (United States) resources

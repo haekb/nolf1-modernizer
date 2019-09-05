@@ -146,6 +146,7 @@ void CCharacterMgr::PostStartWorld(uint8 nLoadGameFlags)
 		if (hMusicControlFile)
 		{
 			// Is it set to anything?
+			// Ex/ NolfTheme.txt
 			char* pVal = g_pLTServer->GetVarValueString(hMusicControlFile);
 			if (pVal && pVal[0] != 0)
 			{

@@ -54,6 +54,21 @@ void CFolderHUD::OnFocus(LTBOOL bFocus)
 	// Enter
 	if (bFocus) {
 		
+
+
+		CMusicState MusicState;
+		strcpy(MusicState.szDirectory, (char*)(LPCSTR)"Music\\GOTY");
+		strcpy(MusicState.szControlFile, (char*)(LPCSTR)"GOTY.txt");
+
+		if (!g_pGameClientShell->GetMusic()->RestoreMusicState(MusicState))
+		{
+			//return LTFALSE;
+		}
+
+		//g_pGameClientShell->GetMusic()->InitLevel("GOTY", "GOTY.txt");
+
+		g_pLTClient->RunConsoleString("MUSIC I 4 Immediately");
+
 		m_fUIScale = GetConfigFloat("UIScale", 0.5f);
 		m_nUIScale = m_fUIScale * 100;
 

@@ -59,6 +59,7 @@
 #include "FolderHostOptions.h"
 #include "FolderHostLevels.h"
 #include "FolderHUD.h"
+#include "FolderJukebox.h"
 
 
 
@@ -556,6 +557,9 @@ void CFolderMgr::AddFolder(eFolderID folderID)
 		break;
 	case FOLDER_ID_HUD:
 		pFolder = debug_new(CFolderHUD);
+		break;
+	case FOLDER_ID_JUKEBOX:
+		pFolder = debug_new(CFolderJukebox);
 		break;
 	}
 

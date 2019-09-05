@@ -407,6 +407,7 @@ call "D:\GameDev\no-one-lives-forever-master\NOLF\_after_build_debug.bat"</Comma
     <ClCompile Include="FolderMulti.cpp" />
     <ClCompile Include="FolderMultiBriefing.cpp" />
     <ClCompile Include="FolderMultiSummary.cpp" />
+    <ClCompile Include="FolderJukebox.cpp" />
     <ClCompile Include="FolderNew.cpp" />
     <ClCompile Include="FolderObjectives.cpp" />
     <ClCompile Include="FolderOptions.cpp" />
@@ -627,6 +628,7 @@ call "D:\GameDev\no-one-lives-forever-master\NOLF\_after_build_debug.bat"</Comma
     <ClInclude Include="FolderMulti.h" />
     <ClInclude Include="FolderMultiBriefing.h" />
     <ClInclude Include="FolderMultiSummary.h" />
+    <ClInclude Include="FolderJukebox.h" />
     <ClInclude Include="FolderNew.h" />
     <ClInclude Include="FolderObjectives.h" />
     <ClInclude Include="FolderOptions.h" />

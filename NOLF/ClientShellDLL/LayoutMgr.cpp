@@ -291,6 +291,7 @@ char s_aFolderTag[FOLDER_ID_UNASSIGNED+1][32] =
 	"FolderMainCasual",
 	"FolderMainWinter",
 	"FolderHUD",			//FOLDER_ID_HUD
+	"FolderJukebox",			//FOLDER_ID_JUKEBOX
 
 	LO_DEFAULT_TAG			//FOLDER_ID_UNASSIGNED,
 
