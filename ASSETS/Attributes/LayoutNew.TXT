@@ -485,6 +485,35 @@ ScaleName5			= "HelpTextBoxSpr1"
 ScaleName6			= "HelpTextBoxSpr2"
 ScaleName7			= "InterfaceFlowerMod1"
 
+[FolderHUD]
+ColumnWidth			= 200
+PageRect			= (75,115,585,385)
+FontSize                = 0
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "GreenSelectTextBoxMod5"
+ScaleName2			= "GreenSelectTextBoxMod6"
+ScaleName3			= "HorzBarTMod1"
+ScaleName4			= "HorzBarBMod1"
+ScaleName5			= "HelpTextBoxSpr1"
+ScaleName6			= "HelpTextBoxSpr2"
+ScaleName7			= "InterfaceFlowerMod1"
+
+[FolderJukebox]
+FontSize                = 0
+ColumnWidth			= 300
+SliderWidth			= 150
+PageRect			= (75,95,585,385)
+SongListRect		= (400, 60, 636, 366)
+TextIndent			= 4
+ArrowWidth			= 24
+ScaleName0			= "WeaponBackgroundSpr1"
+ScaleName1			= "HorzBarTMod1"
+ScaleName2			= "HorzBarBMod1"
+ScaleName3			= "HelpTextBoxSpr1"
+ScaleName4			= "HelpTextBoxSpr2"
+ScaleName5			= "InterfaceFlowerMod2"
+
+
 [FolderTexture]
 PageRect			= (70,148,585,385)
 FontSize			= 0
