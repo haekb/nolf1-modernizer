@@ -2652,11 +2652,12 @@ void CPlayerStats::UpdateAmmoSurfaces()
 	int nClipWidth = pWeapon->nShotsPerClip * m_AmmoSz.x;
 	int nBarWidth = (int)( 100.0f * m_fBarScale );
 
-
 	int nWidth  = Max(nClipWidth,nBarWidth) + abs(m_AmmoClipOffset.y) + 2;
 	int nHeight = Max(m_AmmoSz.y,m_nBarHeight) + abs(m_AmmoClipOffset.y) + 2;
 
-	if (nWidth > m_rcAmmoHUD.right || nHeight > m_rcAmmoHUD.bottom)
+	// Jake: For some reason Camera disabler has a "ShotsPerClip" of 1000 or so. 
+	// Uhhh, that's no good. Fix our ammo if it ever becomes a problem!
+	if (nWidth > m_rcAmmoHUD.right || nHeight > m_rcAmmoHUD.bottom || m_rcAmmoHUD.right > g_pGameClientShell->GetScreenWidth() || m_rcAmmoHUD.bottom > g_pGameClientShell->GetScreenHeight())
 	{
 		if (m_hHUDAmmo)
             g_pLTClient->DeleteSurface (m_hHUDAmmo);
