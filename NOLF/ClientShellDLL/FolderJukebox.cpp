@@ -391,7 +391,7 @@ LTBOOL CFolderJukebox::PlayScore(int scoreId)
 
 	// Update the song list based on the newly selected theme!
 	m_SongListCtrl->RemoveAllControls();
-	std::unordered_map<std::string, int>::iterator it = (*m_CurrentSongList).begin();
+	std::map<std::string, int>::iterator it = (*m_CurrentSongList).begin();
 	while (it != (*m_CurrentSongList).end()) {
 
 		// Add the string to the control

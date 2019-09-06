@@ -22,15 +22,15 @@ protected:
 	CListCtrl* m_SongListCtrl;
 
 	std::string m_sCurrentSong;
-	std::unordered_map<std::string, int>* m_CurrentSongList;
+	std::map<std::string, int>* m_CurrentSongList;
 
 	// I'm just going to hardcode these to make it easier for myself
-	std::unordered_map<std::string, int> m_AmbushSongs;
-	std::unordered_map<std::string, int> m_BaDeDumSongs;
-	std::unordered_map<std::string, int> m_BadGuysSongs;
-	std::unordered_map<std::string, int> m_OrchestralSongs;
-	std::unordered_map<std::string, int> m_MainThemeSongs;
-	std::unordered_map<std::string, int> m_GOTYSongs;
+	std::map<std::string, int> m_AmbushSongs;
+	std::map<std::string, int> m_BaDeDumSongs;
+	std::map<std::string, int> m_BadGuysSongs;
+	std::map<std::string, int> m_OrchestralSongs;
+	std::map<std::string, int> m_MainThemeSongs;
+	std::map<std::string, int> m_GOTYSongs;
 
 private:
 
