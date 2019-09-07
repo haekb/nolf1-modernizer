@@ -1415,7 +1415,8 @@ LTFLOAT CLayoutMgr::GetMaskScale(eOverlayMask eMask)
         fRet = (LTFLOAT)m_buteMgr.GetDouble(LO_MASK_TAG, LO_MASK_SCUBASCALE, 0.0f);
 		break;
 	case OVM_SPACE:
-        fRet = (LTFLOAT)m_buteMgr.GetDouble(LO_MASK_TAG, LO_MASK_SPACESCALE, 0.0f);
+		// Jake: I can't get a working DTX texture re-built, so hack up the aspect ratio so it fits 16:9 and 4:3.
+		fRet = g_pInterfaceResMgr->Get4x3Ratio();//(LTFLOAT)m_buteMgr.GetDouble(LO_MASK_TAG, LO_MASK_SPACESCALE, 0.0f);
 		break;
 	case OVM_STATIC:
         fRet = (LTFLOAT)m_buteMgr.GetDouble(LO_MASK_TAG, LO_MASK_STATICSCALE, 0.0f);
