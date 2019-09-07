@@ -4,15 +4,15 @@
 
 The goal of NOLF Modernizer is to help fix some long standing bugs, and update some more outdated features of the game.
 
-This project is a work in progress.
-
 ## Features
+
  - Cap framerate during menus and gameplay to 60fps
  - Fixed the mouse stutter
- - Optimized some fill rendering
- - Fixed slow text rendering
+ - Optimized performance in select cases
+ - Jukebox to play your favourite tunes
 
 ## Additional Config Commands
+
 The following are new config commands:
   - `FramerateLock`           - INT - Locks the framerate if the value is 1. (Default is 1)
   - `ShowFramerate`           - INT - Displays the framerate if the value is 1. (Default is 0)
@@ -33,6 +33,12 @@ The following build configurations are setup to build:
 
 If you experience any issues, feel free to open an issue.
 
+## Contributing
+
+Simply fork and submit a PR (preferbly with a matching issue ticket!) 
+
+Try to keep to the original coding style, with descriptive commit messages. (Unlike some of my original commits!)
+
 ## D3D and 2048 pixel limit
 
 I recommend using the following mod's dll, ren, and exe for developing and playing NOLF! (Just don't enable the .rez file!)
@@ -47,4 +53,5 @@ Also this mod was developed using these files. :)
 I don't recommend using this application. I've fixed the majority of the slowdowns caused by old d3d techniques. And (at least on my machine) DGVoodoo2 would cause dynamic lights to absolutely destroy my framerate!
 
 ## License
+
 This code is still bound to the original EULA found in the NO ONE LIVES FOREVER Source Code v1.003. This can be viewed in the readme.txt file.
