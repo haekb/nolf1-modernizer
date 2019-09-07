@@ -26,6 +26,7 @@
 #include "VarTrack.h"
 #include "VehicleMgr.h"
 #include "BankedList.h"
+#include "SDL.h"
 
 #define SPECTATOR_ACCELERATION			100000.0f
 #define MIN_ONGROUND_Y					-10000000.0f
@@ -1632,7 +1633,7 @@ void CMoveMgr::UpdatePushers()
 void CMoveMgr::UpdatePlayerAnimation()
 {
 	HOBJECT hClientObj;
-    uint32 modelAnim, curModelAnim, curFlags;
+    uint32 modelAnim(0), curModelAnim(0), curFlags(0);
     LTVector oldDims, offset;
 
 	if (!(hClientObj = g_pLTClient->GetClientObject())) return;
@@ -1670,8 +1671,19 @@ void CMoveMgr::UpdatePlayerAnimation()
 
 		// Get our wanted dims.
 		oldDims = m_vWantedDims;
-		VEC_SET(m_vWantedDims, 1, 1, 1);
+		VEC_SET(m_vWantedDims, 1.0f, 1.0f, 1.0f);
 		g_pLTClient->Common()->GetModelAnimUserDims(m_hObject, &m_vWantedDims, modelAnim);
+
+
+		// Fun hack: By door in Low Earth Orbit theres some world geometry collisions clipping through the ground.
+		// It's not visible, but it sure is impossible to go through with our current dims!
+		//
+		// Because this might break other levels, I've assigned it to Low Earth Orbit only! (Feel free to test it out on others!)
+		if (g_pGameClientShell->GetCurrentMission() == 19)
+		{
+			m_vWantedDims.x -= 10;
+			m_vWantedDims.z -= 10;
+		}
 
 		// Figure out a position offset.
 		VEC_INIT(offset);
@@ -1703,13 +1715,15 @@ void CMoveMgr::UpdatePlayerAnimation()
 LTBOOL CMoveMgr::AreDimsCorrect()
 {
     LTVector curDims;
-
+	
 	if(!m_hObject || !g_pPhysicsLT)
         return LTTRUE;
 
 	g_pPhysicsLT->GetObjectDims(m_hObject, &curDims);
-	return fabs(curDims.x-m_vWantedDims.x) < 0.1f && fabs(curDims.y-m_vWantedDims.y) < 0.1f &&
-		fabs(curDims.z-m_vWantedDims.z) < 0.1f;
+
+	return fabs(curDims.x-m_vWantedDims.x) < 0.1f 
+		&& fabs(curDims.y-m_vWantedDims.y) < 0.1f 
+		&& fabs(curDims.z-m_vWantedDims.z) < 0.1f;
 }
 
 // ----------------------------------------------------------------------- //
