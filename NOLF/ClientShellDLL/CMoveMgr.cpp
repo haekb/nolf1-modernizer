@@ -1678,8 +1678,11 @@ void CMoveMgr::UpdatePlayerAnimation()
 		// Fun hack: By door in Low Earth Orbit theres some world geometry collisions clipping through the ground.
 		// It's not visible, but it sure is impossible to go through with our current dims!
 		//
-		// Because this might break other levels, I've assigned it to Low Earth Orbit only! (Feel free to test it out on others!)
-		if (g_pGameClientShell->GetCurrentMission() == 19)
+		// Because this might break other levels, I've assigned it to the following...
+		// Test Cases: 
+		// - (Mission 19) Low Earth Orbit - Door on lowest level
+		// - (Mission 22) The Indomitable Cate Archer - Shuttle Train with body armour in it
+		if (g_pGameClientShell->GetCurrentMission() == 19 || g_pGameClientShell->GetCurrentMission() == 22)
 		{
 			m_vWantedDims.x -= 10;
 			m_vWantedDims.z -= 10;
