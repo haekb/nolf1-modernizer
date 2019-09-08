@@ -22,6 +22,7 @@ The following are new config commands:
   - `RestrictCinematicsTo4x3` - INT - Adds black bars onto the sides of cinematics on a non 4x3 resolution, if the value is 1. (Default is 0)
   - `QuickSwitch`             - INT - Instantly switch between weapons, if the value is 1. (Default is 0)
   - `UIScale`                 - FLOAT - Scales the in-game HUD. (Default is 0.5)
+  - `UseGotyMenu`             - INT - Switch between the original main menu and the GOTY version. (Default is based on your version)
 
 Most of these commands are also available in their respective options menu.
 

@@ -2241,6 +2241,30 @@ void CBaseFolder::CreateScaleFX(char *szFXName)
 	CScaleFX* pScaleFX = g_pFXButeMgr->GetScaleFX(szFXName);
 	if (pScaleFX)
 	{
+		// Hack: Allow switching between NOLF and GOTY titlescreen!
+		if (GetConfigInt("UseGotyMenu", 0) == 0) 
+		{
+			if (stricmp(szFXName, "InterfaceSpr1") == 0) {
+				char		szFile[FXBMGR_MAX_FILE_PATH] = "menu\\Spr\\mainmenu1b.spr";
+				strncpy(pScaleFX->szFile, szFile, sizeof(szFile));
+			}
+			else if (stricmp(szFXName, "mainnolftext") == 0) {
+				char		szFile[FXBMGR_MAX_FILE_PATH] = "menu\\Spr\\nolfb.spr";
+				strncpy(pScaleFX->szFile, szFile, sizeof(szFile));
+			}
+		}
+		else // This allows us to "undo" the change in-game
+		{
+			if (stricmp(szFXName, "InterfaceSpr1") == 0) {
+				char		szFile[FXBMGR_MAX_FILE_PATH] = "menu\\Spr\\mainmenu1.spr";
+				strncpy(pScaleFX->szFile, szFile, sizeof(szFile));
+			}
+			else if (stricmp(szFXName, "mainnolftext") == 0) {
+				char		szFile[FXBMGR_MAX_FILE_PATH] = "menu\\Spr\\nolf.spr";
+				strncpy(pScaleFX->szFile, szFile, sizeof(szFile));
+			}
+		}
+
 		CBaseScaleFX *pSFX = debug_new(CBaseScaleFX);
 		g_pFXButeMgr->CreateScaleFX(pScaleFX,g_vPos, g_vF, LTNULL, &g_rRot, pSFX);
 		m_SFXArray.Add(pSFX);

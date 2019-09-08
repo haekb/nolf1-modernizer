@@ -210,6 +210,8 @@ CInterfaceMgr::CInterfaceMgr()
 	m_nOldLoadWorldCount = 0;
 
 	m_eMainFolderID = FOLDER_ID_NONE;
+
+	m_bUseGOTYMenu = LTFALSE;
 }
 
 
@@ -456,6 +458,19 @@ LTBOOL CInterfaceMgr::Init()
 		pFolder->SetOverall(nLevel);
 	}
 
+	// Let's check to see if we have a GotyMenu value, and if not, set it accordingly.
+	m_bUseGOTYMenu = GetConfigInt("UseGotyMenu", -1);
+
+	if (m_bUseGOTYMenu == -1)
+	{
+		m_bUseGOTYMenu = g_pVersionMgr->IsGOTY();
+
+		// Save that value!
+		WriteConsoleInt("UseGotyMenu", m_bUseGOTYMenu);
+		g_pLTClient->WriteConfigFile("autoexec.cfg");
+		GetConfigFile("autoexec.cfg");
+	}
+
 	UpdateConfigSettings();
 
     return LTTRUE;
@@ -625,6 +640,7 @@ void CInterfaceMgr::UpdateConfigSettings()
 	m_bNoFunMenus = GetConfigInt("NoFunMenus", 0);
 	m_bQuickSwitch = GetConfigInt("QuickSwitch", 0);
 	m_bRestrictAspectRatio = GetConfigInt("RestrictCinematicsTo4x3", 0);
+	m_bUseGOTYMenu = GetConfigInt("UseGotyMenu", 0);
 
 	// Break the folder cache
 	if (previousNoFunMenusSetting != m_bNoFunMenus)

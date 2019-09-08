@@ -529,6 +529,7 @@ class CInterfaceMgr
 		LTBOOL		m_bNoFunMenus;
 		LTBOOL		m_bQuickSwitch;
 		LTBOOL		m_bRestrictAspectRatio; // For cinematics
+		LTBOOL		m_bUseGOTYMenu;
 };
 
 

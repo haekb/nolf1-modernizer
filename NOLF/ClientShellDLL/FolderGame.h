@@ -39,6 +39,7 @@ protected:
 	int					m_nPickupMsgDur;
 	LTBOOL				m_bObjMessages;
 	LTBOOL				m_bQuickSwitch;
+	LTBOOL				m_bUseGOTYMenu;
 
 	CLTGUICycleCtrl		*m_pDifficultyCtrl;			// The difficulty control
 
