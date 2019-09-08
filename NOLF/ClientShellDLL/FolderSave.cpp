@@ -375,8 +375,11 @@ void CFolderSave::NameSaveGame(uint32 slot, int index)
 	}
 
 	g_pColCtrl = (CLTGUIColumnTextCtrl*)GetControl(index);
-	if (!g_pColCtrl)
+
+	if (!g_pColCtrl) {
 		return;
+	}
+
 	LTIntPt pos = g_pColCtrl->GetPos();
 
 	g_hOldName = g_pColCtrl->GetString(0);
@@ -386,7 +389,8 @@ void CFolderSave::NameSaveGame(uint32 slot, int index)
 	g_pColCtrl->SetString(2, hTxt);
 	g_pLTClient->FreeString(hTxt);
 
-	
+	m_pEdit->SetParam2(FC_DONT_REPOS);
+
 	AddFixedControl(m_pEdit,pos);
 	m_pEdit->SetText(m_szSaveName);
 

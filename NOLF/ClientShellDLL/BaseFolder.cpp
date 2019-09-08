@@ -309,13 +309,16 @@ LTBOOL CBaseFolder::Render(HSURFACE hDestSurf)
 	unsigned int i;
 	for ( i = 0; i < m_fixedControlArray.GetSize(); i++ )
 	{
-		// By the law that governs this bit of code, I demand that these be the same.
-		LTIntPt pos = m_fixedControlPositions[i];
+		// Some controls do not like to be repositioned!
+		if (m_fixedControlArray[i]->GetParam2() != FC_DONT_REPOS) {
+			// By the law that governs this bit of code, I demand that these be the same.
+			LTIntPt pos = m_fixedControlPositions[i];
 
-		pos.x = (int)((float)pos.x * g_pInterfaceResMgr->GetYRatio()) + g_pInterfaceResMgr->Get4x3Offset();
-		pos.y = (int)((float)pos.y * g_pInterfaceResMgr->GetYRatio());
-
-		m_fixedControlArray[i]->SetPos(pos);
+			pos.x = (int)((float)pos.x * g_pInterfaceResMgr->GetYRatio()) +g_pInterfaceResMgr->Get4x3Offset();
+			pos.y = (int)((float)pos.y * g_pInterfaceResMgr->GetYRatio());
+		
+			m_fixedControlArray[i]->SetPos(pos);
+		}
 
 		m_fixedControlArray[i]->Render ( hDestSurf );
 	}

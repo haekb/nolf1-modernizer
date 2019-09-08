@@ -52,6 +52,8 @@ public:
 
 const int kNoSelection = -999;
 
+#define FC_DONT_REPOS 1338
+
 class CBaseFolder : public CLTGUICommandHandler
 {
 public:
