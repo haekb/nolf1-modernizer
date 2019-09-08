@@ -19,8 +19,8 @@
 static const char* s_szVersion		= "";
 static const char* s_szBuild		= "Demo Build 7";
 #else
-static const char* s_szVersion		= "v1.003";
-static const char* s_szBuild		= "Build 410";
+static const char* s_szVersion		= "v1.005 Modern";
+static const char* s_szBuild		= "Modern";
 #endif 
 static const uint32 s_nSaveVersion  = 4;
 
