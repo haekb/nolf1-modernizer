@@ -474,8 +474,9 @@ void CFolderHostLevels::UpdateButtons()
 }
 LTBOOL CFolderHostLevels::Render(HSURFACE hDestSurf)
 {
-	DrawFrame(hDestSurf,&rcAvailRect,(GetSelectedControl() == m_pAvailLevels));
-	DrawFrame(hDestSurf,&rcSelRect,(GetSelectedControl() == m_pSelLevels));
+	// Disabled for now
+	//DrawFrame(hDestSurf,&rcAvailRect,(GetSelectedControl() == m_pAvailLevels));
+	//DrawFrame(hDestSurf,&rcSelRect,(GetSelectedControl() == m_pSelLevels));
 	return CBaseFolder::Render(hDestSurf);
 }
 
