@@ -135,18 +135,6 @@ LTBOOL CFolderDisplay::Build()
 	m_pHardwareCursor = AddToggle(IDS_HARDWARE_CURSOR,IDS_HELP_HARDWARE_CURSOR,225,&m_bHardwareCursor);
 	m_pHardwareCursor->SetOnString(IDS_ON);
 	m_pHardwareCursor->SetOffString(IDS_OFF);
-	
-	m_pHardwareCursor = AddToggle(IDS_LOCK_FRAMERATE, IDS_HELP_LOCK_FRAMERATE, 225, &m_bLockFramerate);
-	m_pHardwareCursor->SetOnString(IDS_60_FPS);
-	m_pHardwareCursor->SetOffString(IDS_UNLOCKED_FPS);
-
-	m_pHardwareCursor = AddToggle(IDS_SHOW_FRAMERATE, IDS_HELP_SHOW_FRAMERATE, 225, &m_bShowFramerate);
-	m_pHardwareCursor->SetOnString(IDS_ON);
-	m_pHardwareCursor->SetOffString(IDS_OFF);
-
-	m_pHardwareCursor = AddToggle(IDS_4X3_CINEMATICS, IDS_HELP_4X3_CINEMATICS, 225, &m_bRestrictAspectRatio);
-	m_pHardwareCursor->SetOnString(IDS_LOCKED_ASPECT);
-	m_pHardwareCursor->SetOffString(IDS_UNLOCKED_ASPECT);
 
 	CalculateLastDrawn();
 
@@ -516,10 +504,7 @@ void CFolderDisplay::OnFocus(LTBOOL bFocus)
 			}
 		}
 		m_bTexture32 = pSettings->GetBoolVar("32BitTextures");
-	
-		m_bLockFramerate = GetConfigInt("FramerateLock", 1);
-		m_bShowFramerate = GetConfigInt("ShowFramerate", 0);
-		m_bRestrictAspectRatio = GetConfigInt("RestrictCinematicsTo4x3", 0);
+
 
         UpdateData(LTFALSE);
 		SetSelection(1);
@@ -580,11 +565,6 @@ void CFolderDisplay::OnFocus(LTBOOL bFocus)
 			WriteConsoleInt("DrawPortals",0);
 		else if ((GetConsoleInt("BitDepth",16) == 32) && (GetConsoleInt("PerformanceLevel",1) == 2))
 			WriteConsoleInt("DrawPortals",1);
-
-		// New settings
-		WriteConsoleInt("FramerateLock", m_bLockFramerate);
-		WriteConsoleInt("ShowFramerate", m_bShowFramerate);
-		WriteConsoleInt("RestrictCinematicsTo4x3", m_bRestrictAspectRatio);
 
         g_pLTClient->WriteConfigFile("autoexec.cfg");
 		GetConfigFile("autoexec.cfg");

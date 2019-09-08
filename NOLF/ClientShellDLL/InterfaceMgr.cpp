@@ -460,10 +460,11 @@ LTBOOL CInterfaceMgr::Init()
 
 	// Let's check to see if we have a GotyMenu value, and if not, set it accordingly.
 	m_bUseGOTYMenu = GetConfigInt("UseGotyMenu", -1);
+	LTBOOL bHasGOTY = g_pVersionMgr->IsGOTY();
 
-	if (m_bUseGOTYMenu == -1)
+	if (m_bUseGOTYMenu == -1 || (m_bUseGOTYMenu == 1 && !bHasGOTY) )
 	{
-		m_bUseGOTYMenu = g_pVersionMgr->IsGOTY();
+		m_bUseGOTYMenu = bHasGOTY;
 
 		// Save that value!
 		WriteConsoleInt("UseGotyMenu", m_bUseGOTYMenu);

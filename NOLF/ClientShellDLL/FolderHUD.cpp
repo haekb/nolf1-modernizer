@@ -20,6 +20,9 @@ CFolderHUD::CFolderHUD()
 	m_fUIScale = 1.0f;
 	m_nUIScale = 100;
 	m_bUseGOTYMenu = LTFALSE;
+	m_bLockFramerate = LTTRUE;
+	m_bShowFramerate = LTFALSE;
+	m_bRestrictAspectRatio = LTFALSE;
 }
 
 CFolderHUD::~CFolderHUD()
@@ -44,9 +47,21 @@ LTBOOL CFolderHUD::Build()
 	pSlider->SetSliderIncrement(10);
 	pSlider->SetNumericDisplay(LTTRUE);
 
+	CToggleCtrl* pToggle = AddToggle(IDS_LOCK_FRAMERATE, IDS_HELP_LOCK_FRAMERATE, 225, &m_bLockFramerate);
+	pToggle->SetOnString(IDS_60_FPS);
+	pToggle->SetOffString(IDS_UNLOCKED_FPS);
+
+	pToggle = AddToggle(IDS_SHOW_FRAMERATE, IDS_HELP_SHOW_FRAMERATE, 225, &m_bShowFramerate);
+	pToggle->SetOnString(IDS_ON);
+	pToggle->SetOffString(IDS_OFF);
+
+	pToggle = AddToggle(IDS_4X3_CINEMATICS, IDS_HELP_4X3_CINEMATICS, 225, &m_bRestrictAspectRatio);
+	pToggle->SetOnString(IDS_LOCKED_ASPECT);
+	pToggle->SetOffString(IDS_UNLOCKED_ASPECT);
+
 	if (g_pVersionMgr->IsGOTY())
 	{
-		CToggleCtrl* pToggle = AddToggle(IDS_USE_GOTY_MENU, IDS_HELP_USE_GOTY_MENU, kGap, &m_bUseGOTYMenu);
+		pToggle = AddToggle(IDS_USE_GOTY_MENU, IDS_HELP_USE_GOTY_MENU, kGap, &m_bUseGOTYMenu);
 		pToggle->SetOnString(IDS_GOTY_MENU);
 		pToggle->SetOffString(IDS_NORMAL_MENU);
 	}
@@ -69,6 +84,10 @@ void CFolderHUD::OnFocus(LTBOOL bFocus)
 
 		m_bUseGOTYMenu = GetConfigInt("UseGotyMenu", 0);
 
+		m_bLockFramerate = GetConfigInt("FramerateLock", 1);
+		m_bShowFramerate = GetConfigInt("ShowFramerate", 0);
+		m_bRestrictAspectRatio = GetConfigInt("RestrictCinematicsTo4x3", 0);
+
 		UpdateData(LTFALSE);
 		CBaseFolder::OnFocus(bFocus);
 		return;
@@ -83,6 +102,10 @@ void CFolderHUD::OnFocus(LTBOOL bFocus)
 	g_pInterfaceResMgr->SetUserScale(m_fUIScale);
 
 	WriteConsoleInt("UseGotyMenu", m_bUseGOTYMenu);
+
+	WriteConsoleInt("FramerateLock", m_bLockFramerate);
+	WriteConsoleInt("ShowFramerate", m_bShowFramerate);
+	WriteConsoleInt("RestrictCinematicsTo4x3", m_bRestrictAspectRatio);
 
 	g_pLTClient->WriteConfigFile("autoexec.cfg");
 	GetConfigFile("autoexec.cfg");
