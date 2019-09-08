@@ -7678,6 +7678,106 @@ BEGIN
     IDS_HELP_JUKEBOX        "Play a tune or two"
 END
 
+STRINGTABLE
+BEGIN
+    IDS_MISSION_GOTY        "Rest and Relaxation"
+    IDS_MISSION_GOTY_DESC   "Now that the world is out of H.A.R.M.'s way, Cate it sent on a well-deserved vacation."
+    IDS_MISSION_GOTY_BRIEF  "We're sending you to a remote island paradise for a well-deserved vacation.\n\nYou'll have plenty of peace and quiet without distractions.  In fact, we can't contact you even if we want to.  The only communication to the outside world is through the weekly boat that brings supplies and vacationers from the mainland.\n\nEnjoy yourself Cate, you've earned it."
+    IDS_GOTY_OBJECTIVE_1    "Enjoy your vacation."
+    IDS_GOTY_OBJECTIVE_2    "Get your weapon back."
+    IDS_GOTY_OBJECTIVE_3    "Find another way into the the forbidden area."
+    IDS_GOTY_OBJECTIVE_4    "Find the back of the resort and get out alive."
+    IDS_GOTY_OBJECTIVE_5    "Steal the motorcycle and find the entrance to the secret H.A.R.M. facility."
+    IDS_GOTY_OBJECTIVE_6    "Find a way inside the facility."
+    IDS_GOTY_OBJECTIVE_7    "Find the main control room."
+    IDS_GOTY_OBJECTIVE_8    "Deactivate the lava diversion."
+    IDS_GOTY_OBJECTIVE_9    "Get out alive."
+    IDS_GOTY_FAILED         "You didn't get out in time."
+    IDS_INTEL_30013         "Maintenance,\n\nPlease repair the underwater grate in pond #2 immediately."
+    IDS_INTEL_30014         "Dear Guests,\n\nWe hope you are enjoying your stay.  We would like to remind you that all areas marked 'Staff Only' are off limits for your own protection.\n\nThanks,\nManagement"
+    IDS_INTEL_30015         "Attention all GUESTS\n\nPlease do not feed the monkeys."
+END
+
+STRINGTABLE
+BEGIN
+    IDS_INTEL_30016         "Attention all GUESTS\n\nLast Tuesday's incident with Mrs. Harrison has made it clear that the local monkey population becomes highly excited by the sight of footballs.  Those of you who wish to play football on the beach do so at your own risk.\n\nSincerely,\nManagement"
+    IDS_INTEL_30017         "Dearest Martha,\n\nI'm so happy for you and Clark.  I wish I could say I'm having as much fun here in the tropics.  Todd spends all of his time in the lounge drinking.  Best wishes,\n\nAbigail"
+    IDS_INTEL_30018         "MAINTENANCE\n\nPlease install warning signs near all sudden drops and lava pits.  Our insurance provider has warned us that our policy will be canceled if one more guest is killed."
+    IDS_INTEL_30019         "WARNING:\n\nMonkeys may attack stopped vehicles on this road."
+    IDS_SUBTITLE_30020      "I'm sorry ma'am, no one is allowed down there."
+    IDS_SUBTITLE_30021      "I told you, no one is allowed down there, now go away."
+    IDS_SUBTITLE_30022      "Pass me a fan 'cause either a tropical heat wave just blew in, or you are one hot, little lady."
+    IDS_SUBTITLE_30023      "Hey, how 'bout you blow in my direction?"
+    IDS_SUBTITLE_30024      "Another monkey?"
+    IDS_SUBTITLE_30025      "These things are a menace!"
+    IDS_SUBTITLE_30026      "Scat! If I catch you, you'll be today's special!"
+    IDS_SUBTITLE_30027      "Hey, Murray.  Break's over, get back to work."
+    IDS_SUBTITLE_30028      "What's the rush?"
+    IDS_SUBTITLE_30029      "We need to get this shipment to the facility, and you've been sitting around all afternoon."
+    IDS_SUBTITLE_30030      "Our Paychecks are two weeks late.  I'll put some hustle into it when I see some money."
+    IDS_SUBTITLE_30031      "Boss said that's just a temporary payroll glitch.  Now come on!  I can't do this by myself."
+END
+
+STRINGTABLE
+BEGIN
+    IDS_SUBTITLE_30032      "As much as I dislike writing up reprimands, you've forced me to do just that."
+    IDS_SUBTITLE_30033      "What now?"
+    IDS_SUBTITLE_30034      "The back-up lava diversion system was down for 13.6 seconds this morning."
+    IDS_SUBTITLE_30035      "So?"
+    IDS_SUBTITLE_30036      "So, if the back-up system is impeded, the primary system could malfunction."
+    IDS_SUBTITLE_30037      "Which means?"
+    IDS_SUBTITLE_30038      "Which means we'll all melt, you idiot!  Geez, who hired you?"
+    IDS_SUBTITLE_30039      "Uh, you did, sir."
+    IDS_SUBTITLE_30040      "Why do they have us wearing these things, anyway?"
+    IDS_SUBTITLE_30041      "I'm not sure, but they are kind of nice."
+    IDS_SUBTITLE_30042      "Nice?"
+    IDS_SUBTITLE_30043      "Cause they remind you of your mom?"
+    IDS_SUBTITLE_30044      "Very funny."
+    IDS_SUBTITLE_30045      "Back to work, smart guy."
+    IDS_SUBTITLE_30046      "Does this dress make me look fat?"
+    IDS_SUBTITLE_30047      "Um, fat, like how?"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_SUBTITLE_30048      "Fat, fat!  I've been eating so much here.  My dress feels too tight."
+    IDS_SUBTITLE_30049      "Well, you don't look fat from where I'm standing."
+    IDS_SUBTITLE_30050      "So you're saying I'm fat from behind."
+    IDS_SUBTITLE_30051      "I didn't say that!"
+    IDS_SUBTITLE_30052      "Not in so many words, but you meant it."
+    IDS_SUBTITLE_30053      "This is the life.  No H.A.R.M., no UNITY, and no objectives except rest and relaxation."
+    IDS_SUBTITLE_30054      "Come back here, little monkey!"
+    IDS_SUBTITLE_30055      "That monkey stole my gun!"
+    IDS_SUBTITLE_30056      "That monkey needs a good spanking."
+    IDS_SUBTITLE_30057      "H.A.R.M.!  What's going on here?"
+    IDS_SUBTITLE_30058      "H.A.R.M.!  What's going on here?"
+    IDS_TEXT_30060          "4:00pm, October 1\nSomewhere in the South Pacific"
+    IDS_TEXT_30061          "1 hour later\nCate's Room"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_INTEL_30070         "Contains one monkey mask."
+    IDS_INTEL_30071         "Archeological blueprints of island temples and their connection to the volcano."
+    IDS_INTEL_30072         "H.A.R.M. MEMO:\n\nTO: All H.A.R.M. Employees\n\nNo one is allowed on the far side of the island...  filming of a new reality TV show will begin this week."
+    IDS_INTEL_30073         "Blueprints of the lava diversion system."
+    IDS_INTEL_30074         "H.A.R.M. MEMO:\n\nTO: All H.A.R.M. Employees\n\nIn lieu of pay this month we have authorized free snacks and drinks.  Bananas and coconut milk will be served in the main lava tube from 10 to 5 each Tuesday and Thursday."
+    IDS_INTEL_30075         "Attention all H.A.R.M. employees: Valuable communications equipment was destroyed earlier this week.  Witnesses report that monkeys were responsible for the damage.  We'd like to remind all personnel that allowing monkeys into the facility is a violation of H.A.R.M. safety regulations."
+    IDS_INTEL_30076         "WARNING:\n\nLava is very hot."
+    IDS_INTEL_30077         "H.A.R.M. MEMO:\n\nTO: Maintenance\nHave all lockers cleaned before the next inspection date."
+    IDS_INTEL_30078         "Attention all H.A.R.M. employees:  Rumors of H.A.R.M.'s demise are greatly exaggerated."
+    IDS_INTEL_30079         "Photos of the proper way to wear monkey masks."
+END
+
+STRINGTABLE
+BEGIN
+    IDS_INTEL_30080         "WARNING:\n\nUse elevators in emergencies."
+    IDS_INTEL_30081         "Contains forms and information about world domination profit sharing."
+    IDS_UI_30082            "* denotes a user-designed map"
+    IDS_UI_30083            "included as part of the"
+    IDS_UI_30084            "Game of the Year Edition."
+END
+
 #endif    // English (United States) resources
 /////////////////////////////////////////////////////////////////////////////
 
