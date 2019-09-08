@@ -9,7 +9,8 @@ The goal of NOLF Modernizer is to help fix some long standing bugs, and update s
  - Cap framerate during menus and gameplay to 60fps
  - Fixed the mouse stutter
  - Optimized performance in select cases
- - Jukebox to play your favourite tunes
+ - Jukebox to play some of your favourite in-game tunes
+ - Supports the Game of the Year edition
 
 ## Additional Config Commands
 
@@ -25,6 +26,7 @@ The following are new config commands:
 Most of these commands are also available in their respective options menu.
 
 ## Building
+
 You can now compile it using Visual Studio 2019 (Requires C++ and MFC), thanks to the NOLF2's sdk including some key files. They're all included and ready to compile.
 
 The following build configurations are setup to build: 

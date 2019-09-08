@@ -6,6 +6,7 @@
 
 #include "GameClientShell.h"
 #include "GameSettings.h"
+#include "VersionMgr.h"
 #include <string>
 namespace
 {
@@ -241,8 +242,10 @@ LTBOOL CFolderJukebox::Build()
 	AddTextItem("Bad Guys", PLAY_BADGUY, 0, 0, GetMediumFont());
 	AddTextItem("Orchestra", PLAY_NOLFORCH, 0, 0, GetMediumFont());
 	AddTextItem("Main Theme", PLAY_NOLFTHEME, 0, 0, GetMediumFont());
-	AddTextItem("Game Of The Year", PLAY_GOTY, 0, 0, GetMediumFont());
 
+	if (g_pVersionMgr->IsGOTY()) {
+		AddTextItem("Game Of The Year", PLAY_GOTY, 0, 0, GetMediumFont());
+	}
 #if 1
 	LTIntPt pos;
 	int nBarHeight = GetMediumFont()->GetHeight();

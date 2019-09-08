@@ -42,6 +42,7 @@ CVersionMgr::CVersionMgr()
 
 	m_szLanguage[0]	= '\0';
 	m_bLowViolence	= false;
+	m_bIsGOTY		= false;
 
 	// Get the language registry key...
 	CRegMgr	regMgr;
@@ -59,6 +60,14 @@ CVersionMgr::CVersionMgr()
 			}
 		}
 	}
+
+	// Check to see if we've got the GOTY file!
+	std::ifstream gotyFile("NolfGOTY.rez");
+	if (gotyFile.good()) 
+	{
+		m_bIsGOTY = true;
+	}
+	gotyFile.close();
 }
 
 // ----------------------------------------------------------------------- //

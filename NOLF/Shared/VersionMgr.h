@@ -29,11 +29,13 @@ class CVersionMgr
 
 		const char* GetLanguage()	const { return m_szLanguage; }
 		inline bool	IsLowViolence() const { return m_bLowViolence; }
+		inline bool IsGOTY() const { return m_bIsGOTY; }
 
 	private :
 
 		char m_szLanguage[64];
 		bool m_bLowViolence;
+		bool m_bIsGOTY;
 };
 
 #endif __VERSION_MGR_H__
