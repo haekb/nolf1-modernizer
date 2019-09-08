@@ -6482,6 +6482,10 @@
 #define IDS_UI_30082                    30082
 #define IDS_UI_30083                    30083
 #define IDS_UI_30084                    30084
+#define IDS_USE_GOTY_MENU               30085
+#define IDS_HELP_USE_GOTY_MENU          30086
+#define IDS_NORMAL_MENU                 30087
+#define IDS_GOTY_MENU                   30088
 
 // Next default values for new objects
 // 

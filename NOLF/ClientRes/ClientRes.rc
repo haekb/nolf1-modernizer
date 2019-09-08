@@ -7669,9 +7669,9 @@ BEGIN
     IDS_UNLOCKED_FPS        "Unlocked Framerate"
     IDS_UNLOCKED_ASPECT     "Wide"
     IDS_LOCKED_ASPECT       "4:3"
-    IDS_TITLE_HUD_OPTIONS   "HUD"
-    IDS_HUD                 "HUD"
-    IDS_HELP_HUD            "Change various HUD related options"
+    IDS_TITLE_HUD_OPTIONS   "Interface"
+    IDS_HUD                 "Interface"
+    IDS_HELP_HUD            "Set various HUD/Interface options."
     IDS_UI_SCALE            "HUD Scale"
     IDS_HELP_UI_SCALE       "Changes the size of most HUD elements"
     IDS_JUKEBOX             "Jukebox"
@@ -7776,6 +7776,10 @@ BEGIN
     IDS_UI_30082            "* denotes a user-designed map"
     IDS_UI_30083            "included as part of the"
     IDS_UI_30084            "Game of the Year Edition."
+    IDS_USE_GOTY_MENU       "Main Menu Style"
+    IDS_HELP_USE_GOTY_MENU  "Switch between different menu styles."
+    IDS_NORMAL_MENU         "Original Edition"
+    IDS_GOTY_MENU           "Game of the Year Edition"
 END
 
 #endif    // English (United States) resources

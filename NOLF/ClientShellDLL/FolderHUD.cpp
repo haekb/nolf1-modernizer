@@ -13,10 +13,13 @@ namespace
 	int kWidth = 0;
 }
 
+// CFolderInterface
+// For those looking for it, HUD was renamed to Interface :)
 CFolderHUD::CFolderHUD()
 {
 	m_fUIScale = 1.0f;
 	m_nUIScale = 100;
+	m_bUseGOTYMenu = LTFALSE;
 }
 
 CFolderHUD::~CFolderHUD()
@@ -40,6 +43,13 @@ LTBOOL CFolderHUD::Build()
 	pSlider->SetSliderRange(50, 100);
 	pSlider->SetSliderIncrement(10);
 	pSlider->SetNumericDisplay(LTTRUE);
+
+	if (g_pVersionMgr->IsGOTY())
+	{
+		CToggleCtrl* pToggle = AddToggle(IDS_USE_GOTY_MENU, IDS_HELP_USE_GOTY_MENU, kGap, &m_bUseGOTYMenu);
+		pToggle->SetOnString(IDS_GOTY_MENU);
+		pToggle->SetOffString(IDS_NORMAL_MENU);
+	}
 	
 	// Make sure to call the base class
 	if (!CBaseFolder::Build()) return LTFALSE;
@@ -57,7 +67,8 @@ void CFolderHUD::OnFocus(LTBOOL bFocus)
 		m_fUIScale = GetConfigFloat("UIScale", 0.5f);
 		m_nUIScale = m_fUIScale * 100;
 
-		SDL_Log("UI Scale (F)<%f> (I)<%d>", m_fUIScale, m_nUIScale);
+		m_bUseGOTYMenu = GetConfigInt("UseGotyMenu", 0);
+
 		UpdateData(LTFALSE);
 		CBaseFolder::OnFocus(bFocus);
 		return;
@@ -66,13 +77,12 @@ void CFolderHUD::OnFocus(LTBOOL bFocus)
 	// Leave
 	UpdateData(LTTRUE);
 
-
 	m_fUIScale = (float)m_nUIScale / 100.0f;
-	SDL_Log("UI Scale (F)<%f> (I)<%d>", m_fUIScale, m_nUIScale);
-
 
 	WriteConsoleFloat("UIScale", m_fUIScale);
 	g_pInterfaceResMgr->SetUserScale(m_fUIScale);
+
+	WriteConsoleInt("UseGotyMenu", m_bUseGOTYMenu);
 
 	g_pLTClient->WriteConfigFile("autoexec.cfg");
 	GetConfigFile("autoexec.cfg");

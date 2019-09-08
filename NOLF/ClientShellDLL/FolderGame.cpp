@@ -36,7 +36,6 @@ CFolderGame::CFolderGame()
 	m_nWeaponSway = 0;
 	m_nPickupMsgDur = 0;
 	m_bObjMessages = LTTRUE;
-	m_bUseGOTYMenu = LTFALSE;
 }
 
 CFolderGame::~CFolderGame()
@@ -116,12 +115,7 @@ LTBOOL CFolderGame::Build()
 	pToggle->SetOnString(IDS_YES);
 	pToggle->SetOffString(IDS_NO);
 
-	if (g_pVersionMgr->IsGOTY())
-	{
-		pToggle = AddToggle("Use GOTY Menu?", IDS_HELP_QUICKSWITCH, kGap, &m_bUseGOTYMenu);
-		pToggle->SetOnString(IDS_YES);
-		pToggle->SetOffString(IDS_NO);
-	}
+
 
 	// Make sure to call the base class
 	if (! CBaseFolder::Build()) return LTFALSE;
@@ -166,7 +160,7 @@ void CFolderGame::OnFocus(LTBOOL bFocus)
 
 		m_bQuickSwitch = GetConfigInt("QuickSwitch", 0);
 
-		m_bUseGOTYMenu = GetConfigInt("UseGotyMenu", 0);
+
 
         UpdateData(LTFALSE);
 	}
@@ -189,7 +183,6 @@ void CFolderGame::OnFocus(LTBOOL bFocus)
 		WriteConsoleInt("ObjectiveMessages",m_bObjMessages);
 
 		WriteConsoleInt("QuickSwitch", m_bQuickSwitch);
-		WriteConsoleInt("UseGotyMenu", m_bUseGOTYMenu);
 
 		g_pLTClient->WriteConfigFile("autoexec.cfg");
 

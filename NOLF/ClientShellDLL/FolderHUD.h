@@ -21,6 +21,6 @@ protected:
 	float	m_fUIScale;
 	// 100 based - For the silly UI slider
 	int		m_nUIScale;
-
+	LTBOOL	m_bUseGOTYMenu;
 };
 
