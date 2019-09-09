@@ -37,11 +37,6 @@
 #include "NetDefs.h"
 #include "OptimizedRenderer.h"
 
-extern "C" { // Hint to Hybrid laptop drivers that our app would really rather use the NVidia/AMD GPU that you've got sitting over there rather than Intel Graphics...
-	_declspec(dllexport) DWORD NvOptimusEnablement = 0x00000001;
-	_declspec(dllexport) int AmdPowerXpressRequestHighPerformance = 1;
-}
-
 #define DEG2RAD(x)		(((x)*MATH_PI)/180.0f)
 #define RAD2DEG(x)		(((x)*180.0f)/MATH_PI)
 
