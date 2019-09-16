@@ -699,7 +699,7 @@ yyparse(YYPARSE_PARAM)
 
 				/*  routines				*/
 
-
+  yyval.szString[0] = '\0';
 
   int yylen;
 
