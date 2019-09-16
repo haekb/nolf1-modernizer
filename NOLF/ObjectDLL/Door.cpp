@@ -983,11 +983,18 @@ LTBOOL Door::InitialUpdate(int nInfo)
 
     g_pLTServer->SetBlockingPriority(m_hObject, DOOR_DEFAULT_BLOCKING_PRIORITY);
 
-	// Calculate open & close positions
+
 
     LTVector vt, pos;
 
+
 	VEC_NORM(m_vMoveDir)
+
+	// Just throw the isnan check here. 
+	if (isnan(m_vMoveDir.x)) {
+		SDL_Log("Re-initializing vMoveDir due to NaN error.");
+		m_vMoveDir.Init();
+	}
 
 	// Current position is the closed position
 
