@@ -8,7 +8,7 @@ The goal of NOLF Modernizer is to help fix some long standing bugs, and update s
 
 Place all the files in your No One Lives Forever game directory. 
 Then launch NOLF.exe, and click "Advanced", and then "Customize". 
-Simply "Add" the Modernizer.rez file, and click "Ok", then launch the game!
+Simply "Add" the Modernizer.rez file, and check "Always load these rez files", then click "Ok", and launch the game!
 
 It's important that you don't run this mod with any other mods that may have modified the game code. 
 
@@ -19,6 +19,10 @@ It's important that you don't run this mod with any other mods that may have mod
  - Optimized performance in select cases
  - Jukebox to play some of your favourite in-game tunes
  - Supports the Game of the Year edition
+
+-- Patch 1
+
+ - Fixed a bug with defusing bombs and activating some switches
 
 --  Additional Config Commands
 
@@ -37,6 +41,9 @@ Some of these will show up in your autoexec.cfg as you set them, but if it's mis
 
 Most of these commands are also available in their respective options menu.
 
+-- Windowed Mode
+To run in windowed mode, add +windowed 1 to the "Command-Line" textbox in "Advanced" options of the launcher.
+
 -- Known Bugs
 
 Unfortuantely we can't fix everything! Here's a list of known bugs.
@@ -52,3 +59,9 @@ There's a small issue with Direct3D where it doesn't like things higher than 200
 
 Bug: Dynamic lighting (flashlights) cause my framerate to dip below 60
 On the few systems we tested we encountered an issue with DGVoodoo2. If you're running that software, I'd reccomend you disable it when using this patch.
+
+Bug: The game's window stretches beyond my screen
+You'll have to either set display scaling to 100%, or run the game at a lower resolution.
+
+Bug: The game runs slow, and all the text has black boxes around them
+If you're running a laptop with a hybrid integrated/dedicated graphics card setup, make sure you force the game to use the dedicated graphics card! Intel integrated graphics seems to have issues running older games.

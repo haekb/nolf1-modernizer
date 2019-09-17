@@ -12,6 +12,10 @@ The goal of NOLF Modernizer is to help fix some long standing bugs, and update s
  - Jukebox to play some of your favourite in-game tunes
  - Supports the Game of the Year edition
 
+## Patch 1
+
+ - Fixed a bug with defusing bombs and activating some switches
+
 ## Additional Config Commands
 
 The following are new config commands:
