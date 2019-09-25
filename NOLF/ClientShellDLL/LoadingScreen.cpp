@@ -392,8 +392,8 @@ int CLoadingScreen::RunThread()
 		// Draw the frame..
 		Update();
 		
-		// Sleep(0) will give other threads a chance to interject.
-		Sleep(0);
+		// Swapped it back to sleep(10);, should fix load times
+		Sleep(10);
 	}
 
 	g_pGameClientShell->SetFramerateLock(true);
