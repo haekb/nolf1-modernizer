@@ -4566,6 +4566,7 @@ void CGameClientShell::OnKeyDown(int key, int rep)
 	}
 
 	// TODO: Make this bindable?
+#if 0
 	if (IsPlayerInWorld())
 	{
 		if (key == VK_NUMPAD8) {
@@ -4575,6 +4576,7 @@ void CGameClientShell::OnKeyDown(int key, int rep)
 			g_pInterfaceResMgr->DecrementUserScale();
 		}
 	}
+#endif
 }
 
 
