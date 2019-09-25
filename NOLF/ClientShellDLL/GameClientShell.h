@@ -45,6 +45,10 @@ class CCameraFX;
 class CGameTexMgr;
 
 
+// For speedrunners
+static uint8           g_nCurrentMission = 255;
+static uint8           g_nCurrentLevel = 255;
+
 class CGameClientShell : public IClientShell
 {
 	public:
@@ -88,6 +92,16 @@ class CGameClientShell : public IClientShell
         LTBOOL IsCustomLevel()   const {return m_bIsCustomLevel;}
 		int GetCurrentMission() const {return m_nCurrentMission;}
 		int GetCurrentLevel()	const {return m_nCurrentLevel;}
+
+		void SetCurrentMission(int mission) {
+			m_nCurrentMission = mission;
+			g_nCurrentMission = mission;
+		}
+
+		void SetCurrentLevel(int level) {
+			m_nCurrentLevel = level;
+			g_nCurrentLevel = level;
+		}
 
 		LTBOOL DoJoinGame(char* sIpAddress);
 

@@ -1381,6 +1381,8 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 	// Quickfix in case this gets stuck on.
 	g_pLTClient->RunConsoleString("CursorCenter 0");
 
+	// Say hello to the cool folks who speedrun the game, and give them a little present!
+	SDL_Log("Hello Speedrunners, I believe you need these: MissionPtr <%p> ScenePtr <%p> ", &g_nCurrentMission, &g_nCurrentLevel);
 
 	return LT_OK;
 }
@@ -6030,10 +6032,8 @@ void CGameClientShell::ExitLevel()
 
     m_bInWorld = LTFALSE;
 
-
 	// Go to the the next level...
-
-	m_nCurrentLevel++;
+	SetCurrentLevel(m_nCurrentLevel + 1);
 
 	MISSION* pMission = g_pMissionMgr->GetMission(m_nCurrentMission);
 	if (!pMission)
@@ -6050,8 +6050,9 @@ void CGameClientShell::ExitLevel()
 		//do end of mission clean up
 		GetPlayerSummary()->CompleteMission(m_nCurrentMission);
 
-		m_nCurrentLevel = 0;
-		m_nCurrentMission++;
+		SetCurrentLevel(0);
+		SetCurrentMission(m_nCurrentMission + 1);
+
 
 
 		// Check to see if the game is over...
@@ -6061,8 +6062,7 @@ void CGameClientShell::ExitLevel()
 			// TODO: Do game over...
 
 			// For now just start over at the beginning...
-
-			m_nCurrentMission = 0;
+			SetCurrentMission(0);
 
 			// Show the mission summary...
 
@@ -6164,8 +6164,8 @@ LTBOOL CGameClientShell::DoLoadWorld(char* pWorldFile, char* pCurWorldSaveFile,
 	int nMissionId, nLevel;
 	if (g_pMissionMgr->IsMissionLevel(pWorldFile, nMissionId, nLevel))
 	{
-		m_nCurrentMission	= nMissionId;
-		m_nCurrentLevel		= nLevel;
+		SetCurrentMission(nMissionId);
+		SetCurrentLevel(nLevel);
         m_bIsCustomLevel    = LTFALSE;
 
 		// Set the level in the mission data...
@@ -7570,8 +7570,8 @@ void CGameClientShell::UnpackClientSaveMsg(HMESSAGEREAD hMessage)
     m_bWasUsingExternalCamera   = (LTBOOL) g_pLTClient->ReadFromMessageByte(hData);
     m_bUsingExternalCamera      = (LTBOOL) g_pLTClient->ReadFromMessageByte(hData);
     m_ePlayerState              = (PlayerState) g_pLTClient->ReadFromMessageByte(hData);
-    m_nCurrentLevel             = g_pLTClient->ReadFromMessageByte(hData);
-    m_nCurrentMission           = g_pLTClient->ReadFromMessageByte(hData);
+    /*m_nCurrentLevel             = */SetCurrentLevel(g_pLTClient->ReadFromMessageByte(hData));
+    /*m_nCurrentMission           = */SetCurrentMission(g_pLTClient->ReadFromMessageByte(hData));
     m_nSoundFilterId            = g_pLTClient->ReadFromMessageByte(hData);
     m_nGlobalSoundFilterId      = g_pLTClient->ReadFromMessageByte(hData);
 
@@ -7833,8 +7833,8 @@ LTBOOL CGameClientShell::StartGame(GameDifficulty eDifficulty)
 
 void CGameClientShell::DoStartGame()
 {
-	m_nCurrentMission = 0;
-	m_nCurrentLevel	  = 0;
+	SetCurrentMission(0);
+	SetCurrentLevel(0);
 
 	if (!LoadCurrentLevel())
 	{
@@ -7862,8 +7862,8 @@ LTBOOL CGameClientShell::StartMission(int nMissionId)
 	MISSION* pMission = g_pMissionMgr->GetMission(nMissionId);
     if (!pMission) return LTFALSE;
 
-	m_nCurrentMission = nMissionId;
-	m_nCurrentLevel	  = 0;
+	SetCurrentMission(nMissionId);
+	SetCurrentLevel(0);
 
 	CPlayerStats* pStats = m_InterfaceMgr.GetPlayerStats();
 
