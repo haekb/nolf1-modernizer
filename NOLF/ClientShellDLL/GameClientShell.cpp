@@ -1382,7 +1382,16 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 	g_pLTClient->RunConsoleString("CursorCenter 0");
 
 	// Say hello to the cool folks who speedrun the game, and give them a little present!
-	SDL_Log("Hello Speedrunners, I believe you need these: MissionPtr <%p> ScenePtr <%p> ", &g_nCurrentMission, &g_nCurrentLevel);
+	SDL_Log("Hello Speedrunners, I believe you need these: MissionPtr <%p> ScenePtr <%p>", &g_nCurrentMission, &g_nCurrentLevel);
+
+	// Gonna do something silly, create a new loadingscreen, log the static variable address and kill the loading screen.
+	CLoadingScreen* dummyLoad = new CLoadingScreen();
+	dummyLoad->LogForSpeedRunners();
+	delete(dummyLoad);
+	dummyLoad = NULL;
+
+	// Disclaimer so they don't complain about the addresses changing :)
+	SDL_Log("Make sure the game isn't loading from the .rez file, otherwise these will change everytime you load the game!");
 
 	return LT_OK;
 }

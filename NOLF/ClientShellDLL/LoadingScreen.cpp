@@ -19,6 +19,8 @@
 
 extern CGameClientShell* g_pGameClientShell;
 
+
+
 CLoadingScreen::CLoadingScreen() :
 	m_eCurState(STATE_NONE),
 	m_bDrawMultiplayer(LTFALSE),
@@ -44,6 +46,12 @@ CLoadingScreen::~CLoadingScreen()
 
 	DeleteObject(m_hEventEnd);
 	DeleteObject(m_hEventThreadRunning);
+}
+
+// This function is entirely to help speed runners determine when the game is loading
+void CLoadingScreen::LogForSpeedRunners()
+{
+	SDL_Log("Here's the address for IsLoading <%p>", &g_nIsLoading);
 }
 
 void CLoadingScreen::CreateScaleFX(char *szFXName)
@@ -518,6 +526,8 @@ LTBOOL CLoadingScreen::Show(LTBOOL bRun)
 	if (m_eCurState != STATE_INIT)
 		return LTFALSE;
 
+	g_nIsLoading = 1;
+
 	// Turn off the cursor
 
 	g_pInterfaceMgr->UseCursor(LTFALSE);
@@ -616,6 +626,8 @@ LTBOOL CLoadingScreen::Hide()
 	// Re-set the console...
 	g_pGameClientShell->SetFarZ(m_nOldFarZ);
 	WriteConsoleInt("FogEnable", (int)m_bOldFogEnable);
+
+	g_nIsLoading = 0;
 
 	// Done!
 	return LTTRUE;

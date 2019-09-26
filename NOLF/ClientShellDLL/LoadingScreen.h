@@ -15,12 +15,17 @@
 
 #include "BaseFolder.h"
 
+static uint8 g_nIsLoading = false;
+
 class CLoadingScreen
 {
 // External functions
 public:
 	CLoadingScreen();
 	~CLoadingScreen();
+
+	// Special function that just logs the pointer address for isloading.
+	void LogForSpeedRunners();
 
 	// Note : Init/Term will be called automatically when needed, so
 	// you shouldn't ever actually need to call them.
