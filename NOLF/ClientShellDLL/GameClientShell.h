@@ -46,8 +46,11 @@ class CGameTexMgr;
 
 
 // For speedrunners
-static uint8           g_nCurrentMission;
-static uint8           g_nCurrentLevel;
+
+
+
+static volatile uint8 g_nCurrentMission = 255;
+static volatile uint8 g_nCurrentLevel   = 255;
 
 class CGameClientShell : public IClientShell
 {
