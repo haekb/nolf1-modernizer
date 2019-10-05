@@ -94,10 +94,11 @@ void CFolderSummary::OnFocus(LTBOOL bFocus)
             HMESSAGEWRITE hMessage = g_pLTClient->StartMessage(MID_PLAYER_SUMMARY);
             g_pLTClient->EndMessage(hMessage);
 		}
-		else
-		{
-			UpdateData();
-		}
+
+		// We'll always just call this, 
+		// because for some reason the message sent above in sp doesn't seem to trigger the continue button!
+		UpdateData();
+
 		CFolderBriefing* pBriefing = (CFolderBriefing*)m_pFolderMgr->GetFolderFromID(FOLDER_ID_BRIEFING);
 		pBriefing->SetPostMission(LTTRUE);
 
