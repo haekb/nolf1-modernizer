@@ -8593,6 +8593,12 @@ BOOL HookWindow()
 	if(g_SDLWindow) {
 		SDL_Log("Hooked window!");
 
+		// If they request it, don't use raw input!
+		if (GetConfigInt("NoRawInput", 0)) {
+			SDL_Log("No Raw Input requested.");
+			SDL_SetHint(SDL_HINT_MOUSE_RELATIVE_MODE_WARP, "1");
+		}
+
 		// Centre the window please.
 		SDL_SetWindowPosition(g_SDLWindow, SDL_WINDOWPOS_CENTERED , SDL_WINDOWPOS_CENTERED);	
 	} else {
