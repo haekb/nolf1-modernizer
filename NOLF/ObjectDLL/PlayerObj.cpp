@@ -3989,7 +3989,9 @@ LTBOOL CPlayerObj::ProcessCommand(char** pTokens, int nArgs, char* pNextCommand)
 					vTargetPos.y = vPos.y; // Don't look up/down.
 
 					VEC_SUB(vDir, vTargetPos, vPos);
-					VEC_NORM(vDir);
+					if (vDir.MagSqr() != 0.0f) {
+						VEC_NORM(vDir);
+					}
 
                     LTRotation rRot;
                     g_pLTServer->AlignRotation(&rRot, &vDir, NULL);
