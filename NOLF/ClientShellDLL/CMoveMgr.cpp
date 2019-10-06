@@ -644,7 +644,6 @@ void CMoveMgr::UpdateOnLadder(CContainerInfo *pInfo)
 	g_pLTClient->SetObjectFlags(m_hObject, dwFlags & ~FLAG_GRAVITY);
 }
 
-
 // ----------------------------------------------------------------------- //
 //
 //	ROUTINE:	CMoveMgr::UpdateOnGround
@@ -660,19 +659,19 @@ void CMoveMgr::UpdateOnGround()
 	CollisionInfo Info;
 	g_pPhysicsLT->GetStandingOn(m_hObject, &Info);
 
-
     LTVector vPos;
 	g_pLTClient->GetObjectPos(m_hObject, &vPos);
 
 	// Clear surface we're standing on...
-
     m_bOnLift            = LTFALSE;
 	m_hStandingOnPoly    = INVALID_HPOLY;
     m_bOnGround          = LTFALSE;
 
+
 	if (Info.m_hObject)
 	{
         m_bOnGround = LTTRUE;
+		
 
 		// If we didn't jump, tell the server we landed (if we jumped, then
 		// this will be sent in UpdateStartMotion()...
@@ -697,7 +696,6 @@ void CMoveMgr::UpdateOnGround()
 		{
 			m_eStandingOnSurface = GetSurfaceType(Info.m_hObject);
 		}
-
 
 		// See if we are standing on a lift (i.e., on an object that
 		// may move)...
@@ -736,7 +734,6 @@ void CMoveMgr::UpdateOnGround()
             m_bOnGround = LTFALSE;
 		}
 	}
-
 
 	// Cases when we can't be on the ground...
 
@@ -1134,7 +1131,8 @@ void CMoveMgr::UpdateNormalMotion()
 			g_pPhysicsLT->SetVelocity(m_hObject, &myVel);
 		}
 	}
-	else if (m_bOnGround && !g_pGameClientShell->IsSpectatorMode() && !bJumping)
+	// Jake: Added CanDoFootstep(), since occasionally m_bOnGround is false when it shouldn't be. 
+	else if ( (CanDoFootstep() || m_bOnGround) && !g_pGameClientShell->IsSpectatorMode() && !bJumping)
 	{
 		float fCurLen = (float)sqrt(myVel.x*myVel.x + myVel.z*myVel.z);
 		if (fCurLen > fMaxVel)
@@ -1156,8 +1154,6 @@ void CMoveMgr::UpdateNormalMotion()
 
 		g_pPhysicsLT->SetVelocity(m_hObject, &myVel);
 	}
-
-
 
 	// See if we just broke the surface of water...
 
@@ -1674,20 +1670,6 @@ void CMoveMgr::UpdatePlayerAnimation()
 		VEC_SET(m_vWantedDims, 1.0f, 1.0f, 1.0f);
 		g_pLTClient->Common()->GetModelAnimUserDims(m_hObject, &m_vWantedDims, modelAnim);
 
-
-		// Fun hack: By door in Low Earth Orbit theres some world geometry collisions clipping through the ground.
-		// It's not visible, but it sure is impossible to go through with our current dims!
-		//
-		// Because this might break other levels, I've assigned it to the following...
-		// Test Cases: 
-		// - (Mission 19) Low Earth Orbit - Door on lowest level
-		// - (Mission 22) The Indomitable Cate Archer - Shuttle Train with body armour in it
-		if (g_pGameClientShell->GetCurrentMission() == 19 || g_pGameClientShell->GetCurrentMission() == 22)
-		{
-			m_vWantedDims.x -= 10;
-			m_vWantedDims.z -= 10;
-		}
-
 		// Figure out a position offset.
 		VEC_INIT(offset);
 		if (m_vWantedDims.y < oldDims.y)
@@ -1769,11 +1751,13 @@ void CMoveMgr::ResetDims(LTVector *pOffset)
 	g_pPhysicsLT->SetObjectDims(m_hObject, &smallDims, 0);
 
 	// Move them if they want.
+
 	if (pOffset)
 	{
 		g_pLTClient->GetObjectPos(m_hObject, &pos);
 		pos += *pOffset;
 		g_pPhysicsLT->MoveObject(m_hObject, &pos, 0);
+
 	}
 
 	g_pPhysicsLT->SetObjectDims(m_hObject, &m_vWantedDims, SETDIMS_PUSHOBJECTS);
@@ -1970,6 +1954,8 @@ void CMoveMgr::ShowPos(char *pBlah)
 
 void CMoveMgr::Update()
 {
+	
+
 	HOBJECT hObj = g_pLTClient->GetClientObject();
 	if (!m_hObject || !hObj) return;
 
@@ -2096,7 +2082,7 @@ void CMoveMgr::OnPhysicsUpdate(HMESSAGEREAD hRead)
 			g_pLTClient->SetObjectClientFlags(m_hObject, dwCFlags | CF_DONTSETDIMS);
 		}
 	}
-
+	
 	// Gravity change...
 
 	if (changeFlags & PSTATE_GRAVITY)
