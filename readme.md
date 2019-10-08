@@ -16,6 +16,13 @@ The goal of NOLF Modernizer is to help fix some long standing bugs, and update s
 
  - Fixed a bug with defusing bombs and activating some switches
 
+## Patch 2
+
+- Added `NoRawInput` to disable mouse raw input
+- Fixed missing continue button on mission summary screen
+- Improved loading screen time (...that I broke, oops!)
+- Fixed some invisible impassible geometry.
+
 ## Additional Config Commands
 
 The following are new config commands:
