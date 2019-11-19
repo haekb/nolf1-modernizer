@@ -55,6 +55,10 @@
 #include <stdio.h>
 
 #include <SDL.h>
+#include "ConsoleMgr.h"
+#include "DetourMgr.h"
+
+extern ConsoleMgr* g_pConsoleMgr;
 
 #ifdef STRICT
 	WNDPROC g_pfnMainWndProc = NULL;
@@ -211,6 +215,13 @@ IClientShell* CreateClientShell(ILTClient *pClientDE)
 
     g_pLTClient  = pClientDE;
     _ASSERT(g_pLTClient);
+
+	/*
+	while (true) {
+
+		g_pLTClient->CPrint("Hello World!");
+	}
+	*/
 
 	CGameClientShell* pShell = debug_new(CGameClientShell);
 	_ASSERT(pShell);
@@ -973,6 +984,8 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 		return LT_ERROR;
 	}
 
+	ConsoleMgr* conMgr = new ConsoleMgr();
+
 	// Initialize global console variables...
 
     g_vtFOVXNormal.Init(g_pLTClient, "FovX", NULL, 90.0f);
@@ -1393,6 +1406,10 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 	// Disclaimer so they don't complain about the addresses changing :)
 	SDL_Log("Make sure the game isn't loading from the .rez file, otherwise these will change everytime you load the game!");
 
+	DetourMgr* detourMgr = new DetourMgr();
+	detourMgr->Init();
+
+
 	return LT_OK;
 }
 
@@ -1772,6 +1789,9 @@ void CGameClientShell::Update()
 	{
 		UpdatePlaying();
 	}
+
+	// Actually this is always on top
+	g_pConsoleMgr->Draw();
 }
 
 

@@ -203,7 +203,7 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
-      <AdditionalIncludeDirectories>..\shared;..\..\lt2\sdk\inc;..\..\lt2\lithshared\incs;..\ClientShellDLL;..\..\LIBS\SDL2-2.0.10\include;..\..\lt2\lithshared\lith;..\..\lt2\lithshared\ButeMgr\;..\..\lt2\lithshared\CryptMgr;..\..\lt2\lithshared\mfcstub;..\ClientRes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\shared;..\..\lt2\sdk\inc;..\..\lt2\lithshared\incs;..\ClientShellDLL;..\..\LIBS\SDL2-2.0.10\include;..\..\LIBS\detours\include;..\..\lt2\lithshared\lith;..\..\lt2\lithshared\ButeMgr\;..\..\lt2\lithshared\CryptMgr;..\..\lt2\lithshared\mfcstub;..\ClientRes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;_CLIENTBUILD;WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;NO_PRAGMA_LIBS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
       <BrowseInformation>true</BrowseInformation>
@@ -246,10 +246,10 @@ call "D:\GameDev\no-one-lives-forever-master\NOLF\_after_build_debug.bat"</Comma
       <SubSystem>Windows</SubSystem>
       <OutputFile>debug\CShell.dll</OutputFile>
       <ImportLibrary>.\Debug\CShell.lib</ImportLibrary>
-      <AdditionalDependencies>odbc32.lib;odbccp32.lib;ButeMgr.lib;cryptmgr.lib;GameSpyClientMgr.lib;MFCStub.lib;StdLith.lib;RegMgr.lib;ltguimgr_LT2.lib;LithFontMgr_LT2.lib;SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>odbc32.lib;odbccp32.lib;ButeMgr.lib;cryptmgr.lib;GameSpyClientMgr.lib;MFCStub.lib;StdLith.lib;RegMgr.lib;ltguimgr_LT2.lib;LithFontMgr_LT2.lib;SDL2.lib;SDL2main.lib;detours.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
       <IgnoreSpecificDefaultLibraries>libcimtd.lib;MSVCRTD.lib</IgnoreSpecificDefaultLibraries>
-      <AdditionalLibraryDirectories>..\..\lt2\lithshared\built\Debug\ButeMgr;..\..\lt2\lithshared\built\Debug\CryptMgr;..\..\lt2\lithshared\built\Debug\MFCStub;..\..\lt2\lithshared\libs\Debug;..\..\LIBS\SDL2-2.0.10\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\lt2\lithshared\built\Debug\ButeMgr;..\..\lt2\lithshared\built\Debug\CryptMgr;..\..\lt2\lithshared\built\Debug\MFCStub;..\..\lt2\lithshared\libs\Debug;..\..\LIBS\SDL2-2.0.10\lib\x86;..\..\LIBS\detours\lib.X86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Final Debug|Win32'">
@@ -362,11 +362,13 @@ call "D:\GameDev\no-one-lives-forever-master\NOLF\_after_build_debug.bat"</Comma
     <ClCompile Include="ClientWeaponUtils.cpp" />
     <ClCompile Include="client_physics.cpp" />
     <ClCompile Include="CMoveMgr.cpp" />
+    <ClCompile Include="ConsoleMgr.cpp" />
     <ClCompile Include="Credits.cpp" />
     <ClCompile Include="CycleCtrl.cpp" />
     <ClCompile Include="DamageFXMgr.cpp" />
     <ClCompile Include="DeathFX.cpp" />
     <ClCompile Include="DebrisFX.cpp" />
+    <ClCompile Include="DetourMgr.cpp" />
     <ClCompile Include="DynamicLightFX.cpp" />
     <ClCompile Include="ExplosionFX.cpp" />
     <ClCompile Include="FireFX.cpp" />
@@ -581,11 +583,13 @@ call "D:\GameDev\no-one-lives-forever-master\NOLF\_after_build_debug.bat"</Comma
     <ClInclude Include="ClientWeaponUtils.h" />
     <ClInclude Include="client_physics.h" />
     <ClInclude Include="CMoveMgr.h" />
+    <ClInclude Include="ConsoleMgr.h" />
     <ClInclude Include="Credits.h" />
     <ClInclude Include="CycleCtrl.h" />
     <ClInclude Include="DamageFXMgr.h" />
     <ClInclude Include="DeathFX.h" />
     <ClInclude Include="DebrisFX.h" />
+    <ClInclude Include="DetourMgr.h" />
     <ClInclude Include="DynamicLightFX.h" />
     <ClInclude Include="ExplosionFX.h" />
     <ClInclude Include="FastList.h" />
