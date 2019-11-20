@@ -123,7 +123,7 @@ void ConsoleMgr::Init()
 	}
 
 	m_pEdit->Enable(LTTRUE);
-	m_pEdit->EnableCursor(1.0f);
+	m_pEdit->EnableCursor();
 	m_pEdit->SetColor(kWhite, kWhite, kWhite);
 
 	m_bInitialized = true;
@@ -245,7 +245,27 @@ void ConsoleMgr::Draw()
 		return;
 	}
 
-	HSURFACE hBlank = g_pLTClient->CreateSurfaceFromBitmap("interface\\console.pcx");//g_pLTClient->CreateSurfaceFromBitmap("menu\\art\\blanktag.pcx");
+	g_pLTClient->Start3D();
+	g_pLTClient->StartOptimized2D();
+
+	HSURFACE hBlank;
+
+	int iConsoleBackdrop = GetConsoleFloat("console_backdrop", 0.0f);
+	
+	switch (iConsoleBackdrop) {
+	case 1: 
+		hBlank = g_pLTClient->CreateSurfaceFromBitmap("menu\\art\\blanktag.pcx");
+		break;
+	case 2:
+		hBlank = g_pLTClient->CreateSurface(64, 64);
+		g_pLTClient->ScaleSurfaceToSurfaceSolidColor(hBlank, hBlank, LTNULL, LTNULL, LTNULL, SETRGB(0, 0, 0));
+		break;
+	case 0:
+	default:
+		hBlank = g_pLTClient->CreateSurfaceFromBitmap("interface\\console.pcx");
+	}
+
+	//HSURFACE hBlank = g_pLTClient->CreateSurfaceFromBitmap("interface\\console.pcx");//g_pLTClient->CreateSurfaceFromBitmap("menu\\art\\blanktag.pcx");
 	HSURFACE hScreen = g_pLTClient->GetScreenSurface();
 
 	LTRect dest = { 0, 0, m_iWidth, m_iHeight };
@@ -295,6 +315,9 @@ void ConsoleMgr::Draw()
 	m_pEdit->Render(hScreen);
 
 	g_pLTClient->DeleteSurface(hBlank);
+
+	g_pLTClient->EndOptimized2D();
+	g_pLTClient->End3D();
 }
 
 void ConsoleMgr::Show(bool bShow)

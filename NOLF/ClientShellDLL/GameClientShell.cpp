@@ -1825,6 +1825,9 @@ void CGameClientShell::Update()
 	{
 		UpdatePlaying();
 	}
+
+	// 
+	g_pConsoleMgr->Draw();
 }
 
 
@@ -7122,9 +7125,6 @@ void CGameClientShell::RenderCamera(LTBOOL bDrawInterface)
 
 	m_InterfaceMgr.Draw();
 
-	// Actually this is always on top
-	g_pConsoleMgr->Draw();
-
 	// Display any necessary debugging info...
 
 	if (m_hDebugInfo)
@@ -7144,7 +7144,6 @@ void CGameClientShell::RenderCamera(LTBOOL bDrawInterface)
 
     g_pLTClient->EndOptimized2D();
     g_pLTClient->End3D();
-
 }
 
 
