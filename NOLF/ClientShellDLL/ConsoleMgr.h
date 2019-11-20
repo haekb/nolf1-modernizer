@@ -30,6 +30,10 @@ public:
 
 	void MoveUp(bool bTop);
 	void MoveDown(bool bBottom);
+
+	void RecallHistoryUp();
+	void RecallHistoryDown();
+
 	void AdjustView();
 
 	void AddToHelp(std::string command);
@@ -45,10 +49,8 @@ protected:
 	HSURFACE m_hConsoleSurface;
 
 	std::vector<std::string> m_HelpList;
+	std::vector<std::string> m_CommandHistory;
 
-	//std::vector<HSURFACE> m_pLineItems;
-
-	//CLTGUIWindow	    m_Window;
 	std::vector<CLTGUITextItemCtrl*> m_pLineItems;
 	CLTGUITextItemCtrl* m_pEditText;
 	char m_szEdit[256];
@@ -63,8 +65,11 @@ protected:
 	// 
 	int m_iCurrentPosition;
 	int m_iCursorPosition;
+	int m_iCommandHistoryPosition;
 
 	bool m_bInitialized;
 	bool m_bVisible;
+
+	int m_iOldGameState;
 };
 

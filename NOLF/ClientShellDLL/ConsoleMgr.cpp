@@ -40,6 +40,10 @@ ConsoleMgr::ConsoleMgr()
 	// Position in UI elements
 	m_iCursorPosition = 0;
 
+	m_iCommandHistoryPosition = 0;
+
+	m_iOldGameState = -1;
+
 	g_pLTClient->RegisterConsoleProgram("Help", ShowHelpListCommand);
 }
 
@@ -86,7 +90,6 @@ void ConsoleMgr::Init()
 	for (int i = 0; i < iLineItemLength; i++) {
 
 		CLTGUITextItemCtrl* pText = debug_new(CLTGUITextItemCtrl);
-		//if (!pText->Create("", LTNULL, LTNULL, pFont, m_iFontSize, NULL))
 		if (!pText->Create(g_pLTClient, NULL, NULL, pFont, NULL, 0))
 		{
 			debug_delete(pText);
@@ -180,16 +183,16 @@ LTBOOL ConsoleMgr::HandleKeyDown(int key, int rep)
 		return LTTRUE;
 	} break;
 	case VK_UP:
-		MoveUp(false);
+		RecallHistoryUp();
 		break;
 	case VK_DOWN:
-		MoveDown(false);
+		RecallHistoryDown();
 		break;
 	case VK_PRIOR: // Page Up
-		MoveUp(true);
+		MoveUp(false);
 		break;
 	case VK_NEXT: // Page Down
-		MoveDown(true);
+		MoveDown(false);
 		break;
 	}
 
@@ -220,6 +223,10 @@ void ConsoleMgr::Read(std::string sMessage, unsigned int iColour, int iLevel)
 void ConsoleMgr::Send()
 {
 	MoveDown(true);
+
+	// Throw it in our history!
+	m_CommandHistory.push_back(m_szEdit);
+	m_iCommandHistoryPosition = m_CommandHistory.size();
 
 	// Echo it back
 	g_pLTClient->CPrint(m_szEdit);
@@ -271,7 +278,7 @@ void ConsoleMgr::Draw()
 
 		g_pLTClient->FreeString(hString);
 
-		pText->Render(hBlank);
+		pText->Render(hScreen);
 
 		index++;
 		pos.y += m_iLineSpacing;
@@ -284,8 +291,8 @@ void ConsoleMgr::Draw()
 	pos.x += m_iLineSpacing / 2;
 	m_pEdit->SetPos(pos);
 
-	m_pEditText->Render(hBlank);
-	m_pEdit->Render(hBlank);
+	m_pEditText->Render(hScreen);
+	m_pEdit->Render(hScreen);
 
 	g_pLTClient->DeleteSurface(hBlank);
 }
@@ -299,11 +306,24 @@ void ConsoleMgr::Show(bool bShow)
 	// For now let's disable it in multiplayer!
 	if (IsMultiplayerGame()) {
 		m_bVisible = false;
+		return;
 	}
+
+	// Not working right now
+	if (bShow) {
+		m_iOldGameState = g_pInterfaceMgr->GetGameState();
+		g_pInterfaceMgr->ChangeState(GS_POPUP);
+	}
+	else {
+		g_pInterfaceMgr->ChangeState((GameState)m_iOldGameState);
+		m_iOldGameState = -1;
+	}
+
 
 	// Pause the game
 	g_pGameClientShell->PauseGame(bShow, LTTRUE);
 
+	
 	// Clear our command string
 	m_pEdit->SetText("");
 
@@ -346,6 +366,32 @@ void ConsoleMgr::MoveDown(bool bBottom)
 	}
 
 	AdjustView();
+}
+
+void ConsoleMgr::RecallHistoryUp()
+{
+	if (m_CommandHistory.size() == 0) {
+		return;
+	}
+
+	if (m_iCommandHistoryPosition > 0) {
+		m_iCommandHistoryPosition--;
+	}
+
+	m_pEdit->SetText((char*)m_CommandHistory[m_iCommandHistoryPosition].c_str());
+}
+
+void ConsoleMgr::RecallHistoryDown()
+{
+	if (m_CommandHistory.size() == 0) {
+		return;
+	}
+
+	if (m_iCommandHistoryPosition < m_CommandHistory.size() - 1) {
+		m_iCommandHistoryPosition++;
+	}
+
+	m_pEdit->SetText((char*)m_CommandHistory[m_iCommandHistoryPosition].c_str());
 }
 
 void ConsoleMgr::AdjustView()
