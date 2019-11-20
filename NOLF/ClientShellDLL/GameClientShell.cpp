@@ -4282,8 +4282,13 @@ void CGameClientShell::ProcessHandshake(HMESSAGEREAD hMessage)
 
 void CGameClientShell::OnCommandOn(int command)
 {
-	// Let the interface handle the command first...
+	// If console is active, ignore any other commands
+	if (g_pConsoleMgr->IsVisible())
+	{
+		return;
+	}
 
+	// Let the interface handle the command first...
 	if (IsPlayerInWorld())
 	{
 		if (IsMultiplayerGame() || !IsPlayerDead())

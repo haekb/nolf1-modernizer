@@ -4947,6 +4947,10 @@ void CInterfaceMgr::UpdateLetterBox()
 
 LTBOOL CInterfaceMgr::AllowCameraMovement()
 {
+	if (g_pConsoleMgr->IsVisible()) {
+		return LTFALSE;
+	}
+
 	switch (m_eGameState)
 	{
 		case GS_DIALOGUE :
