@@ -44,10 +44,6 @@ inline void df_Console(HLTCOLOR iColour, int iLevel, const char* pMsg) { if (!g_
 // So it's not used!
 inline void df_ConsoleVa(HLTCOLOR iColour, int iLevel, const char* pFormat, va_list vaList)
 {
-	if (!g_pConsoleMgr) {
-		return;
-	}
-
 	char aMsgBuffer[2048];
 	memset(aMsgBuffer, '\0', sizeof(aMsgBuffer));
 	_vsnprintf(aMsgBuffer, sizeof(aMsgBuffer), pFormat, vaList);
@@ -60,9 +56,5 @@ inline void df_ConsoleVa(HLTCOLOR iColour, int iLevel, const char* pFormat, va_l
 // Someone just wants to print a message, that's cool.
 inline void df_ConsoleSimple(const char* pMsg)
 {
-	if (!g_pConsoleMgr) {
-		return;
-	}
-
 	df_Console(SETRGB(255,255,255), 0, pMsg);
 }

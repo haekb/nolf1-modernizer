@@ -66,7 +66,7 @@ void ConsoleMgr::Init()
 		Destroy();
 	}
 
-	auto pFont = g_pInterfaceResMgr->GetChooserFont();
+	auto pFont = g_pInterfaceResMgr->GetSmallFont();
 
 	if (!pFont) {
 		return;
@@ -81,9 +81,6 @@ void ConsoleMgr::Init()
 	// Calculate the amount of items we need to fill the space, and then minus one for our edit line.
 	int iLineItemLength = (int)((float)m_iHeight / (float)m_iLineSpacing) - 1;
 
-	//m_Window.Create(g_pInterfaceResMgr->GetTexture("interface\\console.dtx"), m_iWidth, m_iHeight);
-
-
 	// Create the lines for our console text
 	// TODO: Maybe look into large text fields? Not sure if this will cause any performance concerns.
 	for (int i = 0; i < iLineItemLength; i++) {
@@ -97,12 +94,10 @@ void ConsoleMgr::Init()
 		}
 
 		m_pLineItems.push_back(pText);
-		//m_Window.AddControl(pText, { 0, 0 });
 	}
 
 	// This is basically the little symbol, in our case it's `>` in front of the edit line
 	m_pEditText = debug_new(CLTGUITextItemCtrl);
-	//if (!m_pEditText->Create("", LTNULL, LTNULL, pFont, m_iFontSize, NULL))
 	if (!m_pEditText->Create(g_pLTClient, NULL, NULL, pFont, NULL, 0))
 	{
 		debug_delete(m_pEditText);
@@ -110,11 +105,12 @@ void ConsoleMgr::Init()
 	}
 
 	HSTRING hString = g_pLTClient->CreateString(">");
+
 	m_pEditText->AddString(hString);
+
 	g_pLTClient->FreeString(hString);
-	//m_pEditText->SetString(">");
+
 	m_pEditText->SetColor(kWhite, kWhite, kWhite);
-	//m_Window.AddControl(m_pEditText, { 0,0 });
 	
 	m_pEdit = debug_new(CLTGUIEditCtrl);
 	if (!m_pEdit->Create(g_pLTClient, 1, NULL, pFont, 0, 256, NULL, m_szEdit))
@@ -123,16 +119,9 @@ void ConsoleMgr::Init()
 		m_pEdit = LTNULL;
 	}
 
-	//m_pEdit->Show(LTTRUE);
 	m_pEdit->Enable(LTTRUE);
-	m_pEdit->EnableCursor();
+	m_pEdit->EnableCursor(1.0f);
 	m_pEdit->SetColor(kWhite, kWhite, kWhite);
-	//m_pEdit->EnableCaret(LTTRUE);
-	//m_pEdit->SetColors(argbWhite, argbWhite, argbWhite);
-	
-	// Add the edit control, and then set it as the selected control
-	//m_Window.AddControl(m_pEdit, { 0, 0 });
-	//m_Window.SetSelection(iLineItemLength + 1);
 
 	m_bInitialized = true;
 }
@@ -149,8 +138,6 @@ void ConsoleMgr::Destroy()
 	for (auto item : m_pLineItems) {
 		item->Destroy();
 	}
-
-	//m_Window.Destroy();
 
 	m_pLineItems.clear();
 }
@@ -251,14 +238,18 @@ void ConsoleMgr::Draw()
 		return;
 	}
 
+	HSURFACE hBlank = g_pLTClient->CreateSurfaceFromBitmap("interface\\console.pcx");//g_pLTClient->CreateSurfaceFromBitmap("menu\\art\\blanktag.pcx");
+	HSURFACE hScreen = g_pLTClient->GetScreenSurface();
+
+	LTRect dest = { 0, 0, m_iWidth, m_iHeight };
+
+	g_pLTClient->ScaleSurfaceToSurface(hScreen, hBlank, &dest, LTNULL);
+
 	m_pEdit->UpdateData(LTTRUE);
 
 	LTIntPt pos = { 8, 0 };
 
-	//m_Window.SetScale(1.0f);
-
 	for (auto item : m_pLineItems) {
-		//item->SetString("");
 		item->RemoveAll();
 	}
 	
@@ -280,18 +271,10 @@ void ConsoleMgr::Draw()
 
 		g_pLTClient->FreeString(hString);
 
-		/*
-		pText->SetBasePos(pos);
-		pText->SetString(item.sMessage.c_str());
-		pText->SetColors(selectionColour, item.iColour, item.iColour);
-		*/
-
-		pText->Render(g_pLTClient->GetScreenSurface());
+		pText->Render(hBlank);
 
 		index++;
 		pos.y += m_iLineSpacing;
-
-		
 	}
 
 	// Make sure our edit input is always at the bottom!
@@ -301,11 +284,10 @@ void ConsoleMgr::Draw()
 	pos.x += m_iLineSpacing / 2;
 	m_pEdit->SetPos(pos);
 
-	m_pEditText->Render(g_pLTClient->GetScreenSurface());
-	m_pEdit->Render(g_pLTClient->GetScreenSurface());
+	m_pEditText->Render(hBlank);
+	m_pEdit->Render(hBlank);
 
-
-	//m_Window.Render();
+	g_pLTClient->DeleteSurface(hBlank);
 }
 
 void ConsoleMgr::Show(bool bShow)
@@ -323,8 +305,7 @@ void ConsoleMgr::Show(bool bShow)
 	g_pGameClientShell->PauseGame(bShow, LTTRUE);
 
 	// Clear our command string
-	//m_pEdit->SetText("");
-	//memset(m_szEdit, 0, sizeof(m_szEdit));
+	m_pEdit->SetText("");
 
 	MoveDown(true);
 
@@ -334,19 +315,11 @@ void ConsoleMgr::Show(bool bShow)
 void ConsoleMgr::MoveUp(bool bTop)
 {
 	if (bTop) {
-#ifdef CONSOLE_CURSOR
-		m_iCurrentPosition = 0;
-#else
 		m_iCurrentPosition = m_pLineItems.size();
-#endif
 		m_iCursorPosition = 0;
 	}
 	else {
-#ifdef CONSOLE_CURSOR
-		if (m_iCurrentPosition > 0) {
-#else
 		if (m_iCurrentPosition > m_pLineItems.size()) {
-#endif
 			m_iCurrentPosition--;
 		}
 		if (m_iCursorPosition > 0) {
@@ -404,10 +377,6 @@ void ConsoleMgr::AdjustView()
 	}
 
 	historySlice.clear();
-
-#ifdef CONSOLE_CURSOR
-	m_Window.SetSelection(m_iCursorPosition);
-#endif
 }
 
 void ConsoleMgr::AddToHelp(std::string command)
