@@ -16,6 +16,14 @@ The goal of NOLF Modernizer is to help fix some long standing bugs, and update s
 
  - Fixed a bug with defusing bombs and activating some switches
 
+## Patch 2
+
+- Added `NoRawInput` to disable mouse raw input
+- Fixed missing continue button on mission summary screen
+- Improved loading screen time (...that I broke, oops!)
+- Fixed some invisible impassible geometry.
+- Added a developer console, can be toggled on/off with tilde. (`~`)
+
 ## Additional Config Commands
 
 The following are new config commands:
@@ -28,6 +36,7 @@ The following are new config commands:
   - `UIScale`                 - FLOAT - Scales the in-game HUD. (Default is 0.5)
   - `UseGotyMenu`             - INT - Switch between the original main menu and the GOTY version. (Default is based on your version)
   - `NoRawInput`              - INT - Disables raw mouse input. (Default is 0)
+  - `ConsoleBackdrop`         - INT - Swap between 3 different console backdrops: (0) demo, (1) blanktag, and (2) black. (Default is 0)
 
 Most of these commands are also available in their respective options menu.
 

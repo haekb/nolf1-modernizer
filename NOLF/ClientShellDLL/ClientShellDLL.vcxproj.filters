@@ -608,6 +608,12 @@
     <ClCompile Include="FolderJukebox.cpp">
       <Filter>Source\Interface</Filter>
     </ClCompile>
+    <ClCompile Include="DetourMgr.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsoleMgr.cpp">
+      <Filter>Source\Interface</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Shared\AssertMgr.h">
@@ -1295,6 +1301,12 @@
       <Filter>Source\Interface</Filter>
     </ClInclude>
     <ClInclude Include="FolderJukebox.h">
+      <Filter>Source\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="DetourMgr.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleMgr.h">
       <Filter>Source\Interface</Filter>
     </ClInclude>
   </ItemGroup>

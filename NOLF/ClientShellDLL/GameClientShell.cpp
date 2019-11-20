@@ -55,6 +55,10 @@
 #include <stdio.h>
 
 #include <SDL.h>
+#include "ConsoleMgr.h"
+#include "DetourMgr.h"
+
+extern ConsoleMgr* g_pConsoleMgr;
 
 #ifdef STRICT
 	WNDPROC g_pfnMainWndProc = NULL;
@@ -186,6 +190,32 @@ LRESULT CALLBACK HookedWindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lP
 
 extern void CalcNonClipPos(LTVector & vPos, LTRotation & rRot);
 
+LTRESULT(*g_pRegisterConsoleProgram)(char* pName, ConsoleProgramFn fn) = NULL;
+LTRESULT(*g_pUnregisterConsoleProgram)(char* pName);
+
+// We can build a list of registered console programs here :)!
+LTRESULT proxyRegisterConsoleProgram(char* pName, ConsoleProgramFn fn)
+{
+	LTRESULT result = g_pRegisterConsoleProgram(pName, fn);
+
+	if (result == LT_OK) {
+		g_pConsoleMgr->AddToHelp(pName);
+	}
+
+	return result;
+}
+
+LTRESULT proxyUnregisterConsoleProgram(char* pName)
+{
+	LTRESULT result = g_pUnregisterConsoleProgram(pName);
+
+	if (result == LT_OK) {
+		g_pConsoleMgr->RemoveFromHelp(pName);
+	}
+
+	return result;
+}
+
 void SDLLog(void* userdata, int category, SDL_LogPriority priority, const char* message)
 {
 	// Open up SDL Log File
@@ -211,6 +241,20 @@ IClientShell* CreateClientShell(ILTClient *pClientDE)
 
     g_pLTClient  = pClientDE;
     _ASSERT(g_pLTClient);
+
+	/*
+	while (true) {
+
+		g_pLTClient->CPrint("Hello World!");
+	}
+	*/
+
+
+	g_pRegisterConsoleProgram = g_pLTClient->RegisterConsoleProgram;
+	g_pLTClient->RegisterConsoleProgram = proxyRegisterConsoleProgram;
+
+	g_pUnregisterConsoleProgram = g_pLTClient->UnregisterConsoleProgram;
+	g_pLTClient->UnregisterConsoleProgram = proxyUnregisterConsoleProgram;
 
 	CGameClientShell* pShell = debug_new(CGameClientShell);
 	_ASSERT(pShell);
@@ -973,6 +1017,8 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 		return LT_ERROR;
 	}
 
+	ConsoleMgr* conMgr = new ConsoleMgr();
+
 	// Initialize global console variables...
 
     g_vtFOVXNormal.Init(g_pLTClient, "FovX", NULL, 90.0f);
@@ -1393,6 +1439,10 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 	// Disclaimer so they don't complain about the addresses changing :)
 	SDL_Log("Make sure the game isn't loading from the .rez file, otherwise these will change everytime you load the game!");
 
+	DetourMgr* detourMgr = new DetourMgr();
+	detourMgr->Init();
+
+
 	return LT_OK;
 }
 
@@ -1738,6 +1788,9 @@ void CGameClientShell::Update()
 
 	if (m_InterfaceMgr.Update())
 	{
+		// Actually this is always on top
+		g_pConsoleMgr->Draw();
+
 		return;
 	}
 
@@ -1772,6 +1825,9 @@ void CGameClientShell::Update()
 	{
 		UpdatePlaying();
 	}
+
+	// 
+	g_pConsoleMgr->Draw();
 }
 
 
@@ -7088,7 +7144,6 @@ void CGameClientShell::RenderCamera(LTBOOL bDrawInterface)
 
     g_pLTClient->EndOptimized2D();
     g_pLTClient->End3D();
-
 }
 
 

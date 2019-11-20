@@ -8,9 +8,11 @@
 #include "InterfaceResMgr.h"
 #include "ClientButeMgr.h"
 #include "SDL.h"
+#include "ConsoleMgr.h"
 
 CInterfaceResMgr*   g_pInterfaceResMgr = LTNULL;
 extern SDL_Window* g_SDLWindow;
+extern ConsoleMgr* g_pConsoleMgr;
 
 namespace
 {
@@ -118,6 +120,8 @@ LTBOOL CInterfaceResMgr::Init(ILTClient* pClientDE, CGameClientShell* pClientShe
 	{
         return LTFALSE;
 	}
+
+	g_pConsoleMgr->Init();
 
 
 	HandleBorderlessWindowed();
@@ -670,6 +674,9 @@ void CInterfaceResMgr::ScreenDimsChanged()
 	m_dwScreenWidth = currentMode.m_Width;
 	m_dwScreenHeight = currentMode.m_Height;
 
+
+	// Re-init the console
+	g_pConsoleMgr->Init();
 }
 
 

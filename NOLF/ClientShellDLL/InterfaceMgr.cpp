@@ -27,6 +27,9 @@
 #include "FolderPerformance.h"
 #include "SDL.h"
 #include <time.h>
+#include "ConsoleMgr.h"
+
+extern ConsoleMgr* g_pConsoleMgr;
 
 // TESTING DYNAMIC LIGHT IN INTERFACE
 /*
@@ -2550,6 +2553,11 @@ LTBOOL CInterfaceMgr::OnKeyDown(int key, int rep)
 {
 	if (FadingToExit()) return LTTRUE;
 
+	if (g_pConsoleMgr->HandleKeyDown(key, rep))
+	{
+		return LTTRUE;
+	}
+
 	if (m_MessageBox.IsVisible())
 		return m_MessageBox.HandleKeyDown(key,rep);
 
@@ -2652,7 +2660,6 @@ LTBOOL CInterfaceMgr::OnKeyDown(int key, int rep)
 
 		default : break;
 	}
-
 
 	// Are We Broadcasting a Message
 
@@ -2773,6 +2780,12 @@ LTBOOL CInterfaceMgr::OnKeyUp(int key)
 void CInterfaceMgr::OnChar(char c)
 {
 	if (c < ' ') return;
+
+	if (g_pConsoleMgr->IsVisible()) {
+		g_pConsoleMgr->HandleChar(c);
+		return;
+	}
+
 	if (m_messageMgr.GetEditingState())
 	{
 		m_messageMgr.HandleChar(c);
