@@ -250,7 +250,8 @@ void ConsoleMgr::Draw()
 
 	HSURFACE hBlank;
 
-	int iConsoleBackdrop = GetConsoleFloat("console_backdrop", 0.0f);
+	// This seems to work, so we won't use GetConfigFloat
+	int iConsoleBackdrop = GetConsoleFloat("ConsoleBackdrop", 0.0f);
 	
 	switch (iConsoleBackdrop) {
 	case 1: 

@@ -24,6 +24,14 @@ It's important that you don't run this mod with any other mods that may have mod
 
  - Fixed a bug with defusing bombs and activating some switches
 
+-- Patch 2
+
+ - Added 'NoRawInput' to disable mouse raw input
+ - Fixed missing continue button on mission summary screen
+ - Improved loading screen time (...that I broke, oops!)
+ - Fixed some invisible impassible geometry.
+ - Added a developer console, can be toggled on/off with tilde. ('~')
+
 --  Additional Config Commands
 
 We've added new autoexec.cfg commands! 
@@ -38,6 +46,7 @@ Some of these will show up in your autoexec.cfg as you set them, but if it's mis
 "QuickSwitch"			    - Instantly switch between weapons, if the value is 1. (Default is 0)
 "UIScale"			        - Scales the in-game HUD. (Default is 0.5)
 "UseGotyMenu"			    - Switch between the original main menu and the GOTY version. (Default is based on your version)
+"ConsoleBackdrop"           - Swap between 3 different console backdrops: (0) demo, (1) blanktag, and (2) black. (Default is 0)
 
 Most of these commands are also available in their respective options menu.
 
