@@ -333,17 +333,6 @@ void ConsoleMgr::Show(bool bShow)
 		return;
 	}
 
-	// Not working right now
-	if (bShow) {
-		m_iOldGameState = g_pInterfaceMgr->GetGameState();
-		g_pInterfaceMgr->ChangeState(GS_POPUP);
-	}
-	else {
-		g_pInterfaceMgr->ChangeState((GameState)m_iOldGameState);
-		m_iOldGameState = -1;
-	}
-
-
 	// Pause the game
 	g_pGameClientShell->PauseGame(bShow, LTTRUE);
 
