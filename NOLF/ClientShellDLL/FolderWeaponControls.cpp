@@ -241,7 +241,7 @@ void CFolderWeaponControls::OnFocus(LTBOOL bFocus)
 LTBOOL	CFolderWeaponControls::OnLeft()
 {
 	CLTGUICtrl *pCtrl = GetSelectedControl();
-	if (pCtrl && pCtrl->GetParam1())
+	if (pCtrl && pCtrl->GetParam1() && pCtrl->GetParam1() != SCALABLE_BITMAP_ID)
 	{
 		CLTGUIColumnTextCtrl *pColumn=(CLTGUIColumnTextCtrl *)pCtrl;
 		int nAct = pCtrl->GetParam1()-1;
@@ -261,7 +261,7 @@ LTBOOL	CFolderWeaponControls::OnLeft()
 LTBOOL	CFolderWeaponControls::OnRight()
 {
 	CLTGUICtrl *pCtrl = GetSelectedControl();
-	if (pCtrl && pCtrl->GetParam1())
+	if (pCtrl && pCtrl->GetParam1() && pCtrl->GetParam1() != SCALABLE_BITMAP_ID)
 	{
 		CLTGUIColumnTextCtrl *pColumn=(CLTGUIColumnTextCtrl *)pCtrl;
 		int nAct = pCtrl->GetParam1()-1;
@@ -285,7 +285,7 @@ LTBOOL	CFolderWeaponControls::OnLButtonUp(int x, int y)
 	if (GetControlUnderPoint(x, y, &nControlIndex))
 	{
 		CLTGUICtrl* pCtrl = GetControl(nControlIndex);
-		if (pCtrl && pCtrl->GetParam1())
+		if (pCtrl && pCtrl->GetParam1() && pCtrl->GetParam1() != SCALABLE_BITMAP_ID)
 		{
 			CLTGUIColumnTextCtrl *pColumn=(CLTGUIColumnTextCtrl *)pCtrl;
 			int nAct = pCtrl->GetParam1()-1;
@@ -312,7 +312,7 @@ LTBOOL	CFolderWeaponControls::OnRButtonUp(int x, int y)
 	if (GetControlUnderPoint(x, y, &nControlIndex))
 	{
 		CLTGUICtrl* pCtrl = GetControl(nControlIndex);
-		if (pCtrl && pCtrl->GetParam1())
+		if (pCtrl && pCtrl->GetParam1() && pCtrl->GetParam1() != SCALABLE_BITMAP_ID)
 		{
 			CLTGUIColumnTextCtrl *pColumn=(CLTGUIColumnTextCtrl *)pCtrl;
 			int nAct = pCtrl->GetParam1()-1;
