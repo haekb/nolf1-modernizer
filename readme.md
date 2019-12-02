@@ -22,7 +22,8 @@ The goal of NOLF Modernizer is to help fix some long standing bugs, and update s
 - Fixed missing continue button on mission summary screen
 - Improved loading screen time (...that I broke, oops!)
 - Fixed some invisible impassible geometry.
-- Added a developer console, can be toggled on/off with tilde. (`~`)
+- Added a experimental developer console, can be toggled on/off with tilde. (`~`)
+- Fixed a crash in the weapons hotkey screen.
 
 ## Additional Config Commands
 

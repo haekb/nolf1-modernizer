@@ -30,7 +30,8 @@ It's important that you don't run this mod with any other mods that may have mod
  - Fixed missing continue button on mission summary screen
  - Improved loading screen time (...that I broke, oops!)
  - Fixed some invisible impassible geometry.
- - Added a developer console, can be toggled on/off with tilde. ('~')
+ - Added a experimental developer console, can be toggled on/off with tilde. (`~`)
+ - Fixed a crash in the weapons hotkey screen.
 
 --  Additional Config Commands
 
@@ -57,6 +58,15 @@ To run in windowed mode, add +windowed 1 to the "Command-Line" textbox in "Advan
 
 Unfortuantely we can't fix everything! Here's a list of known bugs.
 
+Bug: The game crashes with "NOLF Error: Couldn't set D3D Emulation mode."
+In advanced options of the launcher try checking "Restore Default Options". Also make sure the Display selected is your primary monitor. 
+
+Bug: The game crashes immediately with no error!
+Lithtech seems to dislike certain usb devices (like VR headsets or certain logitech devices..) Please try unplugging them before you launch the game.
+
+Bug: Some enemies disappear during combat!
+I've encountered it, but can't accurately reproduce the issue. If you have a save file where it consistently happens, please drop that file in the comments section! (https://haekb.itch.io/nolf-modernizer)
+
 Bug: Some geometry may cause the player to be pushed or be hard to traverse
 There seems to be an issue with the underlying physics engine. We've corrected most of the game breaking issues, but if you find any terrain or doorways that impossible to enter please let us know!
 
@@ -73,4 +83,5 @@ Bug: The game's window stretches beyond my screen
 You'll have to either set display scaling to 100%, or run the game at a lower resolution.
 
 Bug: The game runs slow, and all the text has black boxes around them
-If you're running a laptop with a hybrid integrated/dedicated graphics card setup, make sure you force the game to use the dedicated graphics card! Intel integrated graphics seems to have issues running older games.
+If you're running a laptop with a hybrid integrated/dedicated graphics card setup, make sure you force the game to use the dedicated graphics card! Intel integrated graphics seems to have issues running older games. 
+If you're running on a desktop, try checking "Restore Default Options" in the advanced section of the launcher. You may to do this twice...
