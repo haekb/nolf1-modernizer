@@ -215,9 +215,11 @@
       <FloatingPointExceptions>true</FloatingPointExceptions>
     </ClCompile>
     <PostBuildEvent>
-      <Command>copy debug\object.lto $(NOLF_BUILD_DIR)
+      <Command>copy debug\object.lto ..\
+
 
 cd ..\
+
 call "D:\GameDev\no-one-lives-forever-master\NOLF\_after_build_debug.bat"</Command>
     </PostBuildEvent>
     <Midl>

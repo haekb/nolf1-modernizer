@@ -66,8 +66,10 @@
       <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
     </ClCompile>
     <PostBuildEvent>
-      <Command>copy debug\cres.dll $(NOLF_BUILD_DIR)
+      <Command>copy debug\cres.dll ..\
+
 cd ..\
+
 
 call "D:\GameDev\no-one-lives-forever-master\NOLF\_after_build_debug.bat"</Command>
     </PostBuildEvent>
