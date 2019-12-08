@@ -138,7 +138,6 @@ LTBOOL CFolderDisplay::Build()
 
 	CalculateLastDrawn();
 
-
  	// Make sure to call the base class
 	if (!CBaseFolder::Build()) return LTFALSE;
 

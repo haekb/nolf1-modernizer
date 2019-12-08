@@ -217,7 +217,7 @@
       <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <PostBuildEvent>
-      <Command>copy debug\cshell.dll ..\
+      <Command>copy debug\cshell.dll .\cshell.dll
 cd ..\
 
 

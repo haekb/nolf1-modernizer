@@ -66,8 +66,7 @@
       <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
     </ClCompile>
     <PostBuildEvent>
-      <Command>copy debug\cres.dll ..\
-
+      <Command>copy debug\cres.dll .\cres.dll
 cd ..\
 
 
