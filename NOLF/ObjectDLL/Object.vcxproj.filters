@@ -551,9 +551,6 @@
     <ClCompile Include="ZipHook.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Shared\WinUtil.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Alarm.h">
@@ -1287,9 +1284,6 @@
     </ClInclude>
     <ClInclude Include="..\..\lt2\sdk\inc\serverheaders.h">
       <Filter>SDK</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Shared\WinUtil.h">
-      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
