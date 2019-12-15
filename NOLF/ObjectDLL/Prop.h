@@ -46,6 +46,7 @@ class Prop : public GameBase
 		HSTRING						m_hstrTouchSound;
         LTFLOAT                     m_fTouchSoundRadius;
         HLTSOUND                    m_hTouchSnd;
+        LTFLOAT                     m_fTouchSndStart;
 
 		char*						m_pDebrisOverride;
 

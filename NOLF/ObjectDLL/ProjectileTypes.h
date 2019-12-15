@@ -58,6 +58,7 @@ class CGrenade : public CProjectile
 		// Don't need to save this...
 
         HLTSOUND    m_hBounceSnd;   // Handle to current bounce sound
+		LTFLOAT		m_fBounceSndStart;
 };
 
 

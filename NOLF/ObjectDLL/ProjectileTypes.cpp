@@ -91,6 +91,7 @@ CGrenade::CGrenade() : CProjectile()
     m_hBounceSnd = LTNULL;
 	m_eContainerCode = CC_NO_CONTAINER;
 	m_eLastHitSurface = ST_UNKNOWN;
+	m_fBounceSndStart = 0.0f;
 
 	m_bRotatedToRest = LTFALSE;
 
@@ -114,6 +115,7 @@ CGrenade::~CGrenade()
 	{
         g_pLTServer->KillSound(m_hBounceSnd);
         m_hBounceSnd = LTNULL;
+		m_fBounceSndStart = 0.0f;
 	}
 }
 // ----------------------------------------------------------------------- //
@@ -201,6 +203,7 @@ void CGrenade::HandleImpact(HOBJECT hObj)
 			{
                 g_pLTServer->KillSound(m_hBounceSnd);
                 m_hBounceSnd = LTNULL;
+				m_fBounceSndStart = 0.0f;
 			}
 
             uint32 dwFlags = PLAYSOUND_GETHANDLE | PLAYSOUND_TIME;
@@ -212,6 +215,7 @@ void CGrenade::HandleImpact(HOBJECT hObj)
 
 			m_hBounceSnd = g_pServerSoundMgr->PlaySoundFromPos(vPos, (char*)GetBounceSound(pSurf),
 				pSurf->fGrenadeSndRadius, SOUNDPRIORITY_MISC_MEDIUM, dwFlags, nVolume);
+			m_fBounceSndStart = _GetTime();
 		}
 
 		fDampenPercent = (1.0f - pSurf->fHardness);
@@ -330,10 +334,15 @@ void CGrenade::UpdateGrenade()
 	if (m_hBounceSnd)
 	{
         LTBOOL bIsDone;
-        if (g_pLTServer->IsSoundDone(m_hBounceSnd, &bIsDone) != LT_OK || bIsDone)
+		LTFLOAT fDuration = 0.0f;
+		g_pLTServer->GetSoundDuration(m_hBounceSnd, &fDuration);
+
+		if (_GetTime() - m_fBounceSndStart > fDuration)
+        //if (g_pLTServer->IsSoundDone(m_hBounceSnd, &bIsDone) != LT_OK || bIsDone)
 		{
             g_pLTServer->KillSound(m_hBounceSnd);
             m_hBounceSnd = LTNULL;
+			m_fBounceSndStart = 0.0f;
 		}
 	}
 }
