@@ -1654,7 +1654,6 @@ LTFLOAT CGameServerShell::GetFrameTime()
 #else
 	LTFLOAT ret = m_fCurrentFrameTime;
 #endif
-	g_pLTServer->CPrint("FrameTime: %f", ret);
 	return ret;
 }
 
@@ -2290,7 +2289,7 @@ void CGameServerShell::UpdateClientPingTimes()
     uint32 clientID;
 	HCLIENT hClient;
 
-    m_ClientPingSendCounter += g_pLTServer->GetFrameTime();
+    m_ClientPingSendCounter += g_pGameServerShell->GetFrameTime();
 	if(m_ClientPingSendCounter > CLIENT_PING_UPDATE_RATE)
 	{
         hWrite = g_pLTServer->StartMessage(LTNULL, MID_PINGTIMES);

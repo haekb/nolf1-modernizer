@@ -34,7 +34,6 @@
 
 inline LTFLOAT _GetTime()
 {
-
 	return (LTFLOAT)SDL_GetTicks() * 0.001f;
 }
 

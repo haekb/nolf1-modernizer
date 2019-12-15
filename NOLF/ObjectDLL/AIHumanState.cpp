@@ -974,7 +974,7 @@ void CAIHumanStateStunned::Update()
 		return;
 	}
 
-	m_fYellTimer -= g_pLTServer->GetFrameTime();
+	m_fYellTimer -= g_pGameServerShell->GetFrameTime();
 
 	if ( m_fYellTimer <= 0.0f )
 	{
@@ -1102,7 +1102,7 @@ void CAIHumanStatePatrol::Update()
 	}
 	else
 	{
-        m_fTalkTimer -= g_pLTServer->GetFrameTime();
+        m_fTalkTimer -= g_pGameServerShell->GetFrameTime();
 	}
 
 	LTBOOL bGotoNextNode = LTFALSE;
@@ -1237,7 +1237,7 @@ LTBOOL CAIHumanStatePatrol::UpdateTaskWait()
 	{
 		// We're waiting at our patrol point
 
-        m_fWaitTimer -= g_pLTServer->GetFrameTime();
+        m_fWaitTimer -= g_pGameServerShell->GetFrameTime();
 	}
 	else
 	{
@@ -3984,7 +3984,7 @@ void CAIHumanStateChase::Update()
 
 	if ( pTarget->IsVisibleCompletely() && (eRangeStatus != eRangeStatusTooFar) )
 	{
-        m_fVisibleTimer += g_pLTServer->GetFrameTime();
+        m_fVisibleTimer += g_pGameServerShell->GetFrameTime();
 
 		if ( m_fVisibleTimer > GetAI()->GetBrain()->GetChaseExtraTime() || (eRangeStatus == eRangeStatusTooClose) )
 		{
@@ -4509,7 +4509,7 @@ void CAIHumanStateAttack::Update()
 	{
 		// Can't see our target anymore and we're not waiting for one
 
-        m_fChaseTimer -= g_pLTServer->GetFrameTime();
+        m_fChaseTimer -= g_pGameServerShell->GetFrameTime();
 
 		if ( CanChase(LTFALSE) )
 		{
@@ -5914,7 +5914,7 @@ void CAIHumanStateAttackFromVantage::UpdateAttacking()
 		}
 	}
 
-    m_fAttackTimer -= g_pLTServer->GetFrameTime();
+    m_fAttackTimer -= g_pGameServerShell->GetFrameTime();
 	GetAI()->FaceTarget();
 
 	if ( m_pStrategyShoot->IsReloading() )
@@ -6225,7 +6225,7 @@ void CAIHumanStateAttackFromView::UpdateAttacking()
 	}
 	else
 	{
-        m_fChaseTimer += g_pLTServer->GetFrameTime();
+        m_fChaseTimer += g_pGameServerShell->GetFrameTime();
 		if ( m_fChaseTimer > GetAI()->GetBrain()->GetAttackFromViewChaseTime() )
 		{
 			GetAI()->ChangeState("CHASE");
@@ -6856,12 +6856,12 @@ void CAIHumanStateDistress::Update()
 	if ( bDistress )
 	{
 		LTFLOAT fIncreaseRate = GetAI()->GetBrain()->GetDistressIncreaseRate();
-        m_fDistress += g_pLTServer->GetFrameTime()*fIncreaseRate;
+        m_fDistress += g_pGameServerShell->GetFrameTime()*fIncreaseRate;
 	}
 	else
 	{
 		LTFLOAT fDecreaseRate = GetAI()->GetBrain()->GetDistressDecreaseRate();
-        m_fDistress = Max<LTFLOAT>(-3.0f, m_fDistress-g_pLTServer->GetFrameTime()*fDecreaseRate);
+        m_fDistress = Max<LTFLOAT>(-3.0f, m_fDistress-g_pGameServerShell->GetFrameTime()*fDecreaseRate);
 	}
 
 	// See if we need to go to the next level
@@ -7960,7 +7960,7 @@ void CAIHumanStateFollow::Update()
 		m_pStrategyFollowPath->Update();
 	}
 
-    m_fTimer += g_pLTServer->GetFrameTime();
+    m_fTimer += g_pGameServerShell->GetFrameTime();
 
 	if ( m_pStrategyFollowPath->IsDone() || m_fTimer > 1.0f )
 	{
@@ -8870,7 +8870,7 @@ void CAIHumanStateScotBox::Update()
 
 	if ( m_eState != eStateDefeat )
 	{
-	//	m_fAnger = Max<LTFLOAT>(m_fAnger - s_fAngerDecayRate*g_pLTServer->GetFrameTime(), 0.0f);
+	//	m_fAnger = Max<LTFLOAT>(m_fAnger - s_fAngerDecayRate*g_pGameServerShell->GetFrameTime(), 0.0f);
 	//  g_pLTServer->CPrint("Anger = %f", m_fAnger);
 
 		if ( !GetAI()->GetWeapon(0) || !GetAI()->GetWeapon(1) || !GetAI()->GetWeapon(2) )
@@ -9029,7 +9029,7 @@ void CAIHumanStateScotBox::UpdateBoxing()
 	}
 	else
 	{
-		m_fBoxTimer -= g_pLTServer->GetFrameTime();
+		m_fBoxTimer -= g_pGameServerShell->GetFrameTime();
 		if ( m_fBoxTimer < 0.0f )
 		{
 			m_fBoxTimer = s_fBoxTime;
@@ -9117,7 +9117,7 @@ void CAIHumanStateScotBox::UpdateClosing()
 			m_pStrategyFollowPath->Update();
 		}
 
-		m_fClosingTimer += g_pLTServer->GetFrameTime();
+		m_fClosingTimer += g_pGameServerShell->GetFrameTime();
 
 		if ( m_pStrategyFollowPath->IsDone() || m_fClosingTimer > 1.0f )
 		{
@@ -9598,7 +9598,7 @@ void CAIHumanStateIngeSing::UpdateSinging()
 {
 	if ( m_bSinging )
 	{
-		m_fSingingTimer += g_pLTServer->GetFrameTime();
+		m_fSingingTimer += g_pGameServerShell->GetFrameTime();
 		if ( !GetAI()->IsPlayingDialogSound() )
 		{
 			CPlayerObj* pPlayer = g_pCharacterMgr->FindPlayer();
@@ -9761,7 +9761,7 @@ void CAIHumanStateIngeSing::UpdateClosing()
 			m_pStrategyFollowPath->Update();
 		}
 
-		m_fClosingTimer += g_pLTServer->GetFrameTime();
+		m_fClosingTimer += g_pGameServerShell->GetFrameTime();
 
 		if ( m_pStrategyFollowPath->IsDone() || m_fClosingTimer > 1.0f )
 		{
@@ -9793,7 +9793,7 @@ void CAIHumanStateIngeSing::UpdateHenchmen()
 
 	if ( m_cActiveHenchmen < s_nMaxActiveHenchmen )
 	{
-		fSpawnTimer += g_pLTServer->GetFrameTime();
+		fSpawnTimer += g_pGameServerShell->GetFrameTime();
 
 		if ( fSpawnTimer > fSpawnTime )
 		{

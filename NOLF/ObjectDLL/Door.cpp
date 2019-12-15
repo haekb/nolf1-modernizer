@@ -1419,7 +1419,7 @@ void Door::CalculateNewPos(LTVector & vNewPos, LTVector vFinalPos, LTFLOAT fSpee
     LTFLOAT fPercent    = 1 - distTo / m_fMoveDist;
     LTFLOAT fFrameSpeed = GetDoorWaveValue(fSpeed, fPercent, m_dwWaveform);
 
-    LTFLOAT moveDist = fFrameSpeed * g_pLTServer->GetFrameTime();
+	LTFLOAT moveDist = fFrameSpeed * g_pGameServerShell->GetFrameTime();//g_pGameServerShell->GetFrameTime();
 
 	if(pPercent)
 	{

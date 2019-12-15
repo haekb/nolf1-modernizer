@@ -856,7 +856,7 @@ void RotatingWorldModel::SetLightAnimRemoved()
 void RotatingWorldModel::UpdateSpinUp()
 {
     LTBOOL bXDone = LTFALSE, bYDone = LTFALSE, bZDone = LTFALSE;
-    LTFLOAT fDeltaTime = g_pLTServer->GetFrameTime();
+    LTFLOAT fDeltaTime = g_pGameServerShell->GetFrameTime();
 
 	// Calculate current velocity...
 
@@ -915,7 +915,7 @@ void RotatingWorldModel::UpdateSpinUp()
 void RotatingWorldModel::UpdateSpinDown()
 {
     LTBOOL bXDone = LTFALSE, bYDone = LTFALSE, bZDone = LTFALSE;
-    LTFLOAT fDeltaTime = g_pLTServer->GetFrameTime();
+    LTFLOAT fDeltaTime = g_pGameServerShell->GetFrameTime();
 
 	// Calculate current velocity...
 

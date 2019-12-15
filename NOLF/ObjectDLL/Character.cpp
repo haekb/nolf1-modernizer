@@ -1797,7 +1797,7 @@ void CCharacter::UpdateFootprints()
 		CharFootprintInfo* pFootprint = *ppFootprint;
 		ppFootprint = m_listFootprints.GetItem(TLIT_NEXT);
 
-		pFootprint->fDuration -= g_pLTServer->GetFrameTime();
+		pFootprint->fDuration -= g_pGameServerShell->GetFrameTime();
 		if ( pFootprint->fDuration < 0.0f )
 		{
 			m_listFootprints.Remove(pFootprint);
@@ -1827,6 +1827,7 @@ void CCharacter::UpdateSounds()
 		//if (g_pLTServer->IsSoundDone(m_hCurDlgSnd, &bIsDone) != LT_OK || bIsDone)
 		{
 			KillDlgSnd();
+			m_fCurDlgStartTime = 0.0f;
 		}
 	}
 	else

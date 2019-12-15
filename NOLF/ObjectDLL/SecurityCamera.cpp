@@ -717,7 +717,7 @@ LTRotation SecurityCamera::GetScanRotation()
 
 void SecurityCamera::UpdateRotation()
 {
-    LTFLOAT fTimeDelta = g_pLTServer->GetFrameTime();
+    LTFLOAT fTimeDelta = g_pGameServerShell->GetFrameTime();
 
 	if ( m_eState == eStateDetected ||
 		m_eState == eStateDestroyed ||
@@ -728,7 +728,7 @@ void SecurityCamera::UpdateRotation()
 
 	if ( m_eState == eStateTurningTo1 || m_eState == eStateTurningTo2 )
 	{
-        LTFLOAT fYaw = g_pLTServer->GetFrameTime()*m_fYawSpeed;
+        LTFLOAT fYaw = g_pGameServerShell->GetFrameTime()*m_fYawSpeed;
 
 		if ( m_eState == eStateTurningTo1 )
 		{

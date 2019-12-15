@@ -564,7 +564,7 @@ void CProjectile::HandleTouch(HOBJECT hObj)
 
 				g_pLTServer->GetObjectPos(m_hObject, &m_vInvisNewPos);
 				g_pLTServer->GetVelocity(m_hObject, &m_vInvisVel);
-				m_vInvisNewPos += (m_vInvisVel * g_pLTServer->GetFrameTime());
+				m_vInvisNewPos += (m_vInvisVel * g_pGameServerShell->GetFrameTime());
 
 				// Make sure this new position is inside the world...else
 				// just blow up...
@@ -653,7 +653,7 @@ void CProjectile::Detonate(HOBJECT hObj)
 			vDir.Norm();
 
 			vP1 = vPos;
-            vVel *= g_pLTServer->GetFrameTime();
+            vVel *= g_pGameServerShell->GetFrameTime();
 			vP0 = vP1 - vVel;
 			vP1 += vVel;
 

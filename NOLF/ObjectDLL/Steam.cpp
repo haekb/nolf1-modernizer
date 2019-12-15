@@ -223,7 +223,7 @@ void Steam::Update()
 	if (m_fDamage > 0.0f)
 	{
 		// Do damage...
-        DoDamage(m_fDamage * g_pLTServer->GetFrameTime());
+        DoDamage(m_fDamage * g_pGameServerShell->GetFrameTime());
 	}
 
 	// See if we are timed...

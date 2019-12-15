@@ -477,7 +477,7 @@ LTBOOL CAIHumanStrategyFollowPath::UpdateOpenDoors(CAIPathWaypoint* pWaypoint)
 	}
 	else
 	{
-		m_fStuckOnDoorTimer = Max<LTFLOAT>(m_fStuckOnDoorTimer-g_pLTServer->GetFrameTime(), -1.0f);
+		m_fStuckOnDoorTimer = Max<LTFLOAT>(m_fStuckOnDoorTimer-g_pGameServerShell->GetFrameTime(), -1.0f);
 	}
 
 	if ( m_fStuckOnDoorTimer > 0.0f )
@@ -1432,7 +1432,7 @@ void CAIHumanStrategyCover::Update()
 {
 	CAIHumanStrategy::Update();
 
-    LTFLOAT fTimeDelta = g_pLTServer->GetFrameTime();
+    LTFLOAT fTimeDelta = g_pGameServerShell->GetFrameTime();
 
 	switch ( m_eState )
 	{
@@ -3172,7 +3172,7 @@ void CAIHumanStrategyShootBurst::UpdateAiming(HOBJECT hTarget)
 	{
 		// We are still waiting to fire.
 
-        m_fBurstInterval -= g_pLTServer->GetFrameTime();
+        m_fBurstInterval -= g_pGameServerShell->GetFrameTime();
 
 		// So just aim.
 

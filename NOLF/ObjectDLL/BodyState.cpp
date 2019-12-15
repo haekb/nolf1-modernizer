@@ -249,7 +249,7 @@ void CBodyStateStairs::Update()
 		if ( pVolume && pVolume->Inside2dLoose(vPos, 36.0f) )
 		{
 			const static LTFLOAT fStairsFallStopSpeed = g_pServerButeMgr->GetBodyStairsFallStopSpeed();
-			LTVector vNewPos = vPos + pLastVolume->GetStairsDir()*g_pLTServer->GetFrameTime()*fStairsFallStopSpeed;
+			LTVector vNewPos = vPos + pLastVolume->GetStairsDir()*g_pGameServerShell->GetFrameTime()*fStairsFallStopSpeed;
 			g_pLTServer->MoveObject(m_pBody->m_hObject, &vNewPos);
 		}
 	}
@@ -264,7 +264,7 @@ void CBodyStateStairs::Update()
 		if ( m_bFell )
 		{
 			const static LTFLOAT fStairsFallSpeed = g_pServerButeMgr->GetBodyStairsFallSpeed();
-            LTVector vNewPos = vPos + pVolume->GetStairsDir()*g_pLTServer->GetFrameTime()*fStairsFallSpeed;
+            LTVector vNewPos = vPos + pVolume->GetStairsDir()*g_pGameServerShell->GetFrameTime()*fStairsFallSpeed;
 
 			IntersectQuery IQuery;
 			IntersectInfo IInfo;
@@ -606,7 +606,7 @@ void CBodyStateUnderwater::Update()
 
         LTVector vPos;
         g_pLTServer->GetObjectPos(m_pBody->m_hObject, &vPos);
-        vPos += LTVector(0,-36.0f,0)*g_pLTServer->GetFrameTime();
+        vPos += LTVector(0,-36.0f,0)*g_pGameServerShell->GetFrameTime();
         g_pLTServer->MoveObject(m_pBody->m_hObject, &vPos);
 
 		if ( m_bStop )

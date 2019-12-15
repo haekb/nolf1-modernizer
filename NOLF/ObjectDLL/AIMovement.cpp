@@ -58,7 +58,7 @@ LTBOOL CAIMovementHuman::Init(CAIHuman *pAIHuman)
 
 LTBOOL CAIMovementHuman::Update()
 {
-    LTFLOAT fTimeDelta = g_pLTServer->GetFrameTime();
+    LTFLOAT fTimeDelta = g_pGameServerShell->GetFrameTime();
 
 	switch ( m_eState )
 	{
@@ -257,7 +257,7 @@ LTBOOL CAIMovementDog::Init(AI_Dog *pAIDog)
 
 LTBOOL CAIMovementDog::Update()
 {
-    LTFLOAT fTimeDelta = g_pLTServer->GetFrameTime();
+    LTFLOAT fTimeDelta = g_pGameServerShell->GetFrameTime();
 
 	switch ( m_eState )
 	{
@@ -442,7 +442,7 @@ LTBOOL CAIMovementPoodle::Init(AI_Poodle *pAIPoodle)
 
 LTBOOL CAIMovementPoodle::Update()
 {
-    LTFLOAT fTimeDelta = g_pLTServer->GetFrameTime();
+    LTFLOAT fTimeDelta = g_pGameServerShell->GetFrameTime();
 
 	switch ( m_eState )
 	{
@@ -594,7 +594,7 @@ LTBOOL CAIMovementShark::Init(AI_Shark *pAIShark)
 
 LTBOOL CAIMovementShark::Update()
 {
-    LTFLOAT fTimeDelta = g_pLTServer->GetFrameTime();
+    LTFLOAT fTimeDelta = g_pGameServerShell->GetFrameTime();
 
 	switch ( m_eState )
 	{
@@ -782,7 +782,7 @@ LTBOOL CAIMovementHelicopter::Init(AI_Helicopter *pAIHelicopter)
 
 LTBOOL CAIMovementHelicopter::Update()
 {
-    LTFLOAT fTimeDelta = g_pLTServer->GetFrameTime();
+    LTFLOAT fTimeDelta = g_pGameServerShell->GetFrameTime();
 
 	switch ( m_eState )
 	{

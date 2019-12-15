@@ -149,7 +149,7 @@ void CAISenseMgr::Update()
 		if ( m_bStopUpdating ) return;
 	}}
 
-//	m_fUpdateRate = 2.0f * (1.0f - Min<LTFLOAT>(1.0f, 0.03333333333333f/g_pLTServer->GetFrameTime()));
+//	m_fUpdateRate = 2.0f * (1.0f - Min<LTFLOAT>(1.0f, 0.03333333333333f/g_pGameServerShell->GetFrameTime()));
 
 //	g_pLTServer->CPrint("dynamically updating sense rate from %f to %f", m_pAI->GetSenseUpdateRate(), m_fUpdateRate);
 }

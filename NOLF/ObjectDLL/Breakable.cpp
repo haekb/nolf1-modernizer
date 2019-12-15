@@ -539,7 +539,7 @@ LTBOOL Breakable::StopBreak()
 
 void Breakable::UpdateBreaking()
 {
-    LTFLOAT fDeltaTime = g_pLTServer->GetFrameTime();
+    LTFLOAT fDeltaTime = g_pGameServerShell->GetFrameTime();
     LTFLOAT fDelta = 0.0f;
 
 	if (m_vAdjust.x)
@@ -612,7 +612,7 @@ void Breakable::UpdateFalling()
     g_pLTServer->GetObjectPos(m_hObject, &vOldPos);
 
     LTVector vPos = vOldPos;
-    vPos += (m_vVel * g_pLTServer->GetFrameTime());
+    vPos += (m_vVel * g_pGameServerShell->GetFrameTime());
 
     LTBOOL bDone = LTFALSE;
 

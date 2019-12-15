@@ -600,7 +600,7 @@ CScanner::DetectState SearchLight::UpdateDetect()
 
 void SearchLight::UpdateRotation()
 {
-    LTFLOAT fTimeDelta = g_pLTServer->GetFrameTime();
+    LTFLOAT fTimeDelta = g_pGameServerShell->GetFrameTime();
 
 	// Follow our target object or our follow object if applicable...
 
@@ -642,7 +642,7 @@ void SearchLight::UpdateRotation()
 
 	if (m_eState == eStateTurningTo1 || m_eState == eStateTurningTo2)
 	{
-        LTFLOAT fYaw = g_pLTServer->GetFrameTime()*m_fYawSpeed;
+        LTFLOAT fYaw = g_pGameServerShell->GetFrameTime()*m_fYawSpeed;
 
 		if (m_eState == eStateTurningTo1)
 		{

@@ -497,7 +497,7 @@ LTBOOL RotatingDoor::CalcAngle(LTFLOAT & fAngle, LTFLOAT fInitial, LTFLOAT fTarg
     LTBOOL bRet = LTFALSE; // Are we at the target angle?
 
     LTFLOAT fPercent = 1.0f - (fTarget - fAngle) / (fTarget - fInitial);
-    LTFLOAT fAmount  = GetDoorWaveValue(fSpeed, fPercent, m_dwWaveform) * g_pLTServer->GetFrameTime();
+    LTFLOAT fAmount  = GetDoorWaveValue(fSpeed, fPercent, m_dwWaveform) * g_pGameServerShell->GetFrameTime();
 
 	// Calculate percentage moved so far...
 

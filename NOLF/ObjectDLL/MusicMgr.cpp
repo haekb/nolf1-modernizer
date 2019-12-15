@@ -255,7 +255,7 @@ void CMusicMgr::Update()
 			}
 		}
 
-		m_afMoods[iMood] = Max<LTFLOAT>(m_afMoods[iMood] - g_pLTServer->GetFrameTime(), 0.0f);
+		m_afMoods[iMood] = Max<LTFLOAT>(m_afMoods[iMood] - g_pGameServerShell->GetFrameTime(), 0.0f);
 
 //		g_pLTServer->CPrint("%s Mood = %f", s_aszMoods[iMood], m_afMoods[iMood]);
 	}
@@ -265,7 +265,7 @@ void CMusicMgr::Update()
 
 void CMusicMgr::DoMood(Mood eMood)
 {
-	m_afMoods[eMood] = Min<LTFLOAT>(m_afMoods[eMood] + g_pLTServer->GetFrameTime(), s_fMax);
+	m_afMoods[eMood] = Min<LTFLOAT>(m_afMoods[eMood] + g_pGameServerShell->GetFrameTime(), s_fMax);
 }
 
 // ----------------------------------------------------------------------- //
