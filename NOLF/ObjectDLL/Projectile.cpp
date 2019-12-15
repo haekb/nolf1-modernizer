@@ -426,7 +426,7 @@ void CProjectile::Update()
 
 	// If we didn't hit anything, blow up...
 
-    if (_GetTime() >= (m_fStartTime + m_fLifeTime))
+    if (g_pGameServerShell->GetTime() >= (m_fStartTime + m_fLifeTime))
 	{
         Detonate(LTNULL);
 	}
@@ -733,7 +733,7 @@ void CProjectile::Detonate(HOBJECT hObj)
 
 
     //g_pLTServer->CPrint("Server end pos (%.2f, %.2f, %.2f)", vPos.x, vPos.y, vPos.z);
-    //g_pLTServer->CPrint("Server fly time %.2f", _GetTime() - m_fStartTime);
+    //g_pLTServer->CPrint("Server fly time %.2f", g_pGameServerShell->GetTime() - m_fStartTime);
 
 	// Remove projectile from world...
 
@@ -828,7 +828,7 @@ void CProjectile::AddImpact(HOBJECT hObj, LTVector vFirePos, LTVector vImpactPos
 			info.vImpactPos = vImpactPos;
 			info.nWeaponId  = m_pWeaponData->nId;
 			info.nAmmoId	= m_pAmmoData->nId;
-            info.fTime      = _GetTime();
+            info.fTime      = g_pGameServerShell->GetTime();
 			info.bSilenced  = m_bSilenced;
 			info.eSurface	= eType;
 
@@ -1067,7 +1067,7 @@ void CProjectile::DoProjectile()
 
 	// Start your engines...
 
-    m_fStartTime = _GetTime();
+    m_fStartTime = g_pGameServerShell->GetTime();
 
 
 	// Make the flash position the same as the fire position...

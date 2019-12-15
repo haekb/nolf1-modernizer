@@ -638,7 +638,7 @@ void CCharacter::ProcessDamageMsg(HMESSAGEREAD hRead)
 	{
 		// Set our pain information
 
-		m_fLastPainTime = _GetTime();
+		m_fLastPainTime = g_pGameServerShell->GetTime();
 		m_fLastPainVolume = 1.0f;
 
 		// Play a damage sound...
@@ -1390,7 +1390,7 @@ void CCharacter::HandleModelString(ArgList* pArgList)
 			}
 		}
 
-		m_LastMoveInfo.fTime = _GetTime();
+		m_LastMoveInfo.fTime = g_pGameServerShell->GetTime();
 		m_LastMoveInfo.eSurfaceType = m_eStandingOnSurface;
 
 		// TODO! this is a bit sloppy
@@ -1418,7 +1418,7 @@ void CCharacter::HandleModelString(ArgList* pArgList)
 				g_pLTServer->GetObjectPos(m_hObject, &pFootprint->vPos);
 				pFootprint->fDuration = pSurf->fFootPrintLifetime;
 				pFootprint->eSurface = m_eStandingOnSurface;
-				pFootprint->fTimeStamp = _GetTime();
+				pFootprint->fTimeStamp = g_pGameServerShell->GetTime();
 
 				m_listFootprints.Add(pFootprint);
 			}
@@ -1823,7 +1823,7 @@ void CCharacter::UpdateSounds()
 		LTFLOAT fDuration = 0.0f;
 		g_pLTServer->GetSoundDuration(m_hCurDlgSnd, &fDuration);
 
-		if (_GetTime() - m_fCurDlgStartTime > fDuration)
+		if (g_pGameServerShell->GetTime() - m_fCurDlgStartTime > fDuration)
 		//if (g_pLTServer->IsSoundDone(m_hCurDlgSnd, &bIsDone) != LT_OK || bIsDone)
 		{
 			KillDlgSnd();
@@ -1960,7 +1960,7 @@ void CCharacter::PlayDialogSound(char* pSound, CharacterSoundType eType)
 	m_hCurDlgSnd = g_pServerSoundMgr->PlaySoundFromObject(m_hObject, pSound,
 		fRadius, m_eSoundPriority, dwFlags, nVolume);
 
-	m_fCurDlgStartTime = _GetTime();
+	m_fCurDlgStartTime = g_pGameServerShell->GetTime();
 
 	m_eCurDlgSndType = eType;
 

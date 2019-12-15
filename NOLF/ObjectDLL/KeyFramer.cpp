@@ -653,7 +653,7 @@ void KeyFramer::GoActive(LTBOOL bReset)
     SetNextUpdate(m_hObject, KF_UPDATE_DELTA);
 
 
-    m_fEarliestGoActiveTime = _GetTime() + KF_UPDATE_DELTA;
+    m_fEarliestGoActiveTime = g_pGameServerShell->GetTime() + KF_UPDATE_DELTA;
 
 
 	// Start active sound...
@@ -1606,7 +1606,7 @@ void KeyFramer::Update()
 
 	if (g_SynchronizeKeyframers.GetFloat() != 0.0f)
 	{
-        LTFLOAT fGetTime = _GetTime();
+        LTFLOAT fGetTime = g_pGameServerShell->GetTime();
 		if (fGetTime <= m_fEarliestGoActiveTime)
 		{
             g_pLTServer->CPrint("KeyframerSynch: To early to update!");

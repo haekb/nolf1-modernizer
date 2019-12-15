@@ -182,7 +182,7 @@ void Controller::Update()
 	if(m_State == CState_Fade)
 	{
 		// Find out if we're even interpolating.
-        curTime = _GetTime();
+        curTime = g_pGameServerShell->GetTime();
 		if(curTime > (m_fStartTime + m_fDuration))
 			return;
 
@@ -203,7 +203,7 @@ void Controller::Update()
 	}
 	else if(m_State == CState_Flicker)
 	{
-        if(_GetTime() > m_fNextFlickerTime)
+        if(g_pGameServerShell->GetTime() > m_fNextFlickerTime)
 		{
 			// Send the message.
 			for(i=0; i < MAX_CONTROLLER_TARGETS; i++)
@@ -223,7 +223,7 @@ void Controller::Update()
 			if(m_FlickerCounter == 0)
 				HandleOffCommand(LTNULL, LTNULL);
 
-            m_fNextFlickerTime = _GetTime() + GetRandom(m_fIntervalMin, m_fIntervalMax);
+            m_fNextFlickerTime = g_pGameServerShell->GetTime() + GetRandom(m_fIntervalMin, m_fIntervalMax);
 		}
 
         SetNextUpdate(0.001f);
@@ -399,7 +399,7 @@ void Controller::HandleFadeCommand(const char *szMsg, ConParse *pParse)
 	}
 
 	// Ok, configure...
-    m_fStartTime = _GetTime();
+    m_fStartTime = g_pGameServerShell->GetTime();
 	m_fDuration = duration;
 	m_ParamType = paramType;
 	m_WaveType = waveType;
@@ -443,7 +443,7 @@ void Controller::HandleFlickerCommand(const char *szMsg, ConParse *pParse)
         m_FlickerCounter = (uint32)atof(pParse->m_Args[4]);
 	}
 
-    m_fNextFlickerTime = _GetTime() + GetRandom(m_fIntervalMin, m_fIntervalMax);
+    m_fNextFlickerTime = g_pGameServerShell->GetTime() + GetRandom(m_fIntervalMin, m_fIntervalMax);
 	m_State = CState_Flicker;
     SetNextUpdate(0.001f);
 }

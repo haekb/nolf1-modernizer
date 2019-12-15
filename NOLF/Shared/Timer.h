@@ -26,9 +26,9 @@ public:
     void Start() { m_dt = 0; m_tp = 0; m_t1 = g_pLTClient->GetTime(); m_bOn = TRUE;}
 	void Pause() { m_tp = g_pLTClient->GetTime(); }
 #else
-    void Start(float dt) { m_dt = dt; m_t1 = _GetTime(); m_bOn = TRUE;}
-    void Start() { m_dt = 0; m_tp = 0; m_t1 = _GetTime(); m_bOn = TRUE;}
-	void Pause() { m_tp = _GetTime(); }
+    void Start(float dt) { m_dt = dt; m_t1 = g_pGameServerShell->GetTime(); m_bOn = TRUE;}
+    void Start() { m_dt = 0; m_tp = 0; m_t1 = g_pGameServerShell->GetTime(); m_bOn = TRUE;}
+	void Pause() { m_tp = g_pGameServerShell->GetTime(); }
 #endif
     void Stop() { m_dt = 0; m_tp = 0; m_bOn = FALSE;}
     BOOL Stopped();
@@ -66,7 +66,7 @@ inline BOOL CTimer::Stopped()
 #ifdef _CLIENTBUILD
 	return (g_pLTClient->GetTime() - m_t1 >= m_dt) ? TRUE : FALSE; 
 #else
-	return (_GetTime() - m_t1 >= m_dt) ? TRUE : FALSE; 
+	return (g_pGameServerShell->GetTime() - m_t1 >= m_dt) ? TRUE : FALSE; 
 #endif
 	}
 }
@@ -76,7 +76,7 @@ inline void CTimer::Resume()
 #ifdef _CLIENTBUILD
 	float dp = g_pLTClient->GetTime() - m_tp;
 #else
-	float dp = _GetTime() - m_tp;
+	float dp = g_pGameServerShell->GetTime() - m_tp;
 #endif
 	m_tp = 0;
 	m_t1 += dp;
@@ -93,7 +93,7 @@ inline float CTimer::GetElapseTime()
 #ifdef _CLIENTBUILD
 		return g_pLTClient->GetTime() - m_t1; 
 #else
-		return _GetTime() - m_t1; 
+		return g_pGameServerShell->GetTime() - m_t1; 
 #endif
 	}
 }
@@ -111,7 +111,7 @@ inline float CTimer::GetCountdownTime()
 #ifdef _CLIENTBUILD
     return m_t1 + m_dt - g_pLTClient->GetTime();
 #else
-    return m_t1 + m_dt - _GetTime();
+    return m_t1 + m_dt - g_pGameServerShell->GetTime();
 #endif
 	}
 }

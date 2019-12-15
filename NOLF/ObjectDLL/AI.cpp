@@ -1944,7 +1944,7 @@ void CAI::UpdateOnGround()
 
 void CAI::UpdateState()
 {
-    if ( m_hstrNextStateMessage && _GetTime() >= m_fNextStateTime )
+    if ( m_hstrNextStateMessage && g_pGameServerShell->GetTime() >= m_fNextStateTime )
 	{
 		SendMixedTriggerMsgToObject(this, m_hObject, m_hstrNextStateMessage);
 		FREE_HSTRING(m_hstrNextStateMessage);
@@ -2712,7 +2712,7 @@ void CAI::UpdateTarget()
 
 	// If they've shot recently enough
 
-    if ( info.fTime + 0.5f > _GetTime() && info.nWeaponId != WMGR_INVALID_ID )
+    if ( info.fTime + 0.5f > g_pGameServerShell->GetTime() && info.nWeaponId != WMGR_INVALID_ID )
 	{
 		// See if the shot passed close to us
 
@@ -2854,7 +2854,7 @@ void CAI::ChangeState(const char* szFormat, ...)
 
 	// $STRING
     m_hstrNextStateMessage = g_pLTServer->CreateString((char*)szBuffer);
-    m_fNextStateTime = _GetTime() + 0.0f /* used to be a delay */;
+    m_fNextStateTime = g_pGameServerShell->GetTime() + 0.0f /* used to be a delay */;
 }
 
 // ----------------------------------------------------------------------- //

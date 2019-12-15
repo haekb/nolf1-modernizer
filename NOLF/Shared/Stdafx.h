@@ -30,11 +30,4 @@
 
 #include "CommonUtilities.h"
 
-#include "SDL.h"
-
-inline LTFLOAT _GetTime()
-{
-	return (LTFLOAT)SDL_GetTicks() * 0.001f;
-}
-
 #endif // __STDAFX_H__

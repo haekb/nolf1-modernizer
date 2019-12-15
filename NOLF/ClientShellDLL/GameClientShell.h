@@ -272,6 +272,8 @@ class CGameClientShell : public IClientShell
 		void SetFramerateLock(LTBOOL bLock) { m_bLockFramerate = bLock; }
 		void UpdateConfigSettings();
 
+		void SetFrameLimit(LTFLOAT framelimit) { if(framelimit > 0) m_lFrametime = (m_lTimerFrequency.QuadPart / framelimit); }
+
 	protected :
 
         uint32      OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid);

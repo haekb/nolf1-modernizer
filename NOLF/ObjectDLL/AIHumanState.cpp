@@ -764,7 +764,7 @@ LTBOOL CAIHumanStateUnconscious::Init(CAIHuman* pAIHuman)
 		return LTFALSE;
 	}
 
-	m_fRegainConsciousnessTime = _GetTime() + LOWER_BY_DIFFICULTY(m_fUnconsciousTime);
+	m_fRegainConsciousnessTime = g_pGameServerShell->GetTime() + LOWER_BY_DIFFICULTY(m_fUnconsciousTime);
 
 	GetAI()->SetClientSolid(LTFALSE);
 	GetAI()->SetBlinking(LTFALSE);
@@ -782,7 +782,7 @@ void CAIHumanStateUnconscious::HandleDamage(const DamageStruct& damage)
 
 	if ( damage.eType == DT_SLEEPING )
 	{
-		m_fRegainConsciousnessTime = _GetTime() + LOWER_BY_DIFFICULTY(m_fUnconsciousTime);
+		m_fRegainConsciousnessTime = g_pGameServerShell->GetTime() + LOWER_BY_DIFFICULTY(m_fUnconsciousTime);
 		m_eState = eStateUnconscious;
 	}
 }
@@ -800,7 +800,7 @@ void CAIHumanStateUnconscious::HandleNameValuePair(char *szName, char *szValue)
 	else if ( !_stricmp(szName, "TIME") )
 	{
 		m_fUnconsciousTime = (LTFLOAT)atof(szValue);
-		m_fRegainConsciousnessTime = _GetTime() + LOWER_BY_DIFFICULTY(m_fUnconsciousTime);
+		m_fRegainConsciousnessTime = g_pGameServerShell->GetTime() + LOWER_BY_DIFFICULTY(m_fUnconsciousTime);
 	}
 }
 
@@ -841,7 +841,7 @@ void CAIHumanStateUnconscious::Update()
 
 		case eStateUnconscious:
 		{
-			if ( _GetTime() > m_fRegainConsciousnessTime )
+			if ( g_pGameServerShell->GetTime() > m_fRegainConsciousnessTime )
 			{
 				m_eState = eStateRegainingConsciousness;
 			}
@@ -3967,7 +3967,7 @@ void CAIHumanStateChase::Update()
 
 	if ( m_bFirstUpdate )
 	{
-		m_fStopTime = _GetTime() + GetAI()->GetBrain()->GetChaseSearchTime();
+		m_fStopTime = g_pGameServerShell->GetTime() + GetAI()->GetBrain()->GetChaseSearchTime();
 		GetAI()->FaceTarget();
 	}
 
@@ -4010,7 +4010,7 @@ void CAIHumanStateChase::Update()
 
 		if ( pTarget->IsVisiblePartially() )
 		{
-			m_fStopTime = _GetTime() + GetAI()->GetBrain()->GetChaseSearchTime();
+			m_fStopTime = g_pGameServerShell->GetTime() + GetAI()->GetBrain()->GetChaseSearchTime();
 		}
 	}
 
@@ -4085,7 +4085,7 @@ void CAIHumanStateChase::Update()
 			return;
 		}
 
-		LTBOOL bCanFollow = m_pStrategyFollowPath->IsUnset() || (m_fStopTime > _GetTime());
+		LTBOOL bCanFollow = m_pStrategyFollowPath->IsUnset() || (m_fStopTime > g_pGameServerShell->GetTime());
 
 		if ( bCanFollow )
 		{
@@ -4345,7 +4345,7 @@ void CAIHumanStateAttack::HandleNameValuePair(char *szName, char *szValue)
 	}
 	else if ( !_stricmp(szName, "CHASEDELAY") )
 	{
-		m_fChaseDelay = (LTFLOAT)atof(szValue) + _GetTime();
+		m_fChaseDelay = (LTFLOAT)atof(szValue) + g_pGameServerShell->GetTime();
 	}
 	else if ( !_stricmp(szName, "POSTURE") )
 	{
@@ -4537,7 +4537,7 @@ CNudge::Priority CAIHumanStateAttack::GetNudgePriority()
 
 LTBOOL CAIHumanStateAttack::CanChase(LTBOOL bOutOfRange)
 {
-	return (m_bChase && ((m_fChaseTimer <= 0.0f) || bOutOfRange) && (_GetTime() > m_fChaseDelay));
+	return (m_bChase && ((m_fChaseTimer <= 0.0f) || bOutOfRange) && (g_pGameServerShell->GetTime() > m_fChaseDelay));
 }
 
 // ----------------------------------------------------------------------- //
@@ -7174,7 +7174,7 @@ LTBOOL CAIHumanStateTalk::Init(CAIHuman* pAIHuman)
 		return LTFALSE;
 	}
 
-	m_fFaceTimer = _GetTime() + m_fFaceTime;
+	m_fFaceTimer = g_pGameServerShell->GetTime() + m_fFaceTime;
 	m_vInitialForward = GetAI()->GetForwardVector();
 
 	return LTTRUE;
@@ -7188,10 +7188,10 @@ void CAIHumanStateTalk::Update()
 	{
 		if ( GetAI()->IsPlayingDialogSound() )
 		{
-			m_fFaceTimer = _GetTime() + m_fFaceTime;
+			m_fFaceTimer = g_pGameServerShell->GetTime() + m_fFaceTime;
 		}
 
-		if ( _GetTime() > m_fFaceTimer )
+		if ( g_pGameServerShell->GetTime() > m_fFaceTimer )
 		{
 			GetAI()->FaceDir(m_vInitialForward);
 		}
@@ -7359,7 +7359,7 @@ void CAIHumanStateTalk::HandleNameValuePair(char *szName, char *szValue)
 	else if ( !_stricmp(szName, "FACETIME") )
 	{
 		m_fFaceTime = (LTFLOAT)atof(szValue);
-		m_fFaceTimer = _GetTime() + m_fFaceTime;
+		m_fFaceTimer = g_pGameServerShell->GetTime() + m_fFaceTime;
 	}
 }
 
@@ -7893,7 +7893,7 @@ LTBOOL CAIHumanStateFollow::Init(CAIHuman* pAIHuman)
 		m_pStrategyFollowPath->SetMedium(CAIHumanStrategyFollowPath::eMediumGround);
 	}
 
-	m_fRangeTimer = m_fRangeTime + _GetTime();
+	m_fRangeTimer = m_fRangeTime + g_pGameServerShell->GetTime();
 
 	return LTTRUE;
 }
@@ -7928,7 +7928,7 @@ void CAIHumanStateFollow::Update()
 	{
 		if ( vTargetPosition.DistSqr(GetAI()->GetPosition()) > (m_fRangeSqr+1000.0f) )
 		{
-			if ( _GetTime() > m_fRangeTimer )
+			if ( g_pGameServerShell->GetTime() > m_fRangeTimer )
 			{
 			}
 			else
@@ -7939,14 +7939,14 @@ void CAIHumanStateFollow::Update()
 		}
 		else
 		{
-			m_fRangeTimer = _GetTime() + m_fRangeTime;
+			m_fRangeTimer = g_pGameServerShell->GetTime() + m_fRangeTime;
 			GetAI()->FaceTarget();
 			return;
 		}
 	}
 	else if ( vTargetPosition.DistSqr(GetAI()->GetPosition()) < m_fRangeSqr )
 	{
-		m_fRangeTimer = _GetTime() + m_fRangeTime;
+		m_fRangeTimer = g_pGameServerShell->GetTime() + m_fRangeTime;
 		m_eState = eStateHolding;
 		GetAI()->FaceTarget();
 		return;

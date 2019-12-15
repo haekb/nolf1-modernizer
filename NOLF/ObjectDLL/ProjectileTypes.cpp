@@ -215,7 +215,7 @@ void CGrenade::HandleImpact(HOBJECT hObj)
 
 			m_hBounceSnd = g_pServerSoundMgr->PlaySoundFromPos(vPos, (char*)GetBounceSound(pSurf),
 				pSurf->fGrenadeSndRadius, SOUNDPRIORITY_MISC_MEDIUM, dwFlags, nVolume);
-			m_fBounceSndStart = _GetTime();
+			m_fBounceSndStart = g_pGameServerShell->GetTime();
 		}
 
 		fDampenPercent = (1.0f - pSurf->fHardness);
@@ -337,7 +337,7 @@ void CGrenade::UpdateGrenade()
 		LTFLOAT fDuration = 0.0f;
 		g_pLTServer->GetSoundDuration(m_hBounceSnd, &fDuration);
 
-		if (_GetTime() - m_fBounceSndStart > fDuration)
+		if (g_pGameServerShell->GetTime() - m_fBounceSndStart > fDuration)
         //if (g_pLTServer->IsSoundDone(m_hBounceSnd, &bIsDone) != LT_OK || bIsDone)
 		{
             g_pLTServer->KillSound(m_hBounceSnd);
@@ -1059,7 +1059,7 @@ void CCoin::RotateToRest()
         CCharacter* pCharacter = (CCharacter*)g_pLTServer->HandleToObject(m_hFiredFrom);
 
 		CharCoinInfo cinfo;
-        cinfo.fTime = _GetTime();
+        cinfo.fTime = g_pGameServerShell->GetTime();
 		cinfo.eSurfaceType = m_eLastHitSurface;
 		cinfo.vPosition = vPosition;
 

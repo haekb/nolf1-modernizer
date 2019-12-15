@@ -21,6 +21,28 @@ void ShowHelpListCommand(int argc, char** argv)
 	}
 }
 
+void SetFrameLimitCommand(int argc, char** argv)
+{
+	if (!g_pConsoleMgr) {
+		return;
+	}
+
+	int limit = 60;
+
+	if (argc == 0)
+	{
+		g_pLTClient->CPrint("Framelimit <fps>");
+		return;
+	}
+
+	limit = atoi(argv[0]);
+
+	g_pLTClient->CPrint("Setting framelimit to %d", limit);
+
+	g_pGameClientShell->SetFrameLimit(limit);
+
+}
+
 ConsoleMgr::ConsoleMgr()
 {
 	g_pConsoleMgr = this;
@@ -45,6 +67,7 @@ ConsoleMgr::ConsoleMgr()
 	m_iOldGameState = -1;
 
 	g_pLTClient->RegisterConsoleProgram("Help", ShowHelpListCommand);
+	g_pLTClient->RegisterConsoleProgram("Framelimit", SetFrameLimitCommand);
 }
 
 ConsoleMgr::~ConsoleMgr()

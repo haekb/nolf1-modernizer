@@ -485,7 +485,7 @@ void Prop::HandleTouch(HOBJECT hObj)
 		LTFLOAT fDuration = 0.0f;
 		g_pLTServer->GetSoundDuration(m_hTouchSnd, &fDuration);
 
-		if (_GetTime() - m_fTouchSndStart > fDuration)
+		if (g_pGameServerShell->GetTime() - m_fTouchSndStart > fDuration)
         //if (g_pLTServer->IsSoundDone(m_hTouchSnd, &bIsDone) != LT_OK || bIsDone)
 		{
             g_pLTServer->KillSound(m_hTouchSnd);
@@ -509,7 +509,7 @@ void Prop::HandleTouch(HOBJECT hObj)
 
 			m_hTouchSnd = g_pServerSoundMgr->PlaySoundFromPos(vPos, pSound,
 				m_fTouchSoundRadius, SOUNDPRIORITY_MISC_LOW, dwFlags);
-			m_fTouchSndStart = _GetTime();
+			m_fTouchSndStart = g_pGameServerShell->GetTime();
 		}
 	}
 }
