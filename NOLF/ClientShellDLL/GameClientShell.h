@@ -537,6 +537,7 @@ class CGameClientShell : public IClientShell
 		// Jake's additionals
 		LTBOOL 		m_bLockFramerate; // Locks framerate for ...everything...
 		LTBOOL		m_bUserWantsFramerateLock; // If the user wants to override it, let them!
+		LTBOOL		m_bCinematicActive;
 		LTBOOL		m_bOldMouseLook; // If the user wants to use the old mouselook.
 		LONGLONG    m_lNextUpdate;
 		LONGLONG    m_lFrametime;

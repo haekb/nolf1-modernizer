@@ -681,7 +681,7 @@ CGameClientShell::CGameClientShell()
 		m_bLockFramerate = LTFALSE;
 	}
 
-	m_lFrametime = (m_lTimerFrequency.QuadPart / 60);
+	SetFrameLimit(60);
 
 	// Load up our config file
 	GetConfigFile("autoexec.cfg");
@@ -691,6 +691,7 @@ CGameClientShell::CGameClientShell()
 	SDL_Log("Framerate Lock is <%d>", m_bUserWantsFramerateLock);
 	SDL_Log("Old Mouse Look is <%d>", m_bOldMouseLook);
 
+	m_bCinematicActive = LTFALSE;
 }
 
 
@@ -1966,14 +1967,12 @@ void CGameClientShell::PostUpdate()
 	// Occasionally we'll need to unlock the framerate (like during loading!)
 	// But we also want the user to have the option to unlock it,
 	// so that's why there's two almost identical lock vars here.
-	if (m_bLockFramerate && m_bUserWantsFramerateLock)
+	if (m_bCinematicActive || (m_bLockFramerate && m_bUserWantsFramerateLock))
 	{
 		// Limit our framerate so the game actually runs properly.
 		LARGE_INTEGER NewTime;
 		
 		while (1) {
-			//Sleep(0);
-
 			QueryPerformanceCounter(&NewTime);
 			unsigned long lTime = NewTime.QuadPart - m_lNextUpdate;
 			if (lTime > m_lFrametime) {
@@ -2677,6 +2676,7 @@ void CGameClientShell::TurnOnAlternativeCamera(uint8 nCamType)
 {
 	if(nCamType == CT_CINEMATIC) {
 		m_InterfaceMgr.SetLetterBox(LTTRUE);
+		m_bCinematicActive = LTTRUE;
 		//m_bLockFramerate = LTTRUE;
 	}
 
@@ -2729,6 +2729,7 @@ void CGameClientShell::TurnOffAlternativeCamera(uint8 nCamType)
 
 	m_InterfaceMgr.SetLetterBox(LTFALSE);
 	//m_bLockFramerate = LTFALSE;
+	m_bCinematicActive = LTFALSE;
 	// Set shadows back to whatever they were set to before...
 
 	WriteConsoleInt("MaxModelShadows", g_nCinSaveModelShadows);
