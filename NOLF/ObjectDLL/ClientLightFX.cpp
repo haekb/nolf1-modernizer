@@ -597,7 +597,7 @@ LTBOOL ClientLightFX::Init()
 {
  	VEC_DIVSCALAR(m_vColor, m_vColor, 511.0f);
 
-	m_fStartTime = g_pLTServer->GetTime();
+	m_fStartTime = _GetTime();
 
 	m_fIntensityPhase = DEG2RAD(m_fIntensityPhase);
 	m_fRadiusPhase = DEG2RAD(m_fRadiusPhase);
@@ -630,7 +630,7 @@ LTBOOL ClientLightFX::Init()
 LTBOOL ClientLightFX::Update()
 {
     LTBOOL bRemove = LTFALSE;
-	if ((g_pLTServer->GetTime() - m_fStartTime) >= m_fLifeTime)
+	if ((_GetTime() - m_fStartTime) >= m_fLifeTime)
 	{
 		bRemove = LTTRUE;
 	}

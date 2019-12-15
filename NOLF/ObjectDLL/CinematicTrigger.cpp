@@ -551,7 +551,7 @@ LTBOOL CinematicTrigger::UpdateDialogue()
 
 	// Now update...
 
-    LTFLOAT fTime = g_pLTServer->GetTime();
+    LTFLOAT fTime = _GetTime();
 
 	// See if we are playing a dialogue...
 	BOOL bDone = FALSE;
@@ -914,7 +914,7 @@ void CinematicTrigger::HandleOn()
 	m_byDecision	= 0;
 	m_byLastReply	= 0;
     m_bDialogueDone = LTFALSE;
-    m_fNextDialogueStart = g_pLTServer->GetTime() + m_fDelay[0];
+    m_fNextDialogueStart = _GetTime() + m_fDelay[0];
 
     SetNextUpdate(m_hObject, 0.001f);
 }

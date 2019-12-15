@@ -107,7 +107,7 @@ void CBodyStateNormal::Update()
 		return;
 	}
 
-    LTFLOAT fTime = g_pLTServer->GetTime();
+    LTFLOAT fTime = _GetTime();
 
 	if (!m_pBody->m_hObject || !g_pGameServerShell) return;
 
@@ -689,7 +689,7 @@ void CBodyStateLaser::Init(Body* pBody)
 	g_pLTServer->SetModelAnimation(m_pBody->m_hObject, hAni);
 	g_pLTServer->SetModelLooping(m_pBody->m_hObject, LTFALSE);
 
-	m_fRemoveTime = g_pLTServer->GetTime() + 3.5f;
+	m_fRemoveTime = _GetTime() + 3.5f;
 
 	m_pBody->SetState(eBodyStateFade);
 }
@@ -703,7 +703,7 @@ void CBodyStateLaser::Update()
 {
 	CBodyState::Update();
 /*
-	if ( g_pLTServer->GetTime() > m_fRemoveTime )
+	if ( _GetTime() > m_fRemoveTime )
 	{
 		if ( (g_pGameServerShell->GetGameType() == SINGLE) && !!m_pBody->GetAttachments() )
 		{
@@ -764,7 +764,7 @@ void CBodyStateDecay::Init(Body* pBody)
 	g_pLTServer->SetModelAnimation(m_pBody->m_hObject, hAni);
 	g_pLTServer->SetModelLooping(m_pBody->m_hObject, LTFALSE);
 
-	m_fRemoveTime = g_pLTServer->GetTime() + 3.5f;
+	m_fRemoveTime = _GetTime() + 3.5f;
 
 	HMESSAGEWRITE hMessage = g_pLTServer->StartMessage(LTNULL, MID_SFX_MESSAGE);
 	g_pLTServer->WriteToMessageByte(hMessage, SFX_BODY_ID);
@@ -784,7 +784,7 @@ void CBodyStateDecay::Update()
 	CBodyState::Update();
 /*
 
-	if ( g_pLTServer->GetTime() > m_fRemoveTime )
+	if ( _GetTime() > m_fRemoveTime )
 	{
 		m_pBody->RemoveObject();
 	}
@@ -847,10 +847,10 @@ void CBodyStateFade::Update()
 			g_pLTServer->WriteToMessageByte(hMessage, BFX_FADE_MSG);
 			g_pLTServer->EndMessage2(hMessage, MESSAGE_NAGGLEFAST);
 
-			m_fRemoveTime = g_pLTServer->GetTime() + 3.5f;
+			m_fRemoveTime = _GetTime() + 3.5f;
 		}
 
-		if ( g_pLTServer->GetTime() > m_fRemoveTime )
+		if ( _GetTime() > m_fRemoveTime )
 		{
 			m_pBody->RemoveObject();
 		}
@@ -1199,7 +1199,7 @@ void CBodyStateExplode::Update()
 {
 	CBodyState::Update();
 
-	if ( m_pBody && ((g_pLTServer->GetTime() - m_pBody->GetStarttime()) > g_BodyStateTimeout.GetFloat()) )
+	if ( m_pBody && ((_GetTime() - m_pBody->GetStarttime()) > g_BodyStateTimeout.GetFloat()) )
 	{
 		g_pLTServer->SetModelAnimation(m_pBody->m_hObject, m_hAniStop);
 		g_pLTServer->SetModelLooping(m_pBody->m_hObject, LTFALSE);

@@ -584,7 +584,7 @@ void RotatingWorldModel::SetNormalRotation()
 {
  	m_eState = RWM_NORMAL;
 
-	m_fLastTime = g_pLTServer->GetTime();
+	m_fLastTime = _GetTime();
 
     StartSound(m_hstrBusySound, LTTRUE);
 }
@@ -622,7 +622,7 @@ void RotatingWorldModel::SetSpinUp()
 {
 	m_eState = RWM_SPINUP;
 
-	m_fStartTime = g_pLTServer->GetTime();
+	m_fStartTime = _GetTime();
 
 	VEC_COPY(m_vSpinTimeLeft, m_vSpinUpTime);
 
@@ -642,7 +642,7 @@ void RotatingWorldModel::SetSpinDown()
 {
  	m_eState = RWM_SPINDOWN;
 
-	m_fStartTime = g_pLTServer->GetTime();
+	m_fStartTime = _GetTime();
 
 	VEC_COPY(m_vSpinTimeLeft, m_vSpinDownTime);
 
@@ -703,7 +703,7 @@ void RotatingWorldModel::UpdateNormalRotation()
     LTRotation rRot;
 	g_pLTServer->GetObjectRotation(m_hObject, &rRot);
 
-    LTFLOAT fTime = g_pLTServer->GetTime();
+    LTFLOAT fTime = _GetTime();
     LTFLOAT fDeltaTime = fTime - m_fLastTime;
 
 	if (m_vVelocity.x > 0.0f)

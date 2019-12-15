@@ -783,7 +783,7 @@ void Door::TriggerHandler(LTBOOL bTriggerLink)
 	{
 		case DOORSTATE_CLOSED:
 		{
-            if (g_pLTServer->GetTime() > m_fDoorStopTime + m_fCloseWaitTime)
+            if (_GetTime() > m_fDoorStopTime + m_fCloseWaitTime)
 			{
 				SetOpening();
 			}
@@ -806,7 +806,7 @@ void Door::TriggerHandler(LTBOOL bTriggerLink)
 		{
 			if (m_dwStateFlags & DF_TRIGGERCLOSE)
 			{
-                if (g_pLTServer->GetTime() > m_fDoorStopTime + m_fOpenWaitTime)
+                if (_GetTime() > m_fDoorStopTime + m_fOpenWaitTime)
 				{
 					SetClosing();
 				}
@@ -870,7 +870,7 @@ void Door::TriggerClose()
 {
 	if (m_dwDoorState == DOORSTATE_OPEN || m_dwDoorState == DOORSTATE_OPENING)
 	{
-        if (g_pLTServer->GetTime() > m_fDoorStopTime + m_fOpenWaitTime)
+        if (_GetTime() > m_fDoorStopTime + m_fOpenWaitTime)
 		{
 			SetClosing();
 		}
@@ -1264,7 +1264,7 @@ void Door::SetOpen(LTBOOL bInitialize)
 			}
 		}
 
-		m_fDoorStopTime = g_pLTServer->GetTime();
+		m_fDoorStopTime = _GetTime();
 	}
 
 	m_dwDoorState = DOORSTATE_OPEN;
@@ -1334,7 +1334,7 @@ void Door::SetOpening()
 	// If we aren't forced to move, allow self-triggerable doors to be
 	// triggered...
 
-    m_fMoveStartTime = g_pLTServer->GetTime();
+    m_fMoveStartTime = _GetTime();
 
     SetNextUpdate(UPDATE_DELTA);
 
@@ -1374,7 +1374,7 @@ void Door::Opening()
 {
 	float fPercent;
 
-    if (g_pLTServer->GetTime() < m_fMoveStartTime + m_fMoveDelay)
+    if (_GetTime() < m_fMoveStartTime + m_fMoveDelay)
 	{
 		return;
 	}
@@ -1535,7 +1535,7 @@ void Door::SetClosed(LTBOOL bInitialize)
 			}
 		}
 
-		m_fDoorStopTime = g_pLTServer->GetTime();
+		m_fDoorStopTime = _GetTime();
 	}
 
     SetNextUpdate(0.0f);
@@ -1608,7 +1608,7 @@ void Door::SetClosing()
 	}
 
 
-    m_fMoveStartTime = g_pLTServer->GetTime();
+    m_fMoveStartTime = _GetTime();
 
     SetNextUpdate(UPDATE_DELTA);
 
@@ -1634,7 +1634,7 @@ void Door::Closing()
 {
 	float fPercent;
 
-    if (g_pLTServer->GetTime() < m_fMoveStartTime + m_fMoveDelay)
+    if (_GetTime() < m_fMoveStartTime + m_fMoveDelay)
 	{
 		return;
 	}

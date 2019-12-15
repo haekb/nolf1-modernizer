@@ -351,10 +351,10 @@ void AI_Helicopter::HandleDamage(const DamageStruct& damage)
 				FREE_HSTRING(m_hstrDeathMessage);
 			}
 
-			m_fDeathDelay += g_pLTServer->GetTime();
+			m_fDeathDelay += _GetTime();
 			m_bExploded = LTTRUE;
 
-			if ( g_pLTServer->GetTime() >= m_fDeathDelay )
+			if ( _GetTime() >= m_fDeathDelay )
 			{
 				RemoveObject();
 			}
@@ -567,7 +567,7 @@ void AI_Helicopter::InitAttachments()
 
 void AI_Helicopter::PostUpdate()
 {
-	if ( m_bExploded && g_pLTServer->GetTime() >= m_fDeathDelay )
+	if ( m_bExploded && _GetTime() >= m_fDeathDelay )
 	{
 		RemoveObject();
 	}

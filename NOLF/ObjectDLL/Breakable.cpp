@@ -354,7 +354,7 @@ void Breakable::ReadProp(ObjectCreateStruct *pStruct)
 
 void Breakable::Update()
 {
-    LTFLOAT fTime = g_pLTServer->GetTime();
+    LTFLOAT fTime = _GetTime();
 
     g_pLTServer->SetNextUpdate(m_hObject, 0.001f);
 

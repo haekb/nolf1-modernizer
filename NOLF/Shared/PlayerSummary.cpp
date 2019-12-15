@@ -410,7 +410,7 @@ void CPlayerSummaryMgr::UpdateTotalMissionTime()
 	MISSIONSUMMARY* pMissionSummary = GetMissionSummary(nMissionNum);
 	if (!pMissionSummary) return;
 
-    pMissionSummary->fTotalMissionTime += g_pLTServer->GetTime();
+    pMissionSummary->fTotalMissionTime += _GetTime();
 }
 
 // ----------------------------------------------------------------------- //

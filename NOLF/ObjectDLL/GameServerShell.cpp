@@ -2298,6 +2298,8 @@ void CGameServerShell::Update(LTFLOAT timeElapsed)
 		FirstUpdate();
 	}
 
+	g_pLTServer->CPrint("Time : %f", _GetTime());
+
 	g_pMusicMgr->Update();
 
 
@@ -2907,7 +2909,7 @@ void CGameServerShell::UpdateMultiplayer()
 	if (m_bShowMultiplayerSummary)
 	{
 		LTBOOL bReady = LTTRUE;
-		if (m_fSummaryEndTime > g_pLTServer->GetTime())
+		if (m_fSummaryEndTime > _GetTime())
 		{
 			for (int i = 0; i < MAX_CLIENTS && bReady; i++)
 			{
@@ -2949,7 +2951,7 @@ void CGameServerShell::UpdateMultiplayer()
 	if (byEnd == NGE_TIME || byEnd == NGE_FRAGSANDTIME)
 	{
         LTFLOAT fEndLevelTime = (g_NetEndTime.GetFloat() * 60.0f);
-        LTFLOAT fTime = g_pLTServer->GetTime();
+        LTFLOAT fTime = _GetTime();
 
 		if (fTime >= fEndLevelTime)
 		{
@@ -3684,7 +3686,7 @@ void CGameServerShell::ShowMultiplayerSummary()
 			m_eLevelEnd = LE_DRAW;
 
 	}
-	m_fSummaryEndTime = g_pServerButeMgr->GetSummaryDelay() + g_pLTServer->GetTime();
+	m_fSummaryEndTime = g_pServerButeMgr->GetSummaryDelay() + _GetTime();
 	HMESSAGEWRITE hMsg = g_pLTServer->StartMessage(LTNULL, MID_PLAYER_EXITLEVEL);
     g_pLTServer->WriteToMessageByte(hMsg, (uint8)m_eLevelEnd);
     g_pLTServer->WriteToMessageDWord(hMsg, (uint32)endString);

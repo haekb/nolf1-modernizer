@@ -289,7 +289,7 @@ void Camera::Update()
 		}
 	}
 
-    if (m_fActiveTime > 0.0f && g_pLTServer->GetTime() > m_fTurnOffTime)
+    if (m_fActiveTime > 0.0f && _GetTime() > m_fTurnOffTime)
 	{
 		TurnOff();
 	}
@@ -354,7 +354,7 @@ void Camera::TurnOn()
 
 	if (m_fActiveTime > 0.0f)
 	{
-        m_fTurnOffTime = g_pLTServer->GetTime() + m_fActiveTime;
+        m_fTurnOffTime = _GetTime() + m_fActiveTime;
 	}
 
     SetNextUpdate(m_hObject, 0.001f);

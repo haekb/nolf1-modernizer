@@ -1050,7 +1050,7 @@ void CCoin::RotateToRest()
         CCharacter* pCharacter = (CCharacter*)g_pLTServer->HandleToObject(m_hFiredFrom);
 
 		CharCoinInfo cinfo;
-        cinfo.fTime = g_pLTServer->GetTime();
+        cinfo.fTime = _GetTime();
 		cinfo.eSurfaceType = m_eLastHitSurface;
 		cinfo.vPosition = vPosition;
 
