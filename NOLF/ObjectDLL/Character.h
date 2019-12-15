@@ -507,6 +507,9 @@ class CCharacter : public GameBase
 		CharacterSoundType	m_eCurDlgSndType;				// Type of sound playing
         char*               m_pHandName;                    // Name of hand node used to hold gun
 
+		LTFLOAT m_fCurDlgStartTime;
+		
+
 		CDestructible		m_damage;						// Handle damage/healing
         CAttachments*       m_pAttachments;                 // Our attachments
 		CEditable			m_editable;						// Handle editting

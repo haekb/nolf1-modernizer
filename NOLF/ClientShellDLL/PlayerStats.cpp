@@ -1434,6 +1434,12 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 		g_pInterfaceResMgr->GetMediumFont()->Draw(szStr, hScreen, 32, nScreenHeight - 20, LTF_JUSTIFY_LEFT, SETRGB(255, 255, 255));
 	}
 
+	{
+		char szStr[32] = "";
+		sprintf(szStr, "Gametime: %.2f", g_pLTClient->GetTime());
+		g_pInterfaceResMgr->GetMediumFont()->Draw(szStr, hScreen, 32, nScreenHeight - 100, LTF_JUSTIFY_LEFT, SETRGB(255, 255, 255));
+	}
+
 	switch (eCurrMask)
 	{
 	case OVM_SCOPE:
