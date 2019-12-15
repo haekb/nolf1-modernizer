@@ -217,6 +217,8 @@ CGameServerShell::CGameServerShell(ILTServer *pServerDE)
 	m_bStartNextMultiplayerLevel = LTFALSE;
 	m_eLevelEnd = LE_UNKNOWN;
 	m_fSummaryEndTime = 0.0f;
+
+	m_fLastFrameTime = 0;
 }
 
 
@@ -1631,6 +1633,37 @@ GameStartPoint* CGameServerShell::FindStartPoint(CPlayerObj* pPlayer)
 	return pStartPt;
 }
 
+//
+// This works pretty okay!
+//
+LTFLOAT CGameServerShell::GetTime()
+{
+	return (LTFLOAT)SDL_GetTicks() * 0.001f;
+}
+
+//
+// Server frame time seems to be off as well!
+//
+LTFLOAT CGameServerShell::GetFrameTime()
+{
+#if 0
+	Uint64 iFrameTimeNow = SDL_GetPerformanceCounter();
+	auto t = (iFrameTimeNow - m_iFrameTimeLast);
+	LTFLOAT ret = (LTFLOAT)((iFrameTimeNow - m_iFrameTimeLast) * 1000 / (LTFLOAT)SDL_GetPerformanceFrequency());
+	m_iFrameTimeLast = iFrameTimeNow;
+#else
+	LTFLOAT ret = m_fCurrentFrameTime;
+#endif
+	g_pLTServer->CPrint("FrameTime: %f", ret);
+	return ret;
+}
+
+void CGameServerShell::UpdateFrameTime()
+{
+	m_fCurrentFrameTime = GetTime() - m_fLastFrameTime;
+	m_fLastFrameTime = GetTime();
+}
+
 
 // ----------------------------------------------------------------------- //
 //
@@ -2298,7 +2331,7 @@ void CGameServerShell::Update(LTFLOAT timeElapsed)
 		FirstUpdate();
 	}
 
-	g_pLTServer->CPrint("Time : %f", _GetTime());
+	UpdateFrameTime();
 
 	g_pMusicMgr->Update();
 
