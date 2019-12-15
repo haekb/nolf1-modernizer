@@ -146,7 +146,7 @@ WeaponState CWeapon::UpdateWeapon(WFireInfo & fireInfo, LTBOOL bFire)
 	{
 		fireInfo.nSeed = GetRandom(2,255);
 		// Put in a timestamp since the AI's use this and don't send us a timestamp
-		fireInfo.nFireTimestamp = (uint32)(g_pLTServer->GetTime() * 1000.0f);
+		fireInfo.nFireTimestamp = (uint32)(g_pGameServerShell->GetTime() * 1000.0f);
 		eRet = Fire(fireInfo);
 	}
 

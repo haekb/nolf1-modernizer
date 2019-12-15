@@ -653,7 +653,7 @@ void KeyFramer::GoActive(LTBOOL bReset)
     SetNextUpdate(m_hObject, KF_UPDATE_DELTA);
 
 
-    m_fEarliestGoActiveTime = g_pLTServer->GetTime() + KF_UPDATE_DELTA;
+    m_fEarliestGoActiveTime = g_pGameServerShell->GetTime() + KF_UPDATE_DELTA;
 
 
 	// Start active sound...
@@ -1586,6 +1586,7 @@ extern int32 g_bPlayerUpdated;
 
 void KeyFramer::Update()
 {
+
 	{ // BL 09/29/00 Added to fix falling off keyframed objects after loading game
 		if ( m_bPausedOnLoad )
 		{
@@ -1605,7 +1606,7 @@ void KeyFramer::Update()
 
 	if (g_SynchronizeKeyframers.GetFloat() != 0.0f)
 	{
-        LTFLOAT fGetTime = g_pLTServer->GetTime();
+        LTFLOAT fGetTime = g_pGameServerShell->GetTime();
 		if (fGetTime <= m_fEarliestGoActiveTime)
 		{
             g_pLTServer->CPrint("KeyframerSynch: To early to update!");
@@ -1667,7 +1668,7 @@ void KeyFramer::Update()
 
 	// Increment timer
 
-    float fTime = g_pLTServer->GetFrameTime();
+    float fTime = g_pGameServerShell->GetFrameTime();
 	m_fCurTime += (m_eDirection == KFD_FORWARD) ? fTime : -fTime;
 
 
@@ -2108,7 +2109,7 @@ LTBOOL KeyFramer::CalcCurPos(LTBOOL & bAtKey)
 
 		float fPathPercent = 1 - (fDistToEnd / m_fTotalDistance);
 		float fFrameSpeed = GetKFWaveValue(m_fVelocity, fPathPercent, m_eWaveform);
-        float fMoveDist = fFrameSpeed * g_pLTServer->GetFrameTime();
+        float fMoveDist = fFrameSpeed * g_pGameServerShell->GetFrameTime();
 		float fMovePercent = fMoveDist / fDistBetweenKeys;
 
 

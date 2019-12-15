@@ -1764,7 +1764,7 @@ void CAI::Update()
 		}
 		else
 		{
-            m_fLag = Min<LTFLOAT>(LOWER_BY_DIFFICULTY(m_fBaseLag), m_fLag + LOWER_BY_DIFFICULTY(m_fLagIncreaseRate)*g_pLTServer->GetFrameTime());
+            m_fLag = Min<LTFLOAT>(LOWER_BY_DIFFICULTY(m_fBaseLag), m_fLag + LOWER_BY_DIFFICULTY(m_fLagIncreaseRate)*g_pGameServerShell->GetFrameTime());
 		}
 
 		// Update the state if we have one
@@ -1944,7 +1944,7 @@ void CAI::UpdateOnGround()
 
 void CAI::UpdateState()
 {
-    if ( m_hstrNextStateMessage && g_pLTServer->GetTime() >= m_fNextStateTime )
+    if ( m_hstrNextStateMessage && g_pGameServerShell->GetTime() >= m_fNextStateTime )
 	{
 		SendMixedTriggerMsgToObject(this, m_hObject, m_hstrNextStateMessage);
 		FREE_HSTRING(m_hstrNextStateMessage);
@@ -2687,8 +2687,8 @@ void CAI::UpdateTarget()
 	{
 		// Update the shooting position. Queues up this position to be used
 
-        m_fLag = Max<LTFLOAT>(0.0f, m_fLag - RAISE_BY_DIFFICULTY(m_fLagDecreaseRate)*g_pLTServer->GetFrameTime());
-        m_fLagTimer -= g_pLTServer->GetFrameTime();
+        m_fLag = Max<LTFLOAT>(0.0f, m_fLag - RAISE_BY_DIFFICULTY(m_fLagDecreaseRate)*g_pGameServerShell->GetFrameTime());
+        m_fLagTimer -= g_pGameServerShell->GetFrameTime();
 
 		if ( m_fLagTimer <= 0.0f )
 		{
@@ -2699,7 +2699,7 @@ void CAI::UpdateTarget()
 	}
 	else
 	{
-        m_fLag = Min<LTFLOAT>(m_fBaseLag, m_fLag + LOWER_BY_DIFFICULTY(m_fLagIncreaseRate)*g_pLTServer->GetFrameTime());
+        m_fLag = Min<LTFLOAT>(m_fBaseLag, m_fLag + LOWER_BY_DIFFICULTY(m_fLagIncreaseRate)*g_pGameServerShell->GetFrameTime());
 		m_pTarget->UpdateShootPosition(m_pTarget->GetPosition(), m_fLag/(LOWER_BY_DIFFICULTY(m_fBaseLag)+.01f), LTTRUE);
 	}
 
@@ -2712,7 +2712,7 @@ void CAI::UpdateTarget()
 
 	// If they've shot recently enough
 
-    if ( info.fTime + 0.5f > g_pLTServer->GetTime() && info.nWeaponId != WMGR_INVALID_ID )
+    if ( info.fTime + 0.5f > g_pGameServerShell->GetTime() && info.nWeaponId != WMGR_INVALID_ID )
 	{
 		// See if the shot passed close to us
 
@@ -2746,7 +2746,7 @@ void CAI::UpdateAccuracy()
 	// TODO: rate at which accuracy is regained should be affected
 	// by AI's skill somehow
 
-    m_fAccuracyModifierTimer = Max<LTFLOAT>(0.0f, m_fAccuracyModifierTimer - g_pLTServer->GetFrameTime()*RAISE_BY_DIFFICULTY(m_fAccuracyIncreaseRate));
+    m_fAccuracyModifierTimer = Max<LTFLOAT>(0.0f, m_fAccuracyModifierTimer - g_pGameServerShell->GetFrameTime()*RAISE_BY_DIFFICULTY(m_fAccuracyIncreaseRate));
 }
 
 // ----------------------------------------------------------------------- //
@@ -2807,7 +2807,7 @@ void CAI::UpdatePosition()
 
 	if ( m_fRotationTimer < m_fRotationTime )
 	{
-        m_fRotationTimer += g_pLTServer->GetFrameTime();
+        m_fRotationTimer += g_pGameServerShell->GetFrameTime();
         m_fRotationTimer = Min<LTFLOAT>(m_fRotationTime, m_fRotationTimer);
 
         LTFLOAT fRotationInterpolation = GetRotationInterpolation(m_fRotationTimer/m_fRotationTime);
@@ -2854,7 +2854,7 @@ void CAI::ChangeState(const char* szFormat, ...)
 
 	// $STRING
     m_hstrNextStateMessage = g_pLTServer->CreateString((char*)szBuffer);
-    m_fNextStateTime = g_pLTServer->GetTime() + 0.0f /* used to be a delay */;
+    m_fNextStateTime = g_pGameServerShell->GetTime() + 0.0f /* used to be a delay */;
 }
 
 // ----------------------------------------------------------------------- //

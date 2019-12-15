@@ -94,6 +94,7 @@ Prop::Prop() : GameBase(OT_MODEL)
     m_hstrTouchSound    = LTNULL;
     m_hTouchSnd         = LTNULL;
 	m_fTouchSoundRadius	= 500.0f;
+	m_fTouchSndStart	= 0.0f;
 
 	m_pDebrisOverride	= LTNULL;
 
@@ -117,6 +118,7 @@ Prop::~Prop()
 	{
         g_pLTServer->KillSound(m_hTouchSnd);
         m_hTouchSnd = LTNULL;
+		m_fTouchSndStart = 0.0f;
 	}
 }
 
@@ -480,10 +482,15 @@ void Prop::HandleTouch(HOBJECT hObj)
 	if (m_hTouchSnd)
 	{
         LTBOOL bIsDone;
-        if (g_pLTServer->IsSoundDone(m_hTouchSnd, &bIsDone) != LT_OK || bIsDone)
+		LTFLOAT fDuration = 0.0f;
+		g_pLTServer->GetSoundDuration(m_hTouchSnd, &fDuration);
+
+		if (g_pGameServerShell->GetTime() - m_fTouchSndStart > fDuration)
+        //if (g_pLTServer->IsSoundDone(m_hTouchSnd, &bIsDone) != LT_OK || bIsDone)
 		{
             g_pLTServer->KillSound(m_hTouchSnd);
             m_hTouchSnd = LTNULL;
+			m_fTouchSndStart = 0.0f;
 		}
 	}
 
@@ -502,6 +509,7 @@ void Prop::HandleTouch(HOBJECT hObj)
 
 			m_hTouchSnd = g_pServerSoundMgr->PlaySoundFromPos(vPos, pSound,
 				m_fTouchSoundRadius, SOUNDPRIORITY_MISC_LOW, dwFlags);
+			m_fTouchSndStart = g_pGameServerShell->GetTime();
 		}
 	}
 }

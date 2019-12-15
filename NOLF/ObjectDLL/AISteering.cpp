@@ -44,7 +44,7 @@ LTBOOL CSteerable::Steerable_Update(const LTVector& vSteeringDirection)
 
 	// velocity = truncate(velocity+acceleration, max_speed)
 
-    vVelocity = Steerable_GetVelocity()+vAcceleration;//*g_pLTServer->GetFrameTime();
+    vVelocity = Steerable_GetVelocity()+vAcceleration;//*g_pGameServerShell->GetFrameTime();
 	if ( VEC_MAG(vVelocity) > Steerable_GetMaxSpeed() )
 	{
 		vVelocity.Norm();
@@ -53,7 +53,7 @@ LTBOOL CSteerable::Steerable_Update(const LTVector& vSteeringDirection)
 
 	// position = position + velocity
 
-    vPosition = Steerable_GetPosition() + vVelocity*g_pLTServer->GetFrameTime();
+    vPosition = Steerable_GetPosition() + vVelocity*g_pGameServerShell->GetFrameTime();
 
 	// now do our basis vectors - this is an approximation
 

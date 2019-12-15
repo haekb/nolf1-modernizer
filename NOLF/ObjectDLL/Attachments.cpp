@@ -1363,7 +1363,7 @@ LTBOOL CAttachmentObject::HandleProjectileImpact(CProjectile* pProjectile, CAtta
             CAI* pAI = (CAI*)g_pLTServer->HandleToObject(m_hModel);
 			if ( pAI->CanBeDamagedAsAttachment() )
 			{
-                g_pLTServer->CPrint("dam: %f -> %f", g_pLTServer->GetTime(), pAI->GetHitPoints());
+                g_pLTServer->CPrint("dam: %f -> %f", g_pGameServerShell->GetTime(), pAI->GetHitPoints());
 				iInfo.m_hObject = m_hModel;
 				return LTTRUE;
 			}

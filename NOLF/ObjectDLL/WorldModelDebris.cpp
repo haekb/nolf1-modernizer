@@ -76,7 +76,7 @@ void WorldModelDebris::Start(LTVector *pvRotationPeriods, LTVector* pvVel)
     g_pLTServer->SetForceIgnoreLimit(m_hObject, 0.0f);
     g_pLTServer->SetFrictionCoefficient(m_hObject, GetRandom(10.0f, 20.0f));
 
-    m_fLastTime = g_pLTServer->GetTime();
+    m_fLastTime = g_pGameServerShell->GetTime();
 }
 
 
@@ -190,7 +190,7 @@ void WorldModelDebris::Update()
 
 void WorldModelDebris::UpdateRotation()
 {
-    LTFLOAT fTime      = g_pLTServer->GetTime();
+    LTFLOAT fTime      = g_pGameServerShell->GetTime();
     LTFLOAT fDeltaTime = fTime - m_fLastTime;
 
     LTRotation rRot;

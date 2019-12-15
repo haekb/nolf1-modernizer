@@ -91,6 +91,7 @@ CGrenade::CGrenade() : CProjectile()
     m_hBounceSnd = LTNULL;
 	m_eContainerCode = CC_NO_CONTAINER;
 	m_eLastHitSurface = ST_UNKNOWN;
+	m_fBounceSndStart = 0.0f;
 
 	m_bRotatedToRest = LTFALSE;
 
@@ -114,6 +115,7 @@ CGrenade::~CGrenade()
 	{
         g_pLTServer->KillSound(m_hBounceSnd);
         m_hBounceSnd = LTNULL;
+		m_fBounceSndStart = 0.0f;
 	}
 }
 // ----------------------------------------------------------------------- //
@@ -201,6 +203,7 @@ void CGrenade::HandleImpact(HOBJECT hObj)
 			{
                 g_pLTServer->KillSound(m_hBounceSnd);
                 m_hBounceSnd = LTNULL;
+				m_fBounceSndStart = 0.0f;
 			}
 
             uint32 dwFlags = PLAYSOUND_GETHANDLE | PLAYSOUND_TIME;
@@ -212,6 +215,7 @@ void CGrenade::HandleImpact(HOBJECT hObj)
 
 			m_hBounceSnd = g_pServerSoundMgr->PlaySoundFromPos(vPos, (char*)GetBounceSound(pSurf),
 				pSurf->fGrenadeSndRadius, SOUNDPRIORITY_MISC_MEDIUM, dwFlags, nVolume);
+			m_fBounceSndStart = g_pGameServerShell->GetTime();
 		}
 
 		fDampenPercent = (1.0f - pSurf->fHardness);
@@ -312,7 +316,7 @@ void CGrenade::UpdateGrenade()
 	{
 		if (m_fPitchVel != 0 || m_fYawVel != 0 || m_fRollVel != 0)
 		{
-            LTFLOAT fDeltaTime = g_pLTServer->GetFrameTime();
+            LTFLOAT fDeltaTime = g_pGameServerShell->GetFrameTime();
 
 			m_fPitch += m_fPitchVel * fDeltaTime;
 			m_fYaw   += m_fYawVel * fDeltaTime;
@@ -330,10 +334,15 @@ void CGrenade::UpdateGrenade()
 	if (m_hBounceSnd)
 	{
         LTBOOL bIsDone;
-        if (g_pLTServer->IsSoundDone(m_hBounceSnd, &bIsDone) != LT_OK || bIsDone)
+		LTFLOAT fDuration = 0.0f;
+		g_pLTServer->GetSoundDuration(m_hBounceSnd, &fDuration);
+
+		if (g_pGameServerShell->GetTime() - m_fBounceSndStart > fDuration)
+        //if (g_pLTServer->IsSoundDone(m_hBounceSnd, &bIsDone) != LT_OK || bIsDone)
 		{
             g_pLTServer->KillSound(m_hBounceSnd);
             m_hBounceSnd = LTNULL;
+			m_fBounceSndStart = 0.0f;
 		}
 	}
 }
@@ -847,7 +856,7 @@ void CSpear::HandleImpact(HOBJECT hObj)
 		g_pLTServer->GetVelocity(m_hObject, &vVel);
 
 		vP1 = vPos;
-        vCurVel = vVel * g_pLTServer->GetFrameTime();
+        vCurVel = vVel * g_pGameServerShell->GetFrameTime();
 		vP0 = vP1 - vCurVel;
 		vP1 += vCurVel;
 
@@ -1050,7 +1059,7 @@ void CCoin::RotateToRest()
         CCharacter* pCharacter = (CCharacter*)g_pLTServer->HandleToObject(m_hFiredFrom);
 
 		CharCoinInfo cinfo;
-        cinfo.fTime = g_pLTServer->GetTime();
+        cinfo.fTime = g_pGameServerShell->GetTime();
 		cinfo.eSurfaceType = m_eLastHitSurface;
 		cinfo.vPosition = vPosition;
 

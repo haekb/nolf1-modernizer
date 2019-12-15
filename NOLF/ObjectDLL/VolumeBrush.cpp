@@ -585,7 +585,7 @@ void VolumeBrush::UpdatePhysics(ContainerPhysics* pCPStruct)
 {
 	if (m_bHidden || !pCPStruct || !pCPStruct->m_hObject) return;
 
-    LTFLOAT fUpdateDelta = g_pLTServer->GetFrameTime();
+    LTFLOAT fUpdateDelta = g_pGameServerShell->GetFrameTime();
 
 
 	// Let the character know if they are in liquid...

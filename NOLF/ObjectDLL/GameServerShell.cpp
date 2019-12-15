@@ -217,6 +217,8 @@ CGameServerShell::CGameServerShell(ILTServer *pServerDE)
 	m_bStartNextMultiplayerLevel = LTFALSE;
 	m_eLevelEnd = LE_UNKNOWN;
 	m_fSummaryEndTime = 0.0f;
+
+	m_fLastFrameTime = 0;
 }
 
 
@@ -1631,6 +1633,36 @@ GameStartPoint* CGameServerShell::FindStartPoint(CPlayerObj* pPlayer)
 	return pStartPt;
 }
 
+//
+// This works pretty okay!
+//
+LTFLOAT CGameServerShell::GetTime()
+{
+	return (LTFLOAT)SDL_GetTicks() * 0.001f;
+}
+
+//
+// Server frame time seems to be off as well!
+//
+LTFLOAT CGameServerShell::GetFrameTime()
+{
+#if 0
+	Uint64 iFrameTimeNow = SDL_GetPerformanceCounter();
+	auto t = (iFrameTimeNow - m_iFrameTimeLast);
+	LTFLOAT ret = (LTFLOAT)((iFrameTimeNow - m_iFrameTimeLast) * 1000 / (LTFLOAT)SDL_GetPerformanceFrequency());
+	m_iFrameTimeLast = iFrameTimeNow;
+#else
+	LTFLOAT ret = m_fCurrentFrameTime;
+#endif
+	return ret;
+}
+
+void CGameServerShell::UpdateFrameTime()
+{
+	m_fCurrentFrameTime = GetTime() - m_fLastFrameTime;
+	m_fLastFrameTime = GetTime();
+}
+
 
 // ----------------------------------------------------------------------- //
 //
@@ -2257,7 +2289,7 @@ void CGameServerShell::UpdateClientPingTimes()
     uint32 clientID;
 	HCLIENT hClient;
 
-    m_ClientPingSendCounter += g_pLTServer->GetFrameTime();
+    m_ClientPingSendCounter += g_pGameServerShell->GetFrameTime();
 	if(m_ClientPingSendCounter > CLIENT_PING_UPDATE_RATE)
 	{
         hWrite = g_pLTServer->StartMessage(LTNULL, MID_PINGTIMES);
@@ -2297,6 +2329,8 @@ void CGameServerShell::Update(LTFLOAT timeElapsed)
         m_bFirstUpdate = LTFALSE;
 		FirstUpdate();
 	}
+
+	UpdateFrameTime();
 
 	g_pMusicMgr->Update();
 
@@ -2907,7 +2941,7 @@ void CGameServerShell::UpdateMultiplayer()
 	if (m_bShowMultiplayerSummary)
 	{
 		LTBOOL bReady = LTTRUE;
-		if (m_fSummaryEndTime > g_pLTServer->GetTime())
+		if (m_fSummaryEndTime > g_pGameServerShell->GetTime())
 		{
 			for (int i = 0; i < MAX_CLIENTS && bReady; i++)
 			{
@@ -2949,7 +2983,7 @@ void CGameServerShell::UpdateMultiplayer()
 	if (byEnd == NGE_TIME || byEnd == NGE_FRAGSANDTIME)
 	{
         LTFLOAT fEndLevelTime = (g_NetEndTime.GetFloat() * 60.0f);
-        LTFLOAT fTime = g_pLTServer->GetTime();
+        LTFLOAT fTime = g_pGameServerShell->GetTime();
 
 		if (fTime >= fEndLevelTime)
 		{
@@ -3684,7 +3718,7 @@ void CGameServerShell::ShowMultiplayerSummary()
 			m_eLevelEnd = LE_DRAW;
 
 	}
-	m_fSummaryEndTime = g_pServerButeMgr->GetSummaryDelay() + g_pLTServer->GetTime();
+	m_fSummaryEndTime = g_pServerButeMgr->GetSummaryDelay() + g_pGameServerShell->GetTime();
 	HMESSAGEWRITE hMsg = g_pLTServer->StartMessage(LTNULL, MID_PLAYER_EXITLEVEL);
     g_pLTServer->WriteToMessageByte(hMsg, (uint8)m_eLevelEnd);
     g_pLTServer->WriteToMessageDWord(hMsg, (uint32)endString);

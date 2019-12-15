@@ -449,7 +449,7 @@ LTBOOL Trigger::ReadProp(ObjectCreateStruct *pData)
     g_pLTServer->GetPropLongInt("PlayerTeamFilter", &nLongVal);
 	m_nPlayerTeamFilter = nLongVal;
 
-    m_fNextTriggerTime = g_pLTServer->GetTime() + m_fMinTriggerTime;
+    m_fNextTriggerTime = g_pGameServerShell->GetTime() + m_fMinTriggerTime;
 
     return LTTRUE;
 }
@@ -567,7 +567,7 @@ void Trigger::ObjectTouch(HOBJECT hObj)
 
 	// Okay ready to trigger.  Make sure we've waited long enough before triggering...
 
-    LTFLOAT fTime = g_pLTServer->GetTime();
+    LTFLOAT fTime = g_pGameServerShell->GetTime();
 
 	if (fTime >= m_fLastTouchTime + m_fTriggerDelay)
 	{
@@ -652,7 +652,7 @@ LTBOOL Trigger::Update()
 
 	if (m_bTimedTrigger)
 	{
-        LTFLOAT fTime = g_pLTServer->GetTime();
+        LTFLOAT fTime = g_pGameServerShell->GetTime();
 		if (fTime > m_fNextTriggerTime)
 		{
 			m_fNextTriggerTime = fTime + GetRandom(m_fMinTriggerTime, m_fMaxTriggerTime);
@@ -725,7 +725,7 @@ void Trigger::RequestActivate()
 		// Let Update() determine when to actually activate the trigger...
 
         SetNextUpdate(0.001f);
-        m_fStartDelayTime = g_pLTServer->GetTime();
+        m_fStartDelayTime = g_pGameServerShell->GetTime();
 
         m_bDelayingActivate = LTTRUE;
         m_bActive           = LTFALSE;
@@ -745,7 +745,7 @@ void Trigger::UpdateDelayingActivate()
 {
 	if (!m_bDelayingActivate) return;
 
-    LTFLOAT fTime = g_pLTServer->GetTime();
+    LTFLOAT fTime = g_pGameServerShell->GetTime();
 
 	if (fTime >= m_fStartDelayTime + m_fSendDelay)
 	{

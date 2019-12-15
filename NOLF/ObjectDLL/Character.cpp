@@ -195,6 +195,8 @@ CCharacter::CCharacter() : GameBase(OT_MODEL)
     m_pAnimator                 = LTNULL;
 
 	m_cActive					= 0;
+
+	m_fCurDlgStartTime = 0.0f;
 }
 
 // ----------------------------------------------------------------------- //
@@ -636,7 +638,7 @@ void CCharacter::ProcessDamageMsg(HMESSAGEREAD hRead)
 	{
 		// Set our pain information
 
-		m_fLastPainTime = g_pLTServer->GetTime();
+		m_fLastPainTime = g_pGameServerShell->GetTime();
 		m_fLastPainVolume = 1.0f;
 
 		// Play a damage sound...
@@ -1388,7 +1390,7 @@ void CCharacter::HandleModelString(ArgList* pArgList)
 			}
 		}
 
-		m_LastMoveInfo.fTime = g_pLTServer->GetTime();
+		m_LastMoveInfo.fTime = g_pGameServerShell->GetTime();
 		m_LastMoveInfo.eSurfaceType = m_eStandingOnSurface;
 
 		// TODO! this is a bit sloppy
@@ -1416,7 +1418,7 @@ void CCharacter::HandleModelString(ArgList* pArgList)
 				g_pLTServer->GetObjectPos(m_hObject, &pFootprint->vPos);
 				pFootprint->fDuration = pSurf->fFootPrintLifetime;
 				pFootprint->eSurface = m_eStandingOnSurface;
-				pFootprint->fTimeStamp = g_pLTServer->GetTime();
+				pFootprint->fTimeStamp = g_pGameServerShell->GetTime();
 
 				m_listFootprints.Add(pFootprint);
 			}
@@ -1795,7 +1797,7 @@ void CCharacter::UpdateFootprints()
 		CharFootprintInfo* pFootprint = *ppFootprint;
 		ppFootprint = m_listFootprints.GetItem(TLIT_NEXT);
 
-		pFootprint->fDuration -= g_pLTServer->GetFrameTime();
+		pFootprint->fDuration -= g_pGameServerShell->GetFrameTime();
 		if ( pFootprint->fDuration < 0.0f )
 		{
 			m_listFootprints.Remove(pFootprint);
@@ -1818,9 +1820,14 @@ void CCharacter::UpdateSounds()
 	if (m_hCurDlgSnd)
 	{
         LTBOOL bIsDone = LTFALSE;
-		if (g_pLTServer->IsSoundDone(m_hCurDlgSnd, &bIsDone) != LT_OK || bIsDone)
+		LTFLOAT fDuration = 0.0f;
+		g_pLTServer->GetSoundDuration(m_hCurDlgSnd, &fDuration);
+
+		if (g_pGameServerShell->GetTime() - m_fCurDlgStartTime > fDuration)
+		//if (g_pLTServer->IsSoundDone(m_hCurDlgSnd, &bIsDone) != LT_OK || bIsDone)
 		{
 			KillDlgSnd();
+			m_fCurDlgStartTime = 0.0f;
 		}
 	}
 	else
@@ -1953,6 +1960,8 @@ void CCharacter::PlayDialogSound(char* pSound, CharacterSoundType eType)
 	m_hCurDlgSnd = g_pServerSoundMgr->PlaySoundFromObject(m_hObject, pSound,
 		fRadius, m_eSoundPriority, dwFlags, nVolume);
 
+	m_fCurDlgStartTime = g_pGameServerShell->GetTime();
+
 	m_eCurDlgSndType = eType;
 
 	if ( m_eCurDlgSndType == CST_AI_SOUND )
@@ -1976,6 +1985,7 @@ void CCharacter::KillDlgSnd()
 	{
 		g_pLTServer->KillSound(m_hCurDlgSnd);
         m_hCurDlgSnd = LTNULL;
+		m_fCurDlgStartTime = 0.0f;
 
 	}
 

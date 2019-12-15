@@ -357,7 +357,6 @@ call "D:\GameDev\no-one-lives-forever-master\NOLF\_after_build_debug.bat"</Comma
     <ClCompile Include="..\Shared\TemplateList.cpp" />
     <ClCompile Include="..\Shared\VersionMgr.cpp" />
     <ClCompile Include="..\Shared\WeaponMgr.cpp" />
-    <ClCompile Include="..\Shared\WinUtil.cpp" />
     <ClCompile Include="AI.cpp" />
     <ClCompile Include="AIAnimal.cpp" />
     <ClCompile Include="AIAnimalState.cpp" />
@@ -613,7 +612,6 @@ call "D:\GameDev\no-one-lives-forever-master\NOLF\_after_build_debug.bat"</Comma
     <ClInclude Include="..\Shared\VersionMgr.h" />
     <ClInclude Include="..\Shared\WeaponFXTypes.h" />
     <ClInclude Include="..\Shared\WeaponMgr.h" />
-    <ClInclude Include="..\Shared\WinUtil.h" />
     <ClInclude Include="AI.h" />
     <ClInclude Include="AIAnimal.h" />
     <ClInclude Include="AIAnimalState.h" />

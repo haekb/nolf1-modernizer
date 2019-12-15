@@ -107,7 +107,7 @@ void CBodyStateNormal::Update()
 		return;
 	}
 
-    LTFLOAT fTime = g_pLTServer->GetTime();
+    LTFLOAT fTime = g_pGameServerShell->GetTime();
 
 	if (!m_pBody->m_hObject || !g_pGameServerShell) return;
 
@@ -249,7 +249,7 @@ void CBodyStateStairs::Update()
 		if ( pVolume && pVolume->Inside2dLoose(vPos, 36.0f) )
 		{
 			const static LTFLOAT fStairsFallStopSpeed = g_pServerButeMgr->GetBodyStairsFallStopSpeed();
-			LTVector vNewPos = vPos + pLastVolume->GetStairsDir()*g_pLTServer->GetFrameTime()*fStairsFallStopSpeed;
+			LTVector vNewPos = vPos + pLastVolume->GetStairsDir()*g_pGameServerShell->GetFrameTime()*fStairsFallStopSpeed;
 			g_pLTServer->MoveObject(m_pBody->m_hObject, &vNewPos);
 		}
 	}
@@ -264,7 +264,7 @@ void CBodyStateStairs::Update()
 		if ( m_bFell )
 		{
 			const static LTFLOAT fStairsFallSpeed = g_pServerButeMgr->GetBodyStairsFallSpeed();
-            LTVector vNewPos = vPos + pVolume->GetStairsDir()*g_pLTServer->GetFrameTime()*fStairsFallSpeed;
+            LTVector vNewPos = vPos + pVolume->GetStairsDir()*g_pGameServerShell->GetFrameTime()*fStairsFallSpeed;
 
 			IntersectQuery IQuery;
 			IntersectInfo IInfo;
@@ -606,7 +606,7 @@ void CBodyStateUnderwater::Update()
 
         LTVector vPos;
         g_pLTServer->GetObjectPos(m_pBody->m_hObject, &vPos);
-        vPos += LTVector(0,-36.0f,0)*g_pLTServer->GetFrameTime();
+        vPos += LTVector(0,-36.0f,0)*g_pGameServerShell->GetFrameTime();
         g_pLTServer->MoveObject(m_pBody->m_hObject, &vPos);
 
 		if ( m_bStop )
@@ -689,7 +689,7 @@ void CBodyStateLaser::Init(Body* pBody)
 	g_pLTServer->SetModelAnimation(m_pBody->m_hObject, hAni);
 	g_pLTServer->SetModelLooping(m_pBody->m_hObject, LTFALSE);
 
-	m_fRemoveTime = g_pLTServer->GetTime() + 3.5f;
+	m_fRemoveTime = g_pGameServerShell->GetTime() + 3.5f;
 
 	m_pBody->SetState(eBodyStateFade);
 }
@@ -703,7 +703,7 @@ void CBodyStateLaser::Update()
 {
 	CBodyState::Update();
 /*
-	if ( g_pLTServer->GetTime() > m_fRemoveTime )
+	if ( g_pGameServerShell->GetTime() > m_fRemoveTime )
 	{
 		if ( (g_pGameServerShell->GetGameType() == SINGLE) && !!m_pBody->GetAttachments() )
 		{
@@ -764,7 +764,7 @@ void CBodyStateDecay::Init(Body* pBody)
 	g_pLTServer->SetModelAnimation(m_pBody->m_hObject, hAni);
 	g_pLTServer->SetModelLooping(m_pBody->m_hObject, LTFALSE);
 
-	m_fRemoveTime = g_pLTServer->GetTime() + 3.5f;
+	m_fRemoveTime = g_pGameServerShell->GetTime() + 3.5f;
 
 	HMESSAGEWRITE hMessage = g_pLTServer->StartMessage(LTNULL, MID_SFX_MESSAGE);
 	g_pLTServer->WriteToMessageByte(hMessage, SFX_BODY_ID);
@@ -784,7 +784,7 @@ void CBodyStateDecay::Update()
 	CBodyState::Update();
 /*
 
-	if ( g_pLTServer->GetTime() > m_fRemoveTime )
+	if ( g_pGameServerShell->GetTime() > m_fRemoveTime )
 	{
 		m_pBody->RemoveObject();
 	}
@@ -847,10 +847,10 @@ void CBodyStateFade::Update()
 			g_pLTServer->WriteToMessageByte(hMessage, BFX_FADE_MSG);
 			g_pLTServer->EndMessage2(hMessage, MESSAGE_NAGGLEFAST);
 
-			m_fRemoveTime = g_pLTServer->GetTime() + 3.5f;
+			m_fRemoveTime = g_pGameServerShell->GetTime() + 3.5f;
 		}
 
-		if ( g_pLTServer->GetTime() > m_fRemoveTime )
+		if ( g_pGameServerShell->GetTime() > m_fRemoveTime )
 		{
 			m_pBody->RemoveObject();
 		}
@@ -1199,7 +1199,7 @@ void CBodyStateExplode::Update()
 {
 	CBodyState::Update();
 
-	if ( m_pBody && ((g_pLTServer->GetTime() - m_pBody->GetStarttime()) > g_BodyStateTimeout.GetFloat()) )
+	if ( m_pBody && ((g_pGameServerShell->GetTime() - m_pBody->GetStarttime()) > g_BodyStateTimeout.GetFloat()) )
 	{
 		g_pLTServer->SetModelAnimation(m_pBody->m_hObject, m_hAniStop);
 		g_pLTServer->SetModelLooping(m_pBody->m_hObject, LTFALSE);

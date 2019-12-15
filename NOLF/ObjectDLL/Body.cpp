@@ -404,7 +404,7 @@ void Body::HandleModelString(ArgList* pArgList)
 		// Update the noise info. We use a time in the future so AI's don't *instantly* react to the sound
 		// AI's twice as sensitive to landing sound (because it's louder)
 
-        m_DeathScene.SetNoise(pSurf->fDeathNoiseModifier * (bLand ? 2.0f : 1.0f), g_pLTServer->GetTime() + GetRandom(0.5f, 1.0f));
+        m_DeathScene.SetNoise(pSurf->fDeathNoiseModifier * (bLand ? 2.0f : 1.0f), g_pGameServerShell->GetTime() + GetRandom(0.5f, 1.0f));
 	}
 }
 
@@ -808,14 +808,14 @@ void Body::Update()
 	if ( m_bFirstUpdate )
 	{
 		m_bFirstUpdate = LTFALSE;
-		m_fStartTime   = g_pLTServer->GetTime();
+		m_fStartTime   = g_pGameServerShell->GetTime();
 	}
 
 	SetNextUpdate(s_fUpdateDelta);
 
 	// We keep the body active to update dims for 2.0 seconds
 
-	LTBOOL bUpdatingDims = g_pLTServer->GetTime() < m_fStartTime + 2.0f;
+	LTBOOL bUpdatingDims = g_pGameServerShell->GetTime() < m_fStartTime + 2.0f;
 
 	// The deactivate-check, update, activate-check is ordered so that
 	// deactivation will always happen one update after you enter a state,
@@ -1293,7 +1293,7 @@ LTBOOL Body::CanCheckPulse()
 			case eBodyStateAcid:
 				// Don't check the pulse unless the body isn't fresh, we might get hit by whatever killed him.
 				// Plus we avoid some squirrely animation issues.
-				return (g_pLTServer->GetTime() > m_fStartTime + 4.0f);
+				return (g_pGameServerShell->GetTime() > m_fStartTime + 4.0f);
 				break;
 		}
 	}

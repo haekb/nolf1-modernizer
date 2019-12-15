@@ -312,7 +312,7 @@ void TranslucentWorldModel::Update()
 		return;
 	}
 
-    LTFLOAT fTimeDelta = g_pLTServer->GetTime() - m_fStartTime;
+    LTFLOAT fTimeDelta = g_pGameServerShell->GetTime() - m_fStartTime;
 
 	fAlpha = m_fInitialAlpha + (fTimeDelta * (m_fFinalAlpha - m_fInitialAlpha) / m_fChangeTime);
 	fAlpha = fAlpha > 0.999f ? 1.0f : (fAlpha < 0.001f ? 0.0f : fAlpha);
@@ -357,7 +357,7 @@ void TranslucentWorldModel::HandleTrigger(HOBJECT hSender, const char* szMsg)
 
 					if (fabs(m_fInitialAlpha - m_fFinalAlpha) > 0.01f)
 					{
-                        m_fStartTime = g_pLTServer->GetTime();
+                        m_fStartTime = g_pGameServerShell->GetTime();
 					    SetNextUpdate(0.001f);
 					}
 				}

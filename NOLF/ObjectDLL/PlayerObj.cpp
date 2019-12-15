@@ -3069,7 +3069,7 @@ char* CPlayerObj::GetDeathSound()
 
 void CPlayerObj::UpdateAirLevel()
 {
-    LTFLOAT fDeltaTime = g_pLTServer->GetFrameTime();
+    LTFLOAT fDeltaTime = g_pGameServerShell->GetFrameTime();
 
 	// See if we are in a liquid...
 

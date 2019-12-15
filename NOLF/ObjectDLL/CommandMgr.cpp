@@ -189,7 +189,7 @@ CCommandMgr::~CCommandMgr()
 
 LTBOOL CCommandMgr::Update()
 {
-    LTFLOAT fTimeDelta = g_pLTServer->GetFrameTime();
+    LTFLOAT fTimeDelta = g_pGameServerShell->GetFrameTime();
 
 	for (int i=0; i < CMDMGR_MAX_PENDING_COMMANDS; i++)
 	{

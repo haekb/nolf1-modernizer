@@ -577,7 +577,7 @@ void CAIHelicopterStrategyShoot::UpdateAiming(CWeapon* pWeapon, BURSTSTRUCT* pBu
 	{
 		// We are still waiting to fire.
 
-        pBurst->m_fBurstInterval -= g_pLTServer->GetFrameTime();
+        pBurst->m_fBurstInterval -= g_pGameServerShell->GetFrameTime();
 
 		// So just aim.
 

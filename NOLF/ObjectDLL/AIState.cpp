@@ -74,7 +74,7 @@ void CAIState::PreUpdate()
 {
 	// Increase our elapsed state time
 
-    m_fElapsedTime += g_pLTServer->GetFrameTime();
+    m_fElapsedTime += g_pGameServerShell->GetFrameTime();
 
 	// Kill any cinematic shit if we don't want it in this state
 

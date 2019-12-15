@@ -100,7 +100,7 @@ void CNudge::Update(LTBOOL bMoving)
 		LTVector vNudgeDir = m_pAI->GetPosition()-vPlayerPosition;
 		vNudgeDir.y = 0.0f;
 		vNudgeDir.Norm();
-		m_vNudge += vNudgeDir*64.0f*g_pLTServer->GetFrameTime();
+		m_vNudge += vNudgeDir*64.0f*g_pGameServerShell->GetFrameTime();
 	}
 
 	for ( uint32 iAI = 0 ; iAI < cAIs ; iAI++ )
@@ -126,7 +126,7 @@ void CNudge::Update(LTBOOL bMoving)
 			vNudgeDir.Norm();
 		}
 
-        m_vNudge += vNudgeDir*fNudgeAmount*g_pLTServer->GetFrameTime();
+        m_vNudge += vNudgeDir*fNudgeAmount*g_pGameServerShell->GetFrameTime();
 	}
 
 	_ASSERT((LTFLOAT)fabs(m_vNudge.y < MATH_EPSILON));

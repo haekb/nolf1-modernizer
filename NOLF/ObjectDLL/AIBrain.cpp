@@ -52,10 +52,10 @@ void CAIBrain::Init(CAIHuman* pAIHuman, const char* szName)
 	}
 
 	m_eDodgeStatusLast = eDodgeStatusOk;
-	m_fDodgeStatusCheckTimeVector = g_pLTServer->GetTime() + LOWER_BY_DIFFICULTY(m_pBrain->fDodgeVectorCheckTime);
-	m_fDodgeStatusCheckTimeProjectile = g_pLTServer->GetTime() + LOWER_BY_DIFFICULTY(m_pBrain->fDodgeProjectileCheckTime);
+	m_fDodgeStatusCheckTimeVector = g_pGameServerShell->GetTime() + LOWER_BY_DIFFICULTY(m_pBrain->fDodgeVectorCheckTime);
+	m_fDodgeStatusCheckTimeProjectile = g_pGameServerShell->GetTime() + LOWER_BY_DIFFICULTY(m_pBrain->fDodgeProjectileCheckTime);
 
-	m_fGrenadeStatusCheckTime = g_pLTServer->GetTime() + LOWER_BY_DIFFICULTY(m_pBrain->fAttackGrenadeThrowTime);
+	m_fGrenadeStatusCheckTime = g_pGameServerShell->GetTime() + LOWER_BY_DIFFICULTY(m_pBrain->fAttackGrenadeThrowTime);
 }
 
 void CAIBrain::Load(HMESSAGEREAD hRead)
@@ -86,8 +86,8 @@ void CAIBrain::Save(HMESSAGEWRITE hWrite)
 
 void CAIBrain::DodgeDelay()
 {
-	m_fDodgeStatusCheckTimeVector = g_pLTServer->GetTime() + LOWER_BY_DIFFICULTY(m_pBrain->fDodgeVectorDelayTime);
-	m_fDodgeStatusCheckTimeProjectile = g_pLTServer->GetTime() + LOWER_BY_DIFFICULTY(m_pBrain->fDodgeProjectileDelayTime);
+	m_fDodgeStatusCheckTimeVector = g_pGameServerShell->GetTime() + LOWER_BY_DIFFICULTY(m_pBrain->fDodgeVectorDelayTime);
+	m_fDodgeStatusCheckTimeProjectile = g_pGameServerShell->GetTime() + LOWER_BY_DIFFICULTY(m_pBrain->fDodgeProjectileDelayTime);
 }
 
 void CAIBrain::GetDodgeStatus(DodgeStatus* peDodgeStatus, Direction* peDirection, DodgeAction* peDodgeAction, uint32* pdwNode)
@@ -98,9 +98,9 @@ void CAIBrain::GetDodgeStatus(DodgeStatus* peDodgeStatus, Direction* peDirection
 		return;
 	}
 
-	if ( g_pLTServer->GetTime() >= m_fDodgeStatusCheckTimeVector )
+	if ( g_pGameServerShell->GetTime() >= m_fDodgeStatusCheckTimeVector )
 	{
-		m_fDodgeStatusCheckTimeVector = g_pLTServer->GetTime() + LOWER_BY_DIFFICULTY(m_pBrain->fDodgeVectorCheckTime);
+		m_fDodgeStatusCheckTimeVector = g_pGameServerShell->GetTime() + LOWER_BY_DIFFICULTY(m_pBrain->fDodgeVectorCheckTime);
 
 		if ( GetRandom(0.0f, 1.0f) <= RAISE_BY_DIFFICULTY(m_pBrain->fDodgeVectorCheckChance) )
 		{
@@ -183,9 +183,9 @@ void CAIBrain::GetDodgeStatus(DodgeStatus* peDodgeStatus, Direction* peDirection
 		}
 	}
 
-	if ( g_pLTServer->GetTime() >= m_fDodgeStatusCheckTimeProjectile )
+	if ( g_pGameServerShell->GetTime() >= m_fDodgeStatusCheckTimeProjectile )
 	{
-		m_fDodgeStatusCheckTimeProjectile = g_pLTServer->GetTime() + RAISE_BY_DIFFICULTY(m_pBrain->fDodgeProjectileCheckTime);
+		m_fDodgeStatusCheckTimeProjectile = g_pGameServerShell->GetTime() + RAISE_BY_DIFFICULTY(m_pBrain->fDodgeProjectileCheckTime);
 
 		if ( GetRandom(0.0f, 1.0f) <= RAISE_BY_DIFFICULTY(m_pBrain->fDodgeProjectileCheckChance) )
 		{
@@ -210,9 +210,9 @@ void CAIBrain::GetDodgeStatus(DodgeStatus* peDodgeStatus, Direction* peDirection
 
 GrenadeStatus CAIBrain::GetGrenadeStatus()
 {
-	if ( g_pLTServer->GetTime() >= m_fGrenadeStatusCheckTime )
+	if ( g_pGameServerShell->GetTime() >= m_fGrenadeStatusCheckTime )
 	{
-		m_fGrenadeStatusCheckTime = g_pLTServer->GetTime() + LOWER_BY_DIFFICULTY(m_pBrain->fAttackGrenadeThrowTime);
+		m_fGrenadeStatusCheckTime = g_pGameServerShell->GetTime() + LOWER_BY_DIFFICULTY(m_pBrain->fAttackGrenadeThrowTime);
 
 		if ( GetRandom(0.0f, 1.0f) <= RAISE_BY_DIFFICULTY(m_pBrain->fAttackGrenadeThrowChance) )
 		{
@@ -258,11 +258,11 @@ RangeStatus CAIBrain::GetRangeStatus()
 
 	LTBOOL bCanReport = LTFALSE;
 
-	if ( g_pLTServer->GetTime() > m_fRangeStatusCheckTime )
+	if ( g_pGameServerShell->GetTime() > m_fRangeStatusCheckTime )
 	{
 		// It's time for a fresh report
 
-		m_fRangeStatusCheckTime = g_pLTServer->GetTime() + 3.0f;
+		m_fRangeStatusCheckTime = g_pGameServerShell->GetTime() + 3.0f;
 		bCanReport = LTTRUE;
 	}
 

@@ -32,6 +32,7 @@
 #include "MyGameSpyMgr.h"
 #include "ServerOptionMgr.h"
 #include "Objectives.h"
+#include "SDL.h"
 
 #define MAX_CLIENTS		MAX_MULTI_PLAYERS
 #define MAX_TIME_RAMPS	12
@@ -137,6 +138,10 @@ class CGameServerShell : public IServerShell
 		LTRESULT	ProcessPacket(char* sData, uint32 dataLen, uint8 senderAddr[4], uint16 senderPort);
 
 		GameStartPoint* FindStartPoint(CPlayerObj* pPlayer);
+
+		LTFLOAT		GetTime();
+		LTFLOAT		GetFrameTime();
+		void		UpdateFrameTime();
 
 	protected :
 
@@ -260,6 +265,9 @@ class CGameServerShell : public IServerShell
 
         CGameServSendHandler    m_SendHandler;
 
+		LTFLOAT m_fLastFrameTime;
+		LTFLOAT m_fCurrentFrameTime;
+
 		void CacheModels();
 		void CacheTextures();
 		void CacheSprites();
@@ -286,6 +294,7 @@ class CGameServerShell : public IServerShell
 		CPlayerObj*	GetPlayerFromClientList(HCLIENT hClient);
 
 		LTBOOL IsPositionOccupied(LTVector & vPos, CPlayerObj* pPlayer);
+
 };
 
 

@@ -272,6 +272,8 @@ class CGameClientShell : public IClientShell
 		void SetFramerateLock(LTBOOL bLock) { m_bLockFramerate = bLock; }
 		void UpdateConfigSettings();
 
+		void SetFrameLimit(LTFLOAT framelimit) { if(framelimit > 0) m_lFrametime = (m_lTimerFrequency.QuadPart / framelimit); }
+
 	protected :
 
         uint32      OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid);
@@ -535,6 +537,7 @@ class CGameClientShell : public IClientShell
 		// Jake's additionals
 		LTBOOL 		m_bLockFramerate; // Locks framerate for ...everything...
 		LTBOOL		m_bUserWantsFramerateLock; // If the user wants to override it, let them!
+		LTBOOL		m_bCinematicActive;
 		LTBOOL		m_bOldMouseLook; // If the user wants to use the old mouselook.
 		LONGLONG    m_lNextUpdate;
 		LONGLONG    m_lFrametime;

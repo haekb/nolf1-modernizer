@@ -117,9 +117,9 @@ void CAISenseMgr::Update()
 {
     m_bStopUpdating = LTFALSE;
 
-//	g_pLTServer->CPrint("%s: Next sense update in at %f (now: %f, rate = %f)", m_pAI->GetName(), m_fNextUpdateTime, g_pLTServer->GetTime(), m_fUpdateRate);
+//	g_pLTServer->CPrint("%s: Next sense update in at %f (now: %f, rate = %f)", m_pAI->GetName(), m_fNextUpdateTime, g_pGameServerShell->GetTime(), m_fUpdateRate);
 
-	LTFLOAT fTime = g_pLTServer->GetTime();
+	LTFLOAT fTime = g_pGameServerShell->GetTime();
 	if ( fTime < m_fNextUpdateTime )
 	{
 		return;
@@ -149,7 +149,7 @@ void CAISenseMgr::Update()
 		if ( m_bStopUpdating ) return;
 	}}
 
-//	m_fUpdateRate = 2.0f * (1.0f - Min<LTFLOAT>(1.0f, 0.03333333333333f/g_pLTServer->GetFrameTime()));
+//	m_fUpdateRate = 2.0f * (1.0f - Min<LTFLOAT>(1.0f, 0.03333333333333f/g_pGameServerShell->GetFrameTime()));
 
 //	g_pLTServer->CPrint("dynamically updating sense rate from %f to %f", m_pAI->GetSenseUpdateRate(), m_fUpdateRate);
 }
@@ -196,7 +196,7 @@ void CAISenseMgr::GetProperties(GenericProp* pgp)
 
 void CAISenseMgr::UpdateSense(SenseType st)
 {
-	if ( !m_bEnabled || (g_pLTServer->GetTime() < m_fNextUpdateTime) ) return;
+	if ( !m_bEnabled || (g_pGameServerShell->GetTime() < m_fNextUpdateTime) ) return;
 
 	CAISense* pAISense = m_apSenses[st];
 	_ASSERT(pAISense);
@@ -414,7 +414,7 @@ void CAISense::PostUpdate(LTFLOAT fTimeDelta)
 		{
 			if ( m_bIncreasedStimulation )
 			{
-                m_fStimulationTime = g_pLTServer->GetTime();
+                m_fStimulationTime = g_pGameServerShell->GetTime();
 			}
 			else
 			{
@@ -795,7 +795,7 @@ LTBOOL CAISenseHearEnemyWeaponFire::Update(HOBJECT hStimulus, LTFLOAT fTimeDelta
 
 	// Make sure this is a recent firing of the weapon...
 
-    if (info.fTime + 1.0 < g_pLTServer->GetTime() || info.nWeaponId == WMGR_INVALID_ID) return LTFALSE;
+    if (info.fTime + 1.0 < g_pGameServerShell->GetTime() || info.nWeaponId == WMGR_INVALID_ID) return LTFALSE;
 
 	WEAPON* pWeapon = g_pWeaponMgr->GetWeapon(info.nWeaponId);
     if (!pWeapon) return LTFALSE;
@@ -836,7 +836,7 @@ LTBOOL CAISenseHearEnemyWeaponImpact::Update(HOBJECT hStimulus, LTFLOAT fTimeDel
 
 	// Make sure this is a recent firing of the weapon...
 
-    if (info.fTime + 1.0 < g_pLTServer->GetTime() || info.nWeaponId == WMGR_INVALID_ID) return LTFALSE;
+    if (info.fTime + 1.0 < g_pGameServerShell->GetTime() || info.nWeaponId == WMGR_INVALID_ID) return LTFALSE;
 
 	AMMO* pAmmo = g_pWeaponMgr->GetAmmo(info.nAmmoId);
     if (!pAmmo || !pAmmo->pImpactFX) return LTFALSE;
@@ -916,8 +916,8 @@ LTBOOL CAISenseHearEnemyFootstep::Update(HOBJECT hStimulus, LTFLOAT fTimeDelta)
 	pChar->GetLastMoveInfo(info);
 
 	if ( info.fTime > m_fStimulationTime &&
-         g_pLTServer->GetTime() > info.fTime &&
-         g_pLTServer->GetTime() < info.fTime + 0.50f )
+         g_pGameServerShell->GetTime() > info.fTime &&
+         g_pGameServerShell->GetTime() < info.fTime + 0.50f )
 	{
         LTVector vMovementPos;
         g_pLTServer->GetObjectPos(hStimulus, &vMovementPos);
@@ -955,8 +955,8 @@ LTBOOL CAISenseHearEnemyDisturbance::Update(HOBJECT hStimulus, LTFLOAT fTimeDelt
 	pChar->GetLastCoinInfo(info);
 
 	if ( /*info.fTime > m_fStimulationTime &&*/
-         g_pLTServer->GetTime() > info.fTime &&
-         g_pLTServer->GetTime() < info.fTime + 0.50f )
+         g_pGameServerShell->GetTime() > info.fTime &&
+         g_pGameServerShell->GetTime() < info.fTime + 0.50f )
 	{
         LTFLOAT fDistance = VEC_DIST(info.vPosition, m_pAI->GetPosition());
         LTFLOAT fCoinNoiseDistance = g_pAIButeMgr->GetSenses()->fCoinNoiseDistance;
@@ -1005,8 +1005,8 @@ LTBOOL CAISenseHearAllyDeath::Update(HOBJECT hStimulus, LTFLOAT fTimeDelta)
 
 	// Time has got to be greater than the death scene noise time but not too much greater
 
-    if ( g_pLTServer->GetTime() > pDeathScene->GetNoiseTime() &&
-         g_pLTServer->GetTime() < pDeathScene->GetNoiseTime() + 1.0f )
+    if ( g_pGameServerShell->GetTime() > pDeathScene->GetNoiseTime() &&
+         g_pGameServerShell->GetTime() < pDeathScene->GetNoiseTime() + 1.0f )
 	{
 		// Noise has to be within audible radius
 
@@ -1028,8 +1028,8 @@ LTBOOL CAISenseHearAllyDeath::Update(HOBJECT hStimulus, LTFLOAT fTimeDelta)
 
 	// Gotta check the pain noise too (using same criterion as pain noise)
 
-    if ( g_pLTServer->GetTime() > pDeathScene->GetLastPainTime() &&
-         g_pLTServer->GetTime() < pDeathScene->GetLastPainTime() + 1.0f )
+    if ( g_pGameServerShell->GetTime() > pDeathScene->GetLastPainTime() &&
+         g_pGameServerShell->GetTime() < pDeathScene->GetLastPainTime() + 1.0f )
 	{
 		// LastPain has to be within audible radius
 
@@ -1060,7 +1060,7 @@ LTBOOL CAISenseHearAllyPain::Update(HOBJECT hStimulus, LTFLOAT fTimeDelta)
 
 	// Time has got to be greater than the pain noise time but not too much greater
 
-	LTFLOAT fTime = g_pLTServer->GetTime();
+	LTFLOAT fTime = g_pGameServerShell->GetTime();
 
     if ( (fTime > pChar->GetLastPainTime()) && (fTime < pChar->GetLastPainTime() + 1.0f) )
 	{
@@ -1103,7 +1103,7 @@ LTBOOL CAISenseHearAllyWeaponFire::Update(HOBJECT hStimulus, LTFLOAT fTimeDelta)
 
 	// Make sure this is a recent firing of the weapon...
 
-    if (info.fTime + 1.0 < g_pLTServer->GetTime() || info.nWeaponId == WMGR_INVALID_ID) return LTFALSE;
+    if (info.fTime + 1.0 < g_pGameServerShell->GetTime() || info.nWeaponId == WMGR_INVALID_ID) return LTFALSE;
 
 	WEAPON* pWeapon = g_pWeaponMgr->GetWeapon(info.nWeaponId);
     if (!pWeapon) return LTFALSE;
@@ -1431,7 +1431,7 @@ void CAISenseRecorder::Update()
 {
 	// TODO: Optimize this so we don't do it every frame.
 
-    LTFLOAT fTime = g_pLTServer->GetTime();
+    LTFLOAT fTime = g_pGameServerShell->GetTime();
 
 	for ( int iSense = 0 ; iSense < CAISense::kNumSenses ; iSense++ )
 	{
@@ -1571,7 +1571,7 @@ void CAISenseRecorder::Record(CAISense* pAISense)
 	CAISenseRecord* pRecord = FACTORY_NEW(CAISenseRecord);
 	pRecord->FromSense(pAISense);
 
-	pRecord->SetLifetime(g_pLTServer->GetTime() + GetLifetime(pAISense));
+	pRecord->SetLifetime(g_pGameServerShell->GetTime() + GetLifetime(pAISense));
 
 	m_alstpSenseRecords[pAISense->GetType()].Add(pRecord);
 	Link(pRecord->GetObject());
