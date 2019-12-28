@@ -96,6 +96,7 @@ LTBOOL CFolderHost::Build()
         g_vtNetBandwidthCustom.Init(g_pLTClient,"NetBandwidthCustom",LTNULL,2000);
 	}
 
+	LTFLOAT yr = g_pInterfaceResMgr->GetYRatio();
 
 	CreateTitle(IDS_TITLE_HOST);
 
@@ -110,11 +111,11 @@ LTBOOL CFolderHost::Build()
 
     LTIntPt offset(0,0);
     m_pNameGroup->AddControl(m_pLabel,offset,LTTRUE);
-	offset.x = 200;
+	offset.x = 200 * yr;
     m_pNameGroup->AddControl(m_pEdit,offset,LTFALSE);
 
 
-	m_pTypeCtrl = AddCycleItem(IDS_GAME_TYPE,IDS_HELP_GAME_TYPE,200,25,&m_nGameType);
+	m_pTypeCtrl = AddCycleItem(IDS_GAME_TYPE,IDS_HELP_GAME_TYPE,200 * yr,25,&m_nGameType);
 	m_pTypeCtrl->AddString(IDS_SPACER);
 	m_pTypeCtrl->AddString(IDS_COOPERATIVE_ASSAULT);
 	m_pTypeCtrl->AddString(IDS_DEATHMATCH);
@@ -122,7 +123,7 @@ LTBOOL CFolderHost::Build()
 	AddTextItem(IDS_HOST_OPTIONS, CMD_SET_OPTIONS, IDS_HELP_HOST_OPTIONS);
 	AddTextItem(IDS_HOST_LEVELS, CMD_SET_LEVELS, IDS_HELP_HOST_LEVELS);
 
-	m_pPassToggle = AddToggle(IDS_USE_PASSWORD,IDS_HELP_PASSWORD,225,&m_bUsePassword);
+	m_pPassToggle = AddToggle(IDS_USE_PASSWORD,IDS_HELP_PASSWORD,225 * yr,&m_bUsePassword);
 	m_pPassToggle->SetOnString(IDS_ON);
 	m_pPassToggle->SetOffString(IDS_OFF);
 	m_pPassToggle->NotifyOnChange(CMD_TOGGLE_PASS,this);
@@ -138,7 +139,7 @@ LTBOOL CFolderHost::Build()
 
     offset = LTIntPt(0,0);
     m_pPassGroup->AddControl(m_pPassLabel,offset,LTTRUE);
-	offset.x = 200;
+	offset.x = 200 * yr;
     m_pPassGroup->AddControl(m_pPassEdit,offset,LTFALSE);
 
 	m_pPortLabel = CreateTextItem(IDS_PORT, CMD_EDIT_PORT, IDS_HELP_ENTER_PORT);
@@ -151,7 +152,7 @@ LTBOOL CFolderHost::Build()
 
     offset = LTIntPt(0,0);
     m_pPortGroup->AddControl(m_pPortLabel,offset,LTTRUE);
-	offset.x = 200;
+	offset.x = 200 * yr;
     m_pPortGroup->AddControl(m_pPortEdit,offset,LTFALSE);
 
 
@@ -160,7 +161,7 @@ LTBOOL CFolderHost::Build()
 	LTIntPt pos = g_pLayoutMgr->GetFolderCustomPoint(FOLDER_ID_HOST,"LaunchPos");
 	AddFixedControl(pCtrl,pos);
 
-	m_pBandwidthCycle = AddCycleItem(IDS_BANDWIDTH_CYCLE,IDS_HELP_BANDWIDTH_CYCLE,200,25,&m_nBandwidth);
+	m_pBandwidthCycle = AddCycleItem(IDS_BANDWIDTH_CYCLE,IDS_HELP_BANDWIDTH_CYCLE,200 * yr,25,&m_nBandwidth);
 	m_pBandwidthCycle->AddString(IDS_56K);
 	m_pBandwidthCycle->AddString(IDS_CABLE);
 	m_pBandwidthCycle->AddString(IDS_DSL);
@@ -178,7 +179,7 @@ LTBOOL CFolderHost::Build()
 
     offset = LTIntPt(0,0);
     m_pBandwidthGroup->AddControl(m_pBandwidthLabel,offset,LTTRUE);
-	offset.x = 200;
+	offset.x = 200 * yr;
     m_pBandwidthGroup->AddControl(m_pBandwidthEdit,offset,LTFALSE);
 
 	UpdateBandwidth();
