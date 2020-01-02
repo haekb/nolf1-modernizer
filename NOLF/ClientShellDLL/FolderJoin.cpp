@@ -409,7 +409,7 @@ LTBOOL CFolderJoin::Render(HSURFACE hDestSurf)
 			nOldIndex = m_pServerList->GetLastDisplayedIndex();
 		}
 		
-		GetSmallFont()->Draw(m_hServersShown, hDestSurf, xo+ rcTempServerRect.right-nIndent, yo+ rcTempServerRect.top+nIndent, LTF_JUSTIFY_RIGHT, m_hNonSelectedColor);
+		GetSmallFont()->Draw(m_hServersShown, hDestSurf, xo+ rcTempServerRect.right/*-nIndent*/, yo+ rcTempServerRect.top+nIndent, LTF_JUSTIFY_RIGHT, m_hNonSelectedColor);
 	}
 
     CLTGUICtrl *pSortCtrl = LTNULL;
@@ -434,7 +434,7 @@ LTBOOL CFolderJoin::Render(HSURFACE hDestSurf)
 	if (pSortCtrl)
 	{
         LTIntPt pos = pSortCtrl->GetPos();
-		pos.x += xo;
+		//pos.x += xo;
 		pos.y += yo;
         LTRect rect(pos.x, (pos.y + pSortCtrl->GetHeight()) - 5, pos.x + pSortCtrl->GetWidth(), (pos.y + pSortCtrl->GetHeight()) - 3);
         g_pOptimizedRenderer->FillRect(hDestSurf,&rect,m_hSelectedColor);
@@ -460,7 +460,7 @@ LTBOOL CFolderJoin::Render(HSURFACE hDestSurf)
 	if (pSortCtrl)
 	{
         LTIntPt pos = pSortCtrl->GetPos();
-		pos.x += xo;
+		//pos.x += xo;
 		pos.y += yo;
         LTRect rect(pos.x, (pos.y + pSortCtrl->GetHeight()) - 5, pos.x + pSortCtrl->GetWidth(), (pos.y + pSortCtrl->GetHeight()) - 3);
         g_pOptimizedRenderer->FillRect(hDestSurf,&rect,m_hSelectedColor);
