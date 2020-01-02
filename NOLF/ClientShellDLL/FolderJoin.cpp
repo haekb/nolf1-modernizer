@@ -200,65 +200,16 @@ void CFolderJoin::Term()
 }
 
 // Build the folder
-// This is a mess with widescreen support shoved in.
 LTBOOL CFolderJoin::Build()
 {
-	int xo = g_pInterfaceResMgr->GetXOffset();
-	int yo = g_pInterfaceResMgr->GetYOffset();
-	float yr = g_pInterfaceResMgr->GetYRatio();
-
 	rcServerRect = g_pLayoutMgr->GetFolderCustomRect((eFolderID)m_nFolderID,"ServerRect");
 	rcPlayerRect = g_pLayoutMgr->GetFolderCustomRect((eFolderID)m_nFolderID,"PlayerRect");
 	rcOptionRect = g_pLayoutMgr->GetFolderCustomRect((eFolderID)m_nFolderID,"OptionRect");
 	rcStatusRect = g_pLayoutMgr->GetFolderCustomRect((eFolderID)m_nFolderID,"StatusRect");
 	rcCommandRect = g_pLayoutMgr->GetFolderCustomRect((eFolderID)m_nFolderID,"CommandRect");
 
-	
-	rcServerRect.right *= yr;// + xo;
-	rcPlayerRect.right *= yr;// + xo;
-	rcOptionRect.right *= yr;// + xo;
-	rcStatusRect.right *= yr;// + xo;
-	//rcCommandRect.right *= yr;// + xo;
-	
-
-	rcServerRect.left *= yr;// + xo;
-	rcPlayerRect.left *= yr;// +xo;
-	rcOptionRect.left *= yr;// +xo;
-	rcStatusRect.left *= yr;// +xo;
-	//rcCommandRect.left *= yr;// +xo;
-
-	
-	rcServerRect.top *= yr;// +yo;
-	rcPlayerRect.top *= yr;// + yo;
-	rcOptionRect.top *= yr;// + yo;
-	rcStatusRect.top *= yr;// + yo;
-	//rcCommandRect.top *= yr;// + yo;
-	
-
-	rcServerRect.bottom *= yr;
-	rcPlayerRect.bottom *= yr;
-	rcOptionRect.bottom *= yr;
-	rcStatusRect.bottom *= yr;
-	//rcCommandRect.bottom *= yr;
-	
-	/*
-	rcServerRect.top *= xr;
-	rcPlayerRect.top *= xr;
-	rcOptionRect.top *= xr;
-	rcStatusRect.top *= xr;
-	rcCommandRect.top *= xr;
-
-	rcServerRect.bottom *= xr;
-	rcPlayerRect.bottom *= xr;
-	rcOptionRect.bottom *= xr;
-	rcStatusRect.bottom *= xr;
-	rcCommandRect.bottom *= xr;
-	*/
-
 	nGap = g_pLayoutMgr->GetFolderCustomInt((eFolderID)m_nFolderID,"ColumnGap");
-	//nGap *= yr;
 	nIndent = g_pLayoutMgr->GetFolderCustomInt((eFolderID)m_nFolderID,"TextIndent");
-	//nIndent *= yr;
 
 	nGameWidth = g_pLayoutMgr->GetFolderCustomInt((eFolderID)m_nFolderID,"GameWidth");
 	nPlayerWidth = g_pLayoutMgr->GetFolderCustomInt((eFolderID)m_nFolderID,"PlayerWidth");
@@ -271,49 +222,42 @@ LTBOOL CFolderJoin::Build()
 
 	nArrowWidth = g_pLayoutMgr->GetFolderCustomInt((eFolderID)m_nFolderID,"ArrowWidth");
 
-
 	CreateTitle(IDS_TITLE_JOIN);
 
 	//Add Server Header
-    LTIntPt pos(rcServerRect.left + nIndent + xo,rcServerRect.top);
+    LTIntPt pos(rcServerRect.left + nIndent,rcServerRect.top);
 	CLTGUIFont *pFont = GetMediumFont();
 	nBarHeight = pFont->GetHeight();
 
 
 	CStaticTextCtrl *pCtrl = CreateStaticTextItem(IDS_SERVER_NAME,CMD_SORT_SERV_NAME,IDS_HELP_SERVER_NAME,nGameWidth,pFont->GetHeight(),LTFALSE,pFont);
     AddFixedControl(pCtrl,pos,LTTRUE);
-	pCtrl->SetParam2(FC_DONT_REPOS);
 	pServerNameCtrl = pCtrl;
-	pos.x += nGameWidth + nGap;
+	pos.x += nGameWidth+nGap;
 
 	pCtrl = CreateStaticTextItem(IDS_SERVER_PLAYERS,CMD_SORT_SERV_PLAYERS,IDS_HELP_SERVER_PLAYERS,nPlayerWidth,pFont->GetHeight(),LTFALSE,pFont);
     AddFixedControl(pCtrl,pos,LTTRUE);
-	pCtrl->SetParam2(FC_DONT_REPOS);
 	pServerPlayersCtrl = pCtrl;
-	pos.x += nPlayerWidth + nGap;
+	pos.x += nPlayerWidth+nGap;
 
 	pCtrl = CreateStaticTextItem(IDS_SERVER_PING,CMD_SORT_SERV_PING,IDS_HELP_SERVER_PING,nPingWidth,pFont->GetHeight(),LTFALSE,pFont);
     AddFixedControl(pCtrl,pos,LTTRUE);
-	pCtrl->SetParam2(FC_DONT_REPOS);
 	pServerPingCtrl = pCtrl;
-	pos.x += nPingWidth + nGap;
+	pos.x += nPingWidth+nGap;
 
 	pFont = GetMediumFont();
     pCtrl = CreateStaticTextItem(IDS_SERVER_GAME,CMD_SORT_SERV_GAME,LTNULL,nTypeWidth,pFont->GetHeight(),LTFALSE,pFont);
     AddFixedControl(pCtrl,pos,LTFALSE);
-	pCtrl->SetParam2(FC_DONT_REPOS);
 	pServerGameCtrl = pCtrl;
-	pos.x += nTypeWidth + nGap;
+	pos.x += nTypeWidth+nGap;
 
     pCtrl = CreateStaticTextItem(IDS_SERVER_MAP,CMD_SORT_SERV_MAP,LTNULL,nMapWidth,pFont->GetHeight(),LTFALSE,pFont);
 	pServerMapCtrl = pCtrl;
     AddFixedControl(pCtrl,pos,LTFALSE);
-	pCtrl->SetParam2(FC_DONT_REPOS);
-
 
 	//Add Server List
 	pos.x = rcServerRect.left + nIndent;
-	pos.y = (rcServerRect.top/yr) +nBarHeight;
+	pos.y = rcServerRect.top + nBarHeight;
 	int nListHeight = (rcServerRect.bottom - rcServerRect.top) - nBarHeight;
 	nListHeight += 19;	// [blg] tweak
 
@@ -323,28 +267,24 @@ LTBOOL CFolderJoin::Build()
 	m_pServerList->SetItemSpacing(0);
     m_pServerList->EnableMouseClickSelect(LTTRUE);
     AddFixedControl(m_pServerList,pos,LTTRUE);
-	pCtrl->SetParam2(FC_DONT_REPOS);
 
 	//Add Player Header
 	pFont = GetMediumFont();
-    pos = LTIntPt(rcPlayerRect.left + nIndent + xo,rcPlayerRect.top);
+    pos = LTIntPt(rcPlayerRect.left + nIndent,rcPlayerRect.top);
 
 	pCtrl = CreateStaticTextItem(IDS_JOIN_PLAYER_NAME,CMD_SORT_PLYR_NAME,IDS_HELP_SORT_PLYR_NAME,nNameWidth,pFont->GetHeight(),LTFALSE,pFont);
     AddFixedControl(pCtrl,pos,LTTRUE);
-	pCtrl->SetParam2(FC_DONT_REPOS);
 	pPlayerNameCtrl = pCtrl;
-	pos.x += nNameWidth + nGap;
+	pos.x += nNameWidth+nGap;
 
 	pCtrl = CreateStaticTextItem(IDS_JOIN_PLAYER_SCORE,CMD_SORT_PLYR_SCORE,IDS_HELP_SORT_PLYR_SCORE,nScoreWidth,pFont->GetHeight(),LTFALSE,pFont);
     AddFixedControl(pCtrl,pos,LTTRUE);
-	pCtrl->SetParam2(FC_DONT_REPOS);
 	pPlayerFragCtrl = pCtrl;
-	pos.x += nScoreWidth + nGap;
+	pos.x += nScoreWidth+nGap;
 
 	pCtrl = CreateStaticTextItem(IDS_SERVER_PING,CMD_SORT_PLYR_PING,IDS_HELP_SORT_PLYR_PING,nPingWidth,pFont->GetHeight(),LTFALSE,pFont);
 	pPlayerPingCtrl = pCtrl;
     AddFixedControl(pCtrl,pos,LTTRUE);
-	pCtrl->SetParam2(FC_DONT_REPOS);
 
 	//Add PlayerList Here
 	pos.x = rcPlayerRect.left + nIndent;
@@ -357,7 +297,6 @@ LTBOOL CFolderJoin::Build()
 	m_pPlayerList->SetItemSpacing(0);
 //    m_pPlayerList->Enable(LTFALSE);
     AddFixedControl(m_pPlayerList,pos,LTTRUE);
-	pCtrl->SetParam2(FC_DONT_REPOS);
 
 
 	//Add Commands
@@ -399,22 +338,20 @@ LTBOOL CFolderJoin::Build()
 
 	//Add Option Header
 	pFont = GetMediumFont();
-    pos = LTIntPt(rcOptionRect.left + nIndent+xo,rcOptionRect.top);
+    pos = LTIntPt(rcOptionRect.left + nIndent,rcOptionRect.top);
 
     pCtrl = CreateStaticTextItem(IDS_OPTION_NAME,LTNULL,LTNULL,nNameWidth,pFont->GetHeight(),LTTRUE,pFont);
     pCtrl->Enable(LTFALSE);
     AddFixedControl(pCtrl,pos,LTFALSE);
-	pCtrl->SetParam2(FC_DONT_REPOS);
-	pos.x += nOptionWidth+nGap + xo;
+	pos.x += nOptionWidth+nGap;
 
     pCtrl = CreateStaticTextItem(IDS_OPTION_VALUE,LTNULL,LTNULL,nScoreWidth,pFont->GetHeight(),LTTRUE,pFont);
     pCtrl->Enable(LTFALSE);
     AddFixedControl(pCtrl,pos,LTFALSE);
-	pCtrl->SetParam2(FC_DONT_REPOS);
 
 	//Add OptionList Here
 	pos.x = rcOptionRect.left + nIndent;
-	pos.y = (rcOptionRect.top/yr) + nBarHeight;
+	pos.y = rcOptionRect.top + nBarHeight;
 	nListHeight = (rcOptionRect.bottom - rcOptionRect.top) - nBarHeight;
 	nOptionGroupWidth = (rcOptionRect.right - rcOptionRect.left) - nArrowWidth;
 	m_pOptionList = debug_new(CListCtrl);
@@ -422,7 +359,6 @@ LTBOOL CFolderJoin::Build()
 	m_pOptionList->SetItemSpacing(0);
 //    m_pOptionList->Enable(LTFALSE);
     AddFixedControl(m_pOptionList,pos,LTFALSE);
-	pCtrl->SetParam2(FC_DONT_REPOS);
 
 	rcStatusRect.top = rcStatusRect.bottom - nBarHeight;
 
@@ -446,8 +382,8 @@ LTBOOL CFolderJoin::Render(HSURFACE hDestSurf)
 		UpdateDummyStatus(hDestSurf);
 	}
 
-	int xo = 0;// g_pInterfaceResMgr->GetXOffset();
-	int yo = 0;// g_pInterfaceResMgr->GetYOffset();
+	int xo = g_pInterfaceResMgr->GetXOffset();
+	int yo = g_pInterfaceResMgr->GetYOffset();
 
 	//Draw server bar
 	DrawBar(hDestSurf,&rcServerRect);
