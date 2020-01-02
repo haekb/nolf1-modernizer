@@ -384,9 +384,17 @@ LTBOOL CFolderJoin::Render(HSURFACE hDestSurf)
 
 	int xo = g_pInterfaceResMgr->GetXOffset();
 	int yo = g_pInterfaceResMgr->GetYOffset();
+	float yr = g_pInterfaceResMgr->GetYRatio();
+
+
+
+	LTRect rcTempServerRect = { rcServerRect.left, (int)((float)rcServerRect.top * yr), rcServerRect.right, (int)((float)rcServerRect.bottom * yr) };
+	LTRect rcTempStatusRect = { rcStatusRect.left, (int)((float)rcStatusRect.top * yr), rcStatusRect.right, (int)((float)rcStatusRect.bottom * yr) };
+	LTRect rcTempPlayerRect = { rcPlayerRect.left, (int)((float)rcPlayerRect.top * yr), rcPlayerRect.right, (int)((float)rcPlayerRect.bottom * yr) };
+	LTRect rcTempOptionsRect = { rcOptionRect.left, (int)((float)rcOptionRect.top * yr), rcOptionRect.right, (int)((float)rcOptionRect.bottom * yr) };
 
 	//Draw server bar
-	DrawBar(hDestSurf,&rcServerRect);
+	DrawBar(hDestSurf,&rcTempServerRect);
 
 	if (m_pServerList->GetLastDisplayedIndex() >= 0)
 	{
@@ -401,7 +409,7 @@ LTBOOL CFolderJoin::Render(HSURFACE hDestSurf)
 			nOldIndex = m_pServerList->GetLastDisplayedIndex();
 		}
 		
-		GetSmallFont()->Draw(m_hServersShown, hDestSurf, xo+rcServerRect.right-nIndent, yo+rcServerRect.top+nIndent, LTF_JUSTIFY_RIGHT, m_hNonSelectedColor);
+		GetSmallFont()->Draw(m_hServersShown, hDestSurf, xo+ rcTempServerRect.right-nIndent, yo+ rcTempServerRect.top+nIndent, LTF_JUSTIFY_RIGHT, m_hNonSelectedColor);
 	}
 
     CLTGUICtrl *pSortCtrl = LTNULL;
@@ -434,7 +442,7 @@ LTBOOL CFolderJoin::Render(HSURFACE hDestSurf)
 	}
 
 	//Draw player bar
-	DrawBar(hDestSurf,&rcPlayerRect);
+	DrawBar(hDestSurf,&rcTempPlayerRect);
 
     pSortCtrl = LTNULL;
 	switch (m_nPlayerSort)
@@ -460,18 +468,18 @@ LTBOOL CFolderJoin::Render(HSURFACE hDestSurf)
 	}
 
 	//Draw option bar
-	DrawBar(hDestSurf,&rcOptionRect);
+	DrawBar(hDestSurf,&rcTempOptionsRect);
 
 	//Draw option bar
-	DrawBar(hDestSurf,&rcStatusRect);
+	DrawBar(hDestSurf,&rcTempStatusRect);
 
 	if (m_hStatus)
 	{
 
 		if (m_nState == FSS_IDLE)
-			GetSmallFont()->Draw(m_hStatus, hDestSurf, g_pInterfaceResMgr->GetXOffset() +nIndent, yo+rcStatusRect.top+nIndent, LTF_JUSTIFY_LEFT, m_hNonSelectedColor);
+			GetSmallFont()->Draw(m_hStatus, hDestSurf, xo +nIndent, yo+ rcTempStatusRect.top+nIndent, LTF_JUSTIFY_LEFT, m_hNonSelectedColor);
 		else
-			GetSmallFont()->Draw(m_hStatus, hDestSurf, g_pInterfaceResMgr->GetXOffset() +nIndent, yo+rcStatusRect.top+nIndent, LTF_JUSTIFY_LEFT, m_hSelectedColor);
+			GetSmallFont()->Draw(m_hStatus, hDestSurf, xo +nIndent, yo+ rcTempStatusRect.top+nIndent, LTF_JUSTIFY_LEFT, m_hSelectedColor);
 	}
 
     LTBOOL bOK = CBaseFolder::Render(hDestSurf);
@@ -1398,9 +1406,11 @@ void CFolderJoin::DrawBar(HSURFACE hDestSurf,LTRect *rect)
 {
 	int xo = g_pInterfaceResMgr->GetXOffset();
 	int yo = g_pInterfaceResMgr->GetYOffset();
+	float yr = g_pInterfaceResMgr->GetYRatio();
 
 	//Draw server bar
-    LTRect barRect(xo+rect->left, yo+rect->top, xo+rect->right, yo+rect->top+nBarHeight);
+    LTRect barRect(xo+rect->left, rect->top, xo + (rect->right * yr), rect->top+nBarHeight);
+
     g_pOptimizedRenderer->FillRect(hDestSurf,&barRect,m_hBarColor);
 
 	barRect.left += 2;
