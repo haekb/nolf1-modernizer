@@ -533,9 +533,9 @@ LTBOOL CFolderJoin::Render(HSURFACE hDestSurf)
 	{
 
 		if (m_nState == FSS_IDLE)
-			GetSmallFont()->Draw(m_hStatus, hDestSurf, xo+nIndent, yo+rcStatusRect.top+nIndent, LTF_JUSTIFY_LEFT, m_hNonSelectedColor);
+			GetSmallFont()->Draw(m_hStatus, hDestSurf, g_pInterfaceResMgr->GetXOffset() +nIndent, yo+rcStatusRect.top+nIndent, LTF_JUSTIFY_LEFT, m_hNonSelectedColor);
 		else
-			GetSmallFont()->Draw(m_hStatus, hDestSurf, xo+nIndent, yo+rcStatusRect.top+nIndent, LTF_JUSTIFY_LEFT, m_hSelectedColor);
+			GetSmallFont()->Draw(m_hStatus, hDestSurf, g_pInterfaceResMgr->GetXOffset() +nIndent, yo+rcStatusRect.top+nIndent, LTF_JUSTIFY_LEFT, m_hSelectedColor);
 	}
 
     LTBOOL bOK = CBaseFolder::Render(hDestSurf);
