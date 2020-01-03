@@ -1050,7 +1050,7 @@ ScaleName9			= "RoundyMovingMod4"
 [FolderPlayer]
 FontSize                = 0
 PageRect			= (75,95,585,385)
-CharAnim			= "UUW"
+CharAnim			= "LWF"
 CharRotation		= -30.0
 //CharPos				= <35.0,-15.0,100.0>
 //CharScale			= 0.5
