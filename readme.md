@@ -6,6 +6,7 @@ The goal of NOLF Modernizer is to help fix some long standing bugs, and update s
 
 ## Features
 
+ - Working multiplayer out of the box
  - Cap framerate during menus and gameplay to 60fps
  - Fixed the mouse stutter
  - Optimized performance in select cases
@@ -24,6 +25,10 @@ The goal of NOLF Modernizer is to help fix some long standing bugs, and update s
 - Fixed some invisible impassible geometry.
 - Added a experimental developer console, can be toggled on/off with tilde. (`~`)
 - Fixed a crash in the weapons hotkey screen.
+
+## Patch 3
+
+- Patched out GameSpy from dedicated/hosted servers and the server browser
 
 ## Additional Config Commands
 
