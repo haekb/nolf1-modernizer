@@ -386,7 +386,11 @@ LTBOOL CFolderJoin::Render(HSURFACE hDestSurf)
 	int yo = g_pInterfaceResMgr->GetYOffset();
 	float yr = g_pInterfaceResMgr->GetYRatio();
 
+	// Offset starts at xo!
+	auto arrowOffset = (g_pInterfaceResMgr->GetScreenWidth() - xo) - (xo + (nArrowWidth * 1.5));
 
+	m_pServerList->SetArrowOffset(arrowOffset);
+	
 
 	LTRect rcTempServerRect = { rcServerRect.left, (int)((float)rcServerRect.top * yr), rcServerRect.right, (int)((float)rcServerRect.bottom * yr) };
 	LTRect rcTempStatusRect = { rcStatusRect.left, (int)((float)rcStatusRect.top * yr), rcStatusRect.right, (int)((float)rcStatusRect.bottom * yr) };
@@ -404,12 +408,12 @@ LTBOOL CFolderJoin::Render(HSURFACE hDestSurf)
 			{
 				g_pLTClient->FreeString(m_hServersShown);
 			}
-	//(servers %d-%d)
+			//(servers %d-%d)
 			m_hServersShown = g_pLTClient->FormatString(IDS_SERVERS_SHOWN,m_pServerList->GetStartIndex()+1,m_pServerList->GetLastDisplayedIndex()+1);
 			nOldIndex = m_pServerList->GetLastDisplayedIndex();
 		}
 		
-		GetSmallFont()->Draw(m_hServersShown, hDestSurf, xo+ rcTempServerRect.right/*-nIndent*/, yo+ rcTempServerRect.top+nIndent, LTF_JUSTIFY_RIGHT, m_hNonSelectedColor);
+		GetSmallFont()->Draw(m_hServersShown, hDestSurf, yr*((xo/2)+rcTempServerRect.right-nIndent), yo+ rcTempServerRect.top+nIndent, LTF_JUSTIFY_RIGHT, m_hNonSelectedColor);
 	}
 
     CLTGUICtrl *pSortCtrl = LTNULL;
@@ -1287,6 +1291,8 @@ void CFolderJoin::SetCurGameServerHandle(void* pHandle)
 
 int CFolderJoin::AddServerCtrl(CGameSpyServer* pGame)
 {
+	auto yr = g_pInterfaceResMgr->GetYRatio();
+
 	CLTGUIFont *pFont = GetSmallFont();
     CGroupCtrl *pGroup = CreateGroup(nServerGroupWidth,pFont->GetHeight(),LTNULL);
     LTIntPt pos(0,0);
@@ -1296,23 +1302,23 @@ int CFolderJoin::AddServerCtrl(CGameSpyServer* pGame)
 	sprintf(sTemp,"%s",pGame->GetName());
     CStaticTextCtrl *pCtrl = CreateStaticTextItem(sTemp,CMD_SELECT_SERVER,LTNULL,nGameWidth,pFont->GetHeight(),LTFALSE,pFont);
     pGroup->AddControl(pCtrl,pos,LTTRUE);
-	pos.x += nGameWidth+nGap;
+	pos.x += (nGameWidth+nGap) * yr;
 
 	sprintf(sTemp,"%d/%d",pGame->GetNumPlayers(), pGame->GetMaxPlayers());
     pCtrl = CreateStaticTextItem(sTemp,LTNULL,LTNULL,nPlayerWidth,pFont->GetHeight(),LTFALSE,pFont);
     pGroup->AddControl(pCtrl,pos,LTTRUE);
-	pos.x += nPlayerWidth+nGap;
+	pos.x += (nPlayerWidth+nGap) * yr;
 
 	if (pGame->GetPing() >= 9999) strcpy(sTemp, "???");
 	else sprintf(sTemp,"%d",pGame->GetPing());
     pCtrl = CreateStaticTextItem(sTemp,LTNULL,LTNULL,nPingWidth,pFont->GetHeight(),LTFALSE,pFont);
     pGroup->AddControl(pCtrl,pos,LTTRUE);
-	pos.x += nPingWidth+nGap;
+	pos.x += (nPingWidth+nGap) * yr;
 
 	sprintf(sTemp,"%s",pGame->GetGameType());
     pCtrl = CreateStaticTextItem(sTemp,LTNULL,LTNULL,nTypeWidth,pFont->GetHeight(),LTFALSE,pFont);
     pGroup->AddControl(pCtrl,pos,LTTRUE);
-	pos.x += nTypeWidth+nGap;
+	pos.x += (nTypeWidth+nGap) * yr;
 
 	sprintf(sTemp,"%s",pGame->GetMap());
     pCtrl = CreateStaticTextItem(sTemp,LTNULL,LTNULL,nMapWidth,pFont->GetHeight(),LTFALSE,pFont);
@@ -1592,7 +1598,6 @@ void CFolderJoin::UpdateServers(LTBOOL bForce)
 		// Add a new control for this game service...
 
 		nIndex = AddServerCtrl(pGame);
-
 
 		// Update the current selection...
 
