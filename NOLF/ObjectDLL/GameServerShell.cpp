@@ -813,6 +813,15 @@ void CGameServerShell::OnMessage(HCLIENT hSender, uint8 messageID, HMESSAGEREAD 
 {
 	switch (messageID)
 	{
+		
+		case MID_CONSOLE_COMMAND_CLIENT:
+		{
+			HSTRING hString = g_pLTServer->ReadFromMessageHString(hMessage);
+			char* command = g_pLTServer->GetStringData(hString);
+			g_pLTServer->RunGameConString(command);
+		}
+		break;
+		
 		case MID_PLAYER_UPDATE :
 		{
 			HandleUpdatePlayerMsg(hSender, hMessage);

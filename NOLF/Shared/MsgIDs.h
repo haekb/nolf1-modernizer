@@ -88,6 +88,7 @@
 #define	MID_CONSOLE_TRIGGER				235	// Client to server
 #define MID_EDIT_OBJECTINFO				236	// Server to client
 #define MID_CONSOLE_COMMAND				237	// Client to server
+#define MID_CONSOLE_COMMAND_CLIENT		238 // Client to server - For use in the actual client console
 
 #define MID_DIFFICULTY					240 // Client to server
 #define MID_GAMETEXMGR					241	// Server to client

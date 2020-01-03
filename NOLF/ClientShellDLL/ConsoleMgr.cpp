@@ -2,6 +2,8 @@
 #include "ltbasedefs.h"
 #include "InterfaceResMgr.h"
 #include "ConsoleMgr.h"
+#include "MsgIDs.h"
+#include <algorithm>
 
 #include "LTGUIMgr.h"
 
@@ -228,11 +230,61 @@ void ConsoleMgr::Send()
 	m_CommandHistory.push_back(m_szEdit);
 	m_iCommandHistoryPosition = m_CommandHistory.size();
 
+	
+
 	// Echo it back
 	g_pLTClient->CPrint(m_szEdit);
 
 	// Send it off!
-	g_pLTClient->RunConsoleString(m_szEdit);
+	//g_pLTClient->RunConsoleString(m_szEdit);
+
+	// Are we just running in the client? If so, send it from here!
+	auto v = g_pConsoleMgr->GetHelpList();
+
+	std::string sCommand = m_szEdit;
+	std::transform(sCommand.begin(), sCommand.end(), sCommand.begin(),
+		[](unsigned char c) { return std::tolower(c); });
+
+	// If it's something we can run, do it!
+	if (std::find(v.begin(), v.end(), sCommand) != v.end())
+	{
+		g_pLTClient->RunConsoleString(m_szEdit);
+		
+		// Clear our command string
+		m_pEdit->SetText("");
+		memset(m_szEdit, 0, sizeof(m_szEdit));
+		return; 
+	}
+
+	// If we're hosting or in singleplayer, we can run server commands!
+	if(g_pGameClientShell->IsHosting() || !g_pGameClientShell->IsMultiplayerGame())
+	{
+		// Are we running in a server? If so, send it to the server so they can send it off!
+		HSTRING hstrCmd = g_pLTClient->CreateString(m_szEdit);
+
+#if 0
+		ILTMessage* pMsg = NULL;
+
+		// Create a message to send.
+		if (g_pLTClient->Common()->CreateMessage(pMsg) != LT_OK || !pMsg)
+		{
+			_ASSERT(FALSE);
+		}
+
+		//CAutoMessage cMsg;
+		pMsg->WriteByte(MID_CONSOLE_COMMAND);
+		pMsg->WriteHString(hstrCmd);
+
+		g_pLTClient->SendToServer(*pMsg->ReadMessage(), MESSAGE_GUARANTEED, 0);
+
+		pMsg->Release();
+#else
+		HMESSAGEWRITE hMessage = g_pLTClient->StartMessage(MID_CONSOLE_COMMAND_CLIENT);
+		g_pLTClient->WriteToMessageHString(hMessage, hstrCmd);
+		g_pLTClient->EndMessage(hMessage);
+#endif
+		g_pLTClient->FreeString(hstrCmd);
+	}
 
 	// Clear our command string
 	m_pEdit->SetText("");
@@ -340,9 +392,9 @@ void ConsoleMgr::Show(bool bShow)
 	// Clear our command string
 	m_pEdit->SetText("");
 
-	MoveDown(true);
-
 	m_bVisible = bShow;
+
+	MoveDown(true);
 }
 
 void ConsoleMgr::MoveUp(bool bTop)
@@ -409,6 +461,10 @@ void ConsoleMgr::RecallHistoryDown()
 
 void ConsoleMgr::AdjustView()
 {
+	if (!m_bVisible) {
+		return;
+	}
+
 	m_HistorySlice.clear();
 
 	int iBegin = m_iCurrentPosition - m_pLineItems.size();
@@ -440,6 +496,8 @@ void ConsoleMgr::AdjustView()
 
 void ConsoleMgr::AddToHelp(std::string command)
 {
+	std::transform(command.begin(), command.end(), command.begin(), [](unsigned char c) { return std::tolower(c); });
+
 	m_HelpList.push_back(command);
 }
 
