@@ -33,6 +33,8 @@ public:
 	int			GetArrowOffset ( ) {return m_nArrowOffset;}
 	int			GetHeight ( );
 
+	void		SetArrowOffset(int offset) { m_nArrowOffset = offset; }
+
 	// Call this if you wish to enable highlighting the item that is under the mouse
 	// cursor and changing selection when the mouse is moved.
     void        EnableMouseMoveSelect(LTBOOL bEnable);
