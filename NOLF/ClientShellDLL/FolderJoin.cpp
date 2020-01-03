@@ -151,7 +151,8 @@ CFolderJoin::CFolderJoin()
     m_pResort = LTNULL;
     m_pJoin = LTNULL;
 
-    g_vtNetVersionFilter.Init(g_pLTClient,"NetVersionFilter",LTNULL,0.0f);
+	// Default to current version to avoid confusion!
+    g_vtNetVersionFilter.Init(g_pLTClient,"NetVersionFilter",LTNULL,1.0f);
     g_vtNetGameFilter.Init(g_pLTClient,"NetGameFilter",LTNULL,(float)m_nGameFilter);
     g_vtNetPopFilter.Init(g_pLTClient,"NetPopFilter",LTNULL,(float)m_nPopFilter);
     g_vtNetServerSortKey.Init(g_pLTClient,"NetServerSortKey",LTNULL,(float)m_nServerSort);
