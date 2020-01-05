@@ -42,6 +42,7 @@ public:
 	LTBOOL  IsVisible() { return m_bVisible; }
 
 	std::vector<std::string> GetHelpList() { return m_HelpList; };
+	std::vector<HistoryData> GetHistory() { return m_History; };
 
 protected:
 	std::vector<HistoryData> m_History;

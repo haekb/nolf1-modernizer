@@ -23,6 +23,24 @@ void ShowHelpListCommand(int argc, char** argv)
 	}
 }
 
+void WriteToDebugLog(int argc, char** argv)
+{
+	if (!g_pConsoleMgr) {
+		return;
+	}
+
+	g_pLTClient->CPrint("Writing to Debug.log...");
+
+	SDL_Log("Writing Console History");
+	SDL_Log("---------------------------------------");
+	for (auto history : g_pConsoleMgr->GetHistory()) {
+		SDL_Log("%s", history.sMessage.c_str());
+	}
+	SDL_Log("---------------------------------------");
+
+	g_pLTClient->CPrint("Done!");
+}
+
 ConsoleMgr::ConsoleMgr()
 {
 	g_pConsoleMgr = this;
@@ -47,11 +65,13 @@ ConsoleMgr::ConsoleMgr()
 	m_iOldGameState = -1;
 
 	g_pLTClient->RegisterConsoleProgram("Help", ShowHelpListCommand);
+	g_pLTClient->RegisterConsoleProgram("WriteToDebugLog", WriteToDebugLog);
 }
 
 ConsoleMgr::~ConsoleMgr()
 {
 	g_pLTClient->UnregisterConsoleProgram("Help");
+	g_pLTClient->UnregisterConsoleProgram("WriteToDebugLog");
 
 	Destroy();
 
