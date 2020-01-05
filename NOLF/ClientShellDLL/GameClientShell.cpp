@@ -1963,10 +1963,12 @@ void CGameClientShell::PostUpdate()
 
 	m_InterfaceMgr.PostUpdate();
 
+	// Animations are still wonky in multiplayer. Allows you to shoot faster, so let's always limit that in mp.
+	// ---
 	// Occasionally we'll need to unlock the framerate (like during loading!)
 	// But we also want the user to have the option to unlock it,
 	// so that's why there's two almost identical lock vars here.
-	if (m_bLockFramerate && m_bUserWantsFramerateLock)
+	if ( (m_bLockFramerate && m_bUserWantsFramerateLock) || IsMultiplayerGame())
 	{
 		// Limit our framerate so the game actually runs properly.
 		LARGE_INTEGER NewTime;
