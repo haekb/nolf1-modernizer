@@ -29,6 +29,8 @@ The goal of NOLF Modernizer is to help fix some long standing bugs, and update s
 ## Patch 3
 
 - Patched out GameSpy from dedicated/hosted servers and the server browser
+- Fixed a bug in ai path finding causing values to not always be accurate
+
 
 ## Additional Config Commands
 

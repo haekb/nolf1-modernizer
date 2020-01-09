@@ -37,6 +37,8 @@ It's important that you don't run this mod with any other mods that may have mod
 -- Patch 3
 
  - Patched out GameSpy from dedicated/hosted servers and the server browser
+ - Fixed a bug in ai path finding causing values to not always be accurate
+
 
 
 --  Additional Config Commands
