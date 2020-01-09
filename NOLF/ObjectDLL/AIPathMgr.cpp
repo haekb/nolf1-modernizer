@@ -386,23 +386,20 @@ void CAIPathMgr::BuildPath(CAI* pAI, CAIPath* pPath, CAIVolume* pVolume, const L
             LTVector vP = pVolumeNeighbor->GetConnectionPos();
 
 #if 1
-			// Breakdown in hopes to figure out nan!
-			LTVector volumePositionMinusWalkthroughPosition = vP - vQ;
-			float positionDotProduct = volumePositionMinusWalkthroughPosition.Dot(vv);
-			float walkthroughPositionDotProduct = vW.Dot(vv);
-			LTVector walkthroughPoisitonsAdded = vQ + vW;
-
-			// 0 divides by 0 in some cases...
-			float twoDotProductsDivided = positionDotProduct / walkthroughPositionDotProduct;
+			// Dot product can cause some division by zero errors.
+			// Previously I deconstructed this, however that threw off the solution by 20x...
+			// so i'm not even going to try.
+			auto dotProductDivision = (vP - vQ).Dot(vv) / (vW.Dot(vv));
 
 			// Reset twoDotProductsDivded
-			if (isnan(twoDotProductsDivided))
+			if (isnan(dotProductDivision))
 			{
 				// Either 1.0 or 0.0. Try to mimic how VC++ 6.0's -1.#IND casts.
-				twoDotProductsDivided = 1.0f;
+				dotProductDivision = 1.0f;
 			}
 
-			vIntersectionPoint = walkthroughPoisitonsAdded * twoDotProductsDivided;
+			vIntersectionPoint = vQ + vW * (dotProductDivision);
+
 #else
 			vIntersectionPoint = vQ + vW*((vP-vQ).Dot(vv)/(vW.Dot(vv)));
 #endif
