@@ -1106,6 +1106,9 @@ static const uint32 s_cPistolCornerLeft = sizeof(s_afPistolCornerLeft)/sizeof(fl
 
 LTFLOAT GetMovementData(const float* afData, const uint32 cData, float fTimePrev, float fTime)
 {
+	// Jake: Cap fTime. This fixes a rounding error where this terrifying function could produce a silent out of range error.
+	fTime = min(1.0f, fTime);
+
 	LTFLOAT fRemainder1 = fTime*cData - int32(fTime*cData);
 	LTFLOAT fRemainder2 = fTimePrev*cData - int32(fTimePrev*cData);
 	return (LTFLOAT)fabs(afData[int(fTime*cData)]+fRemainder1*(afData[int(fTime*cData+1)]-afData[int(fTime*cData)]) -
