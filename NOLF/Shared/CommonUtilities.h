@@ -122,8 +122,8 @@ void ConsoleToButeString( CButeMgr &bute, const char *pszButeTag, const char *ps
 void ReadNetHostSettings( );
 void WriteNetHostSettings( );
 
-//std::string StringReplace(std::string search, std::string replace, std::string subject);
-//std::string FilterString(std::string input);
+std::string StringReplace(std::string search, std::string replace, std::string subject);
+std::string FilterString(std::string input);
 
 
 #define DANGER(interface, engineer) \

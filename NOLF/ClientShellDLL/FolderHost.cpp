@@ -707,7 +707,9 @@ LTBOOL CFolderHost::LaunchGame()
 	req.m_HostInfo.m_Port = nPort;
     req.m_HostInfo.m_dwMaxPlayers = (uint32)GetConsoleInt("NetMaxPlayers",16)-1;
 
-	strcpy(req.m_HostInfo.m_sName,g_vtNetSessionName.GetStr());
+	// Host name seems to filter itself, but let's do it just for safesies
+	std::string sHostName = FilterString(g_vtNetSessionName.GetStr());
+	strcpy_s(req.m_HostInfo.m_sName, MAX_NETSERVICENAME_LEN, sHostName.c_str());
 
 	g_pGameClientShell->SetGameType( (GameType)m_nGameType );
 	g_pInterfaceMgr->DrawFragCount(LTFALSE);

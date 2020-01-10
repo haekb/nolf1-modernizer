@@ -1299,12 +1299,13 @@ int CFolderJoin::AddServerCtrl(CGameSpyServer* pGame)
     LTIntPt pos(0,0);
     pGroup->SetParam1((uint32)pGame->GetHandle());
 
-	char sTemp[128] = "";
-	sprintf(sTemp,"%s",pGame->GetName());
-    CStaticTextCtrl *pCtrl = CreateStaticTextItem(sTemp,CMD_SELECT_SERVER,LTNULL,nGameWidth,pFont->GetHeight(),LTFALSE,pFont);
+	// Host name seems to filter itself, but let's do it just for safesies
+	std::string sHostName = FilterString(pGame->GetName());
+    CStaticTextCtrl *pCtrl = CreateStaticTextItem((char*)sHostName.c_str(),CMD_SELECT_SERVER,LTNULL,nGameWidth,pFont->GetHeight(),LTFALSE,pFont);
     pGroup->AddControl(pCtrl,pos,LTTRUE);
 	pos.x += (nGameWidth+nGap) * yr;
 
+	char sTemp[128] = "";
 	sprintf(sTemp,"%d/%d",pGame->GetNumPlayers(), pGame->GetMaxPlayers());
     pCtrl = CreateStaticTextItem(sTemp,LTNULL,LTNULL,nPlayerWidth,pFont->GetHeight(),LTFALSE,pFont);
     pGroup->AddControl(pCtrl,pos,LTTRUE);

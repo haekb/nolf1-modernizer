@@ -3378,13 +3378,14 @@ LTBOOL CPlayerObj::MultiplayerInit(HMESSAGEREAD hMessage)
 //
 // ----------------------------------------------------------------------- //
 
-void CPlayerObj::SetNetName(const char* sNetName)
+void CPlayerObj::SetNetName(const char* szNetName)
 { 
-	if (!sNetName) return;
+	if (!szNetName) return;
 
-	strncpy(m_sNetName, sNetName, NET_NAME_LENGTH);
+	std::string sNetName = FilterString(szNetName);
+
+	strcpy_s(m_sNetName, NET_NAME_LENGTH, sNetName.c_str());
 	m_sNetName[NET_NAME_LENGTH-1] = '\0';
-
 
 	// If our hclient is valid, we need to update the client data, since
 	// it also stores the player's name...
@@ -3400,7 +3401,7 @@ void CPlayerObj::SetNetName(const char* sNetName)
 
 			if (pNcd && (sizeof(NetClientData) == nLength))
 			{
-				strncpy(pNcd->m_sName, m_sNetName, NET_NAME_LENGTH);
+				strcpy_s(pNcd->m_sName, NET_NAME_LENGTH, m_sNetName);
 			}
 		}
 	}

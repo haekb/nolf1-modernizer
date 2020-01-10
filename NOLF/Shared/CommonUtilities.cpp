@@ -345,7 +345,7 @@ void WriteNetHostSettings( )
 
 	hostBute.Save( "NetHost.txt" );
 }
-#if 0
+
 // str_replace ( mixed $search , mixed $replace , mixed $subject [, int &$count ] ) : mixed
 std::string StringReplace(std::string search, std::string replace, std::string subject)
 {
@@ -379,4 +379,3 @@ std::string FilterString(std::string input)
 
 	return input;
 }
-#endif

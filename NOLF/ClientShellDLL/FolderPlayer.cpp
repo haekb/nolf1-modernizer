@@ -9,6 +9,7 @@
 #include "VarTrack.h"
 #include "NetDefs.h"
 #include "MsgIds.h"
+#include "CommonUtilities.h"
 
 #include "GameClientShell.h"
 extern CGameClientShell* g_pGameClientShell;
@@ -265,7 +266,10 @@ void    CFolderPlayer::OnFocus(LTBOOL bFocus)
 		}
 
 		BuildModelList();
-		SAFE_STRCPY(m_szPlayerName,g_vtPlayerName.GetStr() );
+
+		// Filter the player name
+		std::string sPlayerName = FilterString(g_vtPlayerName.GetStr());
+		strcpy_s(m_szPlayerName, sPlayerName.c_str());
 
 		if (m_nModNum < 0)
 		{
@@ -292,6 +296,10 @@ void    CFolderPlayer::OnFocus(LTBOOL bFocus)
 		{
 			WriteConsoleInt("UpdateRate",kConnectSpeeds[m_nConnect]);
 		}
+
+		// Filter the player name
+		std::string sPlayerName = FilterString(m_szPlayerName);
+		strcpy_s(m_szPlayerName, sPlayerName.c_str());
 
 		LTBOOL bChanged = LTFALSE;
 		
@@ -365,9 +373,6 @@ void    CFolderPlayer::OnFocus(LTBOOL bFocus)
 		g_pLTClient->FreeUnusedModels();
 
         auto result = g_pLTClient->WriteConfigFile("autoexec.cfg");
-
-		bool test = true;
-
 	}
 	CBaseFolder::OnFocus(bFocus);
 }

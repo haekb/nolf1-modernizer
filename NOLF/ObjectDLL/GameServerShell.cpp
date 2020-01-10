@@ -1037,6 +1037,9 @@ void CGameServerShell::OnMessage(HCLIENT hSender, uint8 messageID, HMESSAGEREAD 
 			szString[0] = 0;
 			hMessage->ReadStringFL(szString, sizeof(szString));
 
+			std::string sMessage = FilterString(szString);
+			strcpy_s(szString, 100, sMessage.c_str());
+
 			// So it shows up in GameSrv..
             if(szString[0] && !(g_pLTServer->GetClientInfoFlags(hSender) & CIF_LOCAL))
 			{
