@@ -345,3 +345,38 @@ void WriteNetHostSettings( )
 
 	hostBute.Save( "NetHost.txt" );
 }
+#if 0
+// str_replace ( mixed $search , mixed $replace , mixed $subject [, int &$count ] ) : mixed
+std::string StringReplace(std::string search, std::string replace, std::string subject)
+{
+	std::string output = subject;
+
+	// Find all occurences
+	while (true) {
+		size_t position = output.find(search);
+
+		if (position == std::string::npos) {
+			break;
+		}
+
+		output = output.replace(position, search.length(), replace);
+	}
+
+	return output;
+}
+
+// Attempt to fix http://aluigi.altervista.org/adv/lithfs-adv.txt
+// I'm sure they'll be more use cases I miss, but get the obvious ones over with!
+std::string FilterString(std::string input)
+{
+	std::vector<std::string> filterChars = {
+		"%"
+	};
+
+	for (auto filterChar : filterChars) {
+		input = StringReplace(filterChar, "", input);
+	}
+
+	return input;
+}
+#endif

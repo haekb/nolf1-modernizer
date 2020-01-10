@@ -205,8 +205,8 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
-      <DebugInformationFormat>OldStyle</DebugInformationFormat>
-      <AdditionalIncludeDirectories>..\..\lt2\sdk\inc;..\..\lt2\lithshared\incs;..\shared;..\objectdll;..\..\LIBS\SDL2-2.0.10\include;..\..\lt2\lithshared\ButeMgr;..\..\lt2\lithshared\CryptMgr;..\..\lt2\lithshared\lith;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>..\..\lt2\sdk\inc;..\..\lt2\lithshared\incs;..\shared;..\objectdll;..\..\LIBS\SDL2-2.0.10\include;..\..\lt2\lithshared\ButeMgr;..\..\lt2\lithshared\CryptMgr;..\..\lt2\lithshared\lith;..\..\LIBS\json;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;NO_PRAGMA_LIBS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AssemblerListingLocation>.\Debug\</AssemblerListingLocation>
       <PrecompiledHeaderOutputFile>.\Debug\Object.pch</PrecompiledHeaderOutputFile>
@@ -216,8 +216,9 @@
       <ProgramDataBaseFileName>.\Debug\</ProgramDataBaseFileName>
       <ForceConformanceInForLoopScope>false</ForceConformanceInForLoopScope>
       <LanguageStandard>stdcpp14</LanguageStandard>
-      <FloatingPointModel>Strict</FloatingPointModel>
-      <FloatingPointExceptions>true</FloatingPointExceptions>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FloatingPointExceptions>false</FloatingPointExceptions>
+      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
     </ClCompile>
     <PostBuildEvent>
       <Command>copy debug\object.lto .\object.lto

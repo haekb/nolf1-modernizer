@@ -297,7 +297,6 @@ LPBASECLASS	CGameServerShell::OnClientEnterWorld(HCLIENT hClient, void *pClientD
 
 	g_pPhysicsLT->SetStairHeight(DEFAULT_STAIRSTEP_HEIGHT);
 
-
 	// Send them the current time of day color.
 
 	SendTimeOfDay(hClient);
@@ -451,6 +450,10 @@ LPBASECLASS	CGameServerShell::OnClientEnterWorld(HCLIENT hClient, void *pClientD
 	}
 
 	// All done...
+
+	// For some reason debuglevel is stuck on...
+	// Hardcode it off for now.
+	g_pLTServer->RunGameConString("debuglevel 0");
 
 	return pPlayer;
 }
