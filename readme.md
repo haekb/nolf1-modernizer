@@ -15,12 +15,12 @@ The goal of NOLF Modernizer is to help fix some long standing bugs, and update s
 
 ## Patch 1
 
- - Fixed a bug with defusing bombs and activating some switches
+ - Fixed a bug with defusing bombs and activating some switches.
 
 ## Patch 2
 
-- Added `NoRawInput` to disable mouse raw input
-- Fixed missing continue button on mission summary screen
+- Added `NoRawInput` to disable mouse raw input.
+- Fixed missing continue button on mission summary screen.
 - Improved loading screen time (...that I broke, oops!)
 - Fixed some invisible impassible geometry.
 - Added a experimental developer console, can be toggled on/off with tilde. (`~`)
@@ -28,8 +28,9 @@ The goal of NOLF Modernizer is to help fix some long standing bugs, and update s
 
 ## Patch 3
 
-- Patched out GameSpy from dedicated/hosted servers and the server browser
-- Fixed a bug in ai path finding causing values to not always be accurate
+- Patched out GameSpy from dedicated/hosted servers and the server browser.
+- Fixed a bug in ai path finding causing values to not always be accurate.
+- Fixed a silent out of range bug that could cause enemies to disappear and travel to a nearby galaxy at FTL speed!
 
 
 ## Additional Config Commands
