@@ -31,6 +31,7 @@
 #define SPECTATOR_ACCELERATION			100000.0f
 #define MIN_ONGROUND_Y					-10000000.0f
 #define DEFAULT_WORLD_GRAVITY			-2000.0f
+#define MAX_STANDING_ON_FRAMES			10
 
 class Pusher
 {
@@ -115,6 +116,14 @@ CMoveMgr::CMoveMgr()
 
 	// Always have this...
 	m_pVehicleMgr = debug_new(CVehicleMgr);
+
+	// Init this boy
+	m_LastStandingOnInfo.m_hObject = LTNULL;
+	m_LastStandingOnInfo.m_hPoly = LTNULL;
+	m_LastStandingOnInfo.m_Plane = {};
+	m_LastStandingOnInfo.m_vStopVel = { 0,0,0 };
+
+	m_nLastStandingOnFrameCounter = 0;
 
 	InitWorldData();
 }
@@ -667,6 +676,30 @@ void CMoveMgr::UpdateOnGround()
 	m_hStandingOnPoly    = INVALID_HPOLY;
     m_bOnGround          = LTFALSE;
 
+	// If we're falling or jumping, we don't want to carry forward our movement
+	if (m_bJumped || m_bFalling) {
+		m_nLastStandingOnFrameCounter = MAX_STANDING_ON_FRAMES;
+	}
+	
+	// Fix for sticky geometry
+	// Carry forward our "standing on" surface for up to 10 frames 
+	// if we're not on a surface.
+	// This should not be noticable during actual gameplay, but will fix weird gaps that cause a "push back" effect.
+	if (!Info.m_hObject && m_LastStandingOnInfo.m_hObject) {
+		m_nLastStandingOnFrameCounter++;
+
+		if (m_nLastStandingOnFrameCounter >= MAX_STANDING_ON_FRAMES) {
+			// Set the last standing on struct
+			m_LastStandingOnInfo = Info;
+		}
+
+		Info = m_LastStandingOnInfo;
+	}
+	else {
+		// Set the last standing on struct
+		m_LastStandingOnInfo = Info;
+		m_nLastStandingOnFrameCounter = 0;
+	}
 
 	if (Info.m_hObject)
 	{
@@ -1132,7 +1165,7 @@ void CMoveMgr::UpdateNormalMotion()
 		}
 	}
 	// Jake: Added CanDoFootstep(), since occasionally m_bOnGround is false when it shouldn't be. 
-	else if ( (CanDoFootstep() || m_bOnGround) && !g_pGameClientShell->IsSpectatorMode() && !bJumping)
+	else if ( m_bOnGround && !g_pGameClientShell->IsSpectatorMode() && !bJumping)
 	{
 		float fCurLen = (float)sqrt(myVel.x*myVel.x + myVel.z*myVel.z);
 		if (fCurLen > fMaxVel)

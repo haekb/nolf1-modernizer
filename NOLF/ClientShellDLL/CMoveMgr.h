@@ -234,6 +234,9 @@ class CMoveMgr
 	CCharacterFX*	m_pCharFX;
 
 	CVehicleMgr*	m_pVehicleMgr;
+
+	CollisionInfo m_LastStandingOnInfo;
+	int m_nLastStandingOnFrameCounter;
 };
 
 inline LTBOOL CMoveMgr::IsMovingQuietly() const
