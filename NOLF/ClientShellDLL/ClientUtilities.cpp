@@ -218,6 +218,28 @@ void GetConsoleString(char* sKey, char* sDest, char* sDefault)
 	strcpy(sDest, sDefault);
 }
 
+std::string GetConsoleString(char* sKey, char* sDefault)
+{
+	std::string sConsoleString = "";
+
+	if (g_pLTClient)
+	{
+		HCONSOLEVAR hVar = g_pLTClient->GetConsoleVar(sKey);
+		if (hVar)
+		{
+			char* sValue = g_pLTClient->GetVarValueString(hVar);
+			if (sValue)
+			{
+				sConsoleString = sValue;
+				return sConsoleString;
+			}
+		}
+	}
+
+	sConsoleString = sDefault;
+	return sConsoleString;
+}
+
 int GetConsoleInt(char* sKey, int nDefault)
 {
     if (g_pLTClient)

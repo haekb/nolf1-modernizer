@@ -294,26 +294,32 @@ void    CFolderPlayer::OnFocus(LTBOOL bFocus)
 		}
 
 		LTBOOL bChanged = LTFALSE;
-		char szTemp[32];
-		SAFE_STRCPY(szTemp,g_vtPlayerModel.GetStr() );
-		if (strcmp(szTemp,m_szPlayerModel) != 0)
-			bChanged = LTTRUE;
+		
+		std::string sTemp = "";
 
-
-		GetConsoleString("NetPlayerSkin",szTemp,"");
-		if (strcmp(szTemp,m_szPlayerSkin) != 0)
+		sTemp = g_vtPlayerModel.GetStr();
+		if (sTemp.compare(m_szPlayerModel) != 0) {
 			bChanged = LTTRUE;
+		}
 
-		GetConsoleString("NetPlayerHead",szTemp,"");
-		if (strcmp(szTemp,m_szPlayerHead) != 0)
+		sTemp = GetConsoleString("NetPlayerSkin","");
+		if (sTemp.compare(m_szPlayerSkin) != 0) {
 			bChanged = LTTRUE;
+		}
 
-		SAFE_STRCPY(szTemp,g_vtPlayerName.GetStr() );
-		if (strcmp(szTemp,m_szPlayerName) != 0)
+		sTemp = GetConsoleString("NetPlayerHead","");
+		if (sTemp.compare(m_szPlayerHead) != 0) {
 			bChanged = LTTRUE;
+		}
 
-		if (m_nTeam != (int)g_vtPlayerTeam.GetFloat())
+		sTemp = g_vtPlayerName.GetStr();
+		if (sTemp.compare(m_szPlayerName) != 0) {
 			bChanged = LTTRUE;
+		}
+
+		if (m_nTeam != (int)g_vtPlayerTeam.GetFloat()) {
+			bChanged = LTTRUE;
+		}
 
 		g_vtPlayerName.SetStr(m_szPlayerName);
 		g_vtPlayerModel.SetStr(m_szPlayerModel);
@@ -358,7 +364,9 @@ void    CFolderPlayer::OnFocus(LTBOOL bFocus)
 
 		g_pLTClient->FreeUnusedModels();
 
-        g_pLTClient->WriteConfigFile("autoexec.cfg");
+        auto result = g_pLTClient->WriteConfigFile("autoexec.cfg");
+
+		bool test = true;
 
 	}
 	CBaseFolder::OnFocus(bFocus);
