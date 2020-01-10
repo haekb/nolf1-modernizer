@@ -1077,8 +1077,14 @@ bool CButeMgr::Save(const char* szNewFileName)
 {
 	Reset();
 
-	if (m_sAttributeFilename.IsEmpty() && !szNewFileName)
+	if (m_sAttributeFilename.IsEmpty() && !szNewFileName) {
 		return false;
+	}
+
+	// Fixes empty string crash
+	if (m_sAttributeFilename.GetBuffer() == NULL) {
+		m_sAttributeFilename = "";
+	}
 
 	m_bPutChar = true;
 
