@@ -57,6 +57,7 @@
 #include <SDL.h>
 #include "ConsoleMgr.h"
 #include "DetourMgr.h"
+#include "FontMgr.h"
 
 extern ConsoleMgr* g_pConsoleMgr;
 
@@ -1441,6 +1442,10 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 
 	DetourMgr* detourMgr = new DetourMgr();
 	detourMgr->Init();
+
+	FontMgr* pFontMgr = new FontMgr();
+	pFontMgr->Init();
+	pFontMgr->Load("Fonts\\KIMBERLE.TTF", 32);
 
 
 	return LT_OK;
@@ -3800,13 +3805,13 @@ void CGameClientShell::UpdateContainerFX()
 		if (IsLiquid(m_eCurContainerCode) && !IsLiquid(eCode))
 		{
             UpdateUnderWaterFX(LTFALSE);
-            g_pLTClient->RunConsoleString("+ModelWarble 0");
+            //g_pLTClient->RunConsoleString("+ModelWarble 0");
 			m_InterfaceMgr.EndUnderwater();
 		}
 
 		if (!IsLiquid(m_eCurContainerCode) && IsLiquid(eCode))
 		{
-            g_pLTClient->RunConsoleString("ModelWarble 1");
+            //g_pLTClient->RunConsoleString("ModelWarble 1");
 			m_InterfaceMgr.BeginUnderwater();
 		}
 

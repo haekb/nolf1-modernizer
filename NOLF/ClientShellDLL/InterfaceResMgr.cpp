@@ -9,10 +9,12 @@
 #include "ClientButeMgr.h"
 #include "SDL.h"
 #include "ConsoleMgr.h"
+#include "FontMgr.h"
 
 CInterfaceResMgr*   g_pInterfaceResMgr = LTNULL;
 extern SDL_Window* g_SDLWindow;
 extern ConsoleMgr* g_pConsoleMgr;
+extern FontMgr* g_pFontMgr;
 
 namespace
 {
@@ -863,6 +865,39 @@ HSURFACE CInterfaceResMgr::CreateSurfaceFromString(CLTGUIFont *pFont, char *lpsz
 
 
 
+#if 1
+LTBOOL CInterfaceResMgr::SetupFont(CLTGUIFont* pFont, LTBOOL bBlend, uint32 dwFlags)
+{
+
+	LITHFONTCREATESTRUCT lithFont;
+	lithFont.szFontBitmap = g_szFontName;
+	lithFont.nGroupFlags = dwFlags;
+	if (bBlend)
+	{
+		lithFont.bChromaKey = LTFALSE;
+		lithFont.hTransColor = kBlack;
+	}
+	else
+	{
+		lithFont.bChromaKey = LTTRUE;
+		lithFont.hTransColor = SETRGB(255, 0, 255);
+	}
+
+	if (!pFont->Init(g_pLTClient, &lithFont))
+	{
+		char szString[512];
+		sprintf(szString, "Cannot load font: %s", lithFont.szFontBitmap);
+		g_pLTClient->CPrint(szString);
+		SDL_Log(szString);
+		return LTFALSE;
+	}
+
+
+	SDL_Log("Initialized %s", lithFont.szFontBitmap);
+
+	return LTTRUE;
+}
+#else
 LTBOOL CInterfaceResMgr::SetupFont(CLTGUIFont *pFont, LTBOOL bBlend, uint32 dwFlags)
 {
 
@@ -894,6 +929,7 @@ LTBOOL CInterfaceResMgr::SetupFont(CLTGUIFont *pFont, LTBOOL bBlend, uint32 dwFl
 
     return LTTRUE;
 }
+#endif
 
 CLTGUIFont* CInterfaceResMgr::GetLargeFont()
 {
