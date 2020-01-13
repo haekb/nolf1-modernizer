@@ -116,6 +116,8 @@ LTBOOL CInterfaceResMgr::Init(ILTClient* pClientDE, CGameClientShell* pClientShe
 	// set resolution dependant variables
 	ScreenDimsChanged();
 
+	// font mgr here plz
+
 
 	// Initialize the fonts
     if (!InitFonts())
@@ -458,6 +460,7 @@ LTBOOL CInterfaceResMgr::InitFonts()
 
         // *********** medium font
 		g_pLayoutMgr->GetMediumFontBase(g_szFontName,sizeof(g_szFontName));
+		//LTStrCpy(g_szFontName, "..\\NOLF\\modernizer\\fonts\\font_med_0.pcx", sizeof(g_szFontName));
         if (!SetupFont(m_pMediumFont))
 		{
 			debug_delete(m_pMediumFont);
@@ -466,7 +469,8 @@ LTBOOL CInterfaceResMgr::InitFonts()
 		}
 
         // *********** Large font
-		g_pLayoutMgr->GetLargeFontBase(g_szFontName,sizeof(g_szFontName));
+		//g_pLayoutMgr->GetLargeFontBase(g_szFontName,sizeof(g_szFontName));
+		LTStrCpy(g_szFontName, "..\\NOLF\\modernizer\\fonts\\font_large_0.pcx", sizeof(g_szFontName));
         if (!SetupFont(m_pLargeFont))
 		{
 			debug_delete(m_pLargeFont);

@@ -1218,6 +1218,11 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 
 	// Interface stuff...
 
+	// Init font stuff here!
+	FontMgr* pFontMgr = new FontMgr();
+	pFontMgr->Init();
+	pFontMgr->Load("Fonts\\KIMBERLE.TTF", 32);
+
 	if (!m_InterfaceMgr.Init())
 	{
 		// Don't call ShutdownWithMessage since InterfaceMgr will have called
@@ -1443,10 +1448,11 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 	DetourMgr* detourMgr = new DetourMgr();
 	detourMgr->Init();
 
+	/*
 	FontMgr* pFontMgr = new FontMgr();
 	pFontMgr->Init();
 	pFontMgr->Load("Fonts\\KIMBERLE.TTF", 32);
-
+	*/
 
 	return LT_OK;
 }

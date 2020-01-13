@@ -80,7 +80,7 @@ void MakePCX(SDL_Surface* pSurface)
 	PCX.NumBitPlanes = 1;
 
 	// Start up a file
-	std::ofstream outFile("font.pcx", std::ios::binary | std::ios::out);
+	std::ofstream outFile("NOLF\\Modernizer\\Fonts\\font_large_0.pcx", std::ios::binary | std::ios::out);
 
 	//
 	// Header time!
@@ -126,7 +126,7 @@ void MakePCX(SDL_Surface* pSurface)
 		// FIXME: There's some over/under reading, not sure what the cause is, as my code is pretty close to the sample C code the spec has...
 		// So let's just write black!
 		if (y >= pSurface->h - 1) {
-			pixelBuffer = (unsigned char*)black->pixels;
+			pixelBuffer = (BYTE*)black->pixels;
 		}
 
 		BYTE pixel = pixelBuffer[y * pSurface->pitch];
@@ -234,9 +234,9 @@ bool FontMgr::Load(std::string font, int size)
 	SDL_Color bg = { 0,0,0 };
 	SDL_Surface* pSurface;
 	//TTF_SetFontKerning(pFont, 0);
-	if (!(pSurface = TTF_RenderText_Shaded(pFont, "!\"#$%&'()*+,-.0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]#_`abcdefghijklmnopqrstuvwxyz{|}~", color, bg))) {
+	//if (!(pSurface = TTF_RenderText_Shaded(pFont, "!\"#$%&'()*+,-.0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]#_`abcdefghijklmnopqrstuvwxyz{|}~", color, bg))) {
 		//handle error here, perhaps print TTF_GetError at least
-	}
+	//}
 	/*
 	else {
 		SDL_BlitSurface(text_surface, NULL, screen, NULL);
@@ -244,6 +244,40 @@ bool FontMgr::Load(std::string font, int size)
 		SDL_FreeSurface(text_surface);
 	}
 	*/
+
+
+	std::string sFontCharacters = "!\"#$%&'()*+,-.0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]#_`abcdefghijklmnopqrstuvwxyz{|}~";
+
+
+	// Create the initial file to cheat the width and height!
+	pSurface = TTF_RenderText_Shaded(pFont, sFontCharacters.c_str(), color, bg);
+	SDL_Rect rect = { 0, 0, pSurface->w, pSurface->h };
+	
+	// Ok fill it with black!
+	SDL_FillRect(pSurface, &rect, 0);
+
+	// X starts at 1, because we need one black space.
+	int x = 0;
+
+	// Ok let's loop through every character in our beautiful font alphabet
+	// We only want ONE PIXEL of space between characters.
+	for (auto gylph : sFontCharacters)
+	{
+		int minX, minY, maxX, maxY, advance;
+		TTF_GlyphMetrics(pFont, gylph, &minX, &maxX, &minY, &maxY, &advance);
+
+		int gylphWidth = maxX - minX;
+
+		SDL_Surface* pGylph = TTF_RenderGlyph_Shaded(pFont, gylph, color, bg);
+
+		rect = { x, 0, x + gylphWidth, 0 };
+		SDL_Rect srcRect = { minX, 0, maxX, pGylph->h };
+
+		SDL_BlitSurface(pGylph, &srcRect, pSurface, &rect);
+
+		// Advance our x position!
+		x += gylphWidth + 1;
+	}
 
 	/*
 	CxImage  image;
