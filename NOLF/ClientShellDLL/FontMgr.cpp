@@ -219,6 +219,112 @@ bool FontMgr::Term()
 	return true;
 }
 
+
+//
+// Same as CheckForSolids, except in the opposite direction!
+//
+int GlyphCheckForSolids(SDL_Surface* pSurface, int x)
+{
+	int originalX = x;
+
+	// So fonts kinda lie. The width is usually not the real solid width!
+	// So we'll check our current x position against the height and see if it's empty
+	// Then we'll slowly retreat until we find solid!
+	bool bFoundSolid = false;
+
+	while (!bFoundSolid)
+	{
+		for (int y = 0; y < pSurface->h; y++)
+		{
+			int bpp = pSurface->format->BytesPerPixel;
+			/* Here p is the address to the pixel we want to retrieve */
+			Uint8* p = (Uint8*)pSurface->pixels + y * pSurface->pitch + x * bpp;
+
+			if (*p != 0) {
+				bFoundSolid = true;
+				break;
+			}
+		}
+
+		// Retreat!
+		if (!bFoundSolid) {
+			x++;
+		}
+
+		if (x == pSurface->w) {
+			//x = 0;
+			break;
+		}
+	}
+
+	return x;
+
+	// If our x position matches our originalX
+	// then increment our x by one, because they need a single space!
+	if (x == originalX) {
+		x--;
+	}
+
+	// Add the one line of empty!
+	x--;
+
+	return x;
+}
+
+int CheckForSolids(SDL_Surface* pSurface, int x, bool glyphCheck)
+{
+	int originalX = x;
+
+	// So fonts kinda lie. The width is usually not the real solid width!
+	// So we'll check our current x position against the height and see if it's empty
+	// Then we'll slowly retreat until we find solid!
+	bool bFoundSolid = false;
+
+	while (!bFoundSolid)
+	{
+		for (int y = 0; y < pSurface->h; y++)
+		{
+			int bpp = pSurface->format->BytesPerPixel;
+			/* Here p is the address to the pixel we want to retrieve */
+			Uint8* p = (Uint8*)pSurface->pixels + y * pSurface->pitch + x * bpp;
+
+			if (*p != 0) {
+				bFoundSolid = true;
+				break;
+			}
+		}
+
+		// Retreat!
+		if (!bFoundSolid) {
+			x--;
+		}
+
+		if (x < 0) {
+			break;
+		}
+	}
+
+	// If we're on a glyph check, don't increment!
+	if (glyphCheck)
+	{
+		if (x > -1) {
+			x++;
+		}
+		return x;
+	}
+
+	// If our x position matches our originalX
+	// then increment our x by one, because they need a single space!
+	if (x == originalX) {
+		x++;
+	}
+
+	// Add the one line of empty!
+	x++;
+
+	return x;
+}
+
 bool FontMgr::Load(std::string font, int size)
 {
 	// load font.ttf at size 16 into font
@@ -229,80 +335,114 @@ bool FontMgr::Load(std::string font, int size)
 		return false;
 	}
 
-	//SDL_Surface* pSurface = NULL;
 	SDL_Color color = { 255,255,255 };
 	SDL_Color bg = { 0,0,0 };
 	SDL_Surface* pSurface;
-	//TTF_SetFontKerning(pFont, 0);
-	//if (!(pSurface = TTF_RenderText_Shaded(pFont, "!\"#$%&'()*+,-.0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]#_`abcdefghijklmnopqrstuvwxyz{|}~", color, bg))) {
-		//handle error here, perhaps print TTF_GetError at least
-	//}
-	/*
-	else {
-		SDL_BlitSurface(text_surface, NULL, screen, NULL);
-		//perhaps we can reuse it, but I assume not for simplicity.
-		SDL_FreeSurface(text_surface);
-	}
-	*/
 
+	// Old character sheet, none of the fonts seem to have { } ~ ...
+	//std::string sFontCharacters = "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]#_`abcdefghijklmnopqrstuvwxyz{|}~";
+	std::string sFontCharacters = "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]#_`abcdefghijklmnopqrstuvwxyz(|)-";
 
-	std::string sFontCharacters = "!\"#$%&'()*+,-.0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]#_`abcdefghijklmnopqrstuvwxyz{|}~";
+	std::string sFillerCharacters = sFontCharacters;
 
+	// Add some extra width
+	sFillerCharacters += "==========================================";
 
 	// Create the initial file to cheat the width and height!
-	pSurface = TTF_RenderText_Shaded(pFont, sFontCharacters.c_str(), color, bg);
+	pSurface = TTF_RenderText_Shaded(pFont, sFillerCharacters.c_str(), color, bg);
 	SDL_Rect rect = { 0, 0, pSurface->w, pSurface->h };
 	
 	// Ok fill it with black!
 	SDL_FillRect(pSurface, &rect, 0);
 
 	// X starts at 1, because we need one black space.
-	int x = 0;
+	int x = 1;
 
 	// Ok let's loop through every character in our beautiful font alphabet
 	// We only want ONE PIXEL of space between characters.
-	for (auto gylph : sFontCharacters)
+	for (auto glyph : sFontCharacters)
 	{
 		int minX, minY, maxX, maxY, advance;
-		TTF_GlyphMetrics(pFont, gylph, &minX, &maxX, &minY, &maxY, &advance);
+		TTF_GlyphMetrics(pFont, glyph, &minX, &maxX, &minY, &maxY, &advance);
 
-		int gylphWidth = maxX - minX;
+		int glyphWidth = maxX - minX;
 
-		SDL_Surface* pGylph = TTF_RenderGlyph_Shaded(pFont, gylph, color, bg);
+		SDL_Surface* pGlyph = TTF_RenderGlyph_Shaded(pFont, glyph, color, bg);
 
-		rect = { x, 0, x + gylphWidth, 0 };
-		SDL_Rect srcRect = { minX, 0, maxX, pGylph->h };
+		// Check to see if the glyph has any spaces at the start
+		int glyphCheck = GlyphCheckForSolids(pGlyph, 0);
 
-		SDL_BlitSurface(pGylph, &srcRect, pSurface, &rect);
+		minX = glyphCheck;//glyphCheck -= (minX - x);
 
+		// Use glyphCheck's positioning in case we need to get rid of some extra spaces at the start!
+		rect = { x, 0, x + glyphWidth, 0 };
+		SDL_Rect srcRect = { minX, 0, maxX, pGlyph->h };
+
+		SDL_BlitSurface(pGlyph, &srcRect, pSurface, &rect);
+		SDL_SaveBMP(pSurface, "pSurface.bmp");
 		// Advance our x position!
-		x += gylphWidth + 1;
+		x += glyphWidth + 1;
+
+		//x = CheckForSolids(pSurface, x, false);
+
+#if 0
+		int originalX = x;
+
+		// So fonts kinda lie. The width is usually not the real solid width!
+		// So we'll check our current x position against the height and see if it's empty
+		// Then we'll slowly retreat until we find solid!
+		bool bFoundSolid = false;
+		
+		while(!bFoundSolid) 
+		{
+			for (int y = 0; y < pSurface->h; y++) 
+			{
+				int bpp = pSurface->format->BytesPerPixel;
+				/* Here p is the address to the pixel we want to retrieve */
+				Uint8* p = (Uint8*)pSurface->pixels + y * pSurface->pitch + x * bpp;
+				
+				if (*p != 0) {
+					bFoundSolid = true;
+					break;
+				}
+			}
+
+			// Retreat!
+			if (!bFoundSolid) {
+				x--;
+			}
+		}
+
+		// If our x position matches our originalX
+		// then increment our x by one, because they need a single space!
+		if (x == originalX) {
+			x++;
+		}
+
+		// Add the one line of empty!
+		x++;
+#endif
 	}
 
-	/*
-	CxImage  image;
-// bmp -> jpg
+	// Create a new scaled surface
+	SDL_Surface* pRealSurface = SDL_CreateRGBSurface(0, x + 2, pSurface->h, 8, 0, 0, 0, 0);
+
+	// Set the palette colours so we'll actually get something!
+	SDL_SetPaletteColors(pRealSurface->format->palette, pSurface->format->palette->colors, 0, pSurface->format->palette->ncolors);
+
+	// Blit the old surface onto the new scaled surface
+	rect = { 0, 0, x, pSurface->h };
+	SDL_BlitSurface(pSurface, NULL, pRealSurface, &rect);
+
+	// Debug!
+	SDL_SaveBMP(pSurface, "fontold.bmp");
+	SDL_SaveBMP(pRealSurface, "font.bmp");
+
+	MakePCX(pRealSurface);
 
 
-image.Load("image.bmp", CXIMAGE_FORMAT_BMP);
-if (image.IsValid()){
-    if(!image.IsGrayScale()) image.IncreaseBpp(24);
-    image.SetJpegQuality(80);
-    image.Save("image.jpg",CXIMAGE_FORMAT_JPG);
-}
-// png -> tif
-
-
-image.Load("image.png", CXIMAGE_FORMAT_PNG);
-if (image.IsValid()){
-    image.Save("image.tif",CXIMAGE_FORMAT_TIF);
-}*/
-
-	MakePCX(pSurface);
-
-
-	SDL_SaveBMP(pSurface, "font.bmp");
 	SDL_FreeSurface(pSurface);
+	SDL_FreeSurface(pRealSurface);
 
 }
 
