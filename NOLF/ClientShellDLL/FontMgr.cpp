@@ -114,8 +114,8 @@ void MakePCX(SDL_Surface* pSurface)
 	BYTE* pixelBuffer = (BYTE*)pSurface->pixels;
 
 	// Used to cover a weird bug, see the FIXME below!
-	SDL_Surface* black = SDL_CreateRGBSurface(0, pSurface->w, pSurface->h, 8, 0, 0, 0, 0);
-	SDL_Rect rect = { 0, 0, pSurface->w, pSurface->h + 8 };
+	SDL_Surface* black = SDL_CreateRGBSurface(0, pSurface->w, pSurface->h + 128, 8, 0, 0, 0, 0);
+	SDL_Rect rect = { 0, 0, pSurface->w, pSurface->h + 128 };
 	SDL_FillRect(black, &rect, 0);
 
 	for (int y = 0; y < pSurface->h + 1; y++)
@@ -258,17 +258,186 @@ int GlyphCheckForSolids(SDL_Surface* pSurface, int x)
 	}
 
 	return x;
+}
 
-	// If our x position matches our originalX
-	// then increment our x by one, because they need a single space!
-	if (x == originalX) {
-		x--;
+void SetPixel(SDL_Surface* pSurface, int x, int y, int r, int g, int b)
+{
+	int bpp = pSurface->format->BytesPerPixel;
+	/* Here p is the address to the pixel we want to retrieve */
+	Uint8* p = (Uint8*)pSurface->pixels + y * pSurface->pitch + x * bpp;
+
+	uint32 colour = SDL_MapRGB(pSurface->format, r, g, b);
+
+	*p = colour & 0xFF;
+}
+
+//
+// This doesn't actually affect an image, but it provides the dims to re-blit it onto a new surface!
+//
+void Trim(SDL_Surface* pSurface, int startX, int* outLeft, int* outRight)
+{
+	int x = startX;
+	int bpp = pSurface->format->BytesPerPixel;
+
+	bool bFoundLeft = false;
+
+	int left = 0;
+	int right = 0;
+	int rightColour = 0;
+
+	bool bPreviousColumnHadSolid = false;
+
+	bool lastColumnHasSpace = false;
+
+	while (x < pSurface->w) {
+		bool bFoundSolidThisColumn = false;
+
+		for (int y = 0; y < pSurface->h; y++)
+		{
+			/* Here p is the address to the pixel we want to retrieve */
+			Uint8* p = (Uint8*)pSurface->pixels + y * pSurface->pitch + x * bpp;
+
+			// 
+			// First find the left solid side of this surface
+			//
+			if (!bFoundLeft) {
+
+				if (*p != 0) {
+					bFoundLeft = true;
+					left = x;
+					//break;
+				}
+			}
+
+			//
+			// Second find the right side of this surface
+			// Only if we've found the left side first of course!
+			// Note: Due to some characters having breaks in the middle, 
+			// we have to actually go through the entire width of a character!
+			//
+			/*
+			if (bFoundLeft)
+			{
+				if (right != x && bPreviousColumnHadSolid && *p == 0) {
+					right = x;
+					rightColour = *p;
+				}
+			}
+			*/
+			
+			if (*p != 0) { 
+				bFoundSolidThisColumn = true;
+			}
+
+			
+		}
+		// end loop 1
+
+		if (bFoundLeft)
+		{
+			if (bPreviousColumnHadSolid && !bFoundSolidThisColumn) {
+				right = x;
+				rightColour = 0;
+			}
+		}
+
+		// Copy over the solid info for next loop
+		bPreviousColumnHadSolid = bFoundSolidThisColumn;
+
+		if (!bFoundSolidThisColumn) {
+			if (x == pSurface->w - 1) {
+				lastColumnHasSpace = true;
+			}
+		}
+
+		// Increment our x position!
+		x++;
+	}
+	// end loop 2 
+	if (outLeft != NULL)
+	{
+		*outLeft = left;
 	}
 
-	// Add the one line of empty!
-	x--;
+	if (outRight != NULL)
+	{
 
-	return x;
+
+		// If right isn't the width of the surface then it had a space at the end. Trim that!
+		if (!lastColumnHasSpace) {
+			right = pSurface->w;
+		}
+
+		// If there's no spaces on the right side...make it the width!
+		if (right == 0) {
+			right = pSurface->w;
+		}
+		else {
+			//right -= 1;
+		}
+
+		*outRight = right;
+		SDL_Log("Found right colour <%d> at pos x <%d>", rightColour, right);
+	}
+}
+
+
+//
+// Because symbols like " exists we have to actually find the break in the middle so we can draw a barely transparent line to connect them..
+//
+void GlyphCheckForEmpty(SDL_Surface* pSurface, int start, int &minX, int &maxX)
+{
+	int originalX = minX;
+
+
+	bool bFoundMin = false;
+	bool bFoundMax = false;
+
+	while (!bFoundMin || !bFoundMax)
+	{
+		bool bFoundUninterruptedMin = true;
+		bool bFoundUninterruptedMax = false;
+		for (int y = 0; y < pSurface->h; y++)
+		{
+			int bpp = pSurface->format->BytesPerPixel;
+			/* Here p is the address to the pixel we want to retrieve */
+			Uint8* p = (Uint8*)pSurface->pixels + y * pSurface->pitch + start * bpp;
+
+			if (*p != 0)
+			{
+				bFoundUninterruptedMin = false;
+			}
+
+			// We want to find the first solid
+			if (bFoundMin && *p != 0)
+			{
+				bFoundUninterruptedMax = true;
+			}
+		}
+
+		if (!bFoundMin && bFoundUninterruptedMin)
+		{
+			minX = start;
+			bFoundMin = true;
+		}
+
+		if (!bFoundMax && bFoundUninterruptedMax)
+		{
+			maxX = start;
+			bFoundMax = true;
+		}
+
+		// Retreat!
+		if (!bFoundMin || !bFoundMax) {
+			start++;
+		}
+
+		if (start == pSurface->w) {
+			break;
+		}
+
+	}
+
 }
 
 int CheckForSolids(SDL_Surface* pSurface, int x, bool glyphCheck)
@@ -340,8 +509,8 @@ bool FontMgr::Load(std::string font, int size)
 	SDL_Surface* pSurface;
 
 	// Old character sheet, none of the fonts seem to have { } ~ ...
-	//std::string sFontCharacters = "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]#_`abcdefghijklmnopqrstuvwxyz{|}~";
-	std::string sFontCharacters = "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]#_`abcdefghijklmnopqrstuvwxyz(|)-";
+	std::string sFontCharacters = ".!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]#_`abcdefghijklmnopqrstuvwxyz{|}~";
+	//std::string sFontCharacters = "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]#_`abcdefghijklmnopqrstuvwxyz(|)-";
 
 	std::string sFillerCharacters = sFontCharacters;
 
@@ -365,24 +534,58 @@ bool FontMgr::Load(std::string font, int size)
 		int minX, minY, maxX, maxY, advance;
 		TTF_GlyphMetrics(pFont, glyph, &minX, &maxX, &minY, &maxY, &advance);
 
-		int glyphWidth = maxX - minX;
+		
 
 		SDL_Surface* pGlyph = TTF_RenderGlyph_Shaded(pFont, glyph, color, bg);
-
+		SDL_SaveBMP(pGlyph, "glyph.bmp");
 		// Check to see if the glyph has any spaces at the start
-		int glyphCheck = GlyphCheckForSolids(pGlyph, 0);
+		//int glyphCheck = GlyphCheckForSolids(pGlyph, 0);
 
-		minX = glyphCheck;//glyphCheck -= (minX - x);
+		Trim(pGlyph, 0, &minX, &maxX);
 
+		int glyphWidth = maxX - minX;
+
+		//minX = glyphCheck;//glyphCheck -= (minX - x);
+
+		// Ok special case for symbols that are separated but are actually one
+		// We need to draw a barely transparent line (fonts are blended, so darker the better!)
+		// So that the engine picks it up as one character!
+		if (glyph == '\"')
+		{
+			int emptyMin = 0;
+			int emptyMax = 0;
+
+			GlyphCheckForEmpty(pGlyph, minX, emptyMin, emptyMax);
+
+			for (int i = emptyMin; i < emptyMax; i++)
+			{
+				SetPixel(pGlyph, i, 0, 128, 128, 128);
+			}
+			
+		}
+		
 		// Use glyphCheck's positioning in case we need to get rid of some extra spaces at the start!
 		rect = { x, 0, x + glyphWidth, 0 };
 		SDL_Rect srcRect = { minX, 0, maxX, pGlyph->h };
 
 		SDL_BlitSurface(pGlyph, &srcRect, pSurface, &rect);
+		
 		SDL_SaveBMP(pSurface, "pSurface.bmp");
+
+#if 1
 		// Advance our x position!
 		x += glyphWidth + 1;
+#else // TEST
+		// Advance our x position!
+		x += glyphWidth;
 
+		for (int y = 0; y < pSurface->h; y++)
+		{
+			SetPixel(pSurface, x, y, 128, 0, 128);
+		}
+
+		x++;
+#endif
 		//x = CheckForSolids(pSurface, x, false);
 
 #if 0

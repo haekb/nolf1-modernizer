@@ -1221,7 +1221,13 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 	// Init font stuff here!
 	FontMgr* pFontMgr = new FontMgr();
 	pFontMgr->Init();
-	pFontMgr->Load("Fonts\\KIMBERLE.TTF", 32);
+	//pFontMgr->Load("Fonts\\EXPON.TTF", 32);
+	//pFontMgr->Load("Fonts\\TYPIST.TTF", 12);
+	//pFontMgr->Load("Fonts\\SQR721B.TTF", 32);
+	pFontMgr->Load("Fonts\\CRYSTALR.TTF", 40);
+	//pFontMgr->Load("Fonts\\LOVELT__.TTF", 32);
+
+	//pFontMgr->Load("C:\\Windows\\Fonts\\Comic.ttf", 40);
 
 	if (!m_InterfaceMgr.Init())
 	{

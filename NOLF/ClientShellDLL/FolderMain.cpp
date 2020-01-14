@@ -192,10 +192,18 @@ LTBOOL   CFolderMain::Render(HSURFACE hDestSurf)
 
 		pFont->Draw(m_BuildVersion, hDestSurf, (m_BuildPos.x * g_pInterfaceResMgr->GetXRatio()) + g_pInterfaceResMgr->GetXOffset(), m_BuildPos.y*g_pInterfaceResMgr->GetYRatio(), LTF_JUSTIFY_RIGHT, kBlack);
 
-/* font test 
-		pFont = g_pInterfaceResMgr->GetTitleFont();
-        LTIntPt pos(320+g_pInterfaceResMgr->GetXOffset(),50+g_pInterfaceResMgr->GetYOffset());
+/* font test */
+		pFont = g_pInterfaceResMgr->GetLargeFont();
 		int ht = pFont->GetHeight();
+		int x = 512 + g_pInterfaceResMgr->GetXOffset();
+		int y = 50 + g_pInterfaceResMgr->GetYOffset();
+		LTRect rect = { x, y, x + 512, y + ht * 10 };
+		HLTCOLOR colour = g_pLTClient->CreateColor(1, 1, 1, false);
+		g_pOptimizedRenderer->FillRect(g_pLTClient->GetScreenSurface(), &rect, colour);
+		
+		
+        LTIntPt pos(512+g_pInterfaceResMgr->GetXOffset(),50+g_pInterfaceResMgr->GetYOffset());
+		
 		pFont->Draw("! \" # $ % & ' ( ) *",hDestSurf,pos.x,pos.y,LTF_JUSTIFY_LEFT);
 		pos.y += ht;
 		pFont->Draw("+ , - . / 0 1 2 3 4",hDestSurf,pos.x,pos.y,LTF_JUSTIFY_LEFT);
