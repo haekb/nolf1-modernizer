@@ -1315,5 +1315,8 @@
     <ClInclude Include="FontMgr.h">
       <Filter>Headers</Filter>
     </ClInclude>
+    <ClInclude Include="MakePCX.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

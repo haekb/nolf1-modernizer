@@ -1224,8 +1224,9 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 	//pFontMgr->Load("Fonts\\EXPON.TTF", 32);
 	//pFontMgr->Load("Fonts\\TYPIST.TTF", 12);
 	//pFontMgr->Load("Fonts\\SQR721B.TTF", 32);
-	pFontMgr->Load("Fonts\\CRYSTALR.TTF", 40);
+	//pFontMgr->Load("Fonts\\CRYSTALR.TTF", 40);
 	//pFontMgr->Load("Fonts\\LOVELT__.TTF", 32);
+	pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", 32, "NOLF\\Modernizer\\Fonts\\font_large_0.pcx");
 
 	//pFontMgr->Load("C:\\Windows\\Fonts\\Comic.ttf", 40);
 
