@@ -121,7 +121,7 @@ void MakePCX(SDL_Surface* pSurface, std::string filename)
 
 		// FIXME: There's some over/under reading, not sure what the cause is, as my code is pretty close to the sample C code the spec has...
 		// So let's just write black!
-		if (y >= pSurface->h - 1) {
+		if (y >= pSurface->h) {
 			pixelBuffer = (BYTE*)black->pixels;
 		}
 
