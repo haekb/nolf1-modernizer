@@ -162,6 +162,8 @@ VarTrack			g_vtFOVYMinUW;
 VarTrack			g_vtUWFOVRate;
 VarTrack			g_vtPlayerName;
 
+VarTrack			g_vtScaleFonts;
+
 LTFLOAT             s_fDemoTime     = 0.0f;
 LTFLOAT             s_fDeadTimer    = 0.0f;
 LTFLOAT             s_fDeathDelay   = 0.0f;
@@ -1101,6 +1103,9 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
     g_vtFOVYMinUW.Init(g_pLTClient, "FOVYUWMin", NULL, 77.0f);
     g_vtUWFOVRate.Init(g_pLTClient, "FOVUWRate", NULL, 0.3f);
 
+	// Use scale fonts!
+	g_vtScaleFonts.Init(g_pLTClient, "ScaleFonts", NULL, 1.0f);
+
     HCONSOLEVAR hIsSet = g_pLTClient->GetConsoleVar("UpdateRateInitted");
     if (!hIsSet || g_pLTClient->GetVarValueFloat(hIsSet) != 1.0f)
 	{
@@ -1218,16 +1223,7 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 
 	// Interface stuff...
 
-	// Init font stuff here!
-	FontMgr* pFontMgr = new FontMgr();
-	pFontMgr->Init();
-	//pFontMgr->Load("Fonts\\EXPON.TTF", 32);
-	//pFontMgr->Load("Fonts\\TYPIST.TTF", 12);
-	//pFontMgr->Load("Fonts\\SQR721B.TTF", 32);
-	//pFontMgr->Load("Fonts\\CRYSTALR.TTF", 40);
-	//pFontMgr->Load("Fonts\\LOVELT__.TTF", 32);
-	pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", 32, "NOLF\\Modernizer\\Fonts\\font_large_0.pcx");
-
+	
 	//pFontMgr->Load("C:\\Windows\\Fonts\\Comic.ttf", 40);
 
 	if (!m_InterfaceMgr.Init())
@@ -9391,4 +9387,7 @@ const char *CGameClientShell::GetDisconnectMsg()
 		return LTNULL;
 }
 
-
+LTBOOL CGameClientShell::UseScaleFonts()
+{
+	return (LTBOOL)g_vtScaleFonts.GetFloat();
+}

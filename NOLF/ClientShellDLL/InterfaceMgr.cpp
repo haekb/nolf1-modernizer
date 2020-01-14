@@ -28,6 +28,7 @@
 #include "SDL.h"
 #include <time.h>
 #include "ConsoleMgr.h"
+#include "FontMgr.h"
 
 extern ConsoleMgr* g_pConsoleMgr;
 
@@ -312,6 +313,58 @@ LTBOOL CInterfaceMgr::Init()
         g_pLTClient->ShutdownWithMessage("ERROR in CInterfaceMgr::Init():  Could not initialize LayoutMgr!");
         return LTFALSE;
 	}
+
+	// Init font stuff here!
+	if (g_pGameClientShell->UseScaleFonts()) {
+		FontMgr* pFontMgr = new FontMgr();
+		pFontMgr->Init();
+		//pFontMgr->Load("Fonts\\EXPON.TTF", 32);
+		//pFontMgr->Load("Fonts\\TYPIST.TTF", 12);
+		//pFontMgr->Load("Fonts\\SQR721B.TTF", 32);
+		//pFontMgr->Load("Fonts\\CRYSTALR.TTF", 40);
+		//pFontMgr->Load("Fonts\\LOVELT__.TTF", 32);
+
+		// Initialize some font magic here
+		char szFontName[128];
+		std::string sFileName = "";
+
+		g_pLayoutMgr->GetHelpFont(szFontName, sizeof(szFontName));
+		sFileName = szFontName;
+		sFileName = sFileName.substr(3, sFileName.length());
+		pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", 20, sFileName);
+
+		g_pLayoutMgr->GetTitleFont(szFontName, sizeof(szFontName));
+		sFileName = szFontName;
+		sFileName = sFileName.substr(3, sFileName.length());
+		pFontMgr->LoadAndExport("Fonts\\SQR721KN.TTF", 32, sFileName);
+
+		g_pLayoutMgr->GetLargeFontBase(szFontName, sizeof(szFontName));
+		sFileName = szFontName;
+		sFileName = sFileName.substr(3, sFileName.length());
+		pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", 32, sFileName);
+
+		g_pLayoutMgr->GetMediumFontBase(szFontName, sizeof(szFontName));
+		sFileName = szFontName;
+		sFileName = sFileName.substr(3, sFileName.length());
+		pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", 24, sFileName);
+
+		g_pLayoutMgr->GetSmallFontBase(szFontName, sizeof(szFontName));
+		sFileName = szFontName;
+		sFileName = sFileName.substr(3, sFileName.length());
+		pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", 20, sFileName);
+
+		g_pLayoutMgr->GetHUDForeFont(szFontName, sizeof(szFontName));
+		sFileName = szFontName;
+		sFileName = sFileName.substr(3, sFileName.length());
+		pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", 38, sFileName);
+
+		g_pLayoutMgr->GetMsgForeFont(szFontName, sizeof(szFontName));
+		sFileName = szFontName;
+		sFileName = sFileName.substr(3, sFileName.length());
+		pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", 38, sFileName);
+
+	}
+
 	hShadeColor =  m_LayoutMgr.GetShadeColor();
 
     if (!m_InterfaceResMgr.Init(g_pLTClient, g_pGameClientShell))

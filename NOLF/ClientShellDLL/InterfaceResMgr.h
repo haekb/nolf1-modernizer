@@ -112,17 +112,6 @@ protected:
 protected:
     LTBOOL               m_bEnglish;             // True if the resource file has English as the specified language
 
-	// HD Fonts - Upscaled for higher resolutions
-	CLTGUIFont			*m_pTitleHDFont;		// Title font
-	CLTGUIFont			*m_pLargeHDFont;		// Large fading font
-	CLTGUIFont			*m_pMediumHDFont;		// Medium fading font
-	CLTGUIFont			*m_pSmallHDFont;		// Small fading font
-	CLTGUIFont			*m_pHelpHDFont;			// Help font
-	CLTGUIFont			*m_pMsgForeHDFont;		// Foreground Font used in HUD text display
-	CLTGUIFont			*m_pHUDForeHDFont;		// Foreground Font used in HUD numeric display
-	CLTGUIFont			*m_pAirHDFont;			// Font used in HUD for air meter
-	CLTGUIFont			*m_pChooserHDFont;		// Font used in HUD for choosing weapons/ammo
-
 	// Original Fonts
 	CLTGUIFont			*m_pTitleFont;			// Title font
 	CLTGUIFont			*m_pLargeFont;			// Large fading font

@@ -204,6 +204,7 @@ LTBOOL   CFolderMain::Render(HSURFACE hDestSurf)
 		
         LTIntPt pos(512+g_pInterfaceResMgr->GetXOffset(),50+g_pInterfaceResMgr->GetYOffset());
 		
+		
 		pFont->Draw("! \" # $ % & ' ( ) *",hDestSurf,pos.x,pos.y,LTF_JUSTIFY_LEFT);
 		pos.y += ht;
 		pFont->Draw("+ , - . / 0 1 2 3 4",hDestSurf,pos.x,pos.y,LTF_JUSTIFY_LEFT);

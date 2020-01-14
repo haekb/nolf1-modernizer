@@ -35,7 +35,6 @@ CInterfaceResMgr::CInterfaceResMgr()
 
     m_pTitleFont = LTNULL;
     m_pLargeFont = LTNULL;
-	m_pLargeHDFont = LTNULL;
     m_pMediumFont = LTNULL;
     m_pSmallFont = LTNULL;
     m_pHelpFont = LTNULL;
@@ -177,12 +176,6 @@ void CInterfaceResMgr::Term()
 		m_pLargeFont->Term();
 		debug_delete(m_pLargeFont);
         m_pLargeFont=LTNULL;
-	}
-	if ( m_pLargeHDFont )
-	{
-		m_pLargeHDFont->Term();
-		debug_delete(m_pLargeHDFont);
-        m_pLargeHDFont=LTNULL;
 	}
 	if ( m_pTitleFont )
 	{
@@ -434,10 +427,6 @@ LTBOOL CInterfaceResMgr::InitFonts()
 	m_pAirFont = debug_new(CLTGUIFont);
 	m_pChooserFont = debug_new(CLTGUIFont);
 
-	// HD Fonts
-	m_pLargeHDFont = debug_new(CLTGUIFont);
-
-
 	// Initialize the bitmap fonts if we are in english
 	if (IsEnglish())
 	{
@@ -460,7 +449,6 @@ LTBOOL CInterfaceResMgr::InitFonts()
 
         // *********** medium font
 		g_pLayoutMgr->GetMediumFontBase(g_szFontName,sizeof(g_szFontName));
-		//LTStrCpy(g_szFontName, "..\\NOLF\\modernizer\\fonts\\font_med_0.pcx", sizeof(g_szFontName));
         if (!SetupFont(m_pMediumFont))
 		{
 			debug_delete(m_pMediumFont);
@@ -469,21 +457,11 @@ LTBOOL CInterfaceResMgr::InitFonts()
 		}
 
         // *********** Large font
-		//g_pLayoutMgr->GetLargeFontBase(g_szFontName,sizeof(g_szFontName));
-		LTStrCpy(g_szFontName, "..\\NOLF\\modernizer\\fonts\\font_large_0.pcx", sizeof(g_szFontName));
+		g_pLayoutMgr->GetLargeFontBase(g_szFontName,sizeof(g_szFontName));
         if (!SetupFont(m_pLargeFont))
 		{
 			debug_delete(m_pLargeFont);
             m_pLargeFont=LTNULL;
-            return LTFALSE;
-		}
-
-		//g_pLayoutMgr->GetLargeFontBase(g_szFontName,sizeof(g_szFontName));
-		LTStrCpy(g_szFontName, "interface\\fonts\\font_large_0_hd.pcx", sizeof(g_szFontName));
-        if (!SetupFont(m_pLargeHDFont))
-		{
-			debug_delete(m_pLargeHDFont);
-            m_pLargeHDFont=LTNULL;
             return LTFALSE;
 		}
 
