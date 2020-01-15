@@ -109,30 +109,19 @@ void MakePCX(SDL_Surface* pSurface, std::string filename)
 	// Get a reference to the pixels, and setup our last and current pixel
 	BYTE* pixelBuffer = (BYTE*)pSurface->pixels;
 
-	// Used to cover a weird bug, see the FIXME below!
-	SDL_Surface* black = SDL_CreateRGBSurface(0, pSurface->w, pSurface->h + 128, 8, 0, 0, 0, 0);
-	SDL_Rect rect = { 0, 0, pSurface->w, pSurface->h + 128 };
-	SDL_FillRect(black, &rect, 0);
-
-	for (int y = 0; y < pSurface->h + 1; y++)
+	for (int y = 0; y < pSurface->h; y++)
 	{
 		int counter = 1;
 		int total = 0;
 
-		// FIXME: There's some over/under reading, not sure what the cause is, as my code is pretty close to the sample C code the spec has...
-		// So let's just write black!
-		if (y >= pSurface->h) {
-			pixelBuffer = (BYTE*)black->pixels;
-		}
-
-		BYTE pixel = pixelBuffer[y * pSurface->pitch];
+		BYTE pixel = pixelBuffer[y * pSurface->w];
 		BYTE lastPixel = pixel;
 
 		// This will run through every pixel of the image, and encode it with RLE.
-		for (int x = 1; x < pSurface->pitch; x++)
+		for (int x = 1; x < pSurface->w; x++)
 		{
 			// Increment our pixel
-			pixel = pixelBuffer[(y * pSurface->pitch) + x];
+			pixel = pixelBuffer[(y * pSurface->w) + x];
 
 			if (pixel == lastPixel) {
 				counter++;
@@ -161,9 +150,6 @@ void MakePCX(SDL_Surface* pSurface, std::string filename)
 			total += i;
 		}
 	}
-
-	// Clean up the bugfix surface
-	SDL_FreeSurface(black);
 
 	//
 	// Palette time, mark a palette, and write out SDL2's one!
