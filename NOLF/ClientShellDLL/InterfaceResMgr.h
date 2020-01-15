@@ -101,10 +101,13 @@ public:
     LTBOOL               Setup();
 	void				Clean();
 
+	LTBOOL				SetupScaleFonts();
+
 protected:
 	// More initialization
 
     LTBOOL               InitFonts();
+	LTBOOL				 TermFonts();
     LTBOOL               InitEngineFont(CLTGUIFont *pFont, int nNameID, int nWidthID, int nHeightID, LTBOOL bBold);
     LTBOOL               InitEngineFont(CLTGUIFont *pFont, char *lpszName, int nWidth, int nHeight, LTBOOL bBold);
     LTBOOL               SetupFont(CLTGUIFont *pFont, LTBOOL bBlend = LTTRUE, uint32 dwFlags = LTF_INCLUDE_ALL);
@@ -157,6 +160,8 @@ protected:
 	CString				m_csSoundObjAdd;
 	CString				m_csSoundObjRemove;
 	CString				m_csSoundObjComplete;
+
+	LTBOOL				m_bFontsSetup;
 
 };
 
