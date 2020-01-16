@@ -8,8 +8,8 @@
 #include <sstream>
 #include <fstream>
 
-// Pretend this is a header for now!
-
+// Uncomment for helpful debugging, it'll break the font though.
+//#define IMAGE_DEBUG 
 
 FontMgr* g_pFontMgr = NULL;
 
@@ -27,6 +27,7 @@ bool FontMgr::Init()
 {
 	if (TTF_Init() == -1) {
 		g_pLTClient->CPrint("TTF_Init: %s\n", TTF_GetError());
+		SDL_Log("TTF_Init: %s\n", TTF_GetError());
 		ASSERT(LTFALSE);
 		return false;
 	}
@@ -67,10 +68,14 @@ void FontMgr::GetTrimDims(SDL_Surface* pSurface, int startX, int* outLeft, int* 
 	bool bLastRowIsSolid = false;
 	bool bFoundSolidAfterRight = false;
 
+	int debug_found_solid_at_y = -1;
+
 	const int BLACK = 0;
 
 	// Loop through every column!
 	while (x < pSurface->w) {
+		
+		bThisRowIsSolid = false;
 
 		for (int y = 0; y < pSurface->h; y++)
 		{
@@ -89,6 +94,7 @@ void FontMgr::GetTrimDims(SDL_Surface* pSurface, int startX, int* outLeft, int* 
 			// We found a solid! Mark this row as solid.
 			if (pixel != BLACK)
 			{
+				debug_found_solid_at_y = y;
 				bThisRowIsSolid = true;
 			}
 		}
@@ -195,6 +201,7 @@ void FontMgr::GlyphCheckForEmpty(SDL_Surface* pSurface, int start, int &minX, in
 }
 
 
+
 bool FontMgr::LoadAndExport(std::string font, int size, std::string filename)
 {
 	// load font.ttf at size 16 into font
@@ -202,6 +209,7 @@ bool FontMgr::LoadAndExport(std::string font, int size, std::string filename)
 	pFont = TTF_OpenFont(font.c_str(), size);
 	if (!pFont) {
 		g_pLTClient->CPrint("TTF_OpenFont: %s\n", TTF_GetError());
+		SDL_Log("TTF_OpenFont: %s\n", TTF_GetError());
 		return false;
 	}
 
@@ -227,6 +235,13 @@ bool FontMgr::LoadAndExport(std::string font, int size, std::string filename)
 	// X starts at 1, because we need one black space.
 	int x = 1;
 
+#ifdef IMAGE_DEBUG
+	SDL_Rect line = { x, 0, 1, pSurface->h };
+	SDL_FillRect(pSurface, &line, SDL_MapRGB(pSurface->format, 255, 255, 255));
+
+	SDL_SaveBMP(pSurface, "pSurface.bmp");
+#endif
+
 	// Ok let's loop through every character in our beautiful font alphabet
 	// We only want ONE PIXEL of space between characters.
 	for (auto glyph : sFontCharacters)
@@ -236,14 +251,14 @@ bool FontMgr::LoadAndExport(std::string font, int size, std::string filename)
 
 		SDL_Surface* pGlyph = TTF_RenderGlyph_Shaded(pFont, glyph, color, bg);
 
-/*
+#ifdef IMAGE_DEBUG 
 		// Debug dump every glyph
 		std::string filename = "chars\\";
 		filename += glyph;
 		filename += ".bmp";
 
 		SDL_SaveBMP(pGlyph, filename.c_str());
-*/
+#endif
 
 		// Get our REAL minX and maxX. Fonts like to lie.
 		GetTrimDims(pGlyph, 0, &minX, &maxX);
@@ -275,9 +290,16 @@ bool FontMgr::LoadAndExport(std::string font, int size, std::string filename)
 		SDL_Rect srcRect = { minX, 0, maxX, pGlyph->h };
 
 		SDL_BlitSurface(pGlyph, &srcRect, pSurface, &rect);
-		
+
 		// Advance our x position!
 		x += glyphWidth + 1;
+
+#ifdef IMAGE_DEBUG
+		line = { x, 0, 1, pSurface->h };
+		SDL_FillRect(pSurface, &line, SDL_MapRGB(pSurface->format, 255, 255, 255));
+
+		SDL_SaveBMP(pSurface, "pSurface.bmp");
+#endif
 	}
 
 	// Create a new scaled surface
