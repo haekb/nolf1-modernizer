@@ -197,6 +197,24 @@ void CInterfaceResMgr::Clean()
 	}
 }
 
+std::string  CInterfaceResMgr::FixScaleFontName(std::string sFileName, bool bKeepUpDirectory)
+{
+	// If we requested it, remove the ..\ at the start.
+	if (!bKeepUpDirectory) {
+		sFileName = sFileName.substr(3, sFileName.length());
+	}
+	// Remove the .PCX
+	sFileName = sFileName.substr(0, sFileName.length() - 4);
+
+	// Add screen resolution
+	sFileName += "_" + std::to_string(GetScreenWidth()) + "x" + std::to_string(GetScreenHeight());
+
+	// Re-add the extension
+	sFileName += ".pcx";
+
+	return sFileName;
+}
+
 //
 // Loads TTFs and exports the approiately scaled PCXs
 //
@@ -229,40 +247,31 @@ LTBOOL CInterfaceResMgr::SetupScaleFonts()
 
 #if 1
 	g_pLayoutMgr->GetLargeFontBase(szFontName, sizeof(szFontName));
-	sFileName = szFontName;
-	sFileName = sFileName.substr(3, sFileName.length());
+	sFileName = FixScaleFontName(szFontName, false);
 	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nLarge, sFileName);
 
 	g_pLayoutMgr->GetHelpFont(szFontName, sizeof(szFontName));
-	sFileName = szFontName;
-	sFileName = sFileName.substr(3, sFileName.length());
+	sFileName = FixScaleFontName(szFontName, false);
 	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nSmall, sFileName);
 
 	g_pLayoutMgr->GetTitleFont(szFontName, sizeof(szFontName));
-	sFileName = szFontName;
-	sFileName = sFileName.substr(3, sFileName.length());
+	sFileName = FixScaleFontName(szFontName, false);
 	g_pFontMgr->LoadAndExport("Fonts\\SQR721KN.TTF", nLarge, sFileName);
 
-
-
 	g_pLayoutMgr->GetMediumFontBase(szFontName, sizeof(szFontName));
-	sFileName = szFontName;
-	sFileName = sFileName.substr(3, sFileName.length());
+	sFileName = FixScaleFontName(szFontName, false);
 	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nMedium, sFileName);
 
 	g_pLayoutMgr->GetSmallFontBase(szFontName, sizeof(szFontName));
-	sFileName = szFontName;
-	sFileName = sFileName.substr(3, sFileName.length());
+	sFileName = FixScaleFontName(szFontName, false);
 	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nSmall, sFileName);
 
 	g_pLayoutMgr->GetHUDForeFont(szFontName, sizeof(szFontName));
-	sFileName = szFontName;
-	sFileName = sFileName.substr(3, sFileName.length());
+	sFileName = FixScaleFontName(szFontName, false);
 	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nMedium, sFileName);
 
 	g_pLayoutMgr->GetMsgForeFont(szFontName, sizeof(szFontName));
-	sFileName = szFontName;
-	sFileName = sFileName.substr(3, sFileName.length());
+	sFileName = FixScaleFontName(szFontName, false);
 	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nLarge, sFileName);
 #endif
 
@@ -937,9 +946,14 @@ HSURFACE CInterfaceResMgr::CreateSurfaceFromString(CLTGUIFont *pFont, char *lpsz
 
 LTBOOL CInterfaceResMgr::SetupFont(CLTGUIFont *pFont, LTBOOL bBlend, uint32 dwFlags)
 {
+	std::string sFontName = g_szFontName;
+
+	if (g_pGameClientShell->UseScaleFonts()) {
+		sFontName = FixScaleFontName(sFontName, true);
+	}
 
 	LITHFONTCREATESTRUCT lithFont;
-	lithFont.szFontBitmap = g_szFontName;
+	lithFont.szFontBitmap = (char*)sFontName.c_str();
 	lithFont.nGroupFlags = dwFlags;
 	if (bBlend)
 	{

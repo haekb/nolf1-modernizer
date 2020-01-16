@@ -102,6 +102,7 @@ public:
 	void				Clean();
 
 	LTBOOL				SetupScaleFonts();
+	std::string			FixScaleFontName(std::string sFileName, bool bKeepUpDirectory);
 
 protected:
 	// More initialization
