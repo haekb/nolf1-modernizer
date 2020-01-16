@@ -40,9 +40,9 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: 'UNPACKED ASSETS'
+    SourceFolder: 'UNPACKED ASSETS\\Fonts'
     Contents: '**'
-    TargetFolder: '$(Pipeline.Workspace)\\Artifacts\\**'
+    TargetFolder: '$(Pipeline.Workspace)\\Artifacts\\Fonts'
 
 - task: CopyFiles@2
   inputs:
