@@ -4062,6 +4062,10 @@ void CInterfaceMgr::ScreenDimsChanged(LTBOOL bComingFromDisplay)
 	// Font will resize here!
 	m_InterfaceResMgr.ScreenDimsChanged();
 
+	// Update some classes that for some reason hold a global font >:(
+	GetPlayerStats()->FlushFonts();
+	GetMessageMgr()->FlushFonts();
+
 	// Update the camera rect...
     uint32 dwWidth = 640, dwHeight = 480;
 

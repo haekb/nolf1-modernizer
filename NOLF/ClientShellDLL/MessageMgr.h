@@ -118,8 +118,9 @@ class CMessageMgr
 		CMessageMgr();
 
         LTBOOL       Init ();
-		void		Term ()  { Clear();  }
 
+		void		Term ()  { Clear();  }
+		void		FlushFonts();
         void        Enable( LTBOOL bEnabled );
 
         void        AddLine( char *szMsg, eMessageType eType = MMGR_DEFAULT, HSURFACE hSurf = LTNULL);

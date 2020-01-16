@@ -34,6 +34,8 @@ public:
     LTBOOL      Init();
 	void		Term();
 
+	void        FlushFonts();
+
     void        OnEnterWorld(LTBOOL bRestoringGame=LTFALSE);
 	void		OnExitWorld();
 
