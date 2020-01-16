@@ -114,17 +114,21 @@ LTBOOL CInterfaceResMgr::Init(ILTClient* pClientDE, CGameClientShell* pClientShe
 	// Init the InterfaceSurfMgr class
     m_InterfaceSurfMgr.Init(g_pLTClient);
 
+	// Init font stuff here!
+	FontMgr* pFontMgr = new FontMgr();
+	if (!g_pFontMgr->Init()) {
+		return LTFALSE;
+	}
+
+	// This now includes InitFonts
 	// set resolution dependant variables
 	ScreenDimsChanged();
 
-	// Init font stuff here!
-	FontMgr* pFontMgr = new FontMgr();
-	pFontMgr->Init();
-
-	// This now includes InitFonts
+	/*
 	if (!SetupScaleFonts()) {
 		return LTFALSE;
 	}
+	*/
 
 	g_pConsoleMgr->Init();
 
@@ -198,7 +202,9 @@ void CInterfaceResMgr::Clean()
 //
 LTBOOL CInterfaceResMgr::SetupScaleFonts()
 {
-	//TermFonts();
+	if (m_bFontsSetup) {
+		TermFonts();
+	}
 
 	// If we're not using scale fonts, we don't need to do this setup
 	if (!g_pGameClientShell->UseScaleFonts()) {
@@ -222,6 +228,11 @@ LTBOOL CInterfaceResMgr::SetupScaleFonts()
 	nSmall = min(30, nSmall);
 
 #if 1
+	g_pLayoutMgr->GetLargeFontBase(szFontName, sizeof(szFontName));
+	sFileName = szFontName;
+	sFileName = sFileName.substr(3, sFileName.length());
+	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nLarge, sFileName);
+
 	g_pLayoutMgr->GetHelpFont(szFontName, sizeof(szFontName));
 	sFileName = szFontName;
 	sFileName = sFileName.substr(3, sFileName.length());
@@ -232,10 +243,7 @@ LTBOOL CInterfaceResMgr::SetupScaleFonts()
 	sFileName = sFileName.substr(3, sFileName.length());
 	g_pFontMgr->LoadAndExport("Fonts\\SQR721KN.TTF", nLarge, sFileName);
 
-	g_pLayoutMgr->GetLargeFontBase(szFontName, sizeof(szFontName));
-	sFileName = szFontName;
-	sFileName = sFileName.substr(3, sFileName.length());
-	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nLarge, sFileName);
+
 
 	g_pLayoutMgr->GetMediumFontBase(szFontName, sizeof(szFontName));
 	sFileName = szFontName;

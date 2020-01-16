@@ -609,3 +609,44 @@ void CFolderMgr::SkipOutfitting(void)
 		pGear->SkipOutfitting();
 	}
 }
+
+void CFolderMgr::FlushAllFolders()
+{
+#if 1
+	// Tell the old folder that it is losing focus
+	if (m_pCurrentFolder)
+	{
+		m_pCurrentFolder->OnFocus(LTFALSE);
+		m_pCurrentFolder = LTNULL;
+	}
+
+	for (int i = 0; i < m_folderArray.GetSize(); i++)
+	{
+		auto pFolder = m_folderArray.GetAt(i);
+		
+		if (!pFolder->IsBuilt()) {
+			continue;
+		}
+
+		pFolder->FlushFolder();
+		//pFolder->Build();
+	}
+#else
+	for (int i = 0; i < m_folderArray.GetSize(); i++)
+	{
+		auto folder = m_folderArray.GetAt(i);
+		folder->Term();
+		debug_delete(folder);
+	}
+
+	m_folderArray.RemoveAll();
+
+	//build folder array
+	m_folderArray.SetSize(0);
+
+	for (int nID = FOLDER_ID_MAIN; nID < FOLDER_ID_UNASSIGNED; nID++)
+	{
+		AddFolder((eFolderID)nID);
+	}
+#endif
+}

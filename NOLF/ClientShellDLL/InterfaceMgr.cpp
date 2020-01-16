@@ -4053,8 +4053,13 @@ void CInterfaceMgr::MissionFailed(int nFailStringId)
 //
 // --------------------------------------------------------------------------- //
 
-void CInterfaceMgr::ScreenDimsChanged()
+void CInterfaceMgr::ScreenDimsChanged(LTBOOL bComingFromDisplay)
 {
+	// Need to flush the folders before the fonts resize
+	// Otherwise the destroy on text elements MIGHT reference the old fonts!
+	m_FolderMgr.FlushAllFolders();
+
+	// Font will resize here!
 	m_InterfaceResMgr.ScreenDimsChanged();
 
 	// Update the camera rect...
@@ -4071,9 +4076,17 @@ void CInterfaceMgr::ScreenDimsChanged()
 
 	m_Subtitle.ScreenDimsChanged();
 
-
 	g_pOptimizedRenderer->Term();
 	g_pOptimizedRenderer->Init();
+
+	// Just in case this gets called anywhere else.
+	if (bComingFromDisplay) {
+		// We can now do these boys!
+		g_pInterfaceMgr->InitCursor();
+		g_pInterfaceResMgr->HandleBorderlessWindowed();
+	
+		m_FolderMgr.SetCurrentFolder(FOLDER_ID_OPTIONS);
+	}
 }
 
 

@@ -121,6 +121,8 @@ public:
 	CBaseFolder*		GetFolderFromID(eFolderID folderID);
 	void				SkipOutfitting(void);
 
+	void				FlushAllFolders();
+
 private:
 
 	void				AddFolder(eFolderID folderID);

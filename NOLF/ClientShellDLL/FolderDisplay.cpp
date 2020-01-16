@@ -396,10 +396,8 @@ LTBOOL CFolderDisplay::SetRenderer(int nRendererIndex, int nResolutionIndex)
 	SDL_SetWindowSize(g_SDLWindow, newMode.m_Width, newMode.m_Height);
 	SDL_SetWindowPosition(g_SDLWindow, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
 
-	g_pInterfaceMgr->ScreenDimsChanged();
-	g_pInterfaceMgr->InitCursor();
-
-	g_pInterfaceResMgr->HandleBorderlessWindowed();
+	// This will now call the rest of the options!
+	g_pInterfaceMgr->ScreenDimsChanged(LTTRUE);
 
     return LTTRUE;
 }

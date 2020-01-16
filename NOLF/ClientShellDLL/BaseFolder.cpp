@@ -1670,6 +1670,23 @@ void CBaseFolder::AddBlankLine()
     pCtrl->Enable(LTFALSE);
 }
 
+void CBaseFolder::FlushFolder()
+{
+	RemoveAll();
+
+	m_pBack = LTNULL;
+	m_pBackArrow = LTNULL;
+	
+	m_pUpArrow = LTNULL;
+	m_pDownArrow = LTNULL;
+	m_pMain = LTNULL;
+	m_pContinue = LTNULL;
+	m_pContinueArrow = LTNULL;
+	
+
+	m_bBuilt = LTFALSE;
+}
+
 void CBaseFolder::UseArrows(LTBOOL bArrows, LTBOOL bLeft, LTBOOL bRight)
 {
 	if (bArrows)
