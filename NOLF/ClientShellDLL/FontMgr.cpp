@@ -64,8 +64,8 @@ void FontMgr::GetTrimDims(SDL_Surface* pSurface, int startX, int* outLeft, int* 
 	int right = 0;
 
 	bool bFoundLeft = false;
-	bool bThisRowIsSolid = false;
-	bool bLastRowIsSolid = false;
+	bool bThisColumnIsSolid = false;
+	bool bLastColumnIsSolid = false;
 	bool bFoundSolidAfterRight = false;
 
 	int debug_found_solid_at_y = -1;
@@ -75,7 +75,7 @@ void FontMgr::GetTrimDims(SDL_Surface* pSurface, int startX, int* outLeft, int* 
 	// Loop through every column!
 	while (x < pSurface->w) {
 		
-		bThisRowIsSolid = false;
+		bThisColumnIsSolid = false;
 
 		for (int y = 0; y < pSurface->h; y++)
 		{
@@ -95,13 +95,13 @@ void FontMgr::GetTrimDims(SDL_Surface* pSurface, int startX, int* outLeft, int* 
 			if (pixel != BLACK)
 			{
 				debug_found_solid_at_y = y;
-				bThisRowIsSolid = true;
+				bThisColumnIsSolid = true;
 			}
 		}
 
 		// Hey we found a possible right position!
 		// Save our current x position.
-		if (bLastRowIsSolid && !bThisRowIsSolid)
+		if (bLastColumnIsSolid && !bThisColumnIsSolid)
 		{
 			right = x;
 		}
@@ -114,7 +114,7 @@ void FontMgr::GetTrimDims(SDL_Surface* pSurface, int startX, int* outLeft, int* 
 		}
 
 		// Carry forward...
-		bLastRowIsSolid = bThisRowIsSolid;
+		bLastColumnIsSolid = bThisColumnIsSolid;
 
 		// Foward!
 		x++;
@@ -125,7 +125,7 @@ void FontMgr::GetTrimDims(SDL_Surface* pSurface, int startX, int* outLeft, int* 
 	// If we found solid after we wrote our right value
 	// and the last row is solid, that means there was some middle void
 	// and we want to ignore that, and use the surface width as our right value!
-	if (right == 0 || (bFoundSolidAfterRight && bLastRowIsSolid))
+	if (right == 0 || (bFoundSolidAfterRight && bLastColumnIsSolid))
 	{
 		right = pSurface->w;
 	}
