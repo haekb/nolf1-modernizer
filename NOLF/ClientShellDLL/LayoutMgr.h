@@ -180,6 +180,7 @@ public:
     LTFLOAT     GetFailScreenDelay();
     LTFLOAT     GetDeathDelay();
 
+    void        GetScaleFontFolder(char* pBuf, int nBufLen);
 	void		GetHelpFont(char *pBuf, int nBufLen);
 	void		GetSmallFontBase(char *pBuf, int nBufLen);
 	void		GetMediumFontBase(char *pBuf, int nBufLen);

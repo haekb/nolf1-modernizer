@@ -74,6 +74,11 @@ void MakePCX(SDL_Surface* pSurface, std::string filename)
 	// Start up a file
 	SDL_RWops* outFile = SDL_RWFromFile(filename.c_str(), "w+b");
 
+	if (!outFile)
+	{
+		return;
+	}
+
 	//
 	// Header time!
 	//

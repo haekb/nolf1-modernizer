@@ -1634,6 +1634,7 @@ MineDetectScreenTint	= <224.0, 224.0, 0.0>
 WeaponPickupColor		= <80.0, 40.0, 128.0>
 AmmoPickupColor			= <80.0, 40.0, 128.0>
 TintTime				= 2.000000
+ScaleFont		= "NOLF\Modernizer\Fonts"
 ScaleHelpFont           = "..\NOLF\Modernizer\Fonts\font_help.pcx"
 ScaleSmallFont          = "..\NOLF\Modernizer\Fonts\font_small.pcx"
 ScaleMediumFont         = "..\NOLF\Modernizer\Fonts\font_medium.pcx"

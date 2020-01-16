@@ -3,6 +3,7 @@
 #include "SDL.h"
 #include "SDL_ttf.h"
 #include "MakePCX.h"
+#include "WinUtil.h"
 
 #include <iostream>
 #include <sstream>
@@ -10,6 +11,9 @@
 
 // Uncomment for helpful debugging, it'll break the font though.
 //#define IMAGE_DEBUG 
+
+extern CLayoutMgr*	g_pLayoutMgr;
+extern SDL_Window*  g_SDLWindow;
 
 FontMgr* g_pFontMgr = NULL;
 
@@ -30,6 +34,38 @@ bool FontMgr::Init()
 		SDL_Log("TTF_Init: %s\n", TTF_GetError());
 		ASSERT(LTFALSE);
 		return false;
+	}
+
+	char szFontFolder[128];
+	g_pLayoutMgr->GetScaleFontFolder(szFontFolder, sizeof(szFontFolder));
+
+	if (!CWinUtil::DirExist(szFontFolder)) {
+		int ret = CWinUtil::CreateDir(szFontFolder);
+
+		if (!ret) 
+		{
+			ShowCursor(TRUE);
+			char szPath[256];
+			DWORD nResult = GetModuleFileName(NULL, szPath, sizeof(szPath));
+
+			// Make our font cache folder path!
+			std::string sFontFolderPath = szPath;
+			sFontFolderPath = StringReplace("lithtech.exe", "", sFontFolderPath);
+			sFontFolderPath += szFontFolder;
+			
+			std::string sMessage = "This is awkward, we couldn't create the font cache folder...\n\nCan you make the folders at:\n" + sFontFolderPath + "\n\nIf you have anymore troubles you can turn off scalable fonts by adding \"ScaleFonts\" \"0\" to your autoexec.cfg\n\nI've also added this message to debug.log in your NOLF installation folder!\n\nCheers!";
+			
+			// Throw it in debug.log!
+			SDL_Log("!! ERROR START !!");
+			SDL_Log(sMessage.c_str());
+			SDL_Log("!! ERROR END   !!");
+			
+			// Create a new window so it'll show up for fullscreen folks!
+			SDL_Window* hMsgWindow = SDL_CreateWindow("Oops!", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 0, 0, SDL_WINDOW_HIDDEN);
+			SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Oops!", sMessage.c_str(), hMsgWindow);
+			SDL_DestroyWindow(hMsgWindow);
+			return false;
+		}
 	}
 
 	return true;
@@ -204,6 +240,16 @@ void FontMgr::GlyphCheckForEmpty(SDL_Surface* pSurface, int start, int &minX, in
 
 bool FontMgr::LoadAndExport(std::string font, int size, std::string filename)
 {
+	// Check to see if the font has already been saved
+	SDL_RWops* in = SDL_RWFromFile(filename.c_str(), "rb");
+
+	// If it has, then we don't need to regenerate it
+	if (in)
+	{
+		SDL_RWclose(in);
+		return true;
+	}
+
 	// load font.ttf at size 16 into font
 	TTF_Font* pFont;
 	pFont = TTF_OpenFont(font.c_str(), size);

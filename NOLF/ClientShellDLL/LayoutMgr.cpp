@@ -124,6 +124,7 @@
 #define LO_MISC_FAILDELAY				"FailScreenDelay"
 #define LO_MISC_DEATHDELAY				"DeathDelay"
 // New scale fonts start
+#define LO_MISC_SCALE_FOLDER			"ScaleFont"
 #define LO_MISC_SCALE_HELPFONT			"ScaleHelpFont"
 #define LO_MISC_SCALE_SMALLFONT			"ScaleSmallFont"
 #define LO_MISC_SCALE_MEDIUMFONT		"ScaleMediumFont"
@@ -1476,6 +1477,11 @@ LTFLOAT  CLayoutMgr::GetFailScreenDelay()
 LTFLOAT  CLayoutMgr::GetDeathDelay()
 {
     return (LTFLOAT)m_buteMgr.GetDouble(LO_MISC_TAG, LO_MISC_DEATHDELAY, 0.0f);
+}
+
+void CLayoutMgr::GetScaleFontFolder(char* pBuf, int nBufLen)
+{
+	GetString(LO_MISC_TAG, LO_MISC_SCALE_FOLDER, pBuf, nBufLen);
 }
 
 void CLayoutMgr::GetHelpFont(char *pBuf, int nBufLen)

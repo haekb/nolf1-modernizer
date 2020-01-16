@@ -117,6 +117,8 @@ LTBOOL CInterfaceResMgr::Init(ILTClient* pClientDE, CGameClientShell* pClientShe
 	// Init font stuff here!
 	FontMgr* pFontMgr = new FontMgr();
 	if (!g_pFontMgr->Init()) {
+		// If we can't init FontMgr that means we couldn't create the font folder, so force quit out!
+		SDL_Quit();
 		return LTFALSE;
 	}
 
