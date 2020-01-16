@@ -1,8 +1,5 @@
 #pragma once
 #include "Stdafx.h"
-#include <iostream>
-#include <sstream>
-#include <fstream>
 #include <SDL.h>
 
 #define PCX_MAX_PALETTE 48
@@ -28,11 +25,12 @@ typedef struct _PcxHeader
 	WORD	VertScreenSize;    /* Vertical Screen Size */
 	BYTE	Reserved2[54];     /* Reserved (Always 0) */
 } PCXHEAD;
+#define USE_SDL_RW
 
 //
 // Returns the number of bytes written to data
 //
-int PCXEncodedPut(BYTE byte, int counter, std::ofstream* outFile)
+int PCXEncodedPut(BYTE byte, int counter, SDL_RWops* outFile)
 {
 	if (!counter) {
 		return 0;
@@ -40,22 +38,20 @@ int PCXEncodedPut(BYTE byte, int counter, std::ofstream* outFile)
 
 	if ((counter == 1) && (0xC0 != (0xC0 & byte)))
 	{
-		outFile->write(reinterpret_cast<const char*>(&byte), sizeof(byte));
+		SDL_RWwrite(outFile, &byte, sizeof(byte), 1);
 		return 1;
 	}
 	unsigned char end = 0xC0 | counter;
-	outFile->write(reinterpret_cast<const char*>(&end), sizeof(end));
-	outFile->write(reinterpret_cast<const char*>(&byte), sizeof(byte));
+	SDL_RWwrite(outFile, &end, sizeof(end), 1);
+	SDL_RWwrite(outFile, &byte, sizeof(byte), 1);
 
 	return 2;
 }
 
+
 void MakePCX(SDL_Surface* pSurface, std::string filename)
 {
 	BYTE colourMap[PCX_MAX_PALETTE] = { 0 };
-
-
-	int nImageSize = pSurface->pitch * pSurface->h;
 
 	_PcxHeader PCX;
 	memset(&PCX, 0, sizeof(PCX));
@@ -65,9 +61,9 @@ void MakePCX(SDL_Surface* pSurface, std::string filename)
 	PCX.Encoding = 1;
 	PCX.BitsPerPixel = 8;
 	PCX.XStart = 0;
-	PCX.XEnd = pSurface->w;
+	PCX.XEnd = pSurface->w - 1;
 	PCX.YStart = 0;
-	PCX.YEnd = pSurface->h;
+	PCX.YEnd = pSurface->h - 1;
 	memcpy(PCX.Palette, colourMap, sizeof(colourMap));
 	PCX.PaletteType = 1;
 	PCX.HorzRes = 96;
@@ -76,31 +72,12 @@ void MakePCX(SDL_Surface* pSurface, std::string filename)
 	PCX.NumBitPlanes = 1;
 
 	// Start up a file
-	std::ofstream outFile(filename, std::ios::binary | std::ios::out);
+	SDL_RWops* outFile = SDL_RWFromFile(filename.c_str(), "w+b");
 
 	//
 	// Header time!
 	//
-
-	// Write out the header, there's probably a better way to do this...
-	outFile.write(reinterpret_cast<const char*>(&PCX.Identifier), sizeof(PCX.Identifier));
-	outFile.write(reinterpret_cast<const char*>(&PCX.Version), sizeof(PCX.Version));
-	outFile.write(reinterpret_cast<const char*>(&PCX.Encoding), sizeof(PCX.Encoding));
-	outFile.write(reinterpret_cast<const char*>(&PCX.BitsPerPixel), sizeof(PCX.BitsPerPixel));
-	outFile.write(reinterpret_cast<const char*>(&PCX.XStart), sizeof(PCX.XStart));
-	outFile.write(reinterpret_cast<const char*>(&PCX.YStart), sizeof(PCX.YStart));
-	outFile.write(reinterpret_cast<const char*>(&PCX.XEnd), sizeof(PCX.XEnd));
-	outFile.write(reinterpret_cast<const char*>(&PCX.YEnd), sizeof(PCX.YEnd));
-	outFile.write(reinterpret_cast<const char*>(&PCX.HorzRes), sizeof(PCX.HorzRes));
-	outFile.write(reinterpret_cast<const char*>(&PCX.VertRes), sizeof(PCX.VertRes));
-	outFile.write(reinterpret_cast<const char*>(&PCX.Palette), sizeof(PCX.Palette));
-	outFile.write(reinterpret_cast<const char*>(&PCX.Reserved1), sizeof(PCX.Reserved1));
-	outFile.write(reinterpret_cast<const char*>(&PCX.NumBitPlanes), sizeof(PCX.NumBitPlanes));
-	outFile.write(reinterpret_cast<const char*>(&PCX.BytesPerLine), sizeof(PCX.BytesPerLine));
-	outFile.write(reinterpret_cast<const char*>(&PCX.PaletteType), sizeof(PCX.PaletteType));
-	outFile.write(reinterpret_cast<const char*>(&PCX.HorzScreenSize), sizeof(PCX.HorzScreenSize));
-	outFile.write(reinterpret_cast<const char*>(&PCX.VertScreenSize), sizeof(PCX.VertScreenSize));
-	outFile.write(reinterpret_cast<const char*>(&PCX.Reserved2), sizeof(PCX.Reserved2));
+	SDL_RWwrite(outFile, &PCX, sizeof(_PcxHeader), 1);
 
 	//
 	// Encoding time!
@@ -114,21 +91,21 @@ void MakePCX(SDL_Surface* pSurface, std::string filename)
 		int counter = 1;
 		int total = 0;
 
-		BYTE pixel = pixelBuffer[y * pSurface->w];
+		BYTE pixel = pixelBuffer[y * pSurface->pitch];
 		BYTE lastPixel = pixel;
 
 		// This will run through every pixel of the image, and encode it with RLE.
-		for (int x = 1; x < pSurface->w; x++)
+		for (int x = 1; x < pSurface->pitch; x++)
 		{
 			// Increment our pixel
-			pixel = pixelBuffer[(y * pSurface->w) + x];
+			pixel = pixelBuffer[(y * pSurface->pitch) + x];
 
 			if (pixel == lastPixel) {
 				counter++;
 				// We hit our max, write!
 				if (counter == 63)
 				{
-					int i = PCXEncodedPut(lastPixel, counter, &outFile);
+					int i = PCXEncodedPut(lastPixel, counter, outFile);
 					total += i;
 					counter = 0;
 				}
@@ -137,7 +114,7 @@ void MakePCX(SDL_Surface* pSurface, std::string filename)
 			{
 				if (counter)
 				{
-					int i = PCXEncodedPut(lastPixel, counter, &outFile);
+					int i = PCXEncodedPut(lastPixel, counter, outFile);
 					total += i;
 				}
 
@@ -146,7 +123,7 @@ void MakePCX(SDL_Surface* pSurface, std::string filename)
 			}
 		}
 		if (counter) {
-			int i = PCXEncodedPut(lastPixel, counter, &outFile);
+			int i = PCXEncodedPut(lastPixel, counter, outFile);
 			total += i;
 		}
 	}
@@ -154,9 +131,8 @@ void MakePCX(SDL_Surface* pSurface, std::string filename)
 	//
 	// Palette time, mark a palette, and write out SDL2's one!
 	// 
-
 	int paletteIdentifier = 0x0C;
-	outFile.write(reinterpret_cast<const char*>(&paletteIdentifier), sizeof(paletteIdentifier));
+	SDL_RWwrite(outFile, &paletteIdentifier, sizeof(paletteIdentifier), 1);
 
 	SDL_Color* sdlPal = pSurface->format->palette->colors;
 	BYTE pal[768] = { 0 };
@@ -165,9 +141,8 @@ void MakePCX(SDL_Surface* pSurface, std::string filename)
 		pal[3 * i + 1] = sdlPal[i].g;
 		pal[3 * i + 2] = sdlPal[i].b;
 	}
-	outFile.write(reinterpret_cast<const char*>(&pal), 768);
+	SDL_RWwrite(outFile, &pal, 768, 1);
 
-	// We're done folks!
-	outFile.close();
+	SDL_RWclose(outFile);
 
 }
