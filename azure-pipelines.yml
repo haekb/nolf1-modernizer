@@ -44,6 +44,12 @@ steps:
     Contents: 'SDL2.dll'
     TargetFolder: '$(Pipeline.Workspace)\\Artifacts'
 
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'LIBS\\SDL2-2.0.10\\lib\\x86\\'
+    Contents: '*.dll'
+    TargetFolder: '$(Pipeline.Workspace)\\Artifacts'
+
 - task: CmdLine@2
   inputs:
     script: 'mkdir $(Pipeline.Workspace)\\Artifacts\\Custom'
