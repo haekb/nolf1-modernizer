@@ -235,46 +235,50 @@ LTBOOL CInterfaceResMgr::SetupScaleFonts()
 	// Initialize some font magic here
 	char szFontName[128];
 	std::string sFileName = "";
+	bool bForceGenerate = true;
 
-	float nResolutionRatio = (GetYRatio() * 0.75f);
-	int nLarge = (int) ((LTFLOAT)20 * nResolutionRatio);
-	int nMedium = (int) ((LTFLOAT)14 * nResolutionRatio);
-	int nSmall = (int)((LTFLOAT)10 * nResolutionRatio);
+	float nResolutionRatio = 1.0f;//(GetYRatio() * 0.50f);
+	int nTitle = (int)((LTFLOAT)32 * nResolutionRatio);
+	int nLarge = (int) ((LTFLOAT)28 * nResolutionRatio);
+	int nMedium = (int) ((LTFLOAT)20 * nResolutionRatio);
+	int nSmall = (int)((LTFLOAT)14 * nResolutionRatio);
 
 	// Cap the font size so we don't exceed 2000 pixels in width
 	// Might need to pack my own d3dim700.dll to fix this...
+	/*
+	nTitle = min(30, nTitle);
 	nLarge = min(30, nLarge);
 	nMedium = min(30, nMedium);
 	nSmall = min(30, nSmall);
-
+	*/
 #if 1
 	g_pLayoutMgr->GetLargeFontBase(szFontName, sizeof(szFontName));
 	sFileName = FixScaleFontName(szFontName, false);
-	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nLarge, sFileName);
+	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nLarge, sFileName, bForceGenerate);
 
 	g_pLayoutMgr->GetHelpFont(szFontName, sizeof(szFontName));
 	sFileName = FixScaleFontName(szFontName, false);
-	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nSmall, sFileName);
+	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nSmall, sFileName, bForceGenerate);
 
 	g_pLayoutMgr->GetTitleFont(szFontName, sizeof(szFontName));
 	sFileName = FixScaleFontName(szFontName, false);
-	g_pFontMgr->LoadAndExport("Fonts\\SQR721KN.TTF", nLarge, sFileName);
+	g_pFontMgr->LoadAndExport("Fonts\\SQR721KN.TTF", nTitle, sFileName, bForceGenerate);
 
 	g_pLayoutMgr->GetMediumFontBase(szFontName, sizeof(szFontName));
 	sFileName = FixScaleFontName(szFontName, false);
-	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nMedium, sFileName);
+	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nMedium, sFileName, bForceGenerate);
 
 	g_pLayoutMgr->GetSmallFontBase(szFontName, sizeof(szFontName));
 	sFileName = FixScaleFontName(szFontName, false);
-	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nSmall, sFileName);
+	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nSmall, sFileName, bForceGenerate);
 
 	g_pLayoutMgr->GetHUDForeFont(szFontName, sizeof(szFontName));
 	sFileName = FixScaleFontName(szFontName, false);
-	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nMedium, sFileName);
+	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nMedium, sFileName, bForceGenerate);
 
 	g_pLayoutMgr->GetMsgForeFont(szFontName, sizeof(szFontName));
 	sFileName = FixScaleFontName(szFontName, false);
-	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nLarge, sFileName);
+	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nLarge, sFileName, bForceGenerate);
 #endif
 
 	// Initialize the fonts

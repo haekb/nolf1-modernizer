@@ -10,7 +10,7 @@ public:
 	bool Init();
 	bool Term();
 
-	bool LoadAndExport(std::string font, int size, std::string filename);
+	bool LoadAndExport(std::string font, int size, std::string filename, bool forceGenerate);
 
 protected:
 	void GlyphCheckForEmpty(SDL_Surface* pSurface, int start, int& minX, int& maxX);

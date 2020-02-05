@@ -72,10 +72,14 @@ void MakePCX(SDL_Surface* pSurface, std::string filename)
 	PCX.NumBitPlanes = 1;
 
 	// Start up a file
+	// FIXME: I think a bug is preventing regenerating font files. 
+	// w+ should create an empty file or load an existing file and discard its content, but it fails with NULL on the latter. 
 	SDL_RWops* outFile = SDL_RWFromFile(filename.c_str(), "w+b");
 
 	if (!outFile)
 	{
+		auto error = SDL_GetError();
+		SDL_Log("Couldn't generate font file <%s> due to <%s>", filename.c_str(), error);
 		return;
 	}
 

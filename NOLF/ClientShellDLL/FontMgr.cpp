@@ -236,15 +236,14 @@ void FontMgr::GlyphCheckForEmpty(SDL_Surface* pSurface, int start, int &minX, in
 
 }
 
-
-
-bool FontMgr::LoadAndExport(std::string font, int size, std::string filename)
+bool FontMgr::LoadAndExport(std::string font, int size, std::string filename, bool forceGenerate)
 {
 	// Check to see if the font has already been saved
 	SDL_RWops* in = SDL_RWFromFile(filename.c_str(), "rb");
 
 	// If it has, then we don't need to regenerate it
-	if (in)
+	// unless we want to generate it again!
+	if (in && !forceGenerate)
 	{
 		SDL_RWclose(in);
 		return true;
