@@ -57,6 +57,7 @@
 #include <SDL.h>
 #include "ConsoleMgr.h"
 #include "DetourMgr.h"
+#include "FontMgr.h"
 
 extern ConsoleMgr* g_pConsoleMgr;
 
@@ -160,6 +161,8 @@ VarTrack			g_vtFOVYMaxUW;
 VarTrack			g_vtFOVYMinUW;
 VarTrack			g_vtUWFOVRate;
 VarTrack			g_vtPlayerName;
+
+VarTrack			g_vtScaleFonts;
 
 LTFLOAT             s_fDemoTime     = 0.0f;
 LTFLOAT             s_fDeadTimer    = 0.0f;
@@ -1100,6 +1103,9 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
     g_vtFOVYMinUW.Init(g_pLTClient, "FOVYUWMin", NULL, 77.0f);
     g_vtUWFOVRate.Init(g_pLTClient, "FOVUWRate", NULL, 0.3f);
 
+	// Use scale fonts!
+	g_vtScaleFonts.Init(g_pLTClient, "ScaleFonts", NULL, 1.0f);
+
     HCONSOLEVAR hIsSet = g_pLTClient->GetConsoleVar("UpdateRateInitted");
     if (!hIsSet || g_pLTClient->GetVarValueFloat(hIsSet) != 1.0f)
 	{
@@ -1216,6 +1222,9 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 
 
 	// Interface stuff...
+
+	
+	//pFontMgr->Load("C:\\Windows\\Fonts\\Comic.ttf", 40);
 
 	if (!m_InterfaceMgr.Init())
 	{
@@ -1442,6 +1451,11 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 	DetourMgr* detourMgr = new DetourMgr();
 	detourMgr->Init();
 
+	/*
+	FontMgr* pFontMgr = new FontMgr();
+	pFontMgr->Init();
+	pFontMgr->Load("Fonts\\KIMBERLE.TTF", 32);
+	*/
 
 	return LT_OK;
 }
@@ -3800,13 +3814,13 @@ void CGameClientShell::UpdateContainerFX()
 		if (IsLiquid(m_eCurContainerCode) && !IsLiquid(eCode))
 		{
             UpdateUnderWaterFX(LTFALSE);
-            g_pLTClient->RunConsoleString("+ModelWarble 0");
+            //g_pLTClient->RunConsoleString("+ModelWarble 0");
 			m_InterfaceMgr.EndUnderwater();
 		}
 
 		if (!IsLiquid(m_eCurContainerCode) && IsLiquid(eCode))
 		{
-            g_pLTClient->RunConsoleString("ModelWarble 1");
+            //g_pLTClient->RunConsoleString("ModelWarble 1");
 			m_InterfaceMgr.BeginUnderwater();
 		}
 
@@ -9373,4 +9387,7 @@ const char *CGameClientShell::GetDisconnectMsg()
 		return LTNULL;
 }
 
-
+LTBOOL CGameClientShell::UseScaleFonts()
+{
+	return (LTBOOL)g_vtScaleFonts.GetFloat();
+}

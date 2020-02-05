@@ -210,7 +210,7 @@ public:
 
 	void				AddPageBreak();
 	void				AddBlankLine();
-
+	void				FlushFolder();
 
 protected:
 	// Calls UpdateData on each control in the folder
@@ -234,6 +234,8 @@ protected:
 	// Gets the index of the control that is under the specific screen point.
 	// Returns FALSE if there isn't one under the specified point.
     LTBOOL       GetControlUnderPoint(int xPos, int yPos, int *pnIndex);
+
+
 
 protected:
 

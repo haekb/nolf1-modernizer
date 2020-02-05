@@ -44,8 +44,8 @@ CSubtitle::~CSubtitle()
 void	CSubtitle::Init()
 {
 
-	m_pForeFont		= g_pInterfaceResMgr->GetMsgForeFont();
-	m_nLineHeight	= m_pForeFont->GetHeight();
+	m_pForeFont		= LTNULL;
+	m_nLineHeight	= g_pInterfaceResMgr->GetMsgForeFont()->GetHeight();
 
 
 	m_CinematicPos		= g_pLayoutMgr->GetSubtitleCinematicPos();
@@ -93,6 +93,7 @@ void CSubtitle::Show(int nStringId, LTVector vSpeakerPos, LTFLOAT fRadius, LTFLO
 	HSTRING hText = g_pLTClient->FormatString(nStringId);
 	if (!hText) return;
 
+	m_nLineHeight = g_pInterfaceResMgr->GetMsgForeFont()->GetHeight();
 	
 	m_vSpeakerPos = vSpeakerPos;
 	m_fRadius = fRadius > 0 ? fRadius : g_vtSubtitleMaxDist.GetFloat();
@@ -122,7 +123,7 @@ void CSubtitle::Show(int nStringId, LTVector vSpeakerPos, LTFLOAT fRadius, LTFLO
 	{
 		g_pLTClient->GetSurfaceDims(m_hForeSurf,&m_dwWidth,&m_dwHeight);
 	}
-	m_txtSize = m_pForeFont->GetTextExtentsFormat(hText,(int)width);
+	m_txtSize = g_pInterfaceResMgr->GetMsgForeFont()->GetTextExtentsFormat(hText,(int)width);
 
 
 	if ((uint32)m_txtSize.x > m_dwWidth || (uint32)m_txtSize.y > m_dwHeight)
@@ -165,7 +166,7 @@ void CSubtitle::Show(int nStringId, LTVector vSpeakerPos, LTFLOAT fRadius, LTFLO
 	m_rcSrcRect = m_rcBaseRect;
 	m_fOffset = 0.0f;
 
-	m_pForeFont->DrawFormat(hText,m_hForeSurf,0,0,(uint32)width,kWhite);
+	g_pInterfaceResMgr->GetMsgForeFont()->DrawFormat(hText,m_hForeSurf,0,0,(uint32)width,kWhite);
 
 	m_bVisible			= LTTRUE;
 
@@ -240,6 +241,8 @@ void CSubtitle::ScreenDimsChanged()
 {
 	if (!m_bVisible) return;
 	if (g_vtSubtitles.GetFloat() == 0.0f) return;
+
+	m_nLineHeight = g_pInterfaceResMgr->GetMsgForeFont()->GetHeight();
 
 	uint32 width = 0;
 	if (g_pGameClientShell->IsUsingExternalCamera())

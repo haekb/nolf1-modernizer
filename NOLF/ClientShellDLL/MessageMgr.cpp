@@ -161,6 +161,10 @@ LTBOOL CMessageMgr::Init ()
     return LTTRUE;
 }
 
+void CMessageMgr::FlushFonts()
+{
+	m_pForeFont = g_pInterfaceResMgr->GetMsgForeFont();
+}
 
 // ----------------------------------------------------------------------- //
 //
@@ -1039,7 +1043,7 @@ void CCheatMgr::Process( CheatCode nCheatCode )
 			SetPos(!s_CheatInfo[nCheatCode].bActive);
 		break;
 
-#ifndef _FINAL
+//#ifndef _FINAL
 		case CHEAT_CLIP:		// toggle clipping mode
 			SetClipMode(!s_CheatInfo[nCheatCode].bActive);
 		break;
@@ -1107,7 +1111,7 @@ void CCheatMgr::Process( CheatCode nCheatCode )
 		case CHEAT_RESET_HISTORY:   // clear player history
 			ResetHistory();
 		break;
-#endif  // _FINAL
+//#endif  // _FINAL
 
 		default:
 			return;				// skip setting global cheat indicator for unhandled cheats

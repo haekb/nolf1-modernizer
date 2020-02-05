@@ -40,8 +40,20 @@ steps:
 
 - task: CopyFiles@2
   inputs:
+    SourceFolder: 'UNPACKED ASSETS\\Fonts'
+    Contents: '**'
+    TargetFolder: '$(Pipeline.Workspace)\\Artifacts\\Fonts'
+
+- task: CopyFiles@2
+  inputs:
     SourceFolder: 'LIBS\\SDL2-2.0.10\\lib\\x86\\'
     Contents: 'SDL2.dll'
+    TargetFolder: '$(Pipeline.Workspace)\\Artifacts'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'LIBS\\SDL2_ttf-2.0.15\\lib\\x86\\'
+    Contents: '*.dll'
     TargetFolder: '$(Pipeline.Workspace)\\Artifacts'
 
 - task: CmdLine@2

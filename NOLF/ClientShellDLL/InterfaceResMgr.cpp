@@ -9,10 +9,12 @@
 #include "ClientButeMgr.h"
 #include "SDL.h"
 #include "ConsoleMgr.h"
+#include "FontMgr.h"
 
 CInterfaceResMgr*   g_pInterfaceResMgr = LTNULL;
 extern SDL_Window* g_SDLWindow;
 extern ConsoleMgr* g_pConsoleMgr;
+extern FontMgr* g_pFontMgr;
 
 namespace
 {
@@ -33,7 +35,6 @@ CInterfaceResMgr::CInterfaceResMgr()
 
     m_pTitleFont = LTNULL;
     m_pLargeFont = LTNULL;
-	m_pLargeHDFont = LTNULL;
     m_pMediumFont = LTNULL;
     m_pSmallFont = LTNULL;
     m_pHelpFont = LTNULL;
@@ -53,6 +54,8 @@ CInterfaceResMgr::CInterfaceResMgr()
 	m_fYRatio = 1.0f;
 
 	m_fUserScale = 0.50;
+
+	m_bFontsSetup = LTFALSE;
 
 }
 
@@ -111,18 +114,25 @@ LTBOOL CInterfaceResMgr::Init(ILTClient* pClientDE, CGameClientShell* pClientShe
 	// Init the InterfaceSurfMgr class
     m_InterfaceSurfMgr.Init(g_pLTClient);
 
+	// Init font stuff here!
+	FontMgr* pFontMgr = new FontMgr();
+	if (!g_pFontMgr->Init()) {
+		// If we can't init FontMgr that means we couldn't create the font folder, so force quit out!
+		SDL_Quit();
+		return LTFALSE;
+	}
+
+	// This now includes InitFonts
 	// set resolution dependant variables
 	ScreenDimsChanged();
 
-
-	// Initialize the fonts
-    if (!InitFonts())
-	{
-        return LTFALSE;
+	/*
+	if (!SetupScaleFonts()) {
+		return LTFALSE;
 	}
+	*/
 
 	g_pConsoleMgr->Init();
-
 
 	HandleBorderlessWindowed();
 
@@ -150,67 +160,7 @@ void CInterfaceResMgr::Term()
 		m_hSurfCursor = NULL;
 	}
 
-	if ( m_pHelpFont )
-	{
-		m_pHelpFont->Term();
-		debug_delete(m_pHelpFont);
-        m_pHelpFont=LTNULL;
-	}
-	if ( m_pSmallFont )
-	{
-		m_pSmallFont->Term();
-		debug_delete(m_pSmallFont);
-        m_pSmallFont=LTNULL;
-	}
-	if ( m_pMediumFont )
-	{
-		m_pMediumFont->Term();
-		debug_delete(m_pMediumFont);
-        m_pMediumFont=LTNULL;
-	}
-	if ( m_pLargeFont )
-	{
-		m_pLargeFont->Term();
-		debug_delete(m_pLargeFont);
-        m_pLargeFont=LTNULL;
-	}
-	if ( m_pLargeHDFont )
-	{
-		m_pLargeHDFont->Term();
-		debug_delete(m_pLargeHDFont);
-        m_pLargeHDFont=LTNULL;
-	}
-	if ( m_pTitleFont )
-	{
-		m_pTitleFont->Term();
-		debug_delete(m_pTitleFont);
-        m_pTitleFont=LTNULL;
-	}
-	if ( m_pMsgForeFont )
-	{
-		m_pMsgForeFont->Term();
-		debug_delete(m_pMsgForeFont);
-        m_pMsgForeFont=LTNULL;
-	}
-	if ( m_pHUDForeFont )
-	{
-		m_pHUDForeFont->Term();
-		debug_delete(m_pHUDForeFont);
-        m_pHUDForeFont=LTNULL;
-	}
-	if ( m_pAirFont )
-	{
-		m_pAirFont->Term();
-		debug_delete(m_pAirFont);
-        m_pAirFont=LTNULL;
-	}
-	if ( m_pChooserFont )
-	{
-		m_pChooserFont->Term();
-		debug_delete(m_pChooserFont);
-        m_pChooserFont=LTNULL;
-	}
-
+	TermFonts();
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -247,6 +197,93 @@ void CInterfaceResMgr::Clean()
 
 
 	}
+}
+
+std::string  CInterfaceResMgr::FixScaleFontName(std::string sFileName, bool bKeepUpDirectory)
+{
+	// If we requested it, remove the ..\ at the start.
+	if (!bKeepUpDirectory) {
+		sFileName = sFileName.substr(3, sFileName.length());
+	}
+	// Remove the .PCX
+	sFileName = sFileName.substr(0, sFileName.length() - 4);
+
+	// Add screen resolution
+	sFileName += "_" + std::to_string(GetScreenWidth()) + "x" + std::to_string(GetScreenHeight());
+
+	// Re-add the extension
+	sFileName += ".pcx";
+
+	return sFileName;
+}
+
+//
+// Loads TTFs and exports the approiately scaled PCXs
+//
+LTBOOL CInterfaceResMgr::SetupScaleFonts()
+{
+	if (m_bFontsSetup) {
+		TermFonts();
+	}
+
+	// If we're not using scale fonts, we don't need to do this setup
+	if (!g_pGameClientShell->UseScaleFonts()) {
+
+		return InitFonts();
+	}
+
+	// Initialize some font magic here
+	char szFontName[128];
+	std::string sFileName = "";
+	bool bForceGenerate = true;
+
+	float nResolutionRatio = 1.0f;//(GetYRatio() * 0.50f);
+	int nTitle = (int)((LTFLOAT)32 * nResolutionRatio);
+	int nLarge = (int) ((LTFLOAT)28 * nResolutionRatio);
+	int nMedium = (int) ((LTFLOAT)20 * nResolutionRatio);
+	int nSmall = (int)((LTFLOAT)14 * nResolutionRatio);
+
+	// Cap the font size so we don't exceed 2000 pixels in width
+	// Might need to pack my own d3dim700.dll to fix this...
+	/*
+	nTitle = min(30, nTitle);
+	nLarge = min(30, nLarge);
+	nMedium = min(30, nMedium);
+	nSmall = min(30, nSmall);
+	*/
+#if 1
+	g_pLayoutMgr->GetLargeFontBase(szFontName, sizeof(szFontName));
+	sFileName = FixScaleFontName(szFontName, false);
+	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nLarge, sFileName, bForceGenerate);
+
+	g_pLayoutMgr->GetHelpFont(szFontName, sizeof(szFontName));
+	sFileName = FixScaleFontName(szFontName, false);
+	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nSmall, sFileName, bForceGenerate);
+
+	g_pLayoutMgr->GetTitleFont(szFontName, sizeof(szFontName));
+	sFileName = FixScaleFontName(szFontName, false);
+	g_pFontMgr->LoadAndExport("Fonts\\SQR721KN.TTF", nTitle, sFileName, bForceGenerate);
+
+	g_pLayoutMgr->GetMediumFontBase(szFontName, sizeof(szFontName));
+	sFileName = FixScaleFontName(szFontName, false);
+	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nMedium, sFileName, bForceGenerate);
+
+	g_pLayoutMgr->GetSmallFontBase(szFontName, sizeof(szFontName));
+	sFileName = FixScaleFontName(szFontName, false);
+	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nSmall, sFileName, bForceGenerate);
+
+	g_pLayoutMgr->GetHUDForeFont(szFontName, sizeof(szFontName));
+	sFileName = FixScaleFontName(szFontName, false);
+	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nMedium, sFileName, bForceGenerate);
+
+	g_pLayoutMgr->GetMsgForeFont(szFontName, sizeof(szFontName));
+	sFileName = FixScaleFontName(szFontName, false);
+	g_pFontMgr->LoadAndExport("Fonts\\SQR721B.TTF", nLarge, sFileName, bForceGenerate);
+#endif
+
+	// Initialize the fonts
+	return InitFonts();
+
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -418,8 +455,6 @@ void CInterfaceResMgr::HandleBorderlessWindowed()
 
 LTBOOL CInterfaceResMgr::InitFonts()
 {
-
-
 	m_pSmallFont = debug_new(CLTGUIFont);
 	m_pMediumFont = debug_new(CLTGUIFont);
 	m_pLargeFont = debug_new(CLTGUIFont);
@@ -429,10 +464,6 @@ LTBOOL CInterfaceResMgr::InitFonts()
 	m_pHUDForeFont = debug_new(CLTGUIFont);
 	m_pAirFont = debug_new(CLTGUIFont);
 	m_pChooserFont = debug_new(CLTGUIFont);
-
-	// HD Fonts
-	m_pLargeHDFont = debug_new(CLTGUIFont);
-
 
 	// Initialize the bitmap fonts if we are in english
 	if (IsEnglish())
@@ -472,17 +503,8 @@ LTBOOL CInterfaceResMgr::InitFonts()
             return LTFALSE;
 		}
 
-		//g_pLayoutMgr->GetLargeFontBase(g_szFontName,sizeof(g_szFontName));
-		LTStrCpy(g_szFontName, "interface\\fonts\\font_large_0_hd.pcx", sizeof(g_szFontName));
-        if (!SetupFont(m_pLargeHDFont))
-		{
-			debug_delete(m_pLargeHDFont);
-            m_pLargeHDFont=LTNULL;
-            return LTFALSE;
-		}
-
         // ************* Title font
-		g_pLayoutMgr->GetTitleFont(g_szFontName,sizeof(g_szFontName));
+		g_pLayoutMgr->GetLargeFontBase(g_szFontName,sizeof(g_szFontName));
 		if (!SetupFont(m_pTitleFont))
 		{
 			if (!SetupFont(m_pTitleFont,LTFALSE))
@@ -569,8 +591,73 @@ LTBOOL CInterfaceResMgr::InitFonts()
 //      CLTGUIFont::SetWrapMethod(LTFALSE);
 //	}
 
+	m_bFontsSetup = LTTRUE;
+
     return LTTRUE;
 
+}
+
+LTBOOL CInterfaceResMgr::TermFonts()
+{
+
+	if (m_pHelpFont)
+	{
+		m_pHelpFont->Term();
+		debug_delete(m_pHelpFont);
+		m_pHelpFont = LTNULL;
+	}
+	if (m_pSmallFont)
+	{
+		m_pSmallFont->Term();
+		debug_delete(m_pSmallFont);
+		m_pSmallFont = LTNULL;
+	}
+	if (m_pMediumFont)
+	{
+		m_pMediumFont->Term();
+		debug_delete(m_pMediumFont);
+		m_pMediumFont = LTNULL;
+	}
+	if (m_pLargeFont)
+	{
+		m_pLargeFont->Term();
+		debug_delete(m_pLargeFont);
+		m_pLargeFont = LTNULL;
+	}
+	if (m_pTitleFont)
+	{
+		m_pTitleFont->Term();
+		debug_delete(m_pTitleFont);
+		m_pTitleFont = LTNULL;
+	}
+	if (m_pMsgForeFont)
+	{
+		m_pMsgForeFont->Term();
+		debug_delete(m_pMsgForeFont);
+		m_pMsgForeFont = LTNULL;
+	}
+	if (m_pHUDForeFont)
+	{
+		m_pHUDForeFont->Term();
+		debug_delete(m_pHUDForeFont);
+		m_pHUDForeFont = LTNULL;
+	}
+	if (m_pAirFont)
+	{
+		m_pAirFont->Term();
+		debug_delete(m_pAirFont);
+		m_pAirFont = LTNULL;
+	}
+	if (m_pChooserFont)
+	{
+		m_pChooserFont->Term();
+		debug_delete(m_pChooserFont);
+		m_pChooserFont = LTNULL;
+	}
+
+	m_bFontsSetup = LTFALSE;
+
+	return LTTRUE;
 }
 
 // *******************************************************************
@@ -674,6 +761,8 @@ void CInterfaceResMgr::ScreenDimsChanged()
 	m_dwScreenWidth = currentMode.m_Width;
 	m_dwScreenHeight = currentMode.m_Height;
 
+	// Adjust scale fonts
+	SetupScaleFonts();
 
 	// Re-init the console
 	g_pConsoleMgr->Init();
@@ -861,13 +950,16 @@ HSURFACE CInterfaceResMgr::CreateSurfaceFromString(CLTGUIFont *pFont, char *lpsz
     g_pLTClient->FreeString(hString);
 }
 
-
-
 LTBOOL CInterfaceResMgr::SetupFont(CLTGUIFont *pFont, LTBOOL bBlend, uint32 dwFlags)
 {
+	std::string sFontName = g_szFontName;
+
+	if (g_pGameClientShell->UseScaleFonts()) {
+		sFontName = FixScaleFontName(sFontName, true);
+	}
 
 	LITHFONTCREATESTRUCT lithFont;
-	lithFont.szFontBitmap = g_szFontName;
+	lithFont.szFontBitmap = (char*)sFontName.c_str();
 	lithFont.nGroupFlags = dwFlags;
 	if (bBlend)
 	{

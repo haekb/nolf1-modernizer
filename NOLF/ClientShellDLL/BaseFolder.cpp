@@ -166,11 +166,6 @@ LTBOOL CBaseFolder::Init(int nFolderID)
 
 	m_nAlignment = g_pLayoutMgr->GetFolderItemAlign((eFolderID)nFolderID);
 
-	int nWidth = m_HelpRect.right - m_HelpRect.left;
-	int nHeight = m_HelpRect.bottom - m_HelpRect.top;
-	if (!m_hHelpSurf)
-		m_hHelpSurf = g_pLTClient->CreateSurface((uint32)nWidth,(uint32)nHeight);
-
 	m_bInit=TRUE;
     return LTTRUE;
 }
@@ -431,6 +426,15 @@ LTBOOL CBaseFolder::CreateTitle(int nStringID)
 
 LTBOOL CBaseFolder::Build()
 {
+	float yr = g_pInterfaceResMgr->GetYRatio();
+
+	int nWidth = (m_HelpRect.right - m_HelpRect.left) * yr;
+	int nHeight = (m_HelpRect.bottom - m_HelpRect.top) * yr;
+	if (!m_hHelpSurf) {
+		m_hHelpSurf = g_pLTClient->CreateSurface((uint32)nWidth, (uint32)nHeight);
+	}
+
+
 	m_UpArrowPos		= g_pLayoutMgr->GetUpArrowPos((eFolderID)m_nFolderID);
 	m_DownArrowPos		= g_pLayoutMgr->GetDownArrowPos((eFolderID)m_nFolderID);
 
@@ -1670,6 +1674,27 @@ void CBaseFolder::AddBlankLine()
     pCtrl->Enable(LTFALSE);
 }
 
+void CBaseFolder::FlushFolder()
+{
+	RemoveAll();
+
+	m_pBack = LTNULL;
+	m_pBackArrow = LTNULL;
+	
+	m_pUpArrow = LTNULL;
+	m_pDownArrow = LTNULL;
+	m_pMain = LTNULL;
+	m_pContinue = LTNULL;
+	m_pContinueArrow = LTNULL;
+	
+	if (m_hHelpSurf) {
+		g_pLTClient->DeleteSurface(m_hHelpSurf);
+		m_hHelpSurf = LTNULL;
+	}
+
+	m_bBuilt = LTFALSE;
+}
+
 void CBaseFolder::UseArrows(LTBOOL bArrows, LTBOOL bLeft, LTBOOL bRight)
 {
 	if (bArrows)
@@ -2420,6 +2445,8 @@ void CBaseFolder::UpdateHelpText()
 {
 	CLTGUICtrl *pCtrl = GetSelectedControl();
     uint32 dwID = 0;
+	float yr = g_pInterfaceResMgr->GetYRatio();
+
 	if (pCtrl)
 		dwID = pCtrl->GetHelpID();
 
@@ -2427,8 +2454,8 @@ void CBaseFolder::UpdateHelpText()
 	{
 		m_dwCurrHelpID = dwID;
 
-		int nWidth = m_HelpRect.right - m_HelpRect.left;
-		int nHeight = m_HelpRect.bottom - m_HelpRect.top;
+		int nWidth = (m_HelpRect.right - m_HelpRect.left) * yr;
+		int nHeight = (m_HelpRect.bottom - m_HelpRect.top) * yr;
         LTRect rect(0,0,nWidth,nHeight);
         g_pLTClient->FillRect(m_hHelpSurf,&rect,kBlack);
 
@@ -2436,7 +2463,7 @@ void CBaseFolder::UpdateHelpText()
 		{
 			HSTRING hHelpTxt = GetHelpString(m_dwCurrHelpID,m_nSelection);
 
-            GetHelpFont()->DrawFormat(hHelpTxt,m_hHelpSurf,0,0,(uint32)nWidth,kWhite);
+            GetHelpFont()->DrawFormat(hHelpTxt,m_hHelpSurf,0,0,(uint32)nWidth ,kWhite);
 			g_pLTClient->OptimizeSurface(m_hHelpSurf,kBlack);
             g_pLTClient->FreeString(hHelpTxt);
 		}

@@ -84,9 +84,9 @@ void CPopupText::Init()
 
 	m_rcRect		= g_pLayoutMgr->GetPopupTextRect();
 
-	m_pForeFont		= g_pInterfaceResMgr->GetMsgForeFont();
+	m_pForeFont = LTNULL;
 
-	m_nLineHeight	= m_pForeFont->GetHeight();
+	m_nLineHeight	= g_pInterfaceResMgr->GetMsgForeFont()->GetHeight();
 
 	m_bVisible		= LTFALSE;
 	m_dwWidth		= 0;
@@ -143,7 +143,7 @@ void CPopupText::ShowText(int nStringId)
 		g_pLTClient->GetSurfaceDims(m_hForeSurf,&m_dwWidth,&m_dwHeight);
 	}
 
-	LTIntPt size = m_pForeFont->GetTextExtentsFormat(hText,width);
+	LTIntPt size = g_pInterfaceResMgr->GetMsgForeFont()->GetTextExtentsFormat(hText,width);
 	if (size.y > height) size.y = height;
 
 	if ((uint32)size.x > m_dwWidth || (uint32)size.y > m_dwHeight)
@@ -159,7 +159,7 @@ void CPopupText::ShowText(int nStringId)
 	m_pos.x += (width - size.x) / 2;
 	m_pos.y += (height - size.y);
 
-	m_pForeFont->DrawFormat(hText,m_hForeSurf,0,0,(uint32)width,kWhite);
+	g_pInterfaceResMgr->GetMsgForeFont()->DrawFormat(hText,m_hForeSurf,0,0,(uint32)width,kWhite);
 
 	m_bVisible = LTTRUE;
 	g_pLTClient->FreeString(hText);

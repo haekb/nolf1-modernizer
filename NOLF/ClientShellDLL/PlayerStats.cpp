@@ -602,6 +602,12 @@ void CPlayerStats::Term()
 
 }
 
+void CPlayerStats::FlushFonts()
+{
+	g_pObjForeFont = g_pInterfaceResMgr->GetMsgForeFont();
+	g_pForeFont = g_pInterfaceResMgr->GetHUDForeFont();
+}
+
 // ----------------------------------------------------------------------- //
 //
 //	ROUTINE:	CPlayerStats::OnEnterWorld()

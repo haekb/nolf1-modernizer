@@ -123,6 +123,16 @@
 #define LO_MISC_FAILPOS					"FailStringPos"
 #define LO_MISC_FAILDELAY				"FailScreenDelay"
 #define LO_MISC_DEATHDELAY				"DeathDelay"
+// New scale fonts start
+#define LO_MISC_SCALE_FOLDER			"ScaleFont"
+#define LO_MISC_SCALE_HELPFONT			"ScaleHelpFont"
+#define LO_MISC_SCALE_SMALLFONT			"ScaleSmallFont"
+#define LO_MISC_SCALE_MEDIUMFONT		"ScaleMediumFont"
+#define LO_MISC_SCALE_LARGEFONT			"ScaleLargeFont"
+#define LO_MISC_SCALE_TITLEFONT			"ScaleTitleFont"
+#define LO_MISC_SCALE_MSGFONT			"ScaleMsgFont"
+#define LO_MISC_SCALE_HUDFONT			"ScaleHUDFont"
+// New scale fonts end
 #define LO_MISC_HELPFONT				"HelpFont"
 #define LO_MISC_SMALLFONT				"SmallFontBase"
 #define LO_MISC_MEDFONT					"MediumFontBase"
@@ -1469,51 +1479,91 @@ LTFLOAT  CLayoutMgr::GetDeathDelay()
     return (LTFLOAT)m_buteMgr.GetDouble(LO_MISC_TAG, LO_MISC_DEATHDELAY, 0.0f);
 }
 
+void CLayoutMgr::GetScaleFontFolder(char* pBuf, int nBufLen)
+{
+	GetString(LO_MISC_TAG, LO_MISC_SCALE_FOLDER, pBuf, nBufLen);
+}
+
 void CLayoutMgr::GetHelpFont(char *pBuf, int nBufLen)
 {
+	if (g_pGameClientShell->UseScaleFonts()) {
+		GetString(LO_MISC_TAG, LO_MISC_SCALE_HELPFONT, pBuf, nBufLen);
+		return;
+	}
 	GetString(LO_MISC_TAG, LO_MISC_HELPFONT, pBuf, nBufLen);
 }
 
-
 void CLayoutMgr::GetSmallFontBase(char *pBuf, int nBufLen)
 {
+	if (g_pGameClientShell->UseScaleFonts()) {
+		GetString(LO_MISC_TAG, LO_MISC_SCALE_SMALLFONT, pBuf, nBufLen);
+		return;
+	}
 	GetString(LO_MISC_TAG, LO_MISC_SMALLFONT, pBuf, nBufLen);
 }
 
 void CLayoutMgr::GetMediumFontBase(char *pBuf, int nBufLen)
 {
+	if (g_pGameClientShell->UseScaleFonts()) {
+		GetString(LO_MISC_TAG, LO_MISC_SCALE_MEDIUMFONT, pBuf, nBufLen);
+		return;
+	}
 	GetString(LO_MISC_TAG, LO_MISC_MEDFONT, pBuf, nBufLen);
 }
 
 
 void CLayoutMgr::GetLargeFontBase(char *pBuf, int nBufLen)
 {
+	if (g_pGameClientShell->UseScaleFonts()) {
+		GetString(LO_MISC_TAG, LO_MISC_SCALE_LARGEFONT, pBuf, nBufLen);
+		return;
+	}
 	GetString(LO_MISC_TAG, LO_MISC_LARGEFONT, pBuf, nBufLen);
 }
 
 
 void CLayoutMgr::GetTitleFont(char *pBuf, int nBufLen)
 {
+	if (g_pGameClientShell->UseScaleFonts()) {
+		GetString(LO_MISC_TAG, LO_MISC_SCALE_TITLEFONT, pBuf, nBufLen);
+		return;
+	}
 	GetString(LO_MISC_TAG, LO_MISC_TITLEFONT, pBuf, nBufLen);
 }
 
 void CLayoutMgr::GetMsgForeFont(char *pBuf, int nBufLen)
 {
+	if (g_pGameClientShell->UseScaleFonts()) {
+		GetString(LO_MISC_TAG, LO_MISC_SCALE_MSGFONT, pBuf, nBufLen);
+		return;
+	}
 	GetString(LO_MISC_TAG, LO_MISC_MSGFOREFONT, pBuf, nBufLen);
 }
 
 void CLayoutMgr::GetHUDForeFont(char *pBuf, int nBufLen)
 {
+	if (g_pGameClientShell->UseScaleFonts()) {
+		GetString(LO_MISC_TAG, LO_MISC_SCALE_HUDFONT, pBuf, nBufLen);
+		return;
+	}
 	GetString(LO_MISC_TAG, LO_MISC_HUDFOREFONT, pBuf, nBufLen);
 }
 
 void CLayoutMgr::GetAirFont(char *pBuf, int nBufLen)
 {
+	if (g_pGameClientShell->UseScaleFonts()) {
+		GetString(LO_MISC_TAG, LO_MISC_SCALE_HUDFONT, pBuf, nBufLen);
+		return;
+	}
 	GetString(LO_MISC_TAG, LO_MISC_AIRFONT, pBuf, nBufLen);
 }
 
 void CLayoutMgr::GetChooserFont(char *pBuf, int nBufLen)
 {
+	if (g_pGameClientShell->UseScaleFonts()) {
+		GetString(LO_MISC_TAG, LO_MISC_SCALE_HUDFONT, pBuf, nBufLen);
+		return;
+	}
 	GetString(LO_MISC_TAG, LO_MISC_CHOOSERFONT, pBuf, nBufLen);
 }
 

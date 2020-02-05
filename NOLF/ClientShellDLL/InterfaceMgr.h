@@ -278,7 +278,7 @@ class CInterfaceMgr
         void        UpdatePlayerStats(uint8 nThing, uint8 nType1, uint8 nType2, LTFLOAT fAmount);
         void        UpdateWeaponStats(uint8 nWeaponId, uint8 nAmmoId, uint32 dwAmmo);
 
-		void		ScreenDimsChanged();
+		void		ScreenDimsChanged(LTBOOL bComingFromDisplay = LTFALSE);
 
         LTIntPt     GetCursorPos() {return m_CursorPos;}
         LTBOOL		IsCursorUsed() {return m_bUseCursor;}
