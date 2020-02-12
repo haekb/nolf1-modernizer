@@ -33,9 +33,9 @@ The goal of NOLF Modernizer is to help fix some long standing bugs, and update s
 - Fixed a silent out of range bug that could cause enemies to disappear and travel to a nearby galaxy at FTL speed!
 
 
-## Additional Config Commands
+## Additional Config/Console Commands
 
-The following are new config commands:
+The following are new config/console commands:
   - `FramerateLock`           - INT - Locks the framerate if the value is 1. (Default is 1)
   - `ShowFramerate`           - INT - Displays the framerate if the value is 1. (Default is 0)
   - `OldMouseLook`            - INT - Uses the old mouse look code if the value is 1. (Default is 0)
@@ -46,6 +46,7 @@ The following are new config commands:
   - `UseGotyMenu`             - INT - Switch between the original main menu and the GOTY version. (Default is based on your version)
   - `NoRawInput`              - INT - Disables raw mouse input. (Default is 0)
   - `ConsoleBackdrop`         - INT - Swap between 3 different console backdrops: (0) demo, (1) blanktag, and (2) black. (Default is 0)
+  - `BigHeadMode`             - INT - Enable or Disable BigHeadMode. (Default is 0)
 
 Most of these commands are also available in their respective options menu.
 

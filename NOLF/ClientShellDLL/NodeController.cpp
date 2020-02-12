@@ -20,6 +20,8 @@
 VarTrack	g_vtLipSyncMaxRot;
 VarTrack	g_vtLipSyncFreq;
 
+extern VarTrack g_vtBigHeadMode;
+
 //#define GRAPH_LIPSYNC_SOUND
 #ifdef GRAPH_LIPSYNC_SOUND
 #include "SFXMgr.h"
@@ -161,6 +163,7 @@ CNodeController::CNodeController()
 
 	m_fCurLipSyncRot = 0.0f;
     m_bOpeningMouth  = LTTRUE;
+	m_nHeadNode = -1;
 }
 
 // ----------------------------------------------------------------------- //
@@ -222,6 +225,10 @@ LTBOOL CNodeController::Init(CCharacterFX* pCharacterFX)
 			m_aNodes[eModelNode].hModelNode = hCurNode;
 		}
 
+		if (stricmp(szName, "head_node") == 0) {
+			m_nHeadNode = hCurNode;
+		}
+
 		m_cNodes++;
 	}
 
@@ -254,7 +261,7 @@ void CNodeController::Update()
 
 	_ASSERT(m_cNodeControls >= 0);
 
-	if ( m_cNodeControls > 0 )
+	if ( m_cNodeControls > 0 || g_vtBigHeadMode.GetFloat() > 0.0f)
 	{
         g_pLTClient->ModelNodeControl(GetCFX()->GetServerObj(), CNodeController::NodeControlFn, this);
 	}
@@ -1426,9 +1433,15 @@ void CNodeController::HandleNodeControl(HOBJECT hObj, HMODELNODE hNode, LTMatrix
 {
 	NSTRUCT* pNode = FindNode(hNode);
 
-	if ( pNode && pNode->cControllers > 0 )
+	// Added m_cNodeControls in case bigheadmode is enabled, that makes this always run!
+	if ( m_cNodeControls && pNode && pNode->cControllers > 0 )
 	{
 		*pGlobalMat = *pGlobalMat * pNode->matTransform;
+	}
+
+	// If big head mode enabled? If so, apply the scale!
+	if (g_vtBigHeadMode.GetFloat() > 0.0f && pNode && hNode == m_nHeadNode) {
+		pGlobalMat->Scale(1.8f, 1.8f, 1.8f);
 	}
 }
 

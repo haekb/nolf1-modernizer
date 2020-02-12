@@ -202,6 +202,8 @@ class CNodeController
 
         LTFLOAT      m_fCurLipSyncRot;                   // Current lip-sync node rotation
         LTBOOL       m_bOpeningMouth;                    // Is mouth opening or closing?
+
+		HMODELNODE		m_nHeadNode;
 };
 
 #endif
