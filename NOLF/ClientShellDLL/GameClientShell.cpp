@@ -161,6 +161,19 @@ VarTrack			g_vtFOVYMinUW;
 VarTrack			g_vtUWFOVRate;
 VarTrack			g_vtPlayerName;
 
+// New!
+VarTrack			g_vtLockFPS;					// FramerateLock			<0-1>
+VarTrack			g_vtShowFPS;					// ShowFramerate			<0-1>
+VarTrack			g_vtOldMouseLook;				// OldMouseLook				<0-1>
+VarTrack			g_vtNoFunMenus;					// NoFunMenus				<0-1>
+VarTrack			g_vtLockCinematicAspectRatio;   // RestrictCinematicsTo4x3	<0-1>
+VarTrack			g_vtQuickSwitch;				// QuickSwitch				<0-1>
+VarTrack			g_vtUIScale;					// UIScale					<0.0-1.0>
+VarTrack			g_vtUseGOTYMenu;				// UseGotyMenu				<0-1>
+VarTrack			g_vtNoRawInput;					// NoRawInput				<0-1>
+VarTrack			g_vtConsoleBackdrop;			// ConsoleBackdrop			<0-2>
+VarTrack			g_vtBigHeadMode;				// BigHeadMode				<0-1>
+
 LTFLOAT             s_fDemoTime     = 0.0f;
 LTFLOAT             s_fDeadTimer    = 0.0f;
 LTFLOAT             s_fDeathDelay   = 0.0f;
@@ -242,14 +255,7 @@ IClientShell* CreateClientShell(ILTClient *pClientDE)
     g_pLTClient  = pClientDE;
     _ASSERT(g_pLTClient);
 
-	/*
-	while (true) {
-
-		g_pLTClient->CPrint("Hello World!");
-	}
-	*/
-
-
+	// Register our proxy functions, these will allow us to populate a list of console commands
 	g_pRegisterConsoleProgram = g_pLTClient->RegisterConsoleProgram;
 	g_pLTClient->RegisterConsoleProgram = proxyRegisterConsoleProgram;
 
@@ -1107,6 +1113,20 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
         g_pLTClient->RunConsoleString("+UpdateRateInitted 1");
         g_pLTClient->RunConsoleString("+UpdateRate 6");
 	}
+
+	// Init new console vars
+	g_vtLockFPS.Init(g_pLTClient, "FramerateLock", NULL, 1.0f);
+	g_vtShowFPS.Init(g_pLTClient, "ShowFramerate", NULL, 0.0f);
+	g_vtOldMouseLook.Init(g_pLTClient, "OldMouseLook", NULL, 0.0f);
+	g_vtNoFunMenus.Init(g_pLTClient, "NoFunMenus", NULL, 0.0f);
+	g_vtLockCinematicAspectRatio.Init(g_pLTClient, "RestrictCinematicsTo4x3", NULL, 0.0f);
+	g_vtQuickSwitch.Init(g_pLTClient, "QuickSwitch", NULL, 0.0f);
+	g_vtUIScale.Init(g_pLTClient, "UIScale", NULL, 0.5f);
+	g_vtUseGOTYMenu.Init(g_pLTClient, "UseGotyMenu", NULL, 1.0f);
+	g_vtNoRawInput.Init(g_pLTClient, "NoRawInput", NULL, 0.0f);
+	g_vtConsoleBackdrop.Init(g_pLTClient, "ConsoleBackdrop", NULL, 0.0f);
+	g_vtBigHeadMode.Init(g_pLTClient, "BigHeadMode", NULL, 0.0f);
+	//
 
     m_MoveMgr.Init();
 	m_editMgr.Init();
