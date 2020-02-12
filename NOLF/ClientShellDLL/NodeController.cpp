@@ -261,7 +261,7 @@ void CNodeController::Update()
 
 	_ASSERT(m_cNodeControls >= 0);
 
-	if ( m_cNodeControls > 0 || g_vtBigHeadMode.GetFloat() > 0.0f)
+	if ( m_cNodeControls > 0 || g_vtBigHeadMode.GetFloat())
 	{
         g_pLTClient->ModelNodeControl(GetCFX()->GetServerObj(), CNodeController::NodeControlFn, this);
 	}
@@ -1440,8 +1440,10 @@ void CNodeController::HandleNodeControl(HOBJECT hObj, HMODELNODE hNode, LTMatrix
 	}
 
 	// If big head mode enabled? If so, apply the scale!
-	if (g_vtBigHeadMode.GetFloat() > 0.0f && pNode && hNode == m_nHeadNode) {
-		pGlobalMat->Scale(1.8f, 1.8f, 1.8f);
+	// It now scales based on the amount specified.
+	if (g_vtBigHeadMode.GetFloat() && pNode && hNode == m_nHeadNode) {
+		LTFLOAT fBigHeadedness = 1.8f * g_vtBigHeadMode.GetFloat();
+		pGlobalMat->Scale(fBigHeadedness, fBigHeadedness, fBigHeadedness);
 	}
 }
 
