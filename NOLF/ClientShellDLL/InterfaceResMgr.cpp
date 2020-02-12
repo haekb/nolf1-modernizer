@@ -13,6 +13,7 @@
 CInterfaceResMgr*   g_pInterfaceResMgr = LTNULL;
 extern SDL_Window* g_SDLWindow;
 extern ConsoleMgr* g_pConsoleMgr;
+extern VarTrack g_vtUIScale;
 
 namespace
 {
@@ -51,8 +52,6 @@ CInterfaceResMgr::CInterfaceResMgr()
 
 	m_fXRatio = 1.0f;
 	m_fYRatio = 1.0f;
-
-	m_fUserScale = 0.50;
 
 }
 
@@ -125,8 +124,6 @@ LTBOOL CInterfaceResMgr::Init(ILTClient* pClientDE, CGameClientShell* pClientShe
 
 
 	HandleBorderlessWindowed();
-
-	m_fUserScale = GetConfigFloat("UIScale", 0.5f);
 
     return LTTRUE;
 }
@@ -337,6 +334,11 @@ int CInterfaceResMgr::Get4x3Offset()
 		so we then divide by 2 to get only one side. 
 	*/
 	return (GetScreenWidth() - (GetScreenHeight() * Get4x3Ratio())) / 2;
+}
+
+LTFLOAT CInterfaceResMgr::GetUIScale()
+{
+	return m_fYRatio * g_vtUIScale.GetFloat();
 }
 
 void CInterfaceResMgr::DrawMessage(CLTGUIFont* pFont, int nMessageId)

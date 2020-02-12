@@ -11,6 +11,8 @@
 #include "InterfaceMgr.h"
 #include "GameSettings.h"
 
+extern VarTrack g_vtOldMouseLook;
+
 namespace
 {
 	int kGap = 200;
@@ -120,7 +122,7 @@ void CFolderMouse::OnFocus(LTBOOL bFocus)
 		float fTemp = GetConsoleFloat("VehicleTurnRateScale",1.0f);
 		m_nVehicleTurn = (int)(100.0f * fTemp);
 
-		m_bOldMouseLook = GetConfigInt("OldMouseLook", 0);
+		m_bOldMouseLook = g_vtOldMouseLook.GetFloat();
 
         UpdateData(LTFALSE);
 	}
@@ -143,9 +145,6 @@ void CFolderMouse::OnFocus(LTBOOL bFocus)
 		// Just to be safe save the config incase anything changed...
 
         g_pLTClient->WriteConfigFile("autoexec.cfg");
-		GetConfigFile("autoexec.cfg");
-
-		g_pGameClientShell->UpdateConfigSettings();
 	}
 	CBaseFolder::OnFocus(bFocus);
 }

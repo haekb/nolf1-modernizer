@@ -688,15 +688,6 @@ CGameClientShell::CGameClientShell()
 	}
 
 	m_lFrametime = (m_lTimerFrequency.QuadPart / 60);
-
-	// Load up our config file
-	GetConfigFile("autoexec.cfg");
-
-	UpdateConfigSettings();
-
-	SDL_Log("Framerate Lock is <%d>", m_bUserWantsFramerateLock);
-	SDL_Log("Old Mouse Look is <%d>", m_bOldMouseLook);
-
 }
 
 
@@ -982,8 +973,6 @@ void CGameClientShell::CSPrint(char* msg, ...)
 
 void CGameClientShell::UpdateConfigSettings()
 {
-	m_bUserWantsFramerateLock = GetConfigInt("FramerateLock", 1);
-	m_bOldMouseLook = GetConfigInt("OldMouseLook", 0);
 
 	// Update other config settings if available!
 	if (g_pInterfaceMgr)
@@ -1988,7 +1977,7 @@ void CGameClientShell::PostUpdate()
 	// Occasionally we'll need to unlock the framerate (like during loading!)
 	// But we also want the user to have the option to unlock it,
 	// so that's why there's two almost identical lock vars here.
-	if ( (m_bLockFramerate && m_bUserWantsFramerateLock) || IsMultiplayerGame())
+	if ( (m_bLockFramerate && g_vtLockFPS.GetFloat()) || IsMultiplayerGame())
 	{
 		// Limit our framerate so the game actually runs properly.
 		LARGE_INTEGER NewTime;
@@ -2815,7 +2804,7 @@ void CGameClientShell::CalculateCameraRotation()
 	// Get axis offsets...
 	float offsets[3] = {0.0, 0.0, 0.0};
 
-	if (!m_bOldMouseLook)
+	if (!g_vtOldMouseLook.GetFloat())
 	{
 		int deltaX, deltaY;
 
@@ -8678,7 +8667,8 @@ BOOL HookWindow()
 		SDL_Log("Hooked window!");
 
 		// If they request it, don't use raw input!
-		if (GetConfigInt("NoRawInput", 0)) {
+		if (!g_vtNoRawInput.GetFloat()) 
+		{
 			SDL_Log("No Raw Input requested.");
 			SDL_SetHint(SDL_HINT_MOUSE_RELATIVE_MODE_WARP, "1");
 		}

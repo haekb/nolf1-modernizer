@@ -13,6 +13,7 @@
 #include "SDL.h"
 
 extern CGameClientShell* g_pGameClientShell;
+extern VarTrack g_vtUseGOTYMenu;
 
 LTBOOL      CBaseFolder::m_bReadLayout = LTFALSE;
 LTRect      CBaseFolder::m_HelpRect;
@@ -2242,7 +2243,7 @@ void CBaseFolder::CreateScaleFX(char *szFXName)
 	if (pScaleFX)
 	{
 		// Hack: Allow switching between NOLF and GOTY titlescreen!
-		if (GetConfigInt("UseGotyMenu", 0) == 0) 
+		if (!g_vtUseGOTYMenu.GetFloat())
 		{
 			if (stricmp(szFXName, "InterfaceSpr1") == 0) {
 				char		szFile[FXBMGR_MAX_FILE_PATH] = "menu\\Spr\\mainmenu1b.spr";
