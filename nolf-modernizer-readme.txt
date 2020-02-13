@@ -42,9 +42,9 @@ It's important that you don't run this mod with any other mods that may have mod
 
 
 
---  Additional Config Commands
+--  Additional Config/Console Commands
 
-We've added new autoexec.cfg commands! 
+We've added new autoexec.cfg commands! (They also work in the console!)
 
 Some of these will show up in your autoexec.cfg as you set them, but if it's missing you can simply add it yourself.
 
@@ -57,6 +57,8 @@ Some of these will show up in your autoexec.cfg as you set them, but if it's mis
 "UIScale"			        - Scales the in-game HUD. (Default is 0.5)
 "UseGotyMenu"			    - Switch between the original main menu and the GOTY version. (Default is based on your version)
 "ConsoleBackdrop"           - Swap between 3 different console backdrops: (0) demo, (1) blanktag, and (2) black. (Default is 0)
+"BigHeadMode"               - Enable or Disable BigHeadMode. (Default is 0)
+
 
 Most of these commands are also available in their respective options menu.
 

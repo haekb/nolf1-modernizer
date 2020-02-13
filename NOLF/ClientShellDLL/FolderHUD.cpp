@@ -7,6 +7,12 @@
 #include "GameClientShell.h"
 #include "GameSettings.h"
 
+extern VarTrack g_vtUIScale;
+extern VarTrack g_vtUseGOTYMenu;
+extern VarTrack g_vtShowFPS;
+extern VarTrack g_vtLockFPS;
+extern VarTrack g_vtLockCinematicAspectRatio;
+
 namespace
 {
 	int kGap = 0;
@@ -79,14 +85,14 @@ void CFolderHUD::OnFocus(LTBOOL bFocus)
 	// Enter
 	if (bFocus) {
 
-		m_fUIScale = GetConfigFloat("UIScale", 0.5f);
+		m_fUIScale = g_vtUIScale.GetFloat(0.5f);
 		m_nUIScale = m_fUIScale * 100;
 
-		m_bUseGOTYMenu = GetConfigInt("UseGotyMenu", 0);
+		m_bUseGOTYMenu = g_vtUseGOTYMenu.GetFloat();
 
-		m_bLockFramerate = GetConfigInt("FramerateLock", 1);
-		m_bShowFramerate = GetConfigInt("ShowFramerate", 0);
-		m_bRestrictAspectRatio = GetConfigInt("RestrictCinematicsTo4x3", 0);
+		m_bLockFramerate = g_vtLockFPS.GetFloat(1.0f);
+		m_bShowFramerate = g_vtShowFPS.GetFloat();
+		m_bRestrictAspectRatio = g_vtLockCinematicAspectRatio.GetFloat();
 
 		UpdateData(LTFALSE);
 		CBaseFolder::OnFocus(bFocus);
@@ -108,8 +114,6 @@ void CFolderHUD::OnFocus(LTBOOL bFocus)
 	WriteConsoleInt("RestrictCinematicsTo4x3", m_bRestrictAspectRatio);
 
 	g_pLTClient->WriteConfigFile("autoexec.cfg");
-	GetConfigFile("autoexec.cfg");
-	g_pGameClientShell->UpdateConfigSettings(); // Might not be needed here.
 
 	CBaseFolder::OnFocus(bFocus);
 }

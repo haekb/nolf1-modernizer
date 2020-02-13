@@ -26,7 +26,7 @@
 #include "CharacterFX.h"
 
 extern CGameClientShell* g_pGameClientShell;
-
+extern VarTrack g_vtShowFPS;
 
 #define CH_LEFT			(1 << 0)
 #define CH_RIGHT		(1 << 1)
@@ -1427,7 +1427,7 @@ void CPlayerStats::DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nR
 	eOverlayMask eCurrMask = g_pInterfaceMgr->GetCurrentOverlay();
 
 	// Draw the framerate
-	if (m_bShowFramerate)
+	if (g_vtShowFPS.GetFloat())
 	{
 		char szStr[32] = "";
 		sprintf(szStr, "Framerate: %.2f", m_fFramerate);
@@ -4234,7 +4234,6 @@ void CPlayerStats::DrawBoundWeapons(HSURFACE hScreen)
 
 void CPlayerStats::UpdateConfigSettings()
 {
-	m_bShowFramerate = GetConfigInt("ShowFramerate", 0);
 }
 
 

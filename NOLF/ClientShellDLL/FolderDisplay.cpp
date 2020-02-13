@@ -566,10 +566,6 @@ void CFolderDisplay::OnFocus(LTBOOL bFocus)
 			WriteConsoleInt("DrawPortals",1);
 
         g_pLTClient->WriteConfigFile("autoexec.cfg");
-		GetConfigFile("autoexec.cfg");
-
-		// Todo: Figure out an easier way to update these.
-		g_pGameClientShell->UpdateConfigSettings();
 
 	}
 	CBaseFolder::OnFocus(bFocus);

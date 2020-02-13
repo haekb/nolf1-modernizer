@@ -31,6 +31,13 @@
 
 extern ConsoleMgr* g_pConsoleMgr;
 
+extern VarTrack g_vtOldMouseLook;
+extern VarTrack g_vtUseGOTYMenu;
+extern VarTrack g_vtNoFunMenus;
+extern VarTrack g_vtQuickSwitch;
+extern VarTrack g_vtLockCinematicAspectRatio;
+
+
 // TESTING DYNAMIC LIGHT IN INTERFACE
 /*
 #include "FXButeMgr.h"
@@ -462,17 +469,16 @@ LTBOOL CInterfaceMgr::Init()
 	}
 
 	// Let's check to see if we have a GotyMenu value, and if not, set it accordingly.
-	m_bUseGOTYMenu = GetConfigInt("UseGotyMenu", -1);
+	m_bUseGOTYMenu = g_vtUseGOTYMenu.GetFloat(-1.0f);
 	LTBOOL bHasGOTY = g_pVersionMgr->IsGOTY();
 
-	if (m_bUseGOTYMenu == -1 || (m_bUseGOTYMenu == 1 && !bHasGOTY) )
+	if (m_bUseGOTYMenu == -1.0f || (m_bUseGOTYMenu == 1 && !bHasGOTY) )
 	{
 		m_bUseGOTYMenu = bHasGOTY;
 
 		// Save that value!
 		WriteConsoleInt("UseGotyMenu", m_bUseGOTYMenu);
 		g_pLTClient->WriteConfigFile("autoexec.cfg");
-		GetConfigFile("autoexec.cfg");
 	}
 
 	UpdateConfigSettings();
@@ -640,11 +646,8 @@ void CInterfaceMgr::UpdateConfigSettings()
 {
 	LTBOOL previousNoFunMenusSetting = m_bNoFunMenus;
 
-	m_bOldMouseLook = GetConfigInt("OldMouseLook", 0);
-	m_bNoFunMenus = GetConfigInt("NoFunMenus", 0);
-	m_bQuickSwitch = GetConfigInt("QuickSwitch", 0);
-	m_bRestrictAspectRatio = GetConfigInt("RestrictCinematicsTo4x3", 0);
-	m_bUseGOTYMenu = GetConfigInt("UseGotyMenu", 0);
+	// Still used to bust main folder cache
+	m_bNoFunMenus = (LTBOOL)g_vtNoFunMenus.GetFloat();
 
 	// Break the folder cache
 	if (previousNoFunMenusSetting != m_bNoFunMenus)
@@ -2360,7 +2363,7 @@ LTBOOL CInterfaceMgr::OnCommandOn(int command)
 			{
 				m_WeaponChooser.PrevWeapon();
 
-				if (m_bQuickSwitch == 1)
+				if (g_vtQuickSwitch.GetFloat())
 				{
 					uint8 nCurrWeapon = m_WeaponChooser.GetCurrentSelection();
 					g_pGameClientShell->GetWeaponModel()->ChangeWeapon(g_pWeaponMgr->GetCommandId(nCurrWeapon), LTTRUE, LTTRUE);
@@ -2385,7 +2388,7 @@ LTBOOL CInterfaceMgr::OnCommandOn(int command)
 			{
 				m_WeaponChooser.NextWeapon();
 
-				if (m_bQuickSwitch == 1)
+				if (g_vtQuickSwitch.GetFloat())
 				{
 					uint8 nCurrWeapon = m_WeaponChooser.GetCurrentSelection();
 					g_pGameClientShell->GetWeaponModel()->ChangeWeapon(g_pWeaponMgr->GetCommandId(nCurrWeapon), LTTRUE, LTTRUE);
@@ -3916,7 +3919,7 @@ eFolderID CInterfaceMgr::GetMainFolder()
 	}
 
 	// Restrict to just the base menu
-	if (m_bNoFunMenus == 1)
+	if (g_vtNoFunMenus.GetFloat())
 	{
 		m_eMainFolderID = FOLDER_ID_MAIN;
 		return m_eMainFolderID;
@@ -3933,17 +3936,16 @@ eFolderID CInterfaceMgr::GetMainFolder()
 	time (&rawtime);
 	timeinfo = localtime (&rawtime);
 
-	// My strata bylaws say we can have lights up from
-	// November 15 through January 31, so that's winter time!
+	// Adjusted to Dec 15 - Dec 31st
 	strftime(dayBuffer, sizeof(dayBuffer), "%d", timeinfo);
 	strftime(monthBuffer, sizeof(monthBuffer), "%m", timeinfo);
 
 	monthNumber = atoi(monthBuffer);
 	dayNumber = atoi(dayBuffer);
 
-	if( ( monthNumber >= 11 && dayNumber >= 15 ) || ( monthNumber <= 1 && dayNumber <= 31 ) )
+	if( ( monthNumber >= 12 && dayNumber >= 15 ) || ( monthNumber <= 12 && dayNumber <= 31 ) )
 	{
-		SDL_Log("Happy Holidays! :)");
+		g_pLTClient->CPrint("Happy Holidays! :)");
 		m_eMainFolderID = FOLDER_ID_MAIN_WINTER;
 		return m_eMainFolderID;
 	}
@@ -3955,7 +3957,7 @@ eFolderID CInterfaceMgr::GetMainFolder()
 	// Casual Fridays
 	if ( strcmp(dayBuffer, "5") == 0 ) 
 	{
-		SDL_Log("Casual Fridays");
+		g_pLTClient->CPrint("Casual Fridays");
 		m_eMainFolderID = FOLDER_ID_MAIN_CASUAL;
 		return m_eMainFolderID;
 	}
@@ -4348,7 +4350,7 @@ void CInterfaceMgr::UseCursor(LTBOOL bUseCursor)
 	m_bUseCursor = bUseCursor;
 	if (m_bUseCursor)
 	{
-		if (m_bOldMouseLook)
+		if (g_vtOldMouseLook.GetFloat())
 		{
 			g_pLTClient->RunConsoleString("CursorCenter 0");
 		}
@@ -4364,7 +4366,7 @@ void CInterfaceMgr::UseCursor(LTBOOL bUseCursor)
 	}
 	else
 	{
-		if (m_bOldMouseLook)
+		if (g_vtOldMouseLook.GetFloat())
 		{
 			g_pLTClient->RunConsoleString("CursorCenter 1");
 		}
@@ -4921,7 +4923,7 @@ void CInterfaceMgr::UpdateLetterBox()
  	g_pLTClient->ScaleSurfaceToSurfaceTransparent(hScreen, m_hLetterBoxSurface,
 	   &rcDest, &rcSrc, hTransColor);
 
-	if (m_bRestrictAspectRatio == 1)
+	if (g_vtLockCinematicAspectRatio.GetFloat())
 	{
 		int offsetX = g_pInterfaceResMgr->GetXOffset();
 

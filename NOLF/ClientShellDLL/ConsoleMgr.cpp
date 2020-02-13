@@ -9,6 +9,7 @@
 
 
 ConsoleMgr* g_pConsoleMgr = NULL;
+extern VarTrack g_vtConsoleBackdrop;
 //extern CInterfaceResMgr* g_pInterfaceResMgr;
 
 void ShowHelpListCommand(int argc, char** argv)
@@ -255,6 +256,11 @@ void ConsoleMgr::Send()
 	// Echo it back
 	g_pLTClient->CPrint(m_szEdit);
 
+	// Jake: Small hack, in case they disable OldMouseLook through the console, we also need to disable CursorCenter!
+	if (stricmp(m_szEdit, "OldMouseLook 0") == 0) {
+		g_pLTClient->RunConsoleString("CursorCenter 0");
+	}
+
 	// Always run it on client, just in case it's not a server command or we can't run server commands.
 	g_pLTClient->RunConsoleString(m_szEdit);
 
@@ -287,8 +293,7 @@ void ConsoleMgr::Draw()
 
 	HSURFACE hBlank;
 
-	// This seems to work, so we won't use GetConfigFloat
-	int iConsoleBackdrop = GetConsoleFloat("ConsoleBackdrop", 0.0f);
+	int iConsoleBackdrop = g_vtConsoleBackdrop.GetFloat();
 	
 	switch (iConsoleBackdrop) {
 	case 1: 

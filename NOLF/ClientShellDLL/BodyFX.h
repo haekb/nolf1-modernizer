@@ -41,7 +41,10 @@ class CBodyFX : public CSpecialFX
         LTBOOL OnServerMessage(HMESSAGEREAD hMessage);
 		void OnModelKey(HLOCALOBJ hObj, ArgList *pArgs);
 
+		// Helpers
+
 		uint8 GetClientId() const { return m_bs.nClientId; }
+
 
 		virtual uint32 GetSFXID() { return SFX_BODY_ID; }
 
@@ -65,6 +68,8 @@ class CBodyFX : public CSpecialFX
 		HOBJECT				m_hMarker;
 
 		LTAnimTracker		m_TwitchTracker;
+
+		LTBOOL				m_bHasNodeControl;
 };
 
 #endif

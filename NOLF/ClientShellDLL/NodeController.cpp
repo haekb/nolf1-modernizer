@@ -20,6 +20,8 @@
 VarTrack	g_vtLipSyncMaxRot;
 VarTrack	g_vtLipSyncFreq;
 
+extern VarTrack g_vtBigHeadMode;
+
 //#define GRAPH_LIPSYNC_SOUND
 #ifdef GRAPH_LIPSYNC_SOUND
 #include "SFXMgr.h"
@@ -254,7 +256,7 @@ void CNodeController::Update()
 
 	_ASSERT(m_cNodeControls >= 0);
 
-	if ( m_cNodeControls > 0 )
+	if ( m_cNodeControls > 0 || g_vtBigHeadMode.GetFloat())
 	{
         g_pLTClient->ModelNodeControl(GetCFX()->GetServerObj(), CNodeController::NodeControlFn, this);
 	}
@@ -1426,10 +1428,13 @@ void CNodeController::HandleNodeControl(HOBJECT hObj, HMODELNODE hNode, LTMatrix
 {
 	NSTRUCT* pNode = FindNode(hNode);
 
-	if ( pNode && pNode->cControllers > 0 )
+	// Added m_cNodeControls in case bigheadmode is enabled, that makes this always run!
+	if ( m_cNodeControls && pNode && pNode->cControllers > 0 )
 	{
 		*pGlobalMat = *pGlobalMat * pNode->matTransform;
 	}
+
+	CCharacterFX::HandleBigHeadModeFn(hObj, hNode, pGlobalMat, GetCFX());
 }
 
 

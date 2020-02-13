@@ -161,6 +161,19 @@ VarTrack			g_vtFOVYMinUW;
 VarTrack			g_vtUWFOVRate;
 VarTrack			g_vtPlayerName;
 
+// New!
+VarTrack			g_vtLockFPS;					// FramerateLock			<0-1>
+VarTrack			g_vtShowFPS;					// ShowFramerate			<0-1>
+VarTrack			g_vtOldMouseLook;				// OldMouseLook				<0-1>
+VarTrack			g_vtNoFunMenus;					// NoFunMenus				<0-1>
+VarTrack			g_vtLockCinematicAspectRatio;   // RestrictCinematicsTo4x3	<0-1>
+VarTrack			g_vtQuickSwitch;				// QuickSwitch				<0-1>
+VarTrack			g_vtUIScale;					// UIScale					<0.0-1.0>
+VarTrack			g_vtUseGOTYMenu;				// UseGotyMenu				<0-1>
+VarTrack			g_vtNoRawInput;					// NoRawInput				<0-1>
+VarTrack			g_vtConsoleBackdrop;			// ConsoleBackdrop			<0-2>
+VarTrack			g_vtBigHeadMode;				// BigHeadMode				<0-1>
+
 LTFLOAT             s_fDemoTime     = 0.0f;
 LTFLOAT             s_fDeadTimer    = 0.0f;
 LTFLOAT             s_fDeathDelay   = 0.0f;
@@ -242,14 +255,7 @@ IClientShell* CreateClientShell(ILTClient *pClientDE)
     g_pLTClient  = pClientDE;
     _ASSERT(g_pLTClient);
 
-	/*
-	while (true) {
-
-		g_pLTClient->CPrint("Hello World!");
-	}
-	*/
-
-
+	// Register our proxy functions, these will allow us to populate a list of console commands
 	g_pRegisterConsoleProgram = g_pLTClient->RegisterConsoleProgram;
 	g_pLTClient->RegisterConsoleProgram = proxyRegisterConsoleProgram;
 
@@ -682,15 +688,6 @@ CGameClientShell::CGameClientShell()
 	}
 
 	m_lFrametime = (m_lTimerFrequency.QuadPart / 60);
-
-	// Load up our config file
-	GetConfigFile("autoexec.cfg");
-
-	UpdateConfigSettings();
-
-	SDL_Log("Framerate Lock is <%d>", m_bUserWantsFramerateLock);
-	SDL_Log("Old Mouse Look is <%d>", m_bOldMouseLook);
-
 }
 
 
@@ -976,8 +973,6 @@ void CGameClientShell::CSPrint(char* msg, ...)
 
 void CGameClientShell::UpdateConfigSettings()
 {
-	m_bUserWantsFramerateLock = GetConfigInt("FramerateLock", 1);
-	m_bOldMouseLook = GetConfigInt("OldMouseLook", 0);
 
 	// Update other config settings if available!
 	if (g_pInterfaceMgr)
@@ -1107,6 +1102,20 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
         g_pLTClient->RunConsoleString("+UpdateRateInitted 1");
         g_pLTClient->RunConsoleString("+UpdateRate 6");
 	}
+
+	// Init new console vars
+	g_vtLockFPS.Init(g_pLTClient, "FramerateLock", NULL, 1.0f);
+	g_vtShowFPS.Init(g_pLTClient, "ShowFramerate", NULL, 0.0f);
+	g_vtOldMouseLook.Init(g_pLTClient, "OldMouseLook", NULL, 0.0f);
+	g_vtNoFunMenus.Init(g_pLTClient, "NoFunMenus", NULL, 0.0f);
+	g_vtLockCinematicAspectRatio.Init(g_pLTClient, "RestrictCinematicsTo4x3", NULL, 0.0f);
+	g_vtQuickSwitch.Init(g_pLTClient, "QuickSwitch", NULL, 0.0f);
+	g_vtUIScale.Init(g_pLTClient, "UIScale", NULL, 0.5f);
+	g_vtUseGOTYMenu.Init(g_pLTClient, "UseGotyMenu", NULL, 1.0f);
+	g_vtNoRawInput.Init(g_pLTClient, "NoRawInput", NULL, 0.0f);
+	g_vtConsoleBackdrop.Init(g_pLTClient, "ConsoleBackdrop", NULL, 0.0f);
+	g_vtBigHeadMode.Init(g_pLTClient, "BigHeadMode", NULL, 0.0f);
+	//
 
     m_MoveMgr.Init();
 	m_editMgr.Init();
@@ -1733,6 +1742,11 @@ void CGameClientShell::PreUpdate()
 		m_InterfaceMgr.AddToClearScreenCount();
 	}
 
+	// Big Head Mode is neat and all, but we need to keep multiplayer consistent. 
+	if (IsMultiplayerGame()) {
+		g_vtBigHeadMode.SetFloat(0.0f);
+	}
+
 	m_InterfaceMgr.PreUpdate();
 }
 
@@ -1968,7 +1982,7 @@ void CGameClientShell::PostUpdate()
 	// Occasionally we'll need to unlock the framerate (like during loading!)
 	// But we also want the user to have the option to unlock it,
 	// so that's why there's two almost identical lock vars here.
-	if ( (m_bLockFramerate && m_bUserWantsFramerateLock) || IsMultiplayerGame())
+	if ( (m_bLockFramerate && g_vtLockFPS.GetFloat()) || IsMultiplayerGame())
 	{
 		// Limit our framerate so the game actually runs properly.
 		LARGE_INTEGER NewTime;
@@ -2795,7 +2809,7 @@ void CGameClientShell::CalculateCameraRotation()
 	// Get axis offsets...
 	float offsets[3] = {0.0, 0.0, 0.0};
 
-	if (!m_bOldMouseLook)
+	if (!g_vtOldMouseLook.GetFloat())
 	{
 		int deltaX, deltaY;
 
@@ -8658,7 +8672,8 @@ BOOL HookWindow()
 		SDL_Log("Hooked window!");
 
 		// If they request it, don't use raw input!
-		if (GetConfigInt("NoRawInput", 0)) {
+		if (!g_vtNoRawInput.GetFloat()) 
+		{
 			SDL_Log("No Raw Input requested.");
 			SDL_SetHint(SDL_HINT_MOUSE_RELATIVE_MODE_WARP, "1");
 		}

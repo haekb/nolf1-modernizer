@@ -20,7 +20,7 @@
 #include "SurfaceFunctions.h"
 
 extern CGameClientShell* g_pGameClientShell;
-
+extern VarTrack g_vtBigHeadMode;
 
 // ----------------------------------------------------------------------- //
 //
@@ -34,8 +34,8 @@ CBodyFX::CBodyFX()
 {
 	m_fFaderTime = 3.0f;
 	m_fFaderTimer = 3.0f;
-
 	m_hMarker = LTNULL;
+	m_bHasNodeControl = LTFALSE;
 }
 
 // ----------------------------------------------------------------------- //
@@ -128,6 +128,18 @@ LTBOOL CBodyFX::CreateObject(ILTClient* pClientDE)
 LTBOOL CBodyFX::Update()
 {
     if (!m_pClientDE || !m_hServerObject || m_bWantRemove) return LTFALSE;
+
+	// Only register/deregister once
+	if (!m_bHasNodeControl && g_vtBigHeadMode.GetFloat()) {
+		m_bHasNodeControl = LTTRUE;
+
+		g_pLTClient->ModelNodeControl(m_hServerObject, CBodyFX::HandleBigHeadModeFn, this);
+	}
+	else if(m_bHasNodeControl && !g_vtBigHeadMode.GetFloat()) {
+		m_bHasNodeControl = LTFALSE;
+
+		g_pLTClient->ModelNodeControl(m_hServerObject, LTNULL, LTNULL);
+	}
 
 	switch ( m_bs.eBodyState )
 	{
@@ -264,6 +276,7 @@ void CBodyFX::OnModelKey(HLOCALOBJ hObj, ArgList *pArgs)
 		}
 	}
 }
+
 
 // ----------------------------------------------------------------------- //
 //

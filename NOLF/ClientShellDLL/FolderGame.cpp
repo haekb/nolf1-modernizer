@@ -19,6 +19,7 @@ namespace
 
 extern VarTrack	g_vtSubtitles;
 extern VarTrack g_vtHUDLayout;
+extern VarTrack g_vtQuickSwitch;
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
@@ -158,9 +159,7 @@ void CFolderGame::OnFocus(LTBOOL bFocus)
 		m_nPickupMsgDur = (int)(2.0f * GetConsoleFloat("PickupMessageDuration",5.0f));
 		m_bObjMessages = ( GetConsoleInt("ObjectiveMessages",1) > 0 );
 
-		m_bQuickSwitch = GetConfigInt("QuickSwitch", 0);
-
-
+		m_bQuickSwitch = g_vtQuickSwitch.GetFloat();
 
         UpdateData(LTFALSE);
 	}
@@ -185,9 +184,6 @@ void CFolderGame::OnFocus(LTBOOL bFocus)
 		WriteConsoleInt("QuickSwitch", m_bQuickSwitch);
 
 		g_pLTClient->WriteConfigFile("autoexec.cfg");
-
-		GetConfigFile("autoexec.cfg");
-		g_pGameClientShell->UpdateConfigSettings();
 	}
 	CBaseFolder::OnFocus(bFocus);
 }

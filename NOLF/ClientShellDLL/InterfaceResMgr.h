@@ -83,7 +83,7 @@ public:
     LTFLOAT             GetYRatio()                         {return m_fYRatio;}
 	LTFLOAT				Get4x3Ratio()						{return (float)640/480;}
 	int 				Get4x3Offset();
-	LTFLOAT				GetUIScale()						{ return m_fYRatio * m_fUserScale; }
+	LTFLOAT				GetUIScale();
 	void				SetUserScale(LTFLOAT fUserScale)	{ m_fUserScale = fUserScale; }
 	void				IncrementUserScale()				{ m_fUserScale += 0.10f; }
 	void				DecrementUserScale()				{ m_fUserScale -= 0.10f; }
