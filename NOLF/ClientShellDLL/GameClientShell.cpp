@@ -1742,6 +1742,11 @@ void CGameClientShell::PreUpdate()
 		m_InterfaceMgr.AddToClearScreenCount();
 	}
 
+	// Big Head Mode is neat and all, but we need to keep multiplayer consistent. 
+	if (IsMultiplayerGame()) {
+		g_vtBigHeadMode.SetFloat(0.0f);
+	}
+
 	m_InterfaceMgr.PreUpdate();
 }
 
