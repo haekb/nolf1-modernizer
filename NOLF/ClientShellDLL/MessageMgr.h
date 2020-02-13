@@ -199,6 +199,12 @@ class CCheatMgr
         void    ClearCheater() { m_bPlayerCheated = LTFALSE; }
         LTBOOL   IsCheater() { return m_bPlayerCheated; }
 
+		struct CheatList
+		{
+			char* szCheat;
+			char* szDesc;
+		};
+
 	protected:
 		void	Process( CheatCode nCheatCode );
 

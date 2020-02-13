@@ -9,6 +9,8 @@
 
 
 ConsoleMgr* g_pConsoleMgr = NULL;
+
+extern CCheatMgr* g_pCheatMgr;
 extern VarTrack g_vtConsoleBackdrop;
 //extern CInterfaceResMgr* g_pInterfaceResMgr;
 
@@ -259,6 +261,15 @@ void ConsoleMgr::Send()
 	// Jake: Small hack, in case they disable OldMouseLook through the console, we also need to disable CursorCenter!
 	if (stricmp(m_szEdit, "OldMouseLook 0") == 0) {
 		g_pLTClient->RunConsoleString("CursorCenter 0");
+	}
+
+	// If it's a cheat we can just run that instead!
+	if (g_pCheatMgr->Check(m_szEdit)) {
+		g_pClientSoundMgr->PlayInterfaceSound("Menu\\Snd\\Cheat.wav");
+		// Clear our command string
+		m_pEdit->SetText("");
+		memset(m_szEdit, 0, sizeof(m_szEdit));
+		return;
 	}
 
 	// Always run it on client, just in case it's not a server command or we can't run server commands.

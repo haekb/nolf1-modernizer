@@ -22,6 +22,7 @@
 #include "ClientRes.h"
 #include "InterfaceResMgr.h"
 #include "VarTrack.h"
+#include "ConsoleMgr.h"
 
 VarTrack		g_vtMaxNumMessages;
 
@@ -32,6 +33,7 @@ LTBOOL           g_bInfiniteAmmo = LTFALSE;
 LTBOOL           g_bAllowAllMissions = LTFALSE;
 
 extern CGameClientShell*	g_pGameClientShell;
+extern ConsoleMgr* g_pConsoleMgr;
 
 void MikeDCallBack(LTBOOL bReturn, void *pData)
 {
@@ -878,6 +880,50 @@ void CInputLine::AddToRecentList()
 
 *******************************************************************************/
 
+void ShowCheatListCommand(int argc, char** argv)
+{
+	if (!g_pConsoleMgr) {
+		return;
+	}
+
+	// This lovely list makes the encrypted one above useless! Muahaha.
+	CCheatMgr::CheatList cheatList[] = {
+		{ "mpimyourfather", "God Mode" },
+		{ "mpwegotdeathstar", "Full ammo" },
+		{ "mpwonderbra", "Full armour" },
+		{ "mpdrdentz" , "Full health" },
+		{ "mpclip", "No Clip / Spectator Mode" },
+		{ "mpteleport", "Teleport to the beginning of a level" },
+		{ "mppos", "Show your position" },
+		{ "mpsanta", "Get everything" },
+		{ "mpmimimi", "All weapons" },
+		{ "mpboyisuck", "Remove all AI in the level" },
+		{ "mpkingoftehmonstars", "All weapons, infinite ammo" },
+		{ "mpracerboy", "Spawn in a motorcycle" },
+		{ "mprosebud", "Spawn in a snowmobile" },
+		{ "mpgoattech", "Get of the mods for your currently held weapons" },
+		{ "mpyoulooklikeyouneedamonkey", "All gear" },
+		{ "mpasscam", "Toggle 1st/3rd person mode" },
+		{ "mpbeenthere", "Unlock all missions" },
+		{ "mpwhoami", "Reset player history" },
+		{ "mphookmeup", "Get the mission default inventory" },
+		{ "mpmaphole", "Exit the current level" },
+		{ "mpbuild", "Print the current build onto the screen" },
+		{ "mpexorbitantamounts", "Lots o blood" }
+	};
+	
+	g_pLTClient->CPrint("Available cheats:");
+	for (auto item : cheatList) {
+		std::string toPrint = "";
+
+		toPrint = item.szCheat;
+		toPrint += " - ";
+		toPrint += item.szDesc;
+
+		g_pLTClient->CPrint((char*)toPrint.c_str());
+	}
+}
+
 // ----------------------------------------------------------------------- //
 //
 //	ROUTINE:	CCheatMgr::Init()
@@ -889,6 +935,8 @@ void CInputLine::AddToRecentList()
 void CCheatMgr::Init()
 {
 	g_pCheatMgr = this;
+
+	g_pLTClient->RegisterConsoleProgram("Cheats", ShowCheatListCommand);
 }
 
 
@@ -1039,7 +1087,6 @@ void CCheatMgr::Process( CheatCode nCheatCode )
 			SetPos(!s_CheatInfo[nCheatCode].bActive);
 		break;
 
-//#ifndef _FINAL
 		case CHEAT_CLIP:		// toggle clipping mode
 			SetClipMode(!s_CheatInfo[nCheatCode].bActive);
 		break;
@@ -1056,6 +1103,20 @@ void CCheatMgr::Process( CheatCode nCheatCode )
 			SetMissionInventory();
 		break;
 
+		case CHEAT_REMOVEAI:	  // remove all ai
+			RemoveAI(!s_CheatInfo[nCheatCode].bActive);
+			break;
+
+		case CHEAT_ALL_MISSIONS:   // allow all missions
+			AllowAllMissions(!s_CheatInfo[nCheatCode].bActive);
+			break;
+
+		case CHEAT_RESET_HISTORY:   // clear player history
+			ResetHistory();
+			break;
+
+		// These cheats are too obscure/useless for users
+#ifndef _FINAL
 		case CHEAT_POSWEAPON:		    // toggle adjust of weapon pos
 			PosWeapon(!s_CheatInfo[nCheatCode].bActive);
 		break;
@@ -1084,10 +1145,6 @@ void CCheatMgr::Process( CheatCode nCheatCode )
 			InterfaceAdjust(!s_CheatInfo[nCheatCode].bActive);
 		break;
 
-		case CHEAT_REMOVEAI:	  // remove all ai
-			RemoveAI(!s_CheatInfo[nCheatCode].bActive);
-		break;
-
 		case CHEAT_TRIGGERBOX:	  // toggle trigger boxes on/off
 			TriggerBox(!s_CheatInfo[nCheatCode].bActive);
 		break;
@@ -1099,15 +1156,7 @@ void CCheatMgr::Process( CheatCode nCheatCode )
 		case CHEAT_POS1STCAM:	  // toggle 1st person camera adjust on/off
 			Pos1stCam(!s_CheatInfo[nCheatCode].bActive);
 		break;
-
-		case CHEAT_ALL_MISSIONS:   // allow all missions
-			AllowAllMissions(!s_CheatInfo[nCheatCode].bActive);
-		break;
-
-		case CHEAT_RESET_HISTORY:   // clear player history
-			ResetHistory();
-		break;
-//#endif  // _FINAL
+#endif  // _FINAL
 
 		default:
 			return;				// skip setting global cheat indicator for unhandled cheats
