@@ -50,7 +50,9 @@ ConsoleMgr::ConsoleMgr()
 
 	m_bInitialized = false;
 	m_bVisible = false;
+	m_bOnInputScreen = false;
 	m_hConsoleSurface = NULL;
+	
 	memset(m_szEdit, 0, sizeof(m_szEdit));
 
 	m_iWidth = 320;			// px
@@ -175,7 +177,9 @@ LTBOOL ConsoleMgr::HandleChar(unsigned char c)
 	if (!m_bVisible) return LTFALSE;
 
 	// Ignore console key
-	if (c == VK_OEM_3) {
+	// Jake: Wow this sucks!
+	UINT nConsoleKey = MapVirtualKey(BoundConsoleKey(), 2);
+	if (c == (char)nConsoleKey) {
 		return LTFALSE;
 	}
 
@@ -186,7 +190,7 @@ LTBOOL ConsoleMgr::HandleChar(unsigned char c)
 LTBOOL ConsoleMgr::HandleKeyDown(int key, int rep)
 {
 	if (!m_bVisible) {
-		if (key == VK_OEM_3) {
+		if (key == BoundConsoleKey()) {
 			Show(true);
 			return LTTRUE;
 		}
@@ -194,14 +198,13 @@ LTBOOL ConsoleMgr::HandleKeyDown(int key, int rep)
 		return LTFALSE;
 	}
 
-	switch (key) {
-	case VK_OEM_3:
-	case VK_ESCAPE:
+	if (key == BoundConsoleKey() || key == VK_ESCAPE)
 	{
 		Show(false);
 		return LTTRUE;
-	} break;
+	}
 
+	switch (key) {
 	case VK_RETURN:
 	{
 		Send();
@@ -377,8 +380,8 @@ void ConsoleMgr::Show(bool bShow)
 		return;
 	}
 
-	// For now let's disable it in multiplayer!
-	if (IsMultiplayerGame()) {
+	// Disable for MP or if they're on the CustomControls folder
+	if (IsMultiplayerGame() || m_bOnInputScreen) {
 		m_bVisible = false;
 		return;
 	}

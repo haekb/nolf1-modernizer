@@ -8,9 +8,10 @@
 #include "ClientRes.h"
 #include "keyfixes.h"
 #include "dinput.h"
+#include "ConsoleMgr.h"
 
 extern CommandID g_CommandArray[];
-
+extern ConsoleMgr* g_pConsoleMgr;
 
 // The different columns
 #define FOLDER_COLUMN_ACTION		0
@@ -826,12 +827,15 @@ void CFolderCustomControls::OnFocus(LTBOOL bFocus)
 {
 	if (bFocus)
 	{
+		g_pConsoleMgr->SetOnInputScreen(true);
+
 		// Add the controls to the folder
 		InitControlList();
 		FillControlList();
 	}
 	else
 	{
+		g_pConsoleMgr->SetOnInputScreen(false);
 		RemoveFree();
 	}
 	CBaseFolder::OnFocus(bFocus);

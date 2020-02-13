@@ -68,6 +68,7 @@
 #define COMMAND_ID_TEAM_MESSAGE		77
 #define COMMAND_ID_INVENTORY		78
 #define COMMAND_ID_LEFT_SHORT		79
+#define COMMAND_ID_TOGGLE_CONSOLE	80
 
 // Special command ids...
 

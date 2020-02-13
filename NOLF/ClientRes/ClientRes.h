@@ -6486,6 +6486,8 @@
 #define IDS_HELP_USE_GOTY_MENU          30086
 #define IDS_NORMAL_MENU                 30087
 #define IDS_GOTY_MENU                   30088
+#define IDS_CONTROL_CONSOLE             30089
+#define IDS_ACTIONSTRING_CONSOLE        30090
 
 // Next default values for new objects
 // 

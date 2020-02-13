@@ -39,10 +39,16 @@ public:
 	void AddToHelp(std::string command);
 	void RemoveFromHelp(std::string command);
 
+	LTBOOL WasConsoleKeyHit() { return g_pLTClient->IsCommandOn(COMMAND_ID_TOGGLE_CONSOLE); }
+	int BoundConsoleKey() { return GetCommandKey(COMMAND_ID_TOGGLE_CONSOLE); }
+
 	LTBOOL  IsVisible() { return m_bVisible; }
 
 	std::vector<std::string> GetHelpList() { return m_HelpList; };
 	std::vector<HistoryData> GetHistory() { return m_History; };
+
+	// We don't want the console popping up if they're trying to customize the controls
+	void SetOnInputScreen(bool bOn) { m_bOnInputScreen = bOn; };
 
 protected:
 	std::vector<HistoryData> m_History;
@@ -70,6 +76,7 @@ protected:
 
 	bool m_bInitialized;
 	bool m_bVisible;
+	bool m_bOnInputScreen;
 
 	int m_iOldGameState;
 };

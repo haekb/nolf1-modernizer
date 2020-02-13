@@ -1452,6 +1452,12 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 	detourMgr->Init();
 
 
+	// Add in the new ToggleConsole action so they can actually bind it.
+	// This is all generated automagically for no real good reason.
+	std::string sCommand = CommandName(COMMAND_ID_TOGGLE_CONSOLE);
+	std::string sAddToggleConsole = "AddAction " + sCommand + " " + std::to_string(COMMAND_ID_TOGGLE_CONSOLE);
+	g_pLTClient->RunConsoleString((char*)sAddToggleConsole.c_str());
+
 	return LT_OK;
 }
 
@@ -4655,18 +4661,6 @@ void CGameClientShell::OnKeyDown(int key, int rep)
 		}
 	}
 
-	// TODO: Make this bindable?
-#if 0
-	if (IsPlayerInWorld())
-	{
-		if (key == VK_NUMPAD8) {
-			g_pInterfaceResMgr->IncrementUserScale();
-		}
-		if (key == VK_NUMPAD2) {
-			g_pInterfaceResMgr->DecrementUserScale();
-		}
-	}
-#endif
 }
 
 

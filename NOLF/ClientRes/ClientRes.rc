@@ -7,7 +7,7 @@
 //
 // Generated from the TEXTINCLUDE 2 resource.
 //
-#include "windows.h"
+#include "afxres.h"
 
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
@@ -7780,6 +7780,8 @@ BEGIN
     IDS_HELP_USE_GOTY_MENU  "Switch between different menu styles."
     IDS_NORMAL_MENU         "Original Edition"
     IDS_GOTY_MENU           "Game of the Year Edition"
+    IDS_CONTROL_CONSOLE     "Toggle Console"
+    IDS_ACTIONSTRING_CONSOLE "ToggleConsole"
 END
 
 #endif    // English (United States) resources

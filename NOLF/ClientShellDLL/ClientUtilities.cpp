@@ -61,6 +61,7 @@ CommandID g_CommandArray[] =
 	{ IDS_CONTROL_CROSSHAIRTOGGLE,	COMMAND_ID_CROSSHAIRTOGGLE,	IDS_ACTIONSTRING_CROSSHAIRTOGGLE,	COM_MISC },
 	{ IDS_CONTROL_SAY,				COMMAND_ID_MESSAGE,			IDS_ACTIONSTRING_SAY,				COM_MISC },
 	{ IDS_CONTROL_TEAM_SAY,			COMMAND_ID_TEAM_MESSAGE,	IDS_ACTIONSTRING_TEAM_SAY,			COM_MISC },
+	{ IDS_CONTROL_CONSOLE,			COMMAND_ID_TOGGLE_CONSOLE,	IDS_ACTIONSTRING_CONSOLE,			COM_MISC },
 
 	// This control must always remain as the last one in the array
 	{ IDS_CONTROL_UNASSIGNED,		COMMAND_ID_UNASSIGNED,		IDS_ACTIONSTRING_UNASSIGNED,		COM_MISC }
@@ -588,6 +589,13 @@ namespace
 		"Space", VK_SPACE,
 		"CapsLock", VK_CAPITAL,
 
+		// Hack for console!
+		"`", VK_OEM_3,
+		"ScrollLock", VK_SCROLL,
+		"NumLock", VK_NUMLOCK,
+		"Insert", VK_INSERT,
+		"Delete", VK_DELETE,
+
 		"",-999,
 	};
 }
@@ -608,6 +616,7 @@ int GetCommandKey(int nActionCode)
 		GameAction* pAction = ptr->pActionHead;
 		while (pAction && !bFound)
 		{
+
 			if (pAction->nActionCode == nActionCode)
 			{
 				int k = 0;
