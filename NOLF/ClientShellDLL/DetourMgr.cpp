@@ -55,7 +55,7 @@ void DetourMgr::ConsolePrint(HLTCOLOR iColour, int iLevel, const char* pMsg)
 		return;
 	}
 
-	std::string sString = "[" + std::to_string(iLevel) + "] " + pMsg;
+	std::string sString = pMsg;
 
 	g_pConsoleMgr->Read(sString.c_str(), iColour, iLevel);
 

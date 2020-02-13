@@ -253,8 +253,6 @@ void ConsoleMgr::Send()
 	m_CommandHistory.push_back(m_szEdit);
 	m_iCommandHistoryPosition = m_CommandHistory.size();
 
-	
-
 	// Echo it back
 	g_pLTClient->CPrint(m_szEdit);
 
@@ -319,7 +317,6 @@ void ConsoleMgr::Draw()
 		hBlank = g_pLTClient->CreateSurfaceFromBitmap("interface\\console.pcx");
 	}
 
-	//HSURFACE hBlank = g_pLTClient->CreateSurfaceFromBitmap("interface\\console.pcx");//g_pLTClient->CreateSurfaceFromBitmap("menu\\art\\blanktag.pcx");
 	HSURFACE hScreen = g_pLTClient->GetScreenSurface();
 
 	LTRect dest = { 0, 0, m_iWidth, m_iHeight };
