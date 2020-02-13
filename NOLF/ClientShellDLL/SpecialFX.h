@@ -17,6 +17,9 @@
 #include "iltclient.h"
 #include "SharedBaseFXStructs.h"
 #include "SFXMsgIds.h"
+#include "ClientUtilities.h"
+
+LTFLOAT GetConsoleFloat(char* sKey, LTFLOAT fDefault);
 
 class CSpecialFX
 {
@@ -32,6 +35,8 @@ class CSpecialFX
 			m_fNextUpdateTime	= 0.0f;
 			m_vLastServPos.Init();
 			m_vVel.Init();
+
+			m_nHeadNode = -1;
 		}
 
 		virtual ~CSpecialFX()
@@ -61,11 +66,34 @@ class CSpecialFX
             return LTTRUE;
 		}
 
+		virtual void FindHeadNode()
+		{
+			// Just incase constructor is never called...
+			m_nHeadNode = INVALID_MODEL_NODE;
+
+			HOBJECT hObject = m_hServerObject;
+
+			// FIXME: This might be slow for objects that don't need big head mode...
+			// Find the head node, this is later used for big head mode.
+			HMODELNODE hCurNode = INVALID_MODEL_NODE;
+			while (g_pLTClient->GetNextModelNode(hObject, hCurNode, &hCurNode) == LT_OK)
+			{
+				char szName[64] = "";
+				g_pLTClient->GetModelNodeName(hObject, hCurNode, szName, 64);
+
+				if (stricmp(szName, "head_node") == 0) {
+					m_nHeadNode = hCurNode;
+				}
+			}
+		}
+
         virtual LTBOOL Init(HLOCALOBJ hServObj, HMESSAGEREAD hRead)
 		{
             if (!hRead) return LTFALSE;
 
 			m_hServerObject = hServObj;
+
+			FindHeadNode();
 
             return LTTRUE;
 		}
@@ -75,6 +103,8 @@ class CSpecialFX
             if (!psfxCreateStruct) return LTFALSE;
 
 			m_hServerObject = psfxCreateStruct->hServerObj;
+
+			FindHeadNode();
 
             return LTTRUE;
 		}
@@ -122,6 +152,31 @@ class CSpecialFX
 		// Function for returning a special effect ID from a derived class
 		virtual uint32 GetSFXID() { return SFX_TOTAL_NUMBER + 1; }
 
+		HMODELNODE GetHeadNode() { return m_nHeadNode; }
+
+		// Static
+
+		//
+		// Handle BigHeadMode here, so we can rely on this function from BodyFX and CharacterFX (via NodeController)
+		//
+		static void HandleBigHeadModeFn(HOBJECT hObj, HMODELNODE hNode, LTMatrix* pGlobalMat, void* pUserData)
+		{
+			LTFLOAT fBigHeadMode = GetConsoleFloat("BigHeadMode", 0.0f);
+
+			if (!fBigHeadMode) {
+				return;
+			}
+			
+			CSpecialFX* pSFX = (CSpecialFX*)pUserData;
+
+			// If big head mode enabled? If so, apply the scale!
+			// It now scales based on the amount specified.
+			if (hNode == pSFX->m_nHeadNode) {
+				LTFLOAT fBigHeadedness = 1.8f * fBigHeadMode;
+				pGlobalMat->Scale(fBigHeadedness, fBigHeadedness, fBigHeadedness);
+			}
+		}
+
 	protected :
 
         ILTClient*  m_pClientDE;
@@ -131,6 +186,8 @@ class CSpecialFX
         LTVector     m_vVel;             // Our server object's velocity
         LTBOOL       m_bWantRemove;
         LTFLOAT      m_fUpdateDelta;     // Time between updates
+
+		HMODELNODE	m_nHeadNode;
 };
 
 #endif // __SPECIAL_FX_H__

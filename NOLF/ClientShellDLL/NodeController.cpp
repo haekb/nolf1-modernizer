@@ -163,7 +163,6 @@ CNodeController::CNodeController()
 
 	m_fCurLipSyncRot = 0.0f;
     m_bOpeningMouth  = LTTRUE;
-	m_nHeadNode = -1;
 }
 
 // ----------------------------------------------------------------------- //
@@ -223,10 +222,6 @@ LTBOOL CNodeController::Init(CCharacterFX* pCharacterFX)
 		{
 			m_aNodes[eModelNode].eModelNode = eModelNode;
 			m_aNodes[eModelNode].hModelNode = hCurNode;
-		}
-
-		if (stricmp(szName, "head_node") == 0) {
-			m_nHeadNode = hCurNode;
 		}
 
 		m_cNodes++;
@@ -1439,12 +1434,7 @@ void CNodeController::HandleNodeControl(HOBJECT hObj, HMODELNODE hNode, LTMatrix
 		*pGlobalMat = *pGlobalMat * pNode->matTransform;
 	}
 
-	// If big head mode enabled? If so, apply the scale!
-	// It now scales based on the amount specified.
-	if (g_vtBigHeadMode.GetFloat() && pNode && hNode == m_nHeadNode) {
-		LTFLOAT fBigHeadedness = 1.8f * g_vtBigHeadMode.GetFloat();
-		pGlobalMat->Scale(fBigHeadedness, fBigHeadedness, fBigHeadedness);
-	}
+	CCharacterFX::HandleBigHeadModeFn(hObj, hNode, pGlobalMat, GetCFX());
 }
 
 
