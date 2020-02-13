@@ -3943,7 +3943,7 @@ eFolderID CInterfaceMgr::GetMainFolder()
 	monthNumber = atoi(monthBuffer);
 	dayNumber = atoi(dayBuffer);
 
-	if( ( monthNumber >= 12 && dayNumber >= 15 ) || ( monthNumber <= 12 && dayNumber <= 31 ) )
+	if( ( monthNumber >= 12 && dayNumber >= 15 ) && ( monthNumber <= 12 && dayNumber <= 31 ) )
 	{
 		g_pLTClient->CPrint("Happy Holidays! :)");
 		m_eMainFolderID = FOLDER_ID_MAIN_WINTER;
