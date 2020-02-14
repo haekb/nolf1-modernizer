@@ -104,6 +104,10 @@
 	#define MID_HANDSHAKE_DONE			3 // You'll do just fine.  Server to client
 	// Handshake version state
 
+
+// NEW! Send a signal to not lock the server framerate
+#define MID_DONT_LOCK_SERVER_FPS		250
+
 // Object <-> Object messages...
 
 

@@ -7525,6 +7525,14 @@ void CGameClientShell::InitMultiPlayer()
     hWrite = g_pLTClient->StartMessage(MID_PLAYER_INITVARS);
     g_pLTClient->WriteToMessageByte(hWrite, (uint8)pSettings->RunLock());
     g_pLTClient->EndMessage(hWrite);
+
+	if (IsHosting()) {
+		// Send a signal to not lock server framerate. 
+		// Dedicated servers don't send this, so it's a nice hack without backporting the dedicated server...
+		hWrite = g_pLTClient->StartMessage(MID_DONT_LOCK_SERVER_FPS);
+		g_pLTClient->WriteToMessageByte(hWrite, (uint8)LTTRUE);
+		g_pLTClient->EndMessage(hWrite);
+	}
 }
 
 

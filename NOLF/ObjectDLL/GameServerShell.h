@@ -258,6 +258,11 @@ class CGameServerShell : public IServerShell
 		char				m_sWorld[MAX_GEN_STRING];
 		char				m_sGameSpyGameType[MAX_GEN_STRING];
 
+		LTBOOL				m_bLockFramerate;
+		LARGE_INTEGER		m_lTimerFrequency;
+		LONGLONG			m_lNextUpdate;
+		LONGLONG			m_lFrametime;
+
         CGameServSendHandler    m_SendHandler;
 
 		void CacheModels();

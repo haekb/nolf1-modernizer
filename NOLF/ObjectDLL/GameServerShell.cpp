@@ -217,6 +217,15 @@ CGameServerShell::CGameServerShell(ILTServer *pServerDE)
 	m_bStartNextMultiplayerLevel = LTFALSE;
 	m_eLevelEnd = LE_UNKNOWN;
 	m_fSummaryEndTime = 0.0f;
+	m_bLockFramerate = LTTRUE;
+
+	// If we can't get timer frequency, we can't limit the framerate!
+	if (!QueryPerformanceFrequency(&m_lTimerFrequency)) {
+		g_pLTServer->CPrint("Device doesn't support high resolution timer! Can't lock framerate.");
+		m_bLockFramerate = LTFALSE;
+	}
+
+	m_lFrametime = (m_lTimerFrequency.QuadPart / 60);
 }
 
 
@@ -816,7 +825,30 @@ void CGameServerShell::OnMessage(HCLIENT hSender, uint8 messageID, HMESSAGEREAD 
 {
 	switch (messageID)
 	{
-		
+		case MID_DONT_LOCK_SERVER_FPS:
+		{
+			// Host/Client check! Clients won't have a port, hosts will! (Well if you're hosting and join that server you'll have a port...)
+			char szAddress[32] = "";
+			uint16 nHost = 0;
+
+			// hResult returns an error, but we get the data back ok...that's weird?
+			auto hResult = g_pLTServer->GetTcpIpAddress(szAddress, sizeof(szAddress), nHost);
+
+			// Couldn't get the port? Not a host!...probably.
+			if (nHost == NO_HOST_PORT) {
+				return;
+			}
+
+			LTBOOL bLock = (LTBOOL)g_pLTServer->ReadFromMessageByte(hMessage);
+
+			if (!bLock) {
+				g_pLTServer->CPrint("WARNING, Somehow bLock on MID_DONT_LOCK_SERVER_FPS is not true!");
+			}
+
+			m_bLockFramerate = LTFALSE;
+		}
+		break;
+	
 		case MID_CONSOLE_COMMAND_CLIENT:
 		{
 			HSTRING hString = g_pLTServer->ReadFromMessageHString(hMessage);
@@ -2373,6 +2405,25 @@ void CGameServerShell::Update(LTFLOAT timeElapsed)
 
 	// See if we should change worlds.
 	CheckMultiSwitchWorlds();
+
+	// Copy and paste from GameClientShell's framerate limiter.
+	// Dedicated servers need this otherwise it'll run too fast!
+	// I could just move the limiter to server-side, but animations would be wonky on client-side.
+	if ((m_bLockFramerate && IsMultiplayerGame()))
+	{
+		// Limit our framerate so the game actually runs properly.
+		LARGE_INTEGER NewTime;
+
+		while (1) {
+			QueryPerformanceCounter(&NewTime);
+			unsigned long lTime = NewTime.QuadPart - m_lNextUpdate;
+			if (lTime > m_lFrametime) {
+				m_lNextUpdate = NewTime.QuadPart;
+				break;
+			}
+		}
+	}
+
 }
 
 
