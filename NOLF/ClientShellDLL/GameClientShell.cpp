@@ -8674,7 +8674,7 @@ BOOL HookWindow()
 		SDL_Log("Hooked window!");
 
 		// If they request it, don't use raw input!
-		if (!g_vtNoRawInput.GetFloat()) 
+		if (g_vtNoRawInput.GetFloat()) 
 		{
 			SDL_Log("No Raw Input requested.");
 			SDL_SetHint(SDL_HINT_MOUSE_RELATIVE_MODE_WARP, "1");
