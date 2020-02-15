@@ -827,7 +827,7 @@ void CFolderCustomControls::OnFocus(LTBOOL bFocus)
 {
 	if (bFocus)
 	{
-		g_pConsoleMgr->SetOnInputScreen(true);
+		g_pConsoleMgr->SetConsoleLock(true);
 
 		// Add the controls to the folder
 		InitControlList();
@@ -835,7 +835,7 @@ void CFolderCustomControls::OnFocus(LTBOOL bFocus)
 	}
 	else
 	{
-		g_pConsoleMgr->SetOnInputScreen(false);
+		g_pConsoleMgr->SetConsoleLock(false);
 		RemoveFree();
 	}
 	CBaseFolder::OnFocus(bFocus);

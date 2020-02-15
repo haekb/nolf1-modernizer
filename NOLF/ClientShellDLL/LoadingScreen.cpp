@@ -16,9 +16,10 @@
 #include "GameClientShell.h"
 #include "WinUtil.h"
 #include "BaseFolder.h"
+#include "ConsoleMgr.h"
 
 extern CGameClientShell* g_pGameClientShell;
-
+extern ConsoleMgr* g_pConsoleMgr;
 
 
 CLoadingScreen::CLoadingScreen() :
@@ -394,6 +395,8 @@ int CLoadingScreen::RunThread()
 
 	g_pGameClientShell->SetFramerateLock(false);
 
+	g_pConsoleMgr->SetConsoleLock(true);
+
 	// The main rendering loop...  (i.e. keep drawing until someone tells us to stop)
 	while (WaitForSingleObject(m_hEventEnd, 0) == WAIT_TIMEOUT)
 	{
@@ -403,6 +406,8 @@ int CLoadingScreen::RunThread()
 		// Swapped it back to sleep(10);, should fix load times
 		Sleep(10);
 	}
+
+	g_pConsoleMgr->SetConsoleLock(false);
 
 	g_pGameClientShell->SetFramerateLock(true);
 

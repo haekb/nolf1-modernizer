@@ -50,7 +50,7 @@ ConsoleMgr::ConsoleMgr()
 
 	m_bInitialized = false;
 	m_bVisible = false;
-	m_bOnInputScreen = false;
+	m_bLockConsole = false;
 	m_hConsoleSurface = NULL;
 	
 	memset(m_szEdit, 0, sizeof(m_szEdit));
@@ -380,8 +380,8 @@ void ConsoleMgr::Show(bool bShow)
 		return;
 	}
 
-	// Disable for MP or if they're on the CustomControls folder
-	if (IsMultiplayerGame() || m_bOnInputScreen) {
+	// Disable for MP or if the console is locked
+	if (IsMultiplayerGame() || m_bLockConsole) {
 		m_bVisible = false;
 		return;
 	}

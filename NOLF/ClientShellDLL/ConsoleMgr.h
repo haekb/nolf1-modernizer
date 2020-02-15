@@ -48,7 +48,7 @@ public:
 	std::vector<HistoryData> GetHistory() { return m_History; };
 
 	// We don't want the console popping up if they're trying to customize the controls
-	void SetOnInputScreen(bool bOn) { m_bOnInputScreen = bOn; };
+	void SetConsoleLock(bool bOn) { m_bLockConsole = bOn; };
 
 protected:
 	std::vector<HistoryData> m_History;
@@ -76,7 +76,7 @@ protected:
 
 	bool m_bInitialized;
 	bool m_bVisible;
-	bool m_bOnInputScreen;
+	bool m_bLockConsole;
 
 	int m_iOldGameState;
 };
