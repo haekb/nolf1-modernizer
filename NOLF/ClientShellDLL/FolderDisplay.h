@@ -90,12 +90,14 @@ private:
     LTBOOL                          m_bTexture32;
 	LTBOOL							m_bEscape;
 	LTBOOL							m_bHardwareCursor;
+	LTBOOL							m_bWindowedMode;
 
 	CLTGUITextItemCtrl				*m_pRendererLabel;		// The renderer label control
 	CLTGUITextItemCtrl				*m_pResolutionLabel;	// The resolution label control
 	CCycleCtrl						*m_pRendererCtrl;		// The renderer control
 	CCycleCtrl						*m_pResolutionCtrl;		// The resolution control
 	CToggleCtrl						*m_pHardwareCursor;
+	CToggleCtrl						*m_pWindowedMode;		// The windowed mode control
 
 	CMoArray<FolderDisplayRenderer>	m_rendererArray;		// The array of renderers
 

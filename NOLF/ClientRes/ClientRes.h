@@ -6488,6 +6488,8 @@
 #define IDS_GOTY_MENU                   30088
 #define IDS_CONTROL_CONSOLE             30089
 #define IDS_ACTIONSTRING_CONSOLE        30090
+#define IDS_WINDOWED_MODE               30091
+#define IDS_HELP_WINDOWED_MODE          30092
 
 // Next default values for new objects
 // 

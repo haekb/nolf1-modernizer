@@ -122,9 +122,6 @@ LTBOOL CInterfaceResMgr::Init(ILTClient* pClientDE, CGameClientShell* pClientShe
 
 	g_pConsoleMgr->Init();
 
-
-	HandleBorderlessWindowed();
-
     return LTTRUE;
 }
 
@@ -676,6 +673,7 @@ void CInterfaceResMgr::ScreenDimsChanged()
 	m_dwScreenWidth = currentMode.m_Width;
 	m_dwScreenHeight = currentMode.m_Height;
 
+	HandleBorderlessWindowed();
 
 	// Re-init the console
 	g_pConsoleMgr->Init();

@@ -76,12 +76,14 @@ CFolderDisplay::CFolderDisplay()
 
     m_bTexture32    =   LTFALSE;
 	m_bEscape		=	LTFALSE;
+	m_bWindowedMode =   LTFALSE;
 
     m_pRendererLabel    = LTNULL;
     m_pResolutionLabel  = LTNULL;
     m_pRendererCtrl     = LTNULL;
     m_pResolutionCtrl   = LTNULL;
 	m_pHardwareCursor	= LTNULL;
+	m_pWindowedMode		= LTNULL;
 }
 
 CFolderDisplay::~CFolderDisplay()
@@ -135,6 +137,10 @@ LTBOOL CFolderDisplay::Build()
 	m_pHardwareCursor = AddToggle(IDS_HARDWARE_CURSOR,IDS_HELP_HARDWARE_CURSOR,225,&m_bHardwareCursor);
 	m_pHardwareCursor->SetOnString(IDS_ON);
 	m_pHardwareCursor->SetOffString(IDS_OFF);
+
+	m_pWindowedMode = AddToggle(IDS_WINDOWED_MODE, IDS_HELP_WINDOWED_MODE, 225, &m_bWindowedMode);
+	m_pWindowedMode->SetOnString(IDS_ON);
+	m_pWindowedMode->SetOffString(IDS_OFF);
 
 	CalculateLastDrawn();
 
@@ -476,6 +482,8 @@ void CFolderDisplay::OnFocus(LTBOOL bFocus)
 		m_bHardwareCursor = (GetConsoleInt("HardwareCursor",0) > 0 && GetConsoleInt("DisableHardwareCursor",0) == 0);
 		m_pHardwareCursor->Enable(GetConsoleInt("DisableHardwareCursor",0) == 0);
 
+		m_bWindowedMode = (GetConsoleInt("Windowed", 0));
+
 		// The current render mode
 		RMode currentMode;
 		g_pLTClient->GetRenderMode(&currentMode);
@@ -517,8 +525,14 @@ void CFolderDisplay::OnFocus(LTBOOL bFocus)
 		if (m_bEscape)
 		{
 			LTBOOL bTexture32 = pSettings->GetBoolVar("32BitTextures");
+			LTBOOL bForceResolutionReload = LTFALSE;
 
 			WriteConsoleInt("HardwareCursor",(int)m_bHardwareCursor);
+
+			if (GetConsoleInt("Windowed", 0) != m_bWindowedMode) {
+				WriteConsoleInt("Windowed", (int)m_bWindowedMode);
+				bForceResolutionReload = LTTRUE;
+			}
 
 			pSettings->SetBoolVar("32BitTextures",m_bTexture32);
 
@@ -543,7 +557,7 @@ void CFolderDisplay::OnFocus(LTBOOL bFocus)
 					}
 				}
 			}
-			if (bRebind)
+			if (bRebind || bForceResolutionReload)
 			{
 
                 g_pLTClient->Start3D();

@@ -7782,6 +7782,8 @@ BEGIN
     IDS_GOTY_MENU           "Game of the Year Edition"
     IDS_CONTROL_CONSOLE     "Toggle Console"
     IDS_ACTIONSTRING_CONSOLE "ToggleConsole"
+    IDS_WINDOWED_MODE       "Windowed Mode"
+    IDS_HELP_WINDOWED_MODE  "Enable or disable windowed mode."
 END
 
 #endif    // English (United States) resources
