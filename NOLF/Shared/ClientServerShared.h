@@ -225,7 +225,7 @@ enum HitLocation
 
 #ifndef _DEMO
 #define GAME_HANDSHAKE_VER_MAJOR	1 // GAME_HANDSHAKE_VER_MAJOR.GAME_HANDSHAKE_VER_MINOR - 1
-#define GAME_HANDSHAKE_VER_MINOR	6 // 1.005, it's one off
+#define GAME_HANDSHAKE_VER_MINOR	7 // 1.006, it's one off
 #else
 #define GAME_HANDSHAKE_VER_MAJOR	0 // Demo = 0.002
 #define GAME_HANDSHAKE_VER_MINOR	3    
