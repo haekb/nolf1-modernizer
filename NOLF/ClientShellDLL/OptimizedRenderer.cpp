@@ -76,6 +76,10 @@ void COptimizedRenderer::FillRect(HSURFACE hDestSurf, LTRect *rect, HLTCOLOR col
 		hSurf = item->second;
 	}
 
+	if (!hDestSurf || !hSurf) {
+		return;
+	}
+
 	g_pLTClient->DrawSurfaceToSurface(hDestSurf, hSurf, NULL, rect->left, rect->top);
 }
 
