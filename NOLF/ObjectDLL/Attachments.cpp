@@ -850,6 +850,35 @@ void CAttachments::AddRequirements(ModelId eModelId, ModelStyle eModelStyle)
 
 void CAttachments::Update()
 {
+	LTFLOAT fBigHeadedness = GetConsoleFloat("BigHeadMode", 0.0f);
+
+	if (!fBigHeadedness)
+	{
+		return;
+	}
+
+	for (int iAttachmentPosition = 0; iAttachmentPosition < m_cAttachmentPositions; iAttachmentPosition++)
+	{
+		CAttachmentPosition* pAttachmentPosition = m_apAttachmentPositions[iAttachmentPosition];
+
+		// All the possible head attachments (as defined in the attachments bute file)
+		if (stricmp("Head", pAttachmentPosition->GetName()) == 0
+			|| stricmp("Eyes", pAttachmentPosition->GetName()) == 0
+			|| stricmp("Chin", pAttachmentPosition->GetName()) == 0)
+		{
+			auto pAttachment = pAttachmentPosition->GetAttachment();
+
+			if (!pAttachment) {
+				continue;
+			}
+
+			LTFLOAT fScale = fBigHeadedness * 1.8f;
+			LTVector vScale = { fScale,fScale,fScale };
+			g_pLTServer->ScaleObject(pAttachment->GetModel(), &vScale);
+		}
+	}
+
+
 	/*	// Put all attachments in their place
 
 	{for ( int iAttachmentPosition = 0 ; iAttachmentPosition < m_cAttachmentPositions ; iAttachmentPosition++ )

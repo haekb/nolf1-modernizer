@@ -69,6 +69,9 @@ CVarTrack			g_NetFragScore;
 CVarTrack			g_NetAudioTaunts;
 CVarTrack			g_NetArmorHealthPercent;
 
+// Small hack to enable BigHeadMode server-side
+CVarTrack			g_vtNetBigHeadMode;
+
 CGameServerShell*   g_pGameServerShell = LTNULL;
 
 IServerShell* CreateServerShell(ILTServer *pServerDE)
@@ -112,6 +115,10 @@ IServerShell* CreateServerShell(ILTServer *pServerDE)
     g_NetFragScore.Init(g_pLTServer,"NetFragScore",LTNULL,1.0f);
 	g_NetAudioTaunts.Init(g_pLTServer,"NetAudioTaunts",LTNULL,1.0f);
 	g_NetArmorHealthPercent.Init(g_pLTServer, "NetArmorHealthPercent", LTNULL, 0.0f);
+
+
+	// Mirrors client
+	g_vtNetBigHeadMode.Init(g_pLTServer, "BigHeadMode", LTNULL, 0.0f);
 
 	// Make sure we are using autodeactivation...
 

@@ -6923,6 +6923,23 @@ void CGameClientShell::FirstUpdate()
 	UpdateContainerFX();
 	ClearCurContainerCode();
 	UpdateContainerFX();
+
+	// Ship up BigHeadMode to the server if we're hosting or singleplayer!
+	// This mimics the Consoles custom message. It's not great, but it works.
+	if (IsHosting() || !IsMultiplayerGame())
+	{
+		char szBuffer[512];
+
+		sprintf(szBuffer, "%s %f", "BigHeadMode", g_vtBigHeadMode.GetFloat());
+
+		HSTRING hstrCmd = g_pLTClient->CreateString(szBuffer);
+
+		HMESSAGEWRITE hMessage = g_pLTClient->StartMessage(MID_CONSOLE_COMMAND_CLIENT);
+		g_pLTClient->WriteToMessageHString(hMessage, hstrCmd);
+		g_pLTClient->EndMessage(hMessage);
+
+		g_pLTClient->FreeString(hstrCmd);
+	}
 }
 
 // --------------------------------------------------------------------------- //

@@ -29,6 +29,8 @@ static CVarTrack g_vtArmNodeRadius;
 static CVarTrack g_vtLegNodeRadius;
 static CVarTrack g_HitDebugTrack;
 
+extern CVarTrack g_vtNetBigHeadMode;
+
 #define DFAULT_NODE_RADIUS	12.5f
 
 BEGIN_CLASS(CCharacterHitBox)
@@ -531,6 +533,22 @@ LTFLOAT CCharacterHitBox::GetNodeRadius(ModelSkeleton eModelSkeleton,
 
 	// See if we're overriding the radius...
 
+	// For some reason the normal NodeRadiusUseOverride stuff doesn't really work.
+	// It might be due to loading a save game, or maybe only the first Hitbox Init actually works,
+	// But this should clear it up.
+	if (g_vtNetBigHeadMode.GetFloat())
+	{
+		HitLocation eLocation = g_pModelButeMgr->GetSkeletonNodeLocation(eModelSkeleton, eModelNode);
+
+		// Not sure if this is right, but it's close!
+		// I think the head node is actually not correct when scaled. (Offset by a bit?)
+		// Hopefully no ones notices tooooo much...
+		if (eLocation == HL_HEAD) {
+			LTFLOAT fBigHeadedness = g_vtNetBigHeadMode.GetFloat();
+			fRadius = (1.8f * fBigHeadedness * DFAULT_NODE_RADIUS);
+		}
+	}
+
 	if (g_vtNodeRadiusUseOverride.GetFloat())
 	{
 		HitLocation eLocation =	g_pModelButeMgr->GetSkeletonNodeLocation(eModelSkeleton, eModelNode);
@@ -729,7 +747,7 @@ void CCharacterHitBox::CreateNodeRadiusModels()
 			INIT_OBJECTCREATESTRUCT(theStruct);
 
 			theStruct.m_Pos = vPos;
-			SAFE_STRCPY(theStruct.m_Filename, "SFX\\Expl\\Models\\264.abc");
+			SAFE_STRCPY(theStruct.m_Filename, "SFX\\Expl\\Models\\364.abc");
 			theStruct.m_Flags = FLAG_VISIBLE;
 			theStruct.m_ObjectType = OT_MODEL;
 
@@ -737,7 +755,7 @@ void CCharacterHitBox::CreateNodeRadiusModels()
             LPBASECLASS pModel = g_pLTServer->CreateObject(hClass, &theStruct);
 			if (!pModel) return;
 
-            LTFLOAT fNodeRadius = GetNodeRadius(eModelSkeleton, eCurrentNode);
+            LTFLOAT fNodeRadius = GetNodeRadius(eModelSkeleton, eCurrentNode) * 2.0f;
 
             LTVector vScale;
 			vScale.Init(fNodeRadius, fNodeRadius, fNodeRadius);

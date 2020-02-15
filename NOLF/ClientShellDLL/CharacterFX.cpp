@@ -30,7 +30,7 @@
 
 extern CGameClientShell* g_pGameClientShell;
 extern CClientButeMgr* g_pClientButeMgr;
-
+extern VarTrack g_vtBigHeadMode;
 
 extern LTVector g_vPlayerCameraOffset;
 
@@ -318,6 +318,98 @@ LTBOOL CCharacterFX::Update()
 	m_Flashlight.Update();
 
     g_pLTClient->ProcessAttachments(m_hServerObject);
+
+	// If big head mode is enabled we need to get funky with these attachments
+	if (g_vtBigHeadMode.GetFloat())
+	{
+		float fBigHeadedness = 1.8f * g_vtBigHeadMode.GetFloat();
+
+
+#if 0
+		HLOCALOBJ attachList[20];
+		uint32 dwListSize = 0;
+		uint32 dwNumAttach = 0;
+
+		g_pLTClient->Common()->GetAttachments(m_hServerObject, attachList, 20, dwListSize, dwNumAttach);
+
+		for (int i = 0; i < dwListSize; i++)
+		{
+			if (attachList[i] == LTNULL)
+			{
+				continue;
+			}
+
+		}
+#endif
+
+#if 0
+		HLOCALOBJ attachList[20];
+		uint32 dwListSize = 0;
+		uint32 dwNumAttach = 0;
+
+		g_pLTClient->Common()->GetAttachments(m_hServerObject, attachList, 20, dwListSize, dwNumAttach); 
+
+		for (int i = 0; i < dwListSize; i++)
+		{
+			if (attachList[i] == LTNULL)
+			{
+				continue;
+			}
+	
+			struct EngineAttachment
+			{
+				EngineAttachment* link[3];
+				char* test;
+				char* test1;
+				char* test2;
+			};
+		
+			HOBJECT hParent;
+			HOBJECT hChild;
+
+			HMODELSOCKET hSocket;
+			LTransform transform;
+
+			EngineAttachment* engineAttachment = (EngineAttachment*)attachList[i];
+
+			g_pLTClient->GetModelLT()->GetSocket(m_hServerObject, "head", hSocket);
+
+			g_pLTClient->Common()->GetAttachedModelSocketTransform((HATTACHMENT)attachList[i], hSocket, transform);
+
+			g_pLTClient->Common()->GetAttachmentObjects((HATTACHMENT)attachList[i], hParent, hChild);
+
+#if 1
+			HMODELNODE hCurNode = INVALID_MODEL_NODE;
+			while (g_pLTClient->GetNextModelNode(attachList[i], hCurNode, &hCurNode) == LT_OK)
+			{
+				char szName[64] = "";
+				g_pLTClient->GetModelNodeName(attachList[i], hCurNode, szName, 64);
+
+				if (stricmp(szName, "head_node") == 0) {
+
+					bool btest = true;
+
+				}
+			}
+
+
+			//g_pLTClient->ModelNodeControl(m_hServerObject, CCharacterFX::HandleBigHeadModeFn, this);
+
+#else
+			if (g_pModelLT->GetSocket(attachList[i], "head", hSocket) == LT_OK)
+			{
+				LTVector vScale = { fBigHeadedness, fBigHeadedness, fBigHeadedness };
+
+
+				g_pLTClient->SetObjectScale(attachList[i], &vScale);
+			}
+#endif
+			
+
+			bool debug = true;
+		}
+#endif
+	}
 
     LTBOOL bIsLocalClient = LTFALSE;
 
