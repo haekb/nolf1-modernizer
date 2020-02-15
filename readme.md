@@ -31,6 +31,10 @@ The goal of NOLF Modernizer is to help fix some long standing bugs, and update s
 - Patched out GameSpy from dedicated/hosted servers and the server browser.
 - Fixed a bug in ai path finding causing values to not always be accurate.
 - Fixed a silent out of range bug that could cause enemies to disappear and travel to a nearby galaxy at FTL speed!
+- Made the console key rebindable. (It's at the very bottom of the custom controls list.)
+- Added Big Head Mode! It's currently a little buggy, but humourous. Check the console command list on how to enable it.
+- Included some patched binaries to help improve compatibility. 
+- Added a windowed mode toggle to the display options.
 
 
 ## Additional Config/Console Commands
@@ -68,12 +72,7 @@ Try to keep to the original coding style, with descriptive commit messages. (Unl
 
 ## D3D and 2048 pixel limit
 
-I recommend using the following mod's dll, ren, and exe for developing and playing NOLF! (Just don't enable the .rez file!)
-https://nolfgirl.net/Unityhq/forums/files/file/147-nolf-widescreen-fix-for-goty-edition/
-
-This allows for resolutions higher like 2560x1440 to be used. 
-
-Also this mod was developed using these files. :)
+You can grab a patched d3d.ren, and d3dim700.dll from the ASSETS folder or from a release of NOLF Modernizer.
 
 ## DGVoodoo2
 

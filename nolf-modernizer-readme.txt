@@ -1,4 +1,4 @@
-No One Lives Forever Modernizer (v1.005 Modern)
+No One Lives Forever Modernizer (v1.006 Modern)
 -----------------------------------------------
 https://heythere.coffee/nolf/
 
@@ -39,8 +39,10 @@ It's important that you don't run this mod with any other mods that may have mod
  - Patched out GameSpy from dedicated/hosted servers and the server browser.
  - Fixed a bug in ai path finding causing values to not always be accurate.
  - Fixed a silent out of range bug that could cause enemies to disappear and travel to a nearby galaxy at FTL speed!
-
-
+ - Made the console key rebindable. (It's at the very bottom of the custom controls list.)
+ - Added Big Head Mode! It's currently a little buggy, but humourous. Check the console command list on how to enable it.
+ - Included some patched binaries to help improve compatibility. 
+ - Added a windowed mode toggle to the display options.
 
 --  Additional Config/Console Commands
 
@@ -63,7 +65,7 @@ Some of these will show up in your autoexec.cfg as you set them, but if it's mis
 Most of these commands are also available in their respective options menu.
 
 -- Windowed Mode
-To run in windowed mode, add +windowed 1 to the "Command-Line" textbox in "Advanced" options of the launcher.
+To run in windowed mode either toggle it in-game or, add +windowed 1 to the "Command-Line" textbox in "Advanced" options of the launcher.
 
 -- Known Bugs
 
@@ -75,17 +77,11 @@ In advanced options of the launcher try checking "Restore Default Options". Also
 Bug: The game crashes immediately with no error!
 Lithtech seems to dislike certain usb devices (like VR headsets or certain logitech devices..) Please try unplugging them before you launch the game.
 
-Bug: Some enemies disappear during combat!
-I've encountered it, but can't accurately reproduce the issue. If you have a save file where it consistently happens, please drop that file in the comments section! (https://haekb.itch.io/nolf-modernizer)
-
 Bug: Some geometry may cause the player to be pushed or be hard to traverse
 There seems to be an issue with the underlying physics engine. We've corrected most of the game breaking issues, but if you find any terrain or doorways that impossible to enter please let us know!
 
 Bug: Game runs really fast on unlocked framerates
 The game was designed to work at a locked 60 fps. It is possible to correct most of the speed up issues, but that would be incredibly time consuming, and some of the issues are due to how the engine itself handles physics and sound. 
-
-Bug: I can't run resolutions higher than 1920x1080
-There's a small issue with Direct3D where it doesn't like things higher than 2000 pixels. A simple fix is to download and install (most) of this mod: https://nolfgirl.net/Unityhq/forums/files/file/147-nolf-widescreen-fix-for-goty-edition/ Just don't enable the .rez file! 
 
 Bug: Dynamic lighting (flashlights) cause my framerate to dip below 60
 On the few systems we tested we encountered an issue with DGVoodoo2. If you're running that software, I'd reccomend you disable it when using this patch.
@@ -96,3 +92,9 @@ You'll have to either set display scaling to 100%, or run the game at a lower re
 Bug: The game runs slow, and all the text has black boxes around them
 If you're running a laptop with a hybrid integrated/dedicated graphics card setup, make sure you force the game to use the dedicated graphics card! Intel integrated graphics seems to have issues running older games. 
 If you're running on a desktop, try checking "Restore Default Options" in the advanced section of the launcher. You may to do this twice...
+
+Bug: Weapons sometime disappear during combat!
+I've encountered it, but can't for the life of me figure out why it's happening! There's no known fix, but luckily it's only a visual issue that should disappear when you go to another area.
+
+Bug: Big Head Mode has weird hitboxes
+Yeaaah..I've tried to make it as close as possible. Hopefully I have another chance to go over it. 
