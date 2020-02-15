@@ -1117,6 +1117,10 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 	g_vtBigHeadMode.Init(g_pLTClient, "BigHeadMode", NULL, 0.0f);
 	//
 
+	// Jake: This should fix any weird black box issues.
+	g_pLTClient->RunConsoleString("optimizesurfaces 1");
+
+
     m_MoveMgr.Init();
 	m_editMgr.Init();
 	m_cheatMgr.Init();
@@ -1175,18 +1179,19 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 
 		RMode rMode;
 
-		// If an error occurred, try 640x480x16...
+		// If an error occurred, try 800x600x32...
 
-		rMode.m_Width		= 640;
-		rMode.m_Height		= 480;
-		rMode.m_BitDepth	= 16;
+		// This was 640x480...the game doesn't even support that low of a resolution afaik!
+		rMode.m_Width		= 800;
+		rMode.m_Height		= 600;
+		rMode.m_BitDepth	= 32;
 		rMode.m_bHardware	= pMode->m_bHardware;
 
 		sprintf(rMode.m_RenderDLL, "%s", pMode->m_RenderDLL);
 		sprintf(rMode.m_InternalName, "%s", pMode->m_InternalName);
 		sprintf(rMode.m_Description, "%s", pMode->m_Description);
 
-        g_pLTClient->DebugOut("Setting render mode to 640x480x16...\n");
+        g_pLTClient->DebugOut("Setting render mode to 800x600x32...\n");
 
         if (g_pLTClient->SetRenderMode(&rMode) != LT_OK)
 		{
