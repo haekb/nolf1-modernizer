@@ -28,6 +28,7 @@ The goal of NOLF Modernizer is to help fix some long standing bugs, and update s
 
 ## Patch 3
 
+- Bumped version to 1.006.
 - Patched out GameSpy from dedicated/hosted servers and the server browser.
 - Fixed a bug in ai path finding causing values to not always be accurate.
 - Fixed a silent out of range bug that could cause enemies to disappear and travel to a nearby galaxy at FTL speed!
@@ -35,7 +36,8 @@ The goal of NOLF Modernizer is to help fix some long standing bugs, and update s
 - Added Big Head Mode! It's currently a little buggy, but humourous. Check the console command list on how to enable it.
 - Included some patched binaries to help improve compatibility. 
 - Added a windowed mode toggle to the display options.
-
+- Added anisotropic filtering to advanced performance options.
+- Fixed shadows disappearing between cutscenes and saved games.
 
 ## Additional Config/Console Commands
 
