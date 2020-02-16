@@ -2723,8 +2723,6 @@ void CGameClientShell::TurnOnAlternativeCamera(uint8 nCamType)
     m_bUsingExternalCamera = LTTRUE;
 
 	// Turn off model shadows in cinematics...
-
-	g_nCinSaveModelShadows = GetConsoleInt("MaxModelShadows", 0);
 	WriteConsoleInt("MaxModelShadows", 0);
 }
 
@@ -2756,9 +2754,11 @@ void CGameClientShell::TurnOffAlternativeCamera(uint8 nCamType)
 
 	m_InterfaceMgr.SetLetterBox(LTFALSE);
 	//m_bLockFramerate = LTFALSE;
-	// Set shadows back to whatever they were set to before...
 
-	WriteConsoleInt("MaxModelShadows", g_nCinSaveModelShadows);
+	// We use DrawShadows as a guide on what MaxModelShadows we're going to use.
+	// Projected shadows don't work in this version, so you can really only have one shadow per model!
+	int nDrawShadows = GetConsoleInt("DrawShadows", 0);
+	WriteConsoleInt("MaxModelShadows", nDrawShadows);
 }
 
 
@@ -6945,6 +6945,11 @@ void CGameClientShell::FirstUpdate()
 
 		g_pLTClient->FreeString(hstrCmd);
 	}
+
+	// For some reason shadows can magically turn off on loading a save game,
+	// So let's "fix" that.
+	int nDrawShadows = GetConsoleInt("DrawShadows", 0);
+	WriteConsoleInt("MaxModelShadows", nDrawShadows);
 }
 
 // --------------------------------------------------------------------------- //
