@@ -6490,6 +6490,14 @@
 #define IDS_ACTIONSTRING_CONSOLE        30090
 #define IDS_WINDOWED_MODE               30091
 #define IDS_HELP_WINDOWED_MODE          30092
+#define IDS_TEXTURE_FILTERING           30093
+#define IDS_HELP_TEXTURE_FILTERING      30094
+#define IDS_NO_TF                       30095
+#define IDS_TRILINEAR_TF                30096
+#define IDS_AF_2X_TF                    30097
+#define IDS_AF_4X_TF                    30098
+#define IDS_AF_8X_TF                    30099
+#define IDS_AF_16X_TF                   30100
 
 // Next default values for new objects
 // 

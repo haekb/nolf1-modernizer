@@ -50,7 +50,9 @@ CFolderAdvDisplay::CFolderAdvDisplay()
 	m_bTripleBuffer = LTFALSE;
 	m_bFixSparkleys = LTFALSE;
 	m_bTrilinear = LTFALSE;
+	m_nTextureFiltering = 0;
 
+	m_pTextureFiltering = LTNULL;
 	m_pShadows = LTNULL;
 //	m_pOverdraw = LTNULL;
 	m_pLightMap = LTNULL;
@@ -109,9 +111,19 @@ LTBOOL CFolderAdvDisplay::Build()
 //	m_pOverdraw->SetOnString(IDS_ON);
 //	m_pOverdraw->SetOffString(IDS_OFF);
 
-	pToggle = AddToggle(IDS_TRILINEAR, IDS_HELP_TRILINEAR, kTotalWidth, &m_bTrilinear );
-	pToggle->SetOnString(IDS_ON);
-	pToggle->SetOffString(IDS_OFF);
+
+	//pToggle = AddToggle(IDS_TRILINEAR, IDS_HELP_TRILINEAR, kTotalWidth, &m_bTrilinear );
+	//pToggle->SetOnString(IDS_ON);
+	//pToggle->SetOffString(IDS_OFF);
+
+	m_pTextureFiltering = AddCycleItem(IDS_TEXTURE_FILTERING, IDS_HELP_TEXTURE_FILTERING, kHeaderWidth, kSpacerWidth, &m_nTextureFiltering);
+	m_pTextureFiltering->AddString(IDS_NO_TF);
+	m_pTextureFiltering->AddString(IDS_TRILINEAR_TF);
+	m_pTextureFiltering->AddString(IDS_AF_2X_TF);
+	m_pTextureFiltering->AddString(IDS_AF_4X_TF);
+	m_pTextureFiltering->AddString(IDS_AF_8X_TF);
+	m_pTextureFiltering->AddString(IDS_AF_16X_TF);
+
 
 	pToggle = AddToggle(IDS_TRIPLE_BUFF, IDS_HELP_TRIPLE_BUFF, kTotalWidth, &m_bTripleBuffer );
 	pToggle->SetOnString(IDS_ON);
@@ -175,6 +187,26 @@ void CFolderAdvDisplay::OnFocus(LTBOOL bFocus)
         m_bTripleBuffer = (GetConsoleInt("TripleBuffer",0) > 0) && (dwAdvancedOptions & AO_TRIPLEBUFFER);
         m_bFixSparkleys = (GetConsoleInt("FixSparkleys",0) > 0);
         m_bTrilinear = (GetConsoleInt("Trilinear",0) > 0);
+		
+		if (m_bTrilinear == 1) {
+			m_nTextureFiltering = 1;
+		}
+
+		int af = GetConsoleInt("anisotropic", 0);
+
+		// Lazy but it works!
+		switch (af) {
+		case 2:
+			m_nTextureFiltering = 2;
+			break;
+		case 4:
+			m_nTextureFiltering = 3;
+			break;
+		case 8:
+			m_nTextureFiltering = 4;
+		case 16:
+			m_nTextureFiltering = 5;
+		}
 
 		m_nShadows = 0;
 		if (GetConsoleInt("DrawShadows",0) > 0)
@@ -191,6 +223,42 @@ void CFolderAdvDisplay::OnFocus(LTBOOL bFocus)
 	{
         UpdateData(LTTRUE);
 
+		int af = 0;
+		int bilinear = 0;
+
+		// Texture filtering time!
+		
+		// Honestly this could probably be a table, but we only need it here so...
+		switch (m_nTextureFiltering) {
+		case 0:
+		case 1:
+			m_bTrilinear = m_nTextureFiltering;
+			break;
+		case 2:
+			af = 2;
+			m_bTrilinear = 1;
+			break;
+		case 3:
+			af = 4;
+			m_bTrilinear = 1;
+			break;
+		case 4:
+			af = 8;
+			m_bTrilinear = 1;
+			break;
+		case 5:
+			af = 16;
+			m_bTrilinear = 1;
+			break;
+		}
+
+		// Sooo with no texture filtering on...we also need to turn off bilinear. 
+		// OH god is it ever ugly, but gotta be true to the option name!
+		bilinear = m_bTrilinear;
+
+		// End texture filtering mess
+
+
 		LTBOOL bOldTB = (GetConsoleInt("TripleBuffer",0) > 0);
 
 		WriteConsoleInt("LightMap",m_bLightMap);
@@ -201,7 +269,11 @@ void CFolderAdvDisplay::OnFocus(LTBOOL bFocus)
 		WriteConsoleInt("EnvMapEnable",m_bEnvMapEnable);
 		WriteConsoleInt("TripleBuffer",m_bTripleBuffer && (dwAdvancedOptions & AO_TRIPLEBUFFER));
 		WriteConsoleInt("FixSparkleys",m_bFixSparkleys);
+
+		WriteConsoleInt("Bilinear", bilinear);
 		WriteConsoleInt("Trilinear",m_bTrilinear);
+		WriteConsoleInt("Anisotropic", af);
+
 
 		WriteConsoleInt("DrawShadows",(m_nShadows > 0) );
 		WriteConsoleInt("MaxModelShadows",(m_nShadows > 0) );

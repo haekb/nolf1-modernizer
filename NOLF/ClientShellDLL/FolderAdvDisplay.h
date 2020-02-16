@@ -42,9 +42,11 @@ protected:
 	LTBOOL	m_bTripleBuffer;
 	LTBOOL	m_bFixSparkleys;
 	LTBOOL	m_bTrilinear;
+	int		m_nTextureFiltering;
 
 	uint32	m_nSettingToConfirm;
 
+	CCycleCtrl*		m_pTextureFiltering;
 	CCycleCtrl*		m_pShadows;
 //	CToggleCtrl*	m_pOverdraw;
 	CToggleCtrl*	m_pLightMap;

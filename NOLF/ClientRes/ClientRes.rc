@@ -7784,6 +7784,14 @@ BEGIN
     IDS_ACTIONSTRING_CONSOLE "ToggleConsole"
     IDS_WINDOWED_MODE       "Windowed Mode"
     IDS_HELP_WINDOWED_MODE  "Enable or disable windowed mode."
+    IDS_TEXTURE_FILTERING                  "Texture Filtering"
+    IDS_HELP_TEXTURE_FILTERING             "Reduces aliasing and blur on distant textures."
+    IDS_NO_TF                              "No Texture Filtering"
+    IDS_TRILINEAR_TF                       "Trilinear Filtering"
+    IDS_AF_2X_TF                           "2x Anisotropic Filtering"
+    IDS_AF_4X_TF                           "4x Anisotropic Filtering"
+    IDS_AF_8X_TF                           "8x Anisotropic Filtering"
+    IDS_AF_16X_TF                          "16x Anisotropic Filtering"
 END
 
 #endif    // English (United States) resources
