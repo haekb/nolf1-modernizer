@@ -26,10 +26,12 @@ class CVersionMgr
 		static const char* GetVersion();
 		static const char* GetBuild();
 		static const uint32 GetSaveVersion();
+		static const float GetLatestPatchVersion();
 
 		const char* GetLanguage()	const { return m_szLanguage; }
 		inline bool	IsLowViolence() const { return m_bLowViolence; }
 		inline bool IsGOTY() const { return m_bIsGOTY; }
+
 
 	private :
 

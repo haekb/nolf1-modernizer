@@ -173,6 +173,7 @@ VarTrack			g_vtUseGOTYMenu;				// UseGotyMenu				<0-1>
 VarTrack			g_vtNoRawInput;					// NoRawInput				<0-1>
 VarTrack			g_vtConsoleBackdrop;			// ConsoleBackdrop			<0-2>
 VarTrack			g_vtBigHeadMode;				// BigHeadMode				<0-1>
+VarTrack			g_vtModPatchNum;				// ModPatchNum
 
 LTFLOAT             s_fDemoTime     = 0.0f;
 LTFLOAT             s_fDeadTimer    = 0.0f;
@@ -1115,6 +1116,10 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 	g_vtNoRawInput.Init(g_pLTClient, "NoRawInput", NULL, 0.0f);
 	g_vtConsoleBackdrop.Init(g_pLTClient, "ConsoleBackdrop", NULL, 0.0f);
 	g_vtBigHeadMode.Init(g_pLTClient, "BigHeadMode", NULL, 0.0f);
+
+	// Currently saved patch number, if the version changes we can do some upgradin'
+	g_vtModPatchNum.Init(g_pLTClient, "ModPatchNum", NULL, 0.0f);
+
 	//
 
 	// Jake: This should fix any weird black box issues.
@@ -1456,12 +1461,26 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 	DetourMgr* detourMgr = new DetourMgr();
 	detourMgr->Init();
 
-
 	// Add in the new ToggleConsole action so they can actually bind it.
 	// This is all generated automagically for no real good reason.
 	std::string sCommand = CommandName(COMMAND_ID_TOGGLE_CONSOLE);
 	std::string sAddToggleConsole = "AddAction " + sCommand + " " + std::to_string(COMMAND_ID_TOGGLE_CONSOLE);
 	g_pLTClient->RunConsoleString((char*)sAddToggleConsole.c_str());
+
+	// Do some upgrading!
+	if (g_vtModPatchNum.GetFloat() < g_pVersionMgr->GetLatestPatchVersion()) {
+
+		// Bind console to '`' by default, I don't want to run defcontrols.cfg because that might irk some folk.
+		if (g_vtModPatchNum.GetFloat() < 3.0f) {
+			g_pLTClient->RunConsoleString("rangebind \"##keyboard\" \"##41\" 0.000000 0.000000 \"ToggleConsole\"");
+		}
+
+	}
+
+	WriteConsoleFloat("ModPatchNum", g_pVersionMgr->GetLatestPatchVersion());
+
+	// Save any changes from the upgrade!
+	g_pLTClient->WriteConfigFile("autoexec.cfg");
 
 	return LT_OK;
 }

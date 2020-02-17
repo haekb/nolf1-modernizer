@@ -24,6 +24,9 @@ static const char* s_szBuild		= "Modern";
 #endif 
 static const uint32 s_nSaveVersion  = 4;
 
+static const float s_fLatestPatch = 3.0f;
+
+
 CVersionMgr* g_pVersionMgr = NULL;
 
 // ----------------------------------------------------------------------- //
@@ -94,6 +97,11 @@ const char* CVersionMgr::GetVersion()
 const uint32 CVersionMgr::GetSaveVersion()
 {
 	return s_nSaveVersion;
+}
+
+const float CVersionMgr::GetLatestPatchVersion()
+{
+	return s_fLatestPatch;
 }
 
 // ----------------------------------------------------------------------- //
