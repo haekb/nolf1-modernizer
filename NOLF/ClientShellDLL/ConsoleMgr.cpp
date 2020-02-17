@@ -36,9 +36,14 @@ void WriteToDebugLog(int argc, char** argv)
 
 	SDL_Log("Writing Console History");
 	SDL_Log("---------------------------------------");
+
+	std::string sVeryBigStringTime = "";
+
 	for (auto history : g_pConsoleMgr->GetHistory()) {
-		SDL_Log("%s", history.sMessage.c_str());
+		sVeryBigStringTime += history.sMessage;
+		sVeryBigStringTime += "\n";
 	}
+	SDL_Log(sVeryBigStringTime.c_str());
 	SDL_Log("---------------------------------------");
 
 	g_pLTClient->CPrint("Done!");
