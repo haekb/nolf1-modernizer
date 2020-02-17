@@ -11,6 +11,20 @@
 extern CGameClientShell* g_pGameClientShell;
 
 
+namespace {
+	DWORD	g_nCommandNumber = 0;
+	LTBOOL	g_bCoolWithStrobeLights = LTFALSE;
+	void OverwriteCallBack(LTBOOL bReturn, void* pData)
+	{
+		CFolderCustomLevel* pThisFolder = (CFolderCustomLevel*)pData;
+		if (bReturn && pThisFolder) {
+			g_bCoolWithStrobeLights = LTTRUE;
+			pThisFolder->SendCommand(g_nCommandNumber, 0, 0);
+		}
+	}
+}
+
+
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
 //////////////////////////////////////////////////////////////////////
@@ -43,7 +57,7 @@ LTBOOL CFolderCustomLevel::Build()
 
 	// Get a list of world names and sort them alphabetically
 
-    FileEntry* pFiles = g_pLTClient->GetFileList("\\");
+    FileEntry* pFiles = g_pLTClient->GetFileList("\\Worlds\\Extras");
 	m_nFiles = CountDatFiles(pFiles);
 
 #ifndef _DEMO
@@ -155,6 +169,9 @@ LTBOOL CFolderCustomLevel::Build()
 
 void CFolderCustomLevel::OnFocus(LTBOOL bFocus)
 {
+	g_bCoolWithStrobeLights = LTFALSE;
+	g_nCommandNumber = 0;
+
 	CBaseFolder::OnFocus(bFocus);
 }
 
@@ -165,6 +182,19 @@ uint32 CFolderCustomLevel::OnCommand(uint32 dwCommand, uint32 dwParam1, uint32 d
 		char strWorld[256];
 		DWORD selectNum = dwCommand-FOLDER_CMD_CUSTOM;
 		SAFE_STRCPY(strWorld, m_pFilenames[selectNum]);
+
+		g_nCommandNumber = dwCommand;
+
+		// Hack to warn about strobe lighting!
+		if (!g_bCoolWithStrobeLights && stricmp("Lithtech Tech Demo", strWorld) == 0) {
+			HSTRING hString = g_pLTClient->FormatString(IDS_EXTRAS_TECHDEMO);
+			g_pInterfaceMgr->ShowMessageBox(hString, LTMB_YESNO, OverwriteCallBack, this);
+			g_pLTClient->FreeString(hString);
+			return 0;
+		}
+
+		std::string sWorld = "\\Worlds\\Extras\\";
+		sWorld += strWorld;
 
 		//clear out inventory and any mission related data
 		g_pInterfaceMgr->GetPlayerStats()->ResetInventory();
@@ -178,7 +208,7 @@ uint32 CFolderCustomLevel::OnCommand(uint32 dwCommand, uint32 dwParam1, uint32 d
 		if (g_pGameClientShell->IsInWorld() && g_pGameClientShell->GetGameType() != SINGLE)
 			g_pInterfaceMgr->StartingNewGame();
 
-		if (g_pGameClientShell->LoadWorld(strWorld))
+		if (g_pGameClientShell->LoadWorld((char*)sWorld.c_str()))
 		{
 			g_pInterfaceMgr->ChangeState(GS_PLAYING);
 		}

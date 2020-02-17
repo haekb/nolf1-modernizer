@@ -114,7 +114,7 @@ BEGIN
     IDS_NEWGAME             "Select mission"
     IDS_LOADGAME            "Load game"
     IDS_SAVEGAME            "Save game"
-    IDS_WARP                "Custom level"
+    IDS_WARP                "Extras"
     IDS_SCREEN              "Display"
     IDS_SOUND               "Sound"
     IDS_KEYBOARD            "Keyboard"
@@ -195,7 +195,7 @@ BEGIN
     IDS_HELP_NEW            "Start a new game."
     IDS_HELP_LOAD           "Load a saved game."
     IDS_HELP_SAVE           "Save the current game."
-    IDS_HELP_CUSTOM         "Load a custom level."
+    IDS_HELP_CUSTOM         "View some extras included with NOLF Modernizer!"
     IDS_HELP_FAVORITES      "Load a ""favorite"" custom level."
     IDS_HELP_BACK           "Return to the previous screen."
     IDS_HELP_DIFFICULTY     "Set the game difficulty."
@@ -878,7 +878,7 @@ END
 STRINGTABLE
 BEGIN
     IDS_HELP_MUSICVOL       "Set volume of music."
-    IDS_HELP_CUSTOMLEVEL    "Load the highlighted custom level."
+    IDS_HELP_CUSTOMLEVEL    "Load the highlighted extra."
     IDS_HELP_USEJOYSTICK    "Toggle use of joystick or gamepad."
     IDS_HELP_INVERTAXIS     "Toggle inversion on this axis."
     IDS_HELP_DEADZONE       "Set the dead zone for this axis."
@@ -7784,14 +7784,20 @@ BEGIN
     IDS_ACTIONSTRING_CONSOLE "ToggleConsole"
     IDS_WINDOWED_MODE       "Windowed Mode"
     IDS_HELP_WINDOWED_MODE  "Enable or disable windowed mode."
-    IDS_TEXTURE_FILTERING                  "Texture Filtering"
-    IDS_HELP_TEXTURE_FILTERING             "Reduces aliasing and blur on distant textures."
-    IDS_NO_TF                              "No Texture Filtering"
-    IDS_TRILINEAR_TF                       "Trilinear Filtering"
-    IDS_AF_2X_TF                           "2x Anisotropic Filtering"
-    IDS_AF_4X_TF                           "4x Anisotropic Filtering"
-    IDS_AF_8X_TF                           "8x Anisotropic Filtering"
-    IDS_AF_16X_TF                          "16x Anisotropic Filtering"
+    IDS_TEXTURE_FILTERING   "Texture Filtering"
+    IDS_HELP_TEXTURE_FILTERING 
+                            "Reduces aliasing and blur on distant textures."
+    IDS_NO_TF               "No Texture Filtering"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_TRILINEAR_TF        "Trilinear Filtering"
+    IDS_AF_2X_TF            "2x Anisotropic Filtering"
+    IDS_AF_4X_TF            "4x Anisotropic Filtering"
+    IDS_AF_8X_TF            "8x Anisotropic Filtering"
+    IDS_AF_16X_TF           "16x Anisotropic Filtering"
+    IDS_EXTRAS_TECHDEMO     "This is the October 2000 Lithtech ""Goodman"" Tech Demo. Showing off various features of the Lithtech engine with a familiar face. Included in Modernizer as a fun little extra!\n\nWarning: The tech demo includes strobing lights which some users may find disorientating.\n\nWould you like to continue?"
 END
 
 #endif    // English (United States) resources

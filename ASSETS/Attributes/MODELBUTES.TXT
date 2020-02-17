@@ -1,0 +1,1857 @@
+
+/* 
+** Model Attributes
+**
+** Name			the base name of the model
+** Type			the type of model 
+**
+**					0 = human
+**					1 = animal
+**					2 = vehicle
+**					3 = "generic prop"
+** EnvironmentMap	do we need environmentmap pass?
+** Skeleton		the index of the skeleton (node set) for this model
+** Mass			the mass of the model in dedit units
+** HitPoints	the initial hitpoints for the model
+** MaxHitPoints	the maximum hitpoints for the model
+** Armor		the initial amount of armor for the model
+** MaxArmor		the maximum amount of armor for the model
+**
+*/
+
+[Model0]
+
+Name			= "Player"
+Sex				= "Female"
+Nationality		= ""
+Skeleton		= 0
+Type			= 0
+EnvironmentMap	= FALSE
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 100.0
+MaxArmor		= 100.0
+
+[Model1]
+
+Name			= "Hero"
+Sex				= "Female"
+Nationality		= ""
+Skeleton		= 0
+Type			= 0
+EnvironmentMap	= FALSE
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model2]
+
+Name			= "Partner"
+Sex				= "Male"
+Nationality		= "American"
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model3]
+
+Name			= "Russian"
+Sex				= "Male"
+Nationality		= ""
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model4]
+
+Name			= "Scotsman"
+Sex				= "Male"
+Nationality		= ""
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model5]
+
+Name			= "German"
+Sex				= "Female"
+Nationality		= ""
+Type			= 0
+EnvironmentMap	= TRUE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model6]
+
+Name			= "Baroness"
+Sex				= "Female"
+Nationality		= ""
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model7]
+
+Name			= "Baron"
+Sex				= "Male"
+Nationality		= "English"
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model8]
+
+Name			= "Doctor"
+Sex				= "Male"
+Nationality		= "Germanic"
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model9]
+
+Name			= "Frogman"
+Sex				= "Male"
+Nationality		= "American"
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model10]
+
+Name			= "Paratrooper"
+Sex				= "Male"
+Nationality		= "English"
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model11]
+
+Name			= "WinterGuard"
+Sex				= "Male"
+Nationality		= "Germanic"
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model12]
+
+Name			= "Butler"
+Sex				= "Male"
+Nationality		= "English"
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model13]
+
+Name			= "EliteAsian"
+Sex				= "Female"
+Nationality		= ""
+Type			= 0
+EnvironmentMap	= TRUE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model14]
+
+Name			= "HARMGuard"
+Sex				= "Male"
+Nationality		= "English"
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model15]
+
+Name			= "DockGuard"
+Sex				= "Male"
+Nationality		= "English"
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model16]
+
+Name			= "WorkGuard"
+Sex				= "Male"
+Nationality		= "American"
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model17]
+
+Name			= "SubGuard"
+Sex				= "Male"
+Nationality		= "Germanic"
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model18]
+
+Name			= "MoroccanAgent"
+Sex				= "Male"
+Nationality		= "Moroccan"
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model19]
+
+Name			= "EuroAgent"
+Sex				= "Male"
+Nationality		= "Germanic"
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model20]
+
+Name			= "UNITYCouncil"
+Sex				= "Male"
+Nationality		= "English"
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model21]
+
+Name			= "OvercoatAgent"
+Sex				= "Male"
+Nationality		= "American"
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model22]
+
+Name			= "STASIGuard"
+Sex				= "Male"
+Nationality		= "Germanic"
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model23]
+
+Name			= "Cosmonaut"
+Sex				= "Male"
+Nationality		= "English"
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model24]
+
+Name			= "UNITYAgent"
+Sex				= "Male"
+Nationality		= "English"
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model25]
+
+Name			= "Mentor"
+Sex				= "Male"
+Nationality		= "English"
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model26]
+
+Name			= "FemaleBystander"
+Sex				= "Female"
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model27]
+
+Name			= "MaleBystander"
+Sex				= "Male"
+Nationality		= "American"
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model28]
+
+Name			= "Dog"
+Sex				= "Animal"
+Type			= 1
+EnvironmentMap	= FALSE
+Skeleton		= 1
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model29]
+
+Name			= "Helicopter"
+Sex				= "Vehicle"
+Type			= 2
+EnvironmentMap	= TRUE
+Skeleton		= 2
+Mass			= 20000.0
+HitPoints		= 1000.0
+MaxHitPoints	= 1000.0
+Armor			= 500.0
+MaxArmor		= 500.0
+
+[Model30]
+
+Name			= "Poodle"
+Sex				= "Vehicle"
+Type			= 1
+EnvironmentMap	= TRUE
+Skeleton		= 1
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model31]
+
+Name			= "Truck"
+Sex				= "Vehicle"
+Type			= 2
+EnvironmentMap	= TRUE
+Skeleton		= 3
+Mass			= 20000.0
+HitPoints		= 1000.0
+MaxHitPoints	= 1000.0
+Armor			= 500.0
+MaxArmor		= 500.0
+
+[Model32]
+
+Name			= "EliteBlack"
+Sex				= "Female"
+Nationality		= ""
+Type			= 0
+EnvironmentMap	= TRUE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model33]
+
+Name			= "EliteWhite"
+Sex				= "Female"
+Nationality		= ""
+Type			= 0
+EnvironmentMap	= TRUE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model34]
+
+Name			= "Maid"
+Sex				= "Female"
+Nationality		= ""
+Type			= 0
+EnvironmentMap	= FALSE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model35]
+
+Name			= "Shark"
+Sex				= "Animal"
+Type			= 1
+EnvironmentMap	= FALSE
+Skeleton		= 4
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model36]
+
+Name			= "IntHero"
+Type			= 1
+EnvironmentMap	= FALSE
+Skeleton		= 4
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model37]
+
+Name			= "IntPartner"
+Type			= 1
+EnvironmentMap	= FALSE
+Skeleton		= 4
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+[Model38]
+
+Name			= "GenericAmerican"
+Sex				= "Male"
+Nationality		= "American"
+
+[Model39]
+
+Name			= "GenericEnglish"
+Sex				= "Male"
+Nationality		= "English"
+
+[Model40]
+
+Name			= "GenericGermanic"
+Sex				= "Male"
+Nationality		= "Germanic"
+
+[Model41]
+
+Name			= "GenericMoroccan"
+Sex				= "Male"
+Nationality		= "Moroccan"
+
+[Model42]
+
+Name			= "EliteGuard"
+Sex				= "Female"
+Nationality		= "American"
+Type			= 0
+EnvironmentMap	= TRUE
+Skeleton		= 0
+Mass			= 2000.0
+HitPoints		= 100.0
+MaxHitPoints	= 100.0
+Armor			= 50.0
+MaxArmor		= 200.0
+
+/*
+** Style Attributes
+**
+** Name		the name of the style
+**
+*/
+
+[Style0]
+
+Name			= "Action"
+
+[Style1]
+
+Name			= "Formal"
+
+[Style2]
+
+Name			= "Casual"
+
+[Style3]
+
+Name			= "Winter"
+
+[Style4]
+
+Name			= "Undercover1"
+
+[Style5]
+
+Name			= "Undercover2"
+
+[Style6]
+
+Name			= "Lowrank"
+
+[Style7]
+
+Name			= "Highrank"
+
+[Style8]
+
+Name			= "Scuba"
+
+[Style9]
+
+Name			= "Docks"
+
+[Style10]
+
+Name			= "Style2"
+
+[Style11]
+
+Name			= "Style3"
+
+[Style12]
+
+Name			= "Style4"
+
+[Style13]
+
+Name			= "Style5"
+
+[Style14]
+
+Name			= "Style6"
+
+[Style15]
+
+Name			= "Style7"
+
+[Style16]
+
+Name			= "Style8"
+
+[Style17]
+
+Name			= "Dancin"
+
+/* 
+** Skeleton [node group] Attributes
+**
+** DefaultFrontDeathAni			the default death ani played if we are killed from the front
+** DefaultBackDeathAni			the default death ani played if we are killed from behind
+** DefaultFrontLongRecoilAni	the default long recoil ani played if we are cheezed from the front (humans only)
+** DefaultBackLongRecoilAni		the default long recoil ani played if we are cheezed from behind (humans only)
+** DefaultHitNode				the default node that is hit if we ever take damage not associated with a specific node
+**
+** NodeXXName					the name of the node
+** NodeXXFlags					the properties on the node . Flags should be the **SUM** of any of the following:
+**								
+**								 0	--	(no special flags)
+**								 1	--	"critical hit" node (head, for example)
+**								 2	--	"talk" node (jaw, for example)
+**								 4	--  "tire" node (usually rear wheels)
+**								 8	--  "turning tire" node (usually front wheels)
+**								16	--	"rotor" node (controls helicopter blades)
+**								32  --  "eye" node (only one per ai!!)
+**								64  --  "wall stick" node (if hit here with spear, try to stick to wall)
+**								
+** NodeXXFrontDeathAni			the specific death ani played if we are killed in this node from the front
+** NodeXXBackDeathAni			the specific death ani played if we are killed in this node from behind
+** NodeXXFrontLongRecoilAni		the specific LongRecoil ani played if we are killed in this node from the front (humans only)
+** NodeXXBackLongRecoilAni		the specific LongRecoil ani played if we are killed in this node from behind (humans only)
+** NodeXXDamageFactor			the factor by which damage received to this node is scaled
+** 
+** NodeXXParent					the TRUE parent of this node in the hierarchy
+**								
+** NodeXXRecoilParent			the parent of this node when we walk the parent chain during a recoil
+**								
+** NodeXXLocation				the body part associated with the node (for hit location tracking)
+**								
+**								0	--	unknown/unspecified
+**								1	--	Head
+**								2	--	Torso
+**								3	--	Arm
+**								4	--	Leg
+**								
+** NodeXXRadius					the radius around the node used for determining hit location
+**
+** NodeXXPriority				the priority around the node used for determining hit location
+**
+*/
+
+[Skeleton0]
+
+DefaultFrontDeathAni		= "DSlump"
+DefaultBackDeathAni			= "DSlumpB"
+DefaultFrontLongRecoilAni	= "LRclT"
+DefaultBackLongRecoilAni	= "LRclT"
+DefaultFrontShortRecoilAni	= "SRclT"
+DefaultBackShortRecoilAni	= "SRclT"
+DefaultHitNode				= 0
+
+Node0Name					= "Torso_node"
+Node0Flags					= (DWORD)64
+Node0FrontDeathAni			= "DPvs"
+Node0BackDeathAni			= "DPvsB"
+Node0FrontLongRecoilAni		= "LRclT"
+Node0BackLongRecoilAni		= "LRclTB"
+Node0FrontShortRecoilAni	= "SRclT"
+Node0BackShortRecoilAni		= "SRclTB"
+Node0DamageFactor			= 1.0
+Node0Parent					= -1
+Node0RecoilParent			= -1
+Node0Location				= 2
+Node0Radius					= 12.5
+Node0Priority				= 0.5
+							
+Node1Name					= "Torso_u_node"
+Node1Flags					= (DWORD)64
+Node1FrontDeathAni			= "DT"
+Node1BackDeathAni			= "DTB"
+Node1FrontLongRecoilAni		= "LRclT"
+Node1BackLongRecoilAni		= "LRclTB"
+Node1FrontShortRecoilAni	= "SRclT"
+Node1BackShortRecoilAni		= "SRclTB"
+Node1DamageFactor			= 1.0
+Node1Parent					= 0
+Node1RecoilParent			= 0
+Node1Location				= 2
+Node1Radius					= 12.5
+Node1Priority				= 0.5
+							
+Node2Name					= "Neck_node"
+Node2Flags					= (DWORD)64
+Node2FrontDeathAni			= "DH"
+Node2BackDeathAni			= "DHB"
+Node2FrontLongRecoilAni		= "LRclHead"
+Node2BackLongRecoilAni		= "LRclHeadB"
+Node2FrontShortRecoilAni	= "SRclHead"
+Node2BackShortRecoilAni		= "SRclHeadB"
+Node2DamageFactor			= 1.0
+Node2Parent					= 1
+Node2RecoilParent			= 0
+Node2Location				= 2
+Node2Radius					= 10.0
+Node2Priority				= 0.75
+						
+Node3Name					= "Head_node"
+Node3Flags					= (DWORD)1
+Node3FrontDeathAni			= "DH"
+Node3BackDeathAni			= "DHB"
+Node3FrontLongRecoilAni		= "LRclHead"
+Node3BackLongRecoilAni		= "LRclHeadB"
+Node3FrontShortRecoilAni	= "SRclHead"
+Node3BackShortRecoilAni		= "SRclHeadB"
+Node3DamageFactor			= 100.0
+Node3Parent					= 2
+Node3RecoilParent			= 0
+Node3Location				= 1
+Node3Radius					= 12.5
+Node3Priority				= 1.0
+						
+Node4Name					= "LowerJaw"
+Node4Flags					= (DWORD)0
+Node4FrontDeathAni			= "DH"
+Node4BackDeathAni			= "DHB"
+Node4FrontLongRecoilAni		= "LRclHead"
+Node4BackLongRecoilAni		= "LRclHeadB"
+Node4FrontShortRecoilAni	= "SRclHead"
+Node4BackShortRecoilAni		= "SRclHeadB"
+Node4DamageFactor			= 100.0
+Node4Parent					= 3
+Node4RecoilParent			= 0
+Node4Location				= 1
+Node4Radius					= 10.5
+Node4Priority				= 0.75
+							
+Node5Name					= "Left_armu_shoulder_node"
+Node5Flags					= (DWORD)64
+Node5FrontDeathAni			= "DLSh"
+Node5BackDeathAni			= "DLShB"
+Node5FrontLongRecoilAni		= "LRclLSh"
+Node5BackLongRecoilAni		= "LRclLShB"
+Node5FrontShortRecoilAni	= "SRclLSh"
+Node5BackShortRecoilAni		= "SRclLShB"
+Node5DamageFactor			= 0.25
+Node5Parent					= 1
+Node5RecoilParent			= 1
+Node5Location				= 3
+Node5Radius					= 12.5
+Node5Priority				= 0.25
+							
+Node6Name					= "Left_armu_node"
+Node6Flags					= (DWORD)0
+Node6FrontDeathAni			= "DLSh"
+Node6BackDeathAni			= "DLShB"
+Node6FrontLongRecoilAni		= "LRclLSh"
+Node6BackLongRecoilAni		= "LRclLShB"
+Node6FrontShortRecoilAni	= "SRclLSh"
+Node6BackShortRecoilAni		= "SRclLShB"
+Node6DamageFactor			= 0.25
+Node6Parent					= 5
+Node6RecoilParent			= 5
+Node6Location				= 3
+Node6Radius					= 12.5
+Node6Priority				= 0.25
+							
+Node7Name					= "Left_arml_node"
+Node7Flags					= (DWORD)0
+Node7FrontDeathAni			= "DLSh"
+Node7BackDeathAni			= "DLShB"
+Node7FrontLongRecoilAni		= "LRclLSh"
+Node7BackLongRecoilAni		= "LRclLShB"
+Node7FrontShortRecoilAni	= "SRclLSh"
+Node7BackShortRecoilAni		= "SRclLShB"
+Node7DamageFactor			= 0.25
+Node7Parent					= 6
+Node7RecoilParent			= 6
+Node7Location				= 3
+Node7Radius					= 12.5
+Node7Priority				= 0.25
+						
+Node8Name					= "Left_arml_hand_node"
+Node8Flags					= (DWORD)0
+Node8FrontDeathAni			= "DLSh"
+Node8BackDeathAni			= "DLShB"
+Node8FrontLongRecoilAni		= "LRclLSh"
+Node8BackLongRecoilAni		= "LRclLShB"
+Node8FrontShortRecoilAni	= "SRclLSh"
+Node8BackShortRecoilAni		= "SRclLShB"
+Node8DamageFactor			= 0.25
+Node8Parent					= 7
+Node8RecoilParent			= 7
+Node8Location				= 3
+Node8Radius					= 12.5
+Node8Priority				= 0.25
+							
+Node9Name					= "Right_armu_shoulder_node"
+Node9Flags					= (DWORD)64
+Node9FrontDeathAni			= "DRSh"
+Node9BackDeathAni			= "DRShB"
+Node9FrontLongRecoilAni		= "LRclRSh"
+Node9BackLongRecoilAni		= "LRclRShB"
+Node9FrontShortRecoilAni	= "SRclRSh"
+Node9BackShortRecoilAni		= "SRclRShB"
+Node9DamageFactor			= 0.25
+Node9Parent					= 1
+Node9RecoilParent			= 1
+Node9Location				= 3
+Node9Radius					= 12.5
+Node9Priority				= 0.25
+							
+Node10Name					= "Right_armu_node"
+Node10Flags					= (DWORD)0
+Node10FrontDeathAni			= "DRSh"
+Node10BackDeathAni			= "DRShB"
+Node10FrontLongRecoilAni	= "LRclRSh"
+Node10BackLongRecoilAni		= "LRclRShB"
+Node10FrontShortRecoilAni	= "SRclRSh"
+Node10BackShortRecoilAni	= "SRclRShB"
+Node10DamageFactor			= 0.25
+Node10Parent				= 9
+Node10RecoilParent			= 9
+Node10Location				= 3
+Node10Radius				= 12.5
+Node10Priority				= 0.25
+							
+Node11Name					= "Right_arml_node"
+Node11Flags					= (DWORD)0
+Node11FrontDeathAni			= "DRSh"
+Node11BackDeathAni			= "DRShB"
+Node11FrontLongRecoilAni	= "LRclRSh"
+Node11BackLongRecoilAni		= "LRclRShB"
+Node11FrontShortRecoilAni	= "SRclRSh"
+Node11BackShortRecoilAni	= "SRclRShB"
+Node11DamageFactor			= 0.25
+Node11Parent				= 10
+Node11RecoilParent			= 10
+Node11Location				= 3
+Node11Radius				= 12.5
+Node11Priority				= 0.25
+							
+Node12Name					= "Right_arml_hand_node"
+Node12Flags					= (DWORD)0
+Node12FrontDeathAni			= "DRSh"
+Node12BackDeathAni			= "DRShB"
+Node12FrontLongRecoilAni	= "LRclRSh"
+Node12BackLongRecoilAni		= "LRclRShB"
+Node12FrontShortRecoilAni	= "SRclRSh"
+Node12BackShortRecoilAni	= "SRclRShB"
+Node12DamageFactor			= 0.25
+Node12Parent				= 11
+Node12RecoilParent			= 11
+Node12Location				= 3
+Node12Radius				= 12.5
+Node12Priority				= 0.25
+							
+Node13Name					= "Left_legu_pelvis_node"
+Node13Flags					= (DWORD)0
+Node13FrontDeathAni			= "DLLeg"
+Node13BackDeathAni			= "DLLegB"
+Node13FrontLongRecoilAni	= "LRclP"
+Node13BackLongRecoilAni		= "LRclPB"
+Node13FrontShortRecoilAni	= "SRclP"
+Node13BackShortRecoilAni	= "SRclPB"
+Node13DamageFactor			= 0.25
+Node13Parent				= -1
+Node13RecoilParent			= 0
+Node13Location				= 4
+Node13Radius				= 12.5
+Node13Priority				= 0.25
+							
+Node14Name					= "Left_legu_node"
+Node14Flags					= (DWORD)0
+Node14FrontDeathAni			= "DLLeg"
+Node14BackDeathAni			= "DLLegB"
+Node14FrontLongRecoilAni	= "LRclLLeg"
+Node14BackLongRecoilAni		= "LRclLLegB"
+Node14FrontShortRecoilAni	= "SRclLLeg"
+Node14BackShortRecoilAni	= "SRclLLegB"
+Node14DamageFactor			= 0.25
+Node14Parent				= 13
+Node14RecoilParent			= 13
+Node14Location				= 4
+Node14Radius				= 12.5
+Node14Priority				= 0.25
+							
+Node15Name					= "Left_legl_node"
+Node15Flags					= (DWORD)0
+Node15FrontDeathAni			= "DLLeg"
+Node15BackDeathAni			= "DLLegB"
+Node15FrontLongRecoilAni	= "LRclLLeg"
+Node15BackLongRecoilAni		= "LRclLLegB"
+Node15FrontShortRecoilAni	= "SRclLLeg"
+Node15BackShortRecoilAni	= "SRclLLegB"
+Node15DamageFactor			= 0.25
+Node15Parent				= 14
+Node15RecoilParent			= 14
+Node15Location				= 4
+Node15Radius				= 12.5
+Node15Priority				= 0.25
+							
+Node16Name					= "Left_legl_foot_node"
+Node16Flags					= (DWORD)0
+Node16FrontDeathAni			= "DLLeg"
+Node16BackDeathAni			= "DLLegB"
+Node16FrontLongRecoilAni	= "LRclLFoot"
+Node16BackLongRecoilAni		= "LRclLFootB"
+Node16FrontShortRecoilAni	= "SRclLFoot"
+Node16BackShortRecoilAni	= "SRclLFootB"
+Node16DamageFactor			= 0.25
+Node16Parent				= 15
+Node16RecoilParent			= 15
+Node16Location				= 4
+Node16Radius				= 12.5
+Node16Priority				= 0.25
+							
+Node17Name					= "Right_legu_pelvis_node"
+Node17Flags					= (DWORD)0
+Node17FrontDeathAni			= "DRLeg"
+Node17BackDeathAni			= "DRLegB"
+Node17FrontLongRecoilAni	= "LRclP"
+Node17BackLongRecoilAni		= "LRclPB"
+Node17FrontShortRecoilAni	= "SRclP"
+Node17BackShortRecoilAni	= "SRclPB"
+Node17DamageFactor			= 0.25
+Node17Parent				= -1
+Node17RecoilParent			= 0
+Node17Location				= 4
+Node17Radius				= 12.5
+Node17Priority				= 0.25
+							
+Node18Name					= "Right_legu_node"
+Node18Flags					= (DWORD)0
+Node18FrontDeathAni			= "DRLeg"
+Node18BackDeathAni			= "DRLegB"
+Node18FrontLongRecoilAni	= "LRclRLeg"
+Node18BackLongRecoilAni		= "LRclRLegB"
+Node18FrontShortRecoilAni	= "SRclRLeg"
+Node18BackShortRecoilAni	= "SRclRLegB"
+Node18DamageFactor			= 0.25
+Node18Parent				= 17
+Node18RecoilParent			= 17
+Node18Location				= 4
+Node18Radius				= 12.5
+Node18Priority				= 0.25
+							
+Node19Name					= "Right_legl_node"
+Node19Flags					= (DWORD)0
+Node19FrontDeathAni			= "DRLeg"
+Node19BackDeathAni			= "DRLegB"
+Node19FrontLongRecoilAni	= "LRclRLeg"
+Node19BackLongRecoilAni		= "LRclRLegB"
+Node19FrontShortRecoilAni	= "SRclRLeg"
+Node19BackShortRecoilAni	= "SRclRLegB"
+Node19DamageFactor			= 0.25
+Node19Parent				= 18
+Node19RecoilParent			= 18
+Node19Location				= 4
+Node19Radius				= 12.5
+Node19Priority				= 0.25
+							
+Node20Name					= "Right_legl_foot_node"
+Node20Flags					= (DWORD)0
+Node20FrontDeathAni			= "DRLeg"
+Node20BackDeathAni			= "DRLegB"
+Node20FrontLongRecoilAni	= "LRclRFoot"
+Node20BackLongRecoilAni		= "LRclRFoot"
+Node20FrontShortRecoilAni	= "SRclRFoot"
+Node20BackShortRecoilAni	= "SRclRFoot"
+Node20DamageFactor			= 0.25
+Node20Parent				= 19
+Node20RecoilParent			= 19
+Node20Location				= 4
+Node20Radius				= 12.5
+Node20Priority				= 0.25
+							
+Node21Name					= "Eyelid"
+Node21Flags					= (DWORD)33
+Node21FrontDeathAni			= "DH"
+Node21BackDeathAni			= "DHB"
+Node21FrontLongRecoilAni	= "LRclHead"
+Node21BackLongRecoilAni		= "LRclHeadB"
+Node21FrontShortRecoilAni	= "SRclHead"
+Node21BackShortRecoilAni	= "SRclHeadB"
+Node21DamageFactor			= 100.0
+Node21Parent				= 4
+Node21RecoilParent			= 0
+Node21Location				= 1
+Node21Radius				= 12.5
+Node21Priority				= 0.75
+							
+[Skeleton1]					
+							
+DefaultFrontDeathAni		= "Death1"
+DefaultBackDeathAni			= "Death1"
+DefaultHitNode				= 0
+							
+Node0Name					= "jnt1_1"
+Node0Flags					= (DWORD)0
+Node0FrontDeathAni			= "Death1"
+Node0BackDeathAni			= "Death1"
+Node0DamageFactor			= 1.0
+Node0Parent					= -1
+Node0RecoilParent			= -1
+Node0Location				= 0
+Node0Radius					= 12.5
+
+Node1Name					= "jnt1_2"
+Node1Flags					= (DWORD)0
+Node1FrontDeathAni			= "Death1"
+Node1BackDeathAni			= "Death1"
+Node1DamageFactor			= 1.0
+Node1Parent					= -1
+Node1RecoilParent			= -1
+Node1Location				= 0
+Node1Radius					= 12.5
+
+Node2Name					= "jnt4_1"
+Node2Flags					= (DWORD)0
+Node2FrontDeathAni			= "Death1"
+Node2BackDeathAni			= "Death1"
+Node2DamageFactor			= 1.0
+Node2Parent					= -1
+Node2RecoilParent			= -1
+Node2Location				= 0
+Node2Radius					= 12.5
+
+Node3Name					= "jnt4_2"
+Node3Flags					= (DWORD)0
+Node3FrontDeathAni			= "Death1"
+Node3BackDeathAni			= "Death1"
+Node3DamageFactor			= 1.0
+Node3Parent					= -1
+Node3RecoilParent			= -1
+Node3Location				= 0
+Node3Radius					= 12.5
+
+Node4Name					= "jnt5_1"
+Node4Flags					= (DWORD)0
+Node4FrontDeathAni			= "Death1"
+Node4BackDeathAni			= "Death1"
+Node4DamageFactor			= 1.0
+Node4Parent					= -1
+Node4RecoilParent			= -1
+Node4Location				= 0
+Node4Radius					= 12.5
+
+Node5Name					= "jnt6_1"
+Node5Flags					= (DWORD)0
+Node5FrontDeathAni			= "Death1"
+Node5BackDeathAni			= "Death1"
+Node5DamageFactor			= 1.0
+Node5Parent					= -1
+Node5RecoilParent			= -1
+Node5Location				= 0
+Node5Radius					= 12.5
+
+Node6Name					= "jnt24_1"
+Node6Flags					= (DWORD)0
+Node6FrontDeathAni			= "Death1"
+Node6BackDeathAni			= "Death1"
+Node6DamageFactor			= 1.0
+Node6Parent					= -1
+Node6RecoilParent			= -1
+Node6Location				= 0
+Node6Radius					= 12.5
+
+Node7Name					= "jnt24_2"
+Node7Flags					= (DWORD)0
+Node7FrontDeathAni			= "Death1"
+Node7BackDeathAni			= "Death1"
+Node7DamageFactor			= 1.0
+Node7Parent					= -1
+Node7RecoilParent			= -1
+Node7Location				= 0
+Node7Radius					= 12.5
+
+Node8Name					= "jnt25_1"
+Node8Flags					= (DWORD)0
+Node8FrontDeathAni			= "Death1"
+Node8BackDeathAni			= "Death1"
+Node8DamageFactor			= 1.0
+Node8Parent					= -1
+Node8RecoilParent			= -1
+Node8Location				= 0
+Node8Radius					= 12.5
+
+Node9Name					= "jnt25_2"
+Node9Flags					= (DWORD)0
+Node9FrontDeathAni			= "Death1"
+Node9BackDeathAni			= "Death1"
+Node9DamageFactor			= 1.0
+Node9Parent					= -1
+Node9RecoilParent			= -1
+Node9Location				= 0
+Node9Radius					= 12.5
+
+Node10Name					= "jnt32_1"
+Node10Flags					= (DWORD)0
+Node10FrontDeathAni			= "Death1"
+Node10BackDeathAni			= "Death1"
+Node10DamageFactor			= 1.0
+Node10Parent					= -1
+Node10RecoilParent			= -1
+Node10Location				= 0
+Node10Radius					= 12.5
+
+Node11Name					= "jnt16_1"
+Node11Flags					= (DWORD)0
+Node11FrontDeathAni			= "Death1"
+Node11BackDeathAni			= "Death1"
+Node11DamageFactor			= 1.0
+Node11Parent					= -1
+Node11RecoilParent			= -1
+Node11Location				= 0
+Node11Radius					= 12.5
+
+Node12Name					= "jnt16_2"
+Node12Flags					= (DWORD)0
+Node12FrontDeathAni			= "Death1"
+Node12BackDeathAni			= "Death1"
+Node12DamageFactor			= 1.0
+Node12Parent					= -1
+Node12RecoilParent			= -1
+Node12Location				= 0
+Node12Radius					= 12.5
+
+Node13Name					= "jnt16_3"
+Node13Flags					= (DWORD)0
+Node13FrontDeathAni			= "Death1"
+Node13BackDeathAni			= "Death1"
+Node13DamageFactor			= 1.0
+Node13Parent					= -1
+Node13RecoilParent			= -1
+Node13Location				= 0
+Node13Radius					= 12.5
+
+Node14Name					= "jnt17_1"
+Node14Flags					= (DWORD)0
+Node14FrontDeathAni			= "Death1"
+Node14BackDeathAni			= "Death1"
+Node14DamageFactor			= 1.0
+Node14Parent					= -1
+Node14RecoilParent			= -1
+Node14Location				= 0
+Node14Radius					= 12.5
+
+Node15Name					= "jnt10_2"
+Node15Flags					= (DWORD)0
+Node15FrontDeathAni			= "Death1"
+Node15BackDeathAni			= "Death1"
+Node15DamageFactor			= 1.0
+Node15Parent					= -1
+Node15RecoilParent			= -1
+Node15Location				= 0
+Node15Radius					= 12.5
+
+Node16Name					= "jnt10_3"
+Node16Flags					= (DWORD)0
+Node16FrontDeathAni			= "Death1"
+Node16BackDeathAni			= "Death1"
+Node16DamageFactor			= 1.0
+Node16Parent					= -1
+Node16RecoilParent			= -1
+Node16Location				= 0
+Node16Radius					= 12.5
+
+Node17Name					= "jnt13_1"
+Node17Flags					= (DWORD)0
+Node17FrontDeathAni			= "Death1"
+Node17BackDeathAni			= "Death1"
+Node17DamageFactor			= 1.0
+Node17Parent					= -1
+Node17RecoilParent			= -1
+Node17Location				= 0
+Node17Radius					= 12.5
+
+Node18Name					= "jnt34_1"
+Node18Flags					= (DWORD)0
+Node18FrontDeathAni			= "Death1"
+Node18BackDeathAni			= "Death1"
+Node18DamageFactor			= 1.0
+Node18Parent					= -1
+Node18RecoilParent			= -1
+Node18Location				= 0
+Node18Radius					= 12.5
+
+Node19Name					= "jnt34_3"
+Node19Flags					= (DWORD)0
+Node19FrontDeathAni			= "Death1"
+Node19BackDeathAni			= "Death1"
+Node19DamageFactor			= 1.0
+Node19Parent					= -1
+Node19RecoilParent			= -1
+Node19Location				= 0
+Node19Radius					= 12.5
+
+[Skeleton2]					
+							
+DefaultFrontDeathAni		= "Closed"
+DefaultBackDeathAni			= "Closed"
+DefaultHitNode				= 0
+							
+Node0Name					= "HitTail1"
+Node0Flags					= (DWORD)0
+Node0DamageFactor			= 1.0
+Node0Location				= 0
+Node0Radius					= 25
+Node0Priority				= 0.5
+
+Node1Name					= "HitNose_zTex1"
+Node1Flags					= (DWORD)0
+Node1DamageFactor			= 3.0
+Node1Location				= 0
+Node1Radius					= 50
+Node1Priority				= 0.5
+
+Node2Name					= "HitTail3"
+Node2Flags					= (DWORD)0
+Node2DamageFactor			= 1.0
+Node2Location				= 0
+Node2Radius					= 50
+Node2Priority				= 0.5
+
+Node3Name					= "HitTail2"
+Node3Flags					= (DWORD)0
+Node3DamageFactor			= 1.0
+Node3Location				= 0
+Node3Radius					= 50
+Node3Priority				= 0.5
+
+Node4Name					= "_zN_HitBodyRR"
+Node4Flags					= (DWORD)0
+Node4DamageFactor			= 1.0
+Node4Location				= 0
+Node4Radius					= 100
+Node4Priority				= 0.5
+
+Node5Name					= "_zN_HitBodyRF"
+Node5Flags					= (DWORD)0
+Node5DamageFactor			= 1.0
+Node5Location				= 0
+Node5Radius					= 100
+Node5Priority				= 0.5
+
+Node6Name					= "_zN_HitBodyLF"
+Node6Flags					= (DWORD)0
+Node6DamageFactor			= 1.0
+Node6Location				= 0
+Node6Radius					= 100
+Node6Priority				= 0.5
+
+Node7Name					= "_zN_HitBodyLR"
+Node7Flags					= (DWORD)0
+Node7DamageFactor			= 1.0
+Node7Location				= 0
+Node7Radius					= 100
+Node7Priority				= 0.5
+
+Node8Name					= "_zN_HitTailRotor"
+Node8Flags					= (DWORD)0
+Node8DamageFactor			= 1.0
+Node8Location				= 0
+Node8Radius					= 12.5
+Node8Priority				= 0.5
+
+Node9Name					= "_zN_HitTail4"
+Node9Flags					= (DWORD)0
+Node9DamageFactor			= 1.0
+Node9Location				= 0
+Node9Radius					= 50
+Node9Priority				= 0.5
+
+Node10Name					= "cyl4_zTex1"
+Node10Flags					= (DWORD)16
+Node10DamageFactor			= 1.0
+Node10Location				= 0
+Node10Radius				= 0.0
+Node10Priority				= 0.5
+
+Node11Name					= "rotor"
+Node11Flags					= (DWORD)16
+Node11DamageFactor			= 1.0
+Node11Location				= 0
+Node11Radius				= 12.5
+Node11Priority				= 1.0
+
+[Skeleton3]					
+							
+DefaultFrontDeathAni		= "Death1"
+DefaultBackDeathAni			= "Death1"
+DefaultHitNode				= 0
+							
+Node0Name					= "cube11"
+Node0Flags					= (DWORD)16
+Node0FrontDeathAni			= "Death1"
+Node0BackDeathAni			= "Death1"
+Node0DamageFactor			= 1.0
+Node0Parent					= -1
+Node0RecoilParent			= -1
+Node0Location				= 0
+Node0Radius					= 12.5
+Node0Priority				= 1.0
+							
+[Skeleton4]					
+							
+DefaultFrontDeathAni		= "Death"
+DefaultBackDeathAni			= "Death"
+DefaultHitNode				= 0
+							
+Node0Name					= "null4"
+Node0Flags					= (DWORD)0
+Node0FrontDeathAni			= "Death"
+Node0BackDeathAni			= "Death"
+Node0DamageFactor			= 1.0
+Node0Parent					= -1
+Node0RecoilParent			= -1
+Node0Location				= 0
+Node0Radius					= 24
+
+/* 
+** NodeScript Attributes
+**
+** NodeName		the name of the node to control with the script
+** Flags		the flags to use with this script
+**				 0	--	(no special flags)
+**	
+** PtXXTime		the time (from start) to reach this script point (1st one must be 0.0)
+** PtXXPosOffset	the offset position of this script point
+** PtXXRotOffset	the offset rotation of this script point (in degrees)
+**				* The rotations are around <right, up, forward>
+**
+*/
+
+/* Nod head (yes) */
+[NodeScript0]
+
+NodeName			= "Head_node"
+Flags				= 0
+
+Pt0Time				= 0.0
+Pt0PosOffset			= <0.0, 0.0, 0.0>
+Pt0RotOffset			= <0.0, 0.0, 0.0>
+
+Pt1Time				= 0.25
+Pt1PosOffset			= <0.0, 0.0, 0.0>
+Pt1RotOffset			= <0.0, 0.0, 10.0>
+
+Pt2Time				= 0.75
+Pt2PosOffset			= <0.0, 0.0, 0.0>
+Pt2RotOffset			= <0.0, 0.0, -10.0>
+
+Pt3Time				= 1.25
+Pt3PosOffset			= <0.0, 0.0, 0.0>
+Pt3RotOffset			= <0.0, 0.0, 10.0>
+
+Pt4Time				= 1.75
+Pt4PosOffset			= <0.0, 0.0, 0.0>
+Pt4RotOffset			= <0.0, 0.0, -10.0>
+
+Pt5Time				= 2.0
+Pt5PosOffset			= <0.0, 0.0, 0.0>
+Pt5RotOffset			= <0.0, 0.0, 0.0>
+
+/* Shake head (no) */
+[NodeScript1]
+
+NodeName			= "Head_node"
+Flags				= 0
+
+Pt0Time				= 0.0
+Pt0PosOffset			= <0.0, 0.0, 0.0>
+Pt0RotOffset			= <0.0, 0.0, 0.0>
+
+Pt1Time				= 0.25
+Pt1PosOffset			= <0.0, 0.0, 0.0>
+Pt1RotOffset			= <10.0, 0.0, 0.0>
+
+Pt2Time				= 0.75
+Pt2PosOffset			= <0.0, 0.0, 0.0>
+Pt2RotOffset			= <-10.0, 0.0, 0.0>
+
+Pt3Time				= 1.25
+Pt3PosOffset			= <0.0, 0.0, 0.0>
+Pt3RotOffset			= <10.0, 0.0, 0.0>
+
+Pt4Time				= 1.75
+Pt4PosOffset			= <0.0, 0.0, 0.0>
+Pt4RotOffset			= <-10.0, 0.0, 0.0>
+
+Pt5Time				= 2.0
+Pt5PosOffset			= <0.0, 0.0, 0.0>
+Pt5RotOffset			= <0.0, 0.0, 0.0>
+
+/* Tilt head left */
+[NodeScript2]
+
+NodeName			= "Head_node"
+Flags				= 0
+
+Pt0Time				= 0.0
+Pt0PosOffset			= <0.0, 0.0, 0.0>
+Pt0RotOffset			= <0.0, 0.0, 0.0>
+
+Pt1Time				= 0.65
+Pt1PosOffset			= <0.0, 0.0, 0.0>
+Pt1RotOffset			= <0.0, 15.0, 0.0>
+
+Pt2Time				= 1.0
+Pt2PosOffset			= <0.0, 0.0, 0.0>
+Pt2RotOffset			= <0.0, 0.0, 0.0>
+
+/* Tilt head right */
+[NodeScript3]
+
+NodeName			= "Head_node"
+Flags				= 0
+
+Pt0Time				= 0.0
+Pt0PosOffset			= <0.0, 0.0, 0.0>
+Pt0RotOffset			= <0.0, 0.0, 0.0>
+
+Pt1Time				= 0.65
+Pt1PosOffset			= <0.0, 0.0, 0.0>
+Pt1RotOffset			= <0.0, -15.0, 0.0>
+
+Pt2Time				= 1.0
+Pt2PosOffset			= <0.0, 0.0, 0.0>
+Pt2RotOffset			= <0.0, 0.0, 0.0>
+
+/* Shrug left shoulder */
+[NodeScript4]
+
+NodeName			= "Left_armu_shoulder_node"
+Flags				= 0
+
+Pt0Time				= 0.0
+Pt0PosOffset			= <0.0, 0.0, 0.0>
+Pt0RotOffset			= <0.0, 0.0, 0.0>
+
+Pt1Time				= 0.65
+Pt1PosOffset			= <0.0, 0.0, 0.0>
+Pt1RotOffset			= <0.0, -10.0, 0.0>
+
+Pt2Time				= 1.0
+Pt2PosOffset			= <0.0, 0.0, 0.0>
+Pt2RotOffset			= <0.0, 0.0, 0.0>
+
+/* Shrug right shoulder */
+[NodeScript5]
+
+NodeName			= "Right_armu_shoulder_node"
+Flags				= 0
+
+Pt0Time				= 0.0
+Pt0PosOffset			= <0.0, 0.0, 0.0>
+Pt0RotOffset			= <0.0, 0.0, 0.0>
+
+Pt1Time				= 0.65
+Pt1PosOffset			= <0.0, 0.0, 0.0>
+Pt1RotOffset			= <0.0, 10.0, 0.0>
+
+Pt2Time				= 1.0
+Pt2PosOffset			= <0.0, 0.0, 0.0>
+Pt2RotOffset			= <0.0, 0.0, 0.0>
+
+/////////////////////////////////////////////////////////////////////////
+
+[baron_action]
+
+Skin0 = "Default,chars\skins\baron_action.dtx"
+Head0 = "Default,chars\skins\baron_action_head.dtx"
+
+[baron_formal]
+
+Skin0 = "Default,chars\skins\baron_formal.dtx"
+Head0 = "Default,chars\skins\baron_formal_head.dtx"
+
+[baroness_action]
+
+Skin0 = "Default,chars\skins\baroness_action.dtx"
+Head0 = "Default,chars\skins\baroness_action_head.dtx"
+
+[baroness_winter]
+
+Skin0 = "Default,chars\skins\baroness_winter.dtx"
+Head0 = "Default,chars\skins\baroness_winter_head.dtx"
+
+[butler_action]
+
+Skin0 = "Default,chars\skins\butler_action.dtx"
+Head0 = "Default,chars\skins\butler_action_head.dtx"
+
+[cosmonaut_action]
+
+Skin0 = "Red,chars\skins\cosmonaut_action.dtx"
+Skin1 = "Blue,chars\skins\cosmonaut_action_blue.dtx"
+Head0 = "Head 1,chars\skins\cosmonaut_action_head.dtx"
+Head1 = "Head 2,chars\skins\cosmonaut_action_head1.dtx"
+Head2 = "Head 3,chars\skins\cosmonaut_action_head2.dtx"
+Head3 = "Head 4,chars\skins\cosmonaut_action_head3.dtx"
+
+[dockguard_action]
+
+Skin0 = "Default,chars\skins\dockguard_action.dtx"
+Head0 = "Head 1,chars\skins\dockguard_action_head.dtx"
+Head1 = "Head 2,chars\skins\dockguard_action_head1.dtx"
+Head2 = "Head 3,chars\skins\dockguard_action_head2.dtx"
+
+[dockguard_style2]
+
+Skin0 = "Default,chars\skins\dockguard_style2.dtx"
+Head0 = "Head 1,chars\skins\dockguard_style2_head.dtx"
+Head1 = "Head 2,chars\skins\dockguard_style2_head1.dtx"
+Head2 = "Head 3,chars\skins\dockguard_style2_head2.dtx"
+
+[doctor_action]
+
+Skin0 = "Default,chars\skins\doctor_action.dtx"
+Head0 = "Default,chars\skins\doctor_action_head.dtx"
+
+[euroagent_action]
+
+Skin0 = "Default,chars\skins\euroagent_action.dtx"
+Head0 = "Head 1,chars\skins\euroagent_action_head.dtx"
+Head1 = "Head 2,chars\skins\euroagent_action_head1.dtx"
+Head2 = "Head 3,chars\skins\euroagent_action_head2.dtx"
+
+[femalebystander_action]
+
+Skin0 = "Skin 1,chars\skins\femalebystander_action.dtx"
+Skin1 = "Skin 2,chars\skins\femalebystander_action_style2.dtx"
+Skin2 = "Skin 3,chars\skins\femalebystander_action_style3.dtx"
+Skin3 = "Skin 4,chars\skins\femalebystander_action_style4.dtx"
+Skin4 = "Skin 5,chars\skins\femalebystander_action_style5.dtx"
+Head0 = "Head 1,chars\skins\femalebystander_action_head.dtx"
+Head1 = "Head 2,chars\skins\femalebystander_action_head2.dtx"
+Head2 = "Head 3,chars\skins\femalebystander_action_head3.dtx"
+Head3 = "Head 4,chars\skins\femalebystander_action_head4.dtx"
+Head4 = "Head 5,chars\skins\femalebystander_action_head5.dtx"
+
+[femalebystander_formal]
+
+Skin0 = "Skin 1,chars\skins\femalebystander_formal.dtx"
+Skin1 = "Skin 2,chars\skins\femalebystander_formal_blk.dtx"
+Skin2 = "Skin 3,chars\skins\femalebystander_formal_green.dtx"
+Skin3 = "Skin 4,chars\skins\femalebystander_formal_pink.dtx"
+Skin4 = "Skin 5,chars\skins\femalebystander_formal_tan.dtx"
+Head0 = "Head 1,chars\skins\femalebystander_formal_head.dtx"
+Head1 = "Head 2,chars\skins\femalebystander_formal_head1.dtx"
+Head2 = "Head 3,chars\skins\femalebystander_formal_head2.dtx"
+Head3 = "Head 4,chars\skins\femalebystander_formal_head3.dtx"
+Head4 = "Head 5,chars\skins\femalebystander_formal_head4.dtx"
+
+[femalebystander_lowrank]
+
+Skin0 = "Default,chars\skins\femalebystander_lowrank.dtx"
+Head0 = "Default,chars\skins\femalebystander_lowrank_head.dtx"
+
+[femalebystander_style2]
+
+Skin0 = "Default,chars\skins\femalebystander_style2.dtx"
+Head0 = "Default,chars\skins\femalebystander_style2_head.dtx"
+
+[femalebystander_style4]
+
+Skin0 = "Default,chars\skins\femalebystander_style4.dtx"
+Head0 = "Default,chars\skins\femalebystander_style4_head.dtx"
+
+[femalebystander_winter]
+
+Skin0 = "Blue,chars\skins\femalebystander_winter.dtx"
+Skin1 = "Yellow,chars\skins\femalebystander_winter_yellow.dtx"
+Head0 = "Default,chars\skins\femalebystander_winter_head.dtx"
+
+[frogman_action]
+
+Skin0 = "Default,chars\skins\frogman_action.dtx"
+Head0 = "Head 1,chars\skins\frogman_action_head.dtx"
+Head1 = "Head 2,chars\skins\Frogman_action_head1.dtx"
+Head2 = "Head 3,chars\skins\Frogman_action_head2.dtx"
+
+[german_action]
+
+Skin0 = "Default,chars\skins\german_action.dtx"
+Head0 = "Default,chars\skins\german_action_head.dtx"
+
+[german_casual]
+
+Skin0 = "Default,chars\skins\german_casual.dtx"
+Head0 = "Default,chars\skins\german_casual_head.dtx"
+
+[harmguard_action]
+
+Skin0 = "Default,chars\skins\harmguard_action.dtx"
+Head0 = "Default,chars\skins\harmguard_action_head.dtx"
+
+[hero_action]
+
+Skin0 = "Default,chars\skins\hero_action.dtx"
+Head0 = "Default,chars\skins\hero_action_head.dtx"
+
+[hero_casual]
+
+Skin0 = "Default,chars\skins\hero_casual.dtx"
+Head0 = "Default,chars\skins\hero_casual_head.dtx"
+
+[hero_scuba]
+
+Skin0 = "Default,chars\skins\hero_scuba.dtx"
+Head0 = "Default,chars\skins\hero_scuba_head.dtx"
+
+[hero_undercover2]
+
+Skin0 = "Default,chars\skins\hero_Undercover2.dtx"
+Head0 = "Default,chars\skins\hero_Undercover2_head.dtx"
+
+[hero_winter]
+
+Skin0 = "Default,chars\skins\hero_winter.dtx"
+Head0 = "Default,chars\skins\hero_winter_head.dtx"
+
+[maid_action]
+
+Skin0 = "Default,chars\skins\maid_action.dtx"
+Head0 = "Default,chars\skins\maid_action_head.dtx"
+
+[malebystander_action]
+
+Skin0 = "Default,chars\skins\malebystander_action.dtx"
+Head0 = "Default,chars\skins\malebystander_action_head.dtx"
+
+[malebystander_casual]
+
+Skin0 = "Default,chars\skins\malebystander_casual.dtx"
+Skin1 = "Different,chars\skins\malebystander_casual_style2.dtx"
+Head0 = "Default,chars\skins\malebystander_casual_head.dtx"
+
+[malebystander_lowrank]
+
+Skin0 = "Default,chars\skins\malebystander_lowrank.dtx"
+Head0 = "Default,chars\skins\malebystander_lowrank_head.dtx"
+
+[malebystander_style4]
+
+Skin0 = "Default,chars\skins\malebystander_style4.dtx"
+Head0 = "Head 1,chars\skins\malebystander_style4_head.dtx"
+Head1 = "Head 2,chars\skins\malebystander_style4_head1.dtx"
+Head2 = "Head 3,chars\skins\malebystander_style4_head2.dtx"
+
+[malebystander_style5]
+
+Skin0 = "Default,chars\skins\malebystander_style5.dtx"
+Head0 = "Default,chars\skins\malebystander_style5_head.dtx"
+
+[malebystander_style6]
+
+Skin0 = "Default,chars\skins\malebystander_style6.dtx"
+Skin1 = "Style 1,chars\skins\malebystander_style6_arabblue.dtx"
+Skin2 = "Style 2,chars\skins\MaleBystander_Style6_ArabBrownD.dtx"
+Skin3 = "Style 3,chars\skins\MaleBystander_Style6_ArabBrownL.dtx"
+Skin4 = "Style 4,chars\skins\MaleBystander_Style6_ArabGray.dtx"
+Skin5 = "Style 5,chars\skins\MaleBystander_Style6_ArabGreen.dtx"
+Skin6 = "Style 6,chars\skins\MaleBystander_Style6_ArabPlum.dtx"
+Skin7 = "Style 7,chars\skins\MaleBystander_Style6_ArabStripe.dtx"
+Skin8 = "Style 8,chars\skins\MaleBystander_Style6_ArabWhite.dtx"
+Head0 = "Style 9,chars\skins\malebystander_style6_head.dtx"
+
+[malebystander_style7]
+
+Skin0 = "Default,chars\skins\malebystander_style7.dtx"
+Head0 = "Default,chars\skins\malebystander_style7_head.dtx"
+
+[malebystander_winter]
+
+Skin0 = "Default,chars\skins\malebystander_winter_style3.dtx"
+Head0 = "Default,chars\skins\malebystander_winter_head.dtx"
+
+[mentor_action]
+
+Skin0 = "Default,chars\skins\mentor_action.dtx"
+Head0 = "Default,chars\skins\mentor_action_head.dtx"
+
+[moroccanagent_action]
+
+Skin0 = "Style 1,chars\skins\moroccanagent_action.dtx"
+Skin1 = "Style 2,chars\skins\moroccanagent_action_grey.dtx"
+Skin2 = "Style 3,chars\skins\moroccanagent_action_red.dtx"
+Head0 = "Default,chars\skins\moroccanagent_action_head.dtx"
+
+[overcoatagent_action]
+
+Skin0 = "Default,chars\skins\overcoatagent_action.dtx"
+Head0 = "Head 1,chars\skins\overcoatagent_action_head.dtx"
+Head1 = "Head 2,chars\skins\overcoatagent_action_head1.dtx"
+Head2 = "Head 3,chars\skins\overcoatagent_action_head2.dtx"
+
+[overcoatagent_style2]
+
+Skin0 = "Default,chars\skins\overcoatagent_style2.dtx"
+Head0 = "Head 1,chars\skins\overcoatagent_style2_head.dtx"
+Head1 = "Head 2,chars\skins\overcoatagent_style2_head1.dtx"
+Head2 = "Head 3,chars\skins\overcoatagent_style2_head2.dtx"
+
+[paratrooper_action]
+
+Skin0 = "Default,chars\skins\paratrooper_action.dtx"
+Head0 = "Default,chars\skins\paratrooper_action_head.dtx"
+
+[partner_action]
+
+Skin0 = "Default,chars\skins\partner_action.dtx"
+Skin1 = "Style 1,chars\skins\partner_action_shirt2.dtx"
+Head0 = "Default,chars\skins\partner_action_head.dtx"
+Head1 = "Head 1,chars\skins\partner_action_headbad.dtx"
+
+[partner_style2]
+
+Skin0 = "Default,chars\skins\partner_style2.dtx"
+Head0 = "Default,chars\skins\partner_style2_head.dtx"
+
+[partner_dancin]
+
+Skin0 = "Default,chars\skins\partner_dancin.dtx"
+Head0 = "Default,chars\skins\partner_dancin_head.dtx"
+
+[russian_action]
+
+Skin0 = "Default,chars\skins\russian_action.dtx"
+Head0 = "Default,chars\skins\russian_action_head.dtx"
+
+[scotsman_action]
+
+Skin0 = "Default,chars\skins\scotsman_action.dtx"
+Head0 = "Default,chars\skins\scotsman_action_head.dtx"
+
+[stasiguard_action]
+
+Skin0 = "Default,chars\skins\stasiguard_action.dtx"
+Head0 = "Head 1,chars\skins\stasiguard_action_head.dtx"
+Head1 = "Head 2,chars\skins\stasiguard_action_head1.dtx"
+Head2 = "Head 3,chars\skins\stasiguard_action_head2.dtx"
+
+[subguard_action]
+
+Skin0 = "Default,chars\skins\subguard_action.dtx"
+Head0 = "Head 1,chars\skins\subguard_action_head.dtx"
+Head1 = "Head 2,chars\skins\subguard_action_head1.dtx"
+Head2 = "Head 3,chars\skins\subguard_action_head2.dtx"
+
+[unityagent_action]
+
+Skin0 = "Default,chars\skins\unityagent_action.dtx"
+Head0 = "Default,chars\skins\unityagent_action_head.dtx"
+
+[unitycouncil_action]
+
+Skin0 = "Default,chars\skins\unitycouncil_action.dtx"
+Head0 = "Default,chars\skins\unitycouncil_action_head.dtx"
+
+[unitycouncil_style2]
+
+Skin0 = "Default,chars\skins\unitycouncil_style2.dtx"
+Head0 = "Default,chars\skins\unitycouncil_style2_head.dtx"
+
+[unitycouncil_style3]
+
+Skin0 = "Default,chars\skins\unitycouncil_style3.dtx"
+Head0 = "Default,chars\skins\unitycouncil_style3_head.dtx"
+
+[winterguard_action]
+
+Skin0 = "Default,chars\skins\winterguard_action.dtx"
+Head0 = "Default,chars\skins\winterguard_action_head.dtx"
+
+[winterguard_style2]
+
+Skin0 = "Default,chars\skins\winterguard_style2.dtx"
+Head0 = "Head 1,chars\skins\winterguard_style2_head.dtx"
+Head1 = "Head 2,chars\skins\winterguard_style2_head1.dtx"
+Head2 = "Head 3,chars\skins\winterguard_style2_head2.dtx"
+
+[workguard_action]
+
+Skin0 = "Default,chars\skins\workguard_action.dtx"
+Head0 = "Head 1,chars\skins\workguard_action_head.dtx"
+Head1 = "Head 2,chars\skins\workguard_action_head1.dtx"
+Head2 = "Head 3,chars\skins\workguard_action_head2.dtx"
+
+[eliteguard_style2]
+
+Skin0 = "Default,chars\skins\elitewhite_action.dtx"
+Head0 = "Default,chars\skins\elitewhite_action_head.dtx"
+
+[eliteguard_style3]
+
+Skin0 = "Default,chars\skins\eliteblack_action.dtx"
+Head0 = "Default,chars\skins\eliteblack_action_head.dtx"
+
+[eliteguard_style4]
+
+Skin0 = "Default,chars\skins\eliteasian_action.dtx"
+Head0 = "Default,chars\skins\eliteasian_action_head.dtx"

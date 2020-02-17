@@ -134,6 +134,11 @@ void CMusicMgr::Init(const char* szMusicControlFile)
 	m_afEventChances[eEventAIDie]		= (LTFLOAT)g_pMusicButeMgr->GetDouble("settings", "DieChance");
 	m_afEventChances[eEventAIDodge]		= (LTFLOAT)g_pMusicButeMgr->GetDouble("settings", "DodgeChance");
 
+	// Jake: Hack for the tech demo!
+	if (stricmp("NolfDance.txt", szMusicControlFile) == 0) {
+		LockMood();
+	}
+
 	m_bInitialized = LTTRUE;
 }
 

@@ -1,0 +1,270 @@
+//////////////////////////////////////////////////////////////////////////////////////
+//
+// music.txt file format
+//
+//////////////////////////////////////////////////////////////////////////////////////
+//
+// [controlfilename minus the .txt] // MUST BE LOWERCASE
+//
+// // Moods
+//
+// None0 = Intensity from control file for "None" mood
+//  ...
+// NoneN = Intensity from control file for "None" mood
+//
+// Routine0 = Intensity from control file for "Routine" mood
+//  ...
+// RoutineN = Intensity from control file for "Routine" mood
+//
+// Routine0 = Intensity from control file for "Routine" mood
+//  ...
+// RoutineN = Intensity from control file for "Routine" mood
+//
+// Aggressive0 = Intensity from control file for "Aggressive" mood
+//  ...
+// AggressiveN = Intensity from control file for "Aggressive" mood
+//
+// // Events
+//
+// AIDie0 = "Name of motif from control file to playe when AI dies"
+//   ...  = 
+// AIDie1 = "Name of motif from control file to playe when AI dies"
+//
+// AIDodge0 = "Name of motif from control file to playe when AI dodges"
+//   ...
+// AIDodge1 = "Name of motif from control file to playe when AI dodges"
+//
+//////////////////////////////////////////////////////////////////////////////////////
+// 
+// this file controls the dynamic music. there are two elements of the dynamic music
+// which are controllable. these are the mood of the music, and events. this concepts
+// map into direct music's intensities and motifs, respectively. 
+//
+// at any given time, only a single mood will be playing. any number of events (short
+// musical phrases) may play on top of this mood.
+//
+// the moods are broken down into three categories: 
+//
+// none				- lowest priority. no activity near the player.
+// routine			- next lowest priority. small amount of activity near player,
+//					  like ai's walking around or talking
+// investigative	- second highest priority, ai's are aware of player's presence,
+//					  but not engaged in combat
+// aggressive		- highest priority, ai's are in combat with the player
+//
+// the mood of the music to be played is determined by simply identifying the first
+// mood, starting from aggressive down to none, which has ai's actively stimulating
+// it (by being in states that are of the right mood). note that the mood is only
+// determined by ai's that are active in the player's vis. when the mood changes
+// like from none to investigative, or aggressive to none, one of the intensities
+// will be chosen randomly and played until the mood changes again.
+//
+// the events are triggered by specific game actions, like ai's dying or dodging.
+// when one of the events occurs, the dynamic music will simply pick randomly from
+// the list of motifs to be played, and play it.
+//
+//////////////////////////////////////////////////////////////////////////////////////
+
+[settings] // MUST BE LOWERCASE
+
+DodgeChance = 0.5
+DieChance = 0.5
+
+[ambush] // MUST BE LOWERCASE
+
+// Moods
+
+None0 = 1
+None1 = 2
+
+Routine0 = 3
+
+Investigate0 = 4
+
+Aggressive0 = 6
+Aggressive1 = 7
+Aggressive2 = 5
+
+// Events
+
+AIDie0 = "Motif1"
+AIDie1 = "Motif2"
+
+AIDodge0 = "Motif3"
+AIDodge1 = "Motif3b"
+AIDodge2 = "Motif3c"
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+[badguy] // MUST BE LOWERCASE
+
+// Moods
+
+None0 = 1
+None1 = 2
+
+Routine0 = 4
+
+Investigate0 = 6
+
+Aggressive0 = 9
+Aggressive1 = 14
+
+// Events
+
+// no events
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+[nolftheme] // MUST BE LOWERCASE
+
+// Moods
+
+None0 = 1
+None1 = 2
+
+Routine0 = 3
+Routine1 = 12
+Routine2 = 1
+Routine3 = 3
+Routine4 = 12
+
+Investigate0 = 4
+Investigate1 = 14
+
+Aggressive0 = 5
+Aggressive1 = 13
+Aggressive2 = 5
+Aggressive3 = 6
+
+// Events
+
+AIDie0 = "HornDoubleHit1"
+AIDie1 = "HornDoubleHit2"
+AIDie2 = "VibeRunSupAmb1"
+
+AIDodge0 = "HornHit1"
+AIDodge1 = "HornHit2"
+AIDodge2 = "HornHit3"
+
+// From Goodman Tech Demo
+[nolfdance] // MUST BE LOWERCASE
+
+// Moods
+
+None0 = 1
+None1 = 2
+
+Routine0 = 3
+Routine1 = 12
+Routine2 = 1
+Routine3 = 3
+Routine4 = 12
+
+Investigate0 = 4
+Investigate1 = 14
+
+Aggressive0 = 5
+Aggressive1 = 13
+Aggressive2 = 5
+Aggressive3 = 6
+
+// Events
+
+AIDie0 = "HornDoubleHit1"
+AIDie1 = "HornDoubleHit2"
+AIDie2 = "VibeRunSupAmb1"
+
+AIDodge0 = "HornHit1"
+AIDodge1 = "HornHit2"
+AIDodge2 = "HornHit3"
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+[nolforch] // MUST BE LOWERCASE
+
+// Moods
+
+None0 = 1
+None1 = 5
+
+Routine0 = 6
+Routine1 = 7
+
+Investigate0 = 4
+
+Aggressive0 = 8
+Aggressive1 = 2
+Aggressive3 = 3
+
+// Events
+
+// no events
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+[badedum] // MUST BE LOWERCASE
+
+// Moods
+
+None0 = 1
+None1 = 8
+None2 = 4
+None3 = 3
+None4 = 2
+
+Routine0 = 5
+Routine1 = 17
+Routine2 = 1
+Routine3 = 23
+Routine4 = 5
+
+Investigate0 = 20
+Investigate1 = 11
+Investigate2 = 10
+Investigate3 = 24
+Investigate4 = 6
+Investigate5 = 20
+
+Aggressive0 = 18
+Aggressive1 = 19
+Aggressive2 = 25
+Aggressive3 = 9
+Aggressive4 = 7
+
+// Events
+
+AIDie0 = "DeepPercHit"
+AIDie1 = "SnareLickSupAmb"
+AIDie2 = "TimpSticks"
+
+AIDodge0 = "HornGlissSwell"
+AIDodge1 = "HornSwell"
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+[goty] // MUST BE LOWERCASE
+
+// Moods
+
+None0 = 1
+None1 = 2
+
+Routine0 = 4
+Routine1 = 2
+Routine2 = 3
+Routine3 = 1
+
+Investigate0 = 5
+Investigate1 = 6
+
+Aggressive0 = 7
+Aggressive1 = 8
+
+// Events
+
+// no events
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+
