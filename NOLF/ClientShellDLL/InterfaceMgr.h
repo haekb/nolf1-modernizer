@@ -530,6 +530,9 @@ class CInterfaceMgr
 		LTBOOL		m_bQuickSwitch;
 		LTBOOL		m_bRestrictAspectRatio; // For cinematics
 		LTBOOL		m_bUseGOTYMenu;
+
+		LTFLOAT m_fLastFrameTime;
+		LTFLOAT m_fWeaponChooserTimer;
 };
 
 
