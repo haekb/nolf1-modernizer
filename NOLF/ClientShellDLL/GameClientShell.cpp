@@ -3892,7 +3892,7 @@ void CGameClientShell::UpdateContainerFX()
 
 		if (!IsLiquid(m_eCurContainerCode) && IsLiquid(eCode))
 		{
-            g_pLTClient->RunConsoleString("ModelWarble 0");
+            g_pLTClient->RunConsoleString("ModelWarble 1");
 			m_InterfaceMgr.BeginUnderwater();
 		}
 
