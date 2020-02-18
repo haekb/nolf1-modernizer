@@ -3399,7 +3399,7 @@ void CGameClientShell::UpdateWeaponModel()
     LTBOOL bFire = LTFALSE;
 
 	// Only check if we're firing if we aren't choosing ammo/weapons...
-	if (!m_InterfaceMgr.IsChoosingAmmo() && !m_InterfaceMgr.IsChoosingWeapon())
+	if (!m_InterfaceMgr.IsChoosingAmmo() && ( !m_InterfaceMgr.IsChoosingWeapon() || g_vtQuickSwitch.GetFloat() ))
 	{
 		if ((m_dwPlayerFlags & BC_CFLG_FIRING) || (m_dwPlayerFlags & BC_CFLG_ALT_FIRING) &&
 			!IsPlayerDead() && !m_bSpectatorMode)

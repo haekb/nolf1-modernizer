@@ -222,6 +222,9 @@ CInterfaceMgr::CInterfaceMgr()
 	m_eMainFolderID = FOLDER_ID_NONE;
 
 	m_bUseGOTYMenu = LTFALSE;
+
+	m_fWeaponChooserTimer = 0.0f;
+	m_fLastFrameTime = 0.0f;
 }
 
 
@@ -859,6 +862,22 @@ LTBOOL CInterfaceMgr::Update()
 		UpdateCursor();
 	}
 
+
+	if (g_vtQuickSwitch.GetFloat() && m_fWeaponChooserTimer <= 0)
+	{
+		m_WeaponChooser.Close();
+		m_fWeaponChooserTimer = 0;
+		// Not yet covered but quick switch...should it?
+		//m_AmmoChooser.Close();
+	}
+
+	// Quick delta time
+	LTFLOAT delta = g_pGameClientShell->GetFrameTime() - m_fLastFrameTime;
+	m_fLastFrameTime = g_pGameClientShell->GetFrameTime();
+
+	if (m_fWeaponChooserTimer > 0) {
+		m_fWeaponChooserTimer -= (1.0 * delta);
+	}
 
 	return bHandled;
 }
@@ -2365,6 +2384,7 @@ LTBOOL CInterfaceMgr::OnCommandOn(int command)
 
 				if (g_vtQuickSwitch.GetFloat())
 				{
+					m_fWeaponChooserTimer = 2.5f;
 					uint8 nCurrWeapon = m_WeaponChooser.GetCurrentSelection();
 					g_pGameClientShell->GetWeaponModel()->ChangeWeapon(g_pWeaponMgr->GetCommandId(nCurrWeapon), LTTRUE, LTTRUE);
 				}
@@ -2390,6 +2410,7 @@ LTBOOL CInterfaceMgr::OnCommandOn(int command)
 
 				if (g_vtQuickSwitch.GetFloat())
 				{
+					m_fWeaponChooserTimer = 2.5f;
 					uint8 nCurrWeapon = m_WeaponChooser.GetCurrentSelection();
 					g_pGameClientShell->GetWeaponModel()->ChangeWeapon(g_pWeaponMgr->GetCommandId(nCurrWeapon), LTTRUE, LTTRUE);
 				}
@@ -2487,7 +2508,7 @@ LTBOOL CInterfaceMgr::OnCommandOff(int command)
 
 		case COMMAND_ID_FIRING :
 		{
-			if (IsChoosingWeapon())
+			if (IsChoosingWeapon() && !g_vtQuickSwitch.GetFloat())
 			{
                 uint8 nCurrWeapon = m_WeaponChooser.GetCurrentSelection();
 				m_WeaponChooser.Close();
@@ -2496,7 +2517,7 @@ LTBOOL CInterfaceMgr::OnCommandOff(int command)
                 return LTTRUE;
 
 			}
-			else if (IsChoosingAmmo())
+			else if (IsChoosingAmmo())// && !g_vtQuickSwitch.GetFloat())
 			{
                 uint8 nCurrAmmo = m_AmmoChooser.GetCurrentSelection();
 				m_AmmoChooser.Close();

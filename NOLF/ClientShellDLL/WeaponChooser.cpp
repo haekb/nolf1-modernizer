@@ -234,10 +234,10 @@ void CWeaponChooser::Draw()
 	}
 
 	x -= (NUM_WEAPON_ICONS * (kIconWidth + kIconSpacing)) / 2;
-/*
+
 	if (m_hWeaponSurf[0] && m_nWeapons[0] != m_nWeapons[kLastWeapon])
         g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hWeaponSurf[0], LTNULL, x, y,SETRGB_T(255,0,255));
-*/
+
 	x += (kIconWidth + kIconSpacing);
 	if (m_hWeaponSurf[1])
 	{
@@ -248,18 +248,18 @@ void CWeaponChooser::Draw()
         g_pLTClient->DrawSurfaceToSurface(hScreen, m_hWeaponSurf[1], LTNULL, x, y);
 	}
 
-/* commented out drawing of weapon command - jrg 9/22
+// commented out drawing of weapon command - jrg 9/22
 	if (pFont && m_szWeaponCommand[0])
 	{
 		pFont->Draw(m_szWeaponCommand,hScreen,x,y,LTF_JUSTIFY_LEFT,SETRGB(255,255,0));
 	}
-*/
+
 	x += (kIconWidth + kIconSpacing);
 
-/*
+
 	if (m_hWeaponSurf[2] && m_nWeapons[2] != m_nWeapons[1])
         g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hWeaponSurf[2], LTNULL, x, y,SETRGB_T(255,0,255));
-*/
+
 }
 
 void CWeaponChooser::SetCommandStr(int nWeaponId)
@@ -425,7 +425,7 @@ void CAmmoChooser::Draw()
 	CLTGUIFont *pFont = g_pInterfaceResMgr->GetChooserFont();
 	pFont->Draw(m_hAmmoStr,hScreen,x,y+(kIconWidth + kIconSpacing),LTF_JUSTIFY_CENTER,kWhite);
 
-//	x -= (NUM_AMMO_ICONS * (kIconWidth + kIconSpacing)) / 2;
+	x -= (NUM_AMMO_ICONS * (kIconWidth + kIconSpacing)) / 2;
 	x -= kIconWidth / 2;
 
 	if (m_hAmmoSurf[kCurrAmmo])
@@ -442,7 +442,7 @@ void CAmmoChooser::Draw()
 		}
 	}
 	x += (kIconWidth + kIconSpacing);
-/*
+
 	if (m_hAmmoSurf[kLastAmmo])
 	{
         g_pLTClient->DrawSurfaceToSurfaceTransparent(hScreen, m_hAmmoSurf[kLastAmmo], LTNULL, x, y,SETRGB_T(255,0,255));
@@ -454,5 +454,5 @@ void CAmmoChooser::Draw()
 			pFont->Draw(szStr,hScreen,(x+kIconWidth/2),y + kIconWidth - 16,LTF_JUSTIFY_CENTER);
 		}
 	}
-*/
+
 }
