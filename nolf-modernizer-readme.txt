@@ -47,6 +47,13 @@ It's important that you don't run this mod with any other mods that may have mod
  - Added anisotropic filtering to advanced performance options.
  - Fixed shadows disappearing between cutscenes and saved games.
 
+--  Control Changes
+We've made some changes to the default control scheme in 1.006 Patch 3. As such the game will reset your controls on startup.
+
+ - Scroll Wheel Up/Down     - Now handles switching weapons instead of handling scope zooming.
+ - Middle Mouse/Mouse 3     - Now handles toggling between scope zoom modes.
+ - `/~                      - Now toggles the console on or off.
+
 --  Additional Config/Console Commands
 
 We've added new autoexec.cfg commands! (They also work in the console!)
