@@ -14,8 +14,7 @@
 #include "screentintmgr.h"
 #include "GameClientShell.h"
 extern CGameClientShell* g_pGameClientShell;
-
-VarTrack g_vtEnableScreenTint;
+extern VarTrack g_vtEnableScreenTint;
 
 CScreenTintMgr::CScreenTintMgr()
 {
@@ -24,7 +23,6 @@ CScreenTintMgr::CScreenTintMgr()
 		m_avTints[i].Init(0.0f,0.0f,0.0f);
 	}
     m_bChanged = LTFALSE;
-	g_vtEnableScreenTint.Init(g_pLTClient, "EnableScreenTinting", LTNULL, 1.0f);
 }
 
 CScreenTintMgr::~CScreenTintMgr()
