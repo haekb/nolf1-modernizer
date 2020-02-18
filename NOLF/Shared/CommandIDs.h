@@ -69,6 +69,7 @@
 #define COMMAND_ID_INVENTORY		78
 #define COMMAND_ID_LEFT_SHORT		79
 #define COMMAND_ID_TOGGLE_CONSOLE	80
+#define COMMAND_ID_TOGGLE_ZOOM		81
 
 // Special command ids...
 

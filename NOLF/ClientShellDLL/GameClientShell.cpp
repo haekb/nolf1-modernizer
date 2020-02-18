@@ -982,6 +982,41 @@ void CGameClientShell::UpdateConfigSettings()
 	}
 }
 
+void CGameClientShell::ClearBindings()
+{
+	uint32 devices[3] =
+	{
+		DEVICETYPE_KEYBOARD,
+		DEVICETYPE_MOUSE,
+		DEVICETYPE_JOYSTICK
+	};
+
+
+	for (int i = 0; i < 3; ++i)
+	{
+		DeviceBinding* pBindings = g_pLTClient->GetDeviceBindings(devices[i]);
+		if (!pBindings)
+		{
+			continue;
+		}
+
+		char str[128];
+		DeviceBinding* ptr = pBindings;
+		while (ptr)
+		{
+			if (ptr->strTriggerName[0] == ';')
+				sprintf(str, "rangebind \"%s\" \"##39\" 0 0 \"\"", ptr->strDeviceName);
+			else
+				sprintf(str, "rangebind \"%s\" \"%s\" 0 0 \"\"", ptr->strDeviceName, ptr->strTriggerName);
+			g_pLTClient->RunConsoleString(str);
+
+			ptr = ptr->pNext;
+		}
+
+		g_pLTClient->FreeDeviceBindings(pBindings);
+	}
+}
+
 
 // ----------------------------------------------------------------------- //
 //
@@ -1461,20 +1496,25 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 	DetourMgr* detourMgr = new DetourMgr();
 	detourMgr->Init();
 
-	// Add in the new ToggleConsole action so they can actually bind it.
-	// This is all generated automagically for no real good reason.
-	std::string sCommand = CommandName(COMMAND_ID_TOGGLE_CONSOLE);
-	std::string sAddToggleConsole = "AddAction " + sCommand + " " + std::to_string(COMMAND_ID_TOGGLE_CONSOLE);
-	g_pLTClient->RunConsoleString((char*)sAddToggleConsole.c_str());
-
 	// Do some upgrading!
 	if (g_vtModPatchNum.GetFloat() < g_pVersionMgr->GetLatestPatchVersion()) {
 
-		// Bind console to '`' by default, I don't want to run defcontrols.cfg because that might irk some folk.
-		if (g_vtModPatchNum.GetFloat() < 3.0f) {
-			g_pLTClient->RunConsoleString("rangebind \"##keyboard\" \"##41\" 0.000000 0.000000 \"ToggleConsole\"");
-		}
+		// Ruin their controls by applying the defaults.
+		if (g_vtModPatchNum.GetFloat() < 3.1f) { // 1.006 - 3.0 was beta release, 3.1 is main release
 
+			// Bump up bulletholes - From AVP2 autoexec.cfg
+			WriteConsoleFloat("BulletHoles", 100.0f);
+
+			// Reset controls
+			LTRESULT result = g_pLTClient->ReadConfigFile("defctrls.cfg");
+			if (result != LT_ERROR)
+			{
+				ClearBindings();
+				g_pLTClient->ReadConfigFile("defctrls.cfg");
+			}
+
+			SDL_Log("One time upgrade to 1.006! Controls reset.");
+		}
 	}
 
 	WriteConsoleFloat("ModPatchNum", g_pVersionMgr->GetLatestPatchVersion());
@@ -4446,6 +4486,54 @@ void CGameClientShell::OnCommandOn(int command)
                     m_bZooming   = LTTRUE;
                     m_bZoomingIn = LTFALSE;
                     m_InterfaceMgr.BeginZoom(LTFALSE);
+					HandleZoomChange(pStats->GetCurWeapon());
+				}
+			}
+		}
+
+		case COMMAND_ID_TOGGLE_ZOOM:
+		{
+			if (m_weaponModel.IsDisabled()) break;
+
+			CPlayerStats* pStats = m_InterfaceMgr.GetPlayerStats();
+			uint8 nScopeId = pStats->GetScope();
+			if (nScopeId == WMGR_INVALID_ID) break;
+
+			MOD* pMod = g_pWeaponMgr->GetMod(nScopeId);
+			if (!pMod) break;
+
+			int nZoomLevel = pMod->nZoomLevel;
+
+			// Figure out if our current weapon has a scope...
+			if (!m_bZooming && nZoomLevel > 0)
+			{
+				int nOldZoom = m_nZoomView;
+
+				m_nZoomView++;
+				m_nZoomView = m_nZoomView > nZoomLevel ? 0 : m_nZoomView;
+
+				if (m_nZoomView != nOldZoom)
+				{
+					m_bZooming = LTTRUE;
+					m_bZoomingIn = LTTRUE;
+
+					if (nOldZoom == 0)
+					{
+						BeginZoom();
+					}
+
+					// If we hit the cap, zoomview will go back to 0. 
+					// Good time to zoom out!
+					if (m_nZoomView == 0)
+					{
+						m_bZooming = LTTRUE;
+						m_bZoomingIn = LTFALSE;
+						m_InterfaceMgr.BeginZoom(LTFALSE);
+					}
+					else {
+						m_InterfaceMgr.BeginZoom(LTTRUE);
+					}
+
 					HandleZoomChange(pStats->GetCurWeapon());
 				}
 			}

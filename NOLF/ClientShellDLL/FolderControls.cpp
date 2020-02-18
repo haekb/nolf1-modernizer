@@ -170,37 +170,7 @@ void CFolderControls::ClearBindings()
 {
     if (!g_pLTClient) return;
 
-    uint32 devices[3] =
-	{
-		DEVICETYPE_KEYBOARD,
-		DEVICETYPE_MOUSE,
-		DEVICETYPE_JOYSTICK
-	};
-
-
-	for (int i = 0; i < 3; ++i)
-	{
-        DeviceBinding* pBindings = g_pLTClient->GetDeviceBindings (devices[i]);
-		if (!pBindings)
-		{
-			continue;
-		}
-
-		char str[128];
-		DeviceBinding* ptr = pBindings;
-		while (ptr)
-		{
-			if (ptr->strTriggerName[0] == ';')
-				sprintf(str, "rangebind \"%s\" \"##39\" 0 0 \"\"", ptr->strDeviceName);
-			else
-				sprintf(str, "rangebind \"%s\" \"%s\" 0 0 \"\"", ptr->strDeviceName, ptr->strTriggerName);
-            g_pLTClient->RunConsoleString (str);
-
-			ptr = ptr->pNext;
-		}
-
-        g_pLTClient->FreeDeviceBindings (pBindings);
-	}
+	g_pGameClientShell->ClearBindings();
 }
 
 

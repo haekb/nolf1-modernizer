@@ -6500,6 +6500,8 @@
 #define IDS_AF_16X_TF                   30100
 #define IDS_EXTRAS_TECHDEMO             30101
 #define IDS_WEAPON_13_2                 30102
+#define IDS_CONTROL_TOGGLE_ZOOM         30103
+#define IDS_ACTIONSTRING_TOGGLE_ZOOM    30104
 
 // Next default values for new objects
 // 

@@ -24,7 +24,7 @@ static const char* s_szBuild		= "Modern";
 #endif 
 static const uint32 s_nSaveVersion  = 4;
 
-static const float s_fLatestPatch = 3.0f;
+static const float s_fLatestPatch = 3.1f;
 
 
 CVersionMgr* g_pVersionMgr = NULL;
