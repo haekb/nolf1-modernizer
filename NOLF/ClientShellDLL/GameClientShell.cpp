@@ -1500,16 +1500,20 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 	if (g_vtModPatchNum.GetFloat() < g_pVersionMgr->GetLatestPatchVersion()) {
 
 		// Ruin their controls by applying the defaults.
-		if (g_vtModPatchNum.GetFloat() < 3.0f) {
+		if (g_vtModPatchNum.GetFloat() < 3.1f) { // 1.006 - 3.0 was beta release, 3.1 is main release
+
+			// Bump up bulletholes - From AVP2 autoexec.cfg
+			WriteConsoleFloat("BulletHoles", 100.0f);
+
+			// Reset controls
 			LTRESULT result = g_pLTClient->ReadConfigFile("defctrls.cfg");
 			if (result != LT_ERROR)
 			{
 				ClearBindings();
 				g_pLTClient->ReadConfigFile("defctrls.cfg");
 			}
-			g_pLTClient->WriteConfigFile("autoexec.cfg");
 
-			SDL_Log("One time upgrade to 3.0! Controls reset.");
+			SDL_Log("One time upgrade to 1.006! Controls reset.");
 		}
 	}
 
