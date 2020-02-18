@@ -1092,12 +1092,12 @@ void CFolderCustomControls::RebindWheel(int nUpAction,int nDownAction)
 	char upStr[64] = "";
 	if (nUpAction >= 0)
 	{
-		sprintf(upStr,"0.000001 255.0 \"%s\"",CommandName(nUpAction));
+		sprintf(upStr,"0.100000 255.0 \"%s\"",CommandName(nUpAction));
 	}
 	char downStr[64] = "";
 	if (nDownAction >= 0)
 	{
-		sprintf(downStr,"-0.000001 -255.0 \"%s\"",CommandName(nDownAction));
+		sprintf(downStr,"-0.100000 -255.0 \"%s\"",CommandName(nDownAction));
 	}
 
 	sprintf(tempStr, "rangebind \"%s\" \"##z-axis\" %s %s", szDevice, upStr, downStr);
