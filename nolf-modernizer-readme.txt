@@ -74,6 +74,9 @@ To run in windowed mode either toggle it in-game or, add +windowed 1 to the "Com
 
 Unfortuantely we can't fix everything! Here's a list of known bugs.
 
+Bug: I get a black screen underwater!
+This is due to Intel's onboard graphics not liking Direct3D/DirectX7. If your computer has a dedicated gpu, you can try forcing it on by plugging in an external monitor. Or try using DGVoodoo2.
+
 Bug: The game crashes with "NOLF Error: Couldn't set D3D Emulation mode."
 In advanced options of the launcher try checking "Restore Default Options". Also make sure the Display selected is your primary monitor. 
 
