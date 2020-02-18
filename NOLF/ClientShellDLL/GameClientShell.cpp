@@ -175,7 +175,7 @@ VarTrack			g_vtConsoleBackdrop;			// ConsoleBackdrop			<0-2>
 VarTrack			g_vtBigHeadMode;				// BigHeadMode				<0-1>
 VarTrack			g_vtModPatchNum;				// ModPatchNum
 VarTrack			g_vtEnableScreenTint;			// EnableScreenTinting		<0-1>
-
+VarTrack			g_vtEnableLightScale;			// EnableLightScale			<0-1>
 
 LTFLOAT             s_fDemoTime     = 0.0f;
 LTFLOAT             s_fDeadTimer    = 0.0f;
@@ -1154,7 +1154,7 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 	g_vtConsoleBackdrop.Init(g_pLTClient, "ConsoleBackdrop", NULL, 0.0f);
 	g_vtBigHeadMode.Init(g_pLTClient, "BigHeadMode", NULL, 0.0f);
 	g_vtEnableScreenTint.Init(g_pLTClient, "EnableScreenTinting", LTNULL, 1.0f);
-
+	g_vtEnableLightScale.Init(g_pLTClient, "EnableLightScale", LTNULL, 1.0f);
 
 	// Currently saved patch number, if the version changes we can do some upgradin'
 	g_vtModPatchNum.Init(g_pLTClient, "ModPatchNum", NULL, 0.0f);

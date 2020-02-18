@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "iltclient.h"
 #include "LightScaleMgr.h"
+#include "GameClientShell.h"
+
+extern VarTrack g_vtEnableLightScale;
 
 LTBOOL CLightScaleMgr::Init()
 {
@@ -88,6 +91,12 @@ void CLightScaleMgr::ClearLightScale (LTFLOAT nRed, LTFLOAT nGreen, LTFLOAT nBlu
 
 void CLightScaleMgr::SetLightScale()
 {
+	if (!g_vtEnableLightScale.GetFloat())
+	{
+		Disable();
+		return;
+	}
+
 	// go though looking for the first interface type
 
 	LS_EFFECT* pEffect = m_pEffects;
