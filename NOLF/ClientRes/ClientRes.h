@@ -6499,6 +6499,7 @@
 #define IDS_AF_8X_TF                    30099
 #define IDS_AF_16X_TF                   30100
 #define IDS_EXTRAS_TECHDEMO             30101
+#define IDS_WEAPON_13_2                 30102
 
 // Next default values for new objects
 // 

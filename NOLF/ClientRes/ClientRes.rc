@@ -7798,6 +7798,7 @@ BEGIN
     IDS_AF_8X_TF            "8x Anisotropic Filtering"
     IDS_AF_16X_TF           "16x Anisotropic Filtering"
     IDS_EXTRAS_TECHDEMO     "This is the October 2000 Lithtech ""Goodman"" Tech Demo. Showing off various features of the Lithtech engine with a familiar face. Included in Modernizer as a fun little extra!\n\nWarning: The tech demo includes strobing lights which some users may find disorientating.\n\nWould you like to continue?"
+    IDS_WEAPON_13_2         "Hampton MPL 9mm SMG (Alternate)"
 END
 
 #endif    // English (United States) resources
