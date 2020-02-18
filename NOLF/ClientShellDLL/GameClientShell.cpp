@@ -4490,6 +4490,54 @@ void CGameClientShell::OnCommandOn(int command)
 				}
 			}
 		}
+
+		case COMMAND_ID_TOGGLE_ZOOM:
+		{
+			if (m_weaponModel.IsDisabled()) break;
+
+			CPlayerStats* pStats = m_InterfaceMgr.GetPlayerStats();
+			uint8 nScopeId = pStats->GetScope();
+			if (nScopeId == WMGR_INVALID_ID) break;
+
+			MOD* pMod = g_pWeaponMgr->GetMod(nScopeId);
+			if (!pMod) break;
+
+			int nZoomLevel = pMod->nZoomLevel;
+
+			// Figure out if our current weapon has a scope...
+			if (!m_bZooming && nZoomLevel > 0)
+			{
+				int nOldZoom = m_nZoomView;
+
+				m_nZoomView++;
+				m_nZoomView = m_nZoomView > nZoomLevel ? 0 : m_nZoomView;
+
+				if (m_nZoomView != nOldZoom)
+				{
+					m_bZooming = LTTRUE;
+					m_bZoomingIn = LTTRUE;
+
+					if (nOldZoom == 0)
+					{
+						BeginZoom();
+					}
+
+					// If we hit the cap, zoomview will go back to 0. 
+					// Good time to zoom out!
+					if (m_nZoomView == 0)
+					{
+						m_bZooming = LTTRUE;
+						m_bZoomingIn = LTFALSE;
+						m_InterfaceMgr.BeginZoom(LTFALSE);
+					}
+					else {
+						m_InterfaceMgr.BeginZoom(LTTRUE);
+					}
+
+					HandleZoomChange(pStats->GetCurWeapon());
+				}
+			}
+		}
 		break;
 
 		case COMMAND_ID_TURNAROUND :
