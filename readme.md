@@ -53,6 +53,7 @@ The following are new config/console commands:
   - `NoRawInput`              - INT - Disables raw mouse input. (Default is 0)
   - `ConsoleBackdrop`         - INT - Swap between 3 different console backdrops: (0) demo, (1) blanktag, and (2) black. (Default is 0)
   - `BigHeadMode`             - INT - Enable or Disable BigHeadMode. (Default is 0)
+  - `DisplayTriggers`         - INT - Shows or Hides a physical representation of level triggers. (Default is 0)
 
 Most of these commands are also available in their respective options menu.
 

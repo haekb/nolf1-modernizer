@@ -71,6 +71,7 @@ CVarTrack			g_NetArmorHealthPercent;
 
 // Small hack to enable BigHeadMode server-side
 CVarTrack			g_vtNetBigHeadMode;
+CVarTrack			g_vtDisplayTriggers;
 
 CGameServerShell*   g_pGameServerShell = LTNULL;
 
@@ -116,6 +117,7 @@ IServerShell* CreateServerShell(ILTServer *pServerDE)
 	g_NetAudioTaunts.Init(g_pLTServer,"NetAudioTaunts",LTNULL,1.0f);
 	g_NetArmorHealthPercent.Init(g_pLTServer, "NetArmorHealthPercent", LTNULL, 0.0f);
 
+	g_vtDisplayTriggers.Init(g_pLTServer, "DisplayTriggers", LTNULL, 0.0f);
 
 	// Mirrors client
 	g_vtNetBigHeadMode.Init(g_pLTServer, "BigHeadMode", LTNULL, 0.0f);
@@ -233,6 +235,8 @@ CGameServerShell::CGameServerShell(ILTServer *pServerDE)
 	}
 
 	m_lFrametime = (m_lTimerFrequency.QuadPart / 60);
+
+	m_bDisplayTriggersIsOn = LTFALSE;
 }
 
 
@@ -2361,10 +2365,10 @@ void CGameServerShell::Update(LTFLOAT timeElapsed)
 
 
 	// See if we should show our bounding box...
-
-	if (g_CanShowDimsTrack.GetFloat())
+	// Or trigger bounding boxes...Those are a little different a bit hacked in, but it's an easier way to see JUST triggers.
+	if (g_CanShowDimsTrack.GetFloat() || g_vtDisplayTriggers.GetFloat() || (!g_vtDisplayTriggers.GetFloat() && m_bDisplayTriggersIsOn))
 	{
-		if (g_ShowDimsTrack.GetFloat())
+		if (g_ShowDimsTrack.GetFloat() || g_vtDisplayTriggers.GetFloat())
 		{
 			UpdateBoundingBoxes();
 		}
@@ -2374,6 +2378,7 @@ void CGameServerShell::Update(LTFLOAT timeElapsed)
 		}
 	}
 
+	m_bDisplayTriggersIsOn = (LTBOOL)g_vtDisplayTriggers.GetFloat();
 
 	// Did the server want to say something?
 
@@ -2882,6 +2887,11 @@ void CGameServerShell::UpdateBoundingBoxes()
     HOBJECT hObj   = g_pLTServer->GetNextObject(LTNULL);
     HCLASS  hClass = g_pLTServer->GetClass("GameBase");
 
+	if (g_vtDisplayTriggers.GetFloat())
+	{
+		hClass = g_pLTServer->GetClass("Trigger");
+	}
+
 	// Active objects...
 
 	while (hObj)
@@ -2889,6 +2899,7 @@ void CGameServerShell::UpdateBoundingBoxes()
         if (g_pLTServer->IsKindOf(g_pLTServer->GetObjectClass(hObj), hClass))
 		{
             GameBase* pObj = (GameBase*)g_pLTServer->HandleToObject(hObj);
+
 			if (pObj)
 			{
 				pObj->UpdateBoundingBox();
@@ -2929,6 +2940,11 @@ void CGameServerShell::RemoveBoundingBoxes()
 {
     HOBJECT hObj   = g_pLTServer->GetNextObject(LTNULL);
     HCLASS  hClass = g_pLTServer->GetClass("GameBase");
+
+	if (g_vtDisplayTriggers.GetFloat())
+	{
+		hClass = g_pLTServer->GetClass("Trigger");
+	}
 
 	// Active objects...
 

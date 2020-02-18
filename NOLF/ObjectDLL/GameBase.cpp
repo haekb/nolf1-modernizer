@@ -18,6 +18,7 @@
 #include "VersionMgr.h"
 
 extern CVarTrack g_ShowDimsTrack;
+extern CVarTrack g_vtDisplayTriggers;
 
 CVarTrack	g_vtDimsAlpha;
 
@@ -234,8 +235,15 @@ void GameBase::CreateBoundingBox()
 	}
 
     LTVector vColor = GetBoundingBoxColor();
+	LTFLOAT fAlpha = g_vtDimsAlpha.GetFloat();
 
-    g_pLTServer->SetObjectColor(m_hDimsBox, vColor.x, vColor.y, vColor.z, g_vtDimsAlpha.GetFloat());
+	if (g_vtDisplayTriggers.GetFloat())
+	{
+		vColor.Init(1, 1, 0);
+		fAlpha = 0.95f;
+	}
+
+    g_pLTServer->SetObjectColor(m_hDimsBox, vColor.x, vColor.y, vColor.z, fAlpha);
 }
 
 
@@ -474,6 +482,10 @@ LTVector GameBase::GetBoundingBoxColor()
 void GameBase::UpdateBoundingBox()
 {
 	int nVal = (int)g_ShowDimsTrack.GetFloat();
+
+	if (g_vtDisplayTriggers.GetFloat()) {
+		nVal = 5;
+	}
 
 	if (nVal < 4)
 	{

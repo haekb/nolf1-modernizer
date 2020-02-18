@@ -265,6 +265,8 @@ class CGameServerShell : public IServerShell
 
         CGameServSendHandler    m_SendHandler;
 
+		LTBOOL m_bDisplayTriggersIsOn;
+
 		void CacheModels();
 		void CacheTextures();
 		void CacheSprites();
