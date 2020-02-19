@@ -58,7 +58,9 @@ LTBOOL CFolderMultiSummary::Build()
 		kGap = g_pLayoutMgr->GetFolderCustomInt(FOLDER_ID_MP_SUMMARY,"GapWidth");
 
 	LTFLOAT yr = g_pInterfaceResMgr->GetYRatio();
-	kGap *= yr;
+	//kGap *= yr;
+	//kScore *= yr;
+	//kName *= yr;
 
 	UseBack(LTFALSE);
 	UseMain(LTFALSE);
@@ -247,6 +249,8 @@ void CFolderMultiSummary::OnFocus(LTBOOL bFocus)
 					pCtrl->Enable(LTFALSE);
 					pCtrl->AddColumn(ptr->hstrName, kName, LTF_JUSTIFY_LEFT);
 					
+
+
 					sprintf(score,"%d (%d)",ptr->nFrags, (uint32)ptr->m_Ping);
 					HSTRING hScore = g_pLTClient->CreateString(score);
 					pCtrl->AddColumn(hScore, kScore, LTF_JUSTIFY_RIGHT);
@@ -336,8 +340,8 @@ LTBOOL CFolderMultiSummary::Render(HSURFACE hDestSurf)
         return LTFALSE;
 	}
 
-	int xo = g_pInterfaceResMgr->GetXOffset();
-	int yo = g_pInterfaceResMgr->GetYOffset();
+	int xo = 0;// g_pInterfaceResMgr->GetXOffset();
+	int yo = 0;// g_pInterfaceResMgr->GetYOffset();
 
 	CClientInfoMgr *pCIMgr = g_pInterfaceMgr->GetClientInfoMgr();
 	if (pTeamCtrl && pLastCtrl && pCIMgr)

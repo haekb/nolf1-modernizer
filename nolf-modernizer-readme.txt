@@ -87,6 +87,10 @@ To run in windowed mode either toggle it in-game or, add +windowed 1 to the "Com
 
 Unfortuantely we can't fix everything! Here's a list of known bugs.
 
+
+Bug: Help I'm stuck!
+You can enter in the console (see controls for the console key) `mpclip` to turn on no clip mode. Once you've gotten yourself out of the sticky spot, you can enter `mpclip` in the console to turn off no clip.
+
 Bug: I get a black screen underwater!
 This is due to Intel's onboard graphics not liking Direct3D/DirectX7. If your computer has a dedicated gpu, you can try forcing it on by plugging in an external monitor. Or enable "Intel HD Graphics Fix" in Display options.
 
