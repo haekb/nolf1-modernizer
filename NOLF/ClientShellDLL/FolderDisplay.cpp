@@ -74,16 +74,18 @@ int FolderDisplayCompare( const void *arg1, const void *arg2 )
 CFolderDisplay::CFolderDisplay()
 {
 
-    m_bTexture32    =   LTFALSE;
-	m_bEscape		=	LTFALSE;
-	m_bWindowedMode =   LTFALSE;
+    m_bTexture32		=   LTFALSE;
+	m_bEscape			=	LTFALSE;
+	m_bWindowedMode		=   LTFALSE;
+	m_bBlackScreenFix	=	LTFALSE;
 
-    m_pRendererLabel    = LTNULL;
-    m_pResolutionLabel  = LTNULL;
-    m_pRendererCtrl     = LTNULL;
-    m_pResolutionCtrl   = LTNULL;
-	m_pHardwareCursor	= LTNULL;
-	m_pWindowedMode		= LTNULL;
+    m_pRendererLabel		= LTNULL;
+    m_pResolutionLabel		= LTNULL;
+    m_pRendererCtrl			= LTNULL;
+    m_pResolutionCtrl		= LTNULL;
+	m_pHardwareCursor		= LTNULL;
+	m_pWindowedMode			= LTNULL;
+	m_pBlackScreenFixCtrl	= LTNULL;
 }
 
 CFolderDisplay::~CFolderDisplay()
@@ -138,9 +140,9 @@ LTBOOL CFolderDisplay::Build()
 	m_pHardwareCursor->SetOnString(IDS_ON);
 	m_pHardwareCursor->SetOffString(IDS_OFF);
 
-	m_pWindowedMode = AddToggle(IDS_WINDOWED_MODE, IDS_HELP_WINDOWED_MODE, 225, &m_bWindowedMode);
-	m_pWindowedMode->SetOnString(IDS_ON);
-	m_pWindowedMode->SetOffString(IDS_OFF);
+	m_pBlackScreenFixCtrl = AddToggle(IDS_INTEL_BLACKSCREEN_FIX, IDS_HELP_INTEL_BLACKSCREEN_FIX, 225, &m_bBlackScreenFix);
+	m_pBlackScreenFixCtrl->SetOnString(IDS_ON);
+	m_pBlackScreenFixCtrl->SetOffString(IDS_OFF);
 
 	CalculateLastDrawn();
 
@@ -484,6 +486,9 @@ void CFolderDisplay::OnFocus(LTBOOL bFocus)
 
 		m_bWindowedMode = (GetConsoleInt("Windowed", 0));
 
+		// Intel black screen is caused by light scale, so get the reverse of that cvar
+		m_bBlackScreenFix = !GetConsoleInt("EnableLightScale", 0);
+
 		// The current render mode
 		RMode currentMode;
 		g_pLTClient->GetRenderMode(&currentMode);
@@ -526,6 +531,12 @@ void CFolderDisplay::OnFocus(LTBOOL bFocus)
 		{
 			LTBOOL bTexture32 = pSettings->GetBoolVar("32BitTextures");
 			LTBOOL bForceResolutionReload = LTFALSE;
+
+			// Two fixes in one! The blackscreen is the main problem (EnableLightScale),
+			// however screentinting just doesn't work! So we'll enable an alternate one.
+			int nBlackScreenFix = !m_bBlackScreenFix;
+			WriteConsoleInt("EnableScreenTinting", nBlackScreenFix);
+			WriteConsoleInt("EnableLightScale", nBlackScreenFix);
 
 			WriteConsoleInt("HardwareCursor",(int)m_bHardwareCursor);
 

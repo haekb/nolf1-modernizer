@@ -6502,6 +6502,8 @@
 #define IDS_WEAPON_13_2                 30102
 #define IDS_CONTROL_TOGGLE_ZOOM         30103
 #define IDS_ACTIONSTRING_TOGGLE_ZOOM    30104
+#define IDS_INTEL_BLACKSCREEN_FIX       30105
+#define IDS_HELP_INTEL_BLACKSCREEN_FIX  30106
 
 // Next default values for new objects
 // 

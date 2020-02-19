@@ -91,6 +91,7 @@ private:
 	LTBOOL							m_bEscape;
 	LTBOOL							m_bHardwareCursor;
 	LTBOOL							m_bWindowedMode;
+	LTBOOL							m_bBlackScreenFix;
 
 	CLTGUITextItemCtrl				*m_pRendererLabel;		// The renderer label control
 	CLTGUITextItemCtrl				*m_pResolutionLabel;	// The resolution label control
@@ -98,6 +99,7 @@ private:
 	CCycleCtrl						*m_pResolutionCtrl;		// The resolution control
 	CToggleCtrl						*m_pHardwareCursor;
 	CToggleCtrl						*m_pWindowedMode;		// The windowed mode control
+	CToggleCtrl						*m_pBlackScreenFixCtrl;		// The windowed mode control
 
 	CMoArray<FolderDisplayRenderer>	m_rendererArray;		// The array of renderers
 
