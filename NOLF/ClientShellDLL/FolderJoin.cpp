@@ -1975,30 +1975,41 @@ void CFolderJoin::AskForPassword()
 	m_bAskingForPassword = LTTRUE;
 	m_szPassword[0] = LTNULL;
 	m_pPassLabel = CreateTextItem(IDS_PASSWORD, CMD_EDIT_PASS, IDS_HELP_ENTER_PASSWORD);
+	m_pPassLabel->SetParam2(FC_DONT_REPOS);
 
 	m_pPassEdit = CreateEditCtrl(" ", CMD_EDIT_PASS, IDS_HELP_ENTER_PASSWORD, m_szPassword, sizeof(m_szPassword), 25, LTTRUE);
 	m_pPassEdit->EnableCursor();
     m_pPassEdit->Enable(LTFALSE);
 	m_pPassEdit->SetAlignment(LTF_JUSTIFY_CENTER);
+	m_pPassEdit->SetParam2(FC_DONT_REPOS);
 
 	char szBack[128] = "";
 	g_pLayoutMgr->GetMessageBoxBackground(szBack,sizeof(szBack));
 
 	m_pPassBack = debug_new(CBitmapCtrl);
     m_pPassBack->Create(g_pLTClient,szBack);
+	m_pPassBack->SetParam2(FC_DONT_REPOS);
 
+	uint32 nWidth, nHeight;
+	auto hScreen = g_pLTClient->GetScreenSurface();
+	g_pLTClient->GetSurfaceDims(hScreen, &nWidth, &nHeight);
 	LTIntPt pos(0,0);
 
-	pos.x = 320 - m_pPassBack->GetWidth() / 2;
-	pos.y = 240 - m_pPassBack->GetHeight() / 2;
+	pos.x = (nWidth / 2) - m_pPassBack->GetWidth() / 2;
+	pos.y = (nHeight / 2) - m_pPassBack->GetHeight() / 2;
+
 	AddFixedControl(m_pPassBack,pos,LTFALSE);
 
 	pos.x += 16;
-	pos.y = 244 + m_pPassEdit->GetHeight();
+	pos.y = (nHeight / 2) + 4 + m_pPassEdit->GetHeight();
+
+
 	AddFixedControl(m_pPassEdit,pos,LTTRUE);
 
-	pos.x = 320 - m_pPassLabel->GetWidth() / 2;
-	pos.y = 236 - m_pPassLabel->GetHeight();
+	pos.x = (nWidth / 2) - m_pPassLabel->GetWidth() / 2;
+	pos.y = (nHeight / 2) - 4 - m_pPassLabel->GetHeight();
+
+
 	AddFixedControl(m_pPassLabel,pos,LTFALSE);
 
 
