@@ -204,6 +204,7 @@ void CFolderAdvDisplay::OnFocus(LTBOOL bFocus)
 			break;
 		case 8:
 			m_nTextureFiltering = 4;
+			break;
 		case 16:
 			m_nTextureFiltering = 5;
 		}
