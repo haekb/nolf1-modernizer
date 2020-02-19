@@ -38,6 +38,7 @@ The goal of NOLF Modernizer is to help fix some long standing bugs, and update s
 - Added a windowed mode toggle to the display options.
 - Added anisotropic filtering to advanced performance options.
 - Fixed shadows disappearing between cutscenes and saved games.
+- Added a "Blackscreen Fix" work around for Intel HD graphics chips in Display options.
 
 ## Additional Config/Console Commands
 
