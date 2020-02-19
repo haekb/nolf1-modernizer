@@ -2963,6 +2963,13 @@ void CCharacterFX::InitLocalPlayer()
 	{
 		// check for needed overlays
 		ModelStyle ms = GetModelStyle();
+
+		// Sometimes ms gets an invalid one and then crashes. Boy that's weird.
+		if (ms == eModelStyleInvalid) {
+			SDL_Log("BUG: The weird invalid model style thing happened again");
+			ms = eModelStyleDefault;
+		}
+
 		if (_stricmp(g_pModelButeMgr->GetStyleName(ms),"Undercover2") == 0)
 		{
 			g_pInterfaceMgr->BeginSpacesuit();
