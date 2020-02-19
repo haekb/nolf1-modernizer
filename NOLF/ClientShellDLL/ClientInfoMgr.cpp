@@ -668,14 +668,14 @@ void CClientInfoMgr::UpdateFragDisplay ()
 	if (m_hTeamScore)
 	{
 		LTIntPt sz = g_pInterfaceResMgr->GetMsgForeFont()->GetTextExtents(m_hTeamScore);
-		m_TeamPos.x = sz.x+4;
+		m_TeamPos.x = sz.x+4 + 38;
 		m_TeamPos.y = nPos;
 		nPos += sz.y;
 	}
 	if (m_hOppScore)
 	{
 		LTIntPt sz = g_pInterfaceResMgr->GetMsgForeFont()->GetTextExtents(m_hOppScore);
-		m_OppPos.x = sz.x+4;
+		m_OppPos.x = sz.x+4 + 38;
 		m_OppPos.y = nPos;
 		nPos += sz.y;
 		nPos += 4;
@@ -683,7 +683,7 @@ void CClientInfoMgr::UpdateFragDisplay ()
 	if (m_hFragString)
 	{
 		LTIntPt sz = g_pInterfaceResMgr->GetMsgForeFont()->GetTextExtents(m_hFragString);
-		m_FragPos.x = sz.x+4;
+		m_FragPos.x = sz.x+4 + 38;
 		m_FragPos.y = nPos;
 	}
 }
