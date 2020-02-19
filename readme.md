@@ -54,6 +54,9 @@ The following are new config/console commands:
   - `ConsoleBackdrop`         - INT - Swap between 3 different console backdrops: (0) demo, (1) blanktag, and (2) black. (Default is 0)
   - `BigHeadMode`             - INT - Enable or Disable BigHeadMode. (Default is 0)
   - `DisplayTriggers`         - INT - Shows or Hides a physical representation of level triggers. (Default is 0)
+  - `EnableScreenTinting`     - INT - Enable or disable native screen tinting. Disabling will activate an alternate screen tinting. (Default is 1)
+  - `EnableLightScale`        - INT - Enable or disable light scaling. (Default is 1)
+
 
 Most of these commands are also available in their respective options menu.
 

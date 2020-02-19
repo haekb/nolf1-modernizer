@@ -42,9 +42,16 @@ public:
 
 	void ClearAll();
 
+	HSURFACE GetTintSurface() { return m_hAltSurface; }
+	int GetTintWidth() { return m_nAltSurfaceWidth; }
+	int GetTintHeight() { return m_nAltSurfaceHeight; }
+
 private:
     LTVector m_avTints[NUM_TINT_EFFECTS];
     LTBOOL   m_bChanged;
+	HSURFACE m_hAltSurface;
+	int m_nAltSurfaceWidth;
+	int m_nAltSurfaceHeight;
 };
 
 

@@ -46,6 +46,7 @@ It's important that you don't run this mod with any other mods that may have mod
  - Added a windowed mode toggle to the display options.
  - Added anisotropic filtering to advanced performance options.
  - Fixed shadows disappearing between cutscenes and saved games.
+ - Added a "Blackscreen Fix" work around for Intel HD graphics chips in Display options.
 
 --  Control Changes
 We've made some changes to the default control scheme in 1.006 Patch 3. As such the game will reset your controls on startup.
@@ -69,9 +70,10 @@ Some of these will show up in your autoexec.cfg as you set them, but if it's mis
 "UIScale"			        - Scales the in-game HUD. (Default is 0.5)
 "UseGotyMenu"			    - Switch between the original main menu and the GOTY version. (Default is based on your version)
 "ConsoleBackdrop"           - Swap between 3 different console backdrops: (0) demo, (1) blanktag, and (2) black. (Default is 0)
-"BigHeadMode"               - Enable or Disable BigHeadMode. (Default is 0)
-"DisplayTriggers"           - Shows or Hides a physical representation of level triggers. (Default is 0)
-
+"BigHeadMode"               - Enable or disable BigHeadMode. (Default is 0)
+"DisplayTriggers"           - Shows or hides a physical representation of level triggers. (Default is 0)
+"EnableScreenTinting"       - Enable or disable native screen tinting. Disabling will activate an alternate screen tinting. (Default is 1)
+"EnableLightScale"          - Enable or disable light scaling. (Default is 1)
 
 Most of these commands are also available in their respective options menu.
 

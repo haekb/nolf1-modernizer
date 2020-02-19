@@ -7801,6 +7801,9 @@ BEGIN
     IDS_WEAPON_13_2         "Hampton MPL 9mm SMG (Alternate)"
     IDS_CONTROL_TOGGLE_ZOOM "Toggle Zoom"
     IDS_ACTIONSTRING_TOGGLE_ZOOM "ToggleZoom"
+    IDS_INTEL_BLACKSCREEN_FIX "Blackscreen Fix"
+    IDS_HELP_INTEL_BLACKSCREEN_FIX 
+                            "Fix for blackscreen while underwater. Mainly for on-board Intel HD Graphics chips."
 END
 
 #endif    // English (United States) resources

@@ -7278,6 +7278,21 @@ void CGameClientShell::RenderCamera(LTBOOL bDrawInterface)
     g_pLTClient->RenderCamera(m_hCamera);
     g_pLTClient->StartOptimized2D();
 
+	// Alternate Screen Tinting!
+	auto hScreen = g_pLTClient->GetScreenSurface();
+	LTBOOL bEnableScreenTint = g_vtEnableScreenTint.GetFloat();
+	HSURFACE hTintSurface = m_ScreenTintMgr.GetTintSurface();
+
+	if (!bEnableScreenTint && hTintSurface)
+	{
+		LTRect rDest = { 0, 0, m_ScreenTintMgr.GetTintWidth() , m_ScreenTintMgr.GetTintHeight() };
+		g_pLTClient->SetOptimized2DBlend(LTSURFACEBLEND_ADD);
+		g_pLTClient->ScaleSurfaceToSurface(hScreen, hTintSurface, &rDest, LTNULL);
+		g_pLTClient->SetOptimized2DBlend(LTSURFACEBLEND_ALPHA);
+	}
+
+	//
+
 	m_InterfaceMgr.Draw();
 
 	// Display any necessary debugging info...
@@ -7286,7 +7301,7 @@ void CGameClientShell::RenderCamera(LTBOOL bDrawInterface)
 	{
 		// Get the screen width and height...
 
-        HSURFACE hScreen = g_pLTClient->GetScreenSurface();
+        //HSURFACE hScreen = g_pLTClient->GetScreenSurface();
         uint32 nScreenWidth, nScreenHeight;
         g_pLTClient->GetSurfaceDims(hScreen, &nScreenWidth, &nScreenHeight);
 
