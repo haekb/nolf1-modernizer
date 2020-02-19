@@ -1554,6 +1554,14 @@ Head1 = "Head 2,chars\skins\cosmonaut_action_head1.dtx"
 Head2 = "Head 3,chars\skins\cosmonaut_action_head2.dtx"
 Head3 = "Head 4,chars\skins\cosmonaut_action_head3.dtx"
 
+[cosmonaut_style2]
+
+Skin0 = "Blue,chars\skins\cosmonaut_action_blue.dtx"
+Skin1 = "Red,chars\skins\cosmonaut_action.dtx"
+Head0 = "Head 1,chars\skins\cosmonaut_action_head.dtx"
+Head1 = "Head 2,chars\skins\cosmonaut_action_head1.dtx"
+Head2 = "Head 3,chars\skins\cosmonaut_action_head2.dtx"
+
 [dockguard_action]
 
 Skin0 = "Default,chars\skins\dockguard_action.dtx"
@@ -1701,6 +1709,7 @@ Skin0 = "Default,chars\skins\malebystander_style4.dtx"
 Head0 = "Head 1,chars\skins\malebystander_style4_head.dtx"
 Head1 = "Head 2,chars\skins\malebystander_style4_head1.dtx"
 Head2 = "Head 3,chars\skins\malebystander_style4_head2.dtx"
+Head3 = "Dummy,chars\skins\malebystander_style4_dummy.dtx"
 
 [malebystander_style5]
 
@@ -1728,6 +1737,7 @@ Head0 = "Default,chars\skins\malebystander_style7_head.dtx"
 [malebystander_winter]
 
 Skin0 = "Default,chars\skins\malebystander_winter_style3.dtx"
+Skin1 = "Style 1,chars\skins\malebystander_winter.dtx"
 Head0 = "Default,chars\skins\malebystander_winter_head.dtx"
 
 [mentor_action]

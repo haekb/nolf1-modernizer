@@ -1,0 +1,698 @@
+
+/*
+**
+** Name			the name of the attachable. the name is what will be entered into dedit.
+** Type			the type of the attachable. the valid types are:
+**
+**				0 - prop			a static item with no logic, like a hat, or moustache, etc
+**				1 - object			an item with logic, like a searchlight, etc
+**
+** Properties	a string with any object properties you wish to override (for example "Chrome 1;Gravity 0")
+** 
+** Class		if the type = 1 (object), the class name
+**
+** Model		if the type = 0 (prop), the name of the .abc file
+**
+** Skin			if the type = 0 (prop), the name of the .dtx file
+**
+*/
+
+[Attachment0]
+
+Name			= "Helicopter Searchlight"
+Type			= 1
+Properties		= "VisualRange 10000;Filename Props\Models\SpotLight.abc;Skin Props\Skins\SpotLight.dtx"
+Class			= "ControlledSearchLight"
+
+[Attachment1]
+
+Name			= "Frogman Tank"
+Type			= 0
+Model			= "Attachments\Models\Frogman_action_Tank.abc"
+Skin			= "Attachments\Skins\Frogman_action_Gear.dtx"
+
+[Attachment2]
+
+Name			= "Frogman Knife"
+Type			= 0
+Model			= "Attachments\Models\Frogman_action_Knife.abc"
+Skin			= "Attachments\Skins\Frogman_action_Gear.dtx"
+
+[Attachment3]
+
+Name			= "Frogman Mask"
+Type			= 0
+Model			= "Attachments\Models\Frogman_action_Mask.abc"
+Skin			= "Attachments\Skins\Frogman_action_Gear.dtx"
+Properties		= "Alpha 0.99"
+
+[Attachment4]
+
+Name			= "Frogman Pouch"
+Type			= 0
+Model			= "Attachments\Models\Frogman_action_Pouch.abc"
+Skin			= "Attachments\Skins\Frogman_action_Gear.dtx"
+
+[Attachment5]
+
+Name			= "Moroccan Fez"
+Type			= 0
+Model			= "Attachments\Models\MoroccanAgent_action_fez.abc"
+Skin			= "Attachments\Skins\MoroccanAgent_action_fez.dtx"
+
+[Attachment6]
+
+Name			= "Moroccan Sunglasses"
+Type			= 0
+Model			= "Attachments\Models\MoroccanAgent_action_glasses.abc"
+Skin			= "Attachments\Skins\MoroccanAgent_action_fez.dtx"
+
+[Attachment7]
+
+Name			= "Cosmonaut Helmet"
+Type			= 0
+Model			= "Attachments\Models\Cosmonaut_action_helmet.abc"
+Skin			= "Attachments\Skins\Cosmonaut_action_helmet.dtx"
+Properties		= "Alpha 0.99"
+
+[Attachment8]
+
+Name			= "DockGuard Hat"
+Type			= 0
+Model			= "Attachments\Models\DockGuard_action_hat.abc"
+Skin			= "Attachments\Skins\Coverall_Attachments.dtx"
+
+[Attachment9]
+
+Name			= "German Helmet"
+Type			= 0
+Model			= "Attachments\Models\German_action_helmet.abc"
+Skin			= "Attachments\Skins\German_action_attachments.dtx"
+Properties		= "Chrome 1"
+
+[Attachment10]
+
+Name			= "German Shield"
+Type			= 0
+Model			= "Attachments\Models\German_action_shield.abc"
+Skin			= "Attachments\Skins\German_action_attachments.dtx"
+Properties		= "Chrome 1"
+
+[Attachment11]
+
+Name			= "German Hair"
+Type			= 0
+Model			= "Attachments\Models\German_casual_hair.abc"
+Skin			= "Attachments\Skins\German_casual_hair.dtx"
+
+[Attachment12]
+
+Name			= "OvercoatAgent Hat"
+Type			= 0
+Model			= "Attachments\Models\OvercoatAgent_action_hat.abc"
+Skin			= "Attachments\Skins\OvercoatAgent_action_hat.dtx"
+
+[Attachment13]
+
+Name			= "SubGuard Hat"
+Type			= 0
+Model			= "Attachments\Models\SubGuard_action_hat.abc"
+Skin			= "Attachments\Skins\Coverall_Attachments.dtx"
+
+[Attachment14]
+
+Name			= "WorkGuard Hardhat"
+Type			= 0
+Model			= "Attachments\Models\WorkGuard_action_hardhat.abc"
+Skin			= "Attachments\Skins\Coverall_Attachments.dtx"
+
+[Attachment15]
+
+Name			= "STASIGuard Hat"
+Type			= 0
+Model			= "Attachments\Models\STASIGuard_action_hat.abc"
+Skin			= "Attachments\Skins\STASIGuard_action_hat.dtx"
+
+[Attachment16]
+
+Name			= "Cigar"
+Type			= 0
+Model			= "Attachments\Models\Scotsman_cigar.abc"
+Skin			= "Chars\Skins\Scotsman_action_head.dtx"
+
+[Attachment17]
+
+Name			= "HelicopterLight1"
+Type			= 1 
+Class 			= "ScaleSprite"
+Properties		= "Filename Spr\Spr0011.spr"
+
+[Attachment18]
+
+Name			= "HelicopterLight2"
+Type			= 1 
+Class 			= "ScaleSprite"
+Properties		= "Filename Spr\Spr0009.spr"
+
+[Attachment19]
+
+Name			= "Baroness Hat1"
+Type			= 0
+Model			= "Attachments\Models\Baroness_action_hat.abc"
+Skin			= "Chars\Skins\Baroness_action.dtx"
+
+[Attachment20]
+
+Name			= "Baron Hat1"
+Type			= 0
+Model			= "Attachments\Models\Baron_action_hat.abc"
+Skin			= "Attachments\Skins\Baron_action_hat.dtx"
+
+[Attachment21]
+
+Name			= "Coffee Mug"
+Type			= 0
+Model			= "Attachments\Models\Mug_01.abc"
+Skin			= "Props\Skins\Mug_01.dtx"
+
+[Attachment22]
+
+Name			= "Clipboard"
+Type			= 0
+Model			= "Attachments\Models\Clipboard.abc"
+Skin			= "Props\Skins\Clipboard.dtx"
+
+[Attachment23]
+
+Name			= "NerdGlasses"
+Type			= 0
+Model			= "Attachments\Models\Nerd_Glasses.abc"
+Skin			= "Attachments\Skins\Nerd_Glasses.dtx"
+Properties		= "Alpha 0.99"
+
+[Attachment24]
+
+Name			= "NavyHat"
+Type			= 0
+Model			= "Attachments\Models\Baron_formal_hat.abc"
+Skin			= "Attachments\Skins\Baron_formal_hat.dtx"
+
+[Attachment25]
+
+Name			= "PilotHat"
+Type			= 0
+Model			= "Attachments\Models\Pilot_Hat.abc"
+Skin			= "Attachments\Skins\Pilot_Hat.dtx"
+
+[Attachment26]
+
+Name			= "ParatrooperGoggles"
+Type			= 0
+Model			= "Attachments\Models\Paratrooper_Goggles.abc"
+Skin			= "Attachments\Skins\Paratrooper_Goggles.dtx"
+Properties		= "Alpha 0.99"
+
+[Attachment27]
+
+Name			= "Parachute"
+Type			= 0
+Model			= "Attachments\Models\Parachute.abc"
+Skin			= "Attachments\Skins\Parachute.dtx"
+
+[Attachment28]
+
+Name			= "Helicopter Window"
+Type			= 0
+Model			= "Attachments\Models\Helicopter_window.abc"
+Skin			= "Chars\Skins\Helicopter_action_head.dtx"
+Properties		= "Alpha 0.99"
+
+[Attachment29]
+
+Name			= "Disguise"
+Type			= 0
+Model			= "Attachments\Models\disguise.abc"
+Skin			= "Attachments\Skins\disguise.dtx"
+Properties		= "Alpha 0.99"
+
+[Attachment30]
+
+Name			= "MiaScubamask_up"
+Type			= 0
+Model			= "Attachments\Models\Mia_maskup.abc"
+Skin			= "Attachments\Skins\Hero_Scuba_gear.dtx"
+Properties		= "Alpha 0.99"
+
+[Attachment31]
+
+Name			= "MiaScubamask_down"
+Type			= 0
+Model			= "Attachments\Models\Mia_maskdown.abc"
+Skin			= "Attachments\Skins\Hero_Scuba_gear.dtx"
+Properties		= "Alpha 0.99"
+
+[Attachment32]
+
+Name			= "MiaScubaTank"
+Type			= 0
+Model			= "Attachments\Models\Mia_tank.abc"
+Skin			= "Attachments\Skins\Hero_Scuba_gear.dtx"
+
+[Attachment33]
+
+Name			= "FatGlasses"
+Type			= 0
+Model			= "Attachments\Models\FatGlasses.abc"
+Skin			= "Attachments\Skins\Nerd_Glasses.dtx"
+Properties		= "Alpha 0.99"
+
+[Attachment34]
+
+Name			= "ConducterHat"
+Type			= 0
+Model			= "Attachments\Models\TrainConducterHat.abc"
+Skin			= "Attachments\Skins\TrainConducterHat.dtx"
+
+[Attachment35]
+
+Name			= "TopRotor"
+Type			= 0
+Model			= "Attachments\Models\Rotorblades.abc"
+Skin			= "Attachments\Spr\Rotorblades.spr"
+Properties		= "Alpha 0.99;Scale 1.1 1 1.1"
+
+[Attachment36]
+
+Name			= "BackRotor"
+Type			= 0
+Model			= "Attachments\Models\Rotorblades.abc"
+Skin			= "Attachments\Spr\Rotorblades.spr"
+Properties		= "Alpha 0.99;Scale 0.18 1 0.18"
+
+[Attachment37]
+
+Name			= "FeatherDuster"
+Type			= 0
+Model			= "Attachments\Models\FeatherDuster.abc"
+Skin			= "Attachments\Skins\FeatherDuster.dtx"
+
+[Attachment38]
+
+Name			= "Sword"
+Type			= 0
+Model			= "Attachments\Models\Sword.abc"
+Skin			= "Attachments\Skins\German_action_attachments.dtx"
+Properties		= "Chrome 1"
+
+[Attachment39]
+
+Name			= "Motorcycle1"
+Type			= 0
+Model			= "Props\Models\Motorcycle.abc"
+Skin			= "Props\Skins\Motorcycle.dtx"
+
+[Attachment40]
+
+Name			= "FemaleGlasses"
+Type			= 0
+Model			= "Attachments\Models\FemaleGlasses.abc"
+Skin			= "Attachments\Skins\FemaleGlasses.dtx"
+Properties		= "Alpha 0.99"
+
+[Attachment41]
+
+Name			= "DoctorGlasses"
+Type			= 0
+Model			= "Attachments\Models\DoctorGlasses.abc"
+Skin			= "Chars\Skins\Doctor_action_head.dtx"
+Properties		= "Alpha 0.99"
+
+[Attachment42]
+
+Name			= "Monacle"
+Type			= 0
+Model			= "Attachments\Models\Monacle.abc"
+Skin			= "Chars\Skins\Baron_formal_head.dtx"
+Properties		= "Alpha 0.99"
+
+[Attachment43]
+
+Name			= "P38"
+Type			= 0
+Model			= "Guns\Models_HH\Walther_hh.abc"
+Skin			= "Guns\Skins_HH\Walther_hh.dtx"
+
+[Attachment44]
+
+Name			= "SunGlasses"
+Model			= "Guns\Models_HH\Sunglasses_hh.abc"
+Skin			= "Guns\Skins_HH\Sunglasses_hh.dtx"
+
+[Attachment45]
+
+Name			= "headset"
+Type			= 0
+Model			= "Attachments\Models\headset.abc"
+Skin			= "Attachments\Skins\headset.dtx"
+
+[Attachment46]
+
+Name			= "lily"
+Type			= 0
+Model			= "Attachments\Models\Lily.abc"
+Skin			= "Attachments\Skins\Lily.dtx"
+Properties		= "Chromakey 1.0"
+
+[Attachment47]
+
+Name			= "cigarette"
+Type			= 0
+Model			= "Attachments\Models\Cigarette.abc"
+Skin			= "Attachments\Skins\Cigarette.dtx"
+
+[Attachment48]
+
+Name			= "Cigarette_Male"
+Type			= 0
+Model			= "Attachments\Models\Cigarette_Male.abc"
+Skin			= "Attachments\Skins\Cigarette.dtx"
+
+[Attachment49]
+
+Name			= "Cigarette_Female"
+Type			= 0
+Model			= "Attachments\Models\Cigarette_Female.abc"
+Skin			= "Attachments\Skins\Cigarette.dtx"
+
+[Attachment50]
+
+Name			= "Martini"
+Type			= 0
+Model			= "Attachments\Models\Martini.abc"
+Skin			= "Props\Skins\Drink_02.dtx"
+Properties		= "Alpha 0.99;Scale 0.75 0.75 0.75"
+
+[Attachment51]
+
+Name			= "Broom"
+Type			= 0
+Model			= "Attachments\Models\broom.abc"
+Skin			= "Attachments\Skins\broom.dtx"
+
+[Attachment52]
+
+Name			= "Helicopter Gunner"
+Type			= 1
+Properties		= "Name g;RightHand AK47,7.62x39 fmj;Initial targetplayer;NeverDestroy TRUE"
+Class			= "AI_BAD_Paratrooper"
+
+[Attachment53]
+
+Name			= "Helicopter Gunner1"
+Type			= 1
+Properties		= "Name g1;RightHand AK47,7.62x39 fmj;Initial targetplayer;NeverDestroy TRUE"
+Class			= "AI_BAD_Paratrooper"
+
+[Attachment54]
+
+Name			= "Helicopter Gunner2"
+Type			= 1
+Properties		= "Name g2;RightHand AK47,7.62x39 fmj;Initial targetplayer;NeverDestroy TRUE"
+Class			= "AI_BAD_Paratrooper"
+
+[Attachment55]
+
+Name			= "Helicopter Gunner3"
+Type			= 1
+Properties		= "Name g3;RightHand AK47,7.62x39 fmj;Initial targetplayer;NeverDestroy TRUE"
+Class			= "AI_BAD_Paratrooper"
+
+[Attachment56]
+
+Name			= "Helicopter Gunner4"
+Type			= 1
+Properties		= "Name g4;RightHand AK47,7.62x39 fmj;Initial targetplayer;NeverDestroy TRUE"
+Class			= "AI_BAD_Paratrooper"
+
+[Attachment57]
+
+Name			= "Helicopter Gunner5"
+Type			= 1
+Properties		= "Name g5;RightHand AK47,7.62x39 fmj;Initial targetplayer;NeverDestroy TRUE"
+Class			= "AI_BAD_Paratrooper"
+
+[Attachment58]
+
+Name			= "Helicopter Gunner6"
+Type			= 1
+Properties		= "Name g6;RightHand AK47,7.62x39 fmj;Initial targetplayer;NeverDestroy TRUE"
+Class			= "AI_BAD_Paratrooper"
+
+[Attachment59]
+
+Name			= "Helicopter Gunner7"
+Type			= 1
+Properties		= "Name g7;RightHand AK47,7.62x39 fmj;Initial targetplayer;NeverDestroy TRUE"
+Class			= "AI_BAD_Paratrooper"
+
+[Attachment60]
+
+Name			= "Wrench"
+Type			= 0
+Model			= "Attachments\Models\Wrench.abc"
+Skin			= "Props\Skins\wrench_plumber.dtx"
+
+[Attachment61]
+
+Name			= "Disguise2"
+Type			= 0
+Model			= "Attachments\Models\disguise2.abc"
+Skin			= "Attachments\Skins\disguise.dtx"
+Properties		= "Alpha 0.99"
+
+[Attachment62]
+
+Name			= "Phone receiver"
+Type			= 0
+Model			= "props\models\phonereceiver.abc"
+Skin			= "props\skins\payphone_01c.dtx"
+
+[Attachment63]
+
+Name			= "Puppet"
+Type			= 0
+Model			= "attachments\models\puppet.abc"
+Skin			= "props\skins\puppet.dtx"
+
+[Attachment64]
+
+Name			= "Spoon"
+Type			= 0
+Model			= "attachments\models\Spoon.abc"
+Skin			= "props\skins\silverware.dtx"
+
+[Attachment65]
+
+Name			= "BaronessWinterHat"
+Type			= 0
+Model			= "attachments\models\baroness_winter_hat.abc"
+Skin			= "chars\skins\baroness_winter.dtx"
+
+[Attachment66]
+
+Name			= "List"
+Type			= 0
+Model			= "Attachments\Models\List.abc"
+Skin			= "Props\Skins\Clipboard.dtx"
+
+[Attachment67]
+
+Name			= "HelicopterWindow_UNITY"
+Type			= 0
+Model			= "Attachments\Models\Helicopter_window.abc"
+Skin			= "Chars\Skins\Helicopter_winter_head.dtx"
+Properties		= "Alpha 0.99"
+
+[Attachment68]
+
+Name			= "PhotoFrame"
+Type			= 0
+Model			= "Attachments\Models\PhotoFrame2.abc"
+Skin			= "Props\Skins\PhotoFrame.dtx"
+
+[Attachment69]
+
+Name			= "Fork"
+Type			= 0
+Model			= "props\models\fork.abc"
+Skin			= "props\skins\silverware.dtx"
+
+
+[Attachment70]
+
+Name			= "German Helmet_Multi"
+Type			= 0
+Model			= "Attachments\Models\German_action_helmet.abc"
+Skin			= "Attachments\Skins\German_action_attachments.dtx"
+
+[Attachment71]
+
+Name			= "monkey1"
+Type			= 0
+Model			= "props\models\monkey1.abc"
+Skin			= "props\skins\monkey1.dtx"
+
+[Attachment72]
+
+Name			= "monkeymask"
+Type			= 0
+Model			= "attachments\models\monkeymask.abc"
+Skin			= "attachments\skins\monkeymask.dtx"
+
+[Attachment73]
+
+Name			= "rag"
+Type			= 0
+Model			= "attachments\models\rag.abc"
+Skin			= "attachments\skins\rag.dtx"
+
+
+/*************************************************************************
+**
+**	Requirement = Required Attachments
+**
+** Model
+**	-	Model for which the attachment is required
+**
+** Style
+**	-	Style for which the attachment is required
+**		(if attachement is required for all styles, leave this blank)
+**
+** Attachment
+**	-	Name of the required attachment
+**
+** Socket
+**	-	Socket to attach to
+**
+*/
+
+
+[Requirement0]
+Model		= "Baroness"
+Style		= "Action"
+Attachment	= "Baroness Hat1"
+Socket		= "Head"
+
+[Requirement1]
+Model		= "Baron"
+Style		= "Action"
+Attachment	= "Baron Hat1"
+Socket		= "Head"
+
+[Requirement2]
+Model		= "Baron"
+Style		= "Formal"
+Attachment	= "NavyHat"
+Socket		= "Head"
+
+[Requirement3]
+Model		= "Cosmonaut"
+Style		= "Action"
+Attachment	= "Cosmonaut Helmet"
+Socket		= "Head"
+
+[Requirement4]
+Model		= "DockGuard"
+Style		= ""
+Attachment	= "DockGuard Hat"
+Socket		= "Head"
+
+[Requirement5]
+Model		= "Frogman"
+Style		= ""
+Attachment	= "Frogman Tank"
+Socket		= "Back"
+
+[Requirement6]
+Model		= "German"
+Style		= "Action"
+Attachment	= "German Helmet_Multi"
+Socket		= "Head"
+
+[Requirement7]
+Model		= "German"
+Style		= "Casual"
+Attachment	= "German Hair"
+Socket		= "Head"
+
+[Requirement8]
+Model		= "MoroccanAgent"
+Style		= ""
+Attachment	= "Moroccan Fez"
+Socket		= "Head"
+
+[Requirement9]
+Model		= "MoroccanAgent"
+Style		= ""
+Attachment	= "Moroccan Sunglasses"
+Socket		= "Eyes"
+
+[Requirement10]
+Model		= "Hero"
+Style		= "Scuba"
+Attachment	= "MiaScubaTank"
+Socket		= "Back"
+
+[Requirement11]
+Model		= "Hero"
+Style		= "Scuba"
+Attachment	= "MiaScubamask_up"
+Socket		= "Head"
+
+[Requirement12]
+Model		= "Scotsman"
+Style		= ""
+Attachment	= "Cigar"
+Socket		= "Chin"
+
+[Requirement13]
+Model		= "STASIGuard"
+Style		= ""
+Attachment	= "STASIGuard Hat"
+Socket		= "Head"
+
+[Requirement14]
+Model		= "SubGuard"
+Style		= ""
+Attachment	= "SubGuard Hat"
+Socket		= "Head"
+
+[Requirement15]
+Model		= "WorkGuard"
+Style		= ""
+Attachment	= "WorkGuard Hardhat"
+Socket		= "Head"
+
+[Requirement16]
+Model		= "MaleBystander"
+Style		= "style4"
+Attachment	= "NerdGlasses"
+Socket		= "Eyes"
+
+[Requirement17]
+Model		= "Doctor"
+Style		= ""
+Attachment	= "DoctorGlasses"
+Socket		= "Eyes"
+
+[Requirement18]
+Model		= "Conductor"
+Style		= "action"
+Attachment	= "ConducterHat"
+Socket		= "Head"
+
+[Requirement19]
+Model		= "Paratrooper"
+Style		= ""
+Attachment	= "ParatrooperGoggles"
+Socket		= "Eyes"
