@@ -23,6 +23,9 @@ CScreenTintMgr::CScreenTintMgr()
 		m_avTints[i].Init(0.0f,0.0f,0.0f);
 	}
     m_bChanged = LTFALSE;
+	m_hAltSurface = LTNULL;
+	m_nAltSurfaceWidth = -1;
+	m_nAltSurfaceHeight = -1;
 }
 
 CScreenTintMgr::~CScreenTintMgr()
@@ -31,11 +34,6 @@ CScreenTintMgr::~CScreenTintMgr()
 
 void CScreenTintMgr::Update()
 {
-	if (!g_vtEnableScreenTint.GetFloat())
-	{
-		return;
-	}
-
 	if (!m_bChanged) {
 		return;
 	}
@@ -56,6 +54,40 @@ void CScreenTintMgr::Update()
 	if (vTemp.z > 1.0f)
 		vTemp.z = 1.0f;
     m_bChanged = LTFALSE;
+
+	auto hScreen = g_pLTClient->GetScreenSurface();
+	LTBOOL bEnableScreenTint = g_vtEnableScreenTint.GetFloat();
+
+	// This can probably be rolled into optimized renderer...
+	// But re-working the caching for OR would be annoying, so it's here.
+	if (!bEnableScreenTint) {
+
+		// Trash the old surface
+		if (m_hAltSurface) {
+			g_pLTClient->DeleteSurface(m_hAltSurface);
+			m_hAltSurface = LTNULL;
+		}
+
+		uint32 nWidth, nHeight;
+
+		g_pLTClient->GetSurfaceDims(hScreen, &nWidth, &nHeight);
+
+		// Create a small surface so when the surface is optimized it won't drain our framerate!
+		m_hAltSurface = g_pLTClient->CreateSurface(8, 8);
+
+		LTRect rDest = { 0, 0, (int)nWidth, (int)nHeight };
+
+		// Colours were normalized, un-normalize them...re-normalize?...255-ify them.
+		HLTCOLOR hColour = SETRGB(vTemp.x * 255, vTemp.y * 255, vTemp.z * 255);
+
+		g_pLTClient->FillRect(m_hAltSurface, &rDest, hColour);
+		g_pLTClient->SetSurfaceAlpha(m_hAltSurface, 1.0f);
+
+		m_nAltSurfaceWidth = nWidth;
+		m_nAltSurfaceHeight = nHeight;
+
+		return;
+	}
 
 	HLOCALOBJ hCamera = g_pGameClientShell->GetCamera();
     g_pLTClient->SetCameraLightAdd(hCamera, &vTemp);
