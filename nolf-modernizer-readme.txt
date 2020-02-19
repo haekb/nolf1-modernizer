@@ -48,6 +48,9 @@ It's important that you don't run this mod with any other mods that may have mod
  - Fixed shadows disappearing between cutscenes and saved games.
  - Added a "Blackscreen Fix" work around for Intel HD graphics chips in Display options.
 
+-- Important For Intel HD Graphics Users
+Please enable "Intel HD Graphics Fix" in Display options. This fixes the blackscreen while underwater bug. It also switches to an alternate rendering of screen tinting, that should fix missing screen effects.
+
 --  Control Changes
 We've made some changes to the default control scheme in 1.006 Patch 3. As such the game will reset your controls on startup.
 
@@ -85,7 +88,7 @@ To run in windowed mode either toggle it in-game or, add +windowed 1 to the "Com
 Unfortuantely we can't fix everything! Here's a list of known bugs.
 
 Bug: I get a black screen underwater!
-This is due to Intel's onboard graphics not liking Direct3D/DirectX7. If your computer has a dedicated gpu, you can try forcing it on by plugging in an external monitor. Or try using DGVoodoo2.
+This is due to Intel's onboard graphics not liking Direct3D/DirectX7. If your computer has a dedicated gpu, you can try forcing it on by plugging in an external monitor. Or enable "Intel HD Graphics Fix" in Display options.
 
 Bug: The game crashes with "NOLF Error: Couldn't set D3D Emulation mode."
 In advanced options of the launcher try checking "Restore Default Options". Also make sure the Display selected is your primary monitor. 
