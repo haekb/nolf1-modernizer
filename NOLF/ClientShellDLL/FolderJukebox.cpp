@@ -158,7 +158,7 @@ CFolderJukebox::~CFolderJukebox()
 
 LTBOOL CFolderJukebox::Build()
 {
-	CreateTitle("Jukebox");
+	CreateTitle(IDS_TITLE_JUKEBOX);
 
 	rcSongListRect = g_pLayoutMgr->GetFolderCustomRect((eFolderID)m_nFolderID, "SongListRect");
 	nArrowWidth = g_pLayoutMgr->GetFolderCustomInt((eFolderID)m_nFolderID, "ArrowWidth");
