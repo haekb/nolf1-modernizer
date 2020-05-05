@@ -43,7 +43,7 @@ The goal of NOLF Modernizer is to help fix some long standing bugs, and update s
 ## Patch 4
 - Re-worked jukebox into an attribute file. 
 - Added missing ambient track for the Main Theme to the Jukebox.
-
+- Added some jukebox strings to CRes.dll
 
 ## Additional Config/Console Commands
 

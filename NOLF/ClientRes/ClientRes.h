@@ -6504,6 +6504,8 @@
 #define IDS_ACTIONSTRING_TOGGLE_ZOOM    30104
 #define IDS_INTEL_BLACKSCREEN_FIX       30105
 #define IDS_HELP_INTEL_BLACKSCREEN_FIX  30106
+#define IDS_JUKEBOX_THEME               30107
+#define IDS_JUKEBOX_NOW_PLAYING         30108
 
 // Next default values for new objects
 // 

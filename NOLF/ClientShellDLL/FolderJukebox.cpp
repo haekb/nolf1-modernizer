@@ -140,17 +140,20 @@ CFolderJukebox::CFolderJukebox()
 {
 	m_sCurrentSong = "";
 
+	m_CurrentSongList = nullptr;
 	m_PreviousMusicState.Clear();
 }
 
 CFolderJukebox::~CFolderJukebox()
 {
-	m_AmbushSongs.clear();
-	m_BaDeDumSongs.clear();
-	m_BadGuysSongs.clear();
-	m_OrchestralSongs.clear();
-	m_MainThemeSongs.clear();
-	m_GOTYSongs.clear();
+	// Clean up!
+	for (auto Song : m_Songs)
+	{
+		Song.clear();
+	}
+
+	m_Songs.clear();
+	m_PreviousMusicState.Clear();
 }
 
 LTBOOL CFolderJukebox::Build()
@@ -169,8 +172,7 @@ LTBOOL CFolderJukebox::Build()
 	LTFLOAT yr = g_pInterfaceResMgr->GetYRatio();
 	kGap *= yr;
 
-	// FIXME: Localize meeeee
-	AddTextItem("Themes", 0, 0, 0, GetLargeFont());
+	AddTextItem(IDS_JUKEBOX_THEME, 0, 0, 0, GetLargeFont());
 
 	int nThemeCount = g_pJukeboxButeMgr->GetNumThemes();
 
@@ -281,6 +283,9 @@ void CFolderJukebox::OnFocus(LTBOOL bFocus)
 
 		// Store the current music state, so we can restore when they leave!
 		m_PreviousMusicState = *g_pGameClientShell->GetMusic()->GetMusicState();
+
+		// Clear the list, in case they're coming in for the second time.
+		m_SongListCtrl->RemoveAllControls();
 		
 		CBaseFolder::OnFocus(bFocus);
 		return;
@@ -354,9 +359,8 @@ void CFolderJukebox::UpdateHelpText()
 	m_dwCurrHelpID = 1;
 
 	// Build out string
-	std::string nowPlaying = "Now Playing: " + m_sCurrentSong;
-	HSTRING hHelpTxt = g_pLTClient->CreateString((char*)nowPlaying.c_str());
-
+	HSTRING hHelpTxt = g_pLTClient->FormatString(IDS_JUKEBOX_NOW_PLAYING, m_sCurrentSong.c_str());
+	
 	int nWidth = m_HelpRect.right - m_HelpRect.left;
 	int nHeight = m_HelpRect.bottom - m_HelpRect.top;
 
