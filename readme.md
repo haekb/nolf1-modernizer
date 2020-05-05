@@ -40,6 +40,11 @@ The goal of NOLF Modernizer is to help fix some long standing bugs, and update s
 - Fixed shadows disappearing between cutscenes and saved games.
 - Added a "Blackscreen Fix" work around for Intel HD graphics chips in Display options.
 
+## Patch 4
+- Re-worked jukebox into an attribute file. 
+- Added missing ambient track for the Main Theme to the Jukebox.
+- Added some jukebox strings to CRes.dll
+
 ## Additional Config/Console Commands
 
 The following are new config/console commands:
@@ -76,6 +81,16 @@ If you experience any issues, feel free to open an issue.
 Simply fork and submit a PR (preferbly with a matching issue ticket!) 
 
 Try to keep to the original coding style, with descriptive commit messages. (Unlike some of my original commits!)
+
+## Localization
+
+There have been community efforts to localize Modernizer into other languages. And while I don't have the time to directly help in these efforts, here are some steps you can do you to localize and distribute your localization patch!
+
+First off modify the string table located in CRes.dll (Client Resource). This can be done with the latest version of Visual Studio 2019 and this source code. You may also attempt to use other programs to modify the string table directly in the dll. 
+
+Secondly there are some additional strings in Jukebox.txt located here: https://github.com/haekb/nolf1-modernizer/blob/master/ASSETS/Attributes/Jukebox.txt) 
+
+Finally compile your new CRes.dll and the modified attribute file into its own rez using LithRez.exe (from the SDK) and make sure it loads after Modernizer.rez.
 
 ## D3D and 2048 pixel limit
 

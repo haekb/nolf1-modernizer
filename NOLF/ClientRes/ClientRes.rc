@@ -7804,6 +7804,9 @@ BEGIN
     IDS_INTEL_BLACKSCREEN_FIX "Intel HD Graphics Fix"
     IDS_HELP_INTEL_BLACKSCREEN_FIX 
                             "Fix for missing screen effects and also fixes the blackscreen while being underwater bug."
+    IDS_JUKEBOX_THEME       "Themes"
+    IDS_JUKEBOX_NOW_PLAYING "Now Playing:  %1!s!"
+    IDS_TITLE_JUKEBOX       "JUKEBOX"
 END
 
 #endif    // English (United States) resources

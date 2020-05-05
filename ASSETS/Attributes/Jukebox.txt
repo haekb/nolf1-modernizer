@@ -1,0 +1,309 @@
+
+/*
+** Jukebox Attribute File
+** Created by Jake Breen for NOLF Modernizer
+** Fun fact: I made up all these song names.
+*/
+
+
+/*
+** [Theme0-9] - Sections for the individual songs
+** Name - Localize this!
+** Directory - What directory (under Music/) 
+** ControlFile - What control file is to be used
+** RequiresGOTY - Since not every copy contains these files, gate it off.
+**
+**
+*/
+
+[Theme0]
+Name            = "Ambush"
+Directory       = "AMBUSH"
+ControlFile     = "AMBUSH.txt"
+RequiresGOTY    = FALSE
+
+[Theme1]
+Name            = "Ba-De-Dum"
+Directory       = "BADEDUM"
+ControlFile     = "BADEDUM.txt"
+RequiresGOTY    = FALSE
+
+[Theme2]
+Name            = "Bad Guys"
+Directory       = "BADGUY"
+ControlFile     = "BADGUY.txt"
+RequiresGOTY    = FALSE
+
+[Theme3]
+Name            = "Orchestral"
+Directory       = "NOLFORCH"
+ControlFile     = "NOLFORCH.txt"
+RequiresGOTY    = FALSE
+
+[Theme4]
+Name            = "Main Theme"
+Directory       = "NOLFTHEME"
+ControlFile     = "NOLFTHEME.txt"
+RequiresGOTY    = FALSE
+
+[Theme5]
+Name            = "Game Of The Year Theme"
+Directory       = "GOTY"
+ControlFile     = "GOTY.txt"
+RequiresGOTY    = TRUE
+
+/*
+** [Song0-9] - Section for all the individual songs
+** Name - Localize this!
+** IntensityLevel - The intensity required to play this song
+** Theme - Categorizes the song. Use the numbers from above! (Ex/ Theme=0 is an Ambush song.)
+**
+*/
+
+/*
+** AMBUSH SONGS
+*/
+[Song0]
+Name="Ambience"
+IntensityLevel=2
+Theme=0
+
+[Song1]
+Name="Tension"
+IntensityLevel=3
+Theme=0
+
+[Song2]
+Name="Sneaking Around"
+IntensityLevel=4
+Theme=0
+
+[Song3]
+Name="Action"
+IntensityLevel=5
+Theme=0
+
+[Song4]
+Name="Drive"
+IntensityLevel=7
+Theme=0
+
+[Song5]
+Name="Low Earth Orbit"
+IntensityLevel=8
+Theme=0
+
+[Song6]
+Name="Moracco"
+IntensityLevel=9
+Theme=0
+
+[Song7]
+Name="Trains"
+IntensityLevel=10
+Theme=0
+
+/*
+** Ba-De-Dum
+*/
+[Song8]
+Name="Ambience"
+IntensityLevel=2
+Theme=1
+
+[Song9]
+Name="Slow Vibes 1"
+IntensityLevel=3
+Theme=1
+
+[Song10]
+Name="Slow Vibes 2"
+IntensityLevel=3
+Theme=1
+
+[Song11]
+Name="Slow Drums 1"
+IntensityLevel=4
+Theme=1
+
+[Song12]
+Name="Slow Drums 2"
+IntensityLevel=22
+Theme=1
+
+[Song13]
+Name="Exploring Vibes 1"
+IntensityLevel=5
+Theme=1
+
+[Song14]
+Name="Exploring Vibes 2"
+IntensityLevel=17
+Theme=1
+
+[Song15]
+Name="Exploring Vibes 3"
+IntensityLevel=23
+Theme=1
+
+[Song16]
+Name="Exploring Drums 1"
+IntensityLevel=6
+Theme=1
+
+[Song17]
+Name="Exploring Drums 2"
+IntensityLevel=24
+Theme=1
+
+[Song18]
+Name="Sneaking Around"
+IntensityLevel=20
+Theme=1
+
+[Song19]
+Name="Action 1"
+IntensityLevel=7
+Theme=1
+
+[Song20]
+Name="Action 2"
+IntensityLevel=25
+Theme=1
+
+[Song21]
+Name="Orchestral Exploring"
+IntensityLevel=10
+Theme=1
+
+[Song22]
+Name="Orchestral Ambience"
+IntensityLevel=11
+Theme=1
+
+[Song23]
+Name="Orchestral Action"
+IntensityLevel=18
+Theme=1
+
+[Song24]
+Name="Oompaa"
+IntensityLevel=26
+Theme=1
+
+/*
+** Bad Guys
+*/
+[Song25]
+Name="Sub Ambience"
+IntensityLevel=2
+Theme=2
+
+[Song26]
+Name="Ambience"
+IntensityLevel=4
+Theme=2
+
+[Song27]
+Name="Swing"
+IntensityLevel=6
+Theme=2
+
+[Song28]
+Name="Rock & Bepop"
+IntensityLevel=9
+Theme=2
+
+[Song29]
+Name="Action Cinema"
+IntensityLevel=14
+Theme=2
+
+/*
+** Orchestral
+*/
+[Song30]
+Name="Ambience"
+IntensityLevel=5
+Theme=3
+
+[Song31]
+Name="Tension"
+IntensityLevel=4
+Theme=3
+
+[Song32]
+Name="Exploring"
+IntensityLevel=6
+Theme=3
+
+[Song33]
+Name="Action"
+IntensityLevel=2
+Theme=3
+
+/*
+** Main Theme
+*/
+[Song34]
+Name="Sub Ambience"
+IntensityLevel=2
+Theme=4
+
+[Song35]
+Name="Ambience"
+IntensityLevel=3
+Theme=4
+
+[Song36]
+Name="Slow Going"
+IntensityLevel=4
+Theme=4
+
+[Song37]
+Name="Main Theme"
+IntensityLevel=5
+Theme=4
+
+[Song38]
+Name="Action"
+IntensityLevel=6
+Theme=4
+
+[Song39]
+Name="Exploring Vibes"
+IntensityLevel=12
+Theme=4
+
+[Song40]
+Name="Sneaking Around"
+IntensityLevel=14
+Theme=4
+
+/*
+** Game Of The Year
+*/
+[Song41]
+Name="Normal"
+IntensityLevel=1
+Theme=5
+
+[Song42]
+Name="Ambience"
+IntensityLevel=2
+Theme=5
+
+[Song43]
+Name="Searching"
+IntensityLevel=3
+Theme=5
+
+[Song44]
+Name="Investigate"
+IntensityLevel=5
+Theme=5
+
+[Song45]
+Name="Combat"
+IntensityLevel=7
+Theme=5

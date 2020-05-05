@@ -1172,6 +1172,9 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 
     m_AttachButeMgr.Init(g_pLTClient);
 
+	// Init the jukebox attribute manager
+	m_JukeBoxButeMgr.Init(g_pLTClient);
+
 	m_CameraOffsetMgr.Init();
 	m_HeadBobMgr.Init();
 
@@ -1525,6 +1528,7 @@ uint32 CGameClientShell::OnEngineInitialized(RMode *pMode, LTGUID *pAppGuid)
 
 	// Save any changes from the upgrade!
 	g_pLTClient->WriteConfigFile("autoexec.cfg");
+
 
 	return LT_OK;
 }

@@ -36,6 +36,7 @@
 #include "HeadBobMgr.h"
 #include "NetDefs.h"
 #include "OptimizedRenderer.h"
+#include "JukeboxButeMgr.h"
 
 #define DEG2RAD(x)		(((x)*MATH_PI)/180.0f)
 #define RAD2DEG(x)		(((x)*180.0f)/MATH_PI)
@@ -135,6 +136,8 @@ class CGameClientShell : public IClientShell
 
         CAttachButeMgr*     GetAttachButeMgr()          { return &m_AttachButeMgr; }
 		CCameraOffsetMgr*	GetCameraOffsetMgr()		{ return &m_CameraOffsetMgr; }
+
+		CJukeboxButeMgr* GetJukeboxButeMgr()			{ return &m_JukeBoxButeMgr; }
 
 		HLOCALOBJ		GetCamera()				const	{ return m_hCamera; }
 		HLOCALOBJ		GetInterfaceCamera()	const	{ return m_hInterfaceCamera; }
@@ -546,6 +549,8 @@ class CGameClientShell : public IClientShell
 		int			m_iCurrentMouseY;
 		LTBOOL		m_bGetBaseMouse;
 		LARGE_INTEGER m_lTimerFrequency;
+
+		CJukeboxButeMgr m_JukeBoxButeMgr;
 
 		// Private helper functions...
 
