@@ -48,6 +48,9 @@ It's important that you don't run this mod with any other mods that may have mod
  - Fixed shadows disappearing between cutscenes and saved games.
  - Added a "Blackscreen Fix" work around for Intel HD graphics chips in Display options.
 
+-- Patch 4
+ - Added missing ambient track for the Main Theme to the Jukebox.
+
 -- Important For Intel HD Graphics Users
 Please enable "Intel HD Graphics Fix" in Display options. This fixes the blackscreen while underwater bug. It also switches to an alternate rendering of screen tinting, that should fix missing screen effects.
 
