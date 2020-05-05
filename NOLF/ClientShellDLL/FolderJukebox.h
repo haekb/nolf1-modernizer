@@ -24,14 +24,6 @@ protected:
 	std::string m_sCurrentSong;
 	std::map<std::string, int>* m_CurrentSongList;
 
-	// I'm just going to hardcode these to make it easier for myself
-	std::map<std::string, int> m_AmbushSongs;
-	std::map<std::string, int> m_BaDeDumSongs;
-	std::map<std::string, int> m_BadGuysSongs;
-	std::map<std::string, int> m_OrchestralSongs;
-	std::map<std::string, int> m_MainThemeSongs;
-	std::map<std::string, int> m_GOTYSongs;
-
 	std::vector<int> m_ThemeIDsToSkip;
 
 	std::vector< std::map<std::string, int> > m_Songs;
