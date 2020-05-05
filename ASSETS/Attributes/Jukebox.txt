@@ -1,0 +1,103 @@
+/*
+** Jukebox Attribute File
+** Created by Jake Breen for NOLF Modernizer
+** Fun fact: I made up all these song names.
+*/
+
+
+/*
+** [Theme0-9] - Sections for the individual songs
+** Name - Localize this!
+** Directory - What directory (under Music/) 
+** ControlFile - What control file is to be used
+** RequiresGOTY - Since not every copy contains these files, gate it off.
+**
+**
+*/
+
+[Theme0]
+Name            = "Ambush"
+Directory       = "AMBUSH"
+ControlFile     = "AMBUSH.txt"
+RequiresGOTY    = FALSE
+
+[Theme1]
+Name            = "BaDeDum"
+Directory       = "BADEDUM"
+ControlFile     = "BADEDUM.txt"
+RequiresGOTY    = FALSE
+
+[Theme2]
+Name            = "Bad Guys"
+Directory       = "BADGUY"
+ControlFile     = "BADGUY.txt"
+RequiresGOTY    = FALSE
+
+[Theme3]
+Name            = "Orchestral"
+Directory       = "NOLFORCH"
+ControlFile     = "NOLFORCH.txt"
+RequiresGOTY    = FALSE
+
+[Theme4]
+Name            = "Main Theme"
+Directory       = "NOLFTHEME"
+ControlFile     = "NOLFTHEME.txt"
+RequiresGOTY    = FALSE
+
+[Theme5]
+Name            = "Game Of The Year Theme"
+Directory       = "GOTY"
+ControlFile     = "GOTY.txt"
+RequiresGOTY    = TRUE
+
+/*
+** [Song0-9] - Section for all the individual songs
+** Name - Localize this!
+** IntensityLevel - The intensity required to play this song
+** Theme - Categorizes the song. Use the numbers from above! (Ex/ Theme=0 is an Ambush song.)
+**
+*/
+
+/*
+** AMBUSH SONGS
+*/
+[Song0]
+Name="Ambience"
+IntensityLevel=2
+Theme=0
+
+[Song1]
+Name="Tension"
+IntensityLevel=3
+Theme=0
+
+[Song2]
+Name="Sneaking Around"
+IntensityLevel=4
+Theme=0
+
+[Song3]
+Name="Action"
+IntensityLevel=5
+Theme=0
+
+[Song4]
+Name="Drive"
+IntensityLevel=7
+Theme=0
+
+[Song5]
+Name="Low Earth Orbit"
+IntensityLevel=8
+Theme=0
+
+[Song6]
+Name="Moracco"
+IntensityLevel=9
+Theme=0
+
+[Song7]
+Name="Trains"
+IntensityLevel=10
+Theme=0
