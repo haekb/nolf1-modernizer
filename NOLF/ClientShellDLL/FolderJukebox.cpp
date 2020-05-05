@@ -8,6 +8,8 @@
 #include "GameSettings.h"
 #include "VersionMgr.h"
 #include <string>
+
+#include "JukeboxButeMgr.h"
 namespace
 {
 	int kGap = 0;
@@ -18,15 +20,11 @@ namespace
 	int nArrowWidth = 0;
 	int nIndent = 0;
 
-	const int PLAY_AMBUSH = (FOLDER_CMD_CUSTOM + 1);
-	const int PLAY_BADEDUM = (FOLDER_CMD_CUSTOM + 2);
-	const int PLAY_BADGUY = (FOLDER_CMD_CUSTOM + 3);
-	const int PLAY_NOLFORCH = (FOLDER_CMD_CUSTOM + 4);
-	const int PLAY_NOLFTHEME = (FOLDER_CMD_CUSTOM + 5);
-	const int PLAY_GOTY = (FOLDER_CMD_CUSTOM + 6);
+	// FOLDER_CMD_CUSTOM ... FOLDER_CMD_CUSTOM + 500
+	// are dedicated for themes
 
-	const int PLAY_SONG = (FOLDER_CMD_CUSTOM + 7);
-
+	// Just bump this up to not conflict with the attribute file
+	const int PLAY_SONG = (FOLDER_CMD_CUSTOM + 500);
 }
 
 // Just for reference, here's the intensities for each "Song"
@@ -143,70 +141,6 @@ CFolderJukebox::CFolderJukebox()
 	m_sCurrentSong = "";
 
 	m_PreviousMusicState.Clear();
-
-	// Format: Song Title => Intensity Level
-	m_AmbushSongs = {
-		{"Ambience", 2},
-		{"Tension", 3},
-		{"Sneaking Around", 4},
-		{"Action", 5},
-		{"Drive", 7},
-		{"Low Earth Orbit", 8},
-		{"Moracco",	9},
-		{"Trains", 10},
-	};
-
-	m_BaDeDumSongs = {
-		{ "Ambience", 2 },
-		{ "Slow Vibes 1", 3 },
-		{ "Slow Vibes 2", 21 },
-		{ "Slow Drums 1", 4 },
-		{ "Slow Drums 2", 22 },
-		{ "Exploring Vibes 1", 5 },
-		{ "Exploring Vibes 2", 17 },
-		{ "Exploring Vibes 3", 23 },
-		{ "Exploring Drums 1", 6 },
-		{ "Exploring Drums 2", 24 },
-		{ "Sneaking Around", 20 },
-		{ "Action 1", 7 },
-		{ "Action 2", 25 },
-		{ "Orchestral Exploring", 10 },
-		{ "Orchestral Ambience", 11 },
-		{ "Orchestral Action", 18 },
-		{ "Oompaa", 26 }
-	};
-
-	m_BadGuysSongs = {
-		{ "Sub Ambience", 2 },
-		{ "Ambience", 4 },
-		{ "Swing", 6 },
-		{ "Rock & Bepop", 9 },
-		{ "Action Cinema", 14 }
-	};
-
-	m_OrchestralSongs = {
-		{ "Ambience",  5 },
-		{ "Tension",  4 },
-		{ "Exploring",  6 },
-		{ "Action",  2 }
-	};
-
-	m_MainThemeSongs = {
-		{ "Sub Ambience", 2 },
-		{ "Slow Going", 4 },
-		{ "Main Theme", 5 },
-		{ "Action", 6 },
-		{ "Exploring Vibes", 12 },
-		{ "Sneaking Around", 14 }
-	};
-
-	m_GOTYSongs = {
-		{ "Normal", 1 },
-		{ "Ambience", 2 },
-		{ "Searching", 3 },
-		{ "Investigate", 5 },
-		{ "Combat", 7 }
-	};
 }
 
 CFolderJukebox::~CFolderJukebox()
@@ -235,18 +169,53 @@ LTBOOL CFolderJukebox::Build()
 	LTFLOAT yr = g_pInterfaceResMgr->GetYRatio();
 	kGap *= yr;
 
-
+	// FIXME: Localize meeeee
 	AddTextItem("Themes", 0, 0, 0, GetLargeFont());
-	AddTextItem("Ambush", PLAY_AMBUSH, 0, 0, GetMediumFont());
-	AddTextItem("Ba De Dum", PLAY_BADEDUM, 0, 0, GetMediumFont());
-	AddTextItem("Bad Guys", PLAY_BADGUY, 0, 0, GetMediumFont());
-	AddTextItem("Orchestra", PLAY_NOLFORCH, 0, 0, GetMediumFont());
-	AddTextItem("Main Theme", PLAY_NOLFTHEME, 0, 0, GetMediumFont());
 
-	if (g_pVersionMgr->IsGOTY()) {
-		AddTextItem("Game Of The Year", PLAY_GOTY, 0, 0, GetMediumFont());
+	int nThemeCount = g_pJukeboxButeMgr->GetNumThemes();
+
+	for (int i = 0; i < nThemeCount; i++)
+	{
+		auto sName = g_pJukeboxButeMgr->GetThemeName(i);
+		auto bRequiresGOTY = g_pJukeboxButeMgr->GetThemeRequiresGOTY(i);
+
+		// If this theme requires GOTY, and we don't have the GOTY files...don't include it.
+		// Would just crash the game!
+		if (bRequiresGOTY && !g_pVersionMgr->IsGOTY())
+		{
+			// We'll need this info later..
+			m_ThemeIDsToSkip.push_back(i);
+			continue;
+		}
+
+		AddTextItem(sName.GetBuffer(), FOLDER_CMD_CUSTOM + i, 0, 0, GetMediumFont());
+
+		// Let's start off a map, 
+		// because everything here is pretty static we can safely assume the position in the vector relates to the theme id.
+		// Sorry for anyone who has to change this...(But also like why?)
+		std::map<std::string, int> SongMap;
+		m_Songs.push_back(SongMap);
 	}
-#if 1
+
+	int nSongCount = g_pJukeboxButeMgr->GetNumSongs();
+
+	for (int i = 0; i < nSongCount; i++)
+	{
+		auto sName = g_pJukeboxButeMgr->GetSongName(i);
+		auto nIntensityLevel = g_pJukeboxButeMgr->GetSongIntensityLevel(i);
+		auto nThemeID = g_pJukeboxButeMgr->GetSongThemeID(i);
+
+		// If the ID is in the "to skip" list, then skip this song!
+		// This is needed if the player doesn't have the required files installed.
+		if (std::find(m_ThemeIDsToSkip.begin(), m_ThemeIDsToSkip.end(), nThemeID) != m_ThemeIDsToSkip.end())
+		{
+			continue;
+		}
+
+		// Insert the song into its proper theme map.
+		m_Songs[nThemeID].insert( std::pair<std::string, int>(sName, nIntensityLevel) );
+	}
+
 	LTIntPt pos;
 	int nBarHeight = GetMediumFont()->GetHeight();
 
@@ -266,7 +235,6 @@ LTBOOL CFolderJukebox::Build()
 	m_SongListCtrl->EnableMouseMoveSelect(LTTRUE);
 	m_SongListCtrl->SetHelpID(0);
 	AddFixedControl(m_SongListCtrl, pos, LTTRUE);
-#endif
 
 	// Make sure to call the base class
 	if (!CBaseFolder::Build()) return LTFALSE;
@@ -279,19 +247,11 @@ LTBOOL CFolderJukebox::Build()
 
 uint32 CFolderJukebox::OnCommand(uint32 dwCommand, uint32 dwParam1, uint32 dwParam2)
 {
-	switch (dwCommand)
+	if (dwCommand >= FOLDER_CMD_CUSTOM && dwCommand < (FOLDER_CMD_CUSTOM + m_Songs.size()) )
 	{
-	case PLAY_AMBUSH:
-	case PLAY_BADEDUM:
-	case PLAY_BADGUY:
-	case PLAY_NOLFORCH:
-	case PLAY_NOLFTHEME:
-	case PLAY_GOTY:
-	{
-		PlayScore(dwCommand);
-		break;
+		return PlayScore(dwCommand);
 	}
-	case PLAY_SONG:
+	else if (dwCommand == PLAY_SONG)
 	{
 		UpdateData(LTTRUE);
 
@@ -305,15 +265,11 @@ uint32 CFolderJukebox::OnCommand(uint32 dwCommand, uint32 dwParam1, uint32 dwPar
 
 		UpdateHelpText();
 
-		break;
+		return 1;
 	}
-	default:
-		return CBaseFolder::OnCommand(dwCommand, dwParam1, dwParam2);
-	}
-	return 1;
+
+	return CBaseFolder::OnCommand(dwCommand, dwParam1, dwParam2);
 };
-
-
 
 void CFolderJukebox::OnFocus(LTBOOL bFocus)
 {
@@ -342,44 +298,24 @@ void CFolderJukebox::OnFocus(LTBOOL bFocus)
 
 LTBOOL CFolderJukebox::PlayScore(int scoreId)
 {
+	// excuse my mixed naming convetion here...
 	std::string directory = "Music\\";
 	std::string controlFile;
 
-	switch (scoreId)
+	int nThemeID = scoreId - FOLDER_CMD_CUSTOM;
+
+	// Make doubly sure we're not trying to access a theme we don't have the files for!
+	if (std::find(m_ThemeIDsToSkip.begin(), m_ThemeIDsToSkip.end(), nThemeID) != m_ThemeIDsToSkip.end())
 	{
-	case PLAY_AMBUSH:
-		directory += "AMBUSH";
-		controlFile = "AMBUSH.txt";
-		m_CurrentSongList = &m_AmbushSongs;
-		break;
-	case PLAY_BADEDUM:
-		directory += "BADEDUM";
-		controlFile = "BADEDUM.txt";
-		m_CurrentSongList = &m_BaDeDumSongs;
-		break;
-	case PLAY_BADGUY:
-		directory += "BADGUY";
-		controlFile = "BADGUY.txt";
-		m_CurrentSongList = &m_BadGuysSongs;
-		break;
-	case PLAY_NOLFORCH:
-		directory += "NOLFORCH";
-		controlFile = "NOLFORCH.txt";
-		m_CurrentSongList = &m_OrchestralSongs;
-		break;
-	case PLAY_NOLFTHEME:
-		directory += "NOLFTHEME";
-		controlFile = "NOLFTHEME.txt";
-		m_CurrentSongList = &m_MainThemeSongs;
-		break;
-	case PLAY_GOTY:
-		directory += "GOTY";
-		controlFile = "GOTY.txt";
-		m_CurrentSongList = &m_GOTYSongs;
-		break;
-	default:
 		return LTFALSE;
 	}
+
+	auto sDirectory = g_pJukeboxButeMgr->GetThemeDirectory(nThemeID);
+	auto sControlFile = g_pJukeboxButeMgr->GetThemeControlFile(nThemeID);
+
+	m_CurrentSongList = &m_Songs[nThemeID];
+	directory += sDirectory.GetBuffer();
+	controlFile = sControlFile.GetBuffer();
 
 	CMusicState MusicState;
 	strcpy(MusicState.szDirectory, (char*)(LPCSTR)directory.c_str());
@@ -401,7 +337,7 @@ LTBOOL CFolderJukebox::PlayScore(int scoreId)
 		HSTRING hTemp = g_pLTClient->CreateString((char*)it->first.c_str());
 
 		CStaticTextCtrl* pCtrl = CreateStaticTextItem((char*)(LPCTSTR)(it->first.c_str()), PLAY_SONG, LTNULL, 200, GetMediumFont()->GetHeight(), LTFALSE, GetMediumFont());
-		
+
 		m_SongListCtrl->AddControl(pCtrl);
 
 		// Free the strings

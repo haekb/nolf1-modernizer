@@ -3,7 +3,7 @@
 #include "ltbasetypes.h"
 #include "iltcsbase.h"
 #include <string>
-
+#include <algorithm>
 //
 // Contains all the jukebox songs!
 //
@@ -22,6 +22,7 @@ public:
 	void		Term();
 
 	int			GetNumThemes() { return m_nThemeIDCount; }
+	int			GetNumSongs() { return m_nSongIDCount; }
 
 	// Themes
 	CString		GetThemeName(int nThemeID);
@@ -32,7 +33,7 @@ public:
 	// Songs
 	CString		GetSongName(int nSongID);
 	int			GetSongIntensityLevel(int nSongID);
-	int			GetThemeID(int nSongID);
+	int			GetSongThemeID(int nSongID);
 
 private:
 

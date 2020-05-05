@@ -32,6 +32,10 @@ protected:
 	std::map<std::string, int> m_MainThemeSongs;
 	std::map<std::string, int> m_GOTYSongs;
 
+	std::vector<int> m_ThemeIDsToSkip;
+
+	std::vector< std::map<std::string, int> > m_Songs;
+
 private:
 
 };
