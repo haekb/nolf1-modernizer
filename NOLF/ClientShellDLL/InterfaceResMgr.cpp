@@ -392,6 +392,8 @@ void CInterfaceResMgr::HandleBorderlessWindowed()
 {
 	// Only do this in windowed mode!
 	if (GetConsoleInt("windowed", 0) == 0) {
+		SDL_SetWindowFullscreen(g_SDLWindow, SDL_WINDOW_FULLSCREEN);
+
 		return;
 	}
 
