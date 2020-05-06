@@ -69,7 +69,7 @@ protected:
 	void	SortRenderModes(int nRendererIndex);
 
 	// Sets the renderer based on renderer index and resolution index
-    LTBOOL   SetRenderer(int nRendererIndex, int nResolutionIndex);
+    LTBOOL   SetRenderer(int nRendererIndex, int nResolutionIndex, bool bWindowedModeChanged);
 
 	// Gets a RMode structure based on a renderer index and a resolution index
 	RMode	GetRendererModeStruct(int nRendererIndex, int nResolutionIndex);

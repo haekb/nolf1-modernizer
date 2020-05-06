@@ -129,6 +129,10 @@ LTBOOL CFolderDisplay::Build()
 	// Add the "resolution" control
     m_pResolutionCtrl = AddCycleItem(IDS_DISPLAY_RESOLUTION,IDS_HELP_RESOLUTION,200,25,LTNULL, LTFALSE);
 
+	m_pWindowedMode = AddToggle(IDS_WINDOWED_MODE, IDS_HELP_WINDOWED_MODE, 225, &m_bWindowedMode);
+	m_pWindowedMode->SetOnString(IDS_ON);
+	m_pWindowedMode->SetOffString(IDS_OFF);
+
 	// Setup the resolution control based on the currently selected renderer
 	SetupResolutionCtrl();
 
@@ -143,6 +147,7 @@ LTBOOL CFolderDisplay::Build()
 	m_pBlackScreenFixCtrl = AddToggle(IDS_INTEL_BLACKSCREEN_FIX, IDS_HELP_INTEL_BLACKSCREEN_FIX, 225, &m_bBlackScreenFix);
 	m_pBlackScreenFixCtrl->SetOnString(IDS_ON);
 	m_pBlackScreenFixCtrl->SetOffString(IDS_OFF);
+
 
 	CalculateLastDrawn();
 
@@ -362,7 +367,7 @@ int CFolderDisplay::GetRendererIndex(RMode *pMode)
 }
 
 // Sets the renderer
-LTBOOL CFolderDisplay::SetRenderer(int nRendererIndex, int nResolutionIndex)
+LTBOOL CFolderDisplay::SetRenderer(int nRendererIndex, int nResolutionIndex, bool bWindowedModeChanged = false)
 {
 	// Get the new renderer structure
 	RMode newMode=GetRendererModeStruct(nRendererIndex, nResolutionIndex);
@@ -371,7 +376,8 @@ LTBOOL CFolderDisplay::SetRenderer(int nRendererIndex, int nResolutionIndex)
 	RMode currentMode;
     if (g_pLTClient->GetRenderMode(&currentMode) == LT_OK)
 	{
-		if (IsRendererEqual(&newMode, &currentMode))
+		// Only do this if windowed mode didn't change
+		if (IsRendererEqual(&newMode, &currentMode) && !bWindowedModeChanged)
 		{
             return LTFALSE;
 		}
@@ -404,10 +410,11 @@ LTBOOL CFolderDisplay::SetRenderer(int nRendererIndex, int nResolutionIndex)
 	SDL_SetWindowSize(g_SDLWindow, newMode.m_Width, newMode.m_Height);
 	SDL_SetWindowPosition(g_SDLWindow, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
 
+	g_pInterfaceResMgr->HandleBorderlessWindowed();
+
 	g_pInterfaceMgr->ScreenDimsChanged();
 	g_pInterfaceMgr->InitCursor();
 
-	g_pInterfaceResMgr->HandleBorderlessWindowed();
 
     return LTTRUE;
 }
@@ -551,12 +558,12 @@ void CFolderDisplay::OnFocus(LTBOOL bFocus)
 			LTBOOL bRebind = (bTexture32 != m_bTexture32);
 
 			// Set the render mode if we are losing focus
-			if (m_pRendererCtrl && m_pResolutionCtrl)
+			if ((m_pRendererCtrl && m_pResolutionCtrl) || bForceResolutionReload)
 			{
 
 				int oldMO = (int)pSettings->GetFloatVar("MipmapOffset");
 
-				LTBOOL bSet = SetRenderer(m_pRendererCtrl->GetSelIndex(), m_pResolutionCtrl->GetSelIndex());
+				LTBOOL bSet = SetRenderer(m_pRendererCtrl->GetSelIndex(), m_pResolutionCtrl->GetSelIndex(), bForceResolutionReload);
 
 				// If we didn't switch resolutions and the mipmap offset changed, rebind textures.
 				if(!bSet)
@@ -568,7 +575,7 @@ void CFolderDisplay::OnFocus(LTBOOL bFocus)
 					}
 				}
 			}
-			if (bRebind || bForceResolutionReload)
+			if (bRebind)
 			{
 
                 g_pLTClient->Start3D();
