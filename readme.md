@@ -2,6 +2,8 @@
 
 [![Build Status](https://dev.azure.com/heytherecoffee/NOLF-Modernizer/_apis/build/status/haekb.nolf1-modernizer?branchName=master)](https://dev.azure.com/heytherecoffee/NOLF-Modernizer/_build/latest?definitionId=3&branchName=master)
 
+Download: https://haekb.itch.io/nolf-modernizer
+
 The goal of NOLF Modernizer is to help fix some long standing bugs, and update some more outdated features of the game.
 
 ## Features
