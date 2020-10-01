@@ -88,6 +88,8 @@ extern ConsoleMgr* g_pConsoleMgr;
 #define VK_TOGGLE_EDITMODE				VK_F2
 #define VK_TOGGLE_SCREENSHOTMODE		VK_F3
 
+#define MAX_TIMEOUT_RETRIES 2
+
 uint32              g_dwSpecial         = 2342349;
 LTBOOL              g_bScreenShotMode   = LTFALSE;
 HLTCOLOR            g_hColorTransparent = LTNULL;
@@ -691,6 +693,9 @@ CGameClientShell::CGameClientShell()
 	}
 
 	m_lFrametime = (m_lTimerFrequency.QuadPart / 60);
+
+	m_nTimeoutBugRetriesLeft = MAX_TIMEOUT_RETRIES;
+	m_sRetryAddress = "";
 }
 
 
@@ -1584,6 +1589,46 @@ void CGameClientShell::OnEvent(uint32 dwEventID, uint32 dwParam)
 		{
 			if (g_pGameClientShell->IsMultiplayerGame())
 			{
+				auto nCode = g_pGameClientShell->GetDisconnectCode();
+
+				//
+				// TIMEOUT BUG!
+				// So for unknown reasons sometimes folks immediately timeout between server level changes
+				// So uhh, if we hit that..request a reconnect by filling up our m_sRetryAddress.
+				// We need a partial update before we can reconnect, so we can't do it here :(
+				//
+				if (nCode == LT_DISCON_TIMEOUT)
+				{
+					// So we don't hit an infinite loop...
+					if (m_nTimeoutBugRetriesLeft > 0)
+					{
+						m_nTimeoutBugRetriesLeft--;
+
+						g_pGameClientShell->ClearDisconnectCode();
+						g_pInterfaceMgr->ClearAllScreenBuffers();
+						g_pInterfaceMgr->StartingNewGame();
+
+						auto szAddress = g_pGameClientShell->GetServerAddress();
+						auto nPort = m_nServerPort;
+
+						// Do all the usual stuff we do when we disconnect
+						m_szServerAddress[0] = LTNULL;
+						m_nServerPort = -1;
+						m_szServerName[0] = LTNULL;
+						memset(m_fServerOptions, 0, sizeof(m_fServerOptions));
+						m_bInWorld = LTFALSE;
+
+						g_pLTClient->CPrint("[Attempt %d] Possible connection timeout bug, reconnecting...", m_nTimeoutBugRetriesLeft);
+
+						char sIp[MAX_SGR_STRINGLEN] = { "" };
+						sprintf(sIp, "%s:%d", szAddress, nPort);
+
+						m_sRetryAddress = sIp;
+						
+						return;
+					}
+				}
+
 				m_szServerAddress[0]	= LTNULL;
 				m_nServerPort			= -1;
 				m_szServerName[0]		= LTNULL;
@@ -1740,6 +1785,9 @@ void CGameClientShell::OnEnterWorld()
 	m_vLastReverbPos.Init();
 
 	m_MoveMgr.OnEnterWorld();
+
+	// Reset our retries!
+	m_nTimeoutBugRetriesLeft = MAX_TIMEOUT_RETRIES;
 }
 
 
@@ -1852,6 +1900,15 @@ void CGameClientShell::Update()
 	if (m_fFrameTime > MAX_FRAME_DELTA)
 	{
 		m_fFrameTime = MAX_FRAME_DELTA;
+	}
+
+	// Work-around for the timeout bug,
+	// if requested try and re-connect to a specific server
+	if (m_sRetryAddress.size() > 0)
+	{
+		// Try to rejoin...
+		DoJoinGame((char*)m_sRetryAddress.c_str());
+		m_sRetryAddress = "";
 	}
 
 	g_pInterfaceMgr->GetPlayerStats()->UpdateFramerate(1 / m_fFrameTime);
@@ -9416,6 +9473,7 @@ LTBOOL CGameClientShell::DoJoinGame(char* sIp)
 	if (!sIp) return(LTFALSE);
 	if (!g_pLTClient) return(LTFALSE);
 
+	g_pLTClient->CPrint("Joining multi-player game");
 
 	// Start the game...
 
@@ -9451,11 +9509,16 @@ LTBOOL CGameClientShell::DoJoinGame(char* sIp)
 	g_pInterfaceMgr->ChangeState(GS_LOADINGLEVEL);
 
 	int nRetries = GetConsoleInt("NetJoinRetry", 0);
+	int nMaxRetries = nRetries + 1;
 	while (nRetries >= 0)
 	{
+		g_pLTClient->CPrint("[Attempt %d] Trying to start game!", nMaxRetries - nRetries);
+
 		// If successful, then we're done.
         if( g_pLTClient->StartGame( &req ) == LT_OK )
 		{
+			g_pLTClient->CPrint("Multiplayer game started!");
+
             return(LTTRUE);
 		}
 

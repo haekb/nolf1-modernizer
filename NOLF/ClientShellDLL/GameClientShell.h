@@ -552,6 +552,9 @@ class CGameClientShell : public IClientShell
 
 		CJukeboxButeMgr m_JukeBoxButeMgr;
 
+		int			m_nTimeoutBugRetriesLeft;
+		std::string m_sRetryAddress;
+
 		// Private helper functions...
 
 		void	FirstUpdate();
