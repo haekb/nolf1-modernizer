@@ -658,6 +658,10 @@ Name			= "Style8"
 
 Name			= "Dancin"
 
+[Style18]
+
+Name            = "Thief"
+
 /* 
 ** Skeleton [node group] Attributes
 **
@@ -1681,6 +1685,11 @@ Head0 = "Default,chars\skins\hero_Undercover2_head.dtx"
 
 Skin0 = "Default,chars\skins\hero_winter.dtx"
 Head0 = "Default,chars\skins\hero_winter_head.dtx"
+
+[hero_thief]
+
+Skin0 = "Default,chars\skins\hero_thief.dtx"
+Head0 = "Default,chars\skins\hero_thief_head.dtx"
 
 [maid_action]
 
