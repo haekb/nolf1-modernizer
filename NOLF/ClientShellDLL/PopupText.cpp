@@ -298,7 +298,9 @@ void CPopupText::Update()
 LTBOOL CPopupText::OnKeyDown(int key, int rep)
 {
 	// They pressed escape - close the popup
-	if (key == VK_ESCAPE)// || key == m_nKey)
+	// DG: also close popups (like the one when picking up an intelligence item) with
+	//     the activate key that might've opened it (that part used to be commented out)
+	if (key == VK_ESCAPE || key == m_nKey)
 	{
 		Clear();
         return LTTRUE;
