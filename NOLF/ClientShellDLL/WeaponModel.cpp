@@ -158,6 +158,10 @@ CWeaponModel::CWeaponModel()
     m_pWeapon   = LTNULL;
     m_pAmmo     = LTNULL;
 
+	// DG: to remember last ammo per weapon
+	m_nNumWeapons = 0;
+	m_nLastAmmoPerWeapon = LTNULL;
+
 	m_fMovementPerturb		= 0.0f;
 
     m_bDisabled             = LTFALSE;
@@ -187,6 +191,14 @@ CWeaponModel::~CWeaponModel()
 	RemoveMods();
 
 	m_PVFXMgr.Term();
+
+	// DG: to remember last ammo per weapon
+	if (m_nLastAmmoPerWeapon != LTNULL)
+	{
+		debug_deletea(m_nLastAmmoPerWeapon);
+		m_nLastAmmoPerWeapon = LTNULL;
+		m_nNumWeapons = 0;
+	}
 }
 
 // ----------------------------------------------------------------------- //
@@ -215,6 +227,14 @@ LTBOOL CWeaponModel::Init()
 
    g_vtCameraShutterSpeed.Init(g_pLTClient, "CameraShutterSpeed", NULL, 0.3f);
 
+   // DG: to remember last ammo per weapon
+   m_nNumWeapons = g_pWeaponMgr->GetNumWeapons();
+   m_nLastAmmoPerWeapon = debug_newa(uint8, m_nNumWeapons);
+   for (int i = 0; i < m_nNumWeapons; ++i)
+   {
+	   m_nLastAmmoPerWeapon[i] = WMGR_INVALID_ID;
+   }
+
     return LTTRUE;
 }
 
@@ -238,6 +258,12 @@ LTBOOL CWeaponModel::Create(ILTClient* pClientDE, uint8 nWeaponId, uint8 nAmmoId
 	m_nAmmoId = nAmmoId;
 	m_pAmmo	= g_pWeaponMgr->GetAmmo(nAmmoId);
     if (!m_pAmmo) return LTFALSE;
+
+	// DG: remember this ammo
+	if (m_nWeaponId < m_nNumWeapons)
+	{
+		m_nLastAmmoPerWeapon[m_nWeaponId] = m_nAmmoId;
+	}
 
 	// Important to update this before we access PlayerStats...
 
@@ -2547,8 +2573,12 @@ void CWeaponModel::Deselect()
     uint32 dwDeselectAni = GetDeselectAni();
     LTBOOL bPlayDeselectAni = (m_hObject && dwDeselectAni != INVALID_ANI);
 
-	// Special case for gadgets...
+	if (m_nWeaponId < m_nNumWeapons)
+	{
+		m_nLastAmmoPerWeapon[m_nWeaponId] = m_nAmmoId;
+	}
 
+	// Special case for gadgets...
 	if (m_pAmmo->eType == GADGET && IsOutOfAmmo(m_nWeaponId))
 	{
         bPlayDeselectAni = LTFALSE;
@@ -3455,9 +3485,35 @@ void CWeaponModel::DoWeaponChange(uint8 nWeaponId)
 	if (pStats->HaveWeapon(nWeaponId))
 	{
 		int nAmmoId = WMGR_INVALID_ID;
-		if (GetBestAvailableAmmoType(nWeaponId, nAmmoId) && (nAmmoId != WMGR_INVALID_ID))
+		// DG: get the ammo type that was last used for nWeaponId
+		if (nWeaponId < m_nNumWeapons)
+		{
+			nAmmoId = m_nLastAmmoPerWeapon[nWeaponId];
+			// if we don't know what ammo was last used, or we're out of that type of ammo,
+			// make sure that a fallback is selected below
+			if (nAmmoId != WMGR_INVALID_ID && pStats->GetAmmoCount(nAmmoId) == 0)
+			{
+				nAmmoId = WMGR_INVALID_ID;
+			}
+		}
+		else
+		{
+			assert( 0 && "WTF, invalid weapon id" ); // FIXME: what's a good way to handle this in NOLF?
+		}
+		if (nAmmoId == WMGR_INVALID_ID)
+		{
+			// use the standard ammo as fallback/default, not dumdum or some other fancy shit
+			// TODO: alternatively, use the ammo we have most of?
+			GetFirstAvailableAmmoType(nWeaponId, nAmmoId);
+		}
+		if (nAmmoId != WMGR_INVALID_ID)
 		{
 			g_pGameClientShell->ChangeWeapon(nWeaponId, nAmmoId, pStats->GetAmmoCount(nAmmoId));
+			// DG: remember this ammo
+			if (m_nWeaponId < m_nNumWeapons)
+			{
+				m_nLastAmmoPerWeapon[m_nWeaponId] = m_nAmmoId;
+			}
 		}
 	}
 }
@@ -3504,6 +3560,11 @@ void CWeaponModel::AutoSelectWeapon()
 
 		m_nAmmoId	= nAmmoId;
 		m_pAmmo		= g_pWeaponMgr->GetAmmo(m_nAmmoId);
+		// DG: remember this ammo
+		if ( m_nWeaponId < m_nNumWeapons )
+		{
+			m_nLastAmmoPerWeapon[m_nWeaponId] = m_nAmmoId;
+		}
 
 		// Reload our clip...
 
@@ -3784,6 +3845,12 @@ void CWeaponModel::ChangeAmmo(uint8 nNewAmmoId, LTBOOL bForce)
 	{
 		m_nAmmoId	= nNewAmmoId;
 		m_pAmmo		= g_pWeaponMgr->GetAmmo(m_nAmmoId);
+
+		// DG: remember this ammo
+		if (m_nWeaponId < m_nNumWeapons)
+		{
+			m_nLastAmmoPerWeapon[m_nWeaponId] = m_nAmmoId;
+		}
 
 		// Make sure we reset the anis...
 
