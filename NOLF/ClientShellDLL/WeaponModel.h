@@ -227,6 +227,11 @@ class CWeaponModel
 		WEAPON*		m_pWeapon;
 		AMMO*		m_pAmmo;
 
+		// DG: remember which weapon used which ammo last (will be cleared when restarting the game,
+		//     but I don't want to break the savegame format)
+		int			m_nNumWeapons; // total number of weapons available in the game (not just the ones the player has)
+		uint8*		m_nLastAmmoPerWeapon;
+
 		LTVector	m_vFlashPos;
 		LTVector	m_vFlashOffset;
 		LTFLOAT		m_fFlashStartTime;	// When did flash start
