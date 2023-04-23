@@ -195,7 +195,10 @@ LTBOOL ConsoleMgr::HandleChar(unsigned char c)
 LTBOOL ConsoleMgr::HandleKeyDown(int key, int rep)
 {
 	if (!m_bVisible) {
-		if (key == BoundConsoleKey()) {
+
+		// DG: allow opening console with Shift+Esc
+		// (Note: as it can be closed with Esc anyway, there's no further special code needed for that case)
+		if (key == BoundConsoleKey() || (key == VK_ESCAPE && (GetKeyState(VK_SHIFT) & 0x8000) != 0)) {
 			Show(true);
 			return LTTRUE;
 		}
