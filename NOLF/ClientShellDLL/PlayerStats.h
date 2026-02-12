@@ -143,6 +143,7 @@ protected:
 
     void        DrawPlayerStats(HSURFACE hScreen, int nLeft, int nTop, int nRight, int nBottom, LTBOOL bShowStats);
 	void		DrawScope(HSURFACE hScreen, int nLeft, int nTop, int nRight, int nBottom);
+	void		DrawScopeWidescreenBorders(HSURFACE hScreen); // DG: added this for zooming with glasses
 	void		DrawScuba(HSURFACE hScreen, int nLeft, int nTop, int nRight, int nBottom);
 	void		DrawSunglass(HSURFACE hScreen, int nLeft, int nTop, int nRight, int nBottom);
     void        DrawObjectives(HSURFACE hScreen);

@@ -221,12 +221,7 @@
       <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
     </ClCompile>
     <PostBuildEvent>
-      <Command>copy debug\object.lto .\object.lto
-
-
-cd ..\
-
-call "D:\GameDev\no-one-lives-forever-master\NOLF\_after_build_debug.bat"</Command>
+      <Command>copy debug\object.lto .\object.lto</Command>
     </PostBuildEvent>
     <Midl>
       <SuppressStartupBanner>true</SuppressStartupBanner>

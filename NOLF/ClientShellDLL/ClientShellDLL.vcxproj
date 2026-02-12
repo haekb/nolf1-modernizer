@@ -224,11 +224,7 @@
       <FloatingPointModel>Fast</FloatingPointModel>
     </ClCompile>
     <PostBuildEvent>
-      <Command>copy debug\cshell.dll .\cshell.dll
-cd ..\
-
-
-call "D:\GameDev\no-one-lives-forever-master\NOLF\_after_build_debug.bat"</Command>
+      <Command>copy debug\cshell.dll .\cshell.dll</Command>
       <Message>Running Post Build Script</Message>
     </PostBuildEvent>
     <Midl>
